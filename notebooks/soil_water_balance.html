@@ -1,0 +1,1856 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soil Water Balance &#8212; PyNotes</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Soil Evaporation" href="evaporation.html" />
+    <link rel="prev" title="Root growth" href="root_depth.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">PyNotes</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing-page.html">
+   PyNotes in Agriscience
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/inspiration.html">
+   Inspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/installing_software.html">
+   Installating packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reproducible_research.html">
+   Reproducible Research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/terminal_commands.html">
+   Useful Terminal Commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/git_commands.html">
+   Useful Git commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/my_first_repo.html">
+   Steps to create, clone, and push your first Github repository
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/markdown_basics.html">
+   Markdown basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/latex_equations.html">
+   LaTeX equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/alt_python_libraries.html">
+   Python libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hello_world.html">
+   Hello world
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="help_resources.html">
+   Python help
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Good coding practices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/code_style.html">
+   Coding Style
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reference_framework.html">
+   Coding Guidelines
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Simple computations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="importing_modules.html">
+   Importing modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math_module.html">
+   Math Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="calculator_examples.html">
+   Calculator Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mass_volume_relationships.html">
+   Soil Mass-Volume Relationships
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Random
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_module.html">
+   Random module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_walk.html">
+   Particle Random Walk
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_groups_of_people.html">
+   Random group generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_plots.html">
+   Random Plot Generator
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data types structures
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_types.html">
+   Data Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_structures.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="indexing_and_slicing_lists.html">
+   Indexing and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="strings.html">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="objects.html">
+   Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes.html">
+   Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inputs.html">
+   Inputs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input_wizard.html">
+   Input Wizard
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sedimentation_time.html">
+   Sedimentation time
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Directory navigation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="os_module.html">
+   Operating system module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glob_module.html">
+   Glob Module
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Dates and Time
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_module.html">
+   Time module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html">
+   Datetime Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html#working-with-seconds">
+   Working with seconds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leap_year.html">
+   Leap years
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_year.html">
+   Day of the Year
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_week.html">
+   Day of the week
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Control flow
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="for_loops.html">
+   For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_for_loops.html">
+   Comparative Anatomy of For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="while_loops.html">
+   While loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="if_statement.html">
+   If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_if_statement.html">
+   Comparative Anatomy of If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fibonacci_sequence.html">
+   Fibonacci Sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sorting_numbers.html">
+   Sorting Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_handling.html">
+   Error Handling
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Functions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="anonymous_functions.html">
+   Lambda Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_functions.html">
+   Comparative Anatomy of Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="capillarity.html">
+   Capillarity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pedotransfer_saxton_rawls.html">
+   Pedotransfer Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_textural_class.html">
+   Soil texture
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Strings
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regular_expressions.html">
+   Regular Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="matching_dna_strand.html">
+   Complementary DNA sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_single_polypeptide.html">
+   Central Dogma: Decoding a Single Polypeptide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_multiple_polypeptides.html">
+   Central Dogma: Decoding Multiple Polypeptides
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_decoder.html">
+   Morse code decoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_encoder.html">
+   Morse code encoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_code_guessing_game.html">
+   Morse code guessing game
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Plotting
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_matplotlib.html">
+   Basic Plots with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_seaborn.html">
+   Seaborn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_bokeh.html">
+   Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_holoviews.html">
+   Holoviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interactive_apps.html">
+   Interactive Application
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numpy and Pandas
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_module.html">
+   Numpy Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vapor_pressure_deficit.html">
+   Vapor Pressure Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="photoperiod_numpy_module.html">
+   Photoperiod
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_module.html">
+   Pandas Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="import_tabular_data.html">
+   Import Tabular Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handy_functions.html">
+   Handy functions for data science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_distribution.html">
+   Precipitation Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bird_counts.html">
+   Exploring Bird Counts with Pandas and HoloViews
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Web data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ks_mesonet.html">
+   Kansas Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ok_mesonet.html">
+   Oklahoma Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_uscrn.html">
+   Climate Reference Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_nasa_api.html">
+   Open NASA APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coronavirus.html">
+   Coronavirus COVID-19 Timeseries of Global Cases
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Statistics and curve fitting
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics_module.html">
+   Statistics module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_metrics.html">
+   Error Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anova.html">
+   Analysis of Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="group_least_variance.html">
+   Group with the Least Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_linear_regression.html">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sensor_calibration.html">
+   Linear Regression: Sensor Calibration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neutron_probe_calibration.html">
+   Calibration of a Neutron Probe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anscombe_quartet.html">
+   Anscombe’s Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_respiration.html">
+   Soil Respiration Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimal_nitrogen_rate.html">
+   Optimal Nitrogen Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="proctor_test.html">
+   Proctor test
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdf_matching.html">
+   CDF Matching Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_multiple_linear_regression.html">
+   Multiple Linear Regression Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="frontier_function.html">
+   Frontier Production Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_exp.html">
+   Curve Fitting: Exponential Decay
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cosmos_calibration.html">
+   Neutron Counts to Volumetric Water Content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_wave.html">
+   Curve Fitting: Sinusoid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_retention_curve.html">
+   Soil Water Retention Curve
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_carbon_dioxide.html">
+   Atmospheric Carbon Dioxide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="birthday_paradox.html">
+   Birthday Paradox
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_regression.html">
+   Neural Network Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_classification.html">
+   Neural Network Classification
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Problems in 1D
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fill_missing_data.html">
+   Fill Missing Soil Moisture Timeseries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_passive_neutron_counts.html">
+   Denoising Cosmic-Ray Neutron Signal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_potential_biomass.html">
+   Modeling Wheat Biomass
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_phenology.html">
+   Wheat phenology model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain.html">
+   Markov Chains
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="antecedent_precipitation_index.html">
+   Antecedent Precipitation Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain_soil_moisture.html">
+   Modeling Soil Moisture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rainfall_generator.html">
+   Rainfall Generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_metrics.html">
+   Precipitation Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_water_deficit.html">
+   Atmospheric Water Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="drydowns_from_timeseries.html">
+   Soil Moisture Drydowns
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="air_temperature.html">
+   Air Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_radiation.html">
+   Solar Radiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature.html">
+   Understanding Soil Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_storage.html">
+   Soil Water Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exponential_filter.html">
+   Rootzone Soil Water from Surface Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plant_available_water.html">
+   Plant Available Water
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mixing_model.html">
+   Mixing Solute Problem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="newton_law_cooling.html">
+   Newton’s law of cooling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lotka_volterra.html">
+   Lotka-Volterra: Predator–Prey Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leaky_bucket.html">
+   Leaky buckets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="thermal_time.html">
+   Thermal Units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="root_depth.html">
+   Root growth
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Soil Water Balance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaporation.html">
+   Soil Evaporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evapotranspiration.html">
+   Potential Evapotranspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="curve_number.html">
+   Runoff
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Image analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="canopeo.html">
+   Green Canopy Cover
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="count_seeds.html">
+   Counting seeds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="segmented_lake.html">
+   Patch analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_cracks_detection.html">
+   Soil Cracks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Mapping
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nearest_station.html">
+   Find Nearest Monitoring Station
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inverse_distance_weighting.html">
+   Inverse Distance Weighting Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   Spatial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_nasa_worldview.html">
+   Rasters from NASA Worldview Snapshots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="land_cover.html">
+   Land Cover Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_yield_monitor.html">
+   Denoise Yield Monitor Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_change_crs.html">
+   Change Coordinate Reference System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="field_random_samples.html">
+   Field Random Samples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="euclidean_distance.html">
+   Efficient Euclidean Distance
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numerical problems 2D
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="game_of_life.html">
+   Conway’s Game of Life
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wildfire_spread.html">
+   Wildfire Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reaction_diffusion.html">
+   Gray-Scott Model of Reaction-Diffusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="disease_spread.html">
+   Disease Spread
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="clustering_environments.html">
+   Environmental Agroregions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_deficit_classification.html">
+   Clustering Time Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="field_management_zones.html">
+   Field Management Zones
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Symbolic math
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="sympy_module.html">
+   Sympy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="logistic_growth.html">
+   Logistic Growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="population_growth.html">
+   Population Growth
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/soil_water_balance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/soilwater/pynotes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/soilwater/pynotes/master?urlpath=tree/notebooks/soil_water_balance.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#auxiliary-functions">
+   Auxiliary functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-weather-data">
+   Load weather data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-model">
+   Main model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#assumptions">
+   Assumptions
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="soil-water-balance">
+<h1>Soil Water Balance<a class="headerlink" href="#soil-water-balance" title="Permalink to this headline">¶</a></h1>
+<p>The soil water storage in the rootzone is the result of the balance between water inputs (e.g. precipitation, irrigation) and outputs (e.g. evaporation, runoff). Soil water is always moving, which means that the soil water storage is always changing, at least to some small amount, but when we look at soil physical processes over coarser temporal scales we can make meaningful approximations about the state of the soil for agricultural, hydrological, adn ecological applications.</p>
+<p>In this notebook we will implement a soil water balance at daily time-step. The balance will be similar to the widely used crop coefficient method proposed by the United Nations Food and Agriculture Organization. The goal is to provide a sound computation, although extension of the model described here for real-world application would need careful evaluation and local calibration.</p>
+<p>The soil water storage at the end of the day will be estimated like this:</p>
+<div class="math notranslate nohighlight">
+\[ S_t = S_{t-1} + P_t + Irr_t - ET_t Kc_t - R_t - D_t - I_t\]</div>
+<p><span class="math notranslate nohighlight">\(S_t\)</span> is the soil water storage over the rootzone at the end of the day <span class="math notranslate nohighlight">\(t\)</span></p>
+<p><span class="math notranslate nohighlight">\(S_{t-1}\)</span> is the soil water storage over the rootzone at the beginning of the day <span class="math notranslate nohighlight">\(t\)</span></p>
+<p><span class="math notranslate nohighlight">\(P\)</span> is total precipitation and <span class="math notranslate nohighlight">\(Irr\)</span> is total irrigation during time <span class="math notranslate nohighlight">\(t\)</span>. The model will be developed for rainfed conditions, so <span class="math notranslate nohighlight">\(Irr\)</span> will be assumed zero.</p>
+<p><span class="math notranslate nohighlight">\(I\)</span> is canopy and litter interception. The term <span class="math notranslate nohighlight">\(P-I\)</span> is often known as effective precipitation. In this model interception will be assumed constant, which means that <span class="math notranslate nohighlight">\(P&lt;=I\)</span> will not become part of the soil profile.</p>
+<p><span class="math notranslate nohighlight">\(ET\)</span> is the potential evapotrasnpiration defined for a reference crop growing under well-watered conditions. This term accounts for both soil evaporative losses and plant transpiration.</p>
+<p><span class="math notranslate nohighlight">\(Kc\)</span> is an empirical crop coefficient to adjust the potential evapotranspiration for the current crop conditions. This crop coefficeint changes as a function of the phenological stages of the crop.</p>
+<p><span class="math notranslate nohighlight">\(R\)</span> is surface runoff, which in this case will be modeled using the curve number method</p>
+<p><span class="math notranslate nohighlight">\(D\)</span> is drainage below the bottom of the rootzone, which will be modeled using the Wilcox method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import modules</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">show</span><span class="p">,</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_notebook</span>
+<span class="kn">from</span> <span class="nn">bokeh.layouts</span> <span class="kn">import</span> <span class="n">column</span><span class="p">,</span><span class="n">gridplot</span>
+<span class="n">output_notebook</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div class="bk-root">
+    <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+    <span id="1001">Loading BokehJS ...</span>
+</div></div><script type="application/javascript">
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("1001");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    const hashes = {"https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js": "T2yuo9Oe71Cz/I4X9Ac5+gpEa5a8PpJCDlqKYO0CfAuEszu1JrXLl8YugMqYe3sM", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.2.3.min.js": "98GDGJ0kOMCUMUePhksaQ/GYgB3+NH9h996V88sh3aOiUNX3N+fLXAtry6xctSZ6", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.2.3.min.js": "89bArO+nlbP3sgakeHjCo1JYxYR5wufVgA3IbUvDY+K7w4zyxJqssu7wVnfeKCq8"};
+
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      if (url in hashes) {
+        element.crossOrigin = "anonymous";
+        element.integrity = "sha384-" + hashes[url];
+      }
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  
+  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.2.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.2.3.min.js"];
+  var css_urls = [];
+  
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    function(Bokeh) {
+    
+    
+    }
+  ];
+
+  function run_inline_js() {
+    
+    if (root.Bokeh !== undefined || force === true) {
+      
+    for (var i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+    if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("1001")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
+</div>
+<div class="section" id="auxiliary-functions">
+<h2>Auxiliary functions<a class="headerlink" href="#auxiliary-functions" title="Permalink to this headline">¶</a></h2>
+<p>To decompress our main function we will create a set of helper functions dedicated to some of the components of the soil water balance. While this is not necessary, it will make our code more modular and compact. Sometimes seeking modularity can yield an overly complex tree of functions that, while making the code more compact, it can affect the overall readability of our code.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define auxiliary functions for individual processes</span>
+
+<span class="k">def</span> <span class="nf">compute_runoff</span><span class="p">(</span><span class="n">P</span><span class="p">,</span><span class="n">CN</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Daily runoff based on the U.S. Soil Conservation Service curve number method&quot;&quot;&quot;</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="mi">25400</span><span class="o">/</span><span class="n">CN</span> <span class="o">-</span> <span class="mi">254</span><span class="p">;</span> <span class="c1"># Maximum soil moisture retention after runoff begins.</span>
+    <span class="n">Ia</span> <span class="o">=</span> <span class="n">S</span> <span class="o">*</span> <span class="mf">0.05</span><span class="p">;</span> <span class="c1"># Initial abstraction (Ia). Rainfall before runoff starts to occur.</span>
+    <span class="k">if</span> <span class="n">P</span> <span class="o">&gt;</span> <span class="n">Ia</span><span class="p">:</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="p">(</span><span class="n">P</span> <span class="o">-</span> <span class="n">Ia</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">P</span> <span class="o">-</span> <span class="n">Ia</span> <span class="o">+</span> <span class="n">S</span><span class="p">);</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">return</span> <span class="n">R</span>
+
+<span class="k">def</span> <span class="nf">compute_potential_et</span><span class="p">(</span><span class="n">T_avg</span><span class="p">,</span><span class="n">solar_rad</span><span class="p">,</span><span class="n">altitude</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Potential evapotranspiration based on the Priestley-Taylor method.&quot;&quot;&quot;</span>
+    <span class="n">atm_pressure</span> <span class="o">=</span> <span class="mf">101.3</span> <span class="o">*</span> <span class="p">((</span><span class="mi">293</span> <span class="o">-</span> <span class="mf">0.0065</span> <span class="o">*</span> <span class="n">altitude</span><span class="p">)</span><span class="o">/</span><span class="mi">293</span><span class="p">)</span><span class="o">**</span><span class="mf">5.26</span> <span class="c1"># kPa</span>
+    <span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.000665</span> <span class="o">*</span> <span class="n">atm_pressure</span> <span class="c1"># Psychrometric constant Cp/(2.45 * 0.622 = 0.000665</span>
+    <span class="n">delta</span> <span class="o">=</span> <span class="mi">4098</span> <span class="o">*</span> <span class="p">(</span><span class="mf">0.6108</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">17.27</span> <span class="o">*</span> <span class="n">T_avg</span> <span class="o">/</span> <span class="p">(</span><span class="n">T_avg</span>  <span class="o">+</span> <span class="mf">237.3</span><span class="p">)))</span> <span class="o">/</span> <span class="p">(</span><span class="n">T_avg</span>  <span class="o">+</span> <span class="mf">237.3</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="c1"># Slope saturated vapor pressure</span>
+    <span class="n">soil_heat_flux</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.5</span>
+    <span class="n">PET</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">delta</span><span class="o">/</span><span class="p">(</span><span class="n">delta</span><span class="o">+</span><span class="n">gamma</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">solar_rad</span><span class="o">-</span><span class="n">soil_heat_flux</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">PET</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-weather-data">
+<h2>Load weather data<a class="headerlink" href="#load-weather-data" title="Permalink to this headline">¶</a></h2>
+<p>We will use a long time series of weather data from the ACME weather station of the Oklahoma Mesonet.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../datasets/acme_ok_daily.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># Check for missing values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>DOY</th>
+      <th>TMAX</th>
+      <th>TMIN</th>
+      <th>RAIN</th>
+      <th>HMAX</th>
+      <th>HMIN</th>
+      <th>ATOT</th>
+      <th>W2AVG</th>
+      <th>ETgrass</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1/1/05 0:00</td>
+      <td>1</td>
+      <td>21.161111</td>
+      <td>14.272222</td>
+      <td>0.00</td>
+      <td>97.5</td>
+      <td>65.97</td>
+      <td>4.09</td>
+      <td>5.194592</td>
+      <td>1.976940</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1/2/05 0:00</td>
+      <td>2</td>
+      <td>21.261111</td>
+      <td>4.794444</td>
+      <td>0.00</td>
+      <td>99.3</td>
+      <td>77.37</td>
+      <td>4.11</td>
+      <td>3.428788</td>
+      <td>1.302427</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1/3/05 0:00</td>
+      <td>3</td>
+      <td>5.855556</td>
+      <td>3.477778</td>
+      <td>2.54</td>
+      <td>99.8</td>
+      <td>98.20</td>
+      <td>2.98</td>
+      <td>3.249973</td>
+      <td>0.349413</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1/4/05 0:00</td>
+      <td>4</td>
+      <td>4.644444</td>
+      <td>0.883333</td>
+      <td>7.62</td>
+      <td>99.6</td>
+      <td>98.50</td>
+      <td>1.21</td>
+      <td>3.527137</td>
+      <td>0.288802</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1/5/05 0:00</td>
+      <td>5</td>
+      <td>0.827778</td>
+      <td>-9.172222</td>
+      <td>24.13</td>
+      <td>99.4</td>
+      <td>86.80</td>
+      <td>1.65</td>
+      <td>NaN</td>
+      <td>0.367956</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fill missing values</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;TMAX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;TMIN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;HMAX&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;HMIN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;ATOT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;W2AVG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;pchip&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;RAIN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;zero&#39;</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Check that we replaced allmissing values</span>
+<span class="n">df</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Date        0
+DOY         0
+TMAX        0
+TMIN        0
+RAIN        0
+HMAX        0
+HMIN        0
+ATOT        0
+W2AVG       0
+ETgrass    16
+dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert dates from string format to datetime format</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%m/</span><span class="si">%d</span><span class="s1">/%y %H:%M&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print first and last dates</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;First date in dataset:&#39;</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Last date in dataset:&#39;</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">][</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">])</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>First date in dataset: 2005-01-01 00:00:00
+Last date in dataset: 2017-06-18 00:00:00
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="main-model">
+<h2>Main model<a class="headerlink" href="#main-model" title="Permalink to this headline">¶</a></h2>
+<p>A script that takes into account the meteorological data, initial conditions, and functions describing the components of the soil water balance to compute the rootzone soil water storage on a daily time steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define simulation length</span>
+<span class="n">start_date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;20-oct-2015&#39;</span><span class="p">)</span>
+<span class="n">end_date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;1-jun-2016&#39;</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="p">(</span><span class="n">end_date</span> <span class="o">-</span> <span class="n">start_date</span><span class="p">)</span><span class="o">.</span><span class="n">days</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">idx_sim</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">start_date</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span><span class="o">&lt;=</span><span class="n">end_date</span><span class="p">)</span> 
+
+<span class="c1"># Location-specific parameters</span>
+<span class="n">altitude</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># m above sea level</span>
+
+<span class="c1"># Crop-specific parameters</span>
+<span class="n">T_base</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">I</span> <span class="o">=</span> <span class="mi">5</span> <span class="c1"># Canopy and crop residue interception in mm/day</span>
+<span class="n">Kc_min</span> <span class="o">=</span> <span class="mf">0.2</span>
+<span class="n">Kc_max</span> <span class="o">=</span> <span class="mf">1.1</span>
+<span class="n">Kc_stages</span> <span class="o">=</span> <span class="p">[</span><span class="n">Kc_min</span><span class="p">,</span><span class="n">Kc_min</span><span class="p">,</span><span class="n">Kc_max</span><span class="p">,</span><span class="n">Kc_max</span><span class="p">,</span><span class="n">Kc_min</span><span class="p">]</span>
+<span class="n">TU_stages</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">500</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">1500</span><span class="p">,</span><span class="mi">2000</span><span class="p">]</span>
+
+<span class="c1"># Soil-specific parameters</span>
+<span class="n">z</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Length of the soil profile in mm</span>
+<span class="n">S_max</span> <span class="o">=</span> <span class="mf">0.45</span><span class="o">*</span><span class="n">z</span> <span class="c1"># Saturation</span>
+<span class="n">FC</span> <span class="o">=</span> <span class="mf">0.35</span><span class="o">*</span><span class="n">z</span>  <span class="c1"># Field capacity</span>
+<span class="n">PWP</span> <span class="o">=</span> <span class="mf">0.20</span><span class="o">*</span><span class="n">z</span> <span class="c1"># Permanent Wilting Point</span>
+<span class="n">D_max</span> <span class="o">=</span> <span class="mi">25</span> <span class="c1"># Maximum daily drainage rate</span>
+<span class="n">CN</span> <span class="o">=</span> <span class="mi">80</span> <span class="c1"># Curve number</span>
+
+<span class="c1"># Pre-compute some variables</span>
+<span class="n">dates</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_sim</span><span class="p">,</span><span class="s1">&#39;Date&#39;</span><span class="p">]</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_sim</span><span class="p">,</span><span class="s1">&#39;RAIN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">SR</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_sim</span><span class="p">,</span><span class="s1">&#39;ATOT&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">TAVG</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">idx_sim</span><span class="p">,[</span><span class="s1">&#39;TMAX&#39;</span><span class="p">,</span><span class="s1">&#39;TMIN&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span>
+<span class="n">PET</span> <span class="o">=</span> <span class="n">compute_potential_et</span><span class="p">(</span><span class="n">TAVG</span><span class="p">,</span><span class="n">SR</span><span class="p">,</span><span class="n">altitude</span><span class="p">)</span>
+
+<span class="c1"># Pre-allocate arrays with NaN values</span>
+<span class="n">Kc</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">ET</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">PAW</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">TU</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="c1"># Define initial conditions</span>
+<span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">FC</span>
+<span class="n">Kc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Kc_min</span>
+<span class="n">ET</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">PET</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">Kc_min</span>
+<span class="n">TU</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">TAVG</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">T_base</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Model</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">TU</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">TU</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">TAVG</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">-</span><span class="n">T_base</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">Peff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">P</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">-</span><span class="n">I</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">R</span> <span class="o">=</span> <span class="n">compute_runoff</span><span class="p">(</span><span class="n">Peff</span><span class="p">,</span> <span class="n">CN</span><span class="p">)</span>
+    <span class="n">D</span> <span class="o">=</span> <span class="n">D_max</span><span class="o">*</span><span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="n">S_max</span><span class="p">)</span><span class="o">**</span><span class="p">((</span><span class="n">D_max</span><span class="o">/</span><span class="n">S_max</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="o">-</span><span class="n">D_max</span><span class="o">/</span><span class="n">S_max</span><span class="p">))</span> <span class="c1"># Exponent</span>
+    <span class="n">Kc</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">interp</span><span class="p">(</span><span class="n">TU</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">TU_stages</span><span class="p">,</span> <span class="n">Kc_stages</span><span class="p">)</span>
+    <span class="n">PAW</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">S</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">PWP</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">FC</span> <span class="o">-</span> <span class="n">PWP</span><span class="p">)</span>
+    <span class="n">PAW</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">PAW</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">Ks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="o">*</span><span class="n">PAW</span><span class="p">[</span><span class="n">t</span><span class="p">]),</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">ET</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">PET</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">Kc</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">*</span> <span class="n">Ks</span>
+    <span class="n">S</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">t</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">Peff</span> <span class="o">-</span> <span class="n">ET</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">-</span> <span class="n">R</span> <span class="o">-</span> <span class="n">D</span>
+    <span class="n">S</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">([</span><span class="n">S</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="n">S_max</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot simulation</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+<span class="n">f1</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">TU</span><span class="p">,</span> <span class="n">S</span><span class="p">)</span>
+<span class="n">f1</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">TU</span><span class="p">,</span><span class="n">FC</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">)</span>
+<span class="n">f1</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">TU</span><span class="p">,</span><span class="n">PWP</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;tomato&#39;</span><span class="p">)</span>
+
+<span class="n">f2</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_axis_type</span><span class="o">=</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+<span class="n">f2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">ET</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Actual ET&#39;</span><span class="p">)</span>
+<span class="n">f2</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">PET</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;tomato&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Potential ET&#39;</span><span class="p">)</span>
+<span class="n">f2</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span><span class="o">=</span><span class="s1">&#39;top_left&#39;</span>
+
+<span class="n">f3</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_axis_type</span><span class="o">=</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+<span class="n">f3</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">Kc</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Crop Kc&#39;</span><span class="p">)</span>
+
+<span class="n">f4</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">x_axis_type</span><span class="o">=</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+<span class="n">f4</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">TAVG</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Crop Kc&#39;</span><span class="p">)</span>
+<span class="n">f4</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">dates</span><span class="p">,</span> <span class="n">T_base</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;tomato&#39;</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;Tbase&#39;</span><span class="p">)</span>
+
+<span class="n">grid</span> <span class="o">=</span> <span class="n">gridplot</span><span class="p">([[</span><span class="n">f1</span><span class="p">,</span><span class="n">f2</span><span class="p">],[</span><span class="n">f3</span><span class="p">,</span><span class="n">f4</span><span class="p">]],</span> <span class="n">plot_width</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+
+
+
+
+<div class="bk-root" id="af3b9a48-cde0-4d74-aba0-14236d947c76" data-root-id="1370"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"2e097ef1-230b-4267-a6b5-693ba98853b7":{"roots":{"references":[{"attributes":{"children":[{"id":"1369"},{"id":"1367"}]},"id":"1370","type":"Column"},{"attributes":{"months":[0,6]},"id":"1247","type":"MonthsTicker"},{"attributes":{},"id":"1158","type":"HelpTool"},{"attributes":{},"id":"1051","type":"DataRange1d"},{"attributes":{},"id":"1248","type":"YearsTicker"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","top_units":"screen"},"id":"1071","type":"BoxAnnotation"},{"attributes":{"data":{"x":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]}},"selected":{"id":"1294"},"selection_policy":{"id":"1295"}},"id":"1043","type":"ColumnDataSource"},{"attributes":{"mantissas":[1,2,5],"max_interval":500.0,"num_minor_ticks":0},"id":"1178","type":"AdaptiveTicker"},{"attributes":{"months":[0,4,8]},"id":"1246","type":"MonthsTicker"},{"attributes":{"base":60,"mantissas":[1,2,5,10,15,20,30],"max_interval":1800000.0,"min_interval":1000.0,"num_minor_ticks":0},"id":"1179","type":"AdaptiveTicker"},{"attributes":{"days":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]},"id":"1181","type":"DaysTicker"},{"attributes":{"formatter":{"id":"1086"},"ticker":{"id":"1058"}},"id":"1057","type":"DatetimeAxis"},{"attributes":{"base":24,"mantissas":[1,2,4,6,8,12],"max_interval":43200000.0,"min_interval":3600000.0,"num_minor_ticks":0},"id":"1180","type":"AdaptiveTicker"},{"attributes":{},"id":"1250","type":"Selection"},{"attributes":{"items":[{"id":"1106"},{"id":"1135"}],"location":"top_left"},"id":"1105","type":"Legend"},{"attributes":{},"id":"1189","type":"YearsTicker"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","top_units":"screen"},"id":"1218","type":"BoxAnnotation"},{"attributes":{"months":[0,6]},"id":"1188","type":"MonthsTicker"},{"attributes":{"source":{"id":"1043"}},"id":"1047","type":"CDSView"},{"attributes":{"days":[1,4,7,10,13,16,19,22,25,28]},"id":"1182","type":"DaysTicker"},{"attributes":{},"id":"1251","type":"UnionRenderers"},{"attributes":{"days":[1,15]},"id":"1184","type":"DaysTicker"},{"attributes":{"line_alpha":0.1,"line_color":"royalblue","line_dash":[6],"x":{"field":"x"},"y":{"value":350.0}},"id":"1040","type":"Line"},{"attributes":{"months":[0,2,4,6,8,10]},"id":"1186","type":"MonthsTicker"},{"attributes":{},"id":"1191","type":"Selection"},{"attributes":{"below":[{"id":"1145"}],"center":[{"id":"1148"},{"id":"1152"},{"id":"1193"}],"left":[{"id":"1149"}],"plot_height":300,"plot_width":400,"renderers":[{"id":"1170"}],"title":{"id":"1172"},"toolbar":{"id":"1160"},"toolbar_location":null,"x_range":{"id":"1137"},"x_scale":{"id":"1141"},"y_range":{"id":"1139"},"y_scale":{"id":"1143"}},"id":"1136","subtype":"Figure","type":"Plot"},{"attributes":{"days":[1,8,15,22]},"id":"1183","type":"DaysTicker"},{"attributes":{"months":[0,1,2,3,4,5,6,7,8,9,10,11]},"id":"1185","type":"MonthsTicker"},{"attributes":{"line_alpha":0.1,"line_color":"royalblue","x":{"field":"x"},"y":{"field":"y"}},"id":"1081","type":"Line"},{"attributes":{},"id":"1192","type":"UnionRenderers"},{"attributes":{"source":{"id":"1038"}},"id":"1042","type":"CDSView"},{"attributes":{"months":[0,4,8]},"id":"1187","type":"MonthsTicker"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","top_units":"screen"},"id":"1025","type":"BoxAnnotation"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","top_units":"screen"},"id":"1159","type":"BoxAnnotation"},{"attributes":{"data_source":{"id":"1038"},"glyph":{"id":"1039"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1040"},"selection_glyph":null,"view":{"id":"1042"}},"id":"1041","type":"GlyphRenderer"},{"attributes":{"line_color":"tomato","line_dash":[6],"x":{"field":"x"},"y":{"value":200.0}},"id":"1044","type":"Line"},{"attributes":{},"id":"1086","type":"DatetimeTickFormatter"},{"attributes":{"line_alpha":0.1,"line_color":"green","x":{"field":"x"},"y":{"field":"y"}},"id":"1228","type":"Line"},{"attributes":{"data":{"x":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]},"y":{"__ndarray__":"mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/ckxHVrd6yj+3YBiMSurMPz4hGG9kHs0/PiEYb2QezT+rIbwxPWHNP0hXX/ksz80/ZgFx8IXJzj+wdkSLbOfPP3r+G0esxdA/WWDX/znM0T9B4kdCW87SP1QgpNEdxNM/xOqfzarP1D9qcTw7GRzWP3gNzHGndNc/XiU0lBPt2D9MCO8S1VvaP6I9zi2thtw/0YYcbsDn3T9HeVbL1vreP87tva5fMOA/2XLnP6Rf4D/tFG/i5H7gPw66agBvgeA/KjG1B1oB4T+qCjUzM7PhP/I5O5fiKuI/YEAfcjPc4j/tKQhkr3fjP3op3+o56eM/pELrfeNr5D8/StEPIwTlPxJKqNB5DeU/Ekqo0HkN5T8SSqjQeQ3lP6fBflwbKuU/b8m793BJ5T9wgbEgzVjlP777b8Dnh+U/cAPKQQmz5T/bnSCF69HlP0KonAME8+U/sk8RtAJD5j+yUIhyot3mP3oQWCsT/uY/ehBYKxP+5j96EFgrE/7mP4StUF35LOc/cgrCeAaN5z8KrTMDlfHnP3zhNx/Xhug/EvsVP8bc6D8wgL/e/fHoP/Zi1YIX/eg/9mLVghf96D/IXePplTLpP8hd4+mVMuk/KAjA2eZG6T8oCMDZ5kbpP9wn6fupcek/gEFTSZ0A6j+uiOIoeXXqP84N79PxmOo/OFVh6ufN6j/YJzfNO07rP2rW0EnvG+w/rOC71XPS7D9iFS9W1GDtP55ZkN/b9O0/KvN88rBQ7j+2nYIhq1vuPw45z8Kedu4/JLBTswfa7j+KIjimJyzvP6RqveMUne8/1oZ324Xm7z/KHMwolhvwP89Knpj1YvA/JMLL1vqi8D8DA9I6qtrwPzo1QN6rFvE/tSwIWoFh8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP5qZmZmZmfE/mpmZmZmZ8T+amZmZmZnxP9jrJyLDavE/P0/Hk6Qr8T+vWyznUtzwP2V3h9LeYPA/zf5B2PB07z9kUuyP96ruP6yAqf9zGO4/ymCFaHSH7T8aLd9ASJbsP8IEAuJ1fes/ojQka9RD6j/gmhPB/1bpP6QPr6IGU+g/cyPBtkWZ5z/M0p+XUazmP4c54Yi1eOU/YBKYCBue5D9qaxLoE/njP7sjkyalIOM/ZuRRxr9P4j+72v766FThP+pNV25pNeA/Wi+q+lxt3j8E8Cc6ksvcP4hBXkGasdo/6H1/DvPl2D/0FLZnlgTXPzJ/K0gzFtU/jldOet/40j8uByAkC5jQP0jhK/GAsss/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT+amZmZmZnJP5qZmZmZmck/mpmZmZmZyT8=","dtype":"float64","order":"little","shape":[226]}},"selected":{"id":"1191"},"selection_policy":{"id":"1192"}},"id":"1167","type":"ColumnDataSource"},{"attributes":{"label":{"value":"Crop Kc"},"renderers":[{"id":"1229"}]},"id":"1253","type":"LegendItem"},{"attributes":{"items":[{"id":"1253"},{"id":"1282"}]},"id":"1252","type":"Legend"},{"attributes":{"label":{"value":"Potential ET"},"renderers":[{"id":"1110"}]},"id":"1135","type":"LegendItem"},{"attributes":{"line_color":"tomato","x":{"field":"x"},"y":{"field":"y"}},"id":"1108","type":"Line"},{"attributes":{"line_color":"green","x":{"field":"x"},"y":{"field":"y"}},"id":"1227","type":"Line"},{"attributes":{"toolbar":{"id":"1368"},"toolbar_location":"above"},"id":"1369","type":"ToolbarBox"},{"attributes":{"formatter":{"id":"1088"},"ticker":{"id":"1062"}},"id":"1061","type":"LinearAxis"},{"attributes":{"source":{"id":"1226"}},"id":"1230","type":"CDSView"},{"attributes":{"data":{"x":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]},"y":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]}},"selected":{"id":"1133"},"selection_policy":{"id":"1134"}},"id":"1107","type":"ColumnDataSource"},{"attributes":{"text":""},"id":"1231","type":"Title"},{"attributes":{"text":""},"id":"1084","type":"Title"},{"attributes":{"below":[{"id":"1204"}],"center":[{"id":"1207"},{"id":"1211"},{"id":"1252"}],"left":[{"id":"1208"}],"plot_height":300,"plot_width":400,"renderers":[{"id":"1229"},{"id":"1257"}],"title":{"id":"1231"},"toolbar":{"id":"1219"},"toolbar_location":null,"x_range":{"id":"1196"},"x_scale":{"id":"1200"},"y_range":{"id":"1198"},"y_scale":{"id":"1202"}},"id":"1195","subtype":"Figure","type":"Plot"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1153"},{"id":"1154"},{"id":"1155"},{"id":"1156"},{"id":"1157"},{"id":"1158"}]},"id":"1160","type":"Toolbar"},{"attributes":{},"id":"1281","type":"UnionRenderers"},{"attributes":{"line_alpha":0.1,"line_color":"tomato","x":{"field":"x"},"y":{"field":"y"}},"id":"1109","type":"Line"},{"attributes":{"source":{"id":"1254"}},"id":"1258","type":"CDSView"},{"attributes":{},"id":"1055","type":"LinearScale"},{"attributes":{"source":{"id":"1107"}},"id":"1111","type":"CDSView"},{"attributes":{"formatter":{"id":"1174"},"ticker":{"id":"1146"}},"id":"1145","type":"DatetimeAxis"},{"attributes":{"line_color":"tomato","line_dash":[6],"x":{"field":"x"},"y":{"value":0}},"id":"1255","type":"Line"},{"attributes":{"axis":{"id":"1057"},"ticker":null},"id":"1060","type":"Grid"},{"attributes":{"line_alpha":0.1,"line_color":"green","x":{"field":"x"},"y":{"field":"y"}},"id":"1169","type":"Line"},{"attributes":{},"id":"1233","type":"DatetimeTickFormatter"},{"attributes":{"label":{"value":"Crop Kc"},"renderers":[{"id":"1170"}]},"id":"1194","type":"LegendItem"},{"attributes":{"line_alpha":0.1,"line_color":"tomato","line_dash":[6],"x":{"field":"x"},"y":{"value":0}},"id":"1256","type":"Line"},{"attributes":{},"id":"1049","type":"DataRange1d"},{"attributes":{"items":[{"id":"1194"}]},"id":"1193","type":"Legend"},{"attributes":{"data":{"x":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]}},"selected":{"id":"1292"},"selection_policy":{"id":"1293"}},"id":"1038","type":"ColumnDataSource"},{"attributes":{"line_color":"green","x":{"field":"x"},"y":{"field":"y"}},"id":"1168","type":"Line"},{"attributes":{"label":{"value":"Tbase"},"renderers":[{"id":"1257"}]},"id":"1282","type":"LegendItem"},{"attributes":{},"id":"1088","type":"BasicTickFormatter"},{"attributes":{"source":{"id":"1167"}},"id":"1171","type":"CDSView"},{"attributes":{"data":{"x":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]},"y":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]}},"selected":{"id":"1250"},"selection_policy":{"id":"1251"}},"id":"1226","type":"ColumnDataSource"},{"attributes":{},"id":"1198","type":"DataRange1d"},{"attributes":{},"id":"1134","type":"UnionRenderers"},{"attributes":{"text":""},"id":"1172","type":"Title"},{"attributes":{"data_source":{"id":"1226"},"glyph":{"id":"1227"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1228"},"selection_glyph":null,"view":{"id":"1230"}},"id":"1229","type":"GlyphRenderer"},{"attributes":{"data":{"x":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]},"y":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]}},"selected":{"id":"1103"},"selection_policy":{"id":"1104"}},"id":"1079","type":"ColumnDataSource"},{"attributes":{},"id":"1070","type":"HelpTool"},{"attributes":{},"id":"1200","type":"LinearScale"},{"attributes":{"label":{"value":"Actual ET"},"renderers":[{"id":"1082"}]},"id":"1106","type":"LegendItem"},{"attributes":{"formatter":{"id":"1233"},"ticker":{"id":"1205"}},"id":"1204","type":"DatetimeAxis"},{"attributes":{},"id":"1196","type":"DataRange1d"},{"attributes":{"mantissas":[1,2,5],"max_interval":500.0,"num_minor_ticks":0},"id":"1090","type":"AdaptiveTicker"},{"attributes":{},"id":"1174","type":"DatetimeTickFormatter"},{"attributes":{"data":{"x":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]}},"selected":{"id":"1280"},"selection_policy":{"id":"1281"}},"id":"1254","type":"ColumnDataSource"},{"attributes":{"base":60,"mantissas":[1,2,5,10,15,20,30],"max_interval":1800000.0,"min_interval":1000.0,"num_minor_ticks":0},"id":"1091","type":"AdaptiveTicker"},{"attributes":{},"id":"1133","type":"Selection"},{"attributes":{},"id":"1202","type":"LinearScale"},{"attributes":{"days":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]},"id":"1093","type":"DaysTicker"},{"attributes":{},"id":"1280","type":"Selection"},{"attributes":{"data_source":{"id":"1079"},"glyph":{"id":"1080"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1081"},"selection_glyph":null,"view":{"id":"1083"}},"id":"1082","type":"GlyphRenderer"},{"attributes":{"base":24,"mantissas":[1,2,4,6,8,12],"max_interval":43200000.0,"min_interval":3600000.0,"num_minor_ticks":0},"id":"1092","type":"AdaptiveTicker"},{"attributes":{"num_minor_ticks":5,"tickers":[{"id":"1237"},{"id":"1238"},{"id":"1239"},{"id":"1240"},{"id":"1241"},{"id":"1242"},{"id":"1243"},{"id":"1244"},{"id":"1245"},{"id":"1246"},{"id":"1247"},{"id":"1248"}]},"id":"1205","type":"DatetimeTicker"},{"attributes":{"months":[0,1,2,3,4,5,6,7,8,9,10,11]},"id":"1097","type":"MonthsTicker"},{"attributes":{"axis":{"id":"1204"},"ticker":null},"id":"1207","type":"Grid"},{"attributes":{"line_alpha":0.1,"line_color":"tomato","line_dash":[6],"x":{"field":"x"},"y":{"value":200.0}},"id":"1045","type":"Line"},{"attributes":{"months":[0,2,4,6,8,10]},"id":"1098","type":"MonthsTicker"},{"attributes":{},"id":"1053","type":"LinearScale"},{"attributes":{},"id":"1137","type":"DataRange1d"},{"attributes":{"days":[1,4,7,10,13,16,19,22,25,28]},"id":"1094","type":"DaysTicker"},{"attributes":{},"id":"1217","type":"HelpTool"},{"attributes":{"num_minor_ticks":5,"tickers":[{"id":"1090"},{"id":"1091"},{"id":"1092"},{"id":"1093"},{"id":"1094"},{"id":"1095"},{"id":"1096"},{"id":"1097"},{"id":"1098"},{"id":"1099"},{"id":"1100"},{"id":"1101"}]},"id":"1058","type":"DatetimeTicker"},{"attributes":{"days":[1,15]},"id":"1096","type":"DaysTicker"},{"attributes":{"data_source":{"id":"1167"},"glyph":{"id":"1168"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1169"},"selection_glyph":null,"view":{"id":"1171"}},"id":"1170","type":"GlyphRenderer"},{"attributes":{"formatter":{"id":"1235"},"ticker":{"id":"1209"}},"id":"1208","type":"LinearAxis"},{"attributes":{"months":[0,6]},"id":"1100","type":"MonthsTicker"},{"attributes":{},"id":"1065","type":"PanTool"},{"attributes":{"axis":{"id":"1208"},"dimension":1,"ticker":null},"id":"1211","type":"Grid"},{"attributes":{"data_source":{"id":"1254"},"glyph":{"id":"1255"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1256"},"selection_glyph":null,"view":{"id":"1258"}},"id":"1257","type":"GlyphRenderer"},{"attributes":{"text":""},"id":"1283","type":"Title"},{"attributes":{},"id":"1141","type":"LinearScale"},{"attributes":{},"id":"1209","type":"BasicTicker"},{"attributes":{},"id":"1139","type":"DataRange1d"},{"attributes":{"days":[1,8,15,22]},"id":"1095","type":"DaysTicker"},{"attributes":{},"id":"1101","type":"YearsTicker"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1212"},{"id":"1213"},{"id":"1214"},{"id":"1215"},{"id":"1216"},{"id":"1217"}]},"id":"1219","type":"Toolbar"},{"attributes":{"months":[0,4,8]},"id":"1099","type":"MonthsTicker"},{"attributes":{},"id":"1213","type":"WheelZoomTool"},{"attributes":{},"id":"1143","type":"LinearScale"},{"attributes":{"line_color":"royalblue","line_dash":[6],"x":{"field":"x"},"y":{"value":350.0}},"id":"1039","type":"Line"},{"attributes":{},"id":"1212","type":"PanTool"},{"attributes":{"data_source":{"id":"1107"},"glyph":{"id":"1108"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1109"},"selection_glyph":null,"view":{"id":"1111"}},"id":"1110","type":"GlyphRenderer"},{"attributes":{},"id":"1235","type":"BasicTickFormatter"},{"attributes":{"overlay":{"id":"1218"}},"id":"1214","type":"BoxZoomTool"},{"attributes":{},"id":"1062","type":"BasicTicker"},{"attributes":{"num_minor_ticks":5,"tickers":[{"id":"1178"},{"id":"1179"},{"id":"1180"},{"id":"1181"},{"id":"1182"},{"id":"1183"},{"id":"1184"},{"id":"1185"},{"id":"1186"},{"id":"1187"},{"id":"1188"},{"id":"1189"}]},"id":"1146","type":"DatetimeTicker"},{"attributes":{},"id":"1215","type":"SaveTool"},{"attributes":{"axis":{"id":"1145"},"ticker":null},"id":"1148","type":"Grid"},{"attributes":{},"id":"1103","type":"Selection"},{"attributes":{},"id":"1216","type":"ResetTool"},{"attributes":{"axis":{"id":"1061"},"dimension":1,"ticker":null},"id":"1064","type":"Grid"},{"attributes":{},"id":"1157","type":"ResetTool"},{"attributes":{"mantissas":[1,2,5],"max_interval":500.0,"num_minor_ticks":0},"id":"1237","type":"AdaptiveTicker"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1065"},{"id":"1066"},{"id":"1067"},{"id":"1068"},{"id":"1069"},{"id":"1070"}]},"id":"1072","type":"Toolbar"},{"attributes":{"formatter":{"id":"1176"},"ticker":{"id":"1150"}},"id":"1149","type":"LinearAxis"},{"attributes":{},"id":"1104","type":"UnionRenderers"},{"attributes":{},"id":"1066","type":"WheelZoomTool"},{"attributes":{"axis":{"id":"1149"},"dimension":1,"ticker":null},"id":"1152","type":"Grid"},{"attributes":{},"id":"1285","type":"BasicTickFormatter"},{"attributes":{"overlay":{"id":"1071"}},"id":"1067","type":"BoxZoomTool"},{"attributes":{},"id":"1150","type":"BasicTicker"},{"attributes":{"base":60,"mantissas":[1,2,5,10,15,20,30],"max_interval":1800000.0,"min_interval":1000.0,"num_minor_ticks":0},"id":"1238","type":"AdaptiveTicker"},{"attributes":{},"id":"1068","type":"SaveTool"},{"attributes":{"base":24,"mantissas":[1,2,4,6,8,12],"max_interval":43200000.0,"min_interval":3600000.0,"num_minor_ticks":0},"id":"1239","type":"AdaptiveTicker"},{"attributes":{"days":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31]},"id":"1240","type":"DaysTicker"},{"attributes":{},"id":"1156","type":"SaveTool"},{"attributes":{"line_color":"royalblue","x":{"field":"x"},"y":{"field":"y"}},"id":"1080","type":"Line"},{"attributes":{"days":[1,8,15,22]},"id":"1242","type":"DaysTicker"},{"attributes":{},"id":"1154","type":"WheelZoomTool"},{"attributes":{},"id":"1069","type":"ResetTool"},{"attributes":{"months":[0,1,2,3,4,5,6,7,8,9,10,11]},"id":"1244","type":"MonthsTicker"},{"attributes":{},"id":"1153","type":"PanTool"},{"attributes":{"days":[1,4,7,10,13,16,19,22,25,28]},"id":"1241","type":"DaysTicker"},{"attributes":{"months":[0,2,4,6,8,10]},"id":"1245","type":"MonthsTicker"},{"attributes":{"overlay":{"id":"1159"}},"id":"1155","type":"BoxZoomTool"},{"attributes":{"source":{"id":"1079"}},"id":"1083","type":"CDSView"},{"attributes":{},"id":"1176","type":"BasicTickFormatter"},{"attributes":{"days":[1,15]},"id":"1243","type":"DaysTicker"},{"attributes":{"below":[{"id":"1057"}],"center":[{"id":"1060"},{"id":"1064"},{"id":"1105"}],"left":[{"id":"1061"}],"plot_height":300,"plot_width":400,"renderers":[{"id":"1082"},{"id":"1110"}],"title":{"id":"1084"},"toolbar":{"id":"1072"},"toolbar_location":null,"x_range":{"id":"1049"},"x_scale":{"id":"1053"},"y_range":{"id":"1051"},"y_scale":{"id":"1055"}},"id":"1048","subtype":"Figure","type":"Plot"},{"attributes":{"data_source":{"id":"1033"},"glyph":{"id":"1034"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1035"},"selection_glyph":null,"view":{"id":"1037"}},"id":"1036","type":"GlyphRenderer"},{"attributes":{"source":{"id":"1033"}},"id":"1037","type":"CDSView"},{"attributes":{"data_source":{"id":"1043"},"glyph":{"id":"1044"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"1045"},"selection_glyph":null,"view":{"id":"1047"}},"id":"1046","type":"GlyphRenderer"},{"attributes":{},"id":"1007","type":"LinearScale"},{"attributes":{},"id":"1019","type":"PanTool"},{"attributes":{},"id":"1287","type":"BasicTickFormatter"},{"attributes":{},"id":"1290","type":"Selection"},{"attributes":{},"id":"1005","type":"DataRange1d"},{"attributes":{"below":[{"id":"1011"}],"center":[{"id":"1014"},{"id":"1018"}],"left":[{"id":"1015"}],"plot_height":300,"plot_width":400,"renderers":[{"id":"1036"},{"id":"1041"},{"id":"1046"}],"title":{"id":"1283"},"toolbar":{"id":"1026"},"toolbar_location":null,"x_range":{"id":"1003"},"x_scale":{"id":"1007"},"y_range":{"id":"1005"},"y_scale":{"id":"1009"}},"id":"1002","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"1291","type":"UnionRenderers"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","x":{"field":"x"},"y":{"field":"y"}},"id":"1035","type":"Line"},{"attributes":{},"id":"1022","type":"SaveTool"},{"attributes":{},"id":"1292","type":"Selection"},{"attributes":{},"id":"1293","type":"UnionRenderers"},{"attributes":{"children":[[{"id":"1002"},0,0],[{"id":"1048"},0,1],[{"id":"1136"},1,0],[{"id":"1195"},1,1]]},"id":"1367","type":"GridBox"},{"attributes":{"data":{"x":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]},"y":{"__ndarray__":"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","dtype":"float64","order":"little","shape":[226]}},"selected":{"id":"1290"},"selection_policy":{"id":"1291"}},"id":"1033","type":"ColumnDataSource"},{"attributes":{},"id":"1016","type":"BasicTicker"},{"attributes":{},"id":"1023","type":"ResetTool"},{"attributes":{"axis":{"id":"1015"},"dimension":1,"ticker":null},"id":"1018","type":"Grid"},{"attributes":{},"id":"1294","type":"Selection"},{"attributes":{"line_color":"#1f77b4","x":{"field":"x"},"y":{"field":"y"}},"id":"1034","type":"Line"},{"attributes":{},"id":"1295","type":"UnionRenderers"},{"attributes":{"formatter":{"id":"1287"},"ticker":{"id":"1016"}},"id":"1015","type":"LinearAxis"},{"attributes":{},"id":"1003","type":"DataRange1d"},{"attributes":{"overlay":{"id":"1025"}},"id":"1021","type":"BoxZoomTool"},{"attributes":{},"id":"1012","type":"BasicTicker"},{"attributes":{"formatter":{"id":"1285"},"ticker":{"id":"1012"}},"id":"1011","type":"LinearAxis"},{"attributes":{},"id":"1020","type":"WheelZoomTool"},{"attributes":{"axis":{"id":"1011"},"ticker":null},"id":"1014","type":"Grid"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"1019"},{"id":"1020"},{"id":"1021"},{"id":"1022"},{"id":"1023"},{"id":"1024"}]},"id":"1026","type":"Toolbar"},{"attributes":{},"id":"1024","type":"HelpTool"},{"attributes":{},"id":"1009","type":"LinearScale"},{"attributes":{"toolbars":[{"id":"1026"},{"id":"1072"},{"id":"1160"},{"id":"1219"}],"tools":[{"id":"1019"},{"id":"1020"},{"id":"1021"},{"id":"1022"},{"id":"1023"},{"id":"1024"},{"id":"1065"},{"id":"1066"},{"id":"1067"},{"id":"1068"},{"id":"1069"},{"id":"1070"},{"id":"1153"},{"id":"1154"},{"id":"1155"},{"id":"1156"},{"id":"1157"},{"id":"1158"},{"id":"1212"},{"id":"1213"},{"id":"1214"},{"id":"1215"},{"id":"1216"},{"id":"1217"}]},"id":"1368","type":"ProxyToolbar"}],"root_ids":["1370"]},"title":"Bokeh Application","version":"2.2.3"}};
+  var render_items = [{"docid":"2e097ef1-230b-4267-a6b5-693ba98853b7","root_ids":["1370"],"roots":{"1370":"af3b9a48-cde0-4d74-aba0-14236d947c76"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
+</div>
+</div>
+<div class="section" id="assumptions">
+<h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Interception depends on the amount of foliage, foliage architecture (e.g. leaf angle), the amount and type of crop stubble, and the evaporative demand during the rainfall event. Using a constant value for canopy and stubble interception is an acceptable approximation that filters small precipitation events that will not reach the soil surface, but this value needs to be carefully selected for each simulation scenario.</p></li>
+<li><p>Thermal units were computed before running the model. While this assumption will capture the main crop dynamics, more accurate models should adapt the development rate according to the state of the crop in response to past and current environmental conditions.</p></li>
+<li><p>The use of crop coefficients is a simple approximation to weight the potential ET of a reference crop to the crop under simulation. The timing of the crop coefficeints in this model is a simple approximation to capture the timing of the crop water demand, but it is certainly an oversimplification.</p></li>
+</ul>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="root_depth.html" title="previous page">Root growth</a>
+    <a class='right-next' id="next-link" href="evaporation.html" title="next page">Soil Evaporation</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andres Patrignani<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Licensed under CC BY-NC-SA</a>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-XXXXXXXXX-X', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
