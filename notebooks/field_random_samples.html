@@ -1,0 +1,1739 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Field Random Samples &#8212; PyNotes</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Efficient Euclidean Distance" href="euclidean_distance.html" />
+    <link rel="prev" title="Change Coordinate Reference System" href="raster_change_crs.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">PyNotes</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing-page.html">
+   PyNotes for Agriscientists
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/inspiration.html">
+   Inspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/installing_software.html">
+   Installating packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reproducible_research.html">
+   Reproducible Research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/terminal_commands.html">
+   Useful Terminal Commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/git_commands.html">
+   Useful Git commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/my_first_repo.html">
+   Steps to create, clone, and push your first Github repository
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/markdown_basics.html">
+   Markdown basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/latex_equations.html">
+   LaTeX equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/alt_python_libraries.html">
+   Python libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hello_world.html">
+   Hello world
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="help_resources.html">
+   Python help
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Good coding practices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/code_style.html">
+   Coding Style
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reference_framework.html">
+   Coding Guidelines
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Simple computations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="importing_modules.html">
+   Importing modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math_module.html">
+   Math Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="calculator_examples.html">
+   Calculator Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mass_volume_relationships.html">
+   Soil Mass-Volume Relationships
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Random
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_module.html">
+   Random module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_walk.html">
+   Particle Random Walk
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_groups_of_people.html">
+   Random group generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_plots.html">
+   Random Plot Generator
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data types structures
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_types.html">
+   Data Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_structures.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="indexing_and_slicing_lists.html">
+   Indexing and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="strings.html">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="objects.html">
+   Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes.html">
+   Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inputs.html">
+   Inputs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input_wizard.html">
+   Input Wizard
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sedimentation_time.html">
+   Sedimentation time
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Directory navigation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="os_module.html">
+   Operating system module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glob_module.html">
+   Glob Module
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Dates and Time
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_module.html">
+   Time module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html">
+   Datetime Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html#working-with-seconds">
+   Working with seconds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leap_year.html">
+   Leap years
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_year.html">
+   Day of the Year
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_week.html">
+   Day of the week
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Control flow
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="for_loops.html">
+   For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_for_loops.html">
+   Comparative Anatomy of For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="while_loops.html">
+   While loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="if_statement.html">
+   If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_if_statement.html">
+   Comparative Anatomy of If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fibonacci_sequence.html">
+   Fibonacci Sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sorting_numbers.html">
+   Sorting Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_handling.html">
+   Error Handling
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Functions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="anonymous_functions.html">
+   Lambda Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_functions.html">
+   Comparative Anatomy of Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="capillarity.html">
+   Capillarity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pedotransfer_saxton_rawls.html">
+   Pedotransfer Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_textural_class.html">
+   Soil texture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiocarbon_dating.html">
+   Radiocarbon dating
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Strings
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regular_expressions.html">
+   Regular Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="matching_dna_strand.html">
+   Complementary DNA sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_single_polypeptide.html">
+   Central Dogma: Decoding a Single Polypeptide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_multiple_polypeptides.html">
+   Central Dogma: Decoding Multiple Polypeptides
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_decoder.html">
+   Morse code decoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_encoder.html">
+   Morse code encoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_code_guessing_game.html">
+   Morse code guessing game
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Plotting
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_matplotlib.html">
+   Basic Plots with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_seaborn.html">
+   Seaborn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_bokeh.html">
+   Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_holoviews.html">
+   Holoviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interactive_apps.html">
+   Interactive Application
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numpy and Pandas
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_module.html">
+   Numpy Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vapor_pressure_deficit.html">
+   Vapor Pressure Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="photoperiod_numpy_module.html">
+   Photoperiod
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_module.html">
+   Pandas Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="import_tabular_data.html">
+   Import Tabular Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handy_functions.html">
+   Handy functions for data science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_distribution.html">
+   Precipitation Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bird_counts.html">
+   Exploring Bird Counts with Pandas and HoloViews
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Web data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ks_mesonet.html">
+   Kansas Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ok_mesonet.html">
+   Oklahoma Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_uscrn.html">
+   Climate Reference Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_nasa_api.html">
+   Open NASA APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coronavirus.html">
+   Coronavirus COVID-19 Timeseries of Global Cases
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Statistics and curve fitting
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics_module.html">
+   Statistics module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_metrics.html">
+   Error Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anova.html">
+   Analysis of Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="group_least_variance.html">
+   Group with the Least Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_linear_regression.html">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sensor_calibration.html">
+   Linear Regression: Sensor Calibration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neutron_probe_calibration.html">
+   Calibration of a Neutron Probe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anscombe_quartet.html">
+   Anscombe’s Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_respiration.html">
+   Soil Respiration Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimal_nitrogen_rate.html">
+   Optimal Nitrogen Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="proctor_test.html">
+   Proctor test
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdf_matching.html">
+   CDF Matching Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_multiple_linear_regression.html">
+   Multiple Linear Regression Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="frontier_function.html">
+   Frontier Production Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_exp.html">
+   Curve Fitting: Exponential Decay
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cosmos_calibration.html">
+   Neutron Counts to Volumetric Water Content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_wave.html">
+   Curve Fitting: Sinusoid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_retention_curve.html">
+   Soil Water Retention Curve
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_carbon_dioxide.html">
+   Atmospheric Carbon Dioxide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="birthday_paradox.html">
+   Birthday Paradox
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_regression.html">
+   Neural Network Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_classification.html">
+   Neural Network Classification
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Problems in 1D
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fill_missing_data.html">
+   Fill Missing Soil Moisture Timeseries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_passive_neutron_counts.html">
+   Denoising Cosmic-Ray Neutron Signal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_potential_biomass.html">
+   Modeling Wheat Biomass
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_phenology.html">
+   Wheat phenology model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain.html">
+   Markov Chains
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="antecedent_precipitation_index.html">
+   Antecedent Precipitation Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain_soil_moisture.html">
+   Modeling Soil Moisture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rainfall_generator.html">
+   Rainfall Generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_metrics.html">
+   Precipitation Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_water_deficit.html">
+   Atmospheric Water Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="drydowns_from_timeseries.html">
+   Soil Moisture Drydowns
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="air_temperature.html">
+   Air Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_radiation.html">
+   Solar Radiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature.html">
+   Understanding Soil Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_storage.html">
+   Soil Water Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exponential_filter.html">
+   Rootzone Soil Water from Surface Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plant_available_water.html">
+   Plant Available Water
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mixing_model.html">
+   Mixing Solute Problem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="newton_law_cooling.html">
+   Newton’s law of cooling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lotka_volterra.html">
+   Lotka-Volterra: Predator–Prey Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leaky_bucket.html">
+   Leaky buckets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="thermal_time.html">
+   Thermal Units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="root_depth.html">
+   Root growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_balance.html">
+   Soil Water Balance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaporation.html">
+   Soil Evaporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evapotranspiration.html">
+   Potential Evapotranspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="curve_number.html">
+   Runoff
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Image analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="canopeo.html">
+   Green Canopy Cover
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="count_seeds.html">
+   Counting seeds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="segmented_lake.html">
+   Patch analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_cracks_detection.html">
+   Soil Cracks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Mapping
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nearest_station.html">
+   Find Nearest Monitoring Station
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inverse_distance_weighting.html">
+   Inverse Distance Weighting Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   Spatial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_nasa_worldview.html">
+   Rasters from NASA Worldview Snapshots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="land_cover.html">
+   Land Cover Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_yield_monitor.html">
+   Denoise Yield Monitor Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_change_crs.html">
+   Change Coordinate Reference System
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Field Random Samples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="euclidean_distance.html">
+   Efficient Euclidean Distance
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numerical problems 2D
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="game_of_life.html">
+   Conway’s Game of Life
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wildfire_spread.html">
+   Wildfire Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reaction_diffusion.html">
+   Gray-Scott Model of Reaction-Diffusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="disease_spread.html">
+   Disease Spread
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="clustering_environments.html">
+   Environmental Agroregions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_deficit_classification.html">
+   Clustering Time Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="field_management_zones.html">
+   Field Management Zones
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Symbolic math
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="sympy_module.html">
+   Sympy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="logistic_growth.html">
+   Logistic Growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="population_growth.html">
+   Population Growth
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/field_random_samples.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/soilwater/pynotes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/soilwater/pynotes/master?urlpath=tree/notebooks/field_random_samples.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-watershed-boundary">
+   Plot watershed boundary
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#test-if-point-is-inside-watershed">
+   Test if point is inside watershed
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-sampling-points">
+   Random sampling points
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#random-sampling-grid-cells">
+   Random sampling grid cells
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-grid">
+     Create grid
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generate-tuples-for-each-grid-cell">
+     Generate tuples for each grid cell
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overlay-grid-on-watershed-map">
+     Overlay grid on watershed map
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exclude-grid-cells-that-are-outside-or-overlap-watershed">
+     Exclude grid cells that are outside or overlap watershed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#select-random-numer-of-cell-within-watershed">
+     Select random numer of cell within watershed
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-centroid-for-each-sampling-cell">
+     Print centroid for each sampling cell
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="field-random-samples">
+<h1>Field Random Samples<a class="headerlink" href="#field-random-samples" title="Permalink to this headline">¶</a></h1>
+<p>When collecting field observations we are often confronted with large regions, watershed, or agricultural fields and sampling strategies are required to ensure that we accurately assess the variable of study.</p>
+<p>We will use a real watershed boundary from the Konza Prairie, which is located in the northern part of the Flint Hills region of Kansas. The Konza Prairie is primarily owned by The Nature Conservancy and operated as a field research station by Kansas State University. The Konza is a long-term ecological research field and is one the largest protected tallgrass prairie ecosystem in the world.</p>
+<p>During the summer period it is common to see experienced and young researchers conducting field research using a variaety of sampling techniques. This exercise is aimed at researchers that need to come up with random points and grid cells to collect point and quadrat observations.</p>
+<p>Learn more about the Konza Prairie:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://kpbs.konza.k-state.edu/">Konza Prairie Kansas State University page</a></p></li>
+<li><p><a class="reference external" href="https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/konza-prairie/?gclid=EAIaIQobChMInoCtktfA6AIVRj0MCh2ltAm7EAAYASAAEgKT6PD_BwE&amp;gclsrc=aw.ds">Konza Prairie Nature Conservancy page</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import modules</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">shapely.geometry</span> <span class="kn">import</span> <span class="n">Point</span><span class="p">,</span> <span class="n">MultiPoint</span><span class="p">,</span> <span class="n">Polygon</span><span class="p">,</span> <span class="n">MultiPolygon</span><span class="p">,</span> <span class="n">box</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load Konza Prairie watershed</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/konza_prairie_K1B_watershed.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>lon</th>
+      <th>lat</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-96.560971</td>
+      <td>39.083618</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-96.561303</td>
+      <td>39.084147</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-96.561698</td>
+      <td>39.084579</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-96.562693</td>
+      <td>39.084823</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-96.562929</td>
+      <td>39.085223</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="plot-watershed-boundary">
+<h2>Plot watershed boundary<a class="headerlink" href="#plot-watershed-boundary" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize watershed</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Konza Prairie - Watershed K1B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;lon&quot;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;lat&quot;</span><span class="p">],</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/field_random_samples_4_0.png" src="../_images/field_random_samples_4_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="test-if-point-is-inside-watershed">
+<h2>Test if point is inside watershed<a class="headerlink" href="#test-if-point-is-inside-watershed" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a point using Shapely</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="o">-</span><span class="mf">96.560</span><span class="p">,</span> <span class="mf">39.092</span><span class="p">)</span> <span class="c1"># Intensionally inside the watershed</span>
+
+<span class="c1"># Create a polygon of the watershed using Shapely</span>
+<span class="c1"># We will make use of the itertuples method to conver a Pandas row into a tuple</span>
+<span class="n">coords</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">itertuples</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">watershed</span> <span class="o">=</span> <span class="n">Polygon</span><span class="p">(</span><span class="n">coords</span><span class="p">)</span>
+
+<span class="c1"># Check if the point is inside polygon</span>
+<span class="n">p</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">watershed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>39.092
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Confirm visually</span>
+<span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span> <span class="o">=</span> <span class="n">watershed</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">xy</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Konza Prairie - Watershed K1B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/field_random_samples_8_0.png" src="../_images/field_random_samples_8_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="random-sampling-points">
+<h2>Random sampling points<a class="headerlink" href="#random-sampling-points" title="Permalink to this headline">¶</a></h2>
+<p>Let’s generate a set of <em>N</em> random sampling points within the watershed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s make use of the watershed bounds for our points</span>
+<span class="c1"># bounding box is a (minx, miny, maxx, maxy) </span>
+<span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(-96.57528919, 39.08361847, -96.55282197, 39.09784962)
+</pre></div>
+</div>
+</div>
+</div>
+<p>In our next step we will try to learn how to generate the random coordinates and convert these coordinates into a Shapely MultiPoint object. We will re-write part of this code in a later section once we know how to do this. We also need to see whether creating the points this way would work. We will need to confirm this visually.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+
+<span class="c1"># Generate N random points</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">rand_lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                            <span class="n">high</span><span class="o">=</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                              <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+
+<span class="n">rand_lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                               <span class="n">high</span><span class="o">=</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+                              <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create tuples with Lat and Lon for each point</span>
+<span class="n">rand_points</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">rand_lon</span><span class="p">)):</span>
+    <span class="n">rand_points</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">rand_lon</span><span class="p">[</span><span class="n">n</span><span class="p">],</span><span class="n">rand_lat</span><span class="p">[</span><span class="n">n</span><span class="p">]))</span>
+
+<span class="c1"># Convert points to Shapely Multipoint object</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">MultiPoint</span><span class="p">(</span><span class="n">rand_points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize random points</span>
+<span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span> <span class="o">=</span> <span class="n">watershed</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">xy</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Konza Prairie - Watershed K1B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Iterate over each point in MultiPoint object P</span>
+<span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span> 
+    
+    <span class="c1"># If point is within watershed, then make it green, oterhwise red.</span>
+    <span class="k">if</span> <span class="n">point</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">watershed</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/field_random_samples_15_0.png" src="../_images/field_random_samples_15_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s write some code to ensure we get N random points </span>
+<span class="c1"># within the watershed.</span>
+
+<span class="c1"># For reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+
+<span class="c1"># Empty list to hold random points</span>
+<span class="n">rand_points</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">rand_points</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
+    
+    <span class="c1"># Generate random latitude and longitude</span>
+    <span class="n">rand_lon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">high</span><span class="o">=</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+    <span class="n">rand_lat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">high</span><span class="o">=</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+    
+    <span class="c1"># Convert the random lat and lon into a Shapely Point object</span>
+    <span class="n">point</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">rand_lon</span><span class="p">,</span> <span class="n">rand_lat</span><span class="p">)</span>
+    
+    <span class="c1"># Check if within watershed</span>
+    <span class="k">if</span> <span class="n">point</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">watershed</span><span class="p">):</span>
+        <span class="n">rand_points</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">rand_lon</span><span class="p">,</span><span class="n">rand_lat</span><span class="p">))</span>
+        
+        
+        
+<span class="n">P</span> <span class="o">=</span> <span class="n">MultiPoint</span><span class="p">(</span><span class="n">rand_points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize random points</span>
+<span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span> <span class="o">=</span> <span class="n">watershed</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">xy</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Konza Prairie - Watershed K1B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">P</span><span class="p">:</span> 
+    <span class="k">if</span> <span class="n">point</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">watershed</span><span class="p">):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">x</span><span class="p">,</span><span class="n">point</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/field_random_samples_17_0.png" src="../_images/field_random_samples_17_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="random-sampling-grid-cells">
+<h2>Random sampling grid cells<a class="headerlink" href="#random-sampling-grid-cells" title="Permalink to this headline">¶</a></h2>
+<p>Another option to random sampling points is to discretize the area of the water shed into <em>N</em> grid cells and then randomly select some of these cells to conduct the field sampling.</p>
+<p>To solve this problem we will need to generate square grid cells and determined whether they are fully within the boundary of the watershed. This approach will make sure that no grid cell overlaps with the watershed boundary.</p>
+<p>Another approach is to intersect the grid cell with the boundary, but this could led grid cells with smaller sampling areas.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a test grid cell using the box method</span>
+<span class="c1"># box(minx, miny, maxx, maxy, ccw=True)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="o">-</span><span class="mf">96.565</span><span class="p">,</span> <span class="mf">39.090</span><span class="p">,</span> <span class="o">-</span><span class="mf">96.560</span><span class="p">,</span> <span class="mf">39.095</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">xy</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array(&#39;d&#39;, [-96.56, -96.56, -96.565, -96.565, -96.56]),
+ array(&#39;d&#39;, [39.09, 39.095, 39.095, 39.09, 39.09]))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract coordinates from the box object</span>
+<span class="n">b_lon</span><span class="p">,</span> <span class="n">b_lat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">b</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">xy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test whehter box is COMPLETELY inside the watershed</span>
+<span class="c1"># For other options such as: intersect, overlaps, and touches see the docs</span>
+<span class="n">b</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">watershed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize that the arbitrary square is indeed within the watershed</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Konza Prairie - Watershed K1B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">b_lon</span><span class="p">,</span> <span class="n">b_lat</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/field_random_samples_22_0.png" src="../_images/field_random_samples_22_0.png" />
+</div>
+</div>
+<div class="section" id="create-grid">
+<h3>Create grid<a class="headerlink" href="#create-grid" title="Permalink to this headline">¶</a></h3>
+<p>To create the grid cells within the watershed we have two options: 1) create a known number of cells that fit within the watershed, or 2) create as many grid cells as possible of a given size. Because of its irregular shape, we will create as many cells as possible of a given size. We will cover the entire bounding box of the water shed, and then eliminate those grdi cells that are not fully contained by the watershed boundaries.</p>
+<p>Of course, the smaller the size of the grid cells, the more cells we can fit, and the closer they will follow the perimeter of the watershed.</p>
+<p>An important observation is that grid cells will share their sides, they will be touching each other, but they will not be overlapping.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Longitude vector</span>
+<span class="n">x_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">30</span><span class="p">)</span> 
+
+<span class="c1"># Latitude vector</span>
+<span class="n">y_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">watershed</span><span class="o">.</span><span class="n">bounds</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>An alternative that deserves some exploration is using the Numpy <code class="docutils literal notranslate"><span class="pre">meshgrid()</span></code> function and the Shapely <code class="docutils literal notranslate"><span class="pre">MultiPolygon</span></code> feature. In this particualr case I found that a straigth forward <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and the use of an array of Shapely <code class="docutils literal notranslate"><span class="pre">Polygons</span></code> was simpler, at least for this particular problem.</p>
+</div>
+<div class="section" id="generate-tuples-for-each-grid-cell">
+<h3>Generate tuples for each grid cell<a class="headerlink" href="#generate-tuples-for-each-grid-cell" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_vec</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_vec</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">x_vec</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x_vec</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_vec</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">grid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="overlay-grid-on-watershed-map">
+<h3>Overlay grid on watershed map<a class="headerlink" href="#overlay-grid-on-watershed-map" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize grid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Konza Prairie - Watershed K1B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">:</span>
+    <span class="n">cell_lon</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">xy</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">cell_lat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cell_lon</span><span class="p">,</span><span class="n">cell_lat</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/field_random_samples_29_0.png" src="../_images/field_random_samples_29_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="exclude-grid-cells-that-are-outside-or-overlap-watershed">
+<h3>Exclude grid cells that are outside or overlap watershed<a class="headerlink" href="#exclude-grid-cells-that-are-outside-or-overlap-watershed" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x_vec</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y_vec</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">cell</span> <span class="o">=</span> <span class="n">box</span><span class="p">(</span><span class="n">x_vec</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y_vec</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">x_vec</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">y_vec</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>      
+        <span class="k">if</span> <span class="n">cell</span><span class="o">.</span><span class="n">within</span><span class="p">(</span><span class="n">watershed</span><span class="p">):</span>
+            <span class="n">grid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Konza Prairie - Watershed K1B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">:</span>
+    <span class="n">cell_lon</span><span class="p">,</span> <span class="n">cell_lat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">xy</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cell_lon</span><span class="p">,</span> <span class="n">cell_lat</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/field_random_samples_31_0.png" src="../_images/field_random_samples_31_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="select-random-numer-of-cell-within-watershed">
+<h3>Select random numer of cell within watershed<a class="headerlink" href="#select-random-numer-of-cell-within-watershed" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+
+<span class="c1"># Select random cells from the set within the watershed</span>
+<span class="n">sampling_cells</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Konza Prairie - Watershed K1B&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lon_watershed</span><span class="p">,</span><span class="n">lat_watershed</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">grid</span><span class="p">:</span>
+    <span class="n">cell_lon</span><span class="p">,</span> <span class="n">cell_lat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">xy</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cell_lon</span><span class="p">,</span><span class="n">cell_lat</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="n">count</span><span class="p">,</span><span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sampling_cells</span><span class="p">):</span>
+    <span class="n">cell_lon</span><span class="p">,</span> <span class="n">cell_lat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">xy</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">cell_lon</span><span class="p">,</span><span class="n">cell_lat</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Add count + 1 to start numbering from one. Add a little offset to improve visualization on map.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">xy</span><span class="o">=</span><span class="p">(</span><span class="n">cell_lon</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">cell_lat</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="mf">0.0001</span><span class="p">))</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/field_random_samples_33_0.png" src="../_images/field_random_samples_33_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="print-centroid-for-each-sampling-cell">
+<h3>Print centroid for each sampling cell<a class="headerlink" href="#print-centroid-for-each-sampling-cell" title="Permalink to this headline">¶</a></h3>
+<p>Thinking ahead on field work, it would be nice to have a the coordiantes for each cell. In this case we will print the Lower-Left corner of each cell. An alternative is to compute the cell centroid. You can easily do this using numpy. For instance:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">x_centroid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cell_lon</span><span class="p">)</span>
+<span class="n">y_centroid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cell_lat</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Coordinates for the lower-left corner of the each cell&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">count</span><span class="p">,</span><span class="n">cell</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sampling_cells</span><span class="p">):</span>
+    <span class="n">cell_lon</span><span class="p">,</span> <span class="n">cell_lat</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">exterior</span><span class="o">.</span><span class="n">coords</span><span class="o">.</span><span class="n">xy</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cell&quot;</span><span class="p">,</span><span class="n">count</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="s2">&quot;Lat:&quot;</span><span class="p">,</span> <span class="n">cell_lat</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="s2">&quot;Lon:&quot;</span><span class="p">,</span><span class="n">cell_lon</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Coordinates for the lower-left corner of the each cell
+Cell 1 Lat: 39.08509065793103 Lon: -96.55747036034482
+Cell 2 Lat: 39.08656284586207 Lon: -96.5628934824138
+Cell 3 Lat: 39.09196086827586 Lon: -96.55592089689655
+Cell 4 Lat: 39.09196086827586 Lon: -96.55514616517242
+Cell 5 Lat: 39.08999795103448 Lon: -96.56599240931035
+Cell 6 Lat: 39.092451597586205 Lon: -96.55592089689655
+Cell 7 Lat: 39.09147013896551 Lon: -96.55437143344827
+Cell 8 Lat: 39.09196086827586 Lon: -96.5628934824138
+Cell 9 Lat: 39.0880350337931 Lon: -96.55669562862069
+Cell 10 Lat: 39.09294232689655 Lon: -96.56754187275862
+Cell 11 Lat: 39.087544304482755 Lon: -96.55824509206896
+Cell 12 Lat: 39.08999795103448 Lon: -96.56211875068965
+Cell 13 Lat: 39.08656284586207 Lon: -96.55747036034482
+Cell 14 Lat: 39.09147013896551 Lon: -96.56211875068965
+Cell 15 Lat: 39.09196086827586 Lon: -96.55979455551724
+Cell 16 Lat: 39.09294232689655 Lon: -96.56366821413793
+Cell 17 Lat: 39.09294232689655 Lon: -96.56986606793104
+Cell 18 Lat: 39.08705357517241 Lon: -96.56134401896551
+Cell 19 Lat: 39.0934330562069 Lon: -96.57373972655174
+Cell 20 Lat: 39.09392378551724 Lon: -96.56056928724138
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://shapely.readthedocs.io/en/latest/manual.html#geometric-objects">Shapely official documentation</a></p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="raster_change_crs.html" title="previous page">Change Coordinate Reference System</a>
+    <a class='right-next' id="next-link" href="euclidean_distance.html" title="next page">Efficient Euclidean Distance</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andres Patrignani<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Licensed under CC BY-NC-SA</a>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-XXXXXXXXX-X', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

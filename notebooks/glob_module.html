@@ -1,0 +1,1280 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glob Module &#8212; PyNotes</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Time module" href="time_module.html" />
+    <link rel="prev" title="Operating system module" href="os_module.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">PyNotes</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing-page.html">
+   PyNotes for Agriscientists
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/inspiration.html">
+   Inspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/installing_software.html">
+   Installating packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reproducible_research.html">
+   Reproducible Research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/terminal_commands.html">
+   Useful Terminal Commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/git_commands.html">
+   Useful Git commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/my_first_repo.html">
+   Steps to create, clone, and push your first Github repository
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/markdown_basics.html">
+   Markdown basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/latex_equations.html">
+   LaTeX equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/alt_python_libraries.html">
+   Python libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hello_world.html">
+   Hello world
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="help_resources.html">
+   Python help
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Good coding practices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/code_style.html">
+   Coding Style
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reference_framework.html">
+   Coding Guidelines
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Simple computations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="importing_modules.html">
+   Importing modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math_module.html">
+   Math Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="calculator_examples.html">
+   Calculator Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mass_volume_relationships.html">
+   Soil Mass-Volume Relationships
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Random
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_module.html">
+   Random module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_walk.html">
+   Particle Random Walk
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_groups_of_people.html">
+   Random group generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_plots.html">
+   Random Plot Generator
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data types structures
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_types.html">
+   Data Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_structures.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="indexing_and_slicing_lists.html">
+   Indexing and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="strings.html">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="objects.html">
+   Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes.html">
+   Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inputs.html">
+   Inputs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input_wizard.html">
+   Input Wizard
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sedimentation_time.html">
+   Sedimentation time
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Directory navigation
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="os_module.html">
+   Operating system module
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Glob Module
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Dates and Time
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_module.html">
+   Time module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html">
+   Datetime Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html#working-with-seconds">
+   Working with seconds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leap_year.html">
+   Leap years
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_year.html">
+   Day of the Year
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_week.html">
+   Day of the week
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Control flow
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="for_loops.html">
+   For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_for_loops.html">
+   Comparative Anatomy of For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="while_loops.html">
+   While loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="if_statement.html">
+   If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_if_statement.html">
+   Comparative Anatomy of If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fibonacci_sequence.html">
+   Fibonacci Sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sorting_numbers.html">
+   Sorting Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_handling.html">
+   Error Handling
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Functions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="anonymous_functions.html">
+   Lambda Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_functions.html">
+   Comparative Anatomy of Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="capillarity.html">
+   Capillarity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pedotransfer_saxton_rawls.html">
+   Pedotransfer Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_textural_class.html">
+   Soil texture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiocarbon_dating.html">
+   Radiocarbon dating
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Strings
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regular_expressions.html">
+   Regular Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="matching_dna_strand.html">
+   Complementary DNA sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_single_polypeptide.html">
+   Central Dogma: Decoding a Single Polypeptide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_multiple_polypeptides.html">
+   Central Dogma: Decoding Multiple Polypeptides
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_decoder.html">
+   Morse code decoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_encoder.html">
+   Morse code encoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_code_guessing_game.html">
+   Morse code guessing game
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Plotting
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_matplotlib.html">
+   Basic Plots with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_seaborn.html">
+   Seaborn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_bokeh.html">
+   Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_holoviews.html">
+   Holoviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interactive_apps.html">
+   Interactive Application
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numpy and Pandas
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_module.html">
+   Numpy Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vapor_pressure_deficit.html">
+   Vapor Pressure Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="photoperiod_numpy_module.html">
+   Photoperiod
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_module.html">
+   Pandas Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="import_tabular_data.html">
+   Import Tabular Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handy_functions.html">
+   Handy functions for data science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_distribution.html">
+   Precipitation Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bird_counts.html">
+   Exploring Bird Counts with Pandas and HoloViews
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Web data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ks_mesonet.html">
+   Kansas Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ok_mesonet.html">
+   Oklahoma Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_uscrn.html">
+   Climate Reference Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_nasa_api.html">
+   Open NASA APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coronavirus.html">
+   Coronavirus COVID-19 Timeseries of Global Cases
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Statistics and curve fitting
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics_module.html">
+   Statistics module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_metrics.html">
+   Error Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anova.html">
+   Analysis of Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="group_least_variance.html">
+   Group with the Least Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_linear_regression.html">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sensor_calibration.html">
+   Linear Regression: Sensor Calibration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neutron_probe_calibration.html">
+   Calibration of a Neutron Probe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anscombe_quartet.html">
+   Anscombe’s Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_respiration.html">
+   Soil Respiration Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimal_nitrogen_rate.html">
+   Optimal Nitrogen Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="proctor_test.html">
+   Proctor test
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdf_matching.html">
+   CDF Matching Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_multiple_linear_regression.html">
+   Multiple Linear Regression Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="frontier_function.html">
+   Frontier Production Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_exp.html">
+   Curve Fitting: Exponential Decay
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cosmos_calibration.html">
+   Neutron Counts to Volumetric Water Content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_wave.html">
+   Curve Fitting: Sinusoid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_retention_curve.html">
+   Soil Water Retention Curve
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_carbon_dioxide.html">
+   Atmospheric Carbon Dioxide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="birthday_paradox.html">
+   Birthday Paradox
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_regression.html">
+   Neural Network Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_classification.html">
+   Neural Network Classification
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Problems in 1D
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fill_missing_data.html">
+   Fill Missing Soil Moisture Timeseries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_passive_neutron_counts.html">
+   Denoising Cosmic-Ray Neutron Signal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_potential_biomass.html">
+   Modeling Wheat Biomass
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_phenology.html">
+   Wheat phenology model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain.html">
+   Markov Chains
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="antecedent_precipitation_index.html">
+   Antecedent Precipitation Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain_soil_moisture.html">
+   Modeling Soil Moisture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rainfall_generator.html">
+   Rainfall Generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_metrics.html">
+   Precipitation Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_water_deficit.html">
+   Atmospheric Water Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="drydowns_from_timeseries.html">
+   Soil Moisture Drydowns
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="air_temperature.html">
+   Air Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_radiation.html">
+   Solar Radiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature.html">
+   Understanding Soil Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_storage.html">
+   Soil Water Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exponential_filter.html">
+   Rootzone Soil Water from Surface Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plant_available_water.html">
+   Plant Available Water
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mixing_model.html">
+   Mixing Solute Problem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="newton_law_cooling.html">
+   Newton’s law of cooling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lotka_volterra.html">
+   Lotka-Volterra: Predator–Prey Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leaky_bucket.html">
+   Leaky buckets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="thermal_time.html">
+   Thermal Units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="root_depth.html">
+   Root growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_balance.html">
+   Soil Water Balance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaporation.html">
+   Soil Evaporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evapotranspiration.html">
+   Potential Evapotranspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="curve_number.html">
+   Runoff
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Image analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="canopeo.html">
+   Green Canopy Cover
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="count_seeds.html">
+   Counting seeds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="segmented_lake.html">
+   Patch analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_cracks_detection.html">
+   Soil Cracks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Mapping
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nearest_station.html">
+   Find Nearest Monitoring Station
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inverse_distance_weighting.html">
+   Inverse Distance Weighting Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   Spatial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_nasa_worldview.html">
+   Rasters from NASA Worldview Snapshots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="land_cover.html">
+   Land Cover Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_yield_monitor.html">
+   Denoise Yield Monitor Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_change_crs.html">
+   Change Coordinate Reference System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="field_random_samples.html">
+   Field Random Samples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="euclidean_distance.html">
+   Efficient Euclidean Distance
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numerical problems 2D
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="game_of_life.html">
+   Conway’s Game of Life
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wildfire_spread.html">
+   Wildfire Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reaction_diffusion.html">
+   Gray-Scott Model of Reaction-Diffusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="disease_spread.html">
+   Disease Spread
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="clustering_environments.html">
+   Environmental Agroregions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_deficit_classification.html">
+   Clustering Time Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="field_management_zones.html">
+   Field Management Zones
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Symbolic math
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="sympy_module.html">
+   Sympy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="logistic_growth.html">
+   Logistic Growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="population_growth.html">
+   Population Growth
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/glob_module.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/soilwater/pynotes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/soilwater/pynotes/master?urlpath=tree/notebooks/glob_module.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="glob-module">
+<h1>Glob Module<a class="headerlink" href="#glob-module" title="Permalink to this headline">¶</a></h1>
+<p>An easy and complete module for directory navigation. Somewhat similar to the operating system module (os module).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">glob</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>One of the most useful commands is the <code class="docutils literal notranslate"><span class="pre">getcwd()</span></code>, which stands for <em>get current working directory</em>. With this command we know where the Python interpreter is at. If we want to work in a project that requires navigation over several folders, we might consider first navigating to the root folder of the project. Imagine you need to load files in a specific folder, then crunch some numbers, and finally store the outputs in a different folder. The <code class="docutils literal notranslate"><span class="pre">glob</span></code> module would be ideal for this.</p>
+<p>Let’s first print (you could also store the output into a variable) the current working directory</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/andrespatrignani/Dropbox/Teaching/Scientific programming/pynotes/notebooks
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can navigate one level up (outside the current folder) in the directory using <code class="docutils literal notranslate"><span class="pre">..</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glob</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can repeat one more time the <code class="docutils literal notranslate"><span class="pre">getcwd()</span></code> command to indeed ensure we are in the right directory</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/andrespatrignani/Dropbox/Teaching/Scientific programming/pynotes
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another alternative is to navigate one level down the directory structure (insde a new folder) by simply typing the name of the folder. We can also multiple folders in tandem. For instance: <code class="docutils literal notranslate"><span class="pre">folder1/folder2/folder3/</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glob</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;datasets/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/andrespatrignani/Dropbox/Teaching/Scientific programming/pynotes/datasets
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another useful function is to list all the files in a directory. Sometimes you might be interested in files of a specific type (<code class="docutils literal notranslate"><span class="pre">csv</span></code>, <code class="docutils literal notranslate"><span class="pre">txt</span></code>, <code class="docutils literal notranslate"><span class="pre">jpg</span></code>, etc.) that are in the same directory mixed with other files. In the latter case we can make use of a wildcard (a placeholder meaning <em>all files with a specific extension</em>). The wildcard is represented with a <code class="docutils literal notranslate"><span class="pre">*</span></code>. For instance, to retrieve all the text files in a given directory we would specify it as: <code class="docutils literal notranslate"><span class="pre">*.txt</span></code>. Let’s looks at these two examples below:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All files in the directory</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;.DS_Store&#39;, &#39;.ipynb_checkpoints&#39;, &#39;corn_allometric_biomass.csv&#39;, &#39;dna_sequence.txt&#39;, &#39;faostats_usa_arable_land.csv&#39;, &#39;fargo_hourly_deep_soil_temperature.csv&#39;, &#39;global_wheat.csv&#39;, &#39;gypsum_hourly.csv&#39;, &#39;gypsum_ks_daily_2018.csv&#39;, &#39;gypsum_ks_drydown_2017.csv&#39;, &#39;jabberwocky_lewis_carroll.txt&#39;, &#39;KS_Manhattan_6_SSW.txt&#39;, &#39;mauna_loa_co2.csv&#39;, &#39;morse_lookup_table.txt&#39;, &#39;mosquito_abundance.csv&#39;, &#39;nobel_physics.txt&#39;, &#39;ok_mesonet_8_apr_2019.csv&#39;, &#39;oliver_twist.txt&#39;, &#39;population_area_and_density.csv&#39;, &#39;soil_water_retention_curve.csv&#39;, &#39;storage_20180701_1km_v1.tif&#39;, &#39;wheat.jpg&#39;, &#39;world_wheat.csv&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># List and store all the text files in the same directory</span>
+<span class="c1"># using a list comprehension</span>
+<span class="n">txtfiles</span> <span class="o">=</span> <span class="p">[</span><span class="n">file</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;*.txt&quot;</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dna_sequence.txt
+jabberwocky_lewis_carroll.txt
+KS_Manhattan_6_SSW.txt
+morse_lookup_table.txt
+nobel_physics.txt
+oliver_twist.txt
+</pre></div>
+</div>
+</div>
+</div>
+<p>The last exercise of this short tutorial is to navigate a level up and then down to return to the directory in which we started this tutorial.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+<span class="n">glob</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s1">&#39;../notebooks/&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/andrespatrignani/Dropbox/Teaching/Scientific programming/pynotes/datasets
+/Users/andrespatrignani/Dropbox/Teaching/Scientific programming/pynotes/notebooks
+</pre></div>
+</div>
+</div>
+</div>
+<p>As you can see it’s farily easy to navigate the directory. You can use to initialize a project or inside for loops to control the the directories of your code.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="os_module.html" title="previous page">Operating system module</a>
+    <a class='right-next' id="next-link" href="time_module.html" title="next page">Time module</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andres Patrignani<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Licensed under CC BY-NC-SA</a>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-XXXXXXXXX-X', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

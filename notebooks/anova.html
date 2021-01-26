@@ -1,0 +1,1739 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Analysis of Variance &#8212; PyNotes</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Group with the Least Variance" href="group_least_variance.html" />
+    <link rel="prev" title="Error Metrics" href="error_metrics.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">PyNotes</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing-page.html">
+   PyNotes for Agriscientists
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/inspiration.html">
+   Inspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/installing_software.html">
+   Installating packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reproducible_research.html">
+   Reproducible Research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/terminal_commands.html">
+   Useful Terminal Commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/git_commands.html">
+   Useful Git commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/my_first_repo.html">
+   Steps to create, clone, and push your first Github repository
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/markdown_basics.html">
+   Markdown basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/latex_equations.html">
+   LaTeX equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/alt_python_libraries.html">
+   Python libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hello_world.html">
+   Hello world
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="help_resources.html">
+   Python help
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Good coding practices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/code_style.html">
+   Coding Style
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reference_framework.html">
+   Coding Guidelines
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Simple computations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="importing_modules.html">
+   Importing modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math_module.html">
+   Math Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="calculator_examples.html">
+   Calculator Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mass_volume_relationships.html">
+   Soil Mass-Volume Relationships
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Random
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_module.html">
+   Random module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_walk.html">
+   Particle Random Walk
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_groups_of_people.html">
+   Random group generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_plots.html">
+   Random Plot Generator
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data types structures
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_types.html">
+   Data Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_structures.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="indexing_and_slicing_lists.html">
+   Indexing and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="strings.html">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="objects.html">
+   Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes.html">
+   Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inputs.html">
+   Inputs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input_wizard.html">
+   Input Wizard
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sedimentation_time.html">
+   Sedimentation time
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Directory navigation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="os_module.html">
+   Operating system module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glob_module.html">
+   Glob Module
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Dates and Time
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_module.html">
+   Time module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html">
+   Datetime Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html#working-with-seconds">
+   Working with seconds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leap_year.html">
+   Leap years
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_year.html">
+   Day of the Year
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_week.html">
+   Day of the week
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Control flow
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="for_loops.html">
+   For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_for_loops.html">
+   Comparative Anatomy of For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="while_loops.html">
+   While loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="if_statement.html">
+   If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_if_statement.html">
+   Comparative Anatomy of If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fibonacci_sequence.html">
+   Fibonacci Sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sorting_numbers.html">
+   Sorting Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_handling.html">
+   Error Handling
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Functions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="anonymous_functions.html">
+   Lambda Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_functions.html">
+   Comparative Anatomy of Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="capillarity.html">
+   Capillarity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pedotransfer_saxton_rawls.html">
+   Pedotransfer Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_textural_class.html">
+   Soil texture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiocarbon_dating.html">
+   Radiocarbon dating
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Strings
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regular_expressions.html">
+   Regular Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="matching_dna_strand.html">
+   Complementary DNA sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_single_polypeptide.html">
+   Central Dogma: Decoding a Single Polypeptide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_multiple_polypeptides.html">
+   Central Dogma: Decoding Multiple Polypeptides
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_decoder.html">
+   Morse code decoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_encoder.html">
+   Morse code encoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_code_guessing_game.html">
+   Morse code guessing game
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Plotting
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_matplotlib.html">
+   Basic Plots with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_seaborn.html">
+   Seaborn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_bokeh.html">
+   Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_holoviews.html">
+   Holoviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interactive_apps.html">
+   Interactive Application
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numpy and Pandas
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_module.html">
+   Numpy Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vapor_pressure_deficit.html">
+   Vapor Pressure Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="photoperiod_numpy_module.html">
+   Photoperiod
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_module.html">
+   Pandas Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="import_tabular_data.html">
+   Import Tabular Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handy_functions.html">
+   Handy functions for data science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_distribution.html">
+   Precipitation Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bird_counts.html">
+   Exploring Bird Counts with Pandas and HoloViews
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Web data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ks_mesonet.html">
+   Kansas Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ok_mesonet.html">
+   Oklahoma Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_uscrn.html">
+   Climate Reference Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_nasa_api.html">
+   Open NASA APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coronavirus.html">
+   Coronavirus COVID-19 Timeseries of Global Cases
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Statistics and curve fitting
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics_module.html">
+   Statistics module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_metrics.html">
+   Error Metrics
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Analysis of Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="group_least_variance.html">
+   Group with the Least Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_linear_regression.html">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sensor_calibration.html">
+   Linear Regression: Sensor Calibration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neutron_probe_calibration.html">
+   Calibration of a Neutron Probe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anscombe_quartet.html">
+   Anscombe’s Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_respiration.html">
+   Soil Respiration Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimal_nitrogen_rate.html">
+   Optimal Nitrogen Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="proctor_test.html">
+   Proctor test
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdf_matching.html">
+   CDF Matching Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_multiple_linear_regression.html">
+   Multiple Linear Regression Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="frontier_function.html">
+   Frontier Production Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_exp.html">
+   Curve Fitting: Exponential Decay
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cosmos_calibration.html">
+   Neutron Counts to Volumetric Water Content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_wave.html">
+   Curve Fitting: Sinusoid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_retention_curve.html">
+   Soil Water Retention Curve
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_carbon_dioxide.html">
+   Atmospheric Carbon Dioxide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="birthday_paradox.html">
+   Birthday Paradox
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_regression.html">
+   Neural Network Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_classification.html">
+   Neural Network Classification
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Problems in 1D
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fill_missing_data.html">
+   Fill Missing Soil Moisture Timeseries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_passive_neutron_counts.html">
+   Denoising Cosmic-Ray Neutron Signal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_potential_biomass.html">
+   Modeling Wheat Biomass
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_phenology.html">
+   Wheat phenology model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain.html">
+   Markov Chains
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="antecedent_precipitation_index.html">
+   Antecedent Precipitation Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain_soil_moisture.html">
+   Modeling Soil Moisture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rainfall_generator.html">
+   Rainfall Generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_metrics.html">
+   Precipitation Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_water_deficit.html">
+   Atmospheric Water Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="drydowns_from_timeseries.html">
+   Soil Moisture Drydowns
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="air_temperature.html">
+   Air Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_radiation.html">
+   Solar Radiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature.html">
+   Understanding Soil Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_storage.html">
+   Soil Water Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exponential_filter.html">
+   Rootzone Soil Water from Surface Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plant_available_water.html">
+   Plant Available Water
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mixing_model.html">
+   Mixing Solute Problem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="newton_law_cooling.html">
+   Newton’s law of cooling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lotka_volterra.html">
+   Lotka-Volterra: Predator–Prey Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leaky_bucket.html">
+   Leaky buckets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="thermal_time.html">
+   Thermal Units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="root_depth.html">
+   Root growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_balance.html">
+   Soil Water Balance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaporation.html">
+   Soil Evaporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evapotranspiration.html">
+   Potential Evapotranspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="curve_number.html">
+   Runoff
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Image analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="canopeo.html">
+   Green Canopy Cover
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="count_seeds.html">
+   Counting seeds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="segmented_lake.html">
+   Patch analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_cracks_detection.html">
+   Soil Cracks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Mapping
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nearest_station.html">
+   Find Nearest Monitoring Station
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inverse_distance_weighting.html">
+   Inverse Distance Weighting Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   Spatial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_nasa_worldview.html">
+   Rasters from NASA Worldview Snapshots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="land_cover.html">
+   Land Cover Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_yield_monitor.html">
+   Denoise Yield Monitor Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_change_crs.html">
+   Change Coordinate Reference System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="field_random_samples.html">
+   Field Random Samples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="euclidean_distance.html">
+   Efficient Euclidean Distance
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numerical problems 2D
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="game_of_life.html">
+   Conway’s Game of Life
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wildfire_spread.html">
+   Wildfire Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reaction_diffusion.html">
+   Gray-Scott Model of Reaction-Diffusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="disease_spread.html">
+   Disease Spread
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="clustering_environments.html">
+   Environmental Agroregions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_deficit_classification.html">
+   Clustering Time Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="field_management_zones.html">
+   Field Management Zones
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Symbolic math
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="sympy_module.html">
+   Sympy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="logistic_growth.html">
+   Logistic Growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="population_growth.html">
+   Population Growth
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/anova.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/soilwater/pynotes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/soilwater/pynotes/master?urlpath=tree/notebooks/anova.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anova-assumptions">
+   ANOVA assumptions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#one-way-anova">
+   One-way ANOVA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#two-way-anova">
+   Two-way ANOVA
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="analysis-of-variance">
+<h1>Analysis of Variance<a class="headerlink" href="#analysis-of-variance" title="Permalink to this headline">¶</a></h1>
+<p>Perhaps there is no other statistical analysis as popular as the ANalysis Of VAriance. The main purpose of an ANOVA test is to detect whether the means of a specific observation variable between groups (e.g. grain yield of corn plots subjected to different levels of fertilizer application, biomass production of two watersheds exposed to different burning regimes, etc.) are <em>significantly</em> different. The word <em>significantly</em> has special meaning in this context and represents conclusion of our analysis under a set  error rate. As you can imagine, detecting whether two or more things are different from each other requires agreement on some baseline.</p>
+<p>A one-way anova is used to test the hypothesis that the samples in the objective variable (e.g. biomass production) of different groups are drawn from populations with the same mean against the alternative hypothesis that the population means are not all the same. Rejecting the null hypothesis would imply that at least one of the means is different.</p>
+<p>In this exercise we will use a dataset of corn yield for different treatments of nitrogen fertilizer on multiple US states. The dataset is a subset of the study published by Tremblay et al., 2012 (see references for more details) and it was obtained from (http://www.nue.okstate.edu/).</p>
+<p>Does the application of nitrogen fertilizer result in systematically greater corn yields or are the yield responses a mere consequence of random noise due to sampling?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">statsmodels.formula.api</span> <span class="kn">import</span> <span class="n">ols</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.anova</span> <span class="kn">import</span> <span class="n">anova_lm</span>
+<span class="kn">from</span> <span class="nn">statsmodels.stats.multicomp</span> <span class="kn">import</span> <span class="n">MultiComparison</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Load data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../datasets/corn_nue_multiple_locs.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Year</th>
+      <th>State</th>
+      <th>Site</th>
+      <th>Textural_class</th>
+      <th>Replications</th>
+      <th>Treatments</th>
+      <th>N_Planting_kg_ha</th>
+      <th>N_Sidedress_kg_ha</th>
+      <th>N_Total_kg_ha</th>
+      <th>Yield_T_ha</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2006</td>
+      <td>Illinois</td>
+      <td>Pad</td>
+      <td>Silt loam</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3.26</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2006</td>
+      <td>Illinois</td>
+      <td>Pad</td>
+      <td>Silt loam</td>
+      <td>1</td>
+      <td>3</td>
+      <td>36</td>
+      <td>0</td>
+      <td>36</td>
+      <td>4.15</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2006</td>
+      <td>Illinois</td>
+      <td>Pad</td>
+      <td>Silt loam</td>
+      <td>1</td>
+      <td>5</td>
+      <td>36</td>
+      <td>54</td>
+      <td>90</td>
+      <td>8.64</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2006</td>
+      <td>Illinois</td>
+      <td>Pad</td>
+      <td>Silt loam</td>
+      <td>1</td>
+      <td>7</td>
+      <td>36</td>
+      <td>107</td>
+      <td>143</td>
+      <td>10.52</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2006</td>
+      <td>Illinois</td>
+      <td>Pad</td>
+      <td>Silt loam</td>
+      <td>1</td>
+      <td>9</td>
+      <td>36</td>
+      <td>161</td>
+      <td>197</td>
+      <td>11.47</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print some useful properties of the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Site&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>        <span class="c1"># Locations</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Treatments&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>   <span class="c1"># Treatments</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Replications&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span> <span class="c1"># Replications</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Pad&#39; &#39;Dixon&#39; &#39;Manhattan&#39; &#39;Copeland&#39; &#39;Diederick&#39;]
+[1 3 5 7 9]
+[1 2 3 4]
+(120, 10)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine yield data using boxplots for all locations combined</span>
+<span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;Yield_T_ha&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;N_Total_kg_ha&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/anova_4_0.png" src="../_images/anova_4_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine yield by state</span>
+<span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;Yield_T_ha&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;State&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/anova_5_0.png" src="../_images/anova_5_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Examine yield by site</span>
+<span class="n">df</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;Yield_T_ha&#39;</span><span class="p">,</span> <span class="n">by</span><span class="o">=</span><span class="s1">&#39;Site&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/anova_6_0.png" src="../_images/anova_6_0.png" />
+</div>
+</div>
+<div class="section" id="anova-assumptions">
+<h2>ANOVA assumptions<a class="headerlink" href="#anova-assumptions" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Samples drawn from a population are normally distributed. <strong>Test</strong>: Shapiro-Wilk</p></li>
+<li><p>Samples drawn from all populations have (approximately) the same variance. This property is called homoscedasticity or homogeneity of variances.” <strong>Tests</strong>: Bartlett’s and Levene’s tests.</p></li>
+<li><p>Samples are independent of each other. Test: No test. Here we rely on the nature of the variable being observed and the experimental design.</p></li>
+</ol>
+</div>
+<div class="section" id="one-way-anova">
+<h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h2>
+<p>Here we will compare an independent variable with a single predictor. The predictor <code class="docutils literal notranslate"><span class="pre">N_Total_kg_ha</span></code> will be used as a categorical varaible. Alternatively we could use the <code class="docutils literal notranslate"><span class="pre">Treatments</span></code> column, but it is easier to read the table if we present the values using the actual treatment values, so that we quickly devise which Nitrogen rates show statistical differences.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Anova table with statsmodels</span>
+<span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;Yield_T_ha ~ C(N_Total_kg_ha)&#39;</span>
+<span class="n">lm</span> <span class="o">=</span> <span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="n">anova_statsmodels</span> <span class="o">=</span> <span class="n">anova_lm</span><span class="p">(</span><span class="n">lm</span><span class="p">)</span>
+<span class="n">anova_statsmodels</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>df</th>
+      <th>sum_sq</th>
+      <th>mean_sq</th>
+      <th>F</th>
+      <th>PR(&gt;F)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C(N_Total_kg_ha)</th>
+      <td>4.0</td>
+      <td>386.085542</td>
+      <td>96.521385</td>
+      <td>11.431259</td>
+      <td>7.582811e-08</td>
+    </tr>
+    <tr>
+      <th>Residual</th>
+      <td>115.0</td>
+      <td>971.018108</td>
+      <td>8.443636</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The ANOVA table shows the there is significant differences between treatments. The catch is that we don’t know which groups are different. The ANOVA table only tells us that at least one  group has a mean value that is substantially (read <em>significantly</em>) different from the rest.</p>
+<p>The <strong>F</strong> is the F-statistic to test the null hypothesis that the corresponding coefficient is zero.</p>
+<p>The <strong>pValue</strong> of the F-statistic indicates whether a factor is not significant at the 5% significance level given the other terms in the model.</p>
+<p>A mean multicomparison test can help us identify which treatments show signifcant differences.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multicomparison test</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="n">MultiComparison</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Yield_T_ha&quot;</span><span class="p">],</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;N_Total_kg_ha&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">tukeyhsd</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">groups</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Multiple Comparison of Means - Tukey HSD, FWER=0.05
+===================================================
+group1 group2 meandiff p-adj   lower  upper  reject
+---------------------------------------------------
+     0     36   1.3175 0.5165 -1.0074 3.6424  False
+     0     90   3.0358  0.004  0.7109 5.3607   True
+     0    143   4.3096  0.001  1.9847 6.6345   True
+     0    197   4.7454  0.001  2.4205 7.0703   True
+    36     90   1.7183 0.2499 -0.6066 4.0432  False
+    36    143   2.9921 0.0047  0.6672  5.317   True
+    36    197   3.4279  0.001   1.103 5.7528   True
+    90    143   1.2738 0.5458 -1.0512 3.5987  False
+    90    197   1.7096 0.2547 -0.6153 4.0345  False
+   143    197   0.4358    0.9 -1.8891 2.7607  False
+---------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualize significantly different groups relative to a specific group</span>
+<span class="n">groups</span><span class="o">.</span><span class="n">plot_simultaneous</span><span class="p">(</span><span class="n">comparison_name</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Cron yield in T/ha&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Nitrogen Treatments in kg/ha&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/anova_12_0.png" src="../_images/anova_12_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="two-way-anova">
+<h2>Two-way ANOVA<a class="headerlink" href="#two-way-anova" title="Permalink to this headline">¶</a></h2>
+<p>In this case we will add two predictors variables, soil textural class and total nitrogen applied. In many cases researchers add <code class="docutils literal notranslate"><span class="pre">Location</span></code> as a proxy for local environmental conditions (including soil) and <code class="docutils literal notranslate"><span class="pre">Year</span></code> as a proxy for the particular weather conditions during each growing season. In this case we have soil textural class available, so we will make use of that first, since it will give our results broader applications that, in principle, can be related to soil types elsewhere.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Two predictors</span>
+<span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;Yield_T_ha ~ C(N_Total_kg_ha) + C(Textural_class)&#39;</span>
+<span class="n">anova_lm</span><span class="p">(</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>df</th>
+      <th>sum_sq</th>
+      <th>mean_sq</th>
+      <th>F</th>
+      <th>PR(&gt;F)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C(N_Total_kg_ha)</th>
+      <td>4.0</td>
+      <td>386.085542</td>
+      <td>96.521385</td>
+      <td>11.750059</td>
+      <td>5.022955e-08</td>
+    </tr>
+    <tr>
+      <th>C(Textural_class)</th>
+      <td>1.0</td>
+      <td>34.560000</td>
+      <td>34.560000</td>
+      <td>4.207172</td>
+      <td>4.254546e-02</td>
+    </tr>
+    <tr>
+      <th>Residual</th>
+      <td>114.0</td>
+      <td>936.458108</td>
+      <td>8.214545</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Soil textual class was barely significant considering all locations and years at the the 0.05 level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Two predictors with interaction</span>
+<span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;Yield_T_ha ~ C(N_Total_kg_ha) * C(Textural_class)&#39;</span>
+<span class="n">anova_lm</span><span class="p">(</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>df</th>
+      <th>sum_sq</th>
+      <th>mean_sq</th>
+      <th>F</th>
+      <th>PR(&gt;F)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C(N_Total_kg_ha)</th>
+      <td>4.0</td>
+      <td>386.085542</td>
+      <td>96.521385</td>
+      <td>12.530231</td>
+      <td>1.960683e-08</td>
+    </tr>
+    <tr>
+      <th>C(Textural_class)</th>
+      <td>1.0</td>
+      <td>34.560000</td>
+      <td>34.560000</td>
+      <td>4.486516</td>
+      <td>3.641510e-02</td>
+    </tr>
+    <tr>
+      <th>C(N_Total_kg_ha):C(Textural_class)</th>
+      <td>4.0</td>
+      <td>89.119178</td>
+      <td>22.279795</td>
+      <td>2.892322</td>
+      <td>2.547188e-02</td>
+    </tr>
+    <tr>
+      <th>Residual</th>
+      <td>110.0</td>
+      <td>847.338930</td>
+      <td>7.703081</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The interaction of nitrogen rate and textural class also resulted statistically significant at the 0.05 level.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Classical ANOVA with Treatment, Location, and Year interactions</span>
+<span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;Yield_T_ha ~ C(N_Total_kg_ha) * State * C(Year)&#39;</span>
+<span class="n">anova_lm</span><span class="p">(</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>df</th>
+      <th>sum_sq</th>
+      <th>mean_sq</th>
+      <th>F</th>
+      <th>PR(&gt;F)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>C(N_Total_kg_ha)</th>
+      <td>4.0</td>
+      <td>386.085542</td>
+      <td>96.521385</td>
+      <td>20.522835</td>
+      <td>3.270251e-12</td>
+    </tr>
+    <tr>
+      <th>State</th>
+      <td>2.0</td>
+      <td>234.432785</td>
+      <td>117.216393</td>
+      <td>24.923106</td>
+      <td>1.989675e-09</td>
+    </tr>
+    <tr>
+      <th>C(Year)</th>
+      <td>2.0</td>
+      <td>112.504702</td>
+      <td>56.252351</td>
+      <td>11.960642</td>
+      <td>2.328310e-05</td>
+    </tr>
+    <tr>
+      <th>C(N_Total_kg_ha):State</th>
+      <td>8.0</td>
+      <td>140.688973</td>
+      <td>17.586122</td>
+      <td>3.739245</td>
+      <td>7.649526e-04</td>
+    </tr>
+    <tr>
+      <th>C(N_Total_kg_ha):C(Year)</th>
+      <td>8.0</td>
+      <td>36.595110</td>
+      <td>4.574389</td>
+      <td>0.972628</td>
+      <td>4.621589e-01</td>
+    </tr>
+    <tr>
+      <th>State:C(Year)</th>
+      <td>4.0</td>
+      <td>3.702425</td>
+      <td>0.925606</td>
+      <td>0.196807</td>
+      <td>9.394924e-01</td>
+    </tr>
+    <tr>
+      <th>C(N_Total_kg_ha):State:C(Year)</th>
+      <td>16.0</td>
+      <td>17.058994</td>
+      <td>1.066187</td>
+      <td>0.226698</td>
+      <td>9.991834e-01</td>
+    </tr>
+    <tr>
+      <th>Residual</th>
+      <td>95.0</td>
+      <td>446.796537</td>
+      <td>4.703121</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In a multi-treatment, multi-year, and multi-state study, it is not surprising that treatment, site, and year resulted highly significant (P&lt;0.01).</p>
+<p>Note that the interactions <code class="docutils literal notranslate"><span class="pre">N_Total_kg_ha:Year</span></code>, <code class="docutils literal notranslate"><span class="pre">State:Year</span></code>, and <code class="docutils literal notranslate"><span class="pre">N_Total_kg_ha:State:Year</span></code> were not significant at the P&lt;0.05 level.</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>Tremblay, N.,  Y.M. Bouroubi,  C. Bélec,  R.W. Mullen,  N.R. Kitchen,  W.E. Thomason,  S. Ebelhar,  D.B. Mengel,  W.R. Raun,  D.D. Francis,  E.D. Vories, and I. Ortiz-Monasterio. 2012. Corn response to nitrogen is influenced by soil texture and weather. Agron. J. 104:1658–1671. doi:10.2134/agronj2012.018.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="error_metrics.html" title="previous page">Error Metrics</a>
+    <a class='right-next' id="next-link" href="group_least_variance.html" title="next page">Group with the Least Variance</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andres Patrignani<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Licensed under CC BY-NC-SA</a>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-XXXXXXXXX-X', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>

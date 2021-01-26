@@ -1,0 +1,1714 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bokeh &#8212; PyNotes</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Holoviews" href="plotting_holoviews.html" />
+    <link rel="prev" title="Seaborn" href="plotting_seaborn.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">PyNotes</h1>
+  
+</a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../landing-page.html">
+   PyNotes for Agriscientists
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Getting started
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/inspiration.html">
+   Inspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/installing_software.html">
+   Installating packages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reproducible_research.html">
+   Reproducible Research
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/terminal_commands.html">
+   Useful Terminal Commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/git_commands.html">
+   Useful Git commands
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/my_first_repo.html">
+   Steps to create, clone, and push your first Github repository
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/markdown_basics.html">
+   Markdown basics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/latex_equations.html">
+   LaTeX equations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/alt_python_libraries.html">
+   Python libraries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="hello_world.html">
+   Hello world
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="help_resources.html">
+   Python help
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Good coding practices
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/code_style.html">
+   Coding Style
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown/reference_framework.html">
+   Coding Guidelines
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Simple computations
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="importing_modules.html">
+   Importing modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="math_module.html">
+   Math Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="calculator_examples.html">
+   Calculator Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mass_volume_relationships.html">
+   Soil Mass-Volume Relationships
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Random
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_module.html">
+   Random module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_walk.html">
+   Particle Random Walk
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_groups_of_people.html">
+   Random group generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="random_plots.html">
+   Random Plot Generator
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Data types structures
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_types.html">
+   Data Types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="data_structures.html">
+   Data Structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="indexing_and_slicing_lists.html">
+   Indexing and slicing
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="strings.html">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="objects.html">
+   Objects
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="classes.html">
+   Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inputs.html">
+   Inputs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="input_wizard.html">
+   Input Wizard
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sedimentation_time.html">
+   Sedimentation time
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Directory navigation
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="os_module.html">
+   Operating system module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="glob_module.html">
+   Glob Module
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Dates and Time
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="time_module.html">
+   Time module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html">
+   Datetime Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="datetime_module.html#working-with-seconds">
+   Working with seconds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leap_year.html">
+   Leap years
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_year.html">
+   Day of the Year
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="day_of_week.html">
+   Day of the week
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Control flow
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="for_loops.html">
+   For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_for_loops.html">
+   Comparative Anatomy of For Loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="while_loops.html">
+   While loops
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="if_statement.html">
+   If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_if_statement.html">
+   Comparative Anatomy of If Statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="fibonacci_sequence.html">
+   Fibonacci Sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sorting_numbers.html">
+   Sorting Numbers
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_handling.html">
+   Error Handling
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Functions
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="anonymous_functions.html">
+   Lambda Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="functions.html">
+   Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="comparative_anatomy_functions.html">
+   Comparative Anatomy of Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="capillarity.html">
+   Capillarity
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pedotransfer_saxton_rawls.html">
+   Pedotransfer Functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_textural_class.html">
+   Soil texture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="radiocarbon_dating.html">
+   Radiocarbon dating
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Strings
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="regular_expressions.html">
+   Regular Expressions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="matching_dna_strand.html">
+   Complementary DNA sequence
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_single_polypeptide.html">
+   Central Dogma: Decoding a Single Polypeptide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="central_dogma_multiple_polypeptides.html">
+   Central Dogma: Decoding Multiple Polypeptides
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_decoder.html">
+   Morse code decoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_encoder.html">
+   Morse code encoder
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="morse_code_guessing_game.html">
+   Morse code guessing game
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Plotting
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_matplotlib.html">
+   Basic Plots with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_seaborn.html">
+   Seaborn
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plotting_holoviews.html">
+   Holoviews
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interactive_apps.html">
+   Interactive Application
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numpy and Pandas
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="numpy_module.html">
+   Numpy Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="vapor_pressure_deficit.html">
+   Vapor Pressure Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="photoperiod_numpy_module.html">
+   Photoperiod
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="pandas_module.html">
+   Pandas Module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="import_tabular_data.html">
+   Import Tabular Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="handy_functions.html">
+   Handy functions for data science
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_distribution.html">
+   Precipitation Distribution
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bird_counts.html">
+   Exploring Bird Counts with Pandas and HoloViews
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Web data
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ks_mesonet.html">
+   Kansas Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_ok_mesonet.html">
+   Oklahoma Mesonet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_uscrn.html">
+   Climate Reference Network
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="url_nasa_api.html">
+   Open NASA APIs
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="coronavirus.html">
+   Coronavirus COVID-19 Timeseries of Global Cases
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Statistics and curve fitting
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="statistics_module.html">
+   Statistics module
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_metrics.html">
+   Error Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anova.html">
+   Analysis of Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="group_least_variance.html">
+   Group with the Least Variance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_linear_regression.html">
+   Linear Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sensor_calibration.html">
+   Linear Regression: Sensor Calibration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neutron_probe_calibration.html">
+   Calibration of a Neutron Probe
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="anscombe_quartet.html">
+   Anscombe’s Quartet
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_respiration.html">
+   Soil Respiration Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="optimal_nitrogen_rate.html">
+   Optimal Nitrogen Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="proctor_test.html">
+   Proctor test
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cdf_matching.html">
+   CDF Matching Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_multiple_linear_regression.html">
+   Multiple Linear Regression Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="frontier_function.html">
+   Frontier Production Function
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_exp.html">
+   Curve Fitting: Exponential Decay
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="cosmos_calibration.html">
+   Neutron Counts to Volumetric Water Content
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="stats_curve_fitting_wave.html">
+   Curve Fitting: Sinusoid
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_retention_curve.html">
+   Soil Water Retention Curve
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_carbon_dioxide.html">
+   Atmospheric Carbon Dioxide
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="birthday_paradox.html">
+   Birthday Paradox
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_regression.html">
+   Neural Network Regression
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="neural_network_classification.html">
+   Neural Network Classification
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Problems in 1D
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="fill_missing_data.html">
+   Fill Missing Soil Moisture Timeseries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_passive_neutron_counts.html">
+   Denoising Cosmic-Ray Neutron Signal
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_potential_biomass.html">
+   Modeling Wheat Biomass
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wheat_phenology.html">
+   Wheat phenology model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain.html">
+   Markov Chains
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="antecedent_precipitation_index.html">
+   Antecedent Precipitation Index
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="markov_chain_soil_moisture.html">
+   Modeling Soil Moisture
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="rainfall_generator.html">
+   Rainfall Generator
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="precipitation_metrics.html">
+   Precipitation Metrics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="atmospheric_water_deficit.html">
+   Atmospheric Water Deficit
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="drydowns_from_timeseries.html">
+   Soil Moisture Drydowns
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="air_temperature.html">
+   Air Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="solar_radiation.html">
+   Solar Radiation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature.html">
+   Understanding Soil Temperature
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_storage.html">
+   Soil Water Storage
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exponential_filter.html">
+   Rootzone Soil Water from Surface Observations
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="plant_available_water.html">
+   Plant Available Water
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mixing_model.html">
+   Mixing Solute Problem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="newton_law_cooling.html">
+   Newton’s law of cooling
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lotka_volterra.html">
+   Lotka-Volterra: Predator–Prey Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="leaky_bucket.html">
+   Leaky buckets
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="thermal_time.html">
+   Thermal Units
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_temperature_model.html">
+   Soil Temperature Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="root_depth.html">
+   Root growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_balance.html">
+   Soil Water Balance
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evaporation.html">
+   Soil Evaporation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="evapotranspiration.html">
+   Potential Evapotranspiration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="curve_number.html">
+   Runoff
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Image analysis
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="canopeo.html">
+   Green Canopy Cover
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="count_seeds.html">
+   Counting seeds
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="segmented_lake.html">
+   Patch analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_cracks_detection.html">
+   Soil Cracks
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Mapping
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nearest_station.html">
+   Find Nearest Monitoring Station
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="inverse_distance_weighting.html">
+   Inverse Distance Weighting Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="interpolation.html">
+   Spatial Interpolation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_nasa_worldview.html">
+   Rasters from NASA Worldview Snapshots
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="land_cover.html">
+   Land Cover Classification
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="denoise_yield_monitor.html">
+   Denoise Yield Monitor Data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="raster_change_crs.html">
+   Change Coordinate Reference System
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="field_random_samples.html">
+   Field Random Samples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="euclidean_distance.html">
+   Efficient Euclidean Distance
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Numerical problems 2D
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="game_of_life.html">
+   Conway’s Game of Life
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="wildfire_spread.html">
+   Wildfire Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="reaction_diffusion.html">
+   Gray-Scott Model of Reaction-Diffusion
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="disease_spread.html">
+   Disease Spread
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Clustering
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="clustering_environments.html">
+   Environmental Agroregions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="soil_water_deficit_classification.html">
+   Clustering Time Series
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="field_management_zones.html">
+   Field Management Zones
+  </a>
+ </li>
+</ul>
+<p class="caption collapsible-parent">
+ <span class="caption-text">
+  Symbolic math
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="sympy_module.html">
+   Sympy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="logistic_growth.html">
+   Logistic Growth
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="population_growth.html">
+   Population Growth
+  </a>
+ </li>
+</ul>
+
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/notebooks/plotting_bokeh.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+        <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/soilwater/pynotes"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/soilwater/pynotes/master?urlpath=tree/notebooks/plotting_bokeh.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#simple-line-plot">
+   Simple line plot
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot-visual-attributes">
+   Plot visual attributes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#histogram">
+   Histogram
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="bokeh">
+<h1>Bokeh<a class="headerlink" href="#bokeh" title="Permalink to this headline">¶</a></h1>
+<p>The <a class="reference external" href="https://bokeh.pydata.org/en/latest/index.html">Bokeh</a> plotting library combines the beauty of Python syntax with the interactivity offered by Javascript (through BokehJS) to create beautiful and interactive publication quality figures. Bokeh offers a set of functions to create basic shapes (lines, rectangles, cicles, etc.) that constitute the basis of most two-dimensional figures.</p>
+<p>For mode advanced plots, such as histograms (built using rectangles or bars) Bokeh does not offer a high-level function such as as <code class="docutils literal notranslate"><span class="pre">histogram(y)</span></code> and the user needs to do some of the extra coding, but the HoloViews plotting library should provide a more complete ecosystem.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Import Bokeh modules</span>
+<span class="kn">from</span> <span class="nn">bokeh.plotting</span> <span class="kn">import</span> <span class="n">figure</span><span class="p">,</span> <span class="n">output_notebook</span><span class="p">,</span> <span class="n">show</span>
+<span class="n">output_notebook</span><span class="p">()</span> <span class="c1"># Initialize the bokeh for the notebook</span>
+<span class="n">TOOLS</span> <span class="o">=</span> <span class="s2">&quot;pan,box_zoom,reset,save,hover&quot;</span>                         
+
+<span class="c1"># If everything went correct you should see the Bokeh icon displaying below.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div class="bk-root">
+    <a href="https://bokeh.org" target="_blank" class="bk-logo bk-logo-small bk-logo-notebook"></a>
+    <span id="1001">Loading BokehJS ...</span>
+</div></div><script type="application/javascript">
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  var force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+  var JS_MIME_TYPE = 'application/javascript';
+  var HTML_MIME_TYPE = 'text/html';
+  var EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  var CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    var script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    var cell = handle.cell;
+
+    var id = cell.output_area._bokeh_element_id;
+    var server_id = cell.output_area._bokeh_server_id;
+    // Clean up Bokeh references
+    if (id != null && id in Bokeh.index) {
+      Bokeh.index[id].model.document.clear();
+      delete Bokeh.index[id];
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      var cmd = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd, {
+        iopub: {
+          output: function(msg) {
+            var id = msg.content.text.trim();
+            if (id in Bokeh.index) {
+              Bokeh.index[id].model.document.clear();
+              delete Bokeh.index[id];
+            }
+          }
+        }
+      });
+      // Destroy server and session
+      var cmd = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    var output_area = handle.output_area;
+    var output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!output.data.hasOwnProperty(EXEC_MIME_TYPE))) {
+      return
+    }
+
+    var toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      var bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      var script_attrs = bk_div.children[0].attributes;
+      for (var i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      var toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      var props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    var events = require('base/js/events');
+    var OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+
+  
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  var NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded() {
+    var el = document.getElementById("1001");
+    if (el != null) {
+      el.textContent = "BokehJS is loading...";
+    }
+    if (root.Bokeh !== undefined) {
+      if (el != null) {
+        el.textContent = "BokehJS " + root.Bokeh.version + " successfully loaded.";
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(display_loaded, 100)
+    }
+  }
+
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error() {
+      console.error("failed to load " + url);
+    }
+
+    for (var i = 0; i < css_urls.length; i++) {
+      var url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    const hashes = {"https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js": "T2yuo9Oe71Cz/I4X9Ac5+gpEa5a8PpJCDlqKYO0CfAuEszu1JrXLl8YugMqYe3sM", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.2.3.min.js": "98GDGJ0kOMCUMUePhksaQ/GYgB3+NH9h996V88sh3aOiUNX3N+fLXAtry6xctSZ6", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.2.3.min.js": "89bArO+nlbP3sgakeHjCo1JYxYR5wufVgA3IbUvDY+K7w4zyxJqssu7wVnfeKCq8"};
+
+    for (var i = 0; i < js_urls.length; i++) {
+      var url = js_urls[i];
+      var element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error;
+      element.async = false;
+      element.src = url;
+      if (url in hashes) {
+        element.crossOrigin = "anonymous";
+        element.integrity = "sha384-" + hashes[url];
+      }
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  
+  var js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-2.2.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.2.3.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-2.2.3.min.js"];
+  var css_urls = [];
+  
+
+  var inline_js = [
+    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+    function(Bokeh) {
+    
+    
+    }
+  ];
+
+  function run_inline_js() {
+    
+    if (root.Bokeh !== undefined || force === true) {
+      
+    for (var i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+    if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      var cell = $(document.getElementById("1001")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script></div>
+</div>
+<div class="section" id="simple-line-plot">
+<h2>Simple line plot<a class="headerlink" href="#simple-line-plot" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A minimalistic plot to understand the building blocks</span>
+
+<span class="c1"># Generate some data stored in arrays</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Create an empty figure. What constitutes a figure is now stored in the variable &quot;p&quot;</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">plot_width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">plot_height</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="n">toolbar_location</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Alternatively you can set the plot width, height, and title after createing the figure</span>
+<span class="c1">#p.title.text = &#39;Test&#39;</span>
+<span class="c1">#p.plot_width = 300</span>
+<span class="c1">#p.plot_height = 300</span>
+
+<span class="c1"># Alternatively you can write: p = figure(title=&quot;My First Plot&quot;, plot_width=300, plot_height=300)</span>
+
+<span class="c1"># Add a line to the figure.</span>
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;X&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Y&#39;</span>
+
+
+<span class="c1"># The fact that we created a figure and added a line does not mean that we can see it. </span>
+<span class="c1"># These are two different process for the computer, which means that we need to explicitly show the figure</span>
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+
+
+
+
+<div class="bk-root" id="33766d84-64ca-4ec6-92cc-02fdc74285e2" data-root-id="3807"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"44c6c67c-cdcd-4493-b9de-6bb1958b131d":{"roots":{"references":[{"attributes":{"below":[{"id":"3818"}],"center":[{"id":"3821"},{"id":"3825"}],"left":[{"id":"3822"}],"plot_height":400,"renderers":[{"id":"3843"}],"title":{"id":"3808"},"toolbar":{"id":"3833"},"toolbar_location":null,"x_range":{"id":"3810"},"x_scale":{"id":"3814"},"y_range":{"id":"3812"},"y_scale":{"id":"3816"}},"id":"3807","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"3814","type":"LinearScale"},{"attributes":{},"id":"3816","type":"LinearScale"},{"attributes":{},"id":"3819","type":"BasicTicker"},{"attributes":{"axis_label":"X","formatter":{"id":"3989"},"ticker":{"id":"3819"}},"id":"3818","type":"LinearAxis"},{"attributes":{"axis_label":"Y","formatter":{"id":"3991"},"ticker":{"id":"3823"}},"id":"3822","type":"LinearAxis"},{"attributes":{"data_source":{"id":"3840"},"glyph":{"id":"3841"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"3842"},"selection_glyph":null,"view":{"id":"3844"}},"id":"3843","type":"GlyphRenderer"},{"attributes":{"line_alpha":0.1,"line_color":"purple","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"3842","type":"Line"},{"attributes":{},"id":"3991","type":"BasicTickFormatter"},{"attributes":{},"id":"3823","type":"BasicTicker"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","top_units":"screen"},"id":"3832","type":"BoxAnnotation"},{"attributes":{"axis":{"id":"3822"},"dimension":1,"ticker":null},"id":"3825","type":"Grid"},{"attributes":{"line_color":"purple","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"3841","type":"Line"},{"attributes":{},"id":"3830","type":"ResetTool"},{"attributes":{"axis":{"id":"3818"},"ticker":null},"id":"3821","type":"Grid"},{"attributes":{"source":{"id":"3840"}},"id":"3844","type":"CDSView"},{"attributes":{},"id":"3989","type":"BasicTickFormatter"},{"attributes":{},"id":"3810","type":"DataRange1d"},{"attributes":{"data":{"x":{"__ndarray__":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAACgAAAApAAAAKgAAACsAAAAsAAAALQAAAC4AAAAvAAAAMAAAADEAAAAyAAAAMwAAADQAAAA1AAAANgAAADcAAAA4AAAAOQAAADoAAAA7AAAAPAAAAD0AAAA+AAAAPwAAAEAAAABBAAAAQgAAAEMAAABEAAAARQAAAEYAAABHAAAASAAAAEkAAABKAAAASwAAAEwAAABNAAAATgAAAE8AAABQAAAAUQAAAFIAAABTAAAAVAAAAFUAAABWAAAAVwAAAFgAAABZAAAAWgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAA==","dtype":"int32","order":"little","shape":[100]},"y":{"__ndarray__":"io8GrrYSzz8dPi++V0m9vyxhQHHwReu/m+H/S9K+zT9fZ12pfB33PyuLggjvKgJAryZsTIki0j/5pNOLT+3yP84kIA4UyALAZEXlQERGvD8eF7gSvyDpv+DX/rI7wZ6/i/bNJAbJw7+VhOCtodwDQPK63gi4w+c/lG/ewbnn879vCsjhym/+v4Qk3hZTLuy/ZiKKLCMa3r/XrMN7APjdP60MwMRt8/W/zthQbN++5L9C7rctzaeqP6RW2az86PO/8hi19POq0T9AW/VQzdzBPx/TvqIsLeE/6YicYyzu8L/+05lu3HQAwJhFp80xr9Q/fW+pDTn89L+cykVH8ta3vzI7AUAdvvC/RIf1I7qlyr8q2QQ/SqDivxv0tXNMS+u/lXeky1vS779ZpQR5p+Htv1SUb3zSPOQ/PJucLr7lAEAKf5RiRk8MwMvy35VZFOK/1+yc91UX0T8eq2Zv2vrIP5x4rV5mIve/iBv57/Nem7/xhm135BzBP81HwWXUwNa/7WOEMKGx6L/wf1ZjEdjuv/g679h0MwJAQBtcuUZ01D9t2sYfd4e/P8PeiHZBhfe/3uTvO0b497/fdW8GeSoHQO4z30WzJek/PSGko/Xh8b/OYQT6CBLrP++Yo07iFPQ/7ZrjWKm8vj93OkUAaZW9v1cYxs7Kk9q/Ye9a3zmg7T+JLuJZn0DvPzEDMK3eHt4/mXsfjzy91T+xLk1w1kzZPy74xaoqcdc/P3lLRAP4/78ioWDxvT28v7s/yppirsS/Qpjyrt9lwb9iVoExcHndP0DJxkxPMea/oIDECMDZ4T80t9PtzE3tv2lIL1XWLPa/ZXFwXDlW7j97tMOb96rIvzULOrG3g+g/dQpQJI8W6r8pjNE/FaLpv4COYVzyE/O/1JnjmyJl1D8gPx1UKhf5P/SuQAuX6dM/QSqZluwf+78nqXYCSkbYv5jVfJlAbs2/AqphmIWQBsB6NmoM6TT7v9rjsl+vO/k/OTbgXyGb4L8xYiRhYv3kP5JCyerhoe2/9wmnFGYduj8RzV/cMcbYP1FmMa05lfK/jg4gOwTS5L8=","dtype":"float64","order":"little","shape":[100]}},"selected":{"id":"3993"},"selection_policy":{"id":"3992"}},"id":"3840","type":"ColumnDataSource"},{"attributes":{},"id":"3826","type":"PanTool"},{"attributes":{},"id":"3992","type":"UnionRenderers"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"3826"},{"id":"3827"},{"id":"3828"},{"id":"3829"},{"id":"3830"},{"id":"3831"}]},"id":"3833","type":"Toolbar"},{"attributes":{},"id":"3993","type":"Selection"},{"attributes":{},"id":"3812","type":"DataRange1d"},{"attributes":{"overlay":{"id":"3832"}},"id":"3828","type":"BoxZoomTool"},{"attributes":{"text":"Test"},"id":"3808","type":"Title"},{"attributes":{},"id":"3829","type":"SaveTool"},{"attributes":{},"id":"3831","type":"HelpTool"},{"attributes":{},"id":"3827","type":"WheelZoomTool"}],"root_ids":["3807"]},"title":"Bokeh Application","version":"2.2.3"}};
+  var render_items = [{"docid":"44c6c67c-cdcd-4493-b9de-6bb1958b131d","root_ids":["3807"],"roots":{"3807":"33766d84-64ca-4ec6-92cc-02fdc74285e2"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
+</div>
+</div>
+<div class="section" id="plot-visual-attributes">
+<h2>Plot visual attributes<a class="headerlink" href="#plot-visual-attributes" title="Permalink to this headline">¶</a></h2>
+<p>A complete reference with plot attributes can be found at: https://bokeh.pydata.org/en/latest/docs/reference/plotting.html and many styling examples can be found at: https://bokeh.pydata.org/en/latest/docs/user_guide/styling.html</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple line plot with more custom attributes</span>
+<span class="c1"># We can plot x and y directly, or we can create our own table, similar to a Pandas Dataframe and then access table content in a cleaner way.</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">()</span>
+
+<span class="c1"># Plot size</span>
+<span class="n">p</span><span class="o">.</span><span class="n">plot_width</span> <span class="o">=</span> <span class="mi">800</span>
+<span class="n">p</span><span class="o">.</span><span class="n">plot_height</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="c1"># Title</span>
+<span class="n">p</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;A more elaborate plot&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text_color</span> <span class="o">=</span> <span class="s1">&#39;olive&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text_font</span> <span class="o">=</span> <span class="s1">&#39;times&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">title</span><span class="o">.</span><span class="n">text_font_style</span> <span class="o">=</span> <span class="s1">&#39;italic&#39;</span>
+
+<span class="c1"># Axis labels</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Variable X&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">axis_label_text_font_size</span> <span class="o">=</span> <span class="s1">&#39;16pt&#39;</span> <span class="c1"># A common mistake here is to write a number rather a string.</span>
+<span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label</span> <span class="o">=</span> <span class="s1">&#39;Variable Y&#39;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">axis_label_text_font_size</span> <span class="o">=</span> <span class="s1">&#39;16pt&#39;</span>
+
+<span class="c1"># Line</span>
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">source</span><span class="o">=</span><span class="n">table</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">line_width</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">legend_label</span><span class="o">=</span><span class="s1">&#39;red line&#39;</span><span class="p">)</span>
+
+<span class="c1"># Legend</span>
+<span class="n">p</span><span class="o">.</span><span class="n">legend</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="s1">&#39;top_left&#39;</span>  <span class="c1"># By default is on the top right</span>
+
+<span class="c1"># Grid</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xgrid</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">p</span><span class="o">.</span><span class="n">ygrid</span><span class="o">.</span><span class="n">visible</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># Tick marks</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">major_tick_line_color</span> <span class="o">=</span> <span class="s2">&quot;firebrick&quot;</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">major_tick_line_width</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">p</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">minor_tick_line_color</span> <span class="o">=</span> <span class="s2">&quot;orange&quot;</span>
+
+<span class="c1"># Plot outline box </span>
+<span class="n">p</span><span class="o">.</span><span class="n">outline_line_color</span> <span class="o">=</span> <span class="s2">&quot;black&quot;</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+
+
+
+
+<div class="bk-root" id="977bfe01-40ef-49ba-bbdb-d00f4167d05f" data-root-id="4789"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"9cea2f64-ee46-4108-8c3d-692dd335677c":{"roots":{"references":[{"attributes":{"below":[{"id":"4798"}],"center":[{"id":"4801"},{"id":"4805"},{"id":"4838"}],"left":[{"id":"4802"}],"outline_line_color":"black","plot_height":300,"plot_width":800,"renderers":[{"id":"4827"}],"title":{"id":"4820"},"toolbar":{"id":"4813"},"x_range":{"id":"4790"},"x_scale":{"id":"4794"},"y_range":{"id":"4792"},"y_scale":{"id":"4796"}},"id":"4789","subtype":"Figure","type":"Plot"},{"attributes":{},"id":"4834","type":"BasicTickFormatter"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","top_units":"screen"},"id":"4812","type":"BoxAnnotation"},{"attributes":{},"id":"4832","type":"BasicTickFormatter"},{"attributes":{"text":"A more elaborate plot","text_color":{"value":"olive"},"text_font":"times","text_font_style":"italic"},"id":"4820","type":"Title"},{"attributes":{},"id":"4792","type":"DataRange1d"},{"attributes":{},"id":"4794","type":"LinearScale"},{"attributes":{},"id":"4790","type":"DataRange1d"},{"attributes":{"line_color":"red","line_dash":[6],"line_width":2.0,"x":{"field":"x"},"y":{"field":"y"}},"id":"4825","type":"Line"},{"attributes":{"data":{"x":{"__ndarray__":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAACgAAAApAAAAKgAAACsAAAAsAAAALQAAAC4AAAAvAAAAMAAAADEAAAAyAAAAMwAAADQAAAA1AAAANgAAADcAAAA4AAAAOQAAADoAAAA7AAAAPAAAAD0AAAA+AAAAPwAAAEAAAABBAAAAQgAAAEMAAABEAAAARQAAAEYAAABHAAAASAAAAEkAAABKAAAASwAAAEwAAABNAAAATgAAAE8AAABQAAAAUQAAAFIAAABTAAAAVAAAAFUAAABWAAAAVwAAAFgAAABZAAAAWgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAA==","dtype":"int32","order":"little","shape":[100]},"y":{"__ndarray__":"io8GrrYSzz8dPi++V0m9vyxhQHHwReu/m+H/S9K+zT9fZ12pfB33PyuLggjvKgJAryZsTIki0j/5pNOLT+3yP84kIA4UyALAZEXlQERGvD8eF7gSvyDpv+DX/rI7wZ6/i/bNJAbJw7+VhOCtodwDQPK63gi4w+c/lG/ewbnn879vCsjhym/+v4Qk3hZTLuy/ZiKKLCMa3r/XrMN7APjdP60MwMRt8/W/zthQbN++5L9C7rctzaeqP6RW2az86PO/8hi19POq0T9AW/VQzdzBPx/TvqIsLeE/6YicYyzu8L/+05lu3HQAwJhFp80xr9Q/fW+pDTn89L+cykVH8ta3vzI7AUAdvvC/RIf1I7qlyr8q2QQ/SqDivxv0tXNMS+u/lXeky1vS779ZpQR5p+Htv1SUb3zSPOQ/PJucLr7lAEAKf5RiRk8MwMvy35VZFOK/1+yc91UX0T8eq2Zv2vrIP5x4rV5mIve/iBv57/Nem7/xhm135BzBP81HwWXUwNa/7WOEMKGx6L/wf1ZjEdjuv/g679h0MwJAQBtcuUZ01D9t2sYfd4e/P8PeiHZBhfe/3uTvO0b497/fdW8GeSoHQO4z30WzJek/PSGko/Xh8b/OYQT6CBLrP++Yo07iFPQ/7ZrjWKm8vj93OkUAaZW9v1cYxs7Kk9q/Ye9a3zmg7T+JLuJZn0DvPzEDMK3eHt4/mXsfjzy91T+xLk1w1kzZPy74xaoqcdc/P3lLRAP4/78ioWDxvT28v7s/yppirsS/Qpjyrt9lwb9iVoExcHndP0DJxkxPMea/oIDECMDZ4T80t9PtzE3tv2lIL1XWLPa/ZXFwXDlW7j97tMOb96rIvzULOrG3g+g/dQpQJI8W6r8pjNE/FaLpv4COYVzyE/O/1JnjmyJl1D8gPx1UKhf5P/SuQAuX6dM/QSqZluwf+78nqXYCSkbYv5jVfJlAbs2/AqphmIWQBsB6NmoM6TT7v9rjsl+vO/k/OTbgXyGb4L8xYiRhYv3kP5JCyerhoe2/9wmnFGYduj8RzV/cMcbYP1FmMa05lfK/jg4gOwTS5L8=","dtype":"float64","order":"little","shape":[100]}},"selected":{"id":"4836"},"selection_policy":{"id":"4835"}},"id":"4788","type":"ColumnDataSource"},{"attributes":{"axis_label":"Variable X","axis_label_text_font_size":"16pt","formatter":{"id":"4832"},"major_tick_line_color":"firebrick","major_tick_line_width":3,"minor_tick_line_color":"orange","ticker":{"id":"4799"}},"id":"4798","type":"LinearAxis"},{"attributes":{},"id":"4809","type":"SaveTool"},{"attributes":{"axis_label":"Variable Y","axis_label_text_font_size":"16pt","formatter":{"id":"4834"},"ticker":{"id":"4803"}},"id":"4802","type":"LinearAxis"},{"attributes":{},"id":"4796","type":"LinearScale"},{"attributes":{},"id":"4799","type":"BasicTicker"},{"attributes":{},"id":"4835","type":"UnionRenderers"},{"attributes":{},"id":"4811","type":"HelpTool"},{"attributes":{},"id":"4836","type":"Selection"},{"attributes":{"axis":{"id":"4798"},"ticker":null},"id":"4801","type":"Grid"},{"attributes":{"axis":{"id":"4802"},"dimension":1,"ticker":null,"visible":false},"id":"4805","type":"Grid"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"4806"},{"id":"4807"},{"id":"4808"},{"id":"4809"},{"id":"4810"},{"id":"4811"}]},"id":"4813","type":"Toolbar"},{"attributes":{},"id":"4803","type":"BasicTicker"},{"attributes":{},"id":"4807","type":"WheelZoomTool"},{"attributes":{},"id":"4806","type":"PanTool"},{"attributes":{},"id":"4810","type":"ResetTool"},{"attributes":{"overlay":{"id":"4812"}},"id":"4808","type":"BoxZoomTool"},{"attributes":{"data_source":{"id":"4788"},"glyph":{"id":"4825"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"4826"},"selection_glyph":null,"view":{"id":"4828"}},"id":"4827","type":"GlyphRenderer"},{"attributes":{"source":{"id":"4788"}},"id":"4828","type":"CDSView"},{"attributes":{"label":{"value":"red line"},"renderers":[{"id":"4827"}]},"id":"4839","type":"LegendItem"},{"attributes":{"line_alpha":0.1,"line_color":"red","line_dash":[6],"line_width":2.0,"x":{"field":"x"},"y":{"field":"y"}},"id":"4826","type":"Line"},{"attributes":{"items":[{"id":"4839"}],"location":"top_left"},"id":"4838","type":"Legend"}],"root_ids":["4789"]},"title":"Bokeh Application","version":"2.2.3"}};
+  var render_items = [{"docid":"9cea2f64-ee46-4108-8c3d-692dd335677c","root_ids":["4789"],"roots":{"4789":"977bfe01-40ef-49ba-bbdb-d00f4167d05f"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
+</div>
+</div>
+<div class="section" id="histogram">
+<h2>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h2>
+<p>Creating a histogram with Bokeh requires importing the Numpy library to compute the bin edges.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">500</span><span class="p">,)</span> <span class="c1"># Create a 1D array (make sure you leave the second argument empty)</span>
+<span class="n">hist</span><span class="p">,</span> <span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;Histogram&quot;</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">background_fill_color</span><span class="o">=</span><span class="s2">&quot;#fafafa&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">quad</span><span class="p">(</span><span class="n">top</span><span class="o">=</span><span class="n">hist</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="n">edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">right</span><span class="o">=</span><span class="n">edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span><span class="n">fill_color</span><span class="o">=</span><span class="s2">&quot;navy&quot;</span><span class="p">,</span> <span class="n">line_color</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+
+
+
+
+
+<div class="bk-root" id="0c1ffc5a-b106-4042-8bff-3ccb4eadf311" data-root-id="4290"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+    
+  var docs_json = {"151840c2-03e6-4df2-bc87-d7d05ac924b4":{"roots":{"references":[{"attributes":{"background_fill_color":"#fafafa","below":[{"id":"4301"}],"center":[{"id":"4304"},{"id":"4308"}],"left":[{"id":"4305"}],"renderers":[{"id":"4313"}],"title":{"id":"4291"},"toolbar":{"id":"4309"},"x_range":{"id":"4293"},"x_scale":{"id":"4297"},"y_range":{"id":"4295"},"y_scale":{"id":"4299"}},"id":"4290","subtype":"Figure","type":"Plot"},{"attributes":{"data":{"left":{"__ndarray__":"Cn+UYkZPDMA5qB5RuEcLwGfRqD8qQArAlvoyLpw4CcDEI70cDjEIwPNMRwuAKQfAInbR+fEhBsBQn1voYxoFwH7I5dbVEgTArfFvxUcLA8DcGvqzuQMCwApEhKIr/ADActocIjvp/7/PLDH/Htr9vyx/RdwCy/u/idFZuea7+b/mI26Wyqz3v0R2gnOunfW/oMiWUJKO87/+Gqstdn/xv7TafhW04O6/cH+nz3vC6r8oJNCJQ6Tmv+TI+EMLhuK/QNtC/KXP3L+wJJRwNZPUv1DcysmJrci/YN7aZFFpsL/A+9/JcIiwPwBrTXwZvcg/CGzVSf2a1D+YIoTVbdfcP5BsmTDvieI/2Mdwdieo5j8YI0i8X8bqP2B+HwKY5O4/1Gz7I2iB8T94GudGhJDzPxjI0mmgn/U/vHW+jLyu9z9gI6qv2L35PwDRldL0zPs/pH6B9RDc/T9ILG0YLev/P/ZsrJ0k/QBAxkMir7IEAkCYGpjAQAwDQGrxDdLOEwRAOsiD41wbBUAMn/n06iIGQA==","dtype":"float64","order":"little","shape":[50]},"right":{"__ndarray__":"OageUbhHC8Bn0ag/KkAKwJb6Mi6cOAnAxCO9HA4xCMDzTEcLgCkHwCJ20fnxIQbAUJ9b6GMaBcB+yOXW1RIEwK3xb8VHCwPA3Br6s7kDAsAKRISiK/wAwHLaHCI76f+/zywx/x7a/b8sf0XcAsv7v4nRWbnmu/m/5iNulsqs979EdoJzrp31v6DIllCSjvO//hqrLXZ/8b+02n4VtODuv3B/p897wuq/KCTQiUOk5r/kyPhDC4biv0DbQvylz9y/sCSUcDWT1L9Q3MrJia3Iv2De2mRRabC/wPvfyXCIsD8Aa018Gb3IPwhs1Un9mtQ/mCKE1W3X3D+QbJkw74niP9jHcHYnqOY/GCNIvF/G6j9gfh8CmOTuP9Rs+yNogfE/eBrnRoSQ8z8YyNJpoJ/1P7x1voy8rvc/YCOqr9i9+T8A0ZXS9Mz7P6R+gfUQ3P0/SCxtGC3r/z/2bKydJP0AQMZDIq+yBAJAmBqYwEAMA0Bq8Q3SzhMEQDrIg+NcGwVADJ/59OoiBkDfdW8GeSoHQA==","dtype":"float64","order":"little","shape":[50]},"top":{"__ndarray__":"1u2Y/5bksz8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANbtmP+W5LM/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA1u2Y/5bksz8AAAAAAAAAANbtmP+W5MM/ze2Y/5bksz8AAAAAAAAAAM3tmP+W5MM/ze2Y/5bksz/W7Zj/luTTP6RkZX/i1s0/wWRlf+LWzT+kZGV/4tbNPxzQpR8EaOE/w+2Y/5bk0z/W7Zj/luTTP8FkZX/i1s0/pGRlf+LWzT/W7Zj/luTDP8PtmP+W5OM/wWRlf+LWzT+kZGV/4tbdP5ELjN8pYeY/Myl/v7zd2D9MKX+/vN3YP8PtmP+W5MM/32Rlf+LWzT+kZGV/4tbNP8PtmP+W5LM/w+2Y/5bksz/q7Zj/luSzP8PtmP+W5LM/w+2Y/5bkwz8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADD7Zj/luSzPwAAAAAAAAAAw+2Y/5bkwz/D7Zj/luSzPwAAAAAAAAAAAAAAAAAAAACv7Zj/luSzPw==","dtype":"float64","order":"little","shape":[50]}},"selected":{"id":"4480"},"selection_policy":{"id":"4479"}},"id":"4310","type":"ColumnDataSource"},{"attributes":{"text":"Histogram"},"id":"4291","type":"Title"},{"attributes":{"source":{"id":"4310"}},"id":"4314","type":"CDSView"},{"attributes":{"data_source":{"id":"4310"},"glyph":{"id":"4311"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"4312"},"selection_glyph":null,"view":{"id":"4314"}},"id":"4313","type":"GlyphRenderer"},{"attributes":{},"id":"4302","type":"BasicTicker"},{"attributes":{"formatter":{"id":"4478"},"ticker":{"id":"4306"}},"id":"4305","type":"LinearAxis"},{"attributes":{},"id":"4295","type":"DataRange1d"},{"attributes":{},"id":"4297","type":"LinearScale"},{"attributes":{},"id":"4479","type":"UnionRenderers"},{"attributes":{},"id":"4293","type":"DataRange1d"},{"attributes":{"formatter":{"id":"4476"},"ticker":{"id":"4302"}},"id":"4301","type":"LinearAxis"},{"attributes":{},"id":"4480","type":"Selection"},{"attributes":{},"id":"4299","type":"LinearScale"},{"attributes":{"axis":{"id":"4301"},"ticker":null},"id":"4304","type":"Grid"},{"attributes":{},"id":"4476","type":"BasicTickFormatter"},{"attributes":{"axis":{"id":"4305"},"dimension":1,"ticker":null},"id":"4308","type":"Grid"},{"attributes":{},"id":"4306","type":"BasicTicker"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto"},"id":"4309","type":"Toolbar"},{"attributes":{},"id":"4478","type":"BasicTickFormatter"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.1},"fill_color":{"value":"navy"},"left":{"field":"left"},"line_alpha":{"value":0.1},"line_color":{"value":"white"},"right":{"field":"right"},"top":{"field":"top"}},"id":"4312","type":"Quad"},{"attributes":{"bottom":{"value":0},"fill_alpha":{"value":0.5},"fill_color":{"value":"navy"},"left":{"field":"left"},"line_alpha":{"value":0.5},"line_color":{"value":"white"},"right":{"field":"right"},"top":{"field":"top"}},"id":"4311","type":"Quad"}],"root_ids":["4290"]},"title":"Bokeh Application","version":"2.2.3"}};
+  var render_items = [{"docid":"151840c2-03e6-4df2-bc87-d7d05ac924b4","root_ids":["4290"],"roots":{"4290":"0c1ffc5a-b106-4042-8bff-3ccb4eadf311"}}];
+  root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    var attempts = 0;
+    var timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="plotting_seaborn.html" title="previous page">Seaborn</a>
+    <a class='right-next' id="next-link" href="plotting_holoviews.html" title="next page">Holoviews</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Andres Patrignani<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Licensed under CC BY-NC-SA</a>
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
+
+
+    
+    <!-- Google Analytics -->
+    <script>
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', 'UA-XXXXXXXXX-X', 'auto');
+      ga('set', 'anonymizeIp', true);
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <!-- End Google Analytics -->
+    
+  </body>
+</html>
