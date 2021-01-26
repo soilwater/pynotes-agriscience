@@ -1,4 +1,4 @@
-# PyNotes for Agriscientists
+# PyNotes in Agriscience
 
 A set of hands-on coding exercises to solve common tasks and simple problems in agricultural sciences.
 
