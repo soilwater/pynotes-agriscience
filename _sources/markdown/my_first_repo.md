@@ -1,6 +1,7 @@
-# Steps to create, clone, and push your first Github repository
+# First Github repository
 
-Right off the bat I will define few Github commands to avoid confusion:
+This example will guide you through the step by step creation of a Github repository. Before we start, it will be helpful if we define some fo the jargon involved in the Git commands:
+
 `clone`: Means to download or copy an entire repository.
 `push`: Send updates/changes to Gihub repository. You need to clone the repository first.
 `pull`: Get updates from Github repository
