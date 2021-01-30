@@ -1,0 +1,18 @@
+<Columns>
+  <Column Key="GrowerName" Name="GrowerName" DataType="8" Width="64" Decimals="0" DataUse="4" DataScope="1" UOM="0" UOMText="none" />
+  <Column Key="FieldName" Name="FieldName" DataType="8" Width="64" Decimals="0" DataUse="4" DataScope="1" UOM="0" UOMText="none" />
+  <Column Key="CrpZnName" Name="CrpZnName" DataType="8" Width="64" Decimals="0" DataUse="4" DataScope="1" UOM="0" UOMText="none" />
+  <Column Key="Load" Name="Load" DataType="8" Width="24" Decimals="0" DataUse="4" DataScope="1" UOM="0" UOMText="none" />
+  <Column Key="Variety" Name="Variety" DataType="8" Width="24" Decimals="0" DataUse="4" DataScope="1" UOM="0" UOMText="none" />
+  <Column Key="LoadVar" Name="LoadVar" DataType="8" Width="24" Decimals="0" DataUse="4" DataScope="1" UOM="0" UOMText="none" />
+  <Column Key="TimeStamp" Name="TimeStamp" DataType="8" Width="24" Decimals="0" DataUse="12288" DataScope="1" UOM="0" UOMText="none" />
+  <Column Key="Date" Name="Date" DataType="8" Width="24" Decimals="0" DataUse="4096" DataScope="1" UOM="0" UOMText="none" />
+  <Column Key="Time" Name="Time" DataType="8" Width="24" Decimals="0" DataUse="8192" DataScope="1" UOM="0" UOMText="none" />
+  <Column Key="Yield" Name="Yield" DataType="5" Width="9" Decimals="2" DataUse="3" DataScope="1" UOM="67240452" UOMText="pounds/acre" />
+  <Column Key="Flow" Name="Flow" DataType="5" Width="10" Decimals="4" DataUse="2" DataScope="1" UOM="18153988" UOMText="pounds/second" />
+  <Column Key="Moisture" Name="Moisture" DataType="5" Width="10" Decimals="2" DataUse="2" DataScope="1" UOM="31" UOMText="percent" />
+  <Column Key="Duration" Name="Duration" DataType="5" Width="10" Decimals="4" DataUse="2" DataScope="1" UOM="277" UOMText="seconds" />
+  <Column Key="Distance" Name="Distance" DataType="5" Width="10" Decimals="4" DataUse="2" DataScope="1" UOM="257" UOMText="inches" />
+  <Column Key="Width" Name="Width" DataType="5" Width="10" Decimals="4" DataUse="2" DataScope="1" UOM="257" UOMText="inches" />
+  <Column Key="Area" Name="Area" DataType="5" Width="10" Decimals="6" DataUse="2" DataScope="1" UOM="1026" UOMText="acres" />
+</Columns>

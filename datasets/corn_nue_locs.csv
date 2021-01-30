@@ -1,0 +1,34 @@
+﻿year,state,location,textural_class,sidedress_stage,replication,treatment,planting_N,sidedress_N,total_N,grain_yield_ton_ha
+2008,Kansas,Manhattan,Silt loam,9,1,1,0,0,0,4.19
+2008,Kansas,Manhattan,Silt loam,9,1,2,178,0,178,9.15
+2008,Kansas,Manhattan,Silt loam,9,1,8,36,134,170,9.64
+2008,Kansas,Manhattan,Silt loam,9,2,1,0,0,0,3.49
+2008,Kansas,Manhattan,Silt loam,9,2,2,178,0,178,10.93
+2008,Kansas,Manhattan,Silt loam,9,2,8,36,134,170,11.09
+2008,Kansas,Manhattan,Silt loam,9,3,1,0,0,0,3.13
+2008,Kansas,Manhattan,Silt loam,9,3,2,178,0,178,8.46
+2008,Kansas,Manhattan,Silt loam,9,3,8,36,134,170,11.16
+2008,Kansas,Manhattan,Silt loam,9,4,1,0,0,0,3.07
+2008,Kansas,Manhattan,Silt loam,9,4,2,178,0,178,6.92
+2008,Kansas,Manhattan,Silt loam,9,4,8,36,134,170,9.16
+2007,Mexique,Cd_obregon,Clay,7,1,1,0,0,0,1.33
+2007,Mexique,Cd_obregon,Clay,7,1,2,178,0,178,9.71
+2007,Mexique,Cd_obregon,Clay,7,1,8,36,134,170,10.57
+2007,Mexique,Cd_obregon,Clay,7,2,1,0,0,0,2.23
+2007,Mexique,Cd_obregon,Clay,7,2,2,178,0,178,10.60
+2007,Mexique,Cd_obregon,Clay,7,2,8,36,134,170,9.21
+2007,Mexique,Cd_obregon,Clay,7,3,1,0,0,0,4.48
+2007,Mexique,Cd_obregon,Clay,7,3,2,178,0,178,11.42
+2007,Mexique,Cd_obregon,Clay,7,3,8,36,134,170,10.88
+2007,Mexique,Cd_obregon,Clay,7,4,1,0,0,0,6.60
+2007,Mexique,Cd_obregon,Clay,7,4,2,178,0,178,10.92
+2007,Mexique,Cd_obregon,Clay,7,4,8,36,134,170,10.56
+2006,Oklahoma,Stillwater,Fine sandy loam,8,1,1,0,0,0,7.51
+2006,Oklahoma,Stillwater,Fine sandy loam,8,1,2,178,0,178,9.73
+2006,Oklahoma,Stillwater,Fine sandy loam,8,1,8,36,134,170,8.86
+2006,Oklahoma,Stillwater,Fine sandy loam,8,2,1,0,0,0,6.22
+2006,Oklahoma,Stillwater,Fine sandy loam,8,2,2,178,0,178,16.76
+2006,Oklahoma,Stillwater,Fine sandy loam,8,2,8,36,134,170,10.46
+2006,Oklahoma,Stillwater,Fine sandy loam,8,3,1,0,0,0,6.87
+2006,Oklahoma,Stillwater,Fine sandy loam,8,3,2,178,0,178,6.73
+2006,Oklahoma,Stillwater,Fine sandy loam,8,3,8,36,134,170,9.42

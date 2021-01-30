@@ -1,0 +1,220 @@
+network,state,county,site_name,start,lat,lon,elev
+SCAN,AK,Bethel,Aniak,2002,61.58,-159.58,80
+SCAN,AK,Bethel,Canyon Lake,2014,59.42,-161.16,550
+SCAN,AK,Nome,Checkers Creek,2014,65.4,-164.71,326
+SCAN,AK,Yukon-koyukuk,Hozatka Lake,2014,65.2,-156.63,206
+SCAN,AK,Yukon-koyukuk,Innoko Camp,2014,63.64,-158.03,83
+SCAN,AK,Kusilvak,Kanaryagak Camp,2013,61.36,-165.12,13
+SCAN,AK,Yukon-koyukuk,Kanuti Lake,2014,66.18,-151.74,524
+SCAN,AK,Dillingham,Lower Mulchatna,2012,59.82,-156.99,320
+SCAN,AK,Kenai Cook Inlet,Moose Inc,2002,59.68,-151.37,132
+SCAN,AK,Bristol Bay,Naknek River,2013,58.67,-156.57,100
+SCAN,AK,Yukon-koyukuk,Nenana,2002,64.69,-148.91,415
+SCAN,AK,Kenai Peninsula,Schor Garden,2002,59.68,-151.38,393
+SCAN,AK,Southeast Fairbanks,Tok,2002,63.35,-142.98,1630
+SCAN,AK,Nome,Unalakleet,2015,63.91,-160.75,290
+SCAN,AK,Dillingham,Weary Lake,2012,59.13,-159.09,100
+SCAN,AL,Madison,AAMU-JTG,2002,34.78,-86.55,860
+SCAN,AL,Madison,Bragg Farm,2003,34.89,-86.6,798
+SCAN,AL,Montgomery,Broad Acres,2010,32.28,-86.05,269
+SCAN,AL,Cullman,Cullman-NAHRC,2006,34.19,-86.8,799
+SCAN,AL,Pickens,Dee River Ranch,2010,33.11,-88.31,160
+SCAN,AL,Marshall,Hodges,2002,34.45,-86.15,730
+SCAN,AL,Colbert,Isbell Farms,2010,34.82,-87.99,603
+SCAN,AL,Baldwin,Koptis Farms,2010,30.52,-87.7,135
+SCAN,AL,Sumter,Livingston-UWA,2006,32.61,-88.2,144
+SCAN,AL,Macon,Morris Farms,2010,32.41,-85.91,220
+SCAN,AL,Escambia,Perdido Riv Farms,2010,31.11,-87.55,299
+SCAN,AL,Houston,River Road Farms,2010,31.02,-85.04,107
+SCAN,AL,Dallas,Selma,2010,32.4,-86.89,140
+SCAN,AL,Morgan,Stanley Farm,2002,34.43,-86.68,635
+SCAN,AL,Winston,Sudduth Farms,2010,34.18,-87.46,772
+SCAN,AL,Macon,Tuskegee,2006,32.43,-85.75,400
+SCAN,AL,Randolph,Wedowee,2010,33.33,-85.52,934
+SCAN,AL,Madison,Wtars,2002,34.9,-86.53,625
+SCAN,AR,Jefferson,Uapb Campus-PB,2004,34.25,-92.03,232
+SCAN,AR,Arkansas,Uapb Dewitt,2004,34.28,-91.35,197
+SCAN,AR,Pope,Uapb Point Remove,2004,35.21,-92.92,315
+SCAN,AR,Crittenden,Uapb-Earle,2004,35.28,-90.45,213
+SCAN,AR,Lonoke,Uapb-Lonoke Farm,1999,34.85,-91.88,250
+SCAN,AR,Lee,Uapb-Marianna,2004,34.78,-90.82,217
+SCAN,AZ,Cochise,Walnut Gulch #1,1999,31.73,-110.05,4500
+SCAN,CA,Lassen,Ash Valley,2014,41.05,-120.69,5097
+SCAN,CA,Mono,Bodie Hills,2014,38.26,-119.13,7825
+SCAN,CA,San Luis Obispo,Cochora Ranch,2012,35.12,-119.6,2697
+SCAN,CA,Inyo,Death Valley Jct,2012,36.33,-116.35,2062
+SCAN,CA,Inyo,Deep Springs,2011,37.37,-117.97,5399
+SCAN,CA,Riverside,Desert Center,2011,33.8,-115.31,556
+SCAN,CA,Mono,Doe Ridge,2012,37.63,-118.83,7340
+SCAN,CA,Lassen,Eagle Lake,2012,40.62,-120.72,5134
+SCAN,CA,San Bernardino,Essex,2011,34.67,-115.17,2644
+SCAN,CA,Riverside,Ford Dry Lake,2011,33.65,-115.1,394
+SCAN,CA,Shasta,French Gulch,2014,40.79,-122.55,3704
+SCAN,CA,Mono,Marble Creek,2009,37.78,-118.42,6183
+SCAN,CA,Fresno,Monocline Ridge,2014,36.54,-120.55,875
+SCAN,CA,San Bernardino,Shadow Mtns,2011,35.47,-115.72,3643
+SCAN,CA,San Luis Obispo,Stubblefield,2014,34.97,-119.48,2995
+SCAN,CO,Weld,CPER,2013,40.82,-104.71,5330
+SCAN,CO,Weld,Nunn #1,1993,40.87,-104.73,5900
+SCAN,FL,Dade,Everglades ARS,1999,25.5,-80.55,9
+SCAN,FL,Lake,Sellers Lake #1,1994,29.1,-81.63,75
+SCAN,FL,Leon,Wakulla #1,1993,30.3,-84.42,150
+SCAN,GA,Tift,Little River,1999,31.5,-83.55,350
+SCAN,GA,Oconee,Watkinsville #1,1993,33.88,-83.43,770
+SCAN,HI,Hawaii,Island Dairy,2005,20,-155.29,1160
+SCAN,HI,Hawaii,Kainaliu,2005,19.53,-155.93,1364
+SCAN,HI,Hawaii,Kemole Gulch,2005,19.91,-155.59,4163
+SCAN,HI,Hawaii,Kukuihaele,2005,20.1,-155.51,947
+SCAN,HI,Hawaii,Mana House,2005,19.96,-155.54,4234
+SCAN,HI,Hawaii,Pua Akala,2005,19.79,-155.33,6394
+SCAN,HI,Hawaii,Silver Sword,2005,19.77,-155.42,9324
+SCAN,HI,Hawaii,Waimea Plain,2005,20.01,-155.6,3039
+SCAN,IA,Boone,Ames,2001,42.02,-93.73,1073
+SCAN,IA,Woodbury,Shagbark Hills,2002,42.43,-95.77,1400
+SCAN,ID,Owyhee,Jordan Valley Cwma,2008,42.95,-117.01,4508
+SCAN,ID,Ada,Orchard Range Site,1983,43.32,-116,3200
+SCAN,IL,Mason,Mason #1,1993,40.32,-89.9,570
+SCAN,KS,Cowley,Abrams,2004,37.13,-97.09,1194
+SCAN,KS,Nemaha,Centralia Lake,2004,39.7,-96.16,1302
+SCAN,KS,Jefferson,Ku-Nesa,2008,39.05,-95.19,1102
+SCAN,KS,Phillips,Phillipsburg,2004,39.79,-99.33,1986
+SCAN,KY,Hart,Mammoth Cave,2003,37.19,-86.04,800
+SCAN,KY,Caldwell,Princeton #1,1993,37.1,-87.83,615
+SCAN,MD,Prince George's,Powder Mill,2001,39.02,-76.85,105
+SCAN,MN,Sherburne,Crescent Lake #1,1993,45.42,-93.95,980
+SCAN,MN,Polk,Glacial Ridge,2001,47.72,-96.27,1125
+SCAN,MO,Boone,CMRB LTAR-MO,2014,39.23,-92.12,852
+SCAN,MO,Stoddard,Dexter,2001,36.78,-89.93,305
+SCAN,MO,Lincoln,Elsberry PMC,2015,39.15,-90.78,453
+SCAN,MO,Douglas,Journagan Ranch,2012,37,-92.26,1106
+SCAN,MO,Lawrence,Mt Vernon,2002,37.07,-93.88,1150
+SCAN,MO,Johnson,Powell Gardens,2002,38.87,-94.03,960
+SCAN,MO,St. Clair,Schell-Osage,2012,37.99,-94.04,793
+SCAN,MO,Audrain,Spickard,2001,40.25,-93.72,911
+SCAN,MS,Sunflower,Beasley Lake,1999,33.38,-90.65,115
+SCAN,MS,Panola,Goodwin Ck Pasture,1999,34.25,-89.87,320
+SCAN,MS,Panola,Goodwin Ck Timber,1999,34.23,-89.9,320
+SCAN,MS,Yazoo,Mayday,2005,32.86,-90.52,108
+SCAN,MS,Issaquena,North Issaquena,2004,33,-91.06,112
+SCAN,MS,Sharkey,Onward,1999,32.75,-90.93,100
+SCAN,MS,Bolivar,Perthshire,2002,33.97,-90.9,200
+SCAN,MS,Sunflower,Sandy Ridge,2005,33.66,-90.57,138
+SCAN,MS,Bolivar,Scott,2002,33.62,-91.1,165
+SCAN,MS,Humphreys,Silver City,2004,33.09,-90.51,115
+SCAN,MS,Oktibbeha,Starkville,1999,33.63,-88.77,340
+SCAN,MS,Jackson,Tnc Fort Bayou,2003,30.47,-88.74,43
+SCAN,MS,Tunica,Tunica,1999,34.68,-90.42,260
+SCAN,MS,Tallahatchie,Vance,1999,34.07,-90.35,150
+SCAN,MT,Pondera,Conrad Ag Rc,2006,48.3,-111.92,3706
+SCAN,MT,Hill,Fort Assiniboine #1,1991,48.48,-109.8,2710
+SCAN,MT,Garfield,Jordan,2007,47.52,-107.13,2820
+SCAN,MT,Dawson,Lindsay,1990,47.21,-105.19,2871
+SCAN,MT,Judith Basin,Moccasin,2006,47.06,-109.95,4256
+SCAN,MT,Richland,Sidney,2006,47.77,-104.25,2274
+SCAN,MT,Gallatin,Table Mountain,1986,45.8,-111.59,4474
+SCAN,MT,Liberty,Violett,2006,48.44,-111.18,3225
+SCAN,NC,Washington,Tidewater #1,1993,35.87,-76.65,20
+SCAN,ND,Morton,Mandan #1,1993,46.77,-100.92,1930
+SCAN,NE,Chase,Johnson Farm,2005,40.37,-101.72,3341
+SCAN,NE,Lancaster,Rogers Farm #1,1993,40.85,-96.47,1215
+SCAN,NH,Grafton,Hubbard Brook,2002,43.93,-71.72,1480
+SCAN,NH,Grafton,Mascoma River,1998,43.78,-72.03,1400
+SCAN,NM,Lincoln,Adams Ranch #1,1993,34.25,-105.42,6175
+SCAN,NM,Rio Arriba,Alcalde,2010,36.09,-106.06,5693
+SCAN,NM,Lea,Crossroads,2005,33.54,-103.24,4055
+SCAN,NM,Dona Ana,Jornada Exp Range,2009,32.56,-106.7,4360
+SCAN,NM,Valencia,Los Lunas PMC,2009,34.77,-106.76,4846
+SCAN,NM,Socorro,Sevilleta,2010,34.36,-106.69,5233
+SCAN,NM,Lea,Willow Wells,2005,33.53,-103.63,4537
+SCAN,NV,Washoe,Buckhorn,2014,40.88,-119.95,3925
+SCAN,NV,Clark,Charkiln,2007,36.37,-115.82,6683
+SCAN,NV,Clark,Hayford Peak,2007,36.66,-115.2,9870
+SCAN,NV,Clark,Kyle Canyon,2007,36.27,-115.61,7046
+SCAN,NV,Clark,Lovell Summit,2007,36.17,-115.61,6582
+SCAN,NV,Pershing,Lovelock NNR,2006,40.03,-118.18,3934
+SCAN,NV,Clark,Pine Nut,2007,36.57,-115.2,6780
+SCAN,NV,Lander,Porter Canyon,2009,39.47,-117.62,7187
+SCAN,NV,Washoe,Sheldon,1988,41.9,-119.44,5865
+SCAN,NV,Clark,Trough Springs,2007,36.37,-115.78,7846
+SCAN,NY,Ontario,Geneva #1,1993,42.88,-77.03,725
+SCAN,OH,Madison,Molly Caren #1,1993,39.95,-83.45,1060
+SCAN,OH,Lake,Sunleaf Nursery,2003,41.8,-81.08,670
+SCAN,OK,Canadian,Fort Reno #1,1998,35.55,-98.02,1400
+SCAN,OR,Klamath,Lynhart Ranch,2003,42.02,-121.39,4092
+SCAN,PA,Northumberland,Mahantango Ck,1999,40.67,-76.67,730
+SCAN,PA,Centre,Rock Springs Pa,1999,40.72,-77.93,1220
+SCAN,PR,Guanica,Bosque Seco,2002,17.97,-66.87,541
+SCAN,PR,Cabo Rojo,Combate,2002,17.98,-67.17,33
+SCAN,PR,Corozal,Corozal,2012,18.32,-66.36,852
+SCAN,PR,Juana Diaz,Fortuna,2006,18.03,-66.53,93
+SCAN,PR,Adjuntas,Guilarte Forest,2001,18.15,-66.77,3345
+SCAN,PR,Isabela,Isabela,2003,18.47,-67.04,50
+SCAN,PR,Mayaguez,Maricao Forest,2001,18.15,-67,2450
+SCAN,PR,Mayaguez,Mayaguez TARS,2006,18.21,-67.14,45
+SCAN,SC,Darlington,Pee Dee,1999,34.3,-79.73,120
+SCAN,SC,Hampton,Youmans Farm,1999,32.67,-81.2,75
+SCAN,SD,Minnehaha,Eros Data Center,2003,43.74,-96.61,1602
+SCAN,TN,Giles,Allen Farms,2003,35.07,-86.89,705
+SCAN,TN,Franklin,Eastview Farm,2003,35.14,-86.19,1054
+SCAN,TN,Lincoln,McAllister Farm,2003,35.06,-86.59,913
+SCAN,TX,Jefferson,Beaumont,2013,30.07,-94.29,19
+SCAN,TX,Randall,Bushland #1,1993,35.17,-102.1,3820
+SCAN,TX,Kleberg,Kingsville,2013,27.55,-97.88,67
+SCAN,TX,Knox,Knox City,2013,33.45,-99.87,1448
+SCAN,TX,Cochran,Lehman,2005,33.63,-102.75,3767
+SCAN,TX,Hockley,Levelland,2005,33.55,-102.37,3510
+SCAN,TX,Waller,Prairie View #1,1993,30.08,-95.98,270
+SCAN,TX,Lubbock,Reese Center,2005,33.62,-102.04,3333
+SCAN,TX,Falls,Riesel,2013,31.48,-96.88,539
+SCAN,TX,Tom Green,San Angelo,2013,31.55,-100.51,1970
+SCAN,TX,Erath,Stephenville,2013,32.25,-98.2,1311
+SCAN,TX,Kinney,Uvalde,2013,29.36,-100.25,915
+SCAN,TX,Wilbarger,Vernon,2013,34.02,-99.25,1184
+SCAN,TX,Hidalgo,Weslaco,2013,26.16,-97.96,57
+SCAN,UT,San Juan,Alkali Mesa,2007,37.67,-109.36,6445
+SCAN,UT,Box Elder,Blue Creek,2007,41.94,-112.43,5179
+SCAN,UT,Rich,Buffalo Jump,2009,41.34,-111.19,6682
+SCAN,UT,Cache,Cache Junction,2007,41.82,-111.98,4425
+SCAN,UT,Washington,Cave Valley,2010,37.36,-113.12,6273
+SCAN,UT,Morgan,Chicken Ridge,2009,41.33,-111.3,7649
+SCAN,UT,Piute,Circleville,2007,38.15,-112.25,6120
+SCAN,UT,Tooele,Dugway,2009,40.17,-113.02,4314
+SCAN,UT,San Juan,Eastland,2007,37.78,-109.17,6837
+SCAN,UT,Iron,Enterprise,2007,37.63,-113.64,5250
+SCAN,UT,Sanpete,Ephraim,2007,39.37,-111.58,5531
+SCAN,UT,Tooele,Goshute,2010,39.99,-114,5487
+SCAN,UT,Tooele,Grantsville,2009,40.59,-112.39,4337
+SCAN,UT,Emery,Green River,2005,39.02,-110.16,4103
+SCAN,UT,Box Elder,Grouse Creek,2010,41.78,-113.82,5835
+SCAN,UT,Millard,Hals Canyon,2010,38.59,-113.75,5260
+SCAN,UT,San Juan,Harms Way,2010,38.31,-109.24,7055
+SCAN,UT,Millard,Holden,2007,39.19,-112.4,4745
+SCAN,UT,Duchesne,Little Red Fox,2010,40.18,-110.3,5395
+SCAN,UT,Beaver,Manderfield,2010,38.37,-112.64,6185
+SCAN,UT,San Juan,Mccracken Mesa,2007,37.45,-109.34,5315
+SCAN,UT,Beaver,Milford,2007,38.34,-113.01,5005
+SCAN,UT,Morgan,Morgan,2007,41,-111.69,5113
+SCAN,UT,Duchesne,Mountain Home,2007,40.37,-110.41,6927
+SCAN,UT,Juab,Nephi,2007,39.65,-111.87,5245
+SCAN,UT,Garfield,Panguitch,2010,37.87,-112.43,6534
+SCAN,UT,Box Elder,Park Valley,2010,41.77,-113.29,5098
+SCAN,UT,Carbon,Price,2007,39.53,-110.81,5637
+SCAN,UT,Washington,Sand Hollow,2010,37.11,-113.36,3088
+SCAN,UT,Uintah,Split Mountain,2010,40.39,-109.35,4844
+SCAN,UT,Kane,Spooky,2010,37.51,-111.26,5341
+SCAN,UT,Millard,Tule Valley,2010,39.24,-113.46,4592
+SCAN,UT,Kane,Vermillion,2010,37.19,-112.19,6392
+SCAN,UT,San Juan,West Summit,2007,38.01,-109.13,6993
+SCAN,VA,Orange,N Piedmont Arec,2000,38.23,-78.12,520
+SCAN,VA,Patrick,Reynolds Homestead,2004,36.63,-80.13,1127
+SCAN,VA,Augusta,Shenandoah,2004,37.92,-79.2,1763
+SCAN,VA,Suffolk,Tidewater Arec,2000,36.68,-76.77,80
+SCAN,VI,St. John,Cinnamon Bay,2008,18.35,-64.75,310
+SCAN,VI,St. Croix,Upper Bethlehem,2006,17.72,-64.8,119
+SCAN,VT,Bennington,Lye Brook,2000,43.05,-73.03,2435
+SCAN,VT,Chittenden,Mount Mansfield,2000,44.53,-72.83,2236
+SCAN,WA,Whitman,Cook Farm Field D,2013,46.78,-117.08,2727
+SCAN,WA,Adams,Lind #1,1993,47,-118.57,1640
+SCAN,WI,Lafayette,UW Platteville,2013,42.71,-90.39,1075
+SCAN,WI,Forest,Wabeno #1,1993,45.47,-88.58,1580
+SCAN,WY,Goshen,Torrington #1,1993,42.07,-104.13,4280
