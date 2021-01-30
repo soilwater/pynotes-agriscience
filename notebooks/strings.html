@@ -161,12 +161,12 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown/code_style.html">
-   Coding Style
+  <a class="reference internal" href="../markdown/coding_style.html">
+   Good Coding Habits
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown/reference_framework.html">
+  <a class="reference internal" href="../markdown/coding_guideline.html">
    Coding Guidelines
   </a>
  </li>
@@ -178,6 +178,11 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference internal" href="calculator_examples.html">
+   Calculator Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="importing_modules.html">
    Importing modules
   </a>
@@ -185,11 +190,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="math_module.html">
    Math Module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="calculator_examples.html">
-   Calculator Examples
   </a>
  </li>
  <li class="toctree-l1">
@@ -622,6 +622,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="optimal_nitrogen_rate.html">
    Optimal Nitrogen Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="maximum_return_to_nitrogen.html">
+   Maximum Return to Nitrogen
   </a>
  </li>
  <li class="toctree-l1">
@@ -1145,65 +1150,32 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apostrophes</span>
-<span class="n">mystr1</span> <span class="o">=</span> <span class="s1">&#39;This is a string&#39;</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">mystr1</span><span class="p">)</span>
+<span class="n">soil_1</span> <span class="o">=</span> <span class="s1">&#39;Clay loam&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">soil_1</span><span class="p">))</span>
+
+<span class="c1"># Quotation marks</span>
+<span class="n">soil_2</span> <span class="o">=</span> <span class="s2">&quot;Silty loam&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">soil_2</span><span class="p">))</span>
+
+<span class="c1"># Triple apostrophes or triple quotes can define a string spanning multiple lines</span>
+<span class="n">soil_definition</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;The layer(s) of generally loose mineral and/or organic material </span>
+<span class="s2">that are affected by physical, chemical, and/or biological processes</span>
+<span class="s2">at or near the planetary surface and usually hold liquids, gases, </span>
+<span class="s2">and biota and support plants.&quot;&quot;&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">soil_definition</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soil_definition</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Quotation marks</span>
-<span class="n">mystr2</span> <span class="o">=</span> <span class="s2">&quot;This is also a string&quot;</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">mystr2</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>str
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Triple quotes</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;This is a long string</span>
-<span class="s2">spanning multiple </span>
-<span class="s2">lines&quot;&quot;&quot;</span><span class="p">)</span> <span class="c1"># We will use this to document functions</span>
-
-<span class="n">mystr3</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;This is also a </span>
-<span class="s1">multiline </span>
-<span class="s1">string&#39;&#39;&#39;</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">mystr3</span><span class="p">)</span>
-
-<span class="c1"># Triple quotes can span multiple lines and are super useful to document functions and scripts</span>
-<span class="n">snark</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;Just the place for a Snark!&quot; the Bellman cried,</span>
-<span class="s1">As he landed his crew with care;</span>
-<span class="s1">Supporting each man on the top of the tide</span>
-<span class="s1">By a finger entwined in his hair.&#39;&#39;&#39;</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">snark</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is a long string
-spanning multiple 
-lines
-This is also a 
-multiline 
-string
-Just the place for a Snark!&quot; the Bellman cried,
-As he landed his crew with care;
-Supporting each man on the top of the tide
-By a finger entwined in his hair.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+The layer(s) of generally loose mineral and/or organic material 
+that are affected by physical, chemical, and/or biological processes
+at or near the planetary surface and usually hold liquids, gases, 
+and biota and support plants.
 </pre></div>
 </div>
 </div>
@@ -1215,24 +1187,13 @@ By a finger entwined in his hair.
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split text lines into a list</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">snark</span><span class="p">)</span> <span class="c1"># Print original text</span>
-
-<span class="n">snark_lines</span> <span class="o">=</span> <span class="n">snark</span><span class="o">.</span><span class="n">splitlines</span><span class="p">();</span> <span class="c1"># Split</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1"># Add some space for readability</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">snark_lines</span><span class="p">)</span> <span class="c1"># Print splitted text</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">snark_lines</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">str_lines</span> <span class="o">=</span> <span class="n">soil_definition</span><span class="o">.</span><span class="n">splitlines</span><span class="p">();</span> <span class="c1"># Split lines at the carriage return</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str_lines</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Just the place for a Snark!&quot; the Bellman cried,
-As he landed his crew with care;
-Supporting each man on the top of the tide
-By a finger entwined in his hair.
-
-[&#39;Just the place for a Snark!&quot; the Bellman cried,&#39;, &#39;As he landed his crew with care;&#39;, &#39;Supporting each man on the top of the tide&#39;, &#39;By a finger entwined in his hair.&#39;]
-Just the place for a Snark!&quot; the Bellman cried,
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;The layer(s) of generally loose mineral and/or organic material &#39;, &#39;that are affected by physical, chemical, and/or biological processes&#39;, &#39;at or near the planetary surface and usually hold liquids, gases, &#39;, &#39;and biota and support plants.&#39;]
 </pre></div>
 </div>
 </div>
@@ -1242,16 +1203,16 @@ Just the place for a Snark!&quot; the Bellman cried,
 <h2>Split string on a given character<a class="headerlink" href="#split-string-on-a-given-character" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">csv_string</span> <span class="o">=</span> <span class="s1">&#39;This, is, a, string, separated, by, commas&#39;</span>
-<span class="n">splitted_csv_string</span> <span class="o">=</span> <span class="n">csv_string</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">splitted_csv_string</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">splitted_csv_string</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># Now we can access individual words</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">str_commas</span> <span class="o">=</span> <span class="n">soil_definition</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str_commas</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">str_commas</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># Now we can access individual words</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;This&#39;, &#39; is&#39;, &#39; a&#39;, &#39; string&#39;, &#39; separated&#39;, &#39; by&#39;, &#39; commas&#39;]
- separated
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;The layer(s) of generally loose mineral and/or organic material \nthat are affected by physical&#39;, &#39; chemical&#39;, &#39; and/or biological processes\nat or near the planetary surface and usually hold liquids&#39;, &#39; gases&#39;, &#39; \nand biota and support plants.&#39;]
+ 
+and biota and support plants.
 </pre></div>
 </div>
 </div>
@@ -1280,13 +1241,13 @@ Just the place for a Snark!&quot; the Bellman cried,
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the replace function to add or strip a character (or sequence of characters) from a string</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;file_name&#39;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>      <span class="c1"># Remove underscore</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;file_name&#39;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;hello&#39;</span><span class="p">))</span> <span class="c1"># Replace underscore with &#39;hello&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;file_name&#39;</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">,</span> <span class="s1">&#39;_plot_&#39;</span><span class="p">))</span> <span class="c1"># Replace underscore with &#39;hello&#39;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>filename
-filehelloname
+file_plot_name
 </pre></div>
 </div>
 </div>
@@ -1497,37 +1458,19 @@ DOY: A365
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compare strings</span>
-<span class="n">str1</span> <span class="o">=</span> <span class="s1">&#39;orange&#39;</span>
-<span class="n">str2</span> <span class="o">=</span> <span class="s1">&#39;apple&#39;</span>
-<span class="n">str3</span> <span class="o">=</span> <span class="s1">&#39;lemon&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;April&#39;</span> <span class="o">==</span> <span class="s1">&#39;May&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;April&#39;</span> <span class="o">==</span> <span class="s1">&#39;april&#39;</span><span class="p">)</span> <span class="c1"># Case matters</span>
 
-<span class="n">str1</span> <span class="o">==</span> <span class="n">str2</span> <span class="c1"># or simply &#39;orange&#39; == &#39;apple&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;april&#39;</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;april&#39;</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Case matters</span>
-<span class="s1">&#39;apple&#39;</span> <span class="o">==</span> <span class="s1">&#39;Apple&#39;</span>
-
-<span class="c1"># Capitalize</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Original string: &#39;</span> <span class="o">+</span> <span class="n">str1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">str1</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">str1</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original string: orange
-Orange
-ORANGE
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+False
+April
+APRIL
 </pre></div>
 </div>
 </div>
@@ -1537,23 +1480,25 @@ ORANGE
 <h2>String sequences<a class="headerlink" href="#string-sequences" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># String sequences</span>
-<span class="n">str2</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span> <span class="c1"># Count number of &#39;p&#39; characters in apple</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Count individual characters</span>
+<span class="n">total_p</span> <span class="o">=</span> <span class="n">soil_definition</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;p&#39;</span><span class="p">)</span> <span class="c1"># Count number of &#39;p&#39; characters in apple</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">total_p</span><span class="p">)</span>
 
-<span class="c1"># or sequence of characters</span>
-<span class="s1">&#39;apple&#39;</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;pl&#39;</span><span class="p">)</span> <span class="c1"># You can also use a string, without declaring a new variable.</span>
+<span class="c1"># Count sequence of characters</span>
+<span class="n">soil_definition</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">&#39;s&#39;</span><span class="p">)</span> <span class="c1"># You can also use a string, without declaring a new variable.</span>
 
 <span class="c1"># Find if word starts with one of the following sequences</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">str2</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s1">&#39;app&#39;</span><span class="p">,</span><span class="s1">&#39;ora&#39;</span><span class="p">)))</span> <span class="c1"># Note that the input is a tuple: (&#39;app&#39;,&#39;ora&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soil_definition</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s1">&#39;app&#39;</span><span class="p">,</span><span class="s1">&#39;ora&#39;</span><span class="p">)))</span> <span class="c1"># Note that the input is a tuple: (&#39;app&#39;,&#39;ora&#39;)</span>
 
 <span class="c1"># Find if word ends with one of the following sequences</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">str2</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;ple&#39;</span><span class="p">,</span><span class="s1">&#39;nge&#39;</span><span class="p">)))</span>   <span class="c1"># Note that the input is a tuple (&#39;ple&#39;,&#39;nge&#39;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">soil_definition</span><span class="o">.</span><span class="n">endswith</span><span class="p">((</span><span class="s1">&#39;ple&#39;</span><span class="p">,</span><span class="s1">&#39;nge&#39;</span><span class="p">)))</span>   <span class="c1"># Note that the input is a tuple (&#39;ple&#39;,&#39;nge&#39;)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
-True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+False
+False
 </pre></div>
 </div>
 </div>

@@ -161,12 +161,12 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown/code_style.html">
-   Coding Style
+  <a class="reference internal" href="../markdown/coding_style.html">
+   Good Coding Habits
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown/reference_framework.html">
+  <a class="reference internal" href="../markdown/coding_guideline.html">
    Coding Guidelines
   </a>
  </li>
@@ -178,6 +178,11 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference internal" href="calculator_examples.html">
+   Calculator Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="importing_modules.html">
    Importing modules
   </a>
@@ -185,11 +190,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="math_module.html">
    Math Module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="calculator_examples.html">
-   Calculator Examples
   </a>
  </li>
  <li class="toctree-l1">
@@ -622,6 +622,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="optimal_nitrogen_rate.html">
    Optimal Nitrogen Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="maximum_return_to_nitrogen.html">
+   Maximum Return to Nitrogen
   </a>
  </li>
  <li class="toctree-l1">
@@ -1151,11 +1156,10 @@
                 
   <div class="section" id="data-structures">
 <h1>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h1>
-<p>Information lives in data structures. You can view thse data structures as containers in which we store information for later use or processing. The selection of the right data structure depends on the structure, format, and level of complexity of the information that we want to store. Many times the same information can be stored in more than one data structure. The choice of the right data structure will depend on the application and, to a great extent, on your experience and coding preferences.</p>
+<p>Information lives in data structures. You can view these data structures as containers in which we store information for later use or processing. The selection of the right data structure depends on the structure, format, and level of complexity of the information. Many times the same information can be stored in more than one data structure. The choice of the right data structure will depend on the application and, to a great extent, on your experience and coding preferences.</p>
 <div class="section" id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
-<p>Lists are great for storing short or long sequences of elements. One of the most distinct features is that we access information stored in lists by using either a positional index (retrieve single item) or slicing (retrieve one or more items). Lists are the typical arrays in other languages. I think it is worth mentioning that the standard Python lists cannot handle element-wise operations. For this we need use Numpy arrays, which we will cover later.</p>
-<p>List can have mixed data types and are <code class="docutils literal notranslate"><span class="pre">mutable</span></code>, which means that we can overwrite the information. This <code class="docutils literal notranslate"><span class="pre">mutable</span></code> capability can be good and bad. If we want to prevent accidentally changing the information of the list, then it could lead to some serious issues. On the other hand, if we want to re-define or update a variable then this feature is convenient.</p>
+<p>Lists are great for storing short or long sequences of elements. Lists can have mixed data types and are <code class="docutils literal notranslate"><span class="pre">mutable</span></code>, which means that we can overwrite the information. A distinct feature of lists is that we can access information by using either a positional index (retrieve single item) or slicing (retrieve one or more items). Lists are also known as arrays in other languages (e.g. Matlab). It is worth mentioning that the standard Python lists cannot handle element-wise operations. For this we need use Numpy arrays, which we will cover later.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple list</span>

@@ -56,7 +56,7 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Calculator Examples" href="calculator_examples.html" />
+    <link rel="next" title="Soil Mass-Volume Relationships" href="mass_volume_relationships.html" />
     <link rel="prev" title="Importing modules" href="importing_modules.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -161,12 +161,12 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown/code_style.html">
-   Coding Style
+  <a class="reference internal" href="../markdown/coding_style.html">
+   Good Coding Habits
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown/reference_framework.html">
+  <a class="reference internal" href="../markdown/coding_guideline.html">
    Coding Guidelines
   </a>
  </li>
@@ -178,6 +178,11 @@
 </p>
 <ul class="current nav sidenav_l1">
  <li class="toctree-l1">
+  <a class="reference internal" href="calculator_examples.html">
+   Calculator Examples
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="importing_modules.html">
    Importing modules
   </a>
@@ -185,11 +190,6 @@
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Math Module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="calculator_examples.html">
-   Calculator Examples
   </a>
  </li>
  <li class="toctree-l1">
@@ -622,6 +622,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="optimal_nitrogen_rate.html">
    Optimal Nitrogen Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="maximum_return_to_nitrogen.html">
+   Maximum Return to Nitrogen
   </a>
  </li>
  <li class="toctree-l1">
@@ -1092,13 +1097,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#assign-and-check-for-nans">
-   Assign and check for NaNs
+  <a class="reference internal nav-link" href="#trigonometric-operations">
+   Trigonometric operations
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#trigonometric-operations">
-   Trigonometric operations
+  <a class="reference internal nav-link" href="#not-a-number">
+   Not a Number
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1146,10 +1151,11 @@
                 
   <div class="section" id="math-module">
 <h1>Math Module<a class="headerlink" href="#math-module" title="Permalink to this headline">¶</a></h1>
-<p>One of the most useful core Python modules for common constants, arithmetic, and trigonometric operations.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">math</span></code> module is a core Python module that can be helpful for common arithmetic and trigonometric operations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import module</span>
+<span class="kn">import</span> <span class="nn">math</span>
 </pre></div>
 </div>
 </div>
@@ -1162,44 +1168,18 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">value</span> <span class="o">=</span> <span class="mf">90.8752</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
 
-<span class="c1"># The round function</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>      <span class="c1"># The second argument specifies the number of decimal places</span>
-
 <span class="c1"># Floor and ceil and </span>
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>   <span class="c1"># largest integer smaller than or equal to a given number.</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>    <span class="c1"># smallest integer greater than or equal to a given number.</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>        <span class="c1"># The math module does not have a round function</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90.8752
-90.88
 90
 91
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="assign-and-check-for-nans">
-<h2>Assign and check for NaNs<a class="headerlink" href="#assign-and-check-for-nans" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">NaN</span></code> stands for “Not a Number” and although it may appear to be a string, it is actually interpreted as a <code class="docutils literal notranslate"><span class="pre">float</span></code>. <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is typically used as a placeholder for missing values.</p>
-<blockquote>
-<div><p>Do not confuse the built-in <code class="docutils literal notranslate"><span class="pre">NaN</span></code> with the Numpy <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
-</div></blockquote>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nan_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;Nan&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>   <span class="c1"># check if value is NaN</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">nan_value</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">nan_value</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-True
-&lt;class &#39;float&#39;&gt;
+91
 </pre></div>
 </div>
 </div>
@@ -1278,15 +1258,40 @@ math.sin<span class="o">?</span>
 </div>
 </div>
 </div>
+<div class="section" id="not-a-number">
+<h2>Not a Number<a class="headerlink" href="#not-a-number" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">NaN</span></code> stands for “Notnan_value = float(“Nan”)
+print(math.isnan(euler))   # check if value is NaN
+print(math.isnan(nan_value))
+print(type(nan_value)) a Number” and although it may appear to be a string, it is actually interpreted as a <code class="docutils literal notranslate"><span class="pre">float</span></code>. <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is typically used as a placeholder for missing values.</p>
+<blockquote>
+<div><p>Do not confuse the built-in <code class="docutils literal notranslate"><span class="pre">NaN</span></code> with the Numpy <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nan_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;NaN&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>   <span class="c1"># check if value is NaN</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">nan_value</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">nan_value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+True
+&lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="calculate-area-of-a-circle">
 <h2>Calculate area of a circle<a class="headerlink" href="#calculate-area-of-a-circle" title="Permalink to this headline">¶</a></h2>
-<p>A simple example to use the math module</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diameter</span> <span class="o">=</span> <span class="mf">2.5</span> <span class="c1"># cm</span>
 <span class="n">circle_area</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="p">(</span><span class="n">diameter</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A circle of </span><span class="si">{diameter}</span><span class="s1"> cm in diameter has an area of </span><span class="si">{area}</span><span class="s1"> cm^2&#39;</span>
-      <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">diameter</span><span class="o">=</span><span class="n">diameter</span><span class="p">,</span><span class="n">area</span><span class="o">=</span><span class="n">circle_area</span><span class="p">))</span> 
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;A circle of&#39;</span><span class="p">,</span> <span class="n">diameter</span><span class="p">,</span> <span class="s1">&#39;cm in diameter has an area of&#39;</span><span class="p">,</span> <span class="n">circle_area</span><span class="p">,</span> <span class="s1">&#39;cm^2&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1378,7 +1383,7 @@ math.sin<span class="o">?</span>
     <div class='prev-next-bottom'>
         
     <a class='left-prev' id="prev-link" href="importing_modules.html" title="previous page">Importing modules</a>
-    <a class='right-next' id="next-link" href="calculator_examples.html" title="next page">Calculator Examples</a>
+    <a class='right-next' id="next-link" href="mass_volume_relationships.html" title="next page">Soil Mass-Volume Relationships</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

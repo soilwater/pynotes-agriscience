@@ -56,8 +56,8 @@
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Soil Mass-Volume Relationships" href="mass_volume_relationships.html" />
-    <link rel="prev" title="Math Module" href="math_module.html" />
+    <link rel="next" title="Importing modules" href="importing_modules.html" />
+    <link rel="prev" title="Coding Guidelines" href="../markdown/coding_guideline.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -161,12 +161,12 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown/code_style.html">
-   Coding Style
+  <a class="reference internal" href="../markdown/coding_style.html">
+   Good Coding Habits
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../markdown/reference_framework.html">
+  <a class="reference internal" href="../markdown/coding_guideline.html">
    Coding Guidelines
   </a>
  </li>
@@ -177,6 +177,11 @@
  </span>
 </p>
 <ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Calculator Examples
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="importing_modules.html">
    Importing modules
@@ -185,11 +190,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="math_module.html">
    Math Module
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Calculator Examples
   </a>
  </li>
  <li class="toctree-l1">
@@ -622,6 +622,11 @@
  <li class="toctree-l1">
   <a class="reference internal" href="optimal_nitrogen_rate.html">
    Optimal Nitrogen Rate
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="maximum_return_to_nitrogen.html">
+   Maximum Return to Nitrogen
   </a>
  </li>
  <li class="toctree-l1">
@@ -1119,7 +1124,7 @@
                 
   <div class="section" id="calculator-examples">
 <h1>Calculator Examples<a class="headerlink" href="#calculator-examples" title="Permalink to this headline">¶</a></h1>
-<p>Simple examples of using Python as a regular calculator.</p>
+<p>A great way to learn how to create variables and use basic functions is to use Python as a regular calculator. Below are short scripts that</p>
 <div class="section" id="convert-from-degrees-fahrenheit-to-celsius">
 <h2>Convert from degrees Fahrenheit to Celsius<a class="headerlink" href="#convert-from-degrees-fahrenheit-to-celsius" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
@@ -1137,7 +1142,11 @@
 </div>
 </div>
 <p><strong>Question</strong>: Why do we need to separate inputs by commas?</p>
-<p><strong>Answer</strong>: The print function can take multiple arguments as inputs. In this context, a comma act as a delimiter between the inputs.</p>
+<p><strong>Answer</strong>: The print function can take multiple arguments as inputs. In this context, a comma acts as a delimiter between the inputs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Python we can nest one function (e.g. <code class="docutils literal notranslate"><span class="pre">round()</span></code>) into another function (e.g. <code class="docutils literal notranslate"><span class="pre">print()</span></code>). In this case, Python will first resolve the innermost function <code class="docutils literal notranslate"><span class="pre">round()</span></code>, and then place the result in the second input argument of the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function.</p>
+</div>
 </div>
 <div class="section" id="convert-from-inches-to-meters">
 <h2>Convert from inches to meters<a class="headerlink" href="#convert-from-inches-to-meters" title="Permalink to this headline">¶</a></h2>
@@ -1179,7 +1188,6 @@
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Convert 34 acres to hectares. <em>Answer: 13.75 hectares</em></p></li>
-<li><p>Compute the pH of a soil solution at room temperature with a concentration of hydrogen ions of 0.0001. What soil nutrients are typically available to plants at this pH? Hint: Import the math module. <em>Answer: 4, Iron</em></p></li>
 <li><p>Compute the slope (expressed in percentage) between two points on a terrain that are 150 meters apart and have difference in elevation of 12 meters. <em>Answer: 8% slope</em></p></li>
 <li><p>Compute the time that it takes for a beam of sunlight to reach our planet. The Earth-Sun distance is 149,597,870 km and the speed of light in vacuum is 300,000 km per second. Express your answer in minutes and seconds. Hint: be careful with the thousands separator. <em>Answer: 8 minutes and 19 seconds</em></p></li>
 </ul>
@@ -1215,8 +1223,8 @@
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="math_module.html" title="previous page">Math Module</a>
-    <a class='right-next' id="next-link" href="mass_volume_relationships.html" title="next page">Soil Mass-Volume Relationships</a>
+    <a class='left-prev' id="prev-link" href="../markdown/coding_guideline.html" title="previous page">Coding Guidelines</a>
+    <a class='right-next' id="next-link" href="importing_modules.html" title="next page">Importing modules</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">
