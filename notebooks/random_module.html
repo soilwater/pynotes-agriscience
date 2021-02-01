@@ -1042,19 +1042,6 @@
 
         <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/soilwater/pynotes-agriscience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -1097,8 +1084,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#random-elemnts-from-lists">
-   Random elemnts from lists
+  <a class="reference internal nav-link" href="#random-elements-from-lists">
+   Random elements from lists
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -1261,8 +1248,8 @@
 </div>
 </div>
 </div>
-<div class="section" id="random-elemnts-from-lists">
-<h2>Random elemnts from lists<a class="headerlink" href="#random-elemnts-from-lists" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="random-elements-from-lists">
+<h2>Random elements from lists<a class="headerlink" href="#random-elements-from-lists" title="Permalink to this headline">¶</a></h2>
 <p>In many cases we are not interested in generating random numbers <em>per se</em>, but in drawing a random element from a list of elements. In this case the methods <code class="docutils literal notranslate"><span class="pre">choice()</span></code>, <code class="docutils literal notranslate"><span class="pre">choices()</span></code>, and <code class="docutils literal notranslate"><span class="pre">sample()</span></code> can result very useful.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1298,9 +1285,10 @@
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>Note: When drawing elemets <strong>WITH replacement</strong> the elements in the resulting list may appear more than one time. Run the previous code cell few times to see this.</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When drawing elemets <strong>WITH replacement</strong> the elements in the resulting list may appear more than one time. Run the previous code cell few times to see if you can obtain repeated elements.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiple elements WITHOUT replacement</span>
@@ -1315,9 +1303,10 @@
 </div>
 </div>
 </div>
-<blockquote>
-<div><p>Note: When drawing elements <strong>WITHOUT replacement</strong> all the elements in the resulting list will be unique. Set <code class="docutils literal notranslate"><span class="pre">k=len(array)</span></code> to shuffle all the elements in the list. Also note that <code class="docutils literal notranslate"><span class="pre">k</span></code> must be equal or lower than the number of elements in the list because we are drawing elements without replacement.</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When drawing elements <strong>WITHOUT replacement</strong> all the elements in the resulting list will be unique. In this case, the value of <code class="docutils literal notranslate"><span class="pre">k</span></code> must be equal or lower than the number of elements in the list.</p>
+</div>
 </div>
 <div class="section" id="setting-up-a-random-seed">
 <h2>Setting up a random seed<a class="headerlink" href="#setting-up-a-random-seed" title="Permalink to this headline">¶</a></h2>
@@ -1418,16 +1407,6 @@
   <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'G-SKSSW7LW32', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
     
   </body>
 </html>

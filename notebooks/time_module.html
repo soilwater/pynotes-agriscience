@@ -1042,19 +1042,6 @@
 
         <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/soilwater/pynotes-agriscience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -1142,7 +1129,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time.struct_time(tm_year=2020, tm_mon=1, tm_mday=30, tm_hour=10, tm_min=51, tm_sec=33, tm_wday=3, tm_yday=30, tm_isdst=0)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time.struct_time(tm_year=2021, tm_mon=2, tm_mday=1, tm_hour=14, tm_min=5, tm_sec=10, tm_wday=0, tm_yday=32, tm_isdst=0)
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>time.struct_time
@@ -1160,9 +1147,9 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2020
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021
+14
 10
-33
 </pre></div>
 </div>
 </div>
@@ -1212,9 +1199,10 @@ See, Python is synchronous!
 </div>
 </div>
 <p>As you can see the “step 2” and “step 3” commands did not execute right away.</p>
-<blockquote>
-<div><p>In Python a single line can block the execution of the entire code. Note that when the Jupyter Lab is busy there is a light gray bracket next to the code cell that shows <code class="docutils literal notranslate"><span class="pre">[*]:</span></code>, When the interpreter finished the execution of the cell code you will see a number such as <code class="docutils literal notranslate"><span class="pre">[5]:</span></code>.</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In Python a single line can block the execution of the entire code. Note that when the Jupyter Lab is busy there is a light gray bracket next to the code cell that shows <code class="docutils literal notranslate"><span class="pre">[*]:</span></code>, When the interpreter finished the execution of the cell code you will see a number such as <code class="docutils literal notranslate"><span class="pre">[5]:</span></code>.</p>
+</div>
 </div>
 <div class="section" id="evaluate-code-performance">
 <h2>Evaluate code performance<a class="headerlink" href="#evaluate-code-performance" title="Permalink to this headline">¶</a></h2>
@@ -1257,12 +1245,12 @@ Elapsed time: 0.0004749069998979394
 <p><strong>%S</strong>    Second as a decimal number [00,61]</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2">, </span><span class="si">%d</span><span class="s2"> %b %Y&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%a</span><span class="s2">, </span><span class="si">%d</span><span class="s2"> %b %Y&quot;</span><span class="p">,</span> <span class="n">clk</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Thu, 30 Jan 2020&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Mon, 01 Feb 2021&#39;
 </pre></div>
 </div>
 </div>
@@ -1275,7 +1263,7 @@ Elapsed time: 0.0004749069998979394
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Thu, 30 Jan 2020 16:58:06 +0000&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Mon, 01 Feb 2021 20:07:12 +0000&#39;
 </pre></div>
 </div>
 </div>
@@ -1288,7 +1276,7 @@ Elapsed time: 0.0004749069998979394
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Thu, 30 Jan 2020 10:58:07 +0000&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Mon, 01 Feb 2021 14:07:16 +0000&#39;
 </pre></div>
 </div>
 </div>
@@ -1355,16 +1343,6 @@ Elapsed time: 0.0004749069998979394
   <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'G-SKSSW7LW32', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
     
   </body>
 </html>

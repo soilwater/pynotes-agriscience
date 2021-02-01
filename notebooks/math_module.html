@@ -1042,19 +1042,6 @@
 
         <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/soilwater/pynotes-agriscience"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        
-        
-    </div>
-</div>
-
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
@@ -1260,25 +1247,21 @@ math.sin<span class="o">?</span>
 </div>
 <div class="section" id="not-a-number">
 <h2>Not a Number<a class="headerlink" href="#not-a-number" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">NaN</span></code> stands for “Notnan_value = float(“Nan”)
-print(math.isnan(euler))   # check if value is NaN
-print(math.isnan(nan_value))
-print(type(nan_value)) a Number” and although it may appear to be a string, it is actually interpreted as a <code class="docutils literal notranslate"><span class="pre">float</span></code>. <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is typically used as a placeholder for missing values.</p>
-<blockquote>
-<div><p>Do not confuse the built-in <code class="docutils literal notranslate"><span class="pre">NaN</span></code> with the Numpy <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
-</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">NaN</span></code> stands for “Not a Number” and although it may appear to be a string, it is actually interpreted as a <code class="docutils literal notranslate"><span class="pre">float</span></code>. <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is typically used as a placeholder for missing values.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not confuse the built-in <code class="docutils literal notranslate"><span class="pre">NaN</span></code> with the Numpy <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nan_value</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&quot;NaN&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">value</span><span class="p">))</span>   <span class="c1"># check if value is NaN</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">nan_value</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">nan_value</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
-True
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
 &lt;class &#39;float&#39;&gt;
 </pre></div>
 </div>
@@ -1409,16 +1392,6 @@ True
   <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
-    
-    <!-- Google Analytics -->
-    <script>
-      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-      ga('create', 'G-SKSSW7LW32', 'auto');
-      ga('set', 'anonymizeIp', true);
-      ga('send', 'pageview');
-    </script>
-    <script async src='https://www.google-analytics.com/analytics.js'></script>
-    <!-- End Google Analytics -->
     
   </body>
 </html>
