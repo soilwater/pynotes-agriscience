@@ -1,13 +1,14 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Input Wizard &#8212; PyNotes in Agriscience</title>
+    <title>Simple Laboratory Database &#8212; Pynotes in Agriscience</title>
     
-  <link rel="stylesheet" href="../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="../_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.40e2e510f6b7d1648584402491bb10fe.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -34,21 +31,19 @@
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.3da636dd464baa7582d2.js">
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d31b09fe5c1d09cb49b26a786de4a05d.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
-    <script >
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script>
         const thebe_selector = ".thebe"
         const thebe_selector_input = "pre"
         const thebe_selector_output = ".output"
@@ -58,14 +53,27 @@
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sedimentation time" href="sedimentation_time.html" />
     <link rel="prev" title="Inputs" href="inputs.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="en">
+    
 
-
+    <!-- Google Analytics -->
+    
+<script async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script>
+                        window.ga = window.ga || function () {
+                            (ga.q = ga.q || []).push(arguments) };
+                        ga.l = +new Date;
+                        ga('create', 'UA-126565767-4', 'auto');
+                        ga('set', 'anonymizeIp', true);
+                        ga('send', 'pageview');
+                    </script>
 
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -74,30 +82,31 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="../index.html">
-  
-  
-  <h1 class="site-logo" id="site-title">PyNotes in Agriscience</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Pynotes in Agriscience</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../landing-page.html">
+  <a class="reference internal" href="../intro.html">
    PyNotes in Agriscience
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Getting started
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../markdown/inspiration.html">
    Inspiration
@@ -144,8 +153,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hello_world.html">
-   Hello world
+  <a class="reference internal" href="basic_operations.html">
+   Basic Operations
   </a>
  </li>
  <li class="toctree-l1">
@@ -154,12 +163,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Good coding practices
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../markdown/coding_style.html">
    Good Coding Habits
@@ -171,15 +180,15 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Simple computations
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="calculator_examples.html">
-   Calculator Examples
+   Using Python as a Calculator
   </a>
  </li>
  <li class="toctree-l1">
@@ -198,12 +207,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Random
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="random_module.html">
    Random module
@@ -225,12 +234,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Data types structures
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data_types.html">
    Data Types
@@ -268,7 +277,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Input Wizard
+   Simple Laboratory Database
   </a>
  </li>
  <li class="toctree-l1">
@@ -277,12 +286,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Directory navigation
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="os_module.html">
    Operating system module
@@ -294,12 +303,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Dates and Time
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="time_module.html">
    Time module
@@ -308,11 +317,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="datetime_module.html">
    Datetime Module
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="datetime_module.html#working-with-seconds">
-   Working with seconds
   </a>
  </li>
  <li class="toctree-l1">
@@ -331,12 +335,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Control flow
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="for_loops.html">
    For Loops
@@ -378,12 +382,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Functions
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="anonymous_functions.html">
    Lambda Functions
@@ -415,12 +419,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Strings
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="regular_expressions.html">
    Regular Expressions
@@ -457,12 +461,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Plotting
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="plotting_matplotlib.html">
    Basic Plots with Matplotlib
@@ -484,17 +488,22 @@
   </a>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="widgets.html">
+   Widgets
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="interactive_apps.html">
    Interactive Application
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Numpy and Pandas
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="numpy_module.html">
    Numpy Module
@@ -536,12 +545,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Web data
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="url_ks_mesonet.html">
    Kansas Mesonet
@@ -568,12 +577,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Statistics and curve fitting
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="statistics_module.html">
    Statistics module
@@ -690,12 +699,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Problems in 1D
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="fill_missing_data.html">
    Fill Missing Soil Moisture Timeseries
@@ -812,11 +821,6 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="soil_temperature_model.html">
-   Soil Temperature Model
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="root_depth.html">
    Root growth
   </a>
@@ -842,12 +846,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Image analysis
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="canopeo.html">
    Green Canopy Cover
@@ -869,12 +873,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Mapping
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="nearest_station.html">
    Find Nearest Monitoring Station
@@ -921,12 +925,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Numerical problems 2D
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="game_of_life.html">
    Conway’s Game of Life
@@ -948,12 +952,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Clustering
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="clustering_environments.html">
    Environmental Agroregions
@@ -970,12 +974,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Symbolic math
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="sympy_module.html">
    Sympy
@@ -993,6 +997,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -1008,21 +1013,21 @@
           
 <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
     
-    <div class="row topbar fixed-top container-xl">
-    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
-    </div>
-    <div class="col pl-2 topbar-main">
-        
-        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-            <i class="fas fa-bars"></i>
-            <i class="fas fa-arrow-left"></i>
-            <i class="fas fa-arrow-up"></i>
-        </button>
-        
-        
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
             class="fas fa-download"></i></button>
@@ -1031,32 +1036,45 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/notebooks/input_wizard.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/notebooks/simple_lab_db.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
-        <!-- Source interaction buttons -->
+            <!-- Source interaction buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/soilwater/pynotes-agriscience"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        
+        
+    </div>
+</div>
 
-        <!-- Full screen (wrap in <a> to have style consistency -->
-        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                title="Fullscreen mode"><i
-                    class="fas fa-expand"></i></button></a>
+            <!-- Full screen (wrap in <a> to have style consistency -->
 
-        <!-- Launch buttons -->
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
 
 <div class="dropdown-buttons-trigger">
     <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/soilwater/pynotes-agriscience/master?urlpath=tree/notebooks/input_wizard.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/soilwater/pynotes-agriscience/master?urlpath=tree/notebooks/simple_lab_db.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../_static/images/logo_binder.svg"
@@ -1068,130 +1086,181 @@
     </div>
 </div>
 
-    </div>
+        </div>
 
-    <!-- Table of contents -->
-    <div class="d-none d-md-block col-md-2 bd-toc show">
-        
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steps-to-create-an-executable-file">
+   Steps to create an executable file
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
     </div>
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Simple Laboratory Database</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steps-to-create-an-executable-file">
+   Steps to create an executable file
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
-  <div class="section" id="input-wizard">
-<h1>Input Wizard<a class="headerlink" href="#input-wizard" title="Permalink to this headline">¶</a></h1>
-<p>Metadata entry is a common task in laboratories that handle samples of some sort (e.g. DNA, tissue, soil, seeds, etc.). Assigning a unique identification number to each sample is essential for tracking samples around the lab and keeping an organized database.</p>
-<p>In this example we will use Python to create a simple data entry wizard for soil samples. We will assign a unique ID to each new sample as well as sample metadata (e.g. responsible, location, soil attributes, etc.).</p>
-<p>To allow an unlimited entry of samples by lab personnel we will couple the <code class="docutils literal notranslate"><span class="pre">input()</span></code> function with a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop.</p>
-<p>In order to create a more serious data entry system we need to allow users to modify their inputs and to implement some error checks to minimize the chance of user-entry errors. For instance, if by chance a user enters a negative ring volume, then we need to catch this and let the user correct the mistake. This wizard is only aimed at practicing basic data types and control flow. A better way to create this wizard would be to create a class for the specific samples.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="simple-laboratory-database">
+<h1>Simple Laboratory Database<a class="headerlink" href="#simple-laboratory-database" title="Permalink to this headline">¶</a></h1>
+<p>A great way to integrate programming concepts is to work on projects. In this project we will use Python to create a simple wizard to save information about soil samples entering a hypothetical soil laboratory that only measures soil texture. Assigning a unique identification number to each sample is essential for tracking samples around the lab and prevent duplicates entries in the database.</p>
+<p>To keep the example simple we will use a dictionary as our database. If you want to take this example to the next level, consider a similar exercise using something like <code class="docutils literal notranslate"><span class="pre">sqlite3</span></code>, which is a real database and is already included with Python.</p>
+<p>For each sample we will store the following features:</p>
+<ul class="simple">
+<li><p>A unique serial number</p></li>
+<li><p>Timestamp of data entry</p></li>
+<li><p>Geographic coordinates of the sample</p></li>
+<li><p>Results of particle size analysis (sand, silt, and clay)</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Universally Unique IDentifier module</span>
-<span class="kn">import</span> <span class="nn">uuid</span> 
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
 <span class="kn">import</span> <span class="nn">pprint</span>
-
-<span class="n">new_entry_flag</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">D</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-
-<span class="k">while</span> <span class="n">new_entry_flag</span><span class="p">:</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">os</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define important variables</span>
+<span class="n">db_path</span> <span class="o">=</span> <span class="s1">&#39;/Users/andrespatrignani/Desktop&#39;</span>
+<span class="n">db_filename</span> <span class="o">=</span> <span class="s1">&#39;db.pickle&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define sample class</span>
+<span class="k">class</span> <span class="nc">Sample</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">sand</span><span class="p">,</span> <span class="n">silt</span><span class="p">,</span> <span class="n">clay</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid1</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1"> %H:%M:%S&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lat</span> <span class="o">=</span> <span class="n">lat</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">lon</span> <span class="o">=</span> <span class="n">lon</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sand</span> <span class="o">=</span> <span class="n">sand</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">silt</span> <span class="o">=</span> <span class="n">silt</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clay</span> <span class="o">=</span> <span class="n">clay</span>
         
-    <span class="c1"># Generate sample unique ID</span>
-    <span class="n">sample_id</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid1</span><span class="p">())</span> <span class="c1"># to make the UUID a string</span>
-
-    <span class="c1"># Request responsible</span>
-    <span class="n">responsible</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Name of responsible person (&#39;John Smith&#39;):&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Request sample location</span>
-    <span class="n">latitude</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Latitude(e.g. &#39;35.6&#39;, North is positive):&quot;</span><span class="p">)</span>
-    <span class="n">longitude</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Longitude (e.g. &#39;-97.8&#39;, W is negative):&quot;</span><span class="p">)</span>
-    <span class="n">location</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Nearest town (&#39;Manhattan, KS&#39;):&quot;</span><span class="p">)</span>
-    <span class="n">city</span><span class="p">,</span> <span class="n">state</span> <span class="o">=</span> <span class="n">location</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-
-    <span class="c1"># Request ring number</span>
-    <span class="n">ring_number</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Ring number:&quot;</span><span class="p">)</span>
-    <span class="n">ring_number</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ring_number</span><span class="p">)</span>
-
-    <span class="c1"># Automatically compute known values for all samples</span>
-    <span class="n">ring_volume</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># cm^3</span>
-    <span class="n">mass_empty_ring</span> <span class="o">=</span> <span class="mi">15</span> <span class="c1"># g</span>
-
-    <span class="c1"># Request mass of wet soil</span>
-    <span class="n">mass_wet_soil</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Mass of wet soil including ring (g):&quot;</span><span class="p">)</span>
-    <span class="n">mass_wet_soil</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">mass_wet_soil</span><span class="p">)</span>
-
-    <span class="c1"># Request mass of oven-dry soil</span>
-    <span class="n">mass_oven_dry_soil</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Mass of oven-dried soil with ring (g):&quot;</span><span class="p">)</span>
-    <span class="n">mass_oven_dry_soil</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">mass_oven_dry_soil</span><span class="p">)</span>
-
-    <span class="c1"># Compute volumetric water content</span>
-    <span class="n">mass_water</span> <span class="o">=</span> <span class="n">mass_wet_soil</span> <span class="o">-</span> <span class="n">mass_oven_dry_soil</span> <span class="c1"># g</span>
-    <span class="n">density_water</span> <span class="o">=</span> <span class="mf">0.998</span> <span class="c1"># g/cm^3</span>
-    <span class="n">volumetric_water_content</span> <span class="o">=</span> <span class="n">mass_water</span><span class="o">*</span><span class="n">density_water</span><span class="o">/</span><span class="n">ring_volume</span> <span class="c1"># cm^3 water/cm^3 of soil</span>
-
-    <span class="c1"># Initialize dictionary for storing samples</span>
-    <span class="n">D</span><span class="p">[</span><span class="n">sample_id</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;responsible&#39;</span><span class="p">:</span> <span class="n">responsible</span><span class="p">,</span>
-                    <span class="s1">&#39;lat&#39;</span><span class="p">:</span> <span class="n">latitude</span><span class="p">,</span>
-                    <span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="n">longitude</span><span class="p">,</span>
-                    <span class="s1">&#39;city&#39;</span><span class="p">:</span> <span class="n">city</span><span class="p">,</span>
-                    <span class="s1">&#39;state&#39;</span><span class="p">:</span> <span class="n">state</span><span class="p">,</span>
-                    <span class="s1">&#39;ring_number&#39;</span><span class="p">:</span> <span class="n">ring_number</span><span class="p">,</span>
-                    <span class="s1">&#39;volumetric_water&#39;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="n">volumetric_water_content</span><span class="p">,</span><span class="mi">3</span><span class="p">)}</span>
-    
-    <span class="c1"># Ask user if they want to exit</span>
-    <span class="n">new_entry_msg</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Do you want to add a new sample? (y/n)&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="c1"># Force to be lower case</span>
-    <span class="k">if</span> <span class="n">new_entry_msg</span> <span class="o">==</span> <span class="s1">&#39;n&#39;</span> <span class="ow">or</span> <span class="n">new_entry_msg</span> <span class="o">==</span> <span class="s1">&#39;no&#39;</span><span class="p">:</span>
-        <span class="n">new_entry_flag</span> <span class="o">=</span> <span class="kc">False</span>
-    
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Name of responsible person (&#39;John Smith&#39;): Andres Patrignani
-Latitude(e.g. &#39;35.6&#39;, North is positive): 39.111
-Longitude (e.g. &#39;-97.8&#39;, W is negative): -96.611
-Nearest town (&#39;Manhattan, KS&#39;): Ashland Bottoms, KS
-Ring number: 1
-Mass of wet soil including ring (g): 150
-Mass of oven-dried soil with ring (g): 120
-Do you want to add a new sample? (y/n) n
+    <span class="k">def</span> <span class="nf">is_hundred</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sand</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">silt</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">clay</span>
+        <span class="k">return</span> <span class="n">total</span> <span class="o">==</span> <span class="mi">100</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Display entries (maybe not a good idea if you have hundreds or thousands of entries)</span>
-<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">D</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Navigate to directory of database</span>
+<span class="c1"># Use os.getcwd() to get current working directory</span>
+<span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">db_path</span><span class="p">)</span>
+
+<span class="c1"># Check if database exists</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">db_filename</span><span class="p">):</span>
+    
+    <span class="c1"># Initialize dictionary</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Laboratory&#39;</span><span class="p">:</span><span class="s1">&#39;ACME&#39;</span><span class="p">,</span> <span class="s1">&#39;archive&#39;</span><span class="p">:[]}</span>
+
+    <span class="c1"># Save database</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">db_filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+        <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+        
+<span class="c1"># Load database</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">db_filename</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">db</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    
+<span class="c1"># Print welcome message and current number of samples in the database</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Welcome to ACME Labs&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are &#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="s1">&#39;archive&#39;</span><span class="p">]),</span> <span class="s1">&#39;samples in the archive.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+
+<span class="c1"># Listen to user inputs</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+
+    <span class="c1"># Start message</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Add the following information to enter a new sample.&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Request inputs</span>
+    <span class="n">lat</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Latitude:&quot;</span><span class="p">))</span>
+    <span class="n">lon</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Longitude:&quot;</span><span class="p">))</span>
+    <span class="n">sand</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Sand content (%):&quot;</span><span class="p">))</span>
+    <span class="n">silt</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Silt content (%):&quot;</span><span class="p">))</span>
+    <span class="n">clay</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Clay content (%):&quot;</span><span class="p">))</span>
+
+    <span class="c1"># Create new sample</span>
+    <span class="n">new_sample</span> <span class="o">=</span> <span class="n">Sample</span><span class="p">(</span><span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">,</span> <span class="n">sand</span><span class="p">,</span> <span class="n">silt</span><span class="p">,</span> <span class="n">clay</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">new_sample</span><span class="o">.</span><span class="n">is_hundred</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The sum must be 100%. Total was:&#39;</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="s1">&#39;. Sample was not saved.&#39;</span><span class="p">)</span>
+
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Append new sample to database</span>
+        <span class="n">db</span><span class="p">[</span><span class="s1">&#39;archive&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">vars</span><span class="p">(</span><span class="n">new_sample</span><span class="p">))</span> <span class="c1"># vars creates a dict with properties and no methods</span>
+
+        <span class="c1"># Save database</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">db_filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+            <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">file</span><span class="p">)</span>
+
+        <span class="c1"># Final message</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;New sample&#39;</span><span class="p">,</span> <span class="n">new_sample</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="s1">&#39;was successfully added to the database.&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;There are&#39;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">db</span><span class="p">[</span><span class="s1">&#39;archive&#39;</span><span class="p">]),</span> <span class="s1">&#39;samples in the archive.&#39;</span><span class="p">)</span>
+        
+    <span class="k">if</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Do you want to add another sample? y/n&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Do you want to print all the samples in the archive? y/n&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+            <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+            <span class="k">break</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Session terminated.&#39;</span><span class="p">)</span>
+            <span class="k">break</span>
+        
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;1aa13a9c-5765-11eb-88e4-f45c89ca92fb&#39;: {&#39;city&#39;: &#39;Ashland Bottoms&#39;,
-                                          &#39;lat&#39;: &#39;39.111&#39;,
-                                          &#39;lon&#39;: &#39;-96.611&#39;,
-                                          &#39;responsible&#39;: &#39;Andres Patrignani&#39;,
-                                          &#39;ring_number&#39;: 1,
-                                          &#39;state&#39;: &#39; KS&#39;,
-                                          &#39;volumetric_water&#39;: 0.299}}
-</pre></div>
 </div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get all dictionary keys as a list</span>
-<span class="n">all_samples</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="n">D</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">all_samples</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;1aa13a9c-5765-11eb-88e4-f45c89ca92fb&#39;]
-</pre></div>
-</div>
-</div>
+<div class="section" id="steps-to-create-an-executable-file">
+<h2>Steps to create an executable file<a class="headerlink" href="#steps-to-create-an-executable-file" title="Permalink to this headline">¶</a></h2>
+<p>Save code as <code class="docutils literal notranslate"><span class="pre">simple_lab_db.py</span></code> and place it in a new folder. The last step will create a few additional files, so creating a new folder will help keeping all the files together in the same directory.</p>
+<p>Install <code class="docutils literal notranslate"><span class="pre">pyinstaller</span></code> using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">pyinstaller</span></code> in the terminal.</p>
+<p>To create the executable file run: <code class="docutils literal notranslate"><span class="pre">pyinstaller</span> <span class="pre">--onefile</span> <span class="pre">simple_lab_db.py</span></code>. This will create a Windows or Mac executable.</p>
 </div>
 </div>
 
@@ -1217,39 +1286,45 @@ Do you want to add a new sample? (y/n) n
 
               </div>
               
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="inputs.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Inputs</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="sedimentation_time.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sedimentation time</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
         </div>
     </div>
+    <footer class="footer">
+  <p>
     
+      By Andres Patrignani<br/>
     
-    <div class='prev-next-bottom'>
-        
-    <a class='left-prev' id="prev-link" href="inputs.html" title="previous page">Inputs</a>
-    <a class='right-next' id="next-link" href="sedimentation_time.html" title="next page">Sedimentation time</a>
-
-    </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Andres Patrignani<br/>
-        
-            &copy; Copyright 2021.<br/>
-          <div class="extra_footer">
-            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Licensed under CC BY-NC-SA</a>
-          </div>
-      </p>
-    </div>
-  </footer>
+        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Licensed under CC BY-NC-SA</a>
+      </div>
+  </p>
+</footer>
 </main>
 
 
       </div>
     </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-    
-  <script src="../_static/js/index.3da636dd464baa7582d2.js"></script>
-
-
-    
   </body>
 </html>

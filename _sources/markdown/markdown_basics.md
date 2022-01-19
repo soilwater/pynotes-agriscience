@@ -19,10 +19,11 @@ Markdown does not seem to have an official way of adding comments. However, we c
 
 `[//]: This is a comment`
 
-Note that this trick might not work in some Markdown editors like Typora, but it does work in Github.
+Note that this trick might not work in some Markdown editors like Typora, but it does seem to work in Github.
 
 
 ## Line breaks
+
 Pressing the `enter` key will not generate empty lines. Because Markdown eventually is converted into HTML, we can use HTML tags to expand the editing and styling possibilities in our document. So, to add a line break, we can use the self-closing line break tag: `<br/>`. 
 
 ```

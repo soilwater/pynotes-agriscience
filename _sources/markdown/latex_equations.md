@@ -58,6 +58,7 @@ $P$ = atmospheric pressure (kPa)
 
 <br/>
 
+
 ### Wind speed at 2 meters above the soil surface
 
 `$$u2 = uz\frac{4.87}{\ln(67.8z-5.42)}$$`
