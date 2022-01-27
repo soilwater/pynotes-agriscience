@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Precipitation Metrics &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1109,7 +1110,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="precipitation-metrics">
+  <section class="tex2jax_ignore mathjax_ignore" id="precipitation-metrics">
 <h1>Precipitation Metrics<a class="headerlink" href="#precipitation-metrics" title="Permalink to this headline">¶</a></h1>
 <p>Using a dataset of 5-minute rainfall records for the Manhattan station of the Kansas Mesonet we will examine the duration, amount, and maximum rainfall intensity of rainfall events. The goal of this exercise is to learn how extract and synthesize relevant information from long time series. Rainfall intensity is an important variable related to soil erosion, infiltration, surface and sub-suraface water runoff, and canopy interception.</p>
 <p>We will assume that a rainfall event is not conditioned to a specific day or storm. A rainfall event will be defined by the period without rainfall between two rainfall records greater than zero. This will allow us to account for multiple rainfall events within the same storm. So, in long rainy days where it starts raining, then stops, and then it starts raininign again we will compute more than one event. This is probably more accurate than using daily data. Often times the problem is the lack of precipitation data at temporal resolutions finer than 60 minutes. But our dataset with 5-minute data will allow us to examine rainfall events with greater detail. Likely the maximum rainfall intensity using 5-minute data will result in larger magnitudes than using hourly data.</p>
@@ -1523,7 +1524,7 @@ Detected: 1677 rainfall events.
 <img alt="../_images/precipitation_metrics_17_0.png" src="../_images/precipitation_metrics_17_0.png" />
 </div>
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Change Coordinate Reference System &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1175,7 +1176,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="change-coordinate-reference-system">
+  <section class="tex2jax_ignore mathjax_ignore" id="change-coordinate-reference-system">
 <h1>Change Coordinate Reference System<a class="headerlink" href="#change-coordinate-reference-system" title="Permalink to this headline">¶</a></h1>
 <p>Converting from EPSG:9001 to EPSG:4326, which represents spatial coordinates in terms of latitude and longitude based on the World Geodetic System 1984 (WGS84).</p>
 <div class="cell docutils container">
@@ -1213,7 +1214,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="save-raster-with-new-crs-in-a-separate-file">
+<section id="save-raster-with-new-crs-in-a-separate-file">
 <h2>Save raster with new CRS in a separate file<a class="headerlink" href="#save-raster-with-new-crs-in-a-separate-file" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1262,8 +1263,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="overwrite-file-with-new-crs">
+</section>
+<section id="overwrite-file-with-new-crs">
 <h2>Overwrite file with new CRS<a class="headerlink" href="#overwrite-file-with-new-crs" title="Permalink to this headline">¶</a></h2>
 <p>Here is an exploratory alternative that can do everything without creating a separate file. It needs some fine tunning, but I decided to post this here in Markdown to prevent conflict with the preceding cells.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Change CRS in existing raster variable</span>
@@ -1286,8 +1287,8 @@
 
 </pre></div>
 </div>
-</div>
-<div class="section" id="generate-matrices-of-latitude-and-longitude">
+</section>
+<section id="generate-matrices-of-latitude-and-longitude">
 <h2>Generate matrices of latitude and longitude<a class="headerlink" href="#generate-matrices-of-latitude-and-longitude" title="Permalink to this headline">¶</a></h2>
 <p>Often times we need to gain access to the entire matrix of latitude and longitude values, say to determine the pixel nearest to a point of interest.</p>
 <div class="cell docutils container">
@@ -1346,8 +1347,8 @@ Ymin: 0 Ymax: 859
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="matching-x-y-to-lat-lon">
+</section>
+<section id="matching-x-y-to-lat-lon">
 <h2>Matching X,Y to Lat,Lon<a class="headerlink" href="#matching-x-y-to-lat-lon" title="Permalink to this headline">¶</a></h2>
 <p>This part can be tricky since X is Lon and Y is Lat. Here I suggest devising a way to test that we get the right results for the corners, and then we proceed to pass the matrices of Xs and Ys. This will save us countless hours of debugging and a headache down the road.</p>
 <div class="cell docutils container">
@@ -1506,8 +1507,8 @@ Row and Column of nearest pixel: (493, 318)
 </div>
 </div>
 <p>In the cell above you can change the coordinates of the POI for any place in the United States to see how the intensity of the distance matrix changes.</p>
-</div>
-<div class="section" id="convert-lat-lon-to-x-y">
+</section>
+<section id="convert-lat-lon-to-x-y">
 <h2>Convert Lat,Lon to X,Y<a class="headerlink" href="#convert-lat-lon-to-x-y" title="Permalink to this headline">¶</a></h2>
 <p>A quick option to change from from geogrpahic to projected coordinates is to use the PyProj library.</p>
 <div class="cell docutils container">
@@ -1529,8 +1530,8 @@ Row and Column of nearest pixel: (493, 318)
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

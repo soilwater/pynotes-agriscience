@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Disease Spread &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1155,13 +1156,13 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="disease-spread">
+  <section class="tex2jax_ignore mathjax_ignore" id="disease-spread">
 <h1>Disease Spread<a class="headerlink" href="#disease-spread" title="Permalink to this headline">¶</a></h1>
 <p>With the outbreak of the <em>coronavirus</em> (COVID-19) in late 2019 and early 2020 there has been an increased interest in modeling the impacts of epidemic and pandemic. Live organisms, and particularly human beings, interact in cmplex ways and are highly dynamic, so trying to capture every movement, every surface touched, every contact between two or more individuals for every human being seems impossible.</p>
 <p>However, with the increasing number of georeferenced information about our commuting patterns, traffic congestions, maps of roads and subways, population demographics, improved weather observation and forecasts, and overall knowledge about human activity simulations are becoming increasingly more detailed.</p>
 <p>Incorporating these and many more variables, even for a small country, could take substantil computing power and an interdisciplinary group of scientists. In this exercise we will implement a simplistic simulation to analyze the impact of few paramters on the spread of a made-up disease within an arbitrary small population. We will take into account social distancing and rate at which individuals move. The goal is to learn how to implement simple interactions.</p>
 <p>The code below is by no means intended for research use, but it may serve as the basis for creating simple models with few individuals or animals, perhaps something like the spread of a disease within animals in a pasture.</p>
-<div class="section" id="ground-rules-and-coding-decisions">
+<section id="ground-rules-and-coding-decisions">
 <h2>Ground rules and coding decisions<a class="headerlink" href="#ground-rules-and-coding-decisions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The model assumes an established population with no birth rate.</p></li>
@@ -1171,8 +1172,8 @@
 <li><p>Recovered individuals no longer transmit the disease to normal individuals.</p></li>
 <li><p>When individuals reach the boundary of the system they automatically show up on the opposite side. This called a <em>torus</em> (or periodic) boundary condition and approximates an infinite system.</p></li>
 </ul>
-</div>
-<div class="section" id="inspiration">
+</section>
+<section id="inspiration">
 <h2>Inspiration<a class="headerlink" href="#inspiration" title="Permalink to this headline">¶</a></h2>
 <p>The code implemented in this notebook was inspired by an article published in the Washington post about a made-up illness called simulities written by Harry Stevens (see references for more details). The code is not an exact replica of the simulation in the article by Stevens, but my own interpretation, where I aimed for simplicity so that new coders with some handle of Python can understand the flow of the code.</p>
 <div class="cell docutils container">
@@ -1365,12 +1366,12 @@
 <img alt="../_images/disease_spread_3_0.png" src="../_images/disease_spread_3_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>“Why outbreaks like coronavirus spread exponentially, and how to flatten the curve” by Harry Stevens. Published on March 14, 2020 by the Washington Post. <a class="reference external" href="https://www.washingtonpost.com/graphics/2020/world/corona-simulator/">Full story</a>.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

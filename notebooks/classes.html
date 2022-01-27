@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Classes &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1179,7 +1180,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="classes">
+  <section class="tex2jax_ignore mathjax_ignore" id="classes">
 <h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
 <p>Classes are at the core of object-oriented programming and are great to create new objects with custom attributes and functions. Unlike functional programming, in which the output of one function becomes the input of a subsequent function, using classes we can encapsulate functions that are only available to that object.</p>
 <p>Classes are basically the blueprint of new objects and once we create a class, we can create a new object by calling the class. This process of calling a class is similar to that of calling a function and has a specific term: “instantiation”, which means that we called the class to create an new object. This new object can be empty or it can have default attributed and methods pre-populated in the blueprint.</p>
@@ -1191,7 +1192,7 @@
 <li><p>The <code class="docutils literal notranslate"><span class="pre">__init__()</span></code> function is invoked automatically by the Python interpreter when we create a new object. So anything that is within this function will become part of the new object at the time of creation of the object.</p></li>
 </ul>
 <p>Let’s look at some simple examples.</p>
-<div class="section" id="example-laboratory-sample">
+<section id="example-laboratory-sample">
 <h2>Example: Laboratory sample<a class="headerlink" href="#example-laboratory-sample" title="Permalink to this headline">¶</a></h2>
 <p>Imagine that we run a laboratory for soil analyses. The soil samples that we receive from customers (e.g. farmers, gardeners, golf course superintendents, etc.) have a series of attibutes that we probably want to characterize. Some of these attributes could include: customer full name, date received by the lab, a unique identifier, location where the samples was collected, desired analyses, and the results of the analyses. So, the unit here is the sample, all the other information is metadata of the each sample.</p>
 <p>With some of these properties in mind, we can create a new Python class for our samples, so that when we receive a new sample we can create a new entry (we create a new instance of the class SoilSample). As you can see Python does not have this class within its core library, so classes bring flexibility to the user to create custom objects that fit a specific need.</p>
@@ -1248,7 +1249,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="instantiation">
+<section id="instantiation">
 <h3>Instantiation<a class="headerlink" href="#instantiation" title="Permalink to this headline">¶</a></h3>
 <p>Create new instance upon receiving a sample. In this case we will store the new object into a varaible, but we could easily create a dictionary or list to append multiple samples. Too many steps at once can create a complex hierarchical structure that can be hard to understand.</p>
 <div class="cell docutils container">
@@ -1259,8 +1260,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="call-object-attributes">
+</section>
+<section id="call-object-attributes">
 <h3>Call object attributes<a class="headerlink" href="#call-object-attributes" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1298,8 +1299,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="call-object-methods">
+</section>
+<section id="call-object-methods">
 <h3>Call object methods<a class="headerlink" href="#call-object-methods" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1337,8 +1338,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="adding-new-information-to-object">
+</section>
+<section id="adding-new-information-to-object">
 <h3>Adding new information to object<a class="headerlink" href="#adding-new-information-to-object" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1371,9 +1372,9 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Coding Guidelines &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1178,14 +1179,14 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="coding-guidelines">
+  <section class="tex2jax_ignore mathjax_ignore" id="coding-guidelines">
 <h1>Coding Guidelines<a class="headerlink" href="#coding-guidelines" title="Permalink to this headline">¶</a></h1>
 <p>The steps below are aimed at new coders to help them indetify the purpose of the code, stimulate the process of breaking down problems into smaller pieces, and logically organize these smaller components or steps.</p>
-<div class="section" id="define-the-goal-of-your-code">
+<section id="define-the-goal-of-your-code">
 <h2>Define the goal of your code<a class="headerlink" href="#define-the-goal-of-your-code" title="Permalink to this headline">¶</a></h2>
 <p>Briefly describe the purpose of the code. What do you want the code to do? Here it’s important to be specific.</p>
-</div>
-<div class="section" id="break-down-the-problem-sketch-pseudocode">
+</section>
+<section id="break-down-the-problem-sketch-pseudocode">
 <h2>Break down the problem (Sketch + pseudocode)<a class="headerlink" href="#break-down-the-problem-sketch-pseudocode" title="Permalink to this headline">¶</a></h2>
 <p>It’s time to put the pieces of the puzzle together. To break down the problem into smaller steps it is always a good idea to sketch the flow and components of your code on a whiteboard or a piece of paper. Use a canvas that you can erase. At this point you may not know exactly all the steps and complications of your code. Iterative sketching and drafting will clarify your ideas. It’s this iterative process that will provide you with alternative ideas, new insights, and tentative decisional points that will control the flow of your code. If your code relies on multiple equations, add them to the sketch so that you can build the logical flow of your code.</p>
 <p>Describe whether inputs will be retrieved from a remote server, the file system, or from the the user through an interactive interface. Identify potential functions that may emerge from this work and that can be re-used throughout the code.</p>
@@ -1193,18 +1194,18 @@
 <div><p>In this step is important that you consider starting from scratch all over again if necessary. Sometimes we get entangled with our own ideas and a fresh start can be the best solution.</p>
 </div></blockquote>
 <p>Another effective technique to clarify your ideas is to literally breakdown the problem into smaller steps using your own words either below the sketch or at soem specific points of the flow chart.</p>
-</div>
-<div class="section" id="adopt-version-control">
+</section>
+<section id="adopt-version-control">
 <h2>Adopt version control<a class="headerlink" href="#adopt-version-control" title="Permalink to this headline">¶</a></h2>
 <p>To keep track of changes and backup your code it is an imperative practice in modern science to adopt version control tools (e.g. git), whether you are part of a team or if you are working alone. Although maybe not ideal, even tools like Dropbox and OneDrive will be a step forward and may allow inexperienced coders that feel intimidated by more advanced tools to remain engaged.</p>
-</div>
-<div class="section" id="draft-the-code">
+</section>
+<section id="draft-the-code">
 <h2>Draft the code<a class="headerlink" href="#draft-the-code" title="Permalink to this headline">¶</a></h2>
 <p>In this step it is important that you adopt good programming habits. Always include your name, date, purpose of the code, and a brief description of inputs and outputs (units, data type, mandatory/optional inputs). Make sure you include meaningful comments.</p>
 <p>If a block of code is long and complicated, consider splitting the code into a more amenable length. If this is not possible, then take your time to add some comments every so and then to explain in more detail the purpose and steps of the lengthy code.</p>
 <p>If you follow the steps or equations detailed in a peer-reviewed manuscript, add a comment next to each line referencing the equation number and page number. Provide the full reference either at the beginning or end of the code.</p>
-</div>
-<div class="section" id="error-debugging">
+</section>
+<section id="error-debugging">
 <h2>Error debugging<a class="headerlink" href="#error-debugging" title="Permalink to this headline">¶</a></h2>
 <p>Finding the errors in your code is critical. This will not happen at a particular point. We make mistakes all the time while coding. So I encourage you to write a line of code and then test your code before you proceed. Do not proceed until the line of code you are writing does what you expect it to do. It’s important that before running each line of code you should have an expectation for the output.</p>
 <blockquote>
@@ -1219,20 +1220,20 @@
     <span class="n">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="code-review">
+</section>
+<section id="code-review">
 <h2>Code review<a class="headerlink" href="#code-review" title="Permalink to this headline">¶</a></h2>
 <p>Ensure that others read your code. Don’t take criticism personally. If something is not clear it might be due to bad syntax, improper logic, or lack of documentation. If you are the reviewer, be respectful, honest, and provide constructive feedback.</p>
-</div>
-<div class="section" id="refactor-code">
+</section>
+<section id="refactor-code">
 <h2>Refactor code<a class="headerlink" href="#refactor-code" title="Permalink to this headline">¶</a></h2>
 <p>This step involves improving the time efficiency of the code by re-writing some lines of code in a more time-efficient way, by replacing functions with similar but more efficient (or newer) functions, removing unnecessary code from loops, replacing loops by element-wise or array operations, by pre-allocating memory, etc.</p>
 <p>Also, pay special attention to parts of the code that need changes to meet a specific code style, add meaningful comments, and be sure to have a well-documented help section at the beginning of the code.</p>
 <p>Polishing your code is essential to take it to the next step. Test every change to ensure that the code does not change its behavior. Polish your code one or few lines at the time.</p>
 <p><br/><br/><br/></p>
 <p><em>Note: These steps have been devised with the help of Tyson Ochsner while teaching a Matlab course in 2015</em></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

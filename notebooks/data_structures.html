@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Data Structures &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1175,10 +1176,10 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="data-structures">
+  <section class="tex2jax_ignore mathjax_ignore" id="data-structures">
 <h1>Data Structures<a class="headerlink" href="#data-structures" title="Permalink to this headline">¶</a></h1>
 <p>Information lives in data structures. You can view these data structures as containers in which we store information for later use or processing. To a great extent, the selection of the right data structure depends on the scalability of the application, the format and complexity of the data, and the preference of the programmer. Many times the same information can be stored in more than one data structure.</p>
-<div class="section" id="lists">
+<section id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this headline">¶</a></h2>
 <p>Lists are great for storing sequences of elements. Lists can store strings, numbers, or mixed data types. Lists can be nested and are <code class="docutils literal notranslate"><span class="pre">mutable</span></code> objects, which means that we can overwrite the information inside. A distinct feature of lists is that we can access information by using either a positional index (retrieve single item) or slicing (retrieve one or more items). Lists are also known as arrays in other languages (e.g. Matlab). It is worth mentioning that the standard Python lists cannot handle element-wise operations. To leverage element-wise and matric operations we need use Numpy arrays, which we will cover later.</p>
 <blockquote>
@@ -1257,8 +1258,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="tuples">
+</section>
+<section id="tuples">
 <h2>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">¶</a></h2>
 <p>Tuples are another convenient data structure in Python. For instance, a point in a two-dimensional plane is defined by its <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> coordinates. So a tuple <code class="docutils literal notranslate"><span class="pre">point(x,y)</span></code> would make sense and multiple points could be nested within a list. Both pieces of information are critical to define a point on the two-dimensional plane. Another example that requires three pieces of information is color in the RGB space. Each band of the RGB space could be store in a tuple to store <code class="docutils literal notranslate"><span class="pre">(r,g,b)</span></code> triplets. Tuples have an important property: they are <code class="docutils literal notranslate"><span class="pre">immutable</span></code>.</p>
 <div class="cell docutils container">
@@ -1299,8 +1300,8 @@
 </pre></div>
 </div>
 <p>Remember that tuples are <code class="docutils literal notranslate"><span class="pre">immutable</span></code>, which is a good if we want to prevent accidentally changing the value of the color.</p>
-</div>
-<div class="section" id="dictionaries">
+</section>
+<section id="dictionaries">
 <h2>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h2>
 <p>Dictionaries are an extremely versatile and one of the most popular python data structures. A powerful feature of dictionaries is the ability to store and retrieve information using names. Dictionaries are convenient when the data is not a square matrix or table and has multiple features that need to be stored together. A common example is weather data.</p>
 <blockquote>
@@ -1343,8 +1344,8 @@
 <div><p>Note how dictionaries also allow us to add useful metadata such as variable units and instrument model.</p>
 </div></blockquote>
 <p>It’s also important that you realize that the organization of the dictionary above depends on programmer preferences. For instance, rather than grouping all three coordinates into a tuple, a different programmer may prefer to store the values under individual <code class="docutils literal notranslate"><span class="pre">name:value</span></code> pairs.</p>
-</div>
-<div class="section" id="sets">
+</section>
+<section id="sets">
 <h2>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">¶</a></h2>
 <p>Sets is the fourth Python data type and is used to store multiple items into a single variable. Unlike <code class="docutils literal notranslate"><span class="pre">lists</span></code>, Python <code class="docutils literal notranslate"><span class="pre">Sets</span></code> don’t allow for duplicate items, items cannot be changed (although items can be added and removed), and items are not indexed.</p>
 <blockquote>
@@ -1381,8 +1382,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Create a list with the scientific names of three common grasses in the US Great Plains: big bluestem, switchgrass, indian grass, and little bluestem.</p></li>
@@ -1391,8 +1392,8 @@
 <li><p>Create a list of tuples encoding the latitude, longitude, and altitude of three national parks of your choice.</p></li>
 <li><p>Create a list of tuples containing the two matching DNA base pairs.</p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

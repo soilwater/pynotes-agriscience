@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Morse code decoder &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1185,7 +1186,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="morse-code-decoder">
+  <section class="tex2jax_ignore mathjax_ignore" id="morse-code-decoder">
 <h1>Morse code decoder<a class="headerlink" href="#morse-code-decoder" title="Permalink to this headline">¶</a></h1>
 <p>The goal of this exercise is to decode a message written using Morse code. Morse code consists of dits and dahs to represent alphanumeric characters. Although there are rules for the spacing between letters and words, in this case there is a single space between individual Morse codes and three spaces between words.</p>
 <p>A lookup table of Morse codes and characters is available in the Dataset folder. We will use the Pandas library to read the lookup table and also to identify the different codes and match them with the right letter of the alphabet. The message that we will decode is:</p>
@@ -1197,7 +1198,7 @@
 <blockquote>
 <div><p>Some insects like stingless bees (<em>Meliponini</em>) and nonpasserine birds such as Corncrake males (<em>Crex crex</em>) have shown simple ways of accoustic communication resembling Morse code.</p>
 </div></blockquote>
-<div class="section" id="step-1-load-a-morse-code-lookup-table">
+<section id="step-1-load-a-morse-code-lookup-table">
 <h2>Step 1: Load a Morse code lookup table<a class="headerlink" href="#step-1-load-a-morse-code-lookup-table" title="Permalink to this headline">¶</a></h2>
 <p>Load lookup table of Morse codes and alphabet characters using the Pandas library. The <code class="docutils literal notranslate"><span class="pre">C</span></code> engine (default) is faster while the <code class="docutils literal notranslate"><span class="pre">python</span></code> engine is currently more feature-complete.</p>
 <div class="cell docutils container">
@@ -1211,8 +1212,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="step-2-identify-the-individual-morse-codes">
+</section>
+<section id="step-2-identify-the-individual-morse-codes">
 <h2>Step 2: Identify the individual Morse codes<a class="headerlink" href="#step-2-identify-the-individual-morse-codes" title="Permalink to this headline">¶</a></h2>
 <p>This step is essential to decode the message. The fundamental unit of the lookup table is a single code or character, so we need to work at this level to identify the matching Morse code in the DataFrame and then retrieve the corresponding character.</p>
 <p>We will use the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> method of strings to accomplish this.</p>
@@ -1231,8 +1232,8 @@
 </div>
 </div>
 <p>Note that the method removes the spaces but still leaves some empty strings. We will not worry about this right now. In fact, the <code class="docutils literal notranslate"><span class="pre">.split()</span></code> method removed all the spaces between codes so we can use the remaining empty strings to separate words. Again, maybe not ideal, but this is something we can fix later. <strong>We made great progress splitting up the encoded message into individual Morse codes.</strong></p>
-</div>
-<div class="section" id="step-3-match-codes-and-characters">
+</section>
+<section id="step-3-match-codes-and-characters">
 <h2>Step 3: Match codes and characters<a class="headerlink" href="#step-3-match-codes-and-characters" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have the different Morse codes separated into individual elements of a list we need to find a way of matching each code in the encoded string with the Morse code in the lookup, and then we will use the position of the matched Morse code to retrieve the corresponding character. This is similar to what we would do if we solve this problem by hand, it’s just that we normally overlook tiny crucial steps. For instance, you may say: <em>sure after finding the matching Morse code we need to select the character located in the same matching row</em>, but we need to tell the computer all these tiny decisions, so that it can replicate what we do by hand using pencil and paper.</p>
 <p>We will start testing our approach with a single code. At this point it’s common for beginners to start writing loops and if statements without ensuring that the task that will be iterated works as expected. A simple test using a trivial case can save substantial amount of time.</p>
@@ -1321,8 +1322,8 @@ Name: code, dtype: bool
 <blockquote>
 <div><p>Note that if we don’t handle the empty strings represented by <code class="docutils literal notranslate"><span class="pre">''</span></code> our code will crash because the look up table does not have such entry. Also, removing them from the list is not wise because we would lose track of the different words.</p>
 </div></blockquote>
-</div>
-<div class="section" id="step-4-repeat-for-each-morse-code">
+</section>
+<section id="step-4-repeat-for-each-morse-code">
 <h2>Step 4: Repeat for each Morse code<a class="headerlink" href="#step-4-repeat-for-each-morse-code" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1349,8 +1350,8 @@ Name: code, dtype: bool
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="entire-code">
+</section>
+<section id="entire-code">
 <h2>Entire code<a class="headerlink" href="#entire-code" title="Permalink to this headline">¶</a></h2>
 <p>Combining all the steps and adding few more lines of code to handle the emty strings results in the following code:</p>
 <div class="cell docutils container">
@@ -1390,13 +1391,13 @@ Name: code, dtype: bool
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Hrncir, M. and Barth, F.G., 2014. Vibratory communication in stingless bees (Meliponini): the challenge of interpreting the signals. In Studying vibrational communication (pp. 349-374). Springer, Berlin, Heidelberg.</p>
 <p>Ręk, P. and Osiejuk, T.S., 2010. Sophistication and simplicity: conventional communication in a rudimentary system. Behavioral Ecology, 21(6), pp.1203-1210.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

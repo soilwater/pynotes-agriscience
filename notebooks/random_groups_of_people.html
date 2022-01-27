@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Random group generator &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1165,7 +1166,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="random-group-generator">
+  <section class="tex2jax_ignore mathjax_ignore" id="random-group-generator">
 <h1>Random group generator<a class="headerlink" href="#random-group-generator" title="Permalink to this headline">¶</a></h1>
 <p>Create a Python script that generates a random list of individuals organized in <code class="docutils literal notranslate"><span class="pre">N</span></code> groups of <code class="docutils literal notranslate"><span class="pre">K</span></code> members.</p>
 <p>The goal is to write a script that generates the specified number of groups with the specified number of random members.</p>
@@ -1219,7 +1220,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="solution-using-lists">
+<section id="solution-using-lists">
 <h2>Solution using lists<a class="headerlink" href="#solution-using-lists" title="Permalink to this headline">¶</a></h2>
 <p>This solution simply selects a random name, removes the name from the list, and prints the name. We use the individual name to remove it from the list using the <code class="docutils literal notranslate"><span class="pre">remove()</span></code> method.</p>
 <div class="cell docutils container">
@@ -1251,8 +1252,8 @@ Group 3: Enrico Fermi
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="solution-using-a-dictionary">
+</section>
+<section id="solution-using-a-dictionary">
 <h2>Solution using a dictionary<a class="headerlink" href="#solution-using-a-dictionary" title="Permalink to this headline">¶</a></h2>
 <p>This solution is similar to the prvious solution, but it stores the names into a dictionary and makes use of the pretty print module for a nicer display. In this alternative we also remove a specific individual by its corresponding index using the <code class="docutils literal notranslate"><span class="pre">pop()</span></code> method.</p>
 <div class="cell docutils container">
@@ -1285,8 +1286,8 @@ Group 3: Enrico Fermi
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="solution-using-sample-method">
+</section>
+<section id="solution-using-sample-method">
 <h2>Solution using sample method<a class="headerlink" href="#solution-using-sample-method" title="Permalink to this headline">¶</a></h2>
 <p>Uses sampling without replacement to select all the names at once.</p>
 <div class="cell docutils container">
@@ -1319,8 +1320,8 @@ Group 3 : Max Planck
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="solution-using-numpy">
+</section>
+<section id="solution-using-numpy">
 <h2>Solution using Numpy<a class="headerlink" href="#solution-using-numpy" title="Permalink to this headline">¶</a></h2>
 <p>This script groups a set of people into n groups with a maximum of k randomly selected members per group.</p>
 <div class="cell docutils container">
@@ -1359,8 +1360,8 @@ Group: 3 Hideki Yukawa
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

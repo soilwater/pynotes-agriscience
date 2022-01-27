@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Rainfall Generator &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1185,7 +1186,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="rainfall-generator">
+  <section class="tex2jax_ignore mathjax_ignore" id="rainfall-generator">
 <h1>Rainfall Generator<a class="headerlink" href="#rainfall-generator" title="Permalink to this headline">¶</a></h1>
 <p>Weather data is ubiquitous and important for most daily activities. In agriculture, weather plays a preponderant role since it dictates the growth and eventual crop yield (fiber, biomass, or grain).</p>
 <p>Air temperature and precipitation are by far the most commonly monitored variables, followed by relative humidity, wind speed and direccion, solar radiation, soil temperature, and soil moisture.</p>
@@ -1454,7 +1455,7 @@ Name: LST_DATE, dtype: datetime64[ns]
 <img alt="../_images/rainfall_generator_7_0.png" src="../_images/rainfall_generator_7_0.png" />
 </div>
 </div>
-<div class="section" id="modeling-rainfall-as-a-markov-chain">
+<section id="modeling-rainfall-as-a-markov-chain">
 <h2>Modeling rainfall as a Markov chain.<a class="headerlink" href="#modeling-rainfall-as-a-markov-chain" title="Permalink to this headline">¶</a></h2>
 <p>This type of rainfall generators is kwnon as the Richardson-type (Richardson and Wright, 1984). The model computes the rainfall at time <em>t</em> as a function of time <em>t-1</em> in three steps.</p>
 <p>To be consistent with the original manuscript by Richardson and Wright, 1984 we will use the term “wet” for a day with measurable rainfall and “dry” for a day without measurable rainfall.</p>
@@ -1634,8 +1635,8 @@ Name: LST_DATE, dtype: datetime64[ns]
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="daily-rainfall-probability-per-month">
+</section>
+<section id="daily-rainfall-probability-per-month">
 <h2>Daily rainfall probability per month<a class="headerlink" href="#daily-rainfall-probability-per-month" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1747,8 +1748,8 @@ Name: LST_DATE, dtype: datetime64[ns]
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="daily-rainfall-amount-probability">
+</section>
+<section id="daily-rainfall-amount-probability">
 <h2>Daily rainfall amount probability<a class="headerlink" href="#daily-rainfall-amount-probability" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1913,8 +1914,8 @@ Name: LST_DATE, dtype: datetime64[ns]
 <img alt="../_images/rainfall_generator_19_0.png" src="../_images/rainfall_generator_19_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="build-simulator">
+</section>
+<section id="build-simulator">
 <h2>Build simulator<a class="headerlink" href="#build-simulator" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1946,8 +1947,8 @@ Name: LST_DATE, dtype: datetime64[ns]
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="create-rainfall-scenarios">
+</section>
+<section id="create-rainfall-scenarios">
 <h2>Create rainfall scenarios<a class="headerlink" href="#create-rainfall-scenarios" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1986,16 +1987,16 @@ Name: LST_DATE, dtype: datetime64[ns]
 <img alt="../_images/rainfall_generator_24_0.png" src="../_images/rainfall_generator_24_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Intergernmental Panel on Climate Change Data Distribution Centre: https://www.ipcc-data.org/guidelines/pages/weather_generators.html</p>
 <p>Jones, P., Harpham, C., Kilsby, C., Glenis, V. and Burton, A., 2010. UK Climate Projections science report: Projections of future daily climate for the UK from the Weather Generator.</p>
 <p>Kilsby, C.G., Jones, P.D., Burton, A., Ford, A.C., Fowler, H.J., Harpham, C., James, P., Smith, A. and Wilby, R.L., 2007. A daily weather generator for use in climate change studies. Environmental Modelling &amp; Software, 22(12), pp.1705-1719.</p>
 <p>Richardson, C.W., 1982. Dependence structure of daily temperature and solar radiation. Transactions of the ASAE, 25(3), pp.735-0739.</p>
 <p>Richardson, C.W. and Wright, D.A., 1984. WGEN: A model for generating daily weather variables.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

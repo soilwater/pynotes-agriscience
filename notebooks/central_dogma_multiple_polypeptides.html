@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Central Dogma: Decoding Multiple Polypeptides &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1145,7 +1146,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="central-dogma-decoding-multiple-polypeptides">
+  <section class="tex2jax_ignore mathjax_ignore" id="central-dogma-decoding-multiple-polypeptides">
 <h1>Central Dogma: Decoding Multiple Polypeptides<a class="headerlink" href="#central-dogma-decoding-multiple-polypeptides" title="Permalink to this headline">¶</a></h1>
 <p>Building up on top of concepts and lines of codes from previous exercises we will create a set of functions to decode DNA sequences with multiple polypeptides.</p>
 <p>A function is handy and the entire blueprint on how to do DNA transcription is encapsulated in a single function that we can invoke anytime we need to conver DNA into mRNA, very much like invoking an enzyme to do the job for us.</p>
@@ -1228,7 +1229,7 @@
 </table>
 </div></div></div>
 </div>
-<div class="section" id="transcription">
+<section id="transcription">
 <h2>Transcription<a class="headerlink" href="#transcription" title="Permalink to this headline">¶</a></h2>
 <p>Given a sequence of DNA bases we need to find the complementary strand. The catch here is that we also need to account for the fact that the base <code class="docutils literal notranslate"><span class="pre">thymine</span></code> is replaced by the base <code class="docutils literal notranslate"><span class="pre">uracil</span></code> in RNA.</p>
 <p>To check for potential typos in the sequence of DNA or to prevent that the user feeds a sequence of mRNA instead of DNA to the transcription function, we will use the <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement, which will automatically stop and exit the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and throw a custom error message if the code finds a base a base other than A,T,C, or G. The location of the <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement is crucial since we only want to trigger this action if a certain condition is met (i.e. we find an unknown base). So, we will place the <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement inside the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement within the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. We will also return the location in the sequence of the unknown base using the <code class="docutils literal notranslate"><span class="pre">find()</span></code> method.</p>
@@ -1254,8 +1255,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="translation">
+</section>
+<section id="translation">
 <h2>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h2>
 <p>The logic of the translation function will be similar to our previous example. The only catch is that we need to keep track of the different polypeptides and the <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">stop</span></code> signals in the mRNA. These signals dictate the sequence of aminoacids for each polypeptide. Here are some steps of the logic:</p>
 <ul class="simple">
@@ -1337,8 +1338,8 @@ AUGAGCAGUGUCCAAUGGGGUUUGUAAAUGACGCUGCAUAUUUGAAUGACGUGUUUACACUGA
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

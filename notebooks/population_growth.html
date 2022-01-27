@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Population Growth &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1220,11 +1221,11 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="population-growth">
+  <section class="tex2jax_ignore mathjax_ignore" id="population-growth">
 <h1>Population Growth<a class="headerlink" href="#population-growth" title="Permalink to this headline">¶</a></h1>
 <p>Populations dynamics of bacteria, insects, and even humans are proportional to current number of individuals. In these notes we will explore basic one-dimensional population growth as a function of time of bacteria and thermite colonies. We will solve the problems both numerically and analytically using Python.</p>
 <p>One of the salient features of solving this type of problems is the need for preliminary data about the growth of a particular population. Different species have different birth rates and propagation mechanisms that will affect the rate of growth. Problems will usually contain information such as “knowing that the population doubles in X minutes, find…”. These type of statemes mean that we have already characterized a particular population conducting previous experiments in the same growth media or at least, researches have conducted a series of pilot experiments to accurately determine some properties of the population.</p>
-<div class="section" id="bacteria-colony">
+<section id="bacteria-colony">
 <h2>Bacteria colony<a class="headerlink" href="#bacteria-colony" title="Permalink to this headline">¶</a></h2>
 <p>The number of bacteria in yeast culture grows at a rate which is proportional to the number of bacteria present in the medium.If the population of yeast bacteria doubles in one hour, find the number of bacteria which will be present at the end of 3.5 hours.</p>
 <p>If we let <code class="docutils literal notranslate"><span class="pre">x</span></code> be the number of bacteria at any time <code class="docutils literal notranslate"><span class="pre">t</span></code>, then the following equation describes the rate of change, which is basically a population-specific constant <code class="docutils literal notranslate"><span class="pre">k</span></code> times the existing popolaution <code class="docutils literal notranslate"><span class="pre">x</span></code>:</p>
@@ -1255,7 +1256,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="analytical-solution">
+<section id="analytical-solution">
 <h3>Analytical solution<a class="headerlink" href="#analytical-solution" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1349,8 +1350,8 @@ log(x/10) = 3.5*log(2)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="numerical-solution">
+</section>
+<section id="numerical-solution">
 <h3>Numerical solution<a class="headerlink" href="#numerical-solution" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1380,22 +1381,22 @@ log(x/10) = 3.5*log(2)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h3>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>For the numerical solution we used the known <code class="docutils literal notranslate"><span class="pre">k</span></code> derived from the analytical solution. It is possible to compute k using the numerical appraoch given the information provided in the enunciate, but in general we try to avoid this since it would add a new source of error. In other words, to estimate <code class="docutils literal notranslate"><span class="pre">k</span></code> we would need to use another <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> and <code class="docutils literal notranslate"><span class="pre">k</span></code> would only be an approaximation, and part of this error will propagate in the computation of the final population.</p></li>
 <li><p>Using a <span class="math notranslate nohighlight">\(\Delta t\)</span> of one minute and assuming that bacteria are whole organisms (this is why we rounded the final value) the analytical and numerical solutions matched.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="practice">
+</section>
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Using the information in the problem enunciate and using the analytical solution as a reference, compute the value of <span class="math notranslate nohighlight">\(k\)</span> numerically.</p></li>
 </ul>
-</div>
-<div class="section" id="thermite-colony">
+</section>
+<section id="thermite-colony">
 <h2>Thermite colony<a class="headerlink" href="#thermite-colony" title="Permalink to this headline">¶</a></h2>
 <p>Let’s assume that the birth and death rate of a termite (<em>Coptotermes formosanus</em>) colony is proportional to the number of individuals in the colony. When the colony population is healthy and the proportion of individuals and resources are balanced, the birth rate would cause the colony to double its size in 15 days. If for some reason the birth rate drops to zero (e.g. overpopulation), then the death rate would reduce the population of the colony by half in just 7 days. Find the birth and death rate of the termite colony.</p>
 <p>The equation that describes population changes as a function of time is given by:</p>
@@ -1507,8 +1508,8 @@ log(x/10) = 3.5*log(2)
 </div>
 </div>
 <p>The resulting birth rate is in terms of fraction of the colony per week.</p>
-</div>
-<div class="section" id="numerical-exercise">
+</section>
+<section id="numerical-exercise">
 <h2>Numerical exercise<a class="headerlink" href="#numerical-exercise" title="Permalink to this headline">¶</a></h2>
 <p>Now that we found the birth and death rate of the colony of termites, let’s model the population over the span of several weeks.</p>
 <p>There is one issue, however, that needs to addressed before proceeding. The enunciate did not provide information about the maximum size that the colony can reach. In other words, as long as the birth rate is larger than the death rate <span class="math notranslate nohighlight">\(k1 &gt; k2\)</span>, the colony can grow indefinitely. To trigger some dynamics, we will enforce a maximum population of 1,000 individuals. Whent he population hits this maximum, the colony will stop reproducing (<code class="docutils literal notranslate"><span class="pre">k1=0</span></code>) until the value of individuals decreases below the limit.</p>
@@ -3040,18 +3041,18 @@ roTBs2RqAAAAAElFTkSuQmCC'
   }
 })(window);</script></div></div>
 </div>
-</div>
-<div class="section" id="id1">
+</section>
+<section id="id1">
 <h2>Practice<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Go back to the analytical model of the termite colony and modify the number of weeks and the fractions at which the population halves and doubles. Find new birth and death rates and re-run the numerical model. You can also add more rules in the <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> to trigger different birth and death rates based on the number of individuals.</p></li>
 </ul>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>The examples in this notebook were adapted from problems and exercises in Morris. Tenenbaum and Pollard, H., 1963. Ordinary differential equations: an elementary textbook for students of mathematics, engineering, and the sciences. Dover Publications.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

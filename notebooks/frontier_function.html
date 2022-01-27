@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Frontier Production Function &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1177,7 +1178,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="frontier-production-function">
+  <section class="tex2jax_ignore mathjax_ignore" id="frontier-production-function">
 <h1>Frontier Production Function<a class="headerlink" href="#frontier-production-function" title="Permalink to this headline">¶</a></h1>
 <p>A frontier production function is a method of economic analysis used to asses the use efficiency of a limited number of resources in industry. Perhaps, the most traditional example involves the analysis of resources such as labor and capital required to produce a specic good. The concept has also been widely applied in agriculture to assess the regional (e.g. county, shire) or farm production efficiency as a function of growing season water supply.</p>
 <p>In this exercise you will learn how to fit a frontier production function using a dataset of winter wheat grain yield and growing season precipitation for Grant county in Oklahoma. We will implement the Cobb-Douglas model, which is one of the most common models. If you are interested in this topic you should read the seminal paper by Cobb and Douglas published in 1928.</p>
@@ -1486,7 +1487,7 @@ The frontier was built using a total of: 1120 points
 <img alt="../_images/frontier_function_16_0.png" src="../_images/frontier_function_16_0.png" />
 </div>
 </div>
-<div class="section" id="curve-interpretation">
+<section id="curve-interpretation">
 <h2>Curve interpretation<a class="headerlink" href="#curve-interpretation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The part of the frontier intercepting the <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">axis</span></code> is negative. We restricted the plot to plausible yield values, which are certainly greater than zero.</p></li>
@@ -1496,8 +1497,8 @@ The frontier was built using a total of: 1120 points
 </ul>
 <p>To complete the analysis we will compute few extra metrics that might be useful to summarize the dataset. I assume most of you are familiar with the concept of median (i.e. 50th percentile), which is auseful metric of central tendency robust to outliers and skewed distributions. Perhaps, the most challenging step is the one regarding the searching of the function roots. We can use the Newton-Raphson method (also known as the secant method) for finding function roots (i.e. at what value(s) of x the function f(x) intersects the x-axis). Based on a visual inspection of the graph, we will pass an initial guess for the serach of 200 mm. If you want to learn more about this function you can read the official <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.newton.html">SciPy documentation</a>.</p>
 <p>We can also estimate the ideal rainfall by finding the point at which the frontier does not show any additional increase in yield with increasing rainfall. We can find this optimum point by finding the point at which the first derivative of the frontier function is zero.</p>
-</div>
-<div class="section" id="additional-summary-metrics">
+</section>
+<section id="additional-summary-metrics">
 <h2>Additional summary metrics<a class="headerlink" href="#additional-summary-metrics" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1535,8 +1536,8 @@ Optimal yield: 2525.0 kg/ha
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="quantile-regression">
+</section>
+<section id="quantile-regression">
 <h2>Quantile regression<a class="headerlink" href="#quantile-regression" title="Permalink to this headline">¶</a></h2>
 <p>In the previous line of reasoning we have focused on selecting the highest yield within a given rainfall interval. This approach makes direct use of both rainfall and yield observations to build the frontier production function.</p>
 <p>An alternative approach is to calculate some statistical variables for each interval. A commonly used technique is that of selecting percentiles or quantiles. You probably heard the term “Quantile regression analysis”. I’m sure that <code class="docutils literal notranslate"><span class="pre">Python</span></code> and <code class="docutils literal notranslate"><span class="pre">R</span></code> packages have some advanced features, but here I want show the concept behind the technique, which is similar to the approach described earlier.</p>
@@ -1618,8 +1619,8 @@ Optimal yield: 2592.0 kg/ha
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <p>Depending on the method we obtained somewhat different values of minimum losses, optimal rainfall, and optimal yield. So here are some questions for you to think:</p>
 <ul class="simple">
@@ -1627,15 +1628,15 @@ Optimal yield: 2592.0 kg/ha
 <li><p>Run the code again using a different number of bins. How different are the values for minimum losses and optimum rainfall amounts?</p></li>
 <li><p>Should we consider an asymptotic model or a model like the Cobb-Douglas that may exhibit a decreasing trend at high growing season rainfall amounts?</p></li>
 </ul>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Cobb, C.W. and Douglas, P.H., 1928. A theory of production. The American Economic Review, 18(1), pp.139-165.</p>
 <p>French, R.J. and Schultz, J.E., 1984. Water use efficiency of wheat in a Mediterranean-type environment. I. The relation between yield, water use and climate. Australian Journal of Agricultural Research, 35(6), pp.743-764.</p>
 <p>Grassini, P., Yang, H. and Cassman, K.G., 2009. Limits to maize productivity in Western Corn-Belt: a simulation analysis for fully irrigated and rainfed conditions. Agricultural and forest meteorology, 149(8), pp.1254-1265.</p>
 <p>Patrignani, A., Lollato, R.P., Ochsner, T.E., Godsey, C.B. and Edwards, J., 2014. Yield gap and production gap of rainfed winter wheat in the southern Great Plains. Agronomy Journal, 106(4), pp.1329-1339.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Comparative Anatomy of For Loops &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1175,12 +1176,12 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="comparative-anatomy-of-for-loops">
+  <section class="tex2jax_ignore mathjax_ignore" id="comparative-anatomy-of-for-loops">
 <h1>Comparative Anatomy of For Loops<a class="headerlink" href="#comparative-anatomy-of-for-loops" title="Permalink to this headline">¶</a></h1>
 <p>A short example was coded in several common languages for data science and scientific computing to illustrate syntax similarities of <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loops</span></code>. The goal is to understand that if you know how to break down a problem logically, then implementing the logic in different languages is mostly a matter of learning some syntax. Certainly, experience with a particular language will allow you to write better and optimized code, but you can translate and prototype simple scripts or code snippets fairly quickly.</p>
 <p>To simplify the example I wrote a simple code that returns the first ten numbers of the Fibonacci sequence: <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">8,</span> <span class="pre">13,</span> <span class="pre">21,</span> <span class="pre">34</span></code></p>
 <p>Note that in the examples below the step of the loop was added for completeness. The default value of the step is one and in most cases you will not need to specify the step increment of the <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> when the increment is assumed to be one unit.</p>
-<div class="section" id="python">
+<section id="python">
 <h2>Python<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">F_seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># Seed values</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
@@ -1194,9 +1195,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="matlab">
+<section id="matlab">
 <h2>Matlab<a class="headerlink" href="#matlab" title="Permalink to this headline">¶</a></h2>
 <p>Appended new values using the <code class="docutils literal notranslate"><span class="pre">(end+1)</span></code> notation. This is inefficient and not recommended in Matlab, but it was used to illustrate a straight forward solution</p>
 <div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="n">F_seq</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">];</span><span class="w"> </span><span class="c">% Seed values</span><span class="w"></span>
@@ -1212,9 +1213,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span>     <span class="mi">1</span>     <span class="mi">1</span>     <span class="mi">2</span>     <span class="mi">3</span>     <span class="mi">5</span>     <span class="mi">8</span>    <span class="mi">13</span>    <span class="mi">21</span>    <span class="mi">34</span>
 </pre></div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="javascript">
+<section id="javascript">
 <h2>Javascript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
 <p>Solved without using the reduce() method for easier readability for non Javascript programmers. Javascript does not have a <code class="docutils literal notranslate"><span class="pre">sum()</span></code> method.</p>
 <div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">F_seq</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0</span><span class="p">,</span><span class="mf">1</span><span class="p">];</span>
@@ -1229,9 +1230,9 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">34</span><span class="p">]</span>
 </pre></div>
 </div>
-</div>
+</section>
 <hr class="docutils" />
-<div class="section" id="julia">
+<section id="julia">
 <h2>Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">F_seq</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c"># Seed values</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10</span>
@@ -1256,16 +1257,16 @@
  <span class="mi">34</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="synthesis">
+</section>
+<section id="synthesis">
 <h2>Synthesis<a class="headerlink" href="#synthesis" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>All languages contain a keyword to define the <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code></p></li>
 <li><p>All languages contain syntax for defining the start, end, and step of the iterative process</p></li>
 <li><p>All languages specify an iterator that carries the current value of the iteration</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

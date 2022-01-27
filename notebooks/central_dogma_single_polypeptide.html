@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Central Dogma: Decoding a Single Polypeptide &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1175,7 +1176,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="central-dogma-decoding-a-single-polypeptide">
+  <section class="tex2jax_ignore mathjax_ignore" id="central-dogma-decoding-a-single-polypeptide">
 <h1>Central Dogma: Decoding a Single Polypeptide<a class="headerlink" href="#central-dogma-decoding-a-single-polypeptide" title="Permalink to this headline">¶</a></h1>
 <p><em>The DNA is the carrier of genetic information and its simplest form can be viewed as a long string of characters that encode biological features and attributes</em></p>
 <p>The central dogma of molecular biology consists of a two step process to convert the information contained in DNA sequences into proteins. These steps are transcription (DNA into messenger RNA) and translation (messenger RNA into aminoacids). The RNA polymerase is an enzyme that participates in the transcription process, while ribosomes are large molecular structures that translate messenger RNA into a chain of aminoacids to form polypetides and proteines.</p>
@@ -1190,7 +1191,7 @@ Source: Nature Education.</strong></p>
 The initiator tRNA molecule, carrying the methionine amino acid that will serve as the first amino acid of the polypeptide chain, is bound to the P site on the ribosome. The A site is aligned with the next codon, which will be bound by the anticodon of the next incoming tRNA. Source: Nature Education.</strong></p>
 <p>Codons refer to the triplets in the mRNA. The triplets in the sequence of transfer RNA (tRNA) are called anti-codons and are complementary to the codons in the mRNA. In the figure above, <code class="docutils literal notranslate"><span class="pre">AUG</span></code> (in the 5’ to 3’ mRNA) is the codon for Methionine, while <code class="docutils literal notranslate"><span class="pre">UAC</span></code> (in the tRNA) is the anti-codon for Methionine</p>
 <p>There are total of 23 essential aminoacids that encoded in codons consisting of three bases. Some codons are dedicated at instructing the ribosomes the START or STOP of the sequence. The genetic code includes 64 possible permutations, or combinations, of three-letter nucleotide sequences that can be made from the four nucleotides. Of the 64 codons, 61 represent amino acids, and three are stop signals. For example, the codon CAG represents the amino acid glutamine, and TAA is a stop codon. The genetic code is described as degenerate, or redundant, because a single amino acid may be coded for by more than one codon. When codons are read from the nucleotide sequence, they are read in succession and do not overlap with one another.</p>
-<div class="section" id="assumptions">
+<section id="assumptions">
 <h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>For simplicity we will ignore additional portions of DNA such as promoter and a terminator regions that play an important role during transcription, but that do not contribute the sequence of the polypeptide.</p></li>
@@ -1291,8 +1292,8 @@ The initiator tRNA molecule, carrying the methionine amino acid that will serve 
 </div>
 </div>
 <p>I decided to keep it simple, but you can create longer and more diverse DNA sequences using this <a class="reference external" href="https://www.bioinformatics.org/sms2/random_coding_dna.html">random coding DNA tool</a>. For clarity, notice that this tool already provides the complementary DNA strand. Since in this exercise we are also implementing the transcription step I reversed the DNA sequence obtained from the website. Here is the original DNA strand that I obtained from the online tool: <code class="docutils literal notranslate"><span class="pre">atggataaagtgacggcaggcaacgtgatgcttgccttcggcacgagtctggttgtgcaggtcgttgtttcttga</span></code>, which I reversed using the code from the <code class="docutils literal notranslate"><span class="pre">complementaty</span> <span class="pre">DNA</span> <span class="pre">sequence</span></code> exercise. If you don’t do this step, the code will still decode aminoacids, but the resulting polypeptide will not look right (i.e. Methionine will not be the first aminoacid). I simply reversed the DNA strand to closely match textbook examples and available material online.</p>
-</div>
-<div class="section" id="transcription">
+</section>
+<section id="transcription">
 <h2>Transcription<a class="headerlink" href="#transcription" title="Permalink to this headline">¶</a></h2>
 <p>Given a sequence of DNA bases we need to find the complementary strand. The catch here is that we also need to account for the fact that the base <code class="docutils literal notranslate"><span class="pre">thymine</span></code> is replaced by the base <code class="docutils literal notranslate"><span class="pre">uracil</span></code> in RNA.</p>
 <p>To check for potential typos in the sequence of DNA or to prevent that the user feeds a sequence of mRNA instead of DNA to the transcription function, we will use the <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement, which will automatically stop and exit the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and throw a custom error message if the code finds a base a base other than A,T,C, or G. The location of the <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement is crucial since we only want to trigger this action if a certain condition is met (i.e. we find an unknown base). So, we will place the <code class="docutils literal notranslate"><span class="pre">raise</span></code> statement inside the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement within the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. We will also return the location in the sequence of the unknown base using the <code class="docutils literal notranslate"><span class="pre">find()</span></code> method.</p>
@@ -1327,8 +1328,8 @@ The initiator tRNA molecule, carrying the methionine amino acid that will serve 
 </div>
 </div>
 <p>After solving the problem with a short script, we could easily convert the script into a function. This will allow us to use the function multiple times without re-writing the instructions.</p>
-</div>
-<div class="section" id="translation">
+</section>
+<section id="translation">
 <h2>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h2>
 <p>We are at a breakpoint. We loaded the lookup table and we have the mRNA sequence. Our next step is to solve the translation problem. Basically we need to find a way to search the matching aminoacid for any given codon. If we we find a way to do this, then we can implement it into a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and apply to the entire mRNA sequence. We will start simple, I want to show you the value of a trivial example.</p>
 <div class="cell docutils container">
@@ -1387,8 +1388,8 @@ Name: aminoacid, dtype: object
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="dna-in-action">
+</section>
+<section id="dna-in-action">
 <h2>DNA in action<a class="headerlink" href="#dna-in-action" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1413,13 +1414,13 @@ Polypeptide: Methionine-Aspartic_acid-Lysine-Valine-Threonine-Alanine-Glycine-As
 <p>If you deal with DNA and mRNA seqeuences on a daily basis, consider creating a module with transcription and translation functions that you can readily use in multiple projects.</p>
 <p>Our code can only handle a single sequence encoding a single polypeptide. Below I leave a DNA sequence encoding 3 polypeptides. Can you write a function capable of decoding a DNA sequence of multiple polypeptides, each with different number of aminoacids?</p>
 <p><code class="docutils literal notranslate"><span class="pre">TACTCGTCACAGGTTACCCCAAACATTTACTGCGACGTATAAACTTACTGCACAAATGTGACT</span></code></p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Clancy, S. and Brown, W., 2008. Translation: DNA to mRNA to protein. Nature Education, 1(1), p.101.</p>
 <p>Stothard P. 2000. The Sequence Manipulation Suite: JavaScript programs for analyzing and formatting protein and DNA sequences. Biotechniques 28:1102-1104.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

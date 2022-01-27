@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>While loops &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1155,7 +1156,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="while-loops">
+  <section class="tex2jax_ignore mathjax_ignore" id="while-loops">
 <h1>While loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">¶</a></h1>
 <p>Similar to a <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code>, a <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loop</span></code> is intended to iterate over a specific set of lines of code. However, the need for a <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loop</span></code> might not be as clear to new programmers as with <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loops</span></code>. The difference is in that a <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loop</span></code> runs indefinetely until a certain condition is met, which means that in some cases the code could run forever if the condition is never met. In a <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loop</span></code> the interpreter is constatnly running the code and checking to whether a specific condition is met or not. If not, then the code runs one more time.</p>
 <p>The structure of the <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loop</span></code> is simple and its syntax in Python is as follows:</p>
@@ -1174,7 +1175,7 @@
 <blockquote>
 <div><p>In Python empty variables are considered <code class="docutils literal notranslate"><span class="pre">False</span></code>, and non-empty variables are considered <code class="docutils literal notranslate"><span class="pre">True</span></code>. We can use this fact to succintly implement a condition in a <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loop</span></code>. For instance: <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">len(a)</span> <span class="pre">&gt;</span> <span class="pre">0:</span></code> could be replaced by <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">a:</span></code></p>
 </div></blockquote>
-<div class="section" id="a-simple-while-loop">
+<section id="a-simple-while-loop">
 <h2>A simple while loop<a class="headerlink" href="#a-simple-while-loop" title="Permalink to this headline">¶</a></h2>
 <p>This trivial case will only print values 0, 1, and 2. As soon as the fourth iteration starts the condition is no longet met and the while loop will break.</p>
 <div class="cell docutils container">
@@ -1195,8 +1196,8 @@
 </div>
 </div>
 <p>Using these concepts we can create a little game that records a list of <em>N</em> elements and prints all the entries at the end. Note that the last line is outside the <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loop</span></code>, which means that will only print once the while loop is over. If we put the last line inside the <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loop</span></code> the list will print every time we enter something.</p>
-</div>
-<div class="section" id="guess-the-number">
+</section>
+<section id="guess-the-number">
 <h2>Guess the number<a class="headerlink" href="#guess-the-number" title="Permalink to this headline">¶</a></h2>
 <p>In this example we will create a game that is about guessing a random number selected by the computer. The game ends once we correctly guess the number, otherwise the computer will give us another chance to guess.</p>
 <div class="cell docutils container">
@@ -1238,8 +1239,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="list-of-lab-supplies">
+</section>
+<section id="list-of-lab-supplies">
 <h2>List of lab supplies<a class="headerlink" href="#list-of-lab-supplies" title="Permalink to this headline">¶</a></h2>
 <p>In the next exercise we will create a simple code that records items into a list, similar to a shopping list. The way we stop the program execution in this case is by writing the keyword <code class="docutils literal notranslate"><span class="pre">done</span></code>, which will terminate the while loop. Otherwise the program will keep asking wfor more items.</p>
 <div class="cell docutils container">
@@ -1285,8 +1286,8 @@ Add lab supply: done
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

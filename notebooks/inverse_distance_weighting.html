@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Inverse Distance Weighting Interpolation &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1147,7 +1148,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="inverse-distance-weighting-interpolation">
+  <section class="tex2jax_ignore mathjax_ignore" id="inverse-distance-weighting-interpolation">
 <h1>Inverse Distance Weighting Interpolation<a class="headerlink" href="#inverse-distance-weighting-interpolation" title="Permalink to this headline">¶</a></h1>
 <p>Interpolation methods are statistical tools to estimate the value of a variable at un unmoniotred location. The simplest interpolation method is perhaps the nearest neighbor method, which assigns to a point of interest the value of the nearest observed point. More sophisticated methods account for the distance between the point of interest and one or more nearby observed locations. Interpolation methods based on distance assume that the value at an unknown location is more similar to a nearby observation than to a farther observation. Thus, field observations closest to the point of interest usually receive greater weights. More sophisticated spatial interpolation methods such as kriging, account for the spatial structure of the field observations.</p>
 <p>In this notebook we will explore the inverse distance weighting method to estimate the sand content at a specific point based on known sand contents from a field survey.</p>
@@ -2783,7 +2784,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
   }
 })(window);</script></div></div>
 </div>
-<div class="section" id="euclidean-distance">
+<section id="euclidean-distance">
 <h2>Euclidean distance<a class="headerlink" href="#euclidean-distance" title="Permalink to this headline">¶</a></h2>
 <p>We will need a way to compute the distance between the x and y coordinates of the point of interest and all the points from the field survey. The Euclidean distance is one of the most popular and easier distances to calculate.</p>
 <div class="cell docutils container">
@@ -2797,8 +2798,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="interpolation">
+</section>
+<section id="interpolation">
 <h2>Interpolation<a class="headerlink" href="#interpolation" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have afunction to compute distances, we can implement the inverse distance weighting function:</p>
 <div class="math notranslate nohighlight">
@@ -2834,8 +2835,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

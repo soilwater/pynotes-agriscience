@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Field Random Samples &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1239,7 +1240,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="field-random-samples">
+  <section class="tex2jax_ignore mathjax_ignore" id="field-random-samples">
 <h1>Field Random Samples<a class="headerlink" href="#field-random-samples" title="Permalink to this headline">¶</a></h1>
 <p>When collecting field observations we are often confronted with large regions, watershed, or agricultural fields and sampling strategies are required to ensure that we accurately assess the variable of study.</p>
 <p>We will use a real watershed boundary from the Konza Prairie, which is located in the northern part of the Flint Hills region of Kansas. The Konza Prairie is primarily owned by The Nature Conservancy and operated as a field research station by Kansas State University. The Konza is a long-term ecological research field and is one the largest protected tallgrass prairie ecosystem in the world.</p>
@@ -1321,7 +1322,7 @@
 </table>
 </div></div></div>
 </div>
-<div class="section" id="plot-watershed-boundary">
+<section id="plot-watershed-boundary">
 <h2>Plot watershed boundary<a class="headerlink" href="#plot-watershed-boundary" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1338,8 +1339,8 @@
 <img alt="../_images/field_random_samples_4_0.png" src="../_images/field_random_samples_4_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="test-if-point-is-inside-watershed">
+</section>
+<section id="test-if-point-is-inside-watershed">
 <h2>Test if point is inside watershed<a class="headerlink" href="#test-if-point-is-inside-watershed" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1390,8 +1391,8 @@
 <img alt="../_images/field_random_samples_8_0.png" src="../_images/field_random_samples_8_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="random-sampling-points">
+</section>
+<section id="random-sampling-points">
 <h2>Random sampling points<a class="headerlink" href="#random-sampling-points" title="Permalink to this headline">¶</a></h2>
 <p>Let’s generate a set of <em>N</em> random sampling points within the watershed.</p>
 <div class="cell docutils container">
@@ -1515,8 +1516,8 @@
 <img alt="../_images/field_random_samples_17_0.png" src="../_images/field_random_samples_17_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="random-sampling-grid-cells">
+</section>
+<section id="random-sampling-grid-cells">
 <h2>Random sampling grid cells<a class="headerlink" href="#random-sampling-grid-cells" title="Permalink to this headline">¶</a></h2>
 <p>Another option to random sampling points is to discretize the area of the water shed into <em>N</em> grid cells and then randomly select some of these cells to conduct the field sampling.</p>
 <p>To solve this problem we will need to generate square grid cells and determined whether they are fully within the boundary of the watershed. This approach will make sure that no grid cell overlaps with the watershed boundary.</p>
@@ -1574,7 +1575,7 @@
 <img alt="../_images/field_random_samples_22_0.png" src="../_images/field_random_samples_22_0.png" />
 </div>
 </div>
-<div class="section" id="create-grid">
+<section id="create-grid">
 <h3>Create grid<a class="headerlink" href="#create-grid" title="Permalink to this headline">¶</a></h3>
 <p>To create the grid cells within the watershed we have two options: 1) create a known number of cells that fit within the watershed, or 2) create as many grid cells as possible of a given size. Because of its irregular shape, we will create as many cells as possible of a given size. We will cover the entire bounding box of the water shed, and then eliminate those grdi cells that are not fully contained by the watershed boundaries.</p>
 <p>Of course, the smaller the size of the grid cells, the more cells we can fit, and the closer they will follow the perimeter of the watershed.</p>
@@ -1591,8 +1592,8 @@
 </div>
 </div>
 <p>An alternative that deserves some exploration is using the Numpy <code class="docutils literal notranslate"><span class="pre">meshgrid()</span></code> function and the Shapely <code class="docutils literal notranslate"><span class="pre">MultiPolygon</span></code> feature. In this particualr case I found that a straigth forward <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and the use of an array of Shapely <code class="docutils literal notranslate"><span class="pre">Polygons</span></code> was simpler, at least for this particular problem.</p>
-</div>
-<div class="section" id="generate-tuples-for-each-grid-cell">
+</section>
+<section id="generate-tuples-for-each-grid-cell">
 <h3>Generate tuples for each grid cell<a class="headerlink" href="#generate-tuples-for-each-grid-cell" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1606,8 +1607,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="overlay-grid-on-watershed-map">
+</section>
+<section id="overlay-grid-on-watershed-map">
 <h3>Overlay grid on watershed map<a class="headerlink" href="#overlay-grid-on-watershed-map" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1630,8 +1631,8 @@
 <img alt="../_images/field_random_samples_29_0.png" src="../_images/field_random_samples_29_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="exclude-grid-cells-that-are-outside-or-overlap-watershed">
+</section>
+<section id="exclude-grid-cells-that-are-outside-or-overlap-watershed">
 <h3>Exclude grid cells that are outside or overlap watershed<a class="headerlink" href="#exclude-grid-cells-that-are-outside-or-overlap-watershed" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1661,8 +1662,8 @@
 <img alt="../_images/field_random_samples_31_0.png" src="../_images/field_random_samples_31_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="select-random-numer-of-cell-within-watershed">
+</section>
+<section id="select-random-numer-of-cell-within-watershed">
 <h3>Select random numer of cell within watershed<a class="headerlink" href="#select-random-numer-of-cell-within-watershed" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1696,8 +1697,8 @@
 <img alt="../_images/field_random_samples_33_0.png" src="../_images/field_random_samples_33_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="print-centroid-for-each-sampling-cell">
+</section>
+<section id="print-centroid-for-each-sampling-cell">
 <h3>Print centroid for each sampling cell<a class="headerlink" href="#print-centroid-for-each-sampling-cell" title="Permalink to this headline">¶</a></h3>
 <p>Thinking ahead on field work, it would be nice to have a the coordiantes for each cell. In this case we will print the Lower-Left corner of each cell. An alternative is to compute the cell centroid. You can easily do this using numpy. For instance:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
@@ -1741,13 +1742,13 @@ Cell 20 Lat: 39.09392378551724 Lon: -96.56056928724138
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="references">
+</section>
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://shapely.readthedocs.io/en/latest/manual.html#geometric-objects">Shapely official documentation</a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

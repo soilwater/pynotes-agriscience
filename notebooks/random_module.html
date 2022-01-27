@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Random module &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1165,7 +1166,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="random-module">
+  <section class="tex2jax_ignore mathjax_ignore" id="random-module">
 <h1>Random module<a class="headerlink" href="#random-module" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">random</span></code> module from the standard Python library provides useful methods for choosing samples with or without replacement, drawing values from common distributions, generating random numbers within a specified range, and specifying random seeds for reproducibility.</p>
 <div class="cell docutils container">
@@ -1176,7 +1177,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="random-number-from-a-specific-range">
+<section id="random-number-from-a-specific-range">
 <h2>Random number from a specific range<a class="headerlink" href="#random-number-from-a-specific-range" title="Permalink to this headline">¶</a></h2>
 <p>By default the <code class="docutils literal notranslate"><span class="pre">random()</span></code> method will return a random float in the range 0 to 1 from a uniform distribution. In the uniform distribution each number has the same probability of being picked.</p>
 <p>In the examples below you can run the cell multiple times to generate different random numbers.</p>
@@ -1303,8 +1304,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="random-elements-from-lists">
+</section>
+<section id="random-elements-from-lists">
 <h2>Random elements from lists<a class="headerlink" href="#random-elements-from-lists" title="Permalink to this headline">¶</a></h2>
 <p>In many cases we are not interested in generating random numbers <em>per se</em>, but in drawing a random element from a list of elements. In this case the methods <code class="docutils literal notranslate"><span class="pre">choice()</span></code>, <code class="docutils literal notranslate"><span class="pre">choices()</span></code>, and <code class="docutils literal notranslate"><span class="pre">sample()</span></code> can result very useful.</p>
 <div class="cell docutils container">
@@ -1363,8 +1364,8 @@
 <p class="admonition-title">Note</p>
 <p>When drawing elements <strong>WITHOUT replacement</strong> all the elements in the resulting list will be unique. In this case, the value of <code class="docutils literal notranslate"><span class="pre">k</span></code> must be equal or lower than the number of elements in the list.</p>
 </div>
-</div>
-<div class="section" id="setting-up-a-random-seed">
+</section>
+<section id="setting-up-a-random-seed">
 <h2>Setting up a random seed<a class="headerlink" href="#setting-up-a-random-seed" title="Permalink to this headline">¶</a></h2>
 <p>The random module actually generates pseudo-random numbers that have properties of random numbers. To ensure that results from random processes are reproducible it is possible to set up a random seed, which is basically a number that initializes the sequence in the random number generator.</p>
 <p>The Mersenne-Twister is perhaps one of the most popular pseudo-random generator algorithms (Matsumoto and Nishimura, 1998). For a simpler pseudo-random generator you can also read the manuscript by Payne et al 1969.</p>
@@ -1399,14 +1400,14 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Matsumoto, M. and Nishimura, T., 1998. Mersenne twister: a 623-dimensionally equidistributed uniform pseudo-random number generator. ACM Transactions on Modeling and Computer Simulation (TOMACS), 8(1), pp.3-30.</p>
 <p>Random module official documentation: https://docs.python.org/3/library/random.html</p>
 <p>Payne, W.H., Rabung, J.R. and Bogyo, T.P., 1969. Coding the Lehmer pseudo-random number generator. Communications of the ACM, 12(2), pp.85-86.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Air Temperature &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1197,7 +1198,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="air-temperature">
+  <section class="tex2jax_ignore mathjax_ignore" id="air-temperature">
 <h1>Air Temperature<a class="headerlink" href="#air-temperature" title="Permalink to this headline">¶</a></h1>
 <p>Seasonal changes in air temperature closely follow the sinusoidal pattern of solar radiation. So, for a given location, there is a strong relationship with the day of the year and a strong autocorrelation, which means that, typically, the air tempearature today is similar to the air temperature yesterday or tomorrow. In this exercise we will inspect the dynamics of daily minimum (TMIN) and maximum (TMAX) air temperatures. We will calculate average TMAX and TMIN for each day of the year and we will also fit a simple sinusoidal model and examine its residuals.</p>
 <div class="cell docutils container">
@@ -1342,7 +1343,7 @@ Name: LST_DATE, dtype: datetime64[ns]
 <img alt="../_images/air_temperature_6_0.png" src="../_images/air_temperature_6_0.png" />
 </div>
 </div>
-<div class="section" id="compute-annual-average-air-temperature">
+<section id="compute-annual-average-air-temperature">
 <h2>Compute annual average air temperature<a class="headerlink" href="#compute-annual-average-air-temperature" title="Permalink to this headline">¶</a></h2>
 <p>To establish some predictive power in aour weather generator we need to extract the deterministic and stochastic components of the signal.</p>
 <div class="cell docutils container">
@@ -1366,8 +1367,8 @@ Tmax_avg: 21.3
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="compute-daily-thermal-amplitude">
+</section>
+<section id="compute-daily-thermal-amplitude">
 <h2>Compute daily thermal amplitude<a class="headerlink" href="#compute-daily-thermal-amplitude" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1451,8 +1452,8 @@ Tmax_avg: 21.3
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="examine-residuals">
+</section>
+<section id="examine-residuals">
 <h2>Examine residuals<a class="headerlink" href="#examine-residuals" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1504,8 +1505,8 @@ Residuals tmin: Mean= -0.0027578743096251766 Std: 4.879320798713006
 <img alt="../_images/air_temperature_20_0.png" src="../_images/air_temperature_20_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="compute-tmax-and-tmin-for-each-doy">
+</section>
+<section id="compute-tmax-and-tmin-for-each-doy">
 <h2>Compute Tmax and Tmin for each DOY<a class="headerlink" href="#compute-tmax-and-tmin-for-each-doy" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1554,8 +1555,8 @@ Residuals tmin: Mean= -0.0027578743096251766 Std: 4.879320798713006
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="compute-annual-thermal-amplitude">
+</section>
+<section id="compute-annual-thermal-amplitude">
 <h2>Compute annual thermal amplitude<a class="headerlink" href="#compute-annual-thermal-amplitude" title="Permalink to this headline">¶</a></h2>
 <p>To compute the amplitude we will first smooth the air temperature signal using a centered moving average. THen we have two options, computing the amplitude from records of
 Here there are two options: 1) computing the amplitude using a smoothed version of Tmin and Tmax, or 2) simply computing the average amplitude of each day on record. Let’s try both and see if there is any difference. We should favor the easiest approach.</p>
@@ -1593,8 +1594,8 @@ Here there are two options: 1) computing the amplitude using a smoothed version 
 </div>
 </div>
 <p>The amplitude of Tmax and Tmin are remarkably similar, which means that we can probably take advantage of this fact to model air temperature using the same amplitude parameter.</p>
-</div>
-<div class="section" id="build-model-for-air-temperature">
+</section>
+<section id="build-model-for-air-temperature">
 <h2>Build model for air temperature<a class="headerlink" href="#build-model-for-air-temperature" title="Permalink to this headline">¶</a></h2>
 <p>A sinusoidal model is probably adequate to mimic the seasonal dynamics. This is the deterministic part of our model. The difference between our model and observations we will be attributed to random noise, or to more complicated relationships that go beyond the scope of this exercise.</p>
 <div class="math notranslate nohighlight">
@@ -1653,15 +1654,15 @@ Here there are two options: 1) computing the amplitude using a smoothed version 
 </div>
 </div>
 <p>Our model does a reasonable job prdicting air temperature with an error of 4 degrees Celsius. Depending on the application the magnitude of the error may be acceptable or unacceptable. Clearly our model struggles to compute accurate daily average temperature values during the winter, spring, and fall seasons and is also not capturing the year-to-year variability. The model parameters were not optimed in this case, but rather estiamted from local observations.</p>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>What mean absolute error do you obtain if the amplitude is increased by 3 degrees Celsius in an attempt to better capture low temperatures?</p></li>
 <li><p>What modifications would you implement to reduce the error during winter, fall, and spring seasons?</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

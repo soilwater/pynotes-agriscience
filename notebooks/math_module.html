@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Math Module &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1221,7 +1222,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="math-module">
+  <section class="tex2jax_ignore mathjax_ignore" id="math-module">
 <h1>Math Module<a class="headerlink" href="#math-module" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">math</span></code> module is a core Python module that can be helpful for common arithmetic and trigonometric operations.</p>
 <div class="cell docutils container">
@@ -1232,7 +1233,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="rounding">
+<section id="rounding">
 <h2>Rounding<a class="headerlink" href="#rounding" title="Permalink to this headline">¶</a></h2>
 <p>Before we move too far I need to let you know that the math module does not have a round function. The <code class="docutils literal notranslate"><span class="pre">round()</span></code> function is readily available when we load Python without the need for importing the <code class="docutils literal notranslate"><span class="pre">math</span></code> module. However, the <code class="docutils literal notranslate"><span class="pre">math</span></code> module has some handy methods for rounding up and down.</p>
 <div class="cell docutils container">
@@ -1256,8 +1257,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="trigonometric-operations">
+</section>
+<section id="trigonometric-operations">
 <h2>Trigonometric operations<a class="headerlink" href="#trigonometric-operations" title="Permalink to this headline">¶</a></h2>
 <p>A really useful feature is that it also provides with common constants such as Pi. It also has a function to compute radians, making this core module an excellent choice for trigonometric operations involving the computation of Euclide distance, perimeter, area, and volume of many geometric objects.</p>
 <div class="cell docutils container">
@@ -1329,8 +1330,8 @@ math.sin<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="not-a-number">
+</section>
+<section id="not-a-number">
 <h2>Not a Number<a class="headerlink" href="#not-a-number" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">NaN</span></code> stands for “Not a Number” and although it may appear to be a string, it is actually interpreted as a <code class="docutils literal notranslate"><span class="pre">float</span></code>. <code class="docutils literal notranslate"><span class="pre">NaN</span></code> is typically used as a placeholder for missing values.</p>
 <div class="admonition note">
@@ -1352,8 +1353,8 @@ math.sin<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculate-area-of-a-circle">
+</section>
+<section id="calculate-area-of-a-circle">
 <h2>Calculate area of a circle<a class="headerlink" href="#calculate-area-of-a-circle" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1369,8 +1370,8 @@ math.sin<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="calculate-vapor-pressure-deficit-using-math-module">
+</section>
+<section id="calculate-vapor-pressure-deficit-using-math-module">
 <h2>Calculate vapor pressure deficit using math module<a class="headerlink" href="#calculate-vapor-pressure-deficit-using-math-module" title="Permalink to this headline">¶</a></h2>
 <p>You can also use the <code class="docutils literal notranslate"><span class="pre">math</span></code> module for many other calculations. The example below for computing the vapor pressure deficit (VPD) based on air temperature and air relative humidity amkes use of the exponential function <code class="docutils literal notranslate"><span class="pre">math.exp()</span></code>. Computing the VPD takes three steps:</p>
 <ol class="simple">
@@ -1378,20 +1379,20 @@ math.sin<span class="o">?</span>
 <li><p>Compute actual vapor pressure of the air</p></li>
 <li><p>The difference between the two is know as the vapor pressure deficit</p></li>
 </ol>
-<div class="section" id="formula-for-saturated-vapor-pressure">
+<section id="formula-for-saturated-vapor-pressure">
 <h3>Formula for saturated vapor pressure<a class="headerlink" href="#formula-for-saturated-vapor-pressure" title="Permalink to this headline">¶</a></h3>
 <p>This is know as the Tetens equation for temperatures above 0 Celsius and has units of kPa:</p>
 <div class="math notranslate nohighlight">
 \[ e_s = 0.611 \; exp\Bigg( \frac{17.3 \; T_{air}}{T_{air} + 237}\Bigg)\]</div>
 <p><span class="math notranslate nohighlight">\(T_{air}\)</span> is air temperature in degrees Celsius</p>
-</div>
-<div class="section" id="formula-for-actual-vapor-pressure">
+</section>
+<section id="formula-for-actual-vapor-pressure">
 <h3>Formula for actual vapor pressure<a class="headerlink" href="#formula-for-actual-vapor-pressure" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[ e_a = e_s * RH/100\]</div>
 <p><span class="math notranslate nohighlight">\(RH\)</span> is relative humidity expressed as a percentage</p>
-</div>
-<div class="section" id="formula-for-vapor-pressure-deficit">
+</section>
+<section id="formula-for-vapor-pressure-deficit">
 <h3>Formula for vapor pressure deficit<a class="headerlink" href="#formula-for-vapor-pressure-deficit" title="Permalink to this headline">¶</a></h3>
 <div class="math notranslate nohighlight">
 \[ VPD = e_s - e_a \]</div>
@@ -1414,13 +1415,13 @@ math.sin<span class="o">?</span>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="references">
+</section>
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Official Python Math module documentation: https://docs.python.org/3/library/math.html</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

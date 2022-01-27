@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Installating packages &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1192,27 +1193,27 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="installating-packages">
+  <section class="tex2jax_ignore mathjax_ignore" id="installating-packages">
 <h1>Installating packages<a class="headerlink" href="#installating-packages" title="Permalink to this headline">¶</a></h1>
 <p>For this class you will need to install the Anaconda package, Git, and create an account in Github. We will write code using the web browser, so I recommend having Google Chrome installed.</p>
-<div class="section" id="anaconda-package">
+<section id="anaconda-package">
 <h2>Anaconda Package<a class="headerlink" href="#anaconda-package" title="Permalink to this headline">¶</a></h2>
 <p>We will use the Anaconda environment, which is a set of curated python packages commonly used in science and engineering. The Anaconda environment is available for free by Continuum Analytics. The latest Anaconda package already has Python 3.7.</p>
-<div class="section" id="step-1-download-the-anaconda-installer">
+<section id="step-1-download-the-anaconda-installer">
 <h3>Step 1: Download the Anaconda installer<a class="headerlink" href="#step-1-download-the-anaconda-installer" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>If you have a windows machine go to: <a class="reference external" href="https://www.anaconda.com/download/#windows">https://www.anaconda.com/download/#windows</a></p></li>
 <li><p>If you have a mac go to: <a class="reference external" href="https://www.anaconda.com/download/#macos">https://www.anaconda.com/download/#macos</a></p></li>
 </ul>
-</div>
-<div class="section" id="step-2-install-anaconda">
+</section>
+<section id="step-2-install-anaconda">
 <h3>Step 2: Install Anaconda<a class="headerlink" href="#step-2-install-anaconda" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Double click on the installer and follow the steps. When asked, I highly suggest installing VS Code, which is a powerful editor with autocomplition, debugging capabilities, etc.</p></li>
 <li><p>In case you are having trouble, visit the Anaconda “Frequently Asked Questions” for some tips on how to troubleshoot most common issues: <a class="reference external" href="https://docs.anaconda.com/anaconda/user-guide/faq/">https://docs.anaconda.com/anaconda/user-guide/faq/</a></p></li>
 </ul>
-</div>
-<div class="section" id="step-3-open-anaconda-navigator">
+</section>
+<section id="step-3-open-anaconda-navigator">
 <h3>Step 3: Open Anaconda Navigator<a class="headerlink" href="#step-3-open-anaconda-navigator" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>In Windows go to the start up menu in the bottom left corner of the screen and then click on the Anaconda Navigator.</p></li>
@@ -1221,8 +1222,8 @@
 <li><p><strong>VS Code</strong>: A powerful and modern code editor. You can download it and code here if you want.</p></li>
 <li><p><strong>Spyder</strong>: An integrated development environment for scientific coding in Python. It features a graphical user interface similar to that of Matlab.</p></li>
 </ul>
-</div>
-<div class="section" id="step-4-update-anoaconda-package">
+</section>
+<section id="step-4-update-anoaconda-package">
 <h3>Step 4: Update Anoaconda package<a class="headerlink" href="#step-4-update-anoaconda-package" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Open Anaconda Navigator</p></li>
@@ -1232,8 +1233,8 @@
 <li><p>Wait few seconds and agree to the update by typing “<code class="docutils literal notranslate"><span class="pre">y</span></code>”</p></li>
 <li><p>The update process may take several minutes. Sometimes the computer will request your authorization for <code class="docutils literal notranslate"><span class="pre">python</span></code> to make changes in your drive. Agree to the changes in order to proceed.</p></li>
 </ul>
-</div>
-<div class="section" id="step-5-install-additional-libraries">
+</section>
+<section id="step-5-install-additional-libraries">
 <h3>Step 5: Install additional libraries<a class="headerlink" href="#step-5-install-additional-libraries" title="Permalink to this headline">¶</a></h3>
 <p>You will also need the Holoviews, Rasterio, and Xarray libraries. All can be installed using with the conda commands: <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">holoviews</span></code>, <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">xarray</span></code>, and  <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">-c</span> <span class="pre">conda-forge</span> <span class="pre">rasterio</span></code></p>
 <p>The Rasterio library can be tricky to install sometimes, particularly on Windows machines. Try following these steps if the previous approach did not work and you are in Windows machine:</p>
@@ -1245,9 +1246,9 @@
 <li><p>Donwload the Rasterio library for your Python version from <a class="reference external" href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#rasterio">this website</a>. Save the installer in Download or Desktop. FOr instance the file <code class="docutils literal notranslate"><span class="pre">rasterio‑1.1.8‑cp38‑cp38‑win_amd64.whl</span></code> would work in a Windows computer of 64-bit with Python 3.8.</p></li>
 <li><p>Install GDAL and Rasterio using <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">GDAL-3.1.4-cp38-cp38-win_amd64.whl</span></code> and <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">rasterio-1.1.8-cp38-cp38-win_amd64.whl</span></code>. If there is an error during the installation, read the console to see what GDAL library Python is trying to install with Rasterio. YOu may need to download a different version of GDAL (still with <code class="docutils literal notranslate"><span class="pre">cp38</span></code> for Python 3.8)</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="git">
+</section>
+</section>
+<section id="git">
 <h2>Git<a class="headerlink" href="#git" title="Permalink to this headline">¶</a></h2>
 <p><strong>What is Git?</strong></p>
 <ul class="simple">
@@ -1261,8 +1262,8 @@
 <li><p>Follow the installer and use default intallation settings</p></li>
 <li><p>We will most use the command window (called Git Bash), but we need it in order to work with Github.</p></li>
 </ol>
-</div>
-<div class="section" id="github">
+</section>
+<section id="github">
 <h2>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h2>
 <p><strong>What is Github?</strong></p>
 <ul class="simple">
@@ -1277,8 +1278,8 @@
 <li><p>Navigate to a directory where you want to place the repository</p></li>
 <li><p>Clone the Github repository using: git clone <code class="docutils literal notranslate"><span class="pre">&lt;link&gt;</span></code></p></li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

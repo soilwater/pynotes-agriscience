@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Error Handling &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1135,14 +1136,14 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="error-handling">
+  <section class="tex2jax_ignore mathjax_ignore" id="error-handling">
 <h1>Error Handling<a class="headerlink" href="#error-handling" title="Permalink to this headline">¶</a></h1>
 <p>Erro handling may seem out of the scope for non-computer science students beginning to code. While you don’t have to handle every exception when you are learning to code, it’s a good idea to at least learn the basics. In this short snippet of code I want to introduce you to the <code class="docutils literal notranslate"><span class="pre">try</span></code> and <code class="docutils literal notranslate"><span class="pre">except</span></code> blocks, which allow you to set specific error messages. Again not something that you want to do after learning <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">world</span></code> but something that you can add to improve your projects. The idea is to let the user know why the code is not working.</p>
 <p>The idea is to <em>try</em> some code. If it works properly, then the interpreter will not execute the lines insde <code class="docutils literal notranslate"><span class="pre">except</span></code>. However, if the interpreter finds a valid expression or generates an invalid output, then (instead of immediately crashing) it will execute the code inside <code class="docutils literal notranslate"><span class="pre">except</span></code>. Here the idea is to capture things that went wrong and then provide a meaningful error message. Because many things can go wrong (e.g. input was required to be a string and the user passed a float, etc.) we can use <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">statemetns</span></code> to check some scenarios.</p>
 <blockquote>
 <div><p><em>Running properly</em> means that the python expressions are valid. It does not mean that the result of the computation makes sense for your particular application.</p>
 </div></blockquote>
-<div class="section" id="try-except-method">
+<section id="try-except-method">
 <h2>try-except method<a class="headerlink" href="#try-except-method" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
     <span class="n">some</span> <span class="n">statements</span> <span class="n">here</span>
@@ -1234,8 +1235,8 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

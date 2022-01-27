@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>LaTeX equations &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1194,17 +1195,17 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="latex-equations">
+  <section class="tex2jax_ignore mathjax_ignore" id="latex-equations">
 <h1>LaTeX equations<a class="headerlink" href="#latex-equations" title="Permalink to this headline">¶</a></h1>
 <p>In the notebooks we use Markdown to write text, but equations are rendered using LaTeX syntax. LaTeX is a typesetting that allows technical writers and scientists to focus on the content without worrying abouT the format. LaTeX is free under the terms of the LaTeX Project Public License (LPPL).</p>
 <p>!&gt;A nice feature of LaTeX is that there is a specific syntax for equations. For instance, you can define inline equations so that this: <code class="docutils literal notranslate"><span class="pre">$y=mx+b$</span></code>, get’s converted into this: <span class="math notranslate nohighlight">\(y=mx+b\)</span></p>
 <p>It is also possible to write equations in separate lines using <code class="docutils literal notranslate"><span class="pre">$$y</span> <span class="pre">=</span> <span class="pre">e^{-x}$$</span></code>:</p>
 <div class="math notranslate nohighlight">
 \[y = e^{-x}\]</div>
-<div class="section" id="examples">
+<section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p>Below is a set of equations obtained from the <a class="reference external" href="http://www.fao.org/docrep/X0490E/X0490E00.htm">FAO 56 manual</a> to calculate reference evapotranspiration. Use this equations as templates to learn how to implement your own equations.</p>
-<div class="section" id="reference-evapotranspiration-equation">
+<section id="reference-evapotranspiration-equation">
 <h3>Reference Evapotranspiration Equation<a class="headerlink" href="#reference-evapotranspiration-equation" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">$$ETo</span> <span class="pre">=</span> <span class="pre">\frac{0.408\Delta(Rn-G)+\gamma\frac{900}{T+273}u2(es-ea)}{\Delta+\gamma(1+0.34u2)}$$</span></code></p>
 <div class="math notranslate nohighlight">
@@ -1219,8 +1220,8 @@
 <p><span class="math notranslate nohighlight">\(es-ea\)</span> = saturation vapor pressure deficit (kPa)</p>
 <p><span class="math notranslate nohighlight">\(\Delta\)</span> = slope vapor pressure curve (kPa/°C)</p>
 <p><span class="math notranslate nohighlight">\(\gamma\)</span> = psychrometric constant (kPa/°C)</p>
-</div>
-<div class="section" id="psychrometric-constant">
+</section>
+<section id="psychrometric-constant">
 <h3>Psychrometric constant<a class="headerlink" href="#psychrometric-constant" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">$$\gamma</span> <span class="pre">=</span> <span class="pre">\frac{Cp</span> <span class="pre">P}{\epsilon</span> <span class="pre">\lambda}$$</span></code></p>
 <div class="math notranslate nohighlight">
@@ -1231,8 +1232,8 @@
 <p><span class="math notranslate nohighlight">\(\epsilon\)</span> = ratio of molecular weight of water vapour/dry air = 0.622</p>
 <p><span class="math notranslate nohighlight">\(P\)</span> = atmospheric pressure (kPa)</p>
 <br/>
-</div>
-<div class="section" id="wind-speed-at-2-meters-above-the-soil-surface">
+</section>
+<section id="wind-speed-at-2-meters-above-the-soil-surface">
 <h3>Wind speed at 2 meters above the soil surface<a class="headerlink" href="#wind-speed-at-2-meters-above-the-soil-surface" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">$$u2</span> <span class="pre">=</span> <span class="pre">uz\frac{4.87}{\ln(67.8z-5.42)}$$</span></code></p>
 <div class="math notranslate nohighlight">
@@ -1240,8 +1241,8 @@
 <p><span class="math notranslate nohighlight">\(u2\)</span> = wind speed at 2 m above ground surface (m/s)</p>
 <p><span class="math notranslate nohighlight">\(uz\)</span> = measured wind speed at z m above ground surface (m/s)</p>
 <p><span class="math notranslate nohighlight">\(zm\)</span> = height of measurement above ground surface (m)</p>
-</div>
-<div class="section" id="mean-saturation-vapor-pressure">
+</section>
+<section id="mean-saturation-vapor-pressure">
 <h3>Mean saturation vapor pressure<a class="headerlink" href="#mean-saturation-vapor-pressure" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">$$es</span> <span class="pre">=</span> <span class="pre">\frac{eTmax+eTmin}{2}$$</span></code></p>
 <div class="math notranslate nohighlight">
@@ -1249,16 +1250,16 @@
 <p><span class="math notranslate nohighlight">\(es\)</span> = mean saturation vapor pressure (kPa)</p>
 <p><span class="math notranslate nohighlight">\(eTmax\)</span> = saturation vapor pressure at temp Tmax (kPa)</p>
 <p><span class="math notranslate nohighlight">\(eTmin\)</span> = saturation vapor pressure at temp Tmin (kPa)</p>
-</div>
-<div class="section" id="slope-of-vapor-pressure">
+</section>
+<section id="slope-of-vapor-pressure">
 <h3>Slope of vapor pressure<a class="headerlink" href="#slope-of-vapor-pressure" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">$$\Delta</span> <span class="pre">=</span> <span class="pre">\frac{4098\bigg[0.6108\exp\bigg(\frac{17.27</span> <span class="pre">Tmean}{Tmean+237.3}\bigg)\bigg]}{(Tmean+237.3)^2}$$</span></code></p>
 <div class="math notranslate nohighlight">
 \[\Delta = \frac{4098\bigg[0.6108\exp\bigg(\frac{17.27 Tmean}{Tmean+237.3}\bigg)\bigg]}{(Tmean+237.3)^2}\]</div>
 <p><span class="math notranslate nohighlight">\(\Delta\)</span> = slope of saturation vapor pressure curve at air temp T (kPa/°C)</p>
 <p><span class="math notranslate nohighlight">\(Tmean\)</span> = average daily air temperture</p>
-</div>
-<div class="section" id="actual-vapor-pressure">
+</section>
+<section id="actual-vapor-pressure">
 <h3>Actual vapor pressure<a class="headerlink" href="#actual-vapor-pressure" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">$$ea</span> <span class="pre">=</span> <span class="pre">\frac{eTmin\frac{RHmax}{100}+eTmax\frac{RHmin}{100}}{2}$$</span></code></p>
 <div class="math notranslate nohighlight">
@@ -1268,8 +1269,8 @@
 <p><span class="math notranslate nohighlight">\(eTmin\)</span> = saturation vapor pressure at temp Tmin (kPa)</p>
 <p><span class="math notranslate nohighlight">\(RHmax\)</span> = maximum relative humidity (%)</p>
 <p><span class="math notranslate nohighlight">\(RHmin\)</span> = minimum relative humidity (%)</p>
-</div>
-<div class="section" id="extraterrestrial-solar-radiation">
+</section>
+<section id="extraterrestrial-solar-radiation">
 <h3>Extraterrestrial solar radiation<a class="headerlink" href="#extraterrestrial-solar-radiation" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">$$Ra=\frac{24(60)}{\pi}\hspace{2mm}G\hspace{2mm}dr[\omega\sin(\phi)\sin(\delta)+\cos(\phi)\cos(\delta)\sin(\omega)]$$</span></code></p>
 <div class="math notranslate nohighlight">
@@ -1281,9 +1282,9 @@
 <p><span class="math notranslate nohighlight">\(\phi\)</span> = <span class="math notranslate nohighlight">\(\pi/180\)</span> decimal degrees  (latitude in radians)</p>
 <p><span class="math notranslate nohighlight">\(\delta = 0.409\sin((2\pi J/365)-1.39)\hspace{5mm}\)</span> Solar decimation (rad)</p>
 <p><span class="math notranslate nohighlight">\(\omega = \pi/2-(\arccos(-\tan(\phi)\tan(\delta)) \hspace{5mm}\)</span> sunset hour angle (radians)</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

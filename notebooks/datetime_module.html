@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Datetime Module &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1213,7 +1214,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="datetime-module">
+  <section class="tex2jax_ignore mathjax_ignore" id="datetime-module">
 <h1>Datetime Module<a class="headerlink" href="#datetime-module" title="Permalink to this headline">¶</a></h1>
 <p>The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module is useful to handle arithmetic operations that involve timestamps. With this module we can extract the day, month, year, and even milliseconds from a datetime object and then do some sort of computation with it. The <code class="docutils literal notranslate"><span class="pre">datetime</span></code> module also allows for changing the string format without affecting the timestamp infomration.</p>
 <div class="cell docutils container">
@@ -1260,7 +1261,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="output-formats">
+<section id="output-formats">
 <h2>Output formats<a class="headerlink" href="#output-formats" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1293,8 +1294,8 @@ Mon Feb  1 14:08:37 2021
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="parse-a-string-into-a-date">
+</section>
+<section id="parse-a-string-into-a-date">
 <h2>Parse a string into a date<a class="headerlink" href="#parse-a-string-into-a-date" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">.strptime</span></code> means <em>string parse time</em></p>
 <div class="cell docutils container">
@@ -1327,8 +1328,8 @@ Mon Feb  1 14:08:37 2021
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="build-a-date">
+</section>
+<section id="build-a-date">
 <h2>Build a date<a class="headerlink" href="#build-a-date" title="Permalink to this headline">¶</a></h2>
 <p>To create a datetime we use the <code class="docutils literal notranslate"><span class="pre">datetime.datetime(year,</span> <span class="pre">month,</span> <span class="pre">day,</span> <span class="pre">hour,</span> <span class="pre">minute,</span> <span class="pre">second,</span> <span class="pre">microseconds)</span></code> method. It is also possible to generate a new datetime object by only passing a limited number of inputs, such as <code class="docutils literal notranslate"><span class="pre">datetime.datetime(year,</span> <span class="pre">month,</span> <span class="pre">day)</span></code>.</p>
 <div class="cell docutils container">
@@ -1345,8 +1346,8 @@ Mon Feb  1 14:08:37 2021
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="arthmetic-operations-with-dates">
+</section>
+<section id="arthmetic-operations-with-dates">
 <h2>Arthmetic operations with dates<a class="headerlink" href="#arthmetic-operations-with-dates" title="Permalink to this headline">¶</a></h2>
 <p>Operations with dates are easy using this module. In fact, since handling dates can sometimes be tricky, it is highly recommended to use a module to handle dates to avoid introducing errors.</p>
 <div class="cell docutils container">
@@ -1378,9 +1379,9 @@ Mon Feb  1 14:08:37 2021
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="tex2jax_ignore mathjax_ignore section" id="working-with-seconds">
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="working-with-seconds">
 <h1>Working with seconds<a class="headerlink" href="#working-with-seconds" title="Permalink to this headline">¶</a></h1>
 <p>Converting any date and time into seconds also enables the use seconds as a sort of digital number that we can employ to carry operations in a single unit of time. For instance, once we know the difference between two dates in terms of seconds we can integrate this information with the <code class="docutils literal notranslate"><span class="pre">math</span></code> module.</p>
 <div class="cell docutils container">
@@ -1421,7 +1422,7 @@ Mon Feb  1 14:08:37 2021
 </div>
 </div>
 </div>
-<div class="section" id="add-time-to-existing-datetime">
+<section id="add-time-to-existing-datetime">
 <h2>Add time to existing datetime<a class="headerlink" href="#add-time-to-existing-datetime" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes we need to add extra time to an existing datetime object. In this situation, the <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> sub-module becomes handy.</p>
 <div class="cell docutils container">
@@ -1444,13 +1445,13 @@ Mon Feb  1 14:08:37 2021
 <p class="admonition-title">Note</p>
 <p>If you import the datetime submodule like this: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">datetime</span> <span class="pre">import</span> <span class="pre">datetime</span></code> it will help you write shorter code, but now the <code class="docutils literal notranslate"><span class="pre">timedelta</span></code> submodule is not available. You can import both as follows: <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">datetime</span> <span class="pre">import</span> <span class="pre">datetime,</span> <span class="pre">timedelta</span></code></p>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Official docs: https://docs.python.org/3/library/datetime.html</p>
 <p>Data formats: https://docs.python.org/3/library/time.html</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

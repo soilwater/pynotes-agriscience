@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Understanding Soil Temperature &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1175,7 +1176,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="understanding-soil-temperature">
+  <section class="tex2jax_ignore mathjax_ignore" id="understanding-soil-temperature">
 <h1>Understanding Soil Temperature<a class="headerlink" href="#understanding-soil-temperature" title="Permalink to this headline">¶</a></h1>
 <p>Soil temperature is an essential variable for the decision-making of agricultural operations (e.g. planting date, seeding depth, fertilizer application), construction (e.g. burial depth of pipes and cables), biology of underground insects and behaviour of poikilothermic animals, and climate modeling.</p>
 <p>Unlike other soil variables, like soil moisture, soil temperature exhibits consistent and highly predictable patterns. In this exercise we will explore a dataset of hourly soil temperature for the city of Fargo, ND collected at 14 different soil depths from 5 to 225 cm depth. the dataset goes from October-2014 to October-2018. Longer timeseries are usually required for scientific studies, but this dataset will be sufficient to capture the major oscillation patterns in soil temperature.</p>
@@ -1550,7 +1551,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="mean-annual-temperature-for-each-depth">
+<section id="mean-annual-temperature-for-each-depth">
 <h2>Mean annual temperature for each depth<a class="headerlink" href="#mean-annual-temperature-for-each-depth" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1581,8 +1582,8 @@
 </div>
 <p>Although not identical, the annual mean temperature for all soil layers from 5 cm to 225 cm depth are remarkably similar, and they are all within half a degree Celsius! This means that by knowing the average annual temperature at the soil surface we also know the soil temperature at all other layers. Not just that, we can also approximate the temperature of the water in well or water table.</p>
 <p>Our findings also support the assumption of the analytical solution of the heat conduction-diffusion equation that assumes that the average soil temperature at all depths is the same and that at “infinitely” deep soil layers the temperature approaches the mean annual temperature.</p>
-</div>
-<div class="section" id="annual-amplitude-for-each-depth">
+</section>
+<section id="annual-amplitude-for-each-depth">
 <h2>Annual amplitude for each depth<a class="headerlink" href="#annual-amplitude-for-each-depth" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1600,8 +1601,8 @@
 </div>
 </div>
 <p>Unlike the mean annual temperature, the annual amplitude decreases exponentially as a function of soil depth. This is somewhat expected since layers closer to the soil surface are exposed to environmental fluctuations that cause heating and cooling of the soil. Deeper soil layers are somewhat insulated from these fluctuations by the preceding soil layers.</p>
-</div>
-<div class="section" id="occurrence-of-maximum-and-minimum-temperature-for-each-depth">
+</section>
+<section id="occurrence-of-maximum-and-minimum-temperature-for-each-depth">
 <h2>Occurrence of maximum and minimum temperature for each depth<a class="headerlink" href="#occurrence-of-maximum-and-minimum-temperature-for-each-depth" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1622,8 +1623,8 @@
 </div>
 <p>The occurrence of maximum and minimum annual temperatures exhibit a similar trend: Deeper layers experience a delayed occurrence of maximum and minimum temperatures compared to layers closer to the soil surface.</p>
 <p>The coolest soil temperature at 225 cm depth occurs in the month of May, while the warmest soil temperature for the same layer occurs in October. At the soil surface, the minimum and maximum soil temperatures occur during January and July, as expected.</p>
-</div>
-<div class="section" id="contour-plot-dynamics">
+</section>
+<section id="contour-plot-dynamics">
 <h2>Contour plot dynamics<a class="headerlink" href="#contour-plot-dynamics" title="Permalink to this headline">¶</a></h2>
 <p>A contour plot will allow us to synthesize the temporal changes in soil temprature as a function of depth in a single plot. We will reduce the dataset to daily averages to reduce the number of points we pass to the contour plot function, otherwise it would take too long on a regular laptop or desktop.</p>
 <div class="cell docutils container">
@@ -1870,13 +1871,13 @@
 <img alt="../_images/soil_temperature_25_0.png" src="../_images/soil_temperature_25_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>North Dakota Agricultural Weather Network. Deep soil temperature data retrieved on October 2018. Link: https://ndawn.ndsu.nodak.edu/deep-soil-temperatures.html</p>
 <p>Akyüz, F., Ewens, M., Carcoana, R. and Mullins, B., 2008. NWS Frost depth observation with liquid-in probes performance: Two-year review. Journal of Service Climatology, 2(2), pp.1-10.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

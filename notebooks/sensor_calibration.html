@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Linear Regression: Sensor Calibration &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1187,7 +1188,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="linear-regression-sensor-calibration">
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-regression-sensor-calibration">
 <h1>Linear Regression: Sensor Calibration<a class="headerlink" href="#linear-regression-sensor-calibration" title="Permalink to this headline">¶</a></h1>
 <p>In this exercise we will improve the readings of the FieldScout TDR 300 hand-held soil moisture meter.</p>
 <p>An simple experiment was conduted at the KSU Soil Water Processes lab to collect soil mositure observations in 1-gallon containers packed with four contrasting soils (silt loam, silty clay, clay loam, and sand) and with carefully measured soil moisture. The aim of study was to generate a universal custom model that converts period average (the raw varaible measured by the sensor) into volumetric water content (volume of water per unit volume of soil).</p>
@@ -1404,7 +1405,7 @@
 </div>
 <p>The problem is clear, typical volumetric water contents for mineral soils (opposed to organic soils) have a maximum value of 0.5 cm<span class="math notranslate nohighlight">\(^3\)</span> cm<span class="math notranslate nohighlight">\(^{-3}\)</span>, which is approximately the pore space of the soil. The soil moisture sensors in question with its factory calibration returns values of volumetric water content much higher than usual porosity values. This means that the factory calibration to convert period average into volumetric water content is not adequate for the soils tested in this experiment.</p>
 <p>Our goal is to find a better model. This will also imply that when we use this sensor we need to ignore the readings in volumetric water content and we need to record the raw period average readings for posterior trasnlation using our custom model.</p>
-<div class="section" id="linear-model">
+<section id="linear-model">
 <h2>Linear model<a class="headerlink" href="#linear-model" title="Permalink to this headline">¶</a></h2>
 <p>THe simplest and easiest model to start our linear regression exercise</p>
 <div class="cell docutils container">
@@ -1473,8 +1474,8 @@
 </tr>
 </table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
-</div>
-<div class="section" id="quadratic-model">
+</section>
+<section id="quadratic-model">
 <h2>Quadratic model<a class="headerlink" href="#quadratic-model" title="Permalink to this headline">¶</a></h2>
 <p>Despite its name, linear regression can be used to fit non-linear functions. A linear regression model is linear in the model parameters, not necessarily in the predictors.</p>
 <div class="cell docutils container">
@@ -1549,8 +1550,8 @@
 <blockquote>
 <div><p>The <code class="docutils literal notranslate"><span class="pre">I</span></code> character in the formula forces a new parameter for the quadratic term.</p>
 </div></blockquote>
-</div>
-<div class="section" id="linear-model-with-categorical-term">
+</section>
+<section id="linear-model-with-categorical-term">
 <h2>Linear model with categorical term<a class="headerlink" href="#linear-model-with-categorical-term" title="Permalink to this headline">¶</a></h2>
 <p>You can pass a varaible as a categorical variables using the <code class="docutils literal notranslate"><span class="pre">C()</span></code> notation, for instance: <code class="docutils literal notranslate"><span class="pre">C(soil_texture)</span></code>.</p>
 <p>If you previously converted the variable to categorical using pandas <code class="docutils literal notranslate"><span class="pre">pd.Categorical()</span></code>, then just call the variable in the formula directly, for instance: <code class="docutils literal notranslate"><span class="pre">vwc_obs</span> <span class="pre">~</span> <span class="pre">period</span> <span class="pre">+</span> <span class="pre">soil_texture</span></code></p>
@@ -1632,8 +1633,8 @@
 </tr>
 </table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
-</div>
-<div class="section" id="linear-model-with-an-interaction-term">
+</section>
+<section id="linear-model-with-an-interaction-term">
 <h2>Linear model with an interaction term<a class="headerlink" href="#linear-model-with-an-interaction-term" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1707,8 +1708,8 @@
 </tr>
 </table><br/><br/>Warnings:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
-</div>
-<div class="section" id="selecting-a-model">
+</section>
+<section id="selecting-a-model">
 <h2>Selecting a model<a class="headerlink" href="#selecting-a-model" title="Permalink to this headline">¶</a></h2>
 <p>Because soil texture was not significant and because bulk desnity is not always available, we will select the quadratic model as a function of period average.</p>
 <div class="cell docutils container">
@@ -1783,12 +1784,12 @@ p-value for the hypothesis test: 0.257048100233078
 </div>
 <p>The p-value is greater than 0.05, so it fails to reject the null hypothesis that the residuals are normally distributed.</p>
 <p>Note that the table summary alrady has a metric for the normality of residuals using the <code class="docutils literal notranslate"><span class="pre">Jarque-Bera</span></code> test. Below I added the Shapiro-Wilk test since is one of the most common and robust normality tests. The <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> also has a method for computing the Kolmogorov-Smirnov normality test, look for <code class="docutils literal notranslate"><span class="pre">statsmodels.stats.diagnostic.kstest_normal</span></code></p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Yap, B.W. and Sim, C.H., 2011. Comparisons of various types of normality tests. Journal of Statistical Computation and Simulation, 81(12), pp.2141-2155.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

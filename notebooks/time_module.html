@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Time module &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1165,7 +1166,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="time-module">
+  <section class="tex2jax_ignore mathjax_ignore" id="time-module">
 <h1>Time module<a class="headerlink" href="#time-module" title="Permalink to this headline">¶</a></h1>
 <p>The time module is widely used when we need simple time information or when we need to test the performance of some code.</p>
 <div class="cell docutils container">
@@ -1210,7 +1211,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="python-is-synchronous">
+<section id="python-is-synchronous">
 <h2>Python is synchronous<a class="headerlink" href="#python-is-synchronous" title="Permalink to this headline">¶</a></h2>
 <p>The Python interpreter executes one line at the time and will only proceed to the following line once the current line has finished. This means that if you have a line that takes time to execute, the entire code will be on hold. The up side of this behavior is that it makes code easy to write following a clear logical sequence. This may seem obvious, but not all programming languages behave this way.</p>
 <p>The time module can be used to demonstrate this important propererty of Python. Let’s first print few lines in sequential order:</p>
@@ -1259,8 +1260,8 @@ See, Python is synchronous!
 <p class="admonition-title">Note</p>
 <p>In Python a single line can block the execution of the entire code. Note that when the Jupyter Lab is busy there is a light gray bracket next to the code cell that shows <code class="docutils literal notranslate"><span class="pre">[*]:</span></code>, When the interpreter finished the execution of the cell code you will see a number such as <code class="docutils literal notranslate"><span class="pre">[5]:</span></code>.</p>
 </div>
-</div>
-<div class="section" id="evaluate-code-performance">
+</section>
+<section id="evaluate-code-performance">
 <h2>Evaluate code performance<a class="headerlink" href="#evaluate-code-performance" title="Permalink to this headline">¶</a></h2>
 <p>Use the time module to check and document the performance of your script. While we can easily use the <code class="docutils literal notranslate"><span class="pre">localtime()</span></code> method, the module offers a more accurate method called <code class="docutils literal notranslate"><span class="pre">perf_counter()</span></code> that brings up the clock with the highest resolution.</p>
 <p>Note that unlike <code class="docutils literal notranslate"><span class="pre">localtime()</span></code>, where we stored time information into a variable, the reference point of the returned value by the <code class="docutils literal notranslate"><span class="pre">perf_counter()</span></code> method is undefined, so that only the difference between the results of consecutive calls is meaningful. Source: https://docs.python.org/3/library/time.html</p>
@@ -1288,8 +1289,8 @@ Elapsed time: 0.0004749069998979394
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="format-time-strings">
+</section>
+<section id="format-time-strings">
 <h2>Format time strings<a class="headerlink" href="#format-time-strings" title="Permalink to this headline">¶</a></h2>
 <p>Dates and time can be represented in a wide variety of formats across the world. There are also conventions to convert local time in one place to local time in a different location. To handle all these possibilities, the Python time module has a <code class="docutils literal notranslate"><span class="pre">strftime()</span></code> method to print the same information in multiple formats. The format largely depends on the application. For instance, if we are interested in a process that changes on daily time steps, then we can probably omit hours, minutes, seconds, and milliseconds from the output, so that it is legible and clear to the user or reader of that date. Below I present few examples to show you the basic syntax. Feel free to try any of the following formats.</p>
 <p><strong>%a</strong>    Locale’s abbreviated weekday name</p>
@@ -1337,12 +1338,12 @@ Elapsed time: 0.0004749069998979394
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Official Python docs for the time module: <a class="reference external" href="https://docs.python.org/3/library/time.html">https://docs.python.org/3/library/time.html</a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

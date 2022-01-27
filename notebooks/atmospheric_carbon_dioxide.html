@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Atmospheric Carbon Dioxide &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1221,7 +1222,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="atmospheric-carbon-dioxide">
+  <section class="tex2jax_ignore mathjax_ignore" id="atmospheric-carbon-dioxide">
 <h1>Atmospheric Carbon Dioxide<a class="headerlink" href="#atmospheric-carbon-dioxide" title="Permalink to this headline">¶</a></h1>
 <p>The general purpose of this exercise is to forecast future atmopsheric carbon dioxide concentration by fitting a model to observations collected by the U.S. National Oceanic and Atmospheric Administration (NOAA) from 1958 to 2018 at the Mauna Loa Observatory in Hawaii.</p>
 <p>Source: https://www.esrl.noaa.gov/gmd/ccgg/trends/data.html</p>
@@ -2809,7 +2810,7 @@ The following attempt is the actual code that we will be using in the example:</
 </table>
 </div></div></div>
 </div>
-<div class="section" id="explore-data">
+<section id="explore-data">
 <h2>Explore data<a class="headerlink" href="#explore-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2857,8 +2858,8 @@ The following attempt is the actual code that we will be using in the example:</
   }
 })(window);</script></div></div>
 </div>
-</div>
-<div class="section" id="exponential-model">
+</section>
+<section id="exponential-model">
 <h2>Exponential model<a class="headerlink" href="#exponential-model" title="Permalink to this headline">¶</a></h2>
 <p>We will fit the following simplified model to the carbon dioxide time series and by optmizing the model parameters:</p>
 <div class="math notranslate nohighlight">
@@ -2972,7 +2973,7 @@ d: 0.824848808153484
 })(window);</script></div></div>
 </div>
 <p>Interactive plots allow us to closely inspect data. Zoom in and explore the monthly observations agains the predictions.</p>
-<div class="section" id="examine-residuals">
+<section id="examine-residuals">
 <h3>Examine residuals<a class="headerlink" href="#examine-residuals" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3037,8 +3038,8 @@ Amplitude of residuals (ppm): 3
 </div>
 </div>
 <p>Residuals exhibit a mean close to zero and a sinusoidal pattern. This suggests that a model involving sine or cosine oscillations could be used to added to the current model to improve predictions.</p>
-</div>
-<div class="section" id="forecast-concentration-in-year-2050">
+</section>
+<section id="forecast-concentration-in-year-2050">
 <h3>Forecast concentration in year 2050<a class="headerlink" href="#forecast-concentration-in-year-2050" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3054,8 +3055,8 @@ Amplitude of residuals (ppm): 3
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="project-data-until-2050">
+</section>
+<section id="project-data-until-2050">
 <h3>Project data until 2050<a class="headerlink" href="#project-data-until-2050" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3102,9 +3103,9 @@ Amplitude of residuals (ppm): 3
   }
 })(window);</script></div></div>
 </div>
-</div>
-</div>
-<div class="section" id="sinusoidal-exponential-model">
+</section>
+</section>
+<section id="sinusoidal-exponential-model">
 <h2>Sinusoidal-exponential model<a class="headerlink" href="#sinusoidal-exponential-model" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[y(t) = a + b \ exp \bigg(\frac{c \ t}{d}\bigg) + A \ sin(2 \pi [m + phi] )\]</div>
@@ -3201,8 +3202,8 @@ phi: -12.854848689098878
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="explore-residuals">
+</section>
+<section id="explore-residuals">
 <h2>Explore residuals<a class="headerlink" href="#explore-residuals" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3305,22 +3306,22 @@ phi: -12.854848689098878
 })(window);</script></div></div>
 </div>
 <p>The model combining an exponential term and a sinusoidsl term can better simulate the seasonal and long-term dynamics of atmospheric carbon dioxide. From the point of view of forecasting the concentration the differen between the exponential-only and the sinusoidal-exponential modelis minimal and probably does not justify the extra complexity of the model.</p>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Despite the sinusoidal-exponential model better capturing the seasonal dynamics in atmospheric carbon dioxide, why the two models result in nearly identical projections for the year 2050?</p></li>
 <li><p>Which model would you use for making long-term annual projections in atmopsheric carbon dioxide?</p></li>
 <li><p>What are possible causes of discrepancy between observations of atmospheric carbon dioxide at the Mauna Loa observatory and our best sinusoidal-exponential model?</p></li>
 </ol>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Data source: https://www.esrl.noaa.gov/gmd/ccgg/trends/full.html</p>
 <p>NOAA Greenhouse Gas Marine Boundary Layer Reference: https://www.esrl.noaa.gov/gmd/ccgg/mbl/mbl.html</p>
 <p>Mathworks documentation: https://www.mathworks.com/company/newsletters/articles/atmospheric-carbon-dioxide-modeling-and-the-curve-fitting-toolbox.html</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

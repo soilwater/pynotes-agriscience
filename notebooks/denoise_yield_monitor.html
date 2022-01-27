@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Denoise Yield Monitor Data &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1219,12 +1220,12 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="denoise-yield-monitor-data">
+  <section class="tex2jax_ignore mathjax_ignore" id="denoise-yield-monitor-data">
 <h1>Denoise Yield Monitor Data<a class="headerlink" href="#denoise-yield-monitor-data" title="Permalink to this headline">¶</a></h1>
 <p>Yield monitor data is an excellent field diagnostic layer of information that provides insights about the high and low yield producing areas of the field. Yield maps can reveal spots that have low fertility values, high/low pH values, excessive water standing, soils with low water holding capacity that are vulnerable to dry periods, areas of the field affected by soil compaction due to traffic, or a combination of all the above.</p>
 <p>The harvesting process is not simple and introduces spurious observations. This is affected by driving patterns, grain mositure, presence of weeds, field traffic condicitons, field shape, and field elevation changes are among the most common. Combine drivers have to maximize the time the combine is ingesting grain using the entire width of the platform, but during turns or at the beginning/end of the harvesting process this may not be achievable and thus it looks like the yield is lower in that part of the field. This is just an artifice and points out the need to clean yield monitor data before drawing any conclusions.</p>
 <p>The yield monitor of modern combines collects data about combined speed, grographic position, time, grain flow, and grain moisture in real time at a temporal resolution of 1 second. This exorbitant temporal resolution generates rich datasets for spatial variability analysis.</p>
-<div class="section" id="dataset-description">
+<section id="dataset-description">
 <h2>Dataset description<a class="headerlink" href="#dataset-description" title="Permalink to this headline">¶</a></h2>
 <p>In this exercise we will use a real yield monitor dataset from a soybean crop harvested in the state of Kansas in October of 2015. The farm and geogrpahic infromation were removed to preserve the farmers anonimity. So, the geographic coordinates were replaced by relative UTM coordinates. The X and Y coordinates are in meters relative to the center of the field (X=0, Y=0).</p>
 <p>Units of variables in dataset:</p>
@@ -1237,8 +1238,8 @@
 <li><p>Moisture in percent</p></li>
 <li><p>Width in inches</p></li>
 </ul>
-</div>
-<div class="section" id="file-formats">
+</section>
+<section id="file-formats">
 <h2>File formats<a class="headerlink" href="#file-formats" title="Permalink to this headline">¶</a></h2>
 <p>Yield monitor data is often saved using the Shapefile format (<code class="docutils literal notranslate"><span class="pre">.shp</span></code>). In this case I saved the file in <code class="docutils literal notranslate"><span class="pre">.csv</span></code> format to enable everyone to access the exercise using the <code class="docutils literal notranslate"><span class="pre">pandas</span></code> library.</p>
 <p>For those interested in applying the same techniques to their own yield monitor data in <code class="docutils literal notranslate"><span class="pre">.shp</span></code> format, I recomend installing the <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> library. The line sbelow should get you started.</p>
@@ -1449,8 +1450,8 @@ df.head(
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="filtering-rules-with-clear-physical-meaning">
+</section>
+<section id="filtering-rules-with-clear-physical-meaning">
 <h2>Filtering rules with clear physical meaning<a class="headerlink" href="#filtering-rules-with-clear-physical-meaning" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1669,8 +1670,8 @@ Removed 521 points
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="moving-filters">
+</section>
+<section id="moving-filters">
 <h2>Moving filters<a class="headerlink" href="#moving-filters" title="Permalink to this headline">¶</a></h2>
 <p>A moving filter is usually a sliding window that performs a smoothing operation. This usually works great with regular grids, but in the case of yield monitor data we deal with irregular grids, which requires that we handle the window in a slighly different way.</p>
 <p>We will iterate over each point collected by the combine and at each iteration step we will find the observations within a given distance from the combine and we will either:</p>
@@ -1680,7 +1681,7 @@ Removed 521 points
 </ul>
 <p>Certainly there are many other options. I just came up with these two simple approaches based on previous studies and my own experience.</p>
 <p>In any case, we need to be able to compute the distance from the current point in the iteration to all the other points. This is how we will determine the neighbors.</p>
-<div class="section" id="function-to-compute-euclidean-distance">
+<section id="function-to-compute-euclidean-distance">
 <h3>Function to compute Euclidean distance<a class="headerlink" href="#function-to-compute-euclidean-distance" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1694,8 +1695,8 @@ Removed 521 points
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="moving-median-filter">
+</section>
+<section id="moving-median-filter">
 <h3>Moving median filter<a class="headerlink" href="#moving-median-filter" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1746,8 +1747,8 @@ Removed 521 points
 <img alt="../_images/denoise_yield_monitor_23_0.png" src="../_images/denoise_yield_monitor_23_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="moving-filter-to-detect-outliers">
+</section>
+<section id="moving-filter-to-detect-outliers">
 <h3>Moving filter to detect outliers<a class="headerlink" href="#moving-filter-to-detect-outliers" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1843,22 +1844,22 @@ Removed 521 points
 <img alt="../_images/denoise_yield_monitor_32_0.png" src="../_images/denoise_yield_monitor_32_0.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="observations">
+</section>
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <p>The approaches tested in exercise yieldded somewhat similar results. The first layer of outliers removal based on the plausible value of variables with clear physical meaning such as combine spped, grain flow rate, and grain moisture content are an effective way of removing clear outliers.</p>
 <p>The first layer does note result in a clear interpolation, at least using the <code class="docutils literal notranslate"><span class="pre">tricontourf</span></code> function. I’m sure that some of the filters with scipy and image processing toolboxes can solve this issue without further processing.</p>
 <p>A median filter is a powerful filter widely used in image analysis and was effective to remove outliers and dramatically improved the map in terms of smoothness and visual patterns. This method does not preserve the original values.</p>
 <p>The moving window to remove outliers based on quantile thresholds performed similar to the median filter and represents an alternative method. This method preserves the original values and removes values that are considered outliers.</p>
 <p>The method of choice depends on the user, the complexity of the data, and the performance of the methods compared to known field patterns and observations during harvest.</p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Khosla, R. and Flynn, B., 2008. Understanding and cleaning yield monitor data. Soil Science Step-by-Step Field Analysis, (soilsciencestep), pp.113-130.</p>
 <p>Kleinjan, J., Chang, J., Wilson, J., Humburg, D., Carlson, G., Clay, D. and Long, D., 2002. Cleaning yield data. SDSU Publication.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

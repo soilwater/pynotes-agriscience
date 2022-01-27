@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Rasters from NASA Worldview Snapshots &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1239,12 +1240,12 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="rasters-from-nasa-worldview-snapshots">
+  <section class="tex2jax_ignore mathjax_ignore" id="rasters-from-nasa-worldview-snapshots">
 <h1>Rasters from NASA Worldview Snapshots<a class="headerlink" href="#rasters-from-nasa-worldview-snapshots" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="bands">
+<section id="bands">
 <h2>Bands<a class="headerlink" href="#bands" title="Permalink to this headline">¶</a></h2>
 <p>The Worldview Snapshots encode some of the most popular bands of the Terra and Aqua Moderate Resolution Imaging Spectroradiometer (MODIS) into the red, green, and blue bands of an image. Each combination of bands is designed to highlight specific atmospheric (e.g. clouds) and landscape (e.g. vegetation, water bodies) features.</p>
-<div class="section" id="modis-bands-7-2-1">
+<section id="modis-bands-7-2-1">
 <h3>MODIS Bands 7-2-1<a class="headerlink" href="#modis-bands-7-2-1" title="Permalink to this headline">¶</a></h3>
 <p>Band 7 = 2155 nm
 Band 2 = 876 nm
@@ -1279,9 +1280,9 @@ Band 1 = 670 nm</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="coordinate-systems">
+</section>
+</section>
+<section id="coordinate-systems">
 <h2>Coordinate systems<a class="headerlink" href="#coordinate-systems" title="Permalink to this headline">¶</a></h2>
 <p>A coordinate reference system (CRS) is a local, regional or global system used to locate geographical entities. Spatial reference systems can be referred including EPSG codes defined by the International Association of Oil and Gas Producers. The EPSG acronym stands for <em>European Petroleum Survey Group</em> and is an organization that maintains a geodetic parameter database with standard codes.</p>
 <p><a class="reference external" href="https://epsg.io/4326">EPSG:4326</a> is equal to WGS84 - World Geodetic System 1984</p>
@@ -1298,8 +1299,8 @@ Band 1 = 670 nm</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="band-properties">
+</section>
+<section id="band-properties">
 <h2>Band properties<a class="headerlink" href="#band-properties" title="Permalink to this headline">¶</a></h2>
 <p>It is always useful to explore the number of bands in a raster, the data type, and dimensions of each band. The <code class="docutils literal notranslate"><span class="pre">nodata</span></code> and <code class="docutils literal notranslate"><span class="pre">nodatavals</span></code> indicate how the dataset encodes missing values or values outside a specific regions (e.g. pixels that fall on the ocean).</p>
 <div class="cell docutils container">
@@ -1323,8 +1324,8 @@ No data placeholder: (None, None, None)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="raster-bounding-box">
+</section>
+<section id="raster-bounding-box">
 <h2>Raster bounding box<a class="headerlink" href="#raster-bounding-box" title="Permalink to this headline">¶</a></h2>
 <p>Another important attribute to have at hand is the bounding box. This information gives us a precise idea of the limits of the map and also shows whther we are working in geographic or projected coordinates.</p>
 <div class="cell docutils container">
@@ -1340,8 +1341,8 @@ No data placeholder: (None, None, None)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="raster-pixel-to-geographic-coordinates">
+</section>
+<section id="raster-pixel-to-geographic-coordinates">
 <h2>Raster pixel to geographic coordinates<a class="headerlink" href="#raster-pixel-to-geographic-coordinates" title="Permalink to this headline">¶</a></h2>
 <p>An easy way to access the pixel coordiantes given the row and column of the raster. The <code class="docutils literal notranslate"><span class="pre">offset</span></code> allow us to specify the starting point. Selecting the <strong>Upper-Left</strong> corner makes things easy because that is also the beginning of the raster array in terms of rows and columns. So, if we request the geographic coordinates of <code class="docutils literal notranslate"><span class="pre">row=0</span></code> and <code class="docutils literal notranslate"><span class="pre">column=0</span></code> with <code class="docutils literal notranslate"><span class="pre">offset='ul'</span></code>, we should obtain the coordinates of the top-left corner of the boundaing box.</p>
 <div class="cell docutils container">
@@ -1370,8 +1371,8 @@ No data placeholder: (None, None, None)
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="explore-raster-bands">
+</section>
+<section id="explore-raster-bands">
 <h2>Explore raster bands<a class="headerlink" href="#explore-raster-bands" title="Permalink to this headline">¶</a></h2>
 <p>To specify a particular band we will pass a tuple as the first input argument of the rasterio show command <code class="docutils literal notranslate"><span class="pre">(raster,</span> <span class="pre">1)</span></code>. The index must be one of the indexes in the raster. Hopefully now you see why accessing some of the basic raster attributes in the previous cells becomes handy now.</p>
 <div class="cell docutils container">
@@ -1389,8 +1390,8 @@ No data placeholder: (None, None, None)
 <img alt="../_images/raster_nasa_worldview_13_0.png" src="../_images/raster_nasa_worldview_13_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="bands-combined-as-a-single-image">
+</section>
+<section id="bands-combined-as-a-single-image">
 <h2>Bands combined as a single image<a class="headerlink" href="#bands-combined-as-a-single-image" title="Permalink to this headline">¶</a></h2>
 <p>When we combine all three bands in the red, green, and blue channels we can obtain a new composite image.</p>
 <div class="cell docutils container">
@@ -1406,8 +1407,8 @@ No data placeholder: (None, None, None)
 </div>
 </div>
 <p>The image was taken on 5-September-2019, a time of the year where much of the warm-season grasses, pastures, and crops still remain verdant. Only few early planted warm-season crops were probably harvested by this date. Areas that appear yellow or brownish are likely to be places without vegetation (e.g. urban areas, barren land) or fields that had a winter crop, which by this time will consists of fallow land with bare soil or stubble.</p>
-</div>
-<div class="section" id="retrive-bands-from-a-specific-point">
+</section>
+<section id="retrive-bands-from-a-specific-point">
 <h2>Retrive bands from a specific point<a class="headerlink" href="#retrive-bands-from-a-specific-point" title="Permalink to this headline">¶</a></h2>
 <p>Imagine we are interested in knowing the information for the different bands at a specific point in the map. The <code class="docutils literal notranslate"><span class="pre">index()</span></code> method can help us retrieving this information by providing us with the row and column of a specific pair of geographic coordinates.</p>
 <div class="cell docutils container">
@@ -1490,8 +1491,8 @@ R= 86 G= 142 B= 58
 <img alt="../_images/raster_nasa_worldview_23_0.png" src="../_images/raster_nasa_worldview_23_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="east-west-transect">
+</section>
+<section id="east-west-transect">
 <h2>East-West transect<a class="headerlink" href="#east-west-transect" title="Permalink to this headline">¶</a></h2>
 <p>The state of Kansas spans an accentuated longitudinal precipitation gradient. The West par tof the state receives nearly 400 mm per year, while the east portion of the state receives nearly 1200 mm per year.
 o
@@ -1563,12 +1564,12 @@ We can visualize whether vegetationlso follows a similar patterns by plot one (o
 <img alt="../_images/raster_nasa_worldview_30_0.png" src="../_images/raster_nasa_worldview_30_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Source: <a class="reference external" href="https://rasterio.readthedocs.io/en/stable/intro.html">https://rasterio.readthedocs.io/en/stable/intro.html</a></p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

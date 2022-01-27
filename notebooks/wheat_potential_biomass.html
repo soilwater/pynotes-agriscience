@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Modeling Wheat Biomass &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1157,7 +1158,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="modeling-wheat-biomass">
+  <section class="tex2jax_ignore mathjax_ignore" id="modeling-wheat-biomass">
 <h1>Modeling Wheat Biomass<a class="headerlink" href="#modeling-wheat-biomass" title="Permalink to this headline">¶</a></h1>
 <p>In this exercise we will simulate the dry biomass of winter wheat using a simple model that rely on thermal time and some crop-specific coefficients.</p>
 <p>THere is only one variable that changes in this model, the amount of dry biomass at time <span class="math notranslate nohighlight">\(t\)</span>. This is called a state variable, because it represents the state or condition of a physical object or process.</p>
@@ -1840,7 +1841,7 @@ Name: SOLARAD_DAILY, dtype: float64
 </div>
 </div>
 </div>
-<div class="section" id="single-growing-season">
+<section id="single-growing-season">
 <h2>Single growing season<a class="headerlink" href="#single-growing-season" title="Permalink to this headline">¶</a></h2>
 <p>For simulating a single crop growing season the easiest approach is to preselect the rows of the historic weather record matching the specified growing season and then iterating over each day. In this particular case we ensure beforehand that the length of the weather records is equal to the growing season.</p>
 <p>We will create a new DataFrame with records matching the growing season so that we keep the original DataFrame intact for subsequent simulations.</p>
@@ -2079,8 +2080,8 @@ Name: SOLARAD_DAILY, dtype: float64
 <img alt="../_images/wheat_potential_biomass_17_0.png" src="../_images/wheat_potential_biomass_17_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="ensemble-of-multiple-growing-seasons">
+</section>
+<section id="ensemble-of-multiple-growing-seasons">
 <h2>Ensemble of multiple growing seasons<a class="headerlink" href="#ensemble-of-multiple-growing-seasons" title="Permalink to this headline">¶</a></h2>
 <p>Opposite to our previous simulation, here we are interested in modeling as many growing season scenarios as possible given our historical weather dataset.</p>
 <p>From the coding perspective, the challenge resides in keeping track of the growing season. This requires that certain conditions are met, such as identifying the beginning of the growing season each year, avoid exceeding the typical growing season length for the specific cultivar both in terms of calendar days and growing degree days, and storing simulation data at the end of each growing season, so that then we can plot the different scenarios.</p>
@@ -2198,12 +2199,12 @@ Name: SOLARAD_DAILY, dtype: float64
 <img alt="../_images/wheat_potential_biomass_22_0.png" src="../_images/wheat_potential_biomass_22_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Brun, F., Wallach, D., Makowski, D. and Jones, J.W., 2006. Working with dynamic crop models: evaluation, analysis, parameterization, and applications. Elsevier.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Soil Cracks &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1145,7 +1146,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="soil-cracks">
+  <section class="tex2jax_ignore mathjax_ignore" id="soil-cracks">
 <h1>Soil Cracks<a class="headerlink" href="#soil-cracks" title="Permalink to this headline">¶</a></h1>
 <p>Soil cracks emerge as a consequence of the conformational changes in the structure of clay minerals with changes in soil moisture that causes the soil to shrink (while drying) and swell (while wetting). Expansive soils are usually characterized by moderate to high clay content, particularly in soils with high content of montmorillonite, a typical clay in vertisols. Soil cracks can lead to preferential water flow and rapid solute transport to deeper soil layers, and the expansion and contraction cof the soil can have adverse effects on building foundations.</p>
 <blockquote>
@@ -1269,7 +1270,7 @@
 <img alt="../_images/soil_cracks_detection_9_0.png" src="../_images/soil_cracks_detection_9_0.png" />
 </div>
 </div>
-<div class="section" id="denoising-image">
+<section id="denoising-image">
 <h2>Denoising image<a class="headerlink" href="#denoising-image" title="Permalink to this headline">¶</a></h2>
 <p>The top-hat transformation extracts small details from the image based on a the size and shape of a structuring element. So our first step consists of defining a structuring element of a specific shape.</p>
 <div class="cell docutils container">
@@ -1337,8 +1338,8 @@
 <img alt="../_images/soil_cracks_detection_14_0.png" src="../_images/soil_cracks_detection_14_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="binarize">
+</section>
+<section id="binarize">
 <h2>Binarize<a class="headerlink" href="#binarize" title="Permalink to this headline">¶</a></h2>
 <p>The process of binaring a gray scale image is to assign a value of either 0 or 1 to each pixel based on its current value. If the gray scale ranges between 0 and 1, the easiest way to binarize the image is to round the numbers. However, this may not produce the desired results in many cases. Using custom thresholds may improve the classification and extraction of the desired features.</p>
 <div class="cell docutils container">
@@ -1385,8 +1386,8 @@
 <img alt="../_images/soil_cracks_detection_18_0.png" src="../_images/soil_cracks_detection_18_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

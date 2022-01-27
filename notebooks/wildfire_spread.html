@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Wildfire Model &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1147,7 +1148,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="wildfire-model">
+  <section class="tex2jax_ignore mathjax_ignore" id="wildfire-model">
 <h1>Wildfire Model<a class="headerlink" href="#wildfire-model" title="Permalink to this headline">¶</a></h1>
 <p>Raster images can also be used as canvas for modeling and numerical simulation. The raster image provides a discretized spatial domain organized in rows and columns.</p>
 <p>In this example we will use a map of the Earth’s surface obtained from the NASA MODIS Terra satellite to implement a simple wildfire spread model. The model will only rely on cells that flammable (e.g. dry grassland) or non-flammable (e.g lakes), and on the wind direction. To keep it simple and demostrate the concept of using raster images as a canvas for implementing simulations, the model will not account for other variables such as the amount of fuel biomass and variable speed of the wildfire spread.</p>
@@ -1231,7 +1232,7 @@
 <img alt="../_images/wildfire_spread_5_0.png" src="../_images/wildfire_spread_5_0.png" />
 </div>
 </div>
-<div class="section" id="model-premise">
+<section id="model-premise">
 <h2>Model premise<a class="headerlink" href="#model-premise" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Only cells with designated land covers would be able to ignite.</p></li>
@@ -1318,8 +1319,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>How does the model compare with the actual Anderson Creek wildfire?</p></li>
@@ -1328,8 +1329,8 @@
 <li><p>Implement a simple modification to account for the effect of the wind speed in the wildfire spread model.</p></li>
 <li><p>Download the landscape of your preference from <a class="reference external" href="https://wvs.earthdata.nasa.gov/">NASA Worldview Snapshots</a> and re-run the simulation</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

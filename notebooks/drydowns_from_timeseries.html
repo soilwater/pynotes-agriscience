@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Soil Moisture Drydowns &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1177,7 +1178,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="soil-moisture-drydowns">
+  <section class="tex2jax_ignore mathjax_ignore" id="soil-moisture-drydowns">
 <h1>Soil Moisture Drydowns<a class="headerlink" href="#soil-moisture-drydowns" title="Permalink to this headline">¶</a></h1>
 <p>The following script loads a time series of root-zone soil moisture obtained from the Kansas Mesonet, extracts drydown periods, and characterizes each drydown period by using the exponential decay rate fitted to each drydown period.</p>
 <p>A drydown represents a soil moisture timeseries of consecutive days without rainfall events. Formally, any particular day is part of a drydown period if <span class="math notranslate nohighlight">\(SWC_{t} &lt; SWC_{t-1}\)</span> In this particular script we will consider small positive changes in soil moisture between consecutive days as part of the drydown. This small positive changes could be due to small rainfall events, fog, dew, and even noise in the signal.</p>
@@ -1496,7 +1497,7 @@
   }
 }(window));</script></div>
 </div>
-<div class="section" id="model-description">
+<section id="model-description">
 <h2>Model description<a class="headerlink" href="#model-description" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[ SWC = A e^{-\frac{t}{\tau}} + \theta_{res}\]</div>
@@ -1505,8 +1506,8 @@
 <p>t = Days since rainfall event</p>
 <p><span class="math notranslate nohighlight">\(\tau\)</span> = Constant the modulates the rate at which the soil dries</p>
 <p><span class="math notranslate nohighlight">\(\theta_{res}\)</span> = Residual soil water content <span class="math notranslate nohighlight">\(m^{3}/m^{3}\)</span>. This is a lower limit that needs to be determined from the data. Alternatively, this value can approximated using pedo-transfer functions (e.g. residual water content as a function of percent sand content)</p>
-</div>
-<div class="section" id="intuition">
+</section>
+<section id="intuition">
 <h2>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">¶</a></h2>
 <p>Before we even dive into the script I want to show you what several examples of drydowns based on the exponential model that we will use later on in this script. Soil moisture can increase rapidly during and soon after rainfall events. In subsequent days soil moisture dries at a decreasing rate resembling an exponential decay, which depends on atmospheric demand, soil type and structure, and the presence of vegetation. The lines below represent possible decays under different scenarios.</p>
 <blockquote>
@@ -1581,8 +1582,8 @@
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="load-dataset">
+</section>
+<section id="load-dataset">
 <h2>Load dataset<a class="headerlink" href="#load-dataset" title="Permalink to this headline">¶</a></h2>
 <p>Test dataset was compile for the following spatial and temporal parameters:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>start_date = &#39;1-jan-2016&#39;
@@ -2102,8 +2103,8 @@ missing values = NaN
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="overlay-soil-moisture-timeseries-and-extracted-drydowns">
+</section>
+<section id="overlay-soil-moisture-timeseries-and-extracted-drydowns">
 <h2>Overlay soil moisture timeseries and extracted drydowns<a class="headerlink" href="#overlay-soil-moisture-timeseries-and-extracted-drydowns" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2153,8 +2154,8 @@ missing values = NaN
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="overlay-soil-moisture-timeseries-extracted-drydowns-and-fitted-model">
+</section>
+<section id="overlay-soil-moisture-timeseries-extracted-drydowns-and-fitted-model">
 <h2>Overlay soil moisture timeseries, extracted drydowns, and fitted model<a class="headerlink" href="#overlay-soil-moisture-timeseries-extracted-drydowns-and-fitted-model" title="Permalink to this headline">¶</a></h2>
 <p>It’s important to highlight that:</p>
 <ul class="simple">
@@ -2229,8 +2230,8 @@ missing values = NaN
   }
 })(window);</script></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

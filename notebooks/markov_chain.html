@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Markov Chains &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1155,11 +1156,11 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="markov-chains">
+  <section class="tex2jax_ignore mathjax_ignore" id="markov-chains">
 <h1>Markov Chains<a class="headerlink" href="#markov-chains" title="Permalink to this headline">¶</a></h1>
 <p>A Markov chain is a model in which the state of a system depends on the preceding state of the system. These systems can be planes, people, or environmental variables, and the states can be discreate or continuous. The set of all possible states is called the <em>state space</em>, and the transitions between states are conditioned based on some sort of rule, typically of probabilistic nature.</p>
 <p>Let’s take weather as an example. Assuming that we only have three states: sunny, cloudy, and rainy days, we can build a probabilistic weather simulator based on the conditional probabilities of these events. In other words, if we know (from experience or some weather data) the probability of raining the day after it was cloudy, and the probability of raining after a sunny day, and the probability of a cloudy day following a sunny day, we can create a simulator that predicts the next state of the weather based on its current state. The condition on the first day is up to the user.</p>
-<div class="section" id="state-space-and-state-probabilities">
+<section id="state-space-and-state-probabilities">
 <h2>State space and state probabilities<a class="headerlink" href="#state-space-and-state-probabilities" title="Permalink to this headline">¶</a></h2>
 <p>The probabilities of the future <code class="docutils literal notranslate"><span class="pre">t+1</span></code> are defined based on the current state <code class="docutils literal notranslate"><span class="pre">t</span></code>. Given that in our case there are three states: rainy, cloudy, and sunny, the way to interpret the table below is as follows. If the current state is <code class="docutils literal notranslate"><span class="pre">rainy</span></code> then there is a 40% chance that tomorrow will be <code class="docutils literal notranslate"><span class="pre">sunny</span></code>, 30% chance that it will be <code class="docutils literal notranslate"><span class="pre">cloudy</span></code>, and <code class="docutils literal notranslate"><span class="pre">30%</span></code> that tomorrow will remain <code class="docutils literal notranslate"><span class="pre">rainy</span></code>. The table also accounts for some transitions that make sense in real-life. For instance, the weather can go from <code class="docutils literal notranslate"><span class="pre">sunny</span></code>=&gt;<code class="docutils literal notranslate"><span class="pre">cloudy</span></code>=&gt;<code class="docutils literal notranslate"><span class="pre">rainy</span></code>, but it cannot go from <code class="docutils literal notranslate"><span class="pre">sunny</span></code>=&gt;<code class="docutils literal notranslate"><span class="pre">rainy</span></code>, the weather must go through the <code class="docutils literal notranslate"><span class="pre">cloudy</span></code> state before transitioning into a <code class="docutils literal notranslate"><span class="pre">rainy</span></code> day. This is denoted by the zero conditional probability P(rainy|sunny), which reads “the probability that tomorrow the weather turns out rainy given that today is sunny”. Note that the probabilities for any given current state must add up to one to ensure we always get a state for tomorrow.</p>
 <table class="colwidths-auto table">
@@ -1649,23 +1650,23 @@
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="observations">
+</section>
+<section id="observations">
 <h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Not all cloudy days result in rainfall, which is typical perhaps of fall days.</p></li>
 <li><p>Sunny days tend to persist due to its high conditional probability on itself. When today is <code class="docutils literal notranslate"><span class="pre">sunny</span></code>, there is a 70% chance that tomorrow will also be <code class="docutils literal notranslate"><span class="pre">sunny</span></code>. Of course this could be changed based on the day of the year to reflect seasonal patterns. The current version is probably a good fit for summer periods.</p></li>
 </ul>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Change the probabilities to reflect the weather you feel typical of your location.</p></li>
 <li><p>Try adding an extra state, perhaps an unlikely state such as <code class="docutils literal notranslate"><span class="pre">windy</span></code> or <code class="docutils literal notranslate"><span class="pre">hail</span></code></p></li>
 <li><p>An interesting exercise would be to relate the probabilities to the day of the year or seasons of the year. This change should be trivial since we already keep track of days. You can also try to convert days of the year to pi radians, so that you can simulate multiple years in a row!</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

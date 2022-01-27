@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Antecedent Precipitation Index &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1217,7 +1218,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="antecedent-precipitation-index">
+  <section class="tex2jax_ignore mathjax_ignore" id="antecedent-precipitation-index">
 <h1>Antecedent Precipitation Index<a class="headerlink" href="#antecedent-precipitation-index" title="Permalink to this headline">¶</a></h1>
 <p>The API is a well-known, parsimonious, recursive model for predicting soil moisture solely based on precipitation records. The API is commonly implemented using daily precipitation records, but it is possible to work at finer temporal scales (e.g. hourly) if both precipitation (model input) and soil moisture (for validation purposes) are available. The equation describing the simples version of the model is:</p>
 <div class="math notranslate nohighlight">
@@ -1542,7 +1543,7 @@
   }
 }(window));</script></div>
 </div>
-<div class="section" id="load-data">
+<section id="load-data">
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <p>For this example we will use data from the Bedford station, IN obtained from the US Climate Reference Network. The data spans the period 3-Oct-2007 to 24-Oct-2017. There is no particular reason why we are exploring this dataset and this period. It’s just some data that I gather and compiled from the <a class="reference external" href="https://www.ncdc.noaa.gov/crn/">USCRN website</a>.</p>
 <div class="cell docutils container">
@@ -1714,8 +1715,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="convert-volumetric-water-content-to-millimeters">
+</section>
+<section id="convert-volumetric-water-content-to-millimeters">
 <h2>Convert volumetric water content to millimeters<a class="headerlink" href="#convert-volumetric-water-content-to-millimeters" title="Permalink to this headline">¶</a></h2>
 <p>We will calculate the total amount of water in the top 50 cm of the soil profile using information from the soil moisture sensors at 5, 10, 20, and 50 cm depth. The resulting soil water content will be the weighted sum of all the layers between sensors. For instance, the soil water content in the layer 0-5 cm will be assumed equal to the soil water content of the sensor at 5 cm. This is because we don’t have a sensor at the surface. We know that the soil moisture near the surface may be lower or higher, but this is the best we can do at this point. Similarly the soil water content in the layer 5-10 cm is approximated as the average of the sensor at 5 and 10 cm. To work in millimeters we simply multiply the volumetric water content reading of the sensor times the depth of the soil layer also expressed in millimeters. If we then add the millimeters from all four layers we end up with an estimate of the amount of millimeters of soil water in the top 50 cm of the soil profile.</p>
 <div class="cell docutils container">
@@ -1846,8 +1847,8 @@
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="define-api-model">
+</section>
+<section id="define-api-model">
 <h2>Define API model<a class="headerlink" href="#define-api-model" title="Permalink to this headline">¶</a></h2>
 <p>A simple function will be enough to implement the model, define inputs, and even add some default parameter values</p>
 <div class="cell docutils container">
@@ -1868,8 +1869,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="guess-parameters-values">
+</section>
+<section id="guess-parameters-values">
 <h2>Guess parameters values<a class="headerlink" href="#guess-parameters-values" title="Permalink to this headline">¶</a></h2>
 <p>Guessing is usually agreat exercise to test our intuition about the model and its parameters. Later we will optimize the model to find the best loss coefficient parameter <code class="docutils literal notranslate"><span class="pre">alpha</span></code>.</p>
 <div class="cell docutils container">
@@ -1920,8 +1921,8 @@
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="optimize-parameters">
+</section>
+<section id="optimize-parameters">
 <h2>Optimize parameters<a class="headerlink" href="#optimize-parameters" title="Permalink to this headline">¶</a></h2>
 <p>From the official documentation recall that <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> inputs are <code class="docutils literal notranslate"><span class="pre">f,</span> <span class="pre">xdata,</span> <span class="pre">ydata,</span> <span class="pre">p0=None</span></code></p>
 <div class="cell docutils container">
@@ -1987,8 +1988,8 @@ Day of the year with the lowest atmospheric demand is 105
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="compute-error-metrics">
+</section>
+<section id="compute-error-metrics">
 <h2>Compute error metrics<a class="headerlink" href="#compute-error-metrics" title="Permalink to this headline">¶</a></h2>
 <p>For simplicity I will use the root mean squared error (RMSE) and median absolute error (MAE)</p>
 <div class="cell docutils container">
@@ -2005,27 +2006,27 @@ Day of the year with the lowest atmospheric demand is 105
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="comments">
+</section>
+<section id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>The model is fairly good considering that we are only using rainfall and couple parameters to to model a complex variable such as rootzone soil moisture.</p></li>
 <li><p>The main drawback of this model is that the upper limit of soil water storage remains unbounded</p></li>
 <li><p>Another limitation is that the loss coefficient, which encapsulates all possible lossed, is constant over time. So, it is expected that the model error is associated with seasonal patterns in atmospheric demand.</p></li>
 </ul>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Create a plot of the residuals between the observed and predicted soil water storage using the optimized parameters. Can you see any trends?</p></li>
 <li><p>Modify the model so that it cannot exceed the maximum value ever recorded by the soil moisture sensors over the entire rootzone.</p></li>
 </ul>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Saxton, K.E. and Lenz, A.T., 1967. Antecedent retention indexes predict soil moisture. Journal of the Hydraulics Division.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

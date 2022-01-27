@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Patch analysis &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1145,14 +1146,14 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="patch-analysis">
+  <section class="tex2jax_ignore mathjax_ignore" id="patch-analysis">
 <h1>Patch analysis<a class="headerlink" href="#patch-analysis" title="Permalink to this headline">¶</a></h1>
 <p>An aerial image of the Marion County Lake and Park (Lat: 38.320885, Lon: -96.983912) near Marion, KS was labeled into its major landscape components using a labeling tool. The labeling basically consisted of painting by hand using a brush or flooding tool different features of the landscape such as the lake itself, impervious road delimiting the boundary of the park, pervious roads within the park area, fishing docks, and buildings (mobile homes, shelters).</p>
 <p>Marion County Lake and Park is primarily used for recreational activitis such as fishing, boating, jogging, and even bird watching. There is a residential area right outside the edge of the park that was not included in this analysis since we are only concerned with the land ara of the park.</p>
 <p>The goal is to quantify the size and shape properties of the different land patches within the land area of the park that are isolated due to roads. Hopefully you can see from the aerial image that within the park there multiple road loops covered with gravel. While these internal roads were developed to facilitate access to fishing docks and picnic areas, there seems to be substantial fragmentation of the land area.</p>
 <p>We will use some image analysis tools to quantify the total lake and park area, the lake area, the land area, the surface covered by roads, the number of fishing docks, and the classification, numer, and size of patches.</p>
 <p>Each label is repreented in the image with a specific number assigned during the labelling process:</p>
-<div class="section" id="labels">
+<section id="labels">
 <h2>Labels<a class="headerlink" href="#labels" title="Permalink to this headline">¶</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">0</span></code> = background</p>
 <p><code class="docutils literal notranslate"><span class="pre">1</span></code> = pervious roads</p>
@@ -1160,8 +1161,8 @@
 <p><code class="docutils literal notranslate"><span class="pre">3</span></code> = water body (lake area)</p>
 <p><code class="docutils literal notranslate"><span class="pre">4</span></code> = fishing and boating docks</p>
 <p><code class="docutils literal notranslate"><span class="pre">5</span></code> = Buildings and houses</p>
-</div>
-<div class="section" id="image-source-and-resolution">
+</section>
+<section id="image-source-and-resolution">
 <h2>Image source and resolution<a class="headerlink" href="#image-source-and-resolution" title="Permalink to this headline">¶</a></h2>
 <p>The aerial image was exported from Google Earth Pro. The image is not georeferenced, but the size of an individual pixel is approximately 0.75 squared meters</p>
 <div class="cell docutils container">
@@ -1423,8 +1424,8 @@
 <img alt="../_images/segmented_lake_17_0.png" src="../_images/segmented_lake_17_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

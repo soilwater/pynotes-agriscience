@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Lambda Functions &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1167,12 +1168,12 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lambda-functions">
+  <section class="tex2jax_ignore mathjax_ignore" id="lambda-functions">
 <h1>Lambda Functions<a class="headerlink" href="#lambda-functions" title="Permalink to this headline">¶</a></h1>
 <p>Lambda functions (also known as anonymous functions) are not defined or stored in a file or cell. Anonymous functions are typically short, one-line, and/or code-specific functions that may not warrant the effort to store them as a separate function.</p>
 <p>In Python, anonymous functions are called <code class="docutils literal notranslate"><span class="pre">lambda</span></code> functions, which to some extent it makes total sense because they are not really “anonymous”. We do actually give them names, so that we can use (call, invoke) these functions at later steps in our code.</p>
 <p>You will typically find or use <code class="docutils literal notranslate"><span class="pre">lambda</span></code> functions when passing formulas into optimization routines, but they can be used in lots of different scenarios.</p>
-<div class="section" id="fahrenheit-to-celsius">
+<section id="fahrenheit-to-celsius">
 <h2>Fahrenheit to Celsius<a class="headerlink" href="#fahrenheit-to-celsius" title="Permalink to this headline">¶</a></h2>
 <p>Imagine a code in which the user passes data in degrees Fahrenheit and we need to convert these data into degrees Celsius. Instead of typing the equation every time you need to conver temperatures, we can write the expression for converting temperature units into a <code class="docutils literal notranslate"><span class="pre">lambda</span></code> function that we can call whenever we need it. Functions are just that, code encapsulated behind a name that we can invoke by simply calling its name. This way we avoid repeating code and we minimize the risk of making mistakes since we only write the main equation one time.</p>
 <div class="math notranslate nohighlight">
@@ -1192,8 +1193,8 @@
 </div>
 </div>
 <p>It makes sense, 212 degrees Fahrenheit are indeed equivalent to 100 degrees Celsius, which is the boiling temperature for water. Now you can call <code class="docutils literal notranslate"><span class="pre">fahrenheitToCelsius()</span></code> anywhere you want, even in other cells of the Jupyter Notebook.</p>
-</div>
-<div class="section" id="polynomials">
+</section>
+<section id="polynomials">
 <h2>Polynomials<a class="headerlink" href="#polynomials" title="Permalink to this headline">¶</a></h2>
 <p>Polynomials are simple mathematical expressions that become handy in countless scenarios. Below is an example of a second order (i.e. quadratic) polynomial.</p>
 <div class="math notranslate nohighlight">
@@ -1211,8 +1212,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="saturation-vapor-pressure">
+</section>
+<section id="saturation-vapor-pressure">
 <h2>Saturation vapor pressure<a class="headerlink" href="#saturation-vapor-pressure" title="Permalink to this headline">¶</a></h2>
 <p>Sometimes the computation of a specific variable (e.g. vapor pressure) can be done for all the temperature and relative humidity data at one time using Numpy arrays. However, if we are writing a simple Python script that requires computation of vepor pressure in multiple places, let’s say within a for loop, then using a lambda function can become practical. Again, one of the best advantages is that we code the formula only once, minimizing the chances of introducing typos, particularly, when typing coefficients.</p>
 <div class="math notranslate nohighlight">
@@ -1231,8 +1232,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="volume-of-tree-trunk">
+</section>
+<section id="volume-of-tree-trunk">
 <h2>Volume of tree trunk<a class="headerlink" href="#volume-of-tree-trunk" title="Permalink to this headline">¶</a></h2>
 <p>Trunk volume is used in forestry and ecology to document and track the size of trees. While the actual shape of a trunk can be complex, its cylindricity allow us to make fairly good estimations using simple measurements such as trunk diameter and height.</p>
 <p>Some of the Giant Sequoias can have trunk volumes of up to 1,486.9 m<span class="math notranslate nohighlight">\(^3\)</span>, which is about half the volume of an olympic swimming pool (50 m x 25 m x 2 m).</p>
@@ -1257,8 +1258,8 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

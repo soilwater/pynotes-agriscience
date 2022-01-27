@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Linear Regression &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1177,7 +1178,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="linear-regression">
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-regression">
 <h1>Linear Regression<a class="headerlink" href="#linear-regression" title="Permalink to this headline">¶</a></h1>
 <p>Perhaps there is no other task more common in curve fitting than optimizing the parameters of a linear model using least squares. The linear model is one simplest (of course after the constant model) models to fit our data and usually represents our first choice when we don’t know any better.</p>
 <p>The linear model is described by:</p>
@@ -1629,7 +1630,7 @@ dtype: int64
 </div>
 </div>
 <p>For a single column we can simply do <code class="docutils literal notranslate"><span class="pre">data['TEMP10MAVG'].fillna(method='backfill')</span></code></p>
-<div class="section" id="air-temperature-vs-soil-temperature">
+<section id="air-temperature-vs-soil-temperature">
 <h2>Air temperature vs Soil temperature<a class="headerlink" href="#air-temperature-vs-soil-temperature" title="Permalink to this headline">¶</a></h2>
 <p>Together with soil moisture, soil temperature is and important variabl dictating the planting date, particularly of summer crops such as corn. On average crops are seeded at about 5 cm (2 inches or 0.05 meter) depth, and while there is an increasing number of networks monitoring soil temperature, air temperature is by far a more common variable even from backyard weather stations.</p>
 <p>So a valid question would be to think whether we can estimate soil temperature at the planting depth using readily available air temperature observations. To find the answer we can use data from stations monitoring both variables to give as an idea of the relationship. We will fit a linear model and see whether the model provides adequate predictive power for common practical applications.</p>
@@ -1693,8 +1694,8 @@ p-value: 1.3681157460919794e-182
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="examine-residuals">
+</section>
+<section id="examine-residuals">
 <h2>Examine residuals<a class="headerlink" href="#examine-residuals" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1720,8 +1721,8 @@ p-value: 1.3681157460919794e-182
 <img alt="../_images/stats_linear_regression_16_1.png" src="../_images/stats_linear_regression_16_1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="compute-accuracy">
+</section>
+<section id="compute-accuracy">
 <h2>Compute accuracy<a class="headerlink" href="#compute-accuracy" title="Permalink to this headline">¶</a></h2>
 <p>We will take advantage of the built-in median absolute errormetric from the <code class="docutils literal notranslate"><span class="pre">scipy.stats</span></code> module. The median absolute error represents the typical error and is more robust agains outliers than the mean absolute error and the root mean squared error.</p>
 <div class="cell docutils container">
@@ -1738,8 +1739,8 @@ p-value: 1.3681157460919794e-182
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="remarks">
+</section>
+<section id="remarks">
 <h2>Remarks<a class="headerlink" href="#remarks" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>There is a positive relationship between air and soil temperature, as expected. While it seems obvious, note that this may not be true for deeper soil temperatures. It takes time for heat to move to deeper layers and there can be strong delays at greater depths and a linear model may no longer be valid.</p></li>
@@ -1748,8 +1749,8 @@ p-value: 1.3681157460919794e-182
 <li><p>Despite the overall high linear correlation, the relationship is not that strong at temperatures below freezing. From the plot of residuals we can see up to 10 degrees error. To better capture this pattern we need a non-linear model. Since our scope is in summer crops, then this probably not that important.</p></li>
 <li><p>Using data for 2018, the linear model can predict soil temperature at 5 cm depth from air temperature obsrvations at 2 m height with an accuracy of about 3 Celsius across the range of -20 to 30 degrees Celsius.</p></li>
 </ul>
-</div>
-<div class="section" id="additional-exercises">
+</section>
+<section id="additional-exercises">
 <h2>Additional exercises<a class="headerlink" href="#additional-exercises" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Can you find other linear relationships in the dataset? Hint: Daily average air temperature (TEMP2MAVG) vs average daily atmospheric pressure (PRESSUREAVG).</p></li>
@@ -1772,8 +1773,8 @@ p-value: 1.3681157460919794e-182
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

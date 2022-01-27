@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Error Metrics &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1257,7 +1258,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="error-metrics">
+  <section class="tex2jax_ignore mathjax_ignore" id="error-metrics">
 <h1>Error Metrics<a class="headerlink" href="#error-metrics" title="Permalink to this headline">¶</a></h1>
 <p>Qunatifying the error between predictions and observations is central to assessing the performance of a model. Error metrics also play an important role assessing the accuracy of sensors relative to ground-truth observations.</p>
 <p>There are many error metrics, each with its pros and cons. In this exercise we will code some of the most common error metrics and we will briefly discuss their application. There are also several Python libraries (e.g. sciki-learn) that contain multiple error metrics. Using libraries is a good idea since it allows for reproducibility and there is also a high chance that the code has been tested by multiple people. However, the compulsive use of libraries by beginners also hinders understanding. This is the reason why in this exercise we will code our own error metrics.</p>
@@ -2733,7 +2734,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div></div>
 </div>
-<div class="section" id="inputs">
+<section id="inputs">
 <h2>Inputs<a class="headerlink" href="#inputs" title="Permalink to this headline">¶</a></h2>
 <p>We will use a dataset obtained from the calibration of an actual soil moisture sensor. The soil moisture readings were obtained with a calibrated soil water reflectometer and the ground-truth values we re obtained using the thermo-gravimetric method (i.e. soil samples were oven-dried to find out the actual soil water content).</p>
 <div class="cell docutils container">
@@ -2787,8 +2788,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 <p class="admonition-title">Note</p>
 <p>A 1:1 line describes the perfect relationship between predicted and observed values. It is commonly use to provide a visual baseline of where the points would fall if the predictions were perfect. Points close or on top of the curve are considered “good” predictions whereas points farther from the line are considered “poor” predictions.</p>
 </div>
-</div>
-<div class="section" id="residuals">
+</section>
+<section id="residuals">
 <h2>Residuals<a class="headerlink" href="#residuals" title="Permalink to this headline">¶</a></h2>
 <p>The difference between observed and predicted: <span class="math notranslate nohighlight">\(residuals = y_{obs} - y_{pred}\)</span></p>
 <div class="cell docutils container">
@@ -2847,8 +2848,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 })(window);</script></div></div>
 </div>
 <p>Inspecting the residuals there seems to be a weak negative trend, in which errors are more negative with higher soil moisture content. One way to quantify this bias is using the mean bias error metric.</p>
-</div>
-<div class="section" id="mean-bias-error-mbe">
+</section>
+<section id="mean-bias-error-mbe">
 <h2>Mean bias error (MBE)<a class="headerlink" href="#mean-bias-error-mbe" title="Permalink to this headline">¶</a></h2>
 <p><strong>Positive</strong> = Under-prediction.</p>
 <p><strong>Negative</strong> = Over-prediction.</p>
@@ -2866,8 +2867,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="sum-of-residuals-sres">
+</section>
+<section id="sum-of-residuals-sres">
 <h2>Sum of residuals (SRES)<a class="headerlink" href="#sum-of-residuals-sres" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2882,8 +2883,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="sum-of-the-absolute-of-residuals-sares">
+</section>
+<section id="sum-of-the-absolute-of-residuals-sares">
 <h2>Sum of the absolute of residuals (SARES)<a class="headerlink" href="#sum-of-the-absolute-of-residuals-sares" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2898,8 +2899,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="sum-of-squared-errors-or-residuals">
+</section>
+<section id="sum-of-squared-errors-or-residuals">
 <h2>Sum of squared errors (or residuals)<a class="headerlink" href="#sum-of-squared-errors-or-residuals" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2914,8 +2915,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="mean-squared-error-mse">
+</section>
+<section id="mean-squared-error-mse">
 <h2>Mean squared error (MSE)<a class="headerlink" href="#mean-squared-error-mse" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2930,8 +2931,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="root-mean-squared-error-rmse">
+</section>
+<section id="root-mean-squared-error-rmse">
 <h2>Root mean squared error (RMSE)<a class="headerlink" href="#root-mean-squared-error-rmse" title="Permalink to this headline">¶</a></h2>
 <p>One of the most popular error metrics in modeling. When comparing two estimates where none of them represents the ground truth it is better to name this error metric the Root Mean Squared “Difference” to emphasize that is the difference between two estimates. the word error is typically reserved for deviations from a gold standard or ground truth value.</p>
 <blockquote>
@@ -2950,8 +2951,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="relative-root-mean-squared-error-rrmse">
+</section>
+<section id="relative-root-mean-squared-error-rrmse">
 <h2>Relative root mean squared error (RRMSE)<a class="headerlink" href="#relative-root-mean-squared-error-rrmse" title="Permalink to this headline">¶</a></h2>
 <p>More meaningful than RMSE to compare the errors from two different data sets with different units or ranges. Sometimes the RRMSE is computed by dividing the RMSE over the range of the observed values rather than the average of the observed values.</p>
 <div class="cell docutils container">
@@ -2967,8 +2968,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="mean-absolute-error-mae">
+</section>
+<section id="mean-absolute-error-mae">
 <h2>Mean absolute error (MAE)<a class="headerlink" href="#mean-absolute-error-mae" title="Permalink to this headline">¶</a></h2>
 <p>Robust error metric less sensitive to outliers compared to the RMSE. The computation of the mean of the absolute residuals is not squared, and thus less impacted by outliers. Read Willmott and Matsuura, 200 for more details about RMSE vs MAE.</p>
 <p>For even a more robust error metric you can compute the median absolute error, which represents the most typical error.</p>
@@ -2985,8 +2986,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="median-absolute-error">
+</section>
+<section id="median-absolute-error">
 <h2>Median absolute error<a class="headerlink" href="#median-absolute-error" title="Permalink to this headline">¶</a></h2>
 <p>A metric similar to the mean absolute error, but more robust to outliers.</p>
 <div class="cell docutils container">
@@ -3002,8 +3003,8 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="willmott-index-of-agreement-d">
+</section>
+<section id="willmott-index-of-agreement-d">
 <h2>Willmott index of agreement (D)<a class="headerlink" href="#willmott-index-of-agreement-d" title="Permalink to this headline">¶</a></h2>
 <p>A perfect model will have y_obs = y_pred, and consequently the SSE will be zero, and hence d=1.</p>
 <div class="cell docutils container">
@@ -3022,14 +3023,14 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Willmott, C.J., Robeson, S.M. and Matsuura, K., 2012. A refined index of model performance. International Journal of Climatology, 32(13), pp.2088-2094.</p>
 <p>Willmott, C.J. and Matsuura, K., 2005. Advantages of the mean absolute error (MAE) over the root mean square error (RMSE) in assessing average model performance. Climate research, 30(1), pp.79-82.</p>
 <p>Willmott, C.J., 1981. On the validation of models. Physical geography, 2(2), pp.184-194.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

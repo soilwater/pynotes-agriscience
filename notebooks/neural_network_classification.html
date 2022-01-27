@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Neural Network Classification &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1165,7 +1166,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="neural-network-classification">
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-network-classification">
 <h1>Neural Network Classification<a class="headerlink" href="#neural-network-classification" title="Permalink to this headline">¶</a></h1>
 <p>In this exercise we will use a neural network to predict a binary variable. The challenge consists of predicting whether on a specific day it was raining or not (a True/False response) based on other environmental variables. We will hypothesize that rainy days can be predicted by looking at changes in the soil water storage from sensors located on the same weather station and based on the cloudiness. Our hypothesis rests on the fact that it is cloudy when it rains and that part of the rainfall infiltrates the soil.</p>
 <p>Potential errors could arise from days in which the sky is cloudy but it is not raining, or perhaps due to small changes in water content as a consequence of the natural redistribution of soil water in the soil. Such a application could be implemented in environmental monitoring netowrks for detecting malfunctioning rain gauges.</p>
@@ -1839,7 +1840,7 @@ dtype: int64
   }
 })(window);</script></div>
 </div>
-<div class="section" id="define-training-and-test-sets">
+<section id="define-training-and-test-sets">
 <h2>Define training and test sets<a class="headerlink" href="#define-training-and-test-sets" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1852,8 +1853,8 @@ dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="normalize-training-sets">
+</section>
+<section id="normalize-training-sets">
 <h2>Normalize training sets<a class="headerlink" href="#normalize-training-sets" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1863,8 +1864,8 @@ dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-neural-netowork-model-for-classification">
+</section>
+<section id="fit-neural-netowork-model-for-classification">
 <h2>Fit neural netowork model for classification<a class="headerlink" href="#fit-neural-netowork-model-for-classification" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1957,16 +1958,16 @@ dtype: int64
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>What happens if you use only precipitation as the explanatory variable? Often naive examples can help you determine whether the code is working as expected. What is your expectation if we try to predict days with or without rain using rain itseld as a predictor?</p></li>
 <li><p>Try a different set of explanatory variables, such as volumetric water content from individual soil depths, or perhaps other varaibles like relative humidity. During rainfall events the relative humidity tends to be close to 100%, so by adding this varaible it may help improving the model.</p></li>
 <li><p>Try the same example using logistic regression. Using the same explanatory varaibles, can a simple logistic regression perform better than a neural network? The logistic regression in Scikit-Learn is implemented following the same steps as the machine learning classifier.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

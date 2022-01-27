@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Neural Network Regression &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1187,7 +1188,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="neural-network-regression">
+  <section class="tex2jax_ignore mathjax_ignore" id="neural-network-regression">
 <h1>Neural Network Regression<a class="headerlink" href="#neural-network-regression" title="Permalink to this headline">¶</a></h1>
 <p>Neural networks are a type fo supervised learning. This means that to get started we need to have a set of explanatory variables and the expected result or outcome (the target varaible). This is called a training set, and they are usually obtained from databases, experiments, and dedicated data collection campaigns. In simple terms, we can think of a neural network as a sophisticated interpolation approach. So, if we want the neural network to produce results within plausible limits of the target varaible we need to provide a wide range of input scenarios, so that the network “learns” what the target is not only in common scenarios for which we will likely have lots of data, but also in less common situation. This means lots of data.</p>
 <p>Fortunately, environemtnal moniotring networks collect abundant atmospheric and soil observations every day. In this notebook we will use weather variables to predict reference evapotranspiration.</p>
@@ -1508,7 +1509,7 @@
   }
 }(window));</script></div>
 </div>
-<div class="section" id="load-dataset">
+<section id="load-dataset">
 <h2>Load dataset<a class="headerlink" href="#load-dataset" title="Permalink to this headline">¶</a></h2>
 <p>We will use weather data from the Acme station of the Oklahoma Mesonet. The dataset contains the following variables from 2005 to 2017:</p>
 <ul class="simple">
@@ -1750,8 +1751,8 @@ dtype: int64
 <p class="admonition-title">Note</p>
 <p>Forward-filling may not be the best method to fill in missing rainfall data. However, keep in mind that precipitation is not a required variable for computing potential evapotrasnpiration.</p>
 </div>
-</div>
-<div class="section" id="define-inputs-and-outpus">
+</section>
+<section id="define-inputs-and-outpus">
 <h2>Define inputs and outpus<a class="headerlink" href="#define-inputs-and-outpus" title="Permalink to this headline">¶</a></h2>
 <p>The enxt step is to let the model know which are the explanatory variables (X) and which is/are the target variables (y). The Pandas library makes this step super easy. We only need to select the columns by name.</p>
 <div class="cell docutils container">
@@ -1765,8 +1766,8 @@ dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="train-and-test-sets">
+</section>
+<section id="train-and-test-sets">
 <h2>Train and test sets<a class="headerlink" href="#train-and-test-sets" title="Permalink to this headline">¶</a></h2>
 <p>We need to train our model in a subset of the original dataset that we loaded and then test it using an independent set of samples (the test set). The goal is to test the model in subsamples that the model has never seen. In other words, after training, we will test the performance of the test model using a new subset of unseen samples.</p>
 <p>The scikit-learn library provide some functions that allow us to easily partition the X and y entries into a training and testing subsets. By default the function <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> will split the dataset into a training subset with 75% of the observations and a test set with the remaining 25% of the observations. The function shuffles the entries in X, but keeps the columns for each row together. the function also splits and shuffles the matching rows of y, so that inputs and targets remain aligned. In other words, each row represents an individual entry. You can clearly see this below when we print the different subsets (which happen to be Pandas Dataframes), look at the index number</p>
@@ -1990,8 +1991,8 @@ Name: ETgrass, dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="normalize-data">
+</section>
+<section id="normalize-data">
 <h2>Normalize data<a class="headerlink" href="#normalize-data" title="Permalink to this headline">¶</a></h2>
 <p>This step is critical to ensure that each input variable has the same weight at the time of training. The normalization of the training set and the test set need be performed after splitting the main dataset, so that the test set remains fully independent of the training set. In some cases, good performance can be obtained without normalization, but normalization rarely hurts the training process.</p>
 <div class="cell docutils container">
@@ -2002,8 +2003,8 @@ Name: ETgrass, dtype: float64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="fit-the-model">
+</section>
+<section id="fit-the-model">
 <h2>Fit the model<a class="headerlink" href="#fit-the-model" title="Permalink to this headline">¶</a></h2>
 <p>We now simply need to pass the inputs and targets into the fitting function. This is the part that while it is not necessary to know in order to fit a neural network to your data, it does help tremendously some basic understanding.</p>
 <p>Neural networks relies on feedforward pass: Given the provided inputs in a given entry and given some parameters in the neurons the network tries to predict the target output. At the beginning the netowrks starts with some random parameters, so initial predictions are typically bad. However, using these bad guesses and the known targets (recall this is supervised learning), the network computes the diffrences and back propagates this difference into the responsible neurons for most of the error. This is the back-propgation algorith. This step is crucial since it trigger changes in the parameters of the neurons mainly responsible for the error. Once the paramters are updated, a new guess takes place, and subsequently the new error is computed and back-propagated into the neurons. Basically this a trial and error while the network learns how to get the right output. The knowledge of the network consists of the set of parameters in the neurons. A linear model would have two parameters, the intercept and the slope. A neural network can have hundreds or millions of parameters, reason why they can capture such complex patterns. To wrap this basic introduction, in this case we are addressing a regression problem. Our target variable is a continuous variable, but neural networks can also be used to solve classification problems, such as defining whether a set of weather variables would result in rainfall or not (just a yes/no prediction) or whether a set of image pixels represent flowers of a given plant specie.</p>
@@ -2287,15 +2288,15 @@ Name: ETgrass, dtype: float64
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>What is the coefficient of determination using non-normalized data? Fit the machine learning regresson <code class="docutils literal notranslate"><span class="pre">MLPRegressor</span></code> again using <code class="docutils literal notranslate"><span class="pre">X_train</span></code> instead of <code class="docutils literal notranslate"><span class="pre">X_train_normalized</span></code> and then compute the score to evaluate the difference.</p></li>
 <li><p>Can machine learning models accurately predict ETo using a lower number of variables? This would be desirable, in order to approximate the ET as defined by the Penman-Monteith in areas with limited meteorological information.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

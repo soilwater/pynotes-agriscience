@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Curve Fitting: Exponential Decay &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1177,15 +1178,15 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="curve-fitting-exponential-decay">
+  <section class="tex2jax_ignore mathjax_ignore" id="curve-fitting-exponential-decay">
 <h1>Curve Fitting: Exponential Decay<a class="headerlink" href="#curve-fitting-exponential-decay" title="Permalink to this headline">¶</a></h1>
 <p>In this example we will fit a simple exponential decay model to a timeseries of decreasing surface soil water content.</p>
-<div class="section" id="intuition">
+<section id="intuition">
 <h2>Intuition<a class="headerlink" href="#intuition" title="Permalink to this headline">¶</a></h2>
 <p>After a large rainfall event the soil surface becomes wet reaching values near saturation. Saturation simply means that the pores spaces in the soil are filled with water rather than air. From this point the soil starts losing water by drainage, evaporation, and root water uptake. As a consequence, and assuming no additional rainfal, the soil becomes drier with every day that goes by. However, because of adhesive forces between water molecules and soil particles, it becomes increasingly harder for the soil to lose water. At moderate to low moisture contents the soil water is mostly lost from the soil in the form of vapor due to the process of evaporation. Very little is lost due to drainage or even root water uptake. Thus, the rate of water loss is reduced, to an extreme where the rate of water loss becomes nearly zero and the soil water content remains constant.</p>
 <p>This process can be approximated using an exponential decay type of equation. Several studies have used this approach to test the drying rate of the soil surface from dedicated satellite mission that measure soil moisture.</p>
-</div>
-<div class="section" id="an-exponential-decay-model">
+</section>
+<section id="an-exponential-decay-model">
 <h2>An exponential decay model<a class="headerlink" href="#an-exponential-decay-model" title="Permalink to this headline">¶</a></h2>
 <p>One of the many variations of this model is the following:</p>
 <div class="math notranslate nohighlight">
@@ -1196,13 +1197,13 @@
 <p><span class="math notranslate nohighlight">\(\tau\)</span> is related to the rate of water loss and changes the concavity of the curve</p>
 <p><span class="math notranslate nohighlight">\(\theta_f\)</span> is the asymptotic volumetric water content approached by the curve under a prolongued period without rainfall.</p>
 <p><span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(\tau\)</span>, and <span class="math notranslate nohighlight">\(\theta_f\)</span> are empirical parameters determined by fitting observed data</p>
-</div>
-<div class="section" id="dataset">
+</section>
+<section id="dataset">
 <h2>Dataset<a class="headerlink" href="#dataset" title="Permalink to this headline">¶</a></h2>
 <p>The data set consists of a timeseries of voluemtric water content (<span class="math notranslate nohighlight">\(\theta\)</span>) at 5-cm depth observed at the Gypsum station of the Kansas Mesonet. The drydown started on 1-jul-2017 (DOY=182)after a substantial rainfall event that was able to moisten the top soil and lasted for about 47 days. The drydown ended around 16-aug-2017 (DOY=228). There were no appreciable rainfall events during the drydown period.</p>
 <p>The dataset is in file names <code class="docutils literal notranslate"><span class="pre">gypsum_ks_drydown_2017.csv</span></code> contained in the the <code class="docutils literal notranslate"><span class="pre">Datasets</span></code> folder.</p>
-</div>
-<div class="section" id="problem">
+</section>
+<section id="problem">
 <h2>Problem<a class="headerlink" href="#problem" title="Permalink to this headline">¶</a></h2>
 <p>The first step is to import a tentative list of modules that we need to solve the problem. We will load the usual modules to handle tabular data. The key module to perform the fitting routine is called <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> and is located in the <code class="docutils literal notranslate"><span class="pre">scipy.optimize</span></code> module.</p>
 <div class="cell docutils container">
@@ -1391,12 +1392,12 @@
 <img alt="../_images/stats_curve_fitting_exp_18_0.png" src="../_images/stats_curve_fitting_exp_18_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Shellito, P.J., Small, E.E., Colliander, A., Bindlish, R., Cosh, M.H., Berg, A.A., Bosch, D.D., Caldwell, T.G., Goodrich, D.C., McNairn, H. and Prueger, J.H., 2016. SMAP soil moisture drying more rapid than observed in situ following rainfall events. Geophysical research letters, 43(15), pp.8068-8075.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

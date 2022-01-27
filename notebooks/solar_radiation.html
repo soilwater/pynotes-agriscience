@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Solar Radiation &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1177,7 +1178,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="solar-radiation">
+  <section class="tex2jax_ignore mathjax_ignore" id="solar-radiation">
 <h1>Solar Radiation<a class="headerlink" href="#solar-radiation" title="Permalink to this headline">¶</a></h1>
 <p>The incident solar radiation on given location is highly influenced by the latitudinal position. In this exercise we examine a method to derive the estimated maximum solar irradiance for each day of the year from a timeseries of observations.</p>
 <div class="cell docutils container">
@@ -1404,7 +1405,7 @@ Name: LST_DATE, dtype: datetime64[ns]
 </div>
 </div>
 </div>
-<div class="section" id="inspect-timeseries">
+<section id="inspect-timeseries">
 <h2>Inspect timeseries<a class="headerlink" href="#inspect-timeseries" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1420,8 +1421,8 @@ Name: LST_DATE, dtype: datetime64[ns]
 <img alt="../_images/solar_radiation_7_0.png" src="../_images/solar_radiation_7_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="clear-sky-irradiance-empirical">
+</section>
+<section id="clear-sky-irradiance-empirical">
 <h2>Clear sky irradiance (empirical)<a class="headerlink" href="#clear-sky-irradiance-empirical" title="Permalink to this headline">¶</a></h2>
 <p>We will extract the highest records using a moving filter to estimate the clear sky radiation from observations. We can easily do this with Pandas. Our resulting values will still contain some minor oscillations and the output will vary depending on the size of the window.</p>
 <div class="cell docutils container">
@@ -1442,8 +1443,8 @@ Name: LST_DATE, dtype: datetime64[ns]
 <img alt="../_images/solar_radiation_9_0.png" src="../_images/solar_radiation_9_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="clear-sky-irradiance-from-latitude">
+</section>
+<section id="clear-sky-irradiance-from-latitude">
 <h2>Clear sky irradiance (from latitude)<a class="headerlink" href="#clear-sky-irradiance-from-latitude" title="Permalink to this headline">¶</a></h2>
 <p>Another alternative is to compute the soil radiation based on latitude and elevation. The first step consists of computing the extraterrestrial radiation for daily periods as defined in Eq. 21, FAO-56, and in a subsequent step compute the clear sky solar radiation.</p>
 <div class="math notranslate nohighlight">
@@ -1486,8 +1487,8 @@ Name: LST_DATE, dtype: datetime64[ns]
 <img alt="../_images/solar_radiation_11_0.png" src="../_images/solar_radiation_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="actual-solar-irradiance-from-air-temperature">
+</section>
+<section id="actual-solar-irradiance-from-air-temperature">
 <h2>Actual solar irradiance (from air temperature)<a class="headerlink" href="#actual-solar-irradiance-from-air-temperature" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1506,8 +1507,8 @@ Name: LST_DATE, dtype: datetime64[ns]
 <img alt="../_images/solar_radiation_13_0.png" src="../_images/solar_radiation_13_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="clear-sky-solar-radiation-for-each-doy">
+</section>
+<section id="clear-sky-solar-radiation-for-each-doy">
 <h2>Clear sky solar radiation for each DOY<a class="headerlink" href="#clear-sky-solar-radiation-for-each-doy" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1609,8 +1610,8 @@ Name: LST_DATE, dtype: datetime64[ns]
 <img alt="../_images/solar_radiation_16_0.png" src="../_images/solar_radiation_16_0.png" />
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

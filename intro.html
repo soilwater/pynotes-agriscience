@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>PyNotes in Agriscience &#8212; Pynotes in Agriscience</title>
     
   <link href="_static/css/theme.css" rel="stylesheet">
@@ -1207,17 +1208,17 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="pynotes-in-agriscience">
+  <section class="tex2jax_ignore mathjax_ignore" id="pynotes-in-agriscience">
 <h1>PyNotes in Agriscience<a class="headerlink" href="#pynotes-in-agriscience" title="Permalink to this headline">¶</a></h1>
 <p>A set of hands-on coding exercises to solve common tasks and simple problems in agricultural sciences.</p>
 <p><a href="https://zenodo.org/badge/latestdoi/181793782"><img src="https://zenodo.org/badge/181793782.svg" alt="DOI"><a></p>
-<div class="section" id="audience">
+<section id="audience">
 <h2>Audience<a class="headerlink" href="#audience" title="Permalink to this headline">¶</a></h2>
 <p>This material is part of an introductory graduate level course offered to students in plant and soil sciences with little or no programming experience. However, anyone with sufficient motivation, discipline, and interest in learning how to code and adopt reproducible research practices should (hopefully) find the content of this notes useful. The material is aimed at students that are transitioning from spreadsheets analysis to a programming environemnt and that first need to learn basic building blocks before tackling more complicated challenges. Most examples and datasets are in tabular format, so that files can be opened and inspected with common spreadsheet software.</p>
 <p>The Python language was selected because it is free, has a relatively straightforard syntax, has been widely adopted by the scientific community, and contains a rich ecosystem of libraries and tools for generating reproducible research.</p>
 <p>These notes are intended to be simple and explicit, and code expressions may not be the most efficient or <em>pythonic</em>. As students acquire more experience through the different exercises, they will become more familiar with the syntax, documentation sources, and eventually will be able to write more advanced and elegant code. These notes are part of an introductory level course in scientific programming and reproducible research using live coding lectures</p>
-</div>
-<div class="section" id="motivation">
+</section>
+<section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Permalink to this headline">¶</a></h2>
 <p>These notes stem from the need to increase coding literacy in students pursuing a career in agricultural sciences. With the increasing use of sensors and the growing volume of data involved in agronomic decisions, scientific programming is becoming an essential skill for agriscientists that seek to analyze, interpret, and communicate data and research findings.</p>
 <p>The three main aspects that motivated this material are:</p>
@@ -1226,8 +1227,8 @@
 <li><p>The vast amount of existing material about coding is either aimed at the general public with trivial examples or learners familiar with advanced concepts in computer science, both of which have little appeal to graduate students and early career scientists in agricultural sciences that are learning to write code for the first time.</p></li>
 <li><p>I wanted to create a set of short, interactive, and reproducible scripts in the form of notebooks that students can download and execute anytime. Students can take advantage of tools such as <a class="reference external" href="https://github.com">Github</a> and <a class="reference external" href="https://mybinder.org">Binder</a> to gain access to the entire material and start coding in a matter of minutes.</p></li>
 </ol>
-</div>
-<div class="section" id="goals">
+</section>
+<section id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Permalink to this headline">¶</a></h2>
 <p>Students who successfully complete the material should be able to:</p>
 <ul class="simple">
@@ -1236,44 +1237,44 @@
 <li><p>find information independently for self-teaching and problem solving.</p></li>
 <li><p>learn good programming habits and basic reproducible research practices by following short exercises using real data.</p></li>
 </ul>
-</div>
-<div class="section" id="datasets">
+</section>
+<section id="datasets">
 <h2>Datasets<a class="headerlink" href="#datasets" title="Permalink to this headline">¶</a></h2>
 <p>The datasets used along these notebooks can be found in the <code class="docutils literal notranslate"><span class="pre">/datasets</span></code> directory of the Github repository. Throughout the examples it is assumed that the Python interpreter of the Jupyter notebook is in the <code class="docutils literal notranslate"><span class="pre">pynotes/notebooks</span></code> directory, reason why the directories are relative to this path in the exercises, for example: <code class="docutils literal notranslate"><span class="pre">pd.read_csv(&quot;../datasets/file.csv&quot;)</span></code>.</p>
 <p>If you want to follow along an exercise without downloading the entire material, you can always read the data directly from the Github repository, just make sure you get the “Raw” URL link. For example, to read the Anscombe’s dataset:</p>
 <p><code class="docutils literal notranslate"><span class="pre">pd.read_csv('https://raw.githubusercontent.com/andres-patrignani/pynotes/master/datasets/anscombe_quartet.csv')</span></code></p>
 <p>Follow this video to learn how to obtain the link for the raw data.</p>
 <p><img alt="" src="_images/read_dataset_from_github.gif" /></p>
-</div>
-<div class="section" id="about-the-author">
+</section>
+<section id="about-the-author">
 <h2>About the author<a class="headerlink" href="#about-the-author" title="Permalink to this headline">¶</a></h2>
 <p>Andres Patrignani is an Assistant Professor in Soil Water Processes in the Department of Agronomy at Kansas State University. You can contact me at <code class="docutils literal notranslate"><span class="pre">andrespatrignani&#64;ksu.edu</span></code></p>
-</div>
-<div class="section" id="role-of-coding-in-my-career">
+</section>
+<section id="role-of-coding-in-my-career">
 <h2>Role of coding in my career<a class="headerlink" href="#role-of-coding-in-my-career" title="Permalink to this headline">¶</a></h2>
 <p>Coding is one of the most important skills that I learned in gradaute school. Coding forced me to break down problems, think logically, and increase attention to seemingly irrelevant details. Coding allowed me to implement soil physical processes and visualize the outcome. Abstract concepts and equations that appeared in manuscripts and books became alive with code. Coding also enabled me to materialize my own ideas into something that other students, lab mates, and colleagues could use.</p>
 <p>As a faculty, coding is changing the way I interact with other researchers and advise graduate students. Code reveals the student’s reasoning process and allows me to connect with the student logical (or sometimes illogical) thinking. This way I can precisely identify and correct the points where there is a conceptual misunderstanding. Collaboratively writing code with students is certainly one of the most rewarding experiences for me.</p>
-</div>
-<div class="section" id="feedback">
+</section>
+<section id="feedback">
 <h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
 <p>All the code has been written with teaching in mind. If you spot an important error or a <em>big no-no</em> that should not be taught to students, please share your opinion and suggestions.</p>
 <ul class="simple">
 <li><p>For bug reports, code suggestions, and topic requests please open an issue in the <a class="reference external" href="https://github.com/andres-patrignani/pynotes/issues">Github repository</a>.</p></li>
 <li><p>For other related issues feel free to contact me at andrespatrignani&#64;ksu.edu</p></li>
 </ul>
-</div>
-<div class="section" id="support">
+</section>
+<section id="support">
 <h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
 <p>The content of this website is partially supported by the Kansas State University <a class="reference external" href="https://www.lib.k-state.edu/open-textbook">Open/Alternative Textbook Initiative</a></p>
-</div>
-<div class="section" id="acknowledgments">
+</section>
+<section id="acknowledgments">
 <h2>Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permalink to this headline">¶</a></h2>
 <p>The content would not be possible without the work of countless students and the honest criticism and detailed feedback from students taking course AGRON 845.</p>
-</div>
-<div class="section" id="license">
+</section>
+<section id="license">
 <h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
 <p>All the code in these Jupyter notebooks has been written entirely by the author unless noted otherwise. The entire material is available for free under the Creative Commons Attribution-NonCommercial-ShareAlike (<a class="reference external" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a>) license</p>
-</div>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -1314,7 +1315,7 @@
 </div>
 <div class="toctree-wrapper compound">
 </div>
-</div>
+</section>
 
     <script type="text/x-thebe-config">
     {

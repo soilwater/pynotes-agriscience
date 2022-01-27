@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Spatial Interpolation &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1145,7 +1146,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="spatial-interpolation">
+  <section class="tex2jax_ignore mathjax_ignore" id="spatial-interpolation">
 <h1>Spatial Interpolation<a class="headerlink" href="#spatial-interpolation" title="Permalink to this headline">¶</a></h1>
 <p>In some cases we are not interested in finding the value of a single unmeasured point, but rather in estimating the values at multiple regualry-spaced unmeasured points based on a set of observations with the end goal of creating a continuous map or an image represeting the spatial distribution of a variable.</p>
 <p>In this notebook we will use observations of sand content in the top 15 cm of the soil profile measured in an agricultural field. The challenge resides in interpolating the obseravtions at several poitns in space to represent the spatial pattern of the entire field. It is important to rememeber that all interpolation methods are wrong. In order to obtain the actual spatial pattern the entire domain must be sampled or surveyed. Even if we had a non-invasive instrument, the error insturment would need to be eliminated completely before asserting that we found the actual pattern. Interpolation methods allow us to approximate the actual spatial pattern in order to to revel salient features useful for practical applications.</p>
@@ -2835,7 +2836,7 @@ roTBs2RqAAAAAElFTkSuQmCC'
 </div>
 </div>
 </div>
-<div class="section" id="interpolation-methods">
+<section id="interpolation-methods">
 <h2>Interpolation methods<a class="headerlink" href="#interpolation-methods" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2931,16 +2932,16 @@ roTBs2RqAAAAAElFTkSuQmCC'
   }
 })(window);</script></div></div>
 </div>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>What happens we if we increase the value of the exponents <code class="docutils literal notranslate"><span class="pre">p</span></code> in the inverse distance weighting (say <code class="docutils literal notranslate"><span class="pre">p=10</span></code>). What other interpolation method does the IDW approximates under these scenario?</p></li>
 <li><p>In our case we have few points of low sand content surrounded by points with high sand content (see the eastern side of the field). Write few sentences explaining how the different spatial interpolation methods handle this situation. What kind of articfacts emerge from such changes in the dependent variable over short distances?</p></li>
 <li><p>Find/Generate a grid of observed points for a variable of your interest and then apply some of the spatial interpolation methods. For example, you could use a thermometer and record the temperature of a room.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Basic Plots with Matplotlib &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1205,7 +1206,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="basic-plots-with-matplotlib">
+  <section class="tex2jax_ignore mathjax_ignore" id="basic-plots-with-matplotlib">
 <h1>Basic Plots with Matplotlib<a class="headerlink" href="#basic-plots-with-matplotlib" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://matplotlib.org/users/index.html">Matplotlib</a> is one of the most popular plotting libraries in Python. The <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.pyplot.html">pyplot</a> sub-module is a high-level library of plotting commands very similar to Matlab syntax. Overt the years the community of Python users have developed a substantial amount of plots and an extensive documentation for Matplotlib. While more interactive libraries such as Bokeh and Plotly are strongly emerging in the plotting world, Matplotlib is still the most popular in the scientific enviroment and one of the easiest to get started.</p>
 <p>It is common to tuse Matplotlib in combination with Numpy and Pandas modules. So, in this example we will use all three of them to generate some basic plots.</p>
@@ -1220,7 +1221,7 @@
 </div>
 </div>
 <p><a name="matplotlib_parameters"></a></p>
-<div class="section" id="parameters">
+<section id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <p>Before we create a plot I want to show how to access all the parameters in a plot, so that can search and learn about all the possibilities.</p>
 <div class="cell docutils container">
@@ -1587,8 +1588,8 @@
 <p>5 rows × 28 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="line-plots">
+</section>
+<section id="line-plots">
 <h2>Line plots<a class="headerlink" href="#line-plots" title="Permalink to this headline">¶</a></h2>
 <p>Line plots are perhaps the most basic and widely used plots. Line plots are often used to represent timeseries, regression lines, and modeling outcomes, particularly for observations or simulations collected at high frequency.</p>
 <p>Other possible colors are:</p>
@@ -1618,8 +1619,8 @@
 <img alt="../_images/plotting_matplotlib_7_0.png" src="../_images/plotting_matplotlib_7_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="scatter-plots">
+</section>
+<section id="scatter-plots">
 <h2>Scatter plots<a class="headerlink" href="#scatter-plots" title="Permalink to this headline">¶</a></h2>
 <p>Scatter plots are versatile and are typically used to represent sparse timeseries, sporadic events on top of a more detailed timeseries, or to describe correlation (although not necessarily causality).</p>
 <div class="cell docutils container">
@@ -1646,8 +1647,8 @@
 <img alt="../_images/plotting_matplotlib_9_0.png" src="../_images/plotting_matplotlib_9_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="histograms">
+</section>
+<section id="histograms">
 <h2>Histograms<a class="headerlink" href="#histograms" title="Permalink to this headline">¶</a></h2>
 <p>Histograms are useful to identify the distribution of observations, central tendency, and extreme values.</p>
 <div class="cell docutils container">
@@ -1683,8 +1684,8 @@
 <img alt="../_images/plotting_matplotlib_11_0.png" src="../_images/plotting_matplotlib_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="subplots">
+</section>
+<section id="subplots">
 <h2>Subplots<a class="headerlink" href="#subplots" title="Permalink to this headline">¶</a></h2>
 <p>The subplot() command specifies numrows, numcols, plot_number</p>
 <div class="cell docutils container">
@@ -1735,8 +1736,8 @@
 <img alt="../_images/plotting_matplotlib_13_0.png" src="../_images/plotting_matplotlib_13_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="secondary-y-axis-plots">
+</section>
+<section id="secondary-y-axis-plots">
 <h2>Secondary Y axis plots<a class="headerlink" href="#secondary-y-axis-plots" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1764,8 +1765,8 @@
 </div>
 </div>
 <p><a name="matplotlib_styles"></a></p>
-</div>
-<div class="section" id="styles">
+</section>
+<section id="styles">
 <h2>Styles<a class="headerlink" href="#styles" title="Permalink to this headline">¶</a></h2>
 <p>In addition to the default style, Matplotlib has a variery of pre-defined styles. TO see some examples visit the following websites:</p>
 <p>Gallery 1 at: https://matplotlib.org/gallery/style_sheets/style_sheets_reference.html</p>
@@ -1799,8 +1800,8 @@
 <img alt="../_images/plotting_matplotlib_18_0.png" src="../_images/plotting_matplotlib_18_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="saving-a-figure">
+</section>
+<section id="saving-a-figure">
 <h2>Saving a figure<a class="headerlink" href="#saving-a-figure" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">savefig</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span>
         <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;portrait&#39;</span><span class="p">,</span> <span class="n">papertype</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -1823,8 +1824,8 @@
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Analysis of Variance &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1165,7 +1166,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="analysis-of-variance">
+  <section class="tex2jax_ignore mathjax_ignore" id="analysis-of-variance">
 <h1>Analysis of Variance<a class="headerlink" href="#analysis-of-variance" title="Permalink to this headline">¶</a></h1>
 <p>Perhaps there is no other statistical analysis as popular as the ANalysis Of VAriance. The main purpose of an ANOVA test is to detect whether the means of a specific observation variable between groups (e.g. grain yield of corn plots subjected to different levels of fertilizer application, biomass production of two watersheds exposed to different burning regimes, etc.) are <em>significantly</em> different. The word <em>significantly</em> has special meaning in this context and represents conclusion of our analysis under a set  error rate. As you can imagine, detecting whether two or more things are different from each other requires agreement on some baseline.</p>
 <p>A one-way anova is used to test the hypothesis that the samples in the objective variable (e.g. biomass production) of different groups are drawn from populations with the same mean against the alternative hypothesis that the population means are not all the same. Rejecting the null hypothesis would imply that at least one of the means is different.</p>
@@ -1346,15 +1347,15 @@
 <img alt="../_images/anova_6_0.png" src="../_images/anova_6_0.png" />
 </div>
 </div>
-<div class="section" id="anova-assumptions">
+<section id="anova-assumptions">
 <h2>ANOVA assumptions<a class="headerlink" href="#anova-assumptions" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
 <li><p>Samples drawn from a population are normally distributed. <strong>Test</strong>: Shapiro-Wilk</p></li>
 <li><p>Samples drawn from all populations have (approximately) the same variance. This property is called homoscedasticity or homogeneity of variances.” <strong>Tests</strong>: Bartlett’s and Levene’s tests.</p></li>
 <li><p>Samples are independent of each other. Test: No test. Here we rely on the nature of the variable being observed and the experimental design.</p></li>
 </ol>
-</div>
-<div class="section" id="one-way-anova">
+</section>
+<section id="one-way-anova">
 <h2>One-way ANOVA<a class="headerlink" href="#one-way-anova" title="Permalink to this headline">¶</a></h2>
 <p>Here we will compare an independent variable with a single predictor. The predictor <code class="docutils literal notranslate"><span class="pre">N_Total_kg_ha</span></code> will be used as a categorical varaible. Alternatively we could use the <code class="docutils literal notranslate"><span class="pre">Treatments</span></code> column, but it is easier to read the table if we present the values using the actual treatment values, so that we quickly devise which Nitrogen rates show statistical differences.</p>
 <div class="cell docutils container">
@@ -1460,8 +1461,8 @@ group1 group2 meandiff p-adj   lower  upper  reject
 <img alt="../_images/anova_12_0.png" src="../_images/anova_12_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="two-way-anova">
+</section>
+<section id="two-way-anova">
 <h2>Two-way ANOVA<a class="headerlink" href="#two-way-anova" title="Permalink to this headline">¶</a></h2>
 <p>In this case we will add two predictors variables, soil textural class and total nitrogen applied. In many cases researchers add <code class="docutils literal notranslate"><span class="pre">Location</span></code> as a proxy for local environmental conditions (including soil) and <code class="docutils literal notranslate"><span class="pre">Year</span></code> as a proxy for the particular weather conditions during each growing season. In this case we have soil textural class available, so we will make use of that first, since it will give our results broader applications that, in principle, can be related to soil types elsewhere.</p>
 <div class="cell docutils container">
@@ -1705,12 +1706,12 @@ group1 group2 meandiff p-adj   lower  upper  reject
 </div>
 <p>In a multi-treatment, multi-year, and multi-state study, it is not surprising that treatment, site, and year resulted highly significant (P&lt;0.01).</p>
 <p>Note that the interactions <code class="docutils literal notranslate"><span class="pre">N_Total_kg_ha:Year</span></code>, <code class="docutils literal notranslate"><span class="pre">State:Year</span></code>, and <code class="docutils literal notranslate"><span class="pre">N_Total_kg_ha:State:Year</span></code> were not significant at the P&lt;0.05 level.</p>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Tremblay, N.,  Y.M. Bouroubi,  C. Bélec,  R.W. Mullen,  N.R. Kitchen,  W.E. Thomason,  S. Ebelhar,  D.B. Mengel,  W.R. Raun,  D.D. Francis,  E.D. Vories, and I. Ortiz-Monasterio. 2012. Corn response to nitrogen is influenced by soil texture and weather. Agron. J. 104:1658–1671. doi:10.2134/agronj2012.018.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

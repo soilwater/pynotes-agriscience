@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Mixing Solute Problem &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1187,7 +1188,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="mixing-solute-problem">
+  <section class="tex2jax_ignore mathjax_ignore" id="mixing-solute-problem">
 <h1>Mixing Solute Problem<a class="headerlink" href="#mixing-solute-problem" title="Permalink to this headline">¶</a></h1>
 <p>A 1500 gallon tank initially contains 600 gallons of water with 5 lbs of salt dissolved in it. Water enters the tank at a rate of 9 gal/hr and the water entering the tank has a salt concentration of <span class="math notranslate nohighlight">\(\frac{1}{5}(1 + cos(t))\)</span> lbs/gal. If a well-mixed solution leaves the tank at a rate of 6 gal/hr:</p>
 <ul class="simple">
@@ -1195,7 +1196,7 @@
 <li><p>how much salt (total amount in lbs) is in the entire tank when it overflows?</p></li>
 </ul>
 <p>Assume each iteration is equivalent to one hour</p>
-<div class="section" id="step-1-calculate-time-to-overflow">
+<section id="step-1-calculate-time-to-overflow">
 <h2>Step 1: Calculate time to overflow<a class="headerlink" href="#step-1-calculate-time-to-overflow" title="Permalink to this headline">¶</a></h2>
 <p>In this step we will leave the calculation of the mass of salt aside. The goal is to solve the first question first since we have all the information readily available in the problem statement . Thinking about the second question or trying to solve both at the same time can make this problem more difficult than it actual is. A good way of thinking about this problem is as computing the balance of a checking account (tank level), where we have credits (inflow rate) and debits.</p>
 <div class="cell docutils container">
@@ -1227,8 +1228,8 @@ Tank level: 1500
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="step-2-add-the-calculation-of-the-amount-of-salt">
+</section>
+<section id="step-2-add-the-calculation-of-the-amount-of-salt">
 <h2>Step 2: Add the calculation of the amount of salt<a class="headerlink" href="#step-2-add-the-calculation-of-the-amount-of-salt" title="Permalink to this headline">¶</a></h2>
 <p>Now that we understand the problem in simple terms and we were able to implement it in Python is time to add the computation of the total salt at each time step. In this step is important to realize that concentration is amount of salt per unit volume of water, in this case gallons of water. Following the same reasoning for the first part of the problem, we need to calculate the balance of salt inside the tank, which is the result of the salt inflows and outflows plus whatever salt we had at the beginning. The initial amount of salt in the tank is analogous to the initial water in the tank or a seed money on a new bank account. So, to solve the problem we need:</p>
 <ul class="simple">
@@ -1274,8 +1275,8 @@ Mass of salt when overflowing: 280 lbs
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="using-numpy">
+</section>
+<section id="using-numpy">
 <h2>Using Numpy<a class="headerlink" href="#using-numpy" title="Permalink to this headline">¶</a></h2>
 <p>An alternative solution using numpy, pre-allocating arrays using NaNs, a for loop, and storing variables for posterior plotting. Of course, you can also keep track of the variables by using regular Python lists in combination with the append method.</p>
 <div class="cell docutils container">
@@ -1320,8 +1321,8 @@ Mass of salt when overflowing: 280 lbs
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="plot-charts">
+</section>
+<section id="plot-charts">
 <h2>Plot charts<a class="headerlink" href="#plot-charts" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1354,8 +1355,8 @@ Mass of salt when overflowing: 280 lbs
 <img alt="../_images/mixing_model_8_2.png" src="../_images/mixing_model_8_2.png" />
 </div>
 </div>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <p>A farmer is preparing to control weeds in a field crop using a sprayer with a tank containing 100 liters of fresh water. The recommended herbice concentration to control the weeds without affecting the crop is 2%, which means that the farmer would need to add 2 liters of herbice to the tank. However, due to an error while measuring the herbicide, the farmer adds 3 liters of herbicide instead of 2 liters, which will certainly kill the weeds, but may also damage the crop. To fix the problem, the farmer decides to open the outflow valve to let some herbicide solution out of the tank at a rate of 3 liters per minute, while at the same time, adding fresh water from the top of the tank at a rate of 3 liters per minute. Assume that the tank has a stirrer that keeps the solution well-mixed (i.e. the herbicide concentration at any given time is homogenous across the tank).</p>
 <p>This is a clever solution, diluting the chemical solution is a much better alternative than disposing the entire load of the tank, which could contaminate the surrrounding area. So, minimizing the chemical waste is desirable over disposing the entire chemical solution in this situation.</p>
@@ -1456,12 +1457,12 @@ Mass of salt when overflowing: 280 lbs
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>The examples in this notebook were adapted from problems and exercises in Morris. Tenenbaum and Pollard, H., 1963. Ordinary differential equations: an elementary textbook for students of mathematics, engineering, and the sciences. Dover Publications.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Soil Temperature Model &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1217,11 +1218,11 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="soil-temperature-model">
+  <section class="tex2jax_ignore mathjax_ignore" id="soil-temperature-model">
 <h1>Soil Temperature Model<a class="headerlink" href="#soil-temperature-model" title="Permalink to this headline">¶</a></h1>
 <p>Soil temperature is one of those variables that follow the theory closely. In this exrcise we will implement an analytical solution of the heat conduction-diffusion equation. The model is simple and accounts for soil temperature in time and soil depth. This model is robust enough to be used for research.</p>
 <p>The model states that the annual mean temperature at all soil depths is the same. At increasing depths the thermal amplitude decreases and the timing of maximum and minimum temperatures experience a delay. This makes sense since it takes time for heat to move from the surface to deeper layers and the thermal fluctuations are higher near the surface than at depth as a consequence of heat losses primarily due to radiation and convection.</p>
-<div class="section" id="model">
+<section id="model">
 <h2>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[ T(z,t) = T_{avg} + A \ e^{-z/d} \ sin(\omega t - z/d  - \phi)\]</div>
@@ -1238,8 +1239,8 @@
 <p><span class="math notranslate nohighlight">\(D\)</span> is thermal diffusivity in <span class="math notranslate nohighlight">\(m^2 d^{-1}\)</span>. The thermal diffusivity is defined as <span class="math notranslate nohighlight">\(\kappa\)</span> / <em>C</em></p>
 <p><span class="math notranslate nohighlight">\(\kappa\)</span> is the soil thermal conductivity in <span class="math notranslate nohighlight">\(J m^{-1} K^{-1} d^{-1}\)</span></p>
 <p><span class="math notranslate nohighlight">\(C\)</span> is the soil volumetric heat capacity in <span class="math notranslate nohighlight">\(J m^{-3} K^{-1}\)</span></p>
-</div>
-<div class="section" id="assumptions">
+</section>
+<section id="assumptions">
 <h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Constant soil thermal diffusivity.</p></li>
@@ -1258,8 +1259,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="model-inputs">
+</section>
+<section id="model-inputs">
 <h2>Model inputs<a class="headerlink" href="#model-inputs" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1283,8 +1284,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="define-model">
+</section>
+<section id="define-model">
 <h2>Define model<a class="headerlink" href="#define-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1294,8 +1295,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="soil-temperature-for-a-specific-depth-as-a-function-of-time">
+</section>
+<section id="soil-temperature-for-a-specific-depth-as-a-function-of-time">
 <h2>Soil temperature for a specific depth as a function of time<a class="headerlink" href="#soil-temperature-for-a-specific-depth-as-a-function-of-time" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1314,8 +1315,8 @@
 <img alt="../_images/soil_temperature_model_7_0.png" src="../_images/soil_temperature_model_7_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="soil-temperature-for-a-specific-day-of-the-year-as-a-function-of-depth">
+</section>
+<section id="soil-temperature-for-a-specific-day-of-the-year-as-a-function-of-depth">
 <h2>Soil temperature for a specific day of the year as a function of depth<a class="headerlink" href="#soil-temperature-for-a-specific-day-of-the-year-as-a-function-of-depth" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1335,8 +1336,8 @@
 <img alt="../_images/soil_temperature_model_9_0.png" src="../_images/soil_temperature_model_9_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="soil-temperature-as-a-function-of-both-doy-and-depth">
+</section>
+<section id="soil-temperature-as-a-function-of-both-doy-and-depth">
 <h2>Soil temperature as a function of both DOY and depth<a class="headerlink" href="#soil-temperature-as-a-function-of-both-doy-and-depth" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1379,8 +1380,8 @@
 <img alt="../_images/soil_temperature_model_11_0.png" src="../_images/soil_temperature_model_11_0.png" />
 </div>
 </div>
-</div>
-<div class="section" id="interactive-plots">
+</section>
+<section id="interactive-plots">
 <h2>Interactive plots<a class="headerlink" href="#interactive-plots" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1787,12 +1788,12 @@
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Wu, J. and Nofziger, D.L., 1999. Incorporating temperature effects on pesticide degradation into a management model. Journal of Environmental Quality, 28(1), pp.92-100.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

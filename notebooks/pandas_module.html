@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Pandas Module &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1401,9 +1402,9 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="pandas-module">
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-module">
 <h1>Pandas Module<a class="headerlink" href="#pandas-module" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
+<section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
 <p>Pandas is built on top of Numpy and is the most popular Python library for handling tabular data. The library is powerful and extensive, so here we will cover some of the basic features. The most popular module of the <strong>Pandas</strong> library is probably <em>DataFrames</em>. We will learn how to create a daframe, retrieve data, replace missing values, and compute simple statistics.</p>
 <p>The concept of the <strong>Pandas</strong> library is that we can call data stored in rows or columns by name. This allows us to handle data without having to remember the exact location of a column.</p>
@@ -1417,8 +1418,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="create-dataframe-from-existing-variable">
+</section>
+<section id="create-dataframe-from-existing-variable">
 <h2>Create DataFrame from existing variable<a class="headerlink" href="#create-dataframe-from-existing-variable" title="Permalink to this headline">¶</a></h2>
 <p>After importing the module we have two possible directions. We import data from a file or we convert an existing variable into a Pandas DataFrame. Here we will create a simple DatFrame to learn the basics. This way we will be able to display the result of our operations without worrying about extensive datasets.</p>
 <p>Let’s create a dictionary with some weather data and missing values (represented by <code class="docutils literal notranslate"><span class="pre">-9999</span></code>).</p>
@@ -1517,8 +1518,8 @@ As an alternative you can use the <code class="docutils literal notranslate"><sp
 <li><p>index (the left-most column with numbers from 0 to 4) is equivalent to a row name.</p></li>
 <li><p>Each column has data of the same type.</p></li>
 </ol>
-</div>
-<div class="section" id="basic-methods-and-properties">
+</section>
+<section id="basic-methods-and-properties">
 <h2>Basic methods and properties<a class="headerlink" href="#basic-methods-and-properties" title="Permalink to this headline">¶</a></h2>
 <p>Pandas DataFrame has dedicated functions to display a limited number of heading and tailing rows.</p>
 <div class="cell docutils container">
@@ -1688,8 +1689,8 @@ dtype: object
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="convert-strings-to-datetime">
+</section>
+<section id="convert-strings-to-datetime">
 <h2>Convert strings to datetime<a class="headerlink" href="#convert-strings-to-datetime" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1785,8 +1786,8 @@ dtype: object
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="extract-information-from-the-timestamp">
+</section>
+<section id="extract-information-from-the-timestamp">
 <h2>Extract information from the timestamp<a class="headerlink" href="#extract-information-from-the-timestamp" title="Permalink to this headline">¶</a></h2>
 <p>Here we can obtain the day, month, year, and even other components such hours, minutes and nanoseconds fromt he timestamp. Having a separate column for some of these components can be extremely helpful in case we want to aggregate data. For instnance, to compute the monthly mean air temperature we need to know in what month each temperature record was obtained.</p>
 <p>For this we will use the <code class="docutils literal notranslate"><span class="pre">dt</span></code> submodule within <code class="docutils literal notranslate"><span class="pre">Pandas</span></code>.</p>
@@ -1964,8 +1965,8 @@ dtype: object
 <blockquote>
 <div><p>If you re-run the previous cell you will get an error since Pandas prevents having two columns with the same name.</p>
 </div></blockquote>
-</div>
-<div class="section" id="missing-values">
+</section>
+<section id="missing-values">
 <h2>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline">¶</a></h2>
 <p>One of the most common operations when working with data is to handle missing values. Almost every dataset has missing data and there is no universal way of denoting missing values. Most common placeholders are: <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, <code class="docutils literal notranslate"><span class="pre">NA</span></code>, <code class="docutils literal notranslate"><span class="pre">-99</span></code>, <code class="docutils literal notranslate"><span class="pre">-9999</span></code>, <code class="docutils literal notranslate"><span class="pre">missing</span></code>. To find out more about how missing data is represented in your dataset read associated documentation files.</p>
 <p>I typically prefer to use <code class="docutils literal notranslate"><span class="pre">NaN</span></code> (personal preference since I also use Matlab frequently). In many datasets missing data may already by imported as NaN or NA, meaning that you can directly use the <code class="docutils literal notranslate"><span class="pre">fillna()</span></code> method without this intermediary step.</p>
@@ -2265,8 +2266,8 @@ Name: windSpeed, dtype: bool
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="quick-statistics">
+</section>
+<section id="quick-statistics">
 <h2>Quick statistics<a class="headerlink" href="#quick-statistics" title="Permalink to this headline">¶</a></h2>
 <p>DataFrames have a variety of methods to calculate simple statistics. To obtain an overall summary we can use the <code class="docutils literal notranslate"><span class="pre">describe()</span></code> method.</p>
 <div class="cell docutils container">
@@ -2346,15 +2347,15 @@ Name: precipitation, dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="indexing-and-slicing">
+</section>
+<section id="indexing-and-slicing">
 <h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-index-operator">
+<section id="using-index-operator">
 <h3>Using index operator <code class="docutils literal notranslate"><span class="pre">[]</span></code><a class="headerlink" href="#using-index-operator" title="Permalink to this headline">¶</a></h3>
 <p>To start making computations with need to access the data insde the Pandas DataFrame. Indexing and slicing are useful operations to select portions of data by calling specific rows, columns, or a combination of both. The index operator <code class="docutils literal notranslate"><span class="pre">[]</span></code> is primarily intended to be used with column labels (e.g. <code class="docutils literal notranslate"><span class="pre">df[columnName]</span></code>), however, it can also handle row slices (e.g. <code class="docutils literal notranslate"><span class="pre">df[rows]</span></code>). A common notation useful to understand how the slicing works is as follows:</p>
-</div>
-</div>
-<div class="section" id="select-rows">
+</section>
+</section>
+<section id="select-rows">
 <h2>Select rows<a class="headerlink" href="#select-rows" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2421,8 +2422,8 @@ Name: precipitation, dtype: int64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="select-columns">
+</section>
+<section id="select-columns">
 <h2>Select columns<a class="headerlink" href="#select-columns" title="Permalink to this headline">¶</a></h2>
 <p>We can call individual columns using the <code class="docutils literal notranslate"><span class="pre">dot</span></code> or <code class="docutils literal notranslate"><span class="pre">bracket</span></code> notation. Note that in option 2 there is no <code class="docutils literal notranslate"><span class="pre">.</span></code> between <code class="docutils literal notranslate"><span class="pre">df</span></code> and <code class="docutils literal notranslate"><span class="pre">['windSpeed']</span></code></p>
 <div class="cell docutils container">
@@ -2506,10 +2507,10 @@ Name: windSpeed, dtype: float64
 </div>
 <p>A common mistake when slicing multiple columns is to forget grouping column names into a list, so the following command will not work:</p>
 <p><code class="docutils literal notranslate"><span class="pre">df['windSpeed','windDirection']</span></code></p>
-</div>
-<div class="section" id="slicing-rows-and-columns">
+</section>
+<section id="slicing-rows-and-columns">
 <h2>Slicing rows and columns<a class="headerlink" href="#slicing-rows-and-columns" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-iloc-method">
+<section id="using-iloc-method">
 <h3>Using <code class="docutils literal notranslate"><span class="pre">iloc</span></code> method<a class="headerlink" href="#using-iloc-method" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">iloc</span></code>: Integer-location. <code class="docutils literal notranslate"><span class="pre">iloc</span></code> gets rows (or columns) at specific indexes. It only takes integers as input. <strong>Exclusive of its endpoint</strong></p>
 <div class="cell docutils container">
@@ -2620,8 +2621,8 @@ Name: windSpeed, dtype: float64
 </div></div></div>
 </div>
 <p>Although a bit more verbose and perhaps less <em>pythonic</em>, I prefer to specify <code class="docutils literal notranslate"><span class="pre">all</span> <span class="pre">the</span> <span class="pre">columns</span></code> using the <code class="docutils literal notranslate"><span class="pre">:</span></code> character. In my opinion this notation is more explicit and clearly states the rows and columns of the slicing operation. So, <code class="docutils literal notranslate"><span class="pre">df.iloc[0:2,:]</span></code> is preferred over <code class="docutils literal notranslate"><span class="pre">df.iloc[0:2]</span></code>.</p>
-</div>
-<div class="section" id="using-loc-method">
+</section>
+<section id="using-loc-method">
 <h3>Using <code class="docutils literal notranslate"><span class="pre">loc</span></code> method<a class="headerlink" href="#using-loc-method" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">loc</span></code> gets rows (or columns) with specific labels. <strong>Inclusive of its endpoint</strong></p>
 <div class="cell docutils container">
@@ -2800,9 +2801,9 @@ Name: windSpeed, dtype: float64
 <p>These statements will not work with <code class="docutils literal notranslate"><span class="pre">loc</span></code>:</p>
 <p><code class="docutils literal notranslate"><span class="pre">df.loc[0:2,0:1]</span></code></p>
 <p><code class="docutils literal notranslate"><span class="pre">df.loc[[0:2],[0:1]]</span></code></p>
-</div>
-</div>
-<div class="section" id="filter-data-using-boolean-indexing">
+</section>
+</section>
+<section id="filter-data-using-boolean-indexing">
 <h2>Filter data using boolean indexing<a class="headerlink" href="#filter-data-using-boolean-indexing" title="Permalink to this headline">¶</a></h2>
 <p>Boolean indexing (a.k.a. logical indexing) consists of creating a boolean array with True/False values as a consequence of conditional statement that can be use to select the rows that meet the specified condition. Logical indexing are often not intuitive for students learning how to program, but are incredibly powerful and I highly encourage its use.</p>
 <p>Let’s select all the data for days that have wind speed greater than 3 meters per second. We will first select the rows of <code class="docutils literal notranslate"><span class="pre">df.windSpeed</span></code> that are greater than 3 m/s, and then we will use the resulting boolean to slice the DataFrame.</p>
@@ -2988,8 +2989,8 @@ Name: doy, dtype: bool
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="pandas-custom-date-range">
+</section>
+<section id="pandas-custom-date-range">
 <h2>Pandas custom date range<a class="headerlink" href="#pandas-custom-date-range" title="Permalink to this headline">¶</a></h2>
 <p>In this particular case we have the day of the year to indicate time, however, in many occasions is better to handle dates. Often times dates are already present in the dataset, but if they aren’t then we can create and handle dates with Pandas.</p>
 <div class="cell docutils container">
@@ -3020,8 +3021,8 @@ Name: doy, dtype: bool
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="select-range-of-dates-with-boolean-indexing">
+</section>
+<section id="select-range-of-dates-with-boolean-indexing">
 <h2>Select range of dates with boolean indexing<a class="headerlink" href="#select-range-of-dates-with-boolean-indexing" title="Permalink to this headline">¶</a></h2>
 <p>Now that we covered both boolean indexing and pandas dates we can use these concepts to select data from a specific window of time. This is a pretty common operation when trying to select a subset of the entire DataFrame by a specific date range.</p>
 <div class="cell docutils container">
@@ -3117,8 +3118,8 @@ Name: precipitation, dtype: int64
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="add-and-remove-columns">
+</section>
+<section id="add-and-remove-columns">
 <h2>Add and remove columns<a class="headerlink" href="#add-and-remove-columns" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">insert()</span></code> and <code class="docutils literal notranslate"><span class="pre">drop()</span></code> methods allow us to add or remove columns to/from the DataFrame. The most common use of these functions is as follows:</p>
 <p><code class="docutils literal notranslate"><span class="pre">df.insert(indexOfNewColumn,</span> <span class="pre">nameOfNewColumn,</span> <span class="pre">dataArrayOfNewColumn)</span></code></p>
@@ -3298,8 +3299,8 @@ Name: precipitation, dtype: int64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="reset-dataframe-index">
+</section>
+<section id="reset-dataframe-index">
 <h2>Reset DataFrame index<a class="headerlink" href="#reset-dataframe-index" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3490,8 +3491,8 @@ Name: precipitation, dtype: int64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="merge-two-dataframes">
+</section>
+<section id="merge-two-dataframes">
 <h2>Merge two dataframes<a class="headerlink" href="#merge-two-dataframes" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4035,8 +4036,8 @@ Name: precipitation, dtype: int64
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="pandas-numpy">
+</section>
+<section id="pandas-numpy">
 <h2>Pandas &lt;-&gt; Numpy<a class="headerlink" href="#pandas-numpy" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4239,8 +4240,8 @@ Name: precipitation, dtype: int64
 </div>
 </div>
 <p>In this case, the selection of a forward or centered moving average affects the timing of maximum and minimum values of the wave. A centered moving average is ideal to preserve important features of the original signal in the resulting smoothed timeseries.</p>
-</div>
-<div class="section" id="operations-with-real-dataset">
+</section>
+<section id="operations-with-real-dataset">
 <h2>Operations with  real dataset<a class="headerlink" href="#operations-with-real-dataset" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -4609,7 +4610,7 @@ Name: precipitation, dtype: int64
 <p>5 rows × 22 columns</p>
 </div></div></div>
 </div>
-<div class="section" id="match-specific-stations">
+<section id="match-specific-stations">
 <h3>Match specific stations<a class="headerlink" href="#match-specific-stations" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5639,9 +5640,9 @@ Name: precipitation, dtype: int64
 <p>2 rows × 22 columns</p>
 </div></div></div>
 </div>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

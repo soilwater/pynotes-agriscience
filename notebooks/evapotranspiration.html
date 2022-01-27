@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Potential Evapotranspiration &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1231,7 +1232,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="potential-evapotranspiration">
+  <section class="tex2jax_ignore mathjax_ignore" id="potential-evapotranspiration">
 <h1>Potential Evapotranspiration<a class="headerlink" href="#potential-evapotranspiration" title="Permalink to this headline">¶</a></h1>
 <p>Soil evaporation and plant transpiration are two important components of the soil water balance. Evapotranspiration is the sum of these two evaporative losses (one from the soil and the other from the plant stomates). Measuring and modeling soil evaporation and transpiration individually is usually harder than estimating the combined total of these two variables. For instance, if we measure the soil water content in the soil profile yesterday and today, assuming that there was not rainfall and that deep drainage was negligible, we could assume that the change in soil water storage was caused by evapotrasnpiration. In other words, the water loss from the soil was (mainly) by evaporation and plant transpiration.</p>
 <p>If we don’t need to know the exact partition between evaporation and trasnpiration, then this simple method will provide an estimation of the evapotranspiration between yesterday and today. This would be the <strong>actual evapotranspiration</strong>.</p>
@@ -1607,7 +1608,7 @@
   }
 })(window);</script></div>
 </div>
-<div class="section" id="dalton-model">
+<section id="dalton-model">
 <h2>Dalton model<a class="headerlink" href="#dalton-model" title="Permalink to this headline">¶</a></h2>
 <p>In 1802 John Dalton propsed a simple model for predicting potential evaporation based on wind speed and vapor pressure deficit. This equation works well on open water bodies, but it does not account for the effect of plants and the presence of soils. Several equations have been based on the formulation proposed by Dalton, in which additional coefficients and exponents aim at better predicting local conditions.</p>
 <p>Dalton started as a meteorologist, frequently recording atmospheric conditions in his own journals. The equation proposed by Dalton is considered a mass transfer model, the name emphasizing that water vapor moves along a vapor gradient and that this gradient can be maintained or enhanced by wind replacing the saturated air near the evaporating surface with new air volume containing lower water vapor.</p>
@@ -1629,8 +1630,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="romanenko-model">
+</section>
+<section id="romanenko-model">
 <h2>Romanenko model<a class="headerlink" href="#romanenko-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1645,8 +1646,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="penman-model">
+</section>
+<section id="penman-model">
 <h2>Penman model<a class="headerlink" href="#penman-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1661,8 +1662,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="jensen-model">
+</section>
+<section id="jensen-model">
 <h2>Jensen model<a class="headerlink" href="#jensen-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1676,8 +1677,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="hargreaves-model">
+</section>
+<section id="hargreaves-model">
 <h2>Hargreaves model<a class="headerlink" href="#hargreaves-model" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[ PET = 0.0023 \ R_a \ (T_{avg} + 17.8) \ \sqrt{ (T_{max} - T_{min}) }\]</div>
@@ -1705,7 +1706,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="priestley-taylor-model">
+<section id="priestley-taylor-model">
 <h3>Priestley-Taylor model<a class="headerlink" href="#priestley-taylor-model" title="Permalink to this headline">¶</a></h3>
 <p>This model was developed with the intention of reducing the number of variables required to compute the potential evapotranspiration in regions with limited environmental observations as an alternative to the model proposed by Penman-Monteith. Thus, several terms of the PM equation are condensed into an empirical constant.
 The psychrometric constant is computed  as:</p>
@@ -1734,9 +1735,9 @@ The psychrometric constant is computed  as:</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="penman-monteith-model">
+</section>
+</section>
+<section id="penman-monteith-model">
 <h2>Penman-Monteith model<a class="headerlink" href="#penman-monteith-model" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1789,8 +1790,8 @@ The psychrometric constant is computed  as:</p>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="data">
+</section>
+<section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
 <p>In this section we will use real data to test the different PET models.</p>
 <div class="cell docutils container">
@@ -1956,23 +1957,23 @@ The psychrometric constant is computed  as:</p>
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Compute the potential evaporation or potential evapotranspiration with the other models. Which models do you think produce the most reasonable results for ET predictions over terrestrial ecosystems?</p></li>
 <li><p>Using the Penman-Monteith model, what is the impact of wind speed? By how many millimeters per day would the potential ET increased when incrementing the wind speed by 1 m/s?</p></li>
 </ul>
-</div>
-<div class="section" id="references">
+</section>
+<section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Dalton J (1802) Experimental essays on the constitution of mixed gases; on the force of steam of vapour from waters and other liquids in different temperatures, both in a Torricellian vacuum and in air on evaporation and on the expansion of gases by heat. Mem Manch Lit Philos Soc 5:535–602</p>
 <p>Hargreaves G (1989) Preciseness of estimated potential evapotranspiration. J Irrig Drain Eng 115(6):1000–1007</p>
 <p>Penman HC (1948) Natural evaporation from open water, bare soil and grass. Proc R Soc Lond Ser A 193:120–145</p>
 <p>Thornthwaite, C.W., 1948. An approach toward a rational classification of climate. Geographical review, 38(1), pp.55-94.</p>
 <p>McMahon, T.A., Finlayson, B.L. and Peel, M.C., 2016. Historical developments of models for estimating evaporation using standard meteorological data. Wiley Interdisciplinary Reviews: Water, 3(6), pp.788-818.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

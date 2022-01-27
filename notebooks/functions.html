@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Functions &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1259,7 +1260,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="functions">
+  <section class="tex2jax_ignore mathjax_ignore" id="functions">
 <h1>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h1>
 <p>A short introduction to Python functions. In this tutorial we will learn the basic Python syntax including function declaration, inputs, outputs, and documentation (called docstring).</p>
 <p>Functions allow us to re-use code that does something specific. In simple terms, functions are snippets of code associated to a name, so that we can call them by their name everytime we need them. They are helpful to avoid repeating the same lines of code all over the program we are building. Functions also allow us to reduce error (we don’t have to type everything again) and add documentation.</p>
@@ -1271,7 +1272,7 @@
 <p>So, to understand functions we need to split the process into two steps:</p>
 <p><strong>Step 1</strong>: define/declare the function</p>
 <p><strong>Step 2</strong>: call/invoke the function</p>
-<div class="section" id="anatomy-of-a-function">
+<section id="anatomy-of-a-function">
 <h2>Anatomy of a function<a class="headerlink" href="#anatomy-of-a-function" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Import modules outside the function</p></li>
@@ -1279,8 +1280,8 @@
 <li><p>Typically function names are all in lower case.</p></li>
 <li><p>The ``return<code class="docutils literal notranslate"><span class="pre">statement</span> <span class="pre">indicates</span> <span class="pre">the</span> <span class="pre">end</span> <span class="pre">of</span> <span class="pre">the</span> <span class="pre">function.</span> <span class="pre">Lines</span> <span class="pre">after</span> <span class="pre">the</span></code>return<code class="docutils literal notranslate"><span class="pre">statement</span> <span class="pre">will</span> <span class="pre">not</span> <span class="pre">be</span> <span class="pre">executed</span> <span class="pre">by</span> <span class="pre">the</span> <span class="pre">interporeter.</span> <span class="pre">This</span> <span class="pre">also</span> <span class="pre">applies</span> <span class="pre">to</span></code>if statements<code class="docutils literal notranslate"><span class="pre">.</span> <span class="pre">As</span> <span class="pre">soon</span> <span class="pre">as</span> <span class="pre">the</span> <span class="pre">function</span> <span class="pre">hits</span> <span class="pre">the</span> <span class="pre">line</span> <span class="pre">with</span> <span class="pre">the</span> </code>return` statement it will terminate execution.</p></li>
 </ul>
-<img src="../media/anatomy_function.png" /></div>
-<div class="section" id="declare-function">
+<img src="../media/anatomy_function.png" /></section>
+<section id="declare-function">
 <h2>Declare function<a class="headerlink" href="#declare-function" title="Permalink to this headline">¶</a></h2>
 <p>This is the function definition. When we define the function we simple assign the inputs, outputs, and logic of the code, but at this point we are not running the code. That part will occur when we call or invoke the function in the second step. In simple words, declaring a function is like encapsulating some code under a specific name.</p>
 <div class="cell docutils container">
@@ -1310,8 +1311,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="call-function">
+</section>
+<section id="call-function">
 <h2>Call function<a class="headerlink" href="#call-function" title="Permalink to this headline">¶</a></h2>
 <p>Now that we assigned a name and some specific inputs to our code, we can call the function as many times as we want without the need for rewriting the code again.</p>
 <div class="cell docutils container">
@@ -1327,8 +1328,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="function-docstring">
+</section>
+<section id="function-docstring">
 <h2>Function docstring<a class="headerlink" href="#function-docstring" title="Permalink to this headline">¶</a></h2>
 <p>The function <code class="docutils literal notranslate"><span class="pre">docstring</span></code> is defined as a multi-line string <code class="docutils literal notranslate"><span class="pre">'''Like</span> <span class="pre">this'''</span></code> and consists of a summary line about the function and a brief description of the inputs. Function documentation needs to be succint and clear, but you can also add units, examples, author, creation date and contact information. The personal information can be omitted, but for personal and research projects I like to include this information in case I share the code with students and colleagues. Here are some suggestions to write brief and meaningful docstrings:</p>
 <ul class="simple">
@@ -1363,8 +1364,8 @@ email: andrespatrignani@ksu.edu
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="additional-comments">
+</section>
+<section id="additional-comments">
 <h2>Additional comments<a class="headerlink" href="#additional-comments" title="Permalink to this headline">¶</a></h2>
 <p>Before we proceed is probably a good idea to point out some of the limitations and assumptions of our recently defined <code class="docutils literal notranslate"><span class="pre">hypotenuse()</span></code> function:</p>
 <ul class="simple">
@@ -1372,8 +1373,8 @@ email: andrespatrignani@ksu.edu
 <li><p>Documentation gives little insight to a user that doesn’t know what a right-angle triangle is.</p></li>
 <li><p>The function does not have error checks.  What happens if the user adds an invalid input (e.g. a string)?</p></li>
 </ul>
-</div>
-<div class="section" id="order-of-inputs-and-default-values">
+</section>
+<section id="order-of-inputs-and-default-values">
 <h2>Order of inputs and default values<a class="headerlink" href="#order-of-inputs-and-default-values" title="Permalink to this headline">¶</a></h2>
 <p>The order of the inputs matter when calling a function. Python has a specific syntax to ensure that input arguments don’t get mixed up even if the inputs are passed to the function in a different order than the specified order when the function was defined.</p>
 <div class="cell docutils container">
@@ -1395,7 +1396,7 @@ email: andrespatrignani@ksu.edu
 </div>
 </div>
 </div>
-<div class="section" id="call-with-one-input">
+<section id="call-with-one-input">
 <h3>Call with one input<a class="headerlink" href="#call-with-one-input" title="Permalink to this headline">¶</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1413,8 +1414,8 @@ email: andrespatrignani@ksu.edu
 </div>
 </div>
 <p>In the previous call we only had to provide the function with one input. For the other input the function uses the predefined default value.</p>
-</div>
-<div class="section" id="call-with-two-inputs">
+</section>
+<section id="call-with-two-inputs">
 <h3>Call with two inputs<a class="headerlink" href="#call-with-two-inputs" title="Permalink to this headline">¶</a></h3>
 <p>Users can change override default values by explicitly specifying the value of the other parameters in the function call. By being explicit we can pass the value of the input argument in any order in the function call. If we want to modify the contact angle to a value other than 20 degrees, we can specify it like this:</p>
 <div class="cell docutils container">
@@ -1433,8 +1434,8 @@ email: andrespatrignani@ksu.edu
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="wrong-call">
+</section>
+<section id="wrong-call">
 <h3>Wrong call<a class="headerlink" href="#wrong-call" title="Permalink to this headline">¶</a></h3>
 <p>What happens if we call the function with the order of the inputs changed? Will Python still recognize <code class="docutils literal notranslate"><span class="pre">radius</span></code> and <code class="docutils literal notranslate"><span class="pre">height</span></code> as the radius and <code class="docutils literal notranslate"><span class="pre">height</span></code> of the cone regardless of the order of the input arguments in the function call?</p>
 <div class="cell docutils container">
@@ -1454,8 +1455,8 @@ email: andrespatrignani@ksu.edu
 </div>
 </div>
 <p>In this case, the function treats the first input argument <code class="docutils literal notranslate"><span class="pre">height</span></code> as the radius, and the radius as <code class="docutils literal notranslate"><span class="pre">height</span></code>. <strong>The previous function call is wrong</strong>. If we don’t specify the name of the input during the function call, then must obey the order of the inputs as defined in the function.</p>
-</div>
-<div class="section" id="the-right-call">
+</section>
+<section id="the-right-call">
 <h3>The right call<a class="headerlink" href="#the-right-call" title="Permalink to this headline">¶</a></h3>
 <p>The correct call for the previous example would be as a follows:</p>
 <div class="cell docutils container">
@@ -1473,17 +1474,17 @@ email: andrespatrignani@ksu.edu
 <p>or alternatively</p>
 <p>Now we obtain the correct result despite the input arguments were passed in a different order compared to the order in the function definition.</p>
 <p>These type of syntax is common in plotting libraries, which have a large number input arguments that specify the attributes of the elements of a plot. This way, we can easily set the marker type or line width property without worrying about the order.</p>
-</div>
-<div class="section" id="return">
+</section>
+<section id="return">
 <h3>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h3>
 <p>By default when returning multiple output arguments separated by commas Python returns a tuple. Tuples might not be the most convenient since we need to know the order and meaning of the tuple values. Sometimes is more explicit to use a dictionary, where we can access information by the name of the property.</p>
 <p>I suggest you mute this line: <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">cone_volume,</span> <span class="pre">cone_area</span></code> and unmute this line: <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">{&quot;cone_volume&quot;:cone_volume,</span> <span class="pre">&quot;cone_area&quot;:cone_area}</span></code> in the previous function. Don’t forget to re-run the cell to update the function definition and then call the function again to see the results.</p>
 <blockquote>
 <div><p>Muting code means that we turn a line of code into a comment by adding a <code class="docutils literal notranslate"><span class="pre">#</span></code> sign at the beginning of the line of code to make Python believe this line is a comment. This way you can keep alternative lines of code around your code that will be ignored during execution.</p>
 </div></blockquote>
-</div>
-</div>
-<div class="section" id="variable-scope">
+</section>
+</section>
+<section id="variable-scope">
 <h2>Variable scope<a class="headerlink" href="#variable-scope" title="Permalink to this headline">¶</a></h2>
 <p>An important, and perhaps not so obvious, concept is that functions have their own variable workspace. This means that while the function is being executed by the interporeter, the variables defined within the function are in a different container compared to the variables define in the code outside the function.</p>
 <blockquote>
@@ -1529,14 +1530,14 @@ Value of max_val outside the function is: 15
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="practice">
+</section>
+<section id="practice">
 <h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Create a function that accepts latitude and longitude coordinates in decimal degrees and returns the latitude and longitude values in <a class="reference external" href="https://www.wikiwand.com/en/Sexagesimal">sexagesimal degrees</a>. The function should accept Lat and Lon values as separate inputs e.g. <code class="docutils literal notranslate"><span class="pre">fun(lat,lon)</span></code> and must return a list of tuples with four components for each coordinate: degrees, minutes, seconds, and quadrant. The quadrant would be North/South for latitude and East/West for longitude. For instance: <code class="docutils literal notranslate"><span class="pre">fun(19.536111,-155.576111)</span></code> would result in <code class="docutils literal notranslate"><span class="pre">[(19,32,10,'N'),(155,34,34,'W')]</span></code></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {

@@ -4,7 +4,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Soil Water Balance &#8212; Pynotes in Agriscience</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
@@ -1167,7 +1168,7 @@
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="soil-water-balance">
+  <section class="tex2jax_ignore mathjax_ignore" id="soil-water-balance">
 <h1>Soil Water Balance<a class="headerlink" href="#soil-water-balance" title="Permalink to this headline">¶</a></h1>
 <p>The soil water storage in the rootzone is the result of the balance between water inputs (e.g. precipitation, irrigation) and outputs (e.g. evaporation, runoff). Soil water is always moving, which means that the soil water storage is always changing, at least to some small amount, but when we look at soil physical processes over coarser temporal scales we can make meaningful approximations about the state of the soil for agricultural, hydrological, adn ecological applications.</p>
 <p>In this notebook we will implement a soil water balance at daily time-step. The balance will be similar to the widely used crop coefficient method proposed by the United Nations Food and Agriculture Organization. The goal is to provide a sound computation, although extension of the model described here for real-world application would need careful evaluation and local calibration.</p>
@@ -1495,7 +1496,7 @@
   }
 }(window));</script></div>
 </div>
-<div class="section" id="auxiliary-functions">
+<section id="auxiliary-functions">
 <h2>Auxiliary functions<a class="headerlink" href="#auxiliary-functions" title="Permalink to this headline">¶</a></h2>
 <p>To decompress our main function we will create a set of helper functions dedicated to some of the components of the soil water balance. While this is not necessary, it will make our code more modular and compact. Sometimes seeking modularity can yield an overly complex tree of functions that, while making the code more compact, it can affect the overall readability of our code.</p>
 <div class="cell docutils container">
@@ -1525,8 +1526,8 @@
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-weather-data">
+</section>
+<section id="load-weather-data">
 <h2>Load weather data<a class="headerlink" href="#load-weather-data" title="Permalink to this headline">¶</a></h2>
 <p>We will use a long time series of weather data from the ACME weather station of the Oklahoma Mesonet.</p>
 <div class="cell docutils container">
@@ -1692,8 +1693,8 @@ Last date in dataset: 2017-06-18 00:00:00
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="main-model">
+</section>
+<section id="main-model">
 <h2>Main model<a class="headerlink" href="#main-model" title="Permalink to this headline">¶</a></h2>
 <p>A script that takes into account the meteorological data, initial conditions, and functions describing the components of the soil water balance to compute the rootzone soil water storage on a daily time steps.</p>
 <div class="cell docutils container">
@@ -1825,16 +1826,16 @@ Last date in dataset: 2017-06-18 00:00:00
   }
 })(window);</script></div>
 </div>
-</div>
-<div class="section" id="assumptions">
+</section>
+<section id="assumptions">
 <h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Interception depends on the amount of foliage, foliage architecture (e.g. leaf angle), the amount and type of crop stubble, and the evaporative demand during the rainfall event. Using a constant value for canopy and stubble interception is an acceptable approximation that filters small precipitation events that will not reach the soil surface, but this value needs to be carefully selected for each simulation scenario.</p></li>
 <li><p>Thermal units were computed before running the model. While this assumption will capture the main crop dynamics, more accurate models should adapt the development rate according to the state of the crop in response to past and current environmental conditions.</p></li>
 <li><p>The use of crop coefficients is a simple approximation to weight the potential ET of a reference crop to the crop under simulation. The timing of the crop coefficeints in this model is a simple approximation to capture the timing of the crop water demand, but it is certainly an oversimplification.</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
