@@ -4,7 +4,7 @@ project:
 
 book:
   favicon: favicon.png
-  cover-image: cover_v1b.png
+  cover-image: cover_v1.png
   repo-url: https://github.com/soilwater/pynotes-agriscience
   repo-actions: [edit]
   downloads: [pdf]
