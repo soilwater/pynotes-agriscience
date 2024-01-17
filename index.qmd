@@ -1,0 +1,56 @@
+## Preface
+
+Welcome to a journey at the intersection of programming, data science, and agronomy. This book presents hands-on coding exercises designed to address common tasks in crop and soil sciences. 
+
+Coding is an essential component of modern scientific research that enables more creative solutions, in-depth analyses, and ensures reproducibility of findings. This material is part of an introductory graduate level course offered to students in plant and soil sciences with little or no coding experience. Anyone with sufficient motivation, discipline, and interest in learning how to code and adopt reproducible research practices should (hopefully) find the content of this notes useful. The material is aimed at students that are transitioning from spreadsheets analysis to a programming environemnt and that first need to learn basic building blocks before tackling more complicated challenges. With most datasets in a tabular format, the material is easily accessible and inspectable using common spreadsheet software.
+
+I selected Python because of its accessibility (it's free), straightforward syntax, multi-purpose applications (data analysis, desktop applications, websites, games), widespread adoption in the scientific community, and a rich ecosystem of tools for reproducible research that makes the transition into the coding world a lot easier to beginners. The code presented here is complemented by live coding lectures and might not always reflect the most efficient or 'pythonic' methods. The goal is to present clear and explicit code to gradually familiarize students with the Python syntax, documentation resources, and improve the process of breaking down problems into a sequence of smaller logical steps to ultimately reach more advanced and elegant coding. This book strives for a balanced approach, blending task complexity with a judicious use of libraries. While libraries enhance reproducibility and benefit from extensive testing of the community, an overreliance on them can hinder beginners from truly grasping the underlying concepts and logic of programming.
+
+The motivation for these notes stem from the need to increase coding literacy in students pursuing a career in agricultural sciences. With the rise of sensor technology and the expanding volume of data in agronomic decision-making, scientific programming has become indispensable for agriscientists analyzing, interpreting, and communicating data and research findings. This material addresses three key gaps:
+
+1. A scarcity of online resources with real agricultural datasets. This series uses data from peer-reviewed studies and research projects, offering practical and applicable examples that bridge theory and practice.
+
+2. Existing coding resources often target either a general audience or advanced students in computer science, leaving a void for agronomy students and early career scientists in agricultural sciences that are new to coding.
+
+3. Aiming to provide concise, interactive, and well-documented Jupyter notebooks, this material is readily accessible via platforms like [Github](https://github.com) and [Binder](https://mybinder.org).
+
+During my own journey in graduate school, coding was a powerful tool for enhancing logical thinking, deconstructing complex problems into manageable steps, and sharpening my focus on details that initially seemed inconsequential. Code brought to life abstract concepts and equations that appeared in manuscripts and books, making intricate processes more tangible and comprehensible. 
+
+As a faculty member, coding has reshaped the way I interact with students. Code reveals the student's reasoning process and allows me to connect with the student logical (or sometimes illogical) thought process. This way I can somewhat get into the student's head and correct misconceptions. Collaborative coding has become one of the most fulfilling aspects of my academic career.
+
+The goal of this book is to make you a **competent** (based on the [Dreyfus scale](https://doi.org/10.1177/0270467604264992)) python programmer, meaning that you will be able to automate simple tasks, analyze datasets, and create reproducible and logical code that supports scientific claims in the domain of agricultural sciences. Students who successfully complete the material will be able to:
+
+- construct effective, well-documented, and error-free scripts and functions.
+- apply high-level programming to generate publication-quality figures and optimize simple models.
+- find information independently for self-teaching and problem solving.
+- learn good programming habits and basic reproducible research practices by following short exercises using real data.
+
+I truly hope you find both learning and enjoyment in these pages. Happy coding!
+
+<p>
+Andres Patrignani</br>
+Associate Professor in Soil Water Processes</br>
+Department of Agronomy</br>
+Kansas State University</p>
+
+
+## Feedback
+
+If you encounter any errors or have suggestions for improvement, please, share your insights with me. For bug reports, code suggestions, or requests for new topics, please create an issue in the Github repository. This platform is ideal for collaborative discussion and tracking the progress of your suggestions. You can also contact me directly at andrespatrignani@ksu.edu.
+
+## Support
+
+The content of this website is partially supported by the Kansas State University [Open/Alternative Textbook Initiative](https://www.lib.k-state.edu/open-textbook)
+
+## Acknowledgments
+    
+This book was enriched by the invaluable insights and encouragement from numerous faculty members and students. Their inspiration and constructive feedback have been pivotal in shaping the content you see today. I am deeply grateful for their contributions and the collaborative spirit that has permeated this endeavor over the past ten years.
+
+## License
+
+All the code in these Jupyter notebooks has been written entirely by the author unless noted otherwise. The entire material is available for free under the Creative Commons Attribution-NonCommercial-ShareAlike ([CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/)) license
+
+
+## References
+
+Dreyfus, S.E., 2004. The five-stage model of adult skill acquisition. Bulletin of science, technology & society, 24(3), pp.177-181. https://doi.org/10.1177/0270467604264992

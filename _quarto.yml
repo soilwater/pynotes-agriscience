@@ -1,0 +1,105 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  favicon: favicon.png
+  cover-image: cover_v1b.png
+  repo-url: https://github.com/soilwater/pynotes-agriscience
+  repo-actions: [edit]
+  downloads: [pdf]
+  title: "PyNotes in Agriscience"
+  author: Andres Patrignani
+  date-format: "long"
+  page-navigation: true
+  google-analytics: "G-N9033JNDWZ"
+  
+  chapters:
+    - index.qmd
+    - part: "GETTING STARTED"
+      chapters:
+        - markdown/inspiration.md
+        - markdown/reproducible_research.md
+        - markdown/coding_guidelines.md
+        - markdown/installing_software.md
+        - markdown/terminal_commands.md
+        - markdown/git_commands.md
+        - markdown/my_first_repo.md
+        - markdown/markdown_basics.md
+        - markdown/latex_equations.md
+        - markdown/alt_python_libraries.md
+    
+    - part: "BASIC CONCEPTS"
+      chapters:
+        - basic_concepts/basic_operations.ipynb
+        - basic_concepts/import_modules.ipynb
+        - basic_concepts/data_types.ipynb
+        - basic_concepts/data_structures.ipynb
+        - basic_concepts/dates_and_times.ipynb        
+        - basic_concepts/indexing_and_slicing.ipynb
+        - basic_concepts/if_statement.ipynb
+        - basic_concepts/functions.ipynb
+        - basic_concepts/lambda_functions.ipynb
+        - basic_concepts/inputs.ipynb
+        - basic_concepts/for_loop.ipynb
+        - basic_concepts/while_loop.ipynb
+        - basic_concepts/objects_and_classes.ipynb
+        - basic_concepts/error_handling.ipynb
+        - basic_concepts/numpy_module.ipynb
+        - basic_concepts/pandas_module.ipynb
+        - basic_concepts/plotting.ipynb
+        - basic_concepts/widgets.ipynb
+        - basic_concepts/sql_database.ipynb
+
+             
+    - part: "EXERCISES"
+      chapters:
+        - exercises/meteogram.ipynb
+        - exercises/group_least_variance.ipynb
+        - exercises/random_plots.ipynb
+        - exercises/random_walk.ipynb
+        - exercises/curve_number.ipynb        
+        - exercises/mixing_model.ipynb
+        - exercises/mass_volume_relationships.ipynb
+        - exercises/soil_textural_class.ipynb
+        - exercises/distribution_daily_precipitation.ipynb
+        - exercises/high_resolution_rainfall_events.ipynb
+        - exercises/first_and_last_frost.ipynb
+        - exercises/air_temperature.ipynb
+        - exercises/evapotranspiration.ipynb
+        - exercises/thermal_time.ipynb
+        - exercises/central_dogma.ipynb
+        - exercises/frontier_function.ipynb
+        - exercises/soil_water_storage.ipynb
+        - exercises/plant_available_water.ipynb
+        - exercises/photoperiod.ipynb
+        - exercises/solar_radiation.ipynb
+        - exercises/evapotranspiration.ipynb
+        - exercises/soil_temperature_model.ipynb
+        - exercises/soil_water_retention_curve.ipynb
+        - exercises/proctor_test.ipynb
+        - exercises/count_seeds.ipynb
+        - exercises/canopy_cover.ipynb
+        - exercises/denoise_yield_monitor.ipynb
+        
+        
+        
+  page-footer:
+    center: 
+      - text: "Material available for free under the Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) license"
+
+format:
+  html:
+    theme: cosmo
+    number-sections: true
+    number-depth: 1
+    code-overflow: scroll
+    code-fold: false
+    html-math-method: katex
+    highlight-style: dracula
+    toc: true
+    
+  pdf: default
+
+
+
