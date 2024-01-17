@@ -99,7 +99,7 @@ format:
     highlight-style: dracula
     toc: true
     
-  pdf: default
+#  pdf: default
 
 
 
