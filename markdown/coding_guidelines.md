@@ -5,21 +5,19 @@ The steps below are aimed at new coders to help them indetify the purpose of the
 ### Define the goal of your code
 Briefly describe the purpose of the code. What do you want the code to do? Here it is important to be as specific as possible.
 
-### Break down the problem (Sketch + pseudocode)
-To decompose the problem into smaller steps it is a good idea to sketch the components and flow of your tentative code. At this point you may not know exactly all the steps and complications of your code. Iterative sketching and drafting will clarify your ideas. If your code relies on multiple equations, add them to the sketch so that you can build the logical flow of your code.
-
-For instance, describe whether inputs will be retrieved from a remote server, the file system, or from the the user through an interactive interface. Identify potential functions that may emerge from this work and that can be re-used throughout the code.
+### Create a sketch to break down the problem
+To decompose the problem into smaller steps it is a good idea to sketch the components and flow of your tentative code. Iterative sketching and drafting will help you clarify your ideas. Start by describing the source of input data and the intended output of your code. If your code relies on multiple equations, filters, or intermediate computations, add them to the sketch so that you can gradually build the logic of your code.
 
 
 ::: {.callout-tip}
 ## Tip
 
-In this step is important that you consider starting from scratch all over again if necessary. Sometimes we get entangled with our own ideas and a fresh start can be the best solution. I recommend using a canvas like a whiteboard or a piece of paper that you can easily erase.
+In this step it is important that you consider starting from scratch all over again if necessary. Sometimes we get entangled with our own ideas and a fresh start can be the best solution.
 :::
 
 
 ### Adopt version control
-To keep track of changes and backup your code it is an imperative practice in modern science to adopt version control tools (e.g. git), whether you are part of a team or if you are working alone. Although maybe not ideal, even tools like Dropbox and OneDrive will be a step forward and may allow inexperienced coders that feel intimidated by more advanced tools to remain engaged.
+Whether you are a solo coder or part of a team, adopting version control tools (e.g. Git, GitHub) is a must in modern science to keep track of changes and backup your code. Although not ideal, even tools like Dropbox and OneDrive will be a step forward, and may allow inexperienced coders that feel intimidated by more advanced tools to remain engaged with good coding practices.
 
 
 ### Draft the code
@@ -59,8 +57,7 @@ Encountering errors and making mistakes is a natural part of the coding process.
 
 ::: {.callout-tip}
 ## Tip
-
-A frequent pitfall among new programmers is assuming a line of code is correct without thoroughly testing or questioning the logical validity of its output. Always approach code with a clear expectation of the outcome, enabling you to effectively assess the validity of the results.
+A frequent pitfall among new programmers is assuming that a line of code is correct without thoroughly testing or questioning the logical validity of its output. Always approach code with a clear expectation of the outcome.
 :::
 
 One of the more frustrating aspects of coding is how small syntax errors, like a missing parenthesis, an extra comma, or a misspelled function name, can stop your code from running entirely. When you're new to coding, these details can be easily overlooked. Almost every coder can recall a time they spent an entire afternoon troubleshooting a simple typo. Therefore, it's crucial to meticulously examine your code to ensure everything is correct and functioning as intended.
