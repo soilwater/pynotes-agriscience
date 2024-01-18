@@ -1052,21 +1052,21 @@
   {
     "objectID": "exercises/random_plots.html#complete-randomized-design",
     "href": "exercises/random_plots.html#complete-randomized-design",
-    "title": "33  Random Plot Generator",
-    "section": "Complete Randomized Design",
-    "text": "Complete Randomized Design\nIn this case treatments may appear within the same replication more than once. If we are assuming that the background environment (e.g. atmosphere, light conditions, soil) is homogeneous, then there is nothing to worry about having two treatments next to each other in the same replication. We simply want to have several replicates to account for random errors.\n\n# Randomized complete block\nrandom.seed('default')\nfor i in range(0, reps):\n    plot_labels = random.sample(tmt, len(tmt))\n    print('Replication', i+1, ':', plot_labels)\n    \n\nReplication 1 : ['N50', 'N200', 'N100', 'N25', 'N0']\nReplication 2 : ['N25', 'N200', 'N100', 'N0', 'N50']\nReplication 3 : ['N0', 'N25', 'N100', 'N200', 'N50']\nReplication 4 : ['N100', 'N200', 'N50', 'N0', 'N25']"
+    "title": "33  Random plot generator",
+    "section": "Complete randomized design",
+    "text": "Complete randomized design\n\n# Randomized complete block\nnp.random.seed(1)\n\n# Create the experimental units\nexp_units_crd = np.repeat(treatments, replicates)\n\n# Randomize the order of the experimental units (inplace operation)\nnp.random.shuffle(exp_units_crd)\n\n# Divide array into individual replicates for easier reading\nexp_units_crd = np.reshape(exp_units_crd, (replicates,treatments.shape[0]))\nprint(exp_units_crd)\n\n[['N50' 'N50' 'N100' 'N0' 'N200']\n ['N50' 'N100' 'N100' 'N0' 'N0']\n ['N200' 'N25' 'N25' 'N200' 'N0']\n ['N100' 'N0' 'N100' 'N200' 'N200']\n ['N25' 'N25' 'N50' 'N50' 'N25']]"
   },
   {
     "objectID": "exercises/random_plots.html#complete-randomized-block",
     "href": "exercises/random_plots.html#complete-randomized-block",
-    "title": "33  Random Plot Generator",
-    "section": "Complete Randomized Block",
-    "text": "Complete Randomized Block\nNote that in the previous experimental layout the treatments do not repeat within each replication. This is because all treatments need to be present in each block, so that all the treatments are exposed to the same characteristic conditions of each block.\n\n# Complete randomized\nrandom.seed('default')\n\nstep = len(tmt)\nplots = tmt*reps\ntmts = random.sample(plots, len(plots))\ncounter = 0\n\nfor i in range(0, len(tmts), step):\n    counter += 1\n    plot_labels = tmts[i:i+step]\n    print('Replication', counter, ':', plot_labels)\n\nReplication 1 : ['N100', 'N0', 'N50', 'N200', 'N50']\nReplication 2 : ['N100', 'N25', 'N0', 'N0', 'N0']\nReplication 3 : ['N25', 'N100', 'N100', 'N50', 'N25']\nReplication 4 : ['N200', 'N200', 'N25', 'N50', 'N200']"
+    "title": "33  Random plot generator",
+    "section": "Complete randomized block",
+    "text": "Complete randomized block\n\n# Complete randomized\nnp.random.seed(1)\n\n# Create array of experimental units\n# In field experiments it is common to keep the first block sorted\n# to have as a reference during field visits. This is not a problem\n# since the sorted array is one of the possible block arrangements\nexp_units_rcbd = treatments\n\nfor i in range(replicates-1):\n    \n    # Draw treatments without replacement\n    block = np.random.choice(treatments, size=treatments.size, replace=False)\n    exp_units_rcbd = np.vstack((exp_units_rcbd, block))\n\nprint(exp_units_rcbd)\n\n[['N0' 'N25' 'N50' 'N100' 'N200']\n ['N50' 'N25' 'N200' 'N0' 'N100']\n ['N0' 'N50' 'N200' 'N100' 'N25']\n ['N50' 'N100' 'N25' 'N200' 'N0']\n ['N100' 'N0' 'N25' 'N50' 'N200']]"
   },
   {
     "objectID": "exercises/random_plots.html#references",
     "href": "exercises/random_plots.html#references",
-    "title": "33  Random Plot Generator",
+    "title": "33  Random plot generator",
     "section": "References",
     "text": "References\nJayaraman, K., 1984. FORSPA-FAO Publication A Statistical Manual for forestry Research (No. Fe 25). FAO,. http://www.fao.org/3/X6831E/X6831E07.htm"
   },
@@ -1664,5 +1664,47 @@
     "title": "43  Reference evapotranspiration",
     "section": "Jensen-Haise model",
     "text": "Jensen-Haise model\n\n## Jensen-Haise (1963)\n\ndef jensen_haise(T_min,T_max,doy,latitude):\n    \"\"\"Potential evapotranspiration model proposed by Jensen in 1963\"\"\"\n    Ra = compute_Ra(doy, latitude)\n    T_avg = (T_min + T_max)/2\n    PET = 0.0102 * (T_avg+3) * Ra\n    return PET"
+  },
+  {
+    "objectID": "exercises/random_plots.html#latin-square-design",
+    "href": "exercises/random_plots.html#latin-square-design",
+    "title": "33  Random plot generator",
+    "section": "Latin square design",
+    "text": "Latin square design\n\n# Latin square\nnp.random.seed(1)\n\n# Create experimental units, all rows with the same treatments\nexp_units_latsq = np.tile(treatments,replicates).reshape((replicates,treatments.size))\n\n# Create array with random shift steps\nshifts = np.random.choice(range(replicates), size=replicates, replace=False)\n\nfor n,k in enumerate(shifts):\n    \n    # Shift first block by a random step\n    exp_units_latsq[n] = np.roll(exp_units_latsq[n], k)\n\nprint(exp_units_latsq)\n\n[['N100' 'N200' 'N0' 'N25' 'N50']\n ['N200' 'N0' 'N25' 'N50' 'N100']\n ['N25' 'N50' 'N100' 'N200' 'N0']\n ['N0' 'N25' 'N50' 'N100' 'N200']\n ['N50' 'N100' 'N200' 'N0' 'N25']]"
+  },
+  {
+    "objectID": "exercises/random_plots.html#practice",
+    "href": "exercises/random_plots.html#practice",
+    "title": "33  Random plot generator",
+    "section": "Practice",
+    "text": "Practice\n\nPractice by coding other experimental designs, like split-plot design."
+  },
+  {
+    "objectID": "exercises/maximum_return_to_nitrogen.html",
+    "href": "exercises/maximum_return_to_nitrogen.html",
+    "title": "47  Maximum return to nitrogen application",
+    "section": "",
+    "text": "An important decision that farmers have to make during the growing season is decide the amount of nitrogen fertilizer that needs to be applied to the crop. Multiple factors contribute to this decision including the potential yield of the crop, the price of the harvestable part of the crop, the cost of nitrogen fertilizer, the current amount of nitrogen in the soil, and the nitrogen requirements of the crop.\nThe maximum return to nitrogen rate is one way to balance the estimated gross revenue and the cost of the input fertilizer. For this method to work, a yield response function to nitrogen is essential because it determines the amount of yield increase per unit input added to the crop, until a point where a new unit of nitrogen fertilizer does not produce gross revenue to pay for itself.\nWe will use the yield response function to nitrogen define in the previous exercise as an example.\n\n# Import modules\nimport numpy as np\nimport matplotlib.pyplot as plt\n\n\n# Define inputs\ngrain_price = 0.17 # US$ per kg of grain\nfertilizer_cost = 0.02 # US$ per kg of nitrogen\ngrain_fertilizer_ratio = grain_price/fertilizer_cost\nprint(grain_fertilizer_ratio)\n\n8.5\n\n\n\n# Define yield response function\ndef responsefn(nitrogen_input):\n    beta_0 = 115.6\n    beta_1 = 0.9613\n    beta_2 = -0.003412\n    x_critical = -beta_1/(2*beta_2)\n    \n    Y = []\n    for N in nitrogen_input:\n        if (N&lt;x_critical):\n            Y.append( beta_0 + beta_1*N + beta_2*N**2 )\n        else:\n            Y.append( beta_0 - beta_1**2/(4*beta_2) )\n\n    return np.array(Y)\n\n\n# Find maximum return to nitrogen\nnitrogen_range = np.arange(200)\nyield_range = responsefn(nitrogen_range)\ngross_revenue = yield_range * grain_price\nvariable_costs = nitrogen_range * fertilizer_cost\nnet_revenue = gross_revenue - variable_costs\nidx = np.argmax(net_revenue)\n\nprint(nitrogen_range[idx],'kg per hectare')\n\n124 kg per hectare\n\n\n\n# Compute maximum nitrogen rate\nplt.figure(figsize=(6,4))\nplt.plot(nitrogen_range, gross_revenue, color='royalblue', linewidth=2)\nplt.plot(nitrogen_range, variable_costs, color='tomato', linewidth=2)\nplt.plot(nitrogen_range, net_revenue, color='green', linewidth=2)\nplt.scatter(nitrogen_range[idx], net_revenue[idx], facecolor='green')\nplt.xlabel('Nitrogen Rate (kg/ha)')\nplt.ylabel('Return to Nitrogen ($/ha)')\nplt.show()"
+  },
+  {
+    "objectID": "exercises/wheat_potential_yield.html#single-growing-season",
+    "href": "exercises/wheat_potential_yield.html#single-growing-season",
+    "title": "53  Modeling wheat yield potential",
+    "section": "Single growing season",
+    "text": "Single growing season\nFor simulating a single crop growing season the easiest approach is to select the rows of the historic weather record matching the specified growing season and then iterating over each day. More advanced methods could use a while loop to check if a condition, like the number of GDD, have been met to terminate the growing season.\n\n# Select records for growing season\nidx_growing_season = (df[\"DATES\"] &gt;= planting_date) & (df[\"DATES\"] &lt;= harvest_date)\ndf_season = df.loc[idx_growing_season,:].reset_index(drop=True)\ndf_season.head(3)\n\n\n\n\n\n\n\n\nWBANNO\nLST_DATE\nDATES\nCRX_VN\nLONGITUDE\nLATITUDE\nT_DAILY_MAX\nT_DAILY_MIN\nT_DAILY_MEAN\nT_DAILY_AVG\n...\nSOIL_MOISTURE_5_DAILY\nSOIL_MOISTURE_10_DAILY\nSOIL_MOISTURE_20_DAILY\nSOIL_MOISTURE_50_DAILY\nSOIL_MOISTURE_100_DAILY\nSOIL_TEMP_5_DAILY\nSOIL_TEMP_10_DAILY\nSOIL_TEMP_20_DAILY\nSOIL_TEMP_50_DAILY\nSOIL_TEMP_100_DAILY\n\n\n\n\n0\n53974\n20071001\n2007-10-01\n1.302\n-96.61\n39.1\n28.2\n7.1\n17.6\n18.9\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n1\n53974\n20071002\n2007-10-02\n1.302\n-96.61\n39.1\n28.2\n9.3\n18.7\n21.0\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n2\n53974\n20071003\n2007-10-03\n1.302\n-96.61\n39.1\n26.6\n5.9\n16.2\n16.3\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n\n\n\n\n3 rows × 29 columns\n\n\n\n\n# Initial conditions\nGDD = calculate_GDD(df_season[\"T_DAILY_AVG\"].iloc[0], Tbase)\nLAI = np.array([0])\nB = np.array([0])\n\n# Iterate over each day\n# We start from day 1, since we depend on information of the previous day\nfor k,t in enumerate(range(1,df_season.shape[0])):\n\n    # Compute growing degree days\n    GDD_day = calculate_GDD(df_season[\"T_DAILY_AVG\"].iloc[t], Tbase)\n    GDD = np.append(GDD, GDD_day)\n\n    # Compute leaf area index\n    LAI_day =  calculate_LAI(GDD.sum())\n    LAI = np.append(LAI, LAI_day)\n\n    # Estimate PAR from solar radiation (about 48%)\n    PAR_day = df_season[\"SOLARAD_DAILY\"].iloc[t] * 0.48\n    \n    # Compute daily biomass\n    B_day = calculate_B(LAI[t], PAR_day)\n\n    # Compute cumulative biomass\n    B = np.append(B, B[-1] + B_day)\n\n\n# Add variable to growing season dataframe, \n# so that we have everything in one place.\ndf_season['LAI'] = LAI\ndf_season['GDD'] = GDD\ndf_season['B'] = B\n\ndf_season.head(3)\n\n\n\n\n\n\n\n\nWBANNO\nLST_DATE\nDATES\nCRX_VN\nLONGITUDE\nLATITUDE\nT_DAILY_MAX\nT_DAILY_MIN\nT_DAILY_MEAN\nT_DAILY_AVG\n...\nSOIL_MOISTURE_50_DAILY\nSOIL_MOISTURE_100_DAILY\nSOIL_TEMP_5_DAILY\nSOIL_TEMP_10_DAILY\nSOIL_TEMP_20_DAILY\nSOIL_TEMP_50_DAILY\nSOIL_TEMP_100_DAILY\nLAI\nGDD\nB\n\n\n\n\n0\n53974\n20071001\n2007-10-01\n1.302\n-96.61\n39.1\n28.2\n7.1\n17.6\n18.9\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n0.000000\n14.9\n0.000000\n\n\n1\n53974\n20071002\n2007-10-02\n1.302\n-96.61\n39.1\n28.2\n9.3\n18.7\n21.0\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n0.008062\n17.0\n0.065197\n\n\n2\n53974\n20071003\n2007-10-03\n1.302\n-96.61\n39.1\n26.6\n5.9\n16.2\n16.3\n...\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\n0.011653\n12.3\n0.198516\n\n\n\n\n3 rows × 32 columns\n\n\n\n\n# Generate figure for growing season LAI and Biomass\nplt.figure(figsize=(10,8))\n\n# Leaf area index\nplt.subplot(2,1,1)\nplt.plot(df_season['DATES'], df_season['LAI'], '-g')\nplt.ylabel('Leaf Area Index', color='g', size=16)\n\n# Biomass\nplt.twinx()\nplt.plot(df_season['DATES'], df_season['B'], '--b')\nplt.ylabel('Biomass ($g/m^2$)', color='b', size=16)\n\nplt.show()\n\n\n\n\n\n# Estimate grain yield\nY = df_season['B'].iloc[-1]*HI # grain yield in g/m^2\nY = Y * 10_000/1000 # Convert to kg per hectare (1 ha = 10,000 m^2) and (1 kg = 1,000 g)\nprint(f'Wheat yield potential is: {Y:.1f} kg per hectare')\n\nWheat yield potential is: 6090.5 kg per hectare"
+  },
+  {
+    "objectID": "exercises/wheat_potential_yield.html#practice",
+    "href": "exercises/wheat_potential_yield.html#practice",
+    "title": "53  Modeling wheat yield potential",
+    "section": "Practice",
+    "text": "Practice\n\nModify the code so that the model stops when the crop accumulated a total of 2400 GDD. Hint: You no longer a harvest date and you may want to consider using a while loop."
+  },
+  {
+    "objectID": "exercises/wheat_potential_yield.html#references",
+    "href": "exercises/wheat_potential_yield.html#references",
+    "title": "53  Modeling wheat yield potential",
+    "section": "References",
+    "text": "References\nBrun, F., Wallach, D., Makowski, D. and Jones, J.W., 2006. Working with dynamic crop models: evaluation, analysis, parameterization, and applications. Elsevier."
   }
 ]

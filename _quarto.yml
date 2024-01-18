@@ -69,15 +69,16 @@ book:
         - exercises/evapotranspiration.ipynb
         - exercises/thermal_time.ipynb
         - exercises/central_dogma.ipynb
+        - exercises/proctor_test.ipynb
+        - exercises/maximum_return_to_nitrogen.ipynb
         - exercises/frontier_function.ipynb
         - exercises/soil_water_storage.ipynb
         - exercises/plant_available_water.ipynb
         - exercises/photoperiod.ipynb
         - exercises/solar_radiation.ipynb
-        - exercises/evapotranspiration.ipynb
+        - exercises/wheat_potential_yield.ipynb
         - exercises/soil_temperature_model.ipynb
         - exercises/soil_water_retention_curve.ipynb
-        - exercises/proctor_test.ipynb
         - exercises/count_seeds.ipynb
         - exercises/canopy_cover.ipynb
         - exercises/denoise_yield_monitor.ipynb

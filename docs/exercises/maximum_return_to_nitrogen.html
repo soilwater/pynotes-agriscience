@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andres Patrignani">
-<meta name="dcterms.date" content="2024-01-18">
-<meta name="keywords" content="plots, experiments, random">
+<meta name="dcterms.date" content="2024-01-17">
+<meta name="keywords" content="nitrogen, fertilizer, optimization">
 
-<title>PyNotes in Agriscience - 33&nbsp; Random plot generator</title>
+<title>PyNotes in Agriscience - 47&nbsp; Maximum return to nitrogen application</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,8 +67,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercises/random_walk.html" rel="next">
-<link href="../exercises/group_least_variance.html" rel="prev">
+<link href="../exercises/frontier_function.html" rel="next">
+<link href="../exercises/proctor_test.html" rel="prev">
 <link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -121,7 +121,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/meteogram.html">EXERCISES</a></li><li class="breadcrumb-item"><a href="../exercises/random_plots.html"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Random plot generator</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/meteogram.html">EXERCISES</a></li><li class="breadcrumb-item"><a href="../exercises/maximum_return_to_nitrogen.html"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Maximum return to nitrogen application</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -375,7 +375,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/random_plots.html" class="sidebar-item-text sidebar-link active">
+  <a href="../exercises/random_plots.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Random plot generator</span></span></a>
   </div>
 </li>
@@ -459,7 +459,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/maximum_return_to_nitrogen.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/maximum_return_to_nitrogen.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Maximum return to nitrogen application</span></span></a>
   </div>
 </li>
@@ -537,24 +537,14 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#complete-randomized-design" id="toc-complete-randomized-design" class="nav-link active" data-scroll-target="#complete-randomized-design">Complete randomized design</a></li>
-  <li><a href="#complete-randomized-block" id="toc-complete-randomized-block" class="nav-link" data-scroll-target="#complete-randomized-block">Complete randomized block</a></li>
-  <li><a href="#latin-square-design" id="toc-latin-square-design" class="nav-link" data-scroll-target="#latin-square-design">Latin square design</a></li>
-  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
-  </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/random_plots.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Random plot generator</span></h1>
+<h1 class="title"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Maximum return to nitrogen application</span></h1>
 </div>
 
 
@@ -571,7 +561,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 18, 2024</p>
+      <p class="date">January 17, 2024</p>
     </div>
   </div>
   
@@ -581,114 +571,71 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 
 </header>
 
-<p>One of the most common tasks when designing a new research experiment is the randomization of treatments. This statistical procedure spans multiple disciplines, from field plots in agronomy to Petri dishes in microbiology. The idea of setting a proper experiment design is to ensure that differences in the observed variable are mostly due to treatment effects and not other factors.</p>
-<p>There are multiple experimental designs, but the three of the most popular are complete randomized design, randomized complete block design, and Latin square design.</p>
-<p><strong>Complete randomized design</strong>: In a completely randomized design (CRD), treatments are allocated entirely at random, ensuring that each experimental unit has an equal probability of receiving any given treatment. This design is particularly effective in homogeneous conditions where each unit is expected to respond similarly to treatments. In CRD, it is possible for the same treatment to be repeated across different units within the same replication. The assumption of homogeneous conditions enables any treatment to be assigned to any experimental unit without bias.</p>
-<p><strong>Randomized complete block design</strong>: Unlike CRD, in a randomized complete block design (RCBD), the primary goal is to minimize experimental error by accounting for known sources of variability among experimental units, such as terrain slope, temperature gradients in greenhouses, or varying light conditions. This is achieved by grouping similar experimental units into “blocks” that are expected to respond uniformly to treatments. Within each block, treatments are randomly assigned in such a way that each treatment appears exactly once. This ensures that the effect of each treatment can be assessed independently of block-to-block variation, enhancing the evaluation of treatment effects.</p>
-<p><strong>Latin square design</strong>: The Latin square design is used to control for two sources of variation in experimental setups. In this design, each treatment appears exactly once in each row and each column of the square, akin to a Latin puzzle, hence the name. For example, if there are five treatments, they will be arranged in a 5x5 square. This setup ensures that the effects of row and column variables are evenly distributed, reducing experimental error and isolating the treatment effects more effectively. The Latin square design is an efficient way to handle two-dimensional heterogeneity in experimental designs in controlled studies (e.g., greenhouse studies).</p>
-<p>The goal of this exercise is to create a Python script that generates randomized plot labels given a list of treatments and number of replications.</p>
-<div class="cell" data-execution_count="10">
+<p>An important decision that farmers have to make during the growing season is decide the amount of nitrogen fertilizer that needs to be applied to the crop. Multiple factors contribute to this decision including the potential yield of the crop, the price of the harvestable part of the crop, the cost of nitrogen fertilizer, the current amount of nitrogen in the soil, and the nitrogen requirements of the crop.</p>
+<p>The maximum return to nitrogen rate is one way to balance the estimated gross revenue and the cost of the input fertilizer. For this method to work, a yield response function to nitrogen is essential because it determines the amount of yield increase per unit input added to the crop, until a point where a new unit of nitrogen fertilizer does not produce gross revenue to pay for itself.</p>
+<p>We will use the yield response function to nitrogen define in the previous exercise as an example.</p>
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import modules</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define treatments and replicates</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>treatments <span class="op">=</span> np.array([<span class="st">"N0"</span>, <span class="st">"N25"</span>, <span class="st">"N50"</span>, <span class="st">"N100"</span>, <span class="st">"N200"</span>]) <span class="co"># Nitrogen in kg N/hectare</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define number replicates</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>replicates <span class="op">=</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<section id="complete-randomized-design" class="level2">
-<h2 class="anchored" data-anchor-id="complete-randomized-design">Complete randomized design</h2>
-<div class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Randomized complete block</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the experimental units</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>exp_units_crd <span class="op">=</span> np.repeat(treatments, replicates)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Randomize the order of the experimental units (inplace operation)</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>np.random.shuffle(exp_units_crd)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Divide array into individual replicates for easier reading</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>exp_units_crd <span class="op">=</span> np.reshape(exp_units_crd, (replicates,treatments.shape[<span class="dv">0</span>]))</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(exp_units_crd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define inputs</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>grain_price <span class="op">=</span> <span class="fl">0.17</span> <span class="co"># US$ per kg of grain</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>fertilizer_cost <span class="op">=</span> <span class="fl">0.02</span> <span class="co"># US$ per kg of nitrogen</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>grain_fertilizer_ratio <span class="op">=</span> grain_price<span class="op">/</span>fertilizer_cost</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(grain_fertilizer_ratio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[['N50' 'N50' 'N100' 'N0' 'N200']
- ['N50' 'N100' 'N100' 'N0' 'N0']
- ['N200' 'N25' 'N25' 'N200' 'N0']
- ['N100' 'N0' 'N100' 'N200' 'N200']
- ['N25' 'N25' 'N50' 'N50' 'N25']]</code></pre>
+<pre><code>8.5</code></pre>
 </div>
 </div>
-</section>
-<section id="complete-randomized-block" class="level2">
-<h2 class="anchored" data-anchor-id="complete-randomized-block">Complete randomized block</h2>
-<div class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Complete randomized</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create array of experimental units</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># In field experiments it is common to keep the first block sorted</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># to have as a reference during field visits. This is not a problem</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># since the sorted array is one of the possible block arrangements</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>exp_units_rcbd <span class="op">=</span> treatments</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(replicates<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Draw treatments without replacement</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    block <span class="op">=</span> np.random.choice(treatments, size<span class="op">=</span>treatments.size, replace<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    exp_units_rcbd <span class="op">=</span> np.vstack((exp_units_rcbd, block))</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(exp_units_rcbd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define yield response function</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> responsefn(nitrogen_input):</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    beta_0 <span class="op">=</span> <span class="fl">115.6</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    beta_1 <span class="op">=</span> <span class="fl">0.9613</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    beta_2 <span class="op">=</span> <span class="op">-</span><span class="fl">0.003412</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    x_critical <span class="op">=</span> <span class="op">-</span>beta_1<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>beta_2)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    Y <span class="op">=</span> []</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> N <span class="kw">in</span> nitrogen_input:</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> (N<span class="op">&lt;</span>x_critical):</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            Y.append( beta_0 <span class="op">+</span> beta_1<span class="op">*</span>N <span class="op">+</span> beta_2<span class="op">*</span>N<span class="op">**</span><span class="dv">2</span> )</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            Y.append( beta_0 <span class="op">-</span> beta_1<span class="op">**</span><span class="dv">2</span><span class="op">/</span>(<span class="dv">4</span><span class="op">*</span>beta_2) )</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.array(Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find maximum return to nitrogen</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>nitrogen_range <span class="op">=</span> np.arange(<span class="dv">200</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>yield_range <span class="op">=</span> responsefn(nitrogen_range)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>gross_revenue <span class="op">=</span> yield_range <span class="op">*</span> grain_price</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>variable_costs <span class="op">=</span> nitrogen_range <span class="op">*</span> fertilizer_cost</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>net_revenue <span class="op">=</span> gross_revenue <span class="op">-</span> variable_costs</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> np.argmax(net_revenue)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(nitrogen_range[idx],<span class="st">'kg per hectare'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[['N0' 'N25' 'N50' 'N100' 'N200']
- ['N50' 'N25' 'N200' 'N0' 'N100']
- ['N0' 'N50' 'N200' 'N100' 'N25']
- ['N50' 'N100' 'N25' 'N200' 'N0']
- ['N100' 'N0' 'N25' 'N50' 'N200']]</code></pre>
+<pre><code>124 kg per hectare</code></pre>
 </div>
 </div>
-</section>
-<section id="latin-square-design" class="level2">
-<h2 class="anchored" data-anchor-id="latin-square-design">Latin square design</h2>
-<div class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Latin square</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create experimental units, all rows with the same treatments</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>exp_units_latsq <span class="op">=</span> np.tile(treatments,replicates).reshape((replicates,treatments.size))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create array with random shift steps</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>shifts <span class="op">=</span> np.random.choice(<span class="bu">range</span>(replicates), size<span class="op">=</span>replicates, replace<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n,k <span class="kw">in</span> <span class="bu">enumerate</span>(shifts):</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Shift first block by a random step</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    exp_units_latsq[n] <span class="op">=</span> np.roll(exp_units_latsq[n], k)</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(exp_units_latsq)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[['N100' 'N200' 'N0' 'N25' 'N50']
- ['N200' 'N0' 'N25' 'N50' 'N100']
- ['N25' 'N50' 'N100' 'N200' 'N0']
- ['N0' 'N25' 'N50' 'N100' 'N200']
- ['N50' 'N100' 'N200' 'N0' 'N25']]</code></pre>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute maximum nitrogen rate</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.plot(nitrogen_range, gross_revenue, color<span class="op">=</span><span class="st">'royalblue'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.plot(nitrogen_range, variable_costs, color<span class="op">=</span><span class="st">'tomato'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.plot(nitrogen_range, net_revenue, color<span class="op">=</span><span class="st">'green'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(nitrogen_range[idx], net_revenue[idx], facecolor<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Nitrogen Rate (kg/ha)'</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Return to Nitrogen ($/ha)'</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="maximum_return_to_nitrogen_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-</section>
-<section id="practice" class="level2">
-<h2 class="anchored" data-anchor-id="practice">Practice</h2>
-<ul>
-<li>Practice by coding other experimental designs, like split-plot design.</li>
-</ul>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<p>Jayaraman, K., 1984. FORSPA-FAO Publication A Statistical Manual for forestry Research (No.&nbsp;Fe 25). FAO,. http://www.fao.org/3/X6831E/X6831E07.htm</p>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -926,13 +873,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercises/group_least_variance.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">Group with least variance</span></span>
+      <a href="../exercises/proctor_test.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Proctor test</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercises/random_walk.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Particle Random Walk</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../exercises/frontier_function.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">Frontier production functions</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
@@ -948,7 +895,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
  Material available for free under the Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) license
   </li>  
 </ul>
-    </div>
+    <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/maximum_return_to_nitrogen.ipynb" class="toc-action">Edit this page</a></p></div></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
