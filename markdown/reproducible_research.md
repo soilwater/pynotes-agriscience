@@ -49,10 +49,10 @@ Skaggs, T.H., Young, M.H. and Vrugt, J.A., 2015. Reproducible research in vadose
 
 Based on the reading of Guo 2013 and Skaggs et al., 2015, answer the following questions:
 
-Q1. List and briefly explain all the softwares that you used in the past 3 years for data analysis as part of your research.
+**Q1. List and briefly explain all the softwares that you used in the past 3 years for data analysis as part of your research.**
 
-Q2. Briefly define what is reproducible research?
+**Q2. Briefly define what is reproducible research?**
 
-Q3. Name 3 reasons why you need to learn coding as a scientist or engineer.
+**Q3. Name 3 reasons why you need to learn coding as a scientist or engineer.**
 
-Q4. How do you feel about sharing your data and code with the rest of the scientific community when publishing an article? Do you have any concerns?
+**Q4. How do you feel about sharing your data and code with the rest of the scientific community when publishing an article? Do you have any concerns?**

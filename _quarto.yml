@@ -65,10 +65,11 @@ book:
         - exercises/distribution_daily_precipitation.ipynb
         - exercises/high_resolution_rainfall_events.ipynb
         - exercises/first_and_last_frost.ipynb
-        - exercises/air_temperature.ipynb
         - exercises/evapotranspiration.ipynb
         - exercises/thermal_time.ipynb
         - exercises/central_dogma.ipynb
+        - exercises/error_metrics.ipynb
+        - exercises/anscombe_quartet.ipynb        
         - exercises/proctor_test.ipynb
         - exercises/maximum_return_to_nitrogen.ipynb
         - exercises/frontier_function.ipynb
@@ -81,7 +82,9 @@ book:
         - exercises/soil_water_retention_curve.ipynb
         - exercises/count_seeds.ipynb
         - exercises/canopy_cover.ipynb
+        - exercises/field_random_samples.ipynb
         - exercises/denoise_yield_monitor.ipynb
+        - exercises/management_zones_yield_monitor.ipynb
         
         
         
