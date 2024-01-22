@@ -460,7 +460,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/neutron_probe_calibration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Calibration of a Neutron Probe</span></span></a>
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Calibration neutron probe</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -472,7 +472,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/optimal_nitrogen_rate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Optimal Nitrogen Rate</span></span></a>
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Optimal nitrogen rate</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -645,20 +645,15 @@ Import modules convention
 </div>
 </div>
 <p><strong>Option 2</strong><br> Syntax: <code>import &lt;module&gt; as &lt;alias&gt;</code> <br> Example: <code>import numpy as np</code><br> Use-case: This is used to import the entire module under a shorter, often more convenient alias. It’s particularly useful for frequently used modules or those with longer names. The alias acts as a shorthand, making the code more concise and easier to write. For instance, you can use <code>np.array()</code> instead of <code>numpy.array()</code>.</p>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an Numpy array of sand content for different soils</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>sand_content <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">35</span>, <span class="dv">60</span>, <span class="dv">80</span>]) <span class="co"># Percentage</span></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an Numpy array of porosity values for the same soils above</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>porosity <span class="op">=</span> np.array([<span class="dv">55</span>, <span class="dv">50</span>, <span class="dv">47</span>, <span class="dv">40</span>, <span class="dv">35</span>]) <span class="co"># Percentage</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sand_content)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(porosity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sand_content)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[ 5 20 35 60 80]
-[55 50 47 40 35]</code></pre>
+<pre><code>[ 5 20 35 60 80]</code></pre>
 </div>
 </div>
 <p><strong>Option 3</strong><br> Syntax: <code>import &lt;module&gt;.&lt;submodule&gt; as &lt;alias&gt;</code><br> Example: <code>import matplotlib.pyplot as plt</code> Use-case: This approach is used when you only need a specific part or submodule of a larger module. It’s efficient as it only loads the required submodule into memory. The alias is used for ease of reference, as in <code>plt.plot()</code> instead of using <code>matplotlib.pyplot.plot()</code>, which will be much more verbose and will result in cluttered lines of code.</p>
