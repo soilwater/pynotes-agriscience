@@ -69,8 +69,10 @@ book:
         - exercises/thermal_time.ipynb
         - exercises/central_dogma.ipynb
         - exercises/error_metrics.ipynb
-        - exercises/anscombe_quartet.ipynb        
+        - exercises/anscombe_quartet.ipynb 
+        - exercises/neutron_probe_calibration.ipynb 
         - exercises/proctor_test.ipynb
+        - exercises/optimal_nitrogen_rate.ipynb
         - exercises/maximum_return_to_nitrogen.ipynb
         - exercises/frontier_function.ipynb
         - exercises/soil_water_storage.ipynb
