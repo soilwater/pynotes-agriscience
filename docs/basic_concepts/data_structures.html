@@ -460,7 +460,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/neutron_probe_calibration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Calibration of a Neutron Probe</span></span></a>
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Calibration neutron probe</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -472,7 +472,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/optimal_nitrogen_rate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Optimal Nitrogen Rate</span></span></a>
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Optimal nitrogen rate</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -616,7 +616,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <section id="lists" class="level2">
 <h2 class="anchored" data-anchor-id="lists">Lists</h2>
 <p>Lists are versatile data structures defined by square brackets <code>[ ]</code> that ideal for storing sequences of elements, such as strings, numbers, or a mix of different data types. <strong>Lists are mutable</strong>, meaning that you can modify their content. Lists also support nesting, where a list can contain other lists. A key feature of lists is the ability to access elements through indexing (for single item) or slicing (for multiple items). While similar to arrays in other languages, like Matlab, it’s important to note that Python lists do not natively support element-wise operations, a functionality that is characteristic of NumPy arrays, a more advanced module that we will explore later.</p>
-<div class="cell" data-execution_count="48">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List with same data type</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>soil_texture <span class="op">=</span> [<span class="st">"Sand"</span>, <span class="st">"Loam"</span>, <span class="st">"Silty clay"</span>, <span class="st">"Silt loam"</span>, <span class="st">"Silt"</span>] <span class="co"># Strings (soil textural classes)</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mean_sand <span class="op">=</span> [<span class="dv">92</span>, <span class="dv">40</span>, <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">5</span>]  <span class="co"># Integers (percent sand for each soil textural class)</span></span>
@@ -632,7 +632,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 &lt;class 'list'&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="49">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Indexing a list</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_texture[<span class="dv">0</span>]) <span class="co"># Accesses the first item</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_sample[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -641,7 +641,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 6.5</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="50">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Slicing a list</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_texture[<span class="dv">2</span>:<span class="dv">4</span>])</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_texture[<span class="dv">2</span>:])</span>
@@ -652,7 +652,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 ['Sand', 'Loam', 'Silty clay']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="51">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the length of a list</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(soil_texture))  <span class="co"># Returns the number of items</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -672,7 +672,7 @@ Note
 <p>Can you guess how many items are in the <code>soil_sample</code> list? Use Python to check your answer!</p>
 </div>
 </div>
-<div class="cell" data-execution_count="52">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Append elements to a list</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>soil_texture.append(<span class="st">"Clay"</span>)  <span class="co"># Adds 'Barley' to the list 'crops'</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_texture)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -680,7 +680,7 @@ Note
 <pre><code>['Sand', 'Loam', 'Silty clay', 'Silt loam', 'Silt', 'Clay']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="53">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Append multiple elements</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>soil_texture.extend([<span class="st">"Loamy sand"</span>, <span class="st">"Sandy loam"</span>])</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_texture)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -698,10 +698,10 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Appending multiple items using the <code>append()</code> method will results in nested lists, while using the <code>extend()</code> method will results in merged lists. Give it a try and see if you can observe the difference.</p>
+<p>Appending multiple items using the <code>append()</code> method will result in nested lists, while using the <code>extend()</code> method will results in merged lists. Give it a try and see if you can observe the difference.</p>
 </div>
 </div>
-<div class="cell" data-execution_count="54">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove list element</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>soil_texture.remove(<span class="st">"Clay"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_texture)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -709,7 +709,7 @@ Note
 <pre><code>['Sand', 'Loam', 'Silty clay', 'Silt loam', 'Silt', 'Loamy sand', 'Sandy loam']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="55">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert an item at a specified position or index</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>soil_texture.insert(<span class="dv">2</span>, <span class="st">"Clay"</span>)  <span class="co"># Inserts 'Clay' back again, but at index 2</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_texture)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -717,7 +717,7 @@ Note
 <pre><code>['Sand', 'Loam', 'Clay', 'Silty clay', 'Silt loam', 'Silt', 'Loamy sand', 'Sandy loam']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="56">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove element based on index</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>soil_texture.pop(<span class="dv">4</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_texture)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -725,7 +725,7 @@ Note
 <pre><code>['Sand', 'Loam', 'Clay', 'Silty clay', 'Silt', 'Loamy sand', 'Sandy loam']</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="57">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An alternative method to delete one or more elements of the list.</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="kw">del</span> soil_texture[<span class="dv">1</span>:<span class="dv">3</span>]</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(soil_texture)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -737,7 +737,7 @@ Note
 <section id="tuples" class="level2">
 <h2 class="anchored" data-anchor-id="tuples">Tuples</h2>
 <p>Tuples are an efficient data structure defined by parentheses <code>( )</code>, and are especially useful for storing fixed sets of elements like coordinates in a two-dimensional plane (e.g., <code>point(x, y)</code>) or triplets of color values in the RGB color space (e.g., <code>(r, g, b)</code>). While tuples can be nested within lists and support operations similar to lists, like indexing and slicing, the main difference is that <strong>tuples are immutable</strong>. Once a tuple is created, its content cannot be changed. This makes tuples particularly valuable for storing critical information that must remain constant in your code.</p>
-<div class="cell" data-execution_count="62">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Geographic coordinates </span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>mauna_loa <span class="op">=</span> (<span class="fl">19.536111</span>, <span class="op">-</span><span class="fl">155.576111</span>, <span class="dv">3397</span>) <span class="co"># Mauna Load Observatory in Hawaii, USA</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>konza_prairie <span class="op">=</span> (<span class="fl">39.106704</span>, <span class="op">-</span><span class="fl">96.608968</span>, <span class="dv">320</span>) <span class="co"># Konza Prairie in Kansas, USA</span></span>
@@ -748,7 +748,7 @@ Note
 <pre><code>[(19.536111, -155.576111, 3397), (39.106704, -96.608968, 320)]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="63">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># A list of tuples</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>), (<span class="dv">255</span>,<span class="dv">255</span>,<span class="dv">255</span>), (<span class="dv">0</span>,<span class="dv">255</span>,<span class="dv">0</span>)] <span class="co"># Each tuple refers to black, white, and green.</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(colors)</span>
@@ -776,7 +776,7 @@ Note
 <h2 class="anchored" data-anchor-id="dictionaries">Dictionaries</h2>
 <p>Dictionaries are a highly versatile and popular data structure that have the peculiar ability to store and retrieve data using key-value pairs defined within curly braces <code>{ }</code> or using the <code>dict()</code> function. This means that you can access, add, or modify data using unique keys, making dictionaries incredibly efficient for organizing and handling data using named references.</p>
 <p>Dictionaries are particularly useful in situations where data doesn’t fit neatly into a matrix or table format and has multiple attributes, such as weather data, where you might store various weather parameters (temperature, humidity, wind speed) using descriptive keys. Unlike lists or tuples, dictionaries aren’t ordered by nature, but they excel in scenarios where each piece of data needs to be associated with a specific identifier. This structure provides a straightforward and intuitive way to manage complex, unstructured data.</p>
-<div class="cell" data-execution_count="39">
+<div class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Weather data is often stored in dictionary or dictionary-like data structures.</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>D <span class="op">=</span> {<span class="st">'city'</span>:<span class="st">'Manhattan'</span>,</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>     <span class="st">'state'</span>:<span class="st">'Kansas'</span>,</span>
@@ -809,32 +809,32 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It’s important that you realize that the organization of the dictionary above depends on programmer preferences. For instance, rather than grouping all three coordinates into a tuple, a different programmer may prefer to store the values under individual <code>name:value</code> pairs, such as: <code>latitude : 39.208722</code>, <code>longitude : -96.592248</code>, <code>altitude : 350</code>)</p>
+<p>The structure of the dictionary above depends on programmer preferences. For instance, rather than grouping all three coordinates into a tuple, a different programmer may prefer to store the values under individual <code>name:value</code> pairs, such as: <code>latitude : 39.208722</code>, <code>longitude : -96.592248</code>, and <code>altitude : 350</code>)</p>
 </div>
 </div>
 </section>
 <section id="sets" class="level2">
 <h2 class="anchored" data-anchor-id="sets">Sets</h2>
 <p>Sets are a unique and somewhat less commonly used data structure compared to lists, tuples, and dictionaries. Sets are defined with curly braces <code>{ }</code> (without defining key-value pairs) or the <code>set()</code> function and are similar to mathematical sets, meaning they store unordered collections of unique items. In other words, Sets don’t allow for duplicate items, items cannot be changed (although items can be added and removed), and items are not indexed. This makes sets ideal for operations like determining membership, eliminating duplicates, and performing mathematical set operations such as unions, intersections, and differences. In scenarios like database querying or data analysis where you need to compare different datasets, sets can be used to find common elements (intersection), all elements (union), or differences between datasets.</p>
-<div class="cell" data-execution_count="70">
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Union operation</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>field1_weeds <span class="op">=</span> <span class="bu">set</span>([<span class="st">"Dandelion"</span>, <span class="st">"Crabgrass"</span>, <span class="st">"Thistle"</span>, <span class="st">"Dandelion"</span>])</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>field2_weeds <span class="op">=</span> <span class="bu">set</span>([<span class="st">"Thistle"</span>, <span class="st">"Crabgrass"</span>, <span class="st">"Foxtail"</span>])</span>
 <span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>unique_weeds <span class="op">=</span> field1_weeds.union(field2_weeds)</span>
 <span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(unique_weeds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'Thistle', 'Crabgrass', 'Dandelion', 'Foxtail'}</code></pre>
+<pre><code>{'Crabgrass', 'Foxtail', 'Thistle', 'Dandelion'}</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="71">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Intersection operation</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>common_weeds <span class="op">=</span> field1_weeds.intersection(field2_weeds)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(common_weeds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'Thistle', 'Crabgrass'}</code></pre>
+<pre><code>{'Crabgrass', 'Thistle'}</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="73">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Difference operation</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>different_weeds_in_field1 <span class="op">=</span> field1_weeds.difference(field2_weeds)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(different_weeds_in_field1)</span>
@@ -846,11 +846,11 @@ Note
 {'Foxtail'}</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="75">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also chain more variables if needed</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>field3_weeds <span class="op">=</span> <span class="bu">set</span>([<span class="st">"Pigweed"</span>, <span class="st">"Clover"</span>])</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>field1_weeds.union(field2_weeds).union(field3_weeds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="75">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>{'Clover', 'Crabgrass', 'Dandelion', 'Foxtail', 'Pigweed', 'Thistle'}</code></pre>
 </div>
 </div>
@@ -864,7 +864,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>This exercise with <code>sets</code> could be a good example of how to quickly merge field notes about dominant weed species from multiple agronomists visting fields in a given region.</p>
+<p>For this particular example, you could leverage a <code>set</code> data structure to easily compare field notes from multiple agronomists collecting information across farmer fields in a given region and quickly determine dominant weed species.</p>
 </div>
 </div>
 </section>

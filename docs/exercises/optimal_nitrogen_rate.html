@@ -614,18 +614,20 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>corn_yield_obs <span class="op">=</span> [<span class="dv">118</span>,<span class="dv">165</span>,<span class="dv">170</span>,<span class="dv">193</span>,<span class="dv">180</span>,<span class="dv">181</span>,<span class="dv">141</span>,<span class="dv">177</span>,<span class="dv">165</span>,<span class="dv">197</span>,<span class="dv">175</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>nitrogen_rate <span class="op">=</span>  [<span class="dv">0</span>,<span class="dv">89</span>,<span class="dv">161</span>,<span class="dv">165</span>,<span class="dv">80</span>,<span class="dv">160</span>,<span class="dv">37</span>,<span class="dv">105</span>,<span class="dv">69</span>,<span class="dv">123</span>,<span class="dv">141</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize field observations</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(nitrogen_rate,corn_yield_obs, facecolor<span class="op">=</span><span class="st">'w'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Nitrogen rate (kg/ha)'</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Yield rate (kg/ha)'</span>)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.scatter(nitrogen_rate,corn_yield_obs, facecolor<span class="op">=</span><span class="st">'w'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Nitrogen rate (kg/ha)'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Yield rate (kg/ha)'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="optimal_nitrogen_rate_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>par <span class="op">=</span> np.polyfit(nitrogen_rate, corn_yield_obs, <span class="dv">2</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(par)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -635,7 +637,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <pre><code>[-3.41221057e-03  9.61329119e-01  1.15569115e+02]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create object that we can call to run the polynomial with the fitted coefficients</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>polyfun <span class="op">=</span> np.poly1d(par) <span class="co"># Create object</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(polyfun) <span class="co"># polynomial function</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -644,7 +646,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 -0.003412 x + 0.9613 x + 115.6</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute fitting error</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>corn_yield_pred <span class="op">=</span> polyfun(nitrogen_rate)<span class="op">;</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>rmse <span class="op">=</span> np.sqrt(np.mean((corn_yield_obs <span class="op">-</span> corn_yield_pred)<span class="op">**</span><span class="dv">2</span>))</span>
@@ -653,12 +655,12 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <pre><code>8.4 kg/ha</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute fitted curve</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>nitrogen_rate_pred <span class="op">=</span> np.arange(np.<span class="bu">min</span>(nitrogen_rate),np.<span class="bu">max</span>(nitrogen_rate),<span class="fl">0.1</span>)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>corn_yield_pred <span class="op">=</span> polyfun(nitrogen_rate_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize field observations</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(nitrogen_rate, corn_yield_obs, facecolor<span class="op">=</span><span class="st">'w'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>, label<span class="op">=</span><span class="st">'Observations'</span>)</span>
@@ -673,7 +675,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <p><img src="optimal_nitrogen_rate_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>first_derivative <span class="op">=</span> np.diff(corn_yield_pred,n<span class="op">=</span><span class="dv">1</span>) <span class="co"># One value shorter</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -690,7 +692,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.ylabel('Yield rate (kg/ha)')</span></span>
 <span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.show()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>idx_lowest_derivative <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(first_derivative))</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>opt_nitrogen_rate <span class="op">=</span> nitrogen_rate_pred[idx_lowest_derivative]</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(opt_nitrogen_rate )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

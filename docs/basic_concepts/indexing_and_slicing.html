@@ -460,7 +460,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/neutron_probe_calibration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Calibration of a Neutron Probe</span></span></a>
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Calibration neutron probe</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -472,7 +472,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/optimal_nitrogen_rate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Optimal Nitrogen Rate</span></span></a>
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Optimal nitrogen rate</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -610,6 +610,19 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </header>
 
 <p>Indexing and slicing are fundamental concepts used to retrieve and modify data within sequences like strings, lists, and arrays. Python uses zero-based indexing, meaning that the first element of any sequence is accessed with index 0, not 1. <strong>Indexing</strong> allows you to access individual elements, while <strong>slicing</strong> lets you access a subset, or a slice, of a sequence.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>0-based indexing offers some practical advantages in terms of memory management and algorithmic efficiency. This indexing system simplifies pointer arithmetic, as the index corresponds directly to the offset from the base address in memory. With 1-based indexing, an extra subtraction is needed. There is also a historical reason due to the influence of earlier programming languages, like C, that were also 0-based indexing.</p>
+</div>
+</div>
 <section id="syntax-for-indexing-and-slicing-one-dimensional-arrays" class="level2">
 <h2 class="anchored" data-anchor-id="syntax-for-indexing-and-slicing-one-dimensional-arrays">Syntax for indexing and slicing one-dimensional arrays</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Indexing a one-dimensional array</span></span>
@@ -619,7 +632,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>sub_array <span class="op">=</span> array[start_index:end_index:step]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Omitting <code>start_index</code> (e.g., <code>array[:end_index])</code> slices from the beginning to <code>end_index</code>.</p>
 <p>Omitting <code>end_index</code> (e.g., <code>array[start_index:])</code> slices from <code>start_index</code> to the end of the array.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate intengers from 0 to the specified number (non-inclusive)</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>numbers <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">10</span>)) </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers)</span>
@@ -630,28 +643,32 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># First and second element</span></span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="dv">0</span>:<span class="dv">2</span>])  </span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># All elements (from 0 and on)</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="dv">0</span>:])</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Print last three elements</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="op">-</span><span class="dv">3</span>:]) </span>
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Every other element (specifying the total number of element)</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="dv">0</span>:<span class="dv">10</span>:<span class="dv">2</span>]) </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co"># All elements (from 0 and on)</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="dv">0</span>:])</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Every other element (without specifying the total number of elements)</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>:<span class="dv">2</span>])</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Every other element (specifying the total number of element)</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="dv">0</span>:<span class="dv">10</span>:<span class="dv">2</span>]) </span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 3 elements</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[:<span class="dv">3</span>])</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Every other element (without specifying the total number of elements)</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="dv">0</span>:<span class="op">-</span><span class="dv">1</span>:<span class="dv">2</span>])</span>
 <span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Slice from the 4th to the next-to-last element</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="dv">4</span>:<span class="op">-</span><span class="dv">1</span>]) </span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the first 3 elements</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[:<span class="dv">3</span>])</span>
 <span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the last item of the list</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="bu">len</span>(numbers)<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Slice from the 4th to the next-to-last element</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="dv">4</span>:<span class="op">-</span><span class="dv">1</span>]) </span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the last item of the list</span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(numbers[<span class="bu">len</span>(numbers)<span class="op">-</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 0
 [0, 1]
+[7, 8, 9]
 [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 [0, 2, 4, 6, 8]
 [0, 2, 4, 6, 8]
@@ -664,15 +681,14 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </section>
 <section id="syntax-for-indexing-and-slicing-two-dimensional-arrays" class="level2">
 <h2 class="anchored" data-anchor-id="syntax-for-indexing-and-slicing-two-dimensional-arrays">Syntax for indexing and slicing two-dimensional arrays</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Indexing a two-dimensional array</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>element <span class="op">=</span> array[row_index][column_index]</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Slicing a two-dimensional array (with step)</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>sub_array <span class="op">=</span> array[row_start:row_end:row_step, column_start:column_end:column_step]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Indexing a two-dimensional array</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>element <span class="op">=</span> array[row_index][column_index]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Slicing a two-dimensional array (with step)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>sub_array <span class="op">=</span> array[row_start:row_end:row_step, column_start:column_end:column_step]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Omitting <code>row_start</code> (e.g., <code>array[:row_end, :]</code>) slices from the beginning to <code>row_end</code> in all columns. Here “all columns” is represented by the <code>:</code> operator. Similarly you can use <code>:</code> to represent all rows.</p>
 <p>Omitting <code>row_end</code> (e.g., <code>array[row_start:, :]</code>) slices from <code>row_start</code> to the end in all columns.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Indexing and slicing a two-dimensional array</span></span>
@@ -694,7 +710,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
  [5 9 8 9 4]]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Solutions</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Top row</span></span>
@@ -702,41 +718,46 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">0</span>,:]) <span class="co"># Preferred</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[:<span class="dv">1</span>][<span class="dv">0</span>])</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">0</span>])</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Bottom row</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Bottom row'</span>)</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="op">-</span><span class="dv">1</span>,:]) <span class="co"># Preferred</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">4</span>,:]) <span class="co"># Requires knowing size of array in advance</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Right-most column</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Right-most column'</span>)</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[:,<span class="op">-</span><span class="dv">1</span>])</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Left-most column</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Left-most column'</span>)</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[:,<span class="dv">0</span>])</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Upper-right 3x3 matrix</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Upper 3x3 matrix'</span>)</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">0</span>:<span class="dv">3</span>,M.shape[<span class="dv">1</span>]<span class="op">-</span><span class="dv">3</span>:M.shape[<span class="dv">1</span>]])  <span class="co"># More versatile</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">0</span>:<span class="dv">3</span>,<span class="dv">2</span>:M.shape[<span class="dv">1</span>]])</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co"># This: M[0:3,2:1] will not work</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Bottom row</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Bottom row'</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="op">-</span><span class="dv">1</span>,:]) <span class="co"># Preferred</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">4</span>,:]) <span class="co"># Requires knowing size of array in advance</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Right-most column</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Right-most column'</span>)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[:,<span class="op">-</span><span class="dv">1</span>])</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Left-most column</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Left-most column'</span>)</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[:,<span class="dv">0</span>])</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Upper-right 3x3 matrix</span></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Upper 3x3 matrix'</span>)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">0</span>:<span class="dv">3</span>,M.shape[<span class="dv">1</span>]<span class="op">-</span><span class="dv">3</span>:M.shape[<span class="dv">1</span>]])  <span class="co"># More versatile</span></span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M[<span class="dv">0</span>:<span class="dv">3</span>,<span class="dv">2</span>:M.shape[<span class="dv">1</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Top row
 [5 0 3 3 7]
 [5 0 3 3 7]
 [5 0 3 3 7]
+
 Bottom row
 [5 9 8 9 4]
 [5 9 8 9 4]
 [5 9 8 9 4]
+
 Right-most column
 [7 4 1 1 4]
+
 Left-most column
 [5 9 7 6 5]
+
 Upper 3x3 matrix
 [[3 3 7]
  [5 2 4]
