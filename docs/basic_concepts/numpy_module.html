@@ -712,14 +712,14 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <p>We will start this tutorial by learning about some of the limitations of traditional Python lists. Then, the power of Numpy element-wise (or vectorized) computations will become evident. As much as I like agronomic examples, for the first few exercises I will use some trivial arrays of numbers to keep it simple.</p>
 <p>Vectorized or element-wise computations refer to operations that are performed on arrays (vectors, matrices) directly and simultaneously. Instead of processing elements one by one using loops, vectorized operations apply a single action to each element in the array without explicit iteration. This leads to more concise code and often improved performance. Both <code>vectorized</code> and <code>element-wise</code> temrs are correct and often are used interchangeably.</p>
 <p>Let’s begin by importing the Numpy module, so that we already have it for the entire tutorial.</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import numpy module</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt <span class="co"># We will need this for some figures</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="product-of-a-regular-list-by-a-scalar" class="level3">
 <h3 class="anchored" data-anchor-id="product-of-a-regular-list-by-a-scalar">Product of a regular list by a scalar</h3>
-<div class="cell" data-execution_count="63">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of elements</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -732,7 +732,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </section>
 <section id="product-of-two-regular-lists-with-the-same-shape" class="level3">
 <h3 class="anchored" data-anchor-id="product-of-two-regular-lists-with-the-same-shape">Product of two regular lists with the same shape</h3>
-<div class="cell" data-execution_count="64">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create list B, with the same size as A</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> [<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>]</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -746,7 +746,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </section>
 <section id="product-of-a-numpy-array-by-a-scalar" class="level3">
 <h3 class="anchored" data-anchor-id="product-of-a-numpy-array-by-a-scalar">Product of a Numpy array by a scalar</h3>
-<div class="cell" data-execution_count="65">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of elements</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>])</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -762,7 +762,8 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </section>
 <section id="product-of-two-numpy-arrays-with-the-same-shape" class="level3">
 <h3 class="anchored" data-anchor-id="product-of-two-numpy-arrays-with-the-same-shape">Product of two Numpy arrays with the same shape</h3>
-<div class="cell" data-execution_count="66">
+<p>Notice that the operation occurs for corresponding elements of each array.</p>
+<div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-define the previous arrays as numpy arrays</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>])</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.array([<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>])</span>
@@ -775,7 +776,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </section>
 <section id="other-operations-with-numpy-arrays" class="level3">
 <h3 class="anchored" data-anchor-id="other-operations-with-numpy-arrays">Other operations with Numpy arrays</h3>
-<div class="cell" data-execution_count="67">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A <span class="op">*</span> <span class="dv">3</span>)   <span class="co"># Vector times a scalar</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A <span class="op">+</span> B)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(A <span class="op">-</span> B)</span>
@@ -801,7 +802,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <h2 class="anchored" data-anchor-id="example-1-compute-soil-water-storage-for-a-single-field">Example 1: Compute soil water storage for a single field</h2>
 <p>Soil water storage directly influences plant growth and crop yield since it is an essential processes for transpiration and nutrient uptake. In irrigated cropping systems, monitoring of soil water storage is important for irrigation scheduling and effective water management and conservation.</p>
 <p>Assume a field that has a soil profile with five horizons, each measuring: <code>10, 20, 30, 30, and 30</code> cm in thickness (so about 1.2 m depth). The volumetric water content for each horizon was determined by soil moisture sensors located at the center of each horizon, hence providing an average moisture value of: <code>0.350, 0.280, 0.255, 0.210, 0.137</code> <span class="math inline">cm^3/cm^3</span>. Based on this information, compute the soil water storage for each soil horizon and the total for the entire soil profile. Recall that the volumetric water content represents the volume of water per unit volume of soil, so 0.350 <span class="math inline">cm^3/cm^3</span> is the same as 35% moisture by volume or by thickness of the soil horizon. How much irrigation water does a farmer need to add to reach a field capacity of 420 mm?</p>
-<div class="cell" data-execution_count="62">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define variables</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>theta_v <span class="op">=</span> np.array([<span class="fl">0.350</span>, <span class="fl">0.280</span>, <span class="fl">0.255</span>, <span class="fl">0.210</span>, <span class="fl">0.137</span>]) <span class="co"># cm^3/cm^3</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>depths <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">30</span>, <span class="dv">30</span>]) <span class="op">*</span> <span class="dv">10</span> <span class="co"># horizons in mm</span></span>
@@ -823,6 +824,7 @@ Total water storage in profile is: 271.6 mm
 Required irrigation: 148.4 mm</code></pre>
 </div>
 </div>
+<p>Since the water storage for the entire soil profile is the weighted sum of the volumetric water content by the thickness of each layer, we can also use the <code>dot</code> product:</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -838,28 +840,40 @@ Note
 <p><code>storage_per_layer = theta_v * depths</code> is a vector times another vector</p>
 </div>
 </div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dot product</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.dot(theta_v, depths), <span class="st">'mm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>271.6 mm</code></pre>
+</div>
+</div>
 </section>
 <section id="example-2-compute-soil-water-storage-for-multiple-fields" class="level2">
 <h2 class="anchored" data-anchor-id="example-2-compute-soil-water-storage-for-multiple-fields">Example 2: Compute soil water storage for multiple fields</h2>
 <p>Now imagine that we are managing three irrigated fields in the region? Assume that all the fields are nearby and have the same soil horizons, but farmers have different crops and irrigation strategies so they also have different soil moisture contents across the profile. What is the soil water storage of each field? How much water do we need to apply in each field to bring them back to field capacity?</p>
-<div class="cell" data-execution_count="63">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example soil moisture for the 5 horizons and three fields</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The first field is the same as in the previous exercise</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>theta_v <span class="op">=</span> np.array([[<span class="fl">0.350</span>, <span class="fl">0.280</span>, <span class="fl">0.255</span>, <span class="fl">0.210</span>, <span class="fl">0.137</span>],</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                    [<span class="fl">0.250</span>, <span class="fl">0.380</span>, <span class="fl">0.355</span>, <span class="fl">0.110</span>, <span class="fl">0.250</span>],</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                    [<span class="fl">0.150</span>, <span class="fl">0.180</span>, <span class="fl">0.155</span>, <span class="fl">0.110</span>, <span class="fl">0.320</span>]]) <span class="co"># cm^3/cm^3</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute storage for all horizons</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>storage_per_layer <span class="op">=</span> theta_v <span class="op">*</span> depths</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(storage_per_layer)</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>storage_profiles <span class="op">=</span> np.<span class="bu">sum</span>(storage, axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># axis=1 means add along columns</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(storage_profiles)</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Irrigation requirements</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>irrigation_req <span class="op">=</span> field_capacity <span class="op">-</span> storage_profiles</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Irrigation for each field:'</span>, irrigation_req, <span class="st">'mm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example soil moisture for the 5 horizons and three fields</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The first field is the same as in the previous exercise</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>theta_v <span class="op">=</span> np.array([[<span class="fl">0.350</span>, <span class="fl">0.280</span>, <span class="fl">0.255</span>, <span class="fl">0.210</span>, <span class="fl">0.137</span>],</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                    [<span class="fl">0.250</span>, <span class="fl">0.380</span>, <span class="fl">0.355</span>, <span class="fl">0.110</span>, <span class="fl">0.250</span>],</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                    [<span class="fl">0.150</span>, <span class="fl">0.180</span>, <span class="fl">0.155</span>, <span class="fl">0.110</span>, <span class="fl">0.320</span>]]) <span class="co"># cm^3/cm^3</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute storage for all horizons</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>storage_per_layer <span class="op">=</span> theta_v <span class="op">*</span> depths</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(storage_per_layer)</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>storage_profiles <span class="op">=</span> np.<span class="bu">sum</span>(storage_per_layer, axis<span class="op">=</span><span class="dv">1</span>) <span class="co"># axis=1 means add along columns</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively we can do the dot product</span></span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="co"># storage_profiles = np.dot(theta_v, depths)</span></span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Show storage values</span></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(storage_profiles)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Irrigation requirements</span></span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>irrigation_req <span class="op">=</span> field_capacity <span class="op">-</span> storage_profiles</span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Irrigation for each field:'</span>, irrigation_req, <span class="st">'mm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[ 35.   56.   76.5  63.   41.1]
  [ 25.   76.  106.5  33.   75. ]
@@ -872,29 +886,29 @@ Irrigation for each field: [148.4 104.5 193.5] mm</code></pre>
 <h3 class="anchored" data-anchor-id="example-3-determine-the-cec-of-a-soil">Example 3: Determine the CEC of a soil</h3>
 <p>The cation exchange capacity (CEC, meq/100 g of soil) of a soil is determined by the nature and amount of clay minerals and organic matter. Compute the CEC of a soil that has 32% clay and 3% organic matter. The clay fraction is represented by 30% kaolinite, 50% montmorillonite, and 20% vermiculite. The CEC for clay minerals and organic matter can be found in most soil fertility textbooks.</p>
 <div class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine percentage of each clay mineral</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>om <span class="op">=</span> np.array([<span class="dv">4</span>]) <span class="co"># percent</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>om_cec <span class="op">=</span> np.array([<span class="dv">200</span>]) <span class="co"># meq/100 g</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>clay <span class="op">=</span> <span class="dv">32</span> <span class="op">*</span> np.array([<span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">20</span>])<span class="op">/</span><span class="dv">100</span> <span class="co"># This is the % of each clay type</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>clay_cec <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">140</span>]) <span class="co"># meq/100 g</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the fractions and CEC together into a single aray</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>all_fractions <span class="op">=</span> np.concatenate((om, clay))<span class="op">/</span><span class="dv">100</span> <span class="co"># percent to fraction</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>all_cec <span class="op">=</span> np.concatenate((om_cec, clay_cec))</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(all_fractions)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(all_cec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Determine percentage of each clay mineral</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>om <span class="op">=</span> np.array([<span class="dv">4</span>]) <span class="co"># percent</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>om_cec <span class="op">=</span> np.array([<span class="dv">200</span>]) <span class="co"># meq/100 g</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>clay <span class="op">=</span> <span class="dv">32</span> <span class="op">*</span> np.array([<span class="dv">30</span>, <span class="dv">50</span>, <span class="dv">20</span>])<span class="op">/</span><span class="dv">100</span> <span class="co"># This is the % of each clay type</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>clay_cec <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">140</span>]) <span class="co"># meq/100 g</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the fractions and CEC together into a single aray</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>all_fractions <span class="op">=</span> np.concatenate((om, clay))<span class="op">/</span><span class="dv">100</span> <span class="co"># percent to fraction</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>all_cec <span class="op">=</span> np.concatenate((om_cec, clay_cec))</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(all_fractions)</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(all_cec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[0.04  0.096 0.16  0.064]
 [200  10 100 140]</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute soil CEC as the weighed-sum of its components</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>soil_cec <span class="op">=</span> np.<span class="bu">sum</span>(all_cec <span class="op">*</span> all_fractions)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The soil CEC is: </span><span class="sc">{</span>soil_cec<span class="sc">:.1f}</span><span class="ss"> meq/100 g of soil'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute soil CEC as the weighed-sum of its components</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>soil_cec <span class="op">=</span> np.<span class="bu">sum</span>(all_cec <span class="op">*</span> all_fractions)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The soil CEC is: </span><span class="sc">{</span>soil_cec<span class="sc">:.1f}</span><span class="ss"> meq/100 g of soil'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>The soil CEC is: 33.9 meq/100 g of soil</code></pre>
 </div>
@@ -918,9 +932,9 @@ Note
 <section id="create-arrays-with-specific-data-types" class="level3">
 <h3 class="anchored" data-anchor-id="create-arrays-with-specific-data-types">Create arrays with specific data types</h3>
 <div class="cell" data-execution_count="68">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An alternative by specifying the data type</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>], dtype<span class="op">=</span><span class="st">"int64"</span>))</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>], dtype<span class="op">=</span><span class="st">"float64"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># An alternative by specifying the data type</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>], dtype<span class="op">=</span><span class="st">"int64"</span>))</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>], dtype<span class="op">=</span><span class="st">"float64"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1 2 3 4]
 [1. 2. 3. 4.]</code></pre>
@@ -942,33 +956,33 @@ Note
 </section>
 <section id="operations-with-two-dimensional-arrays" class="level3">
 <h3 class="anchored" data-anchor-id="operations-with-two-dimensional-arrays">Operations with two-dimensional arrays</h3>
-<div class="cell" data-execution_count="69">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define arrays</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The values in M and v were arbitrarily selected</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co"># so that the operations result in round numbers for clarity. You can change them.</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.array([ [<span class="dv">10</span>,<span class="dv">2</span>,<span class="dv">1</span>], [<span class="dv">25</span>,<span class="dv">6</span>,<span class="dv">55</span>] ]) <span class="co"># 2D matrix</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="dv">1</span>]) <span class="co"># 1D vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define arrays</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># The values in M and v were arbitrarily selected</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># so that the operations result in round numbers for clarity. You can change them.</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>M <span class="op">=</span> np.array([ [<span class="dv">10</span>,<span class="dv">2</span>,<span class="dv">1</span>], [<span class="dv">25</span>,<span class="dv">6</span>,<span class="dv">55</span>] ]) <span class="co"># 2D matrix</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> np.array([<span class="fl">0.2</span>, <span class="fl">0.5</span>, <span class="dv">1</span>]) <span class="co"># 1D vector</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="70">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access Numpy array shape and size properties</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.shape) <span class="co"># rows and columns</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.size) <span class="co"># Total number of elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access Numpy array shape and size properties</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.shape) <span class="co"># rows and columns</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.size) <span class="co"># Total number of elements</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(2, 3)
 6</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Matrix by a scalar'</span>)</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M<span class="op">*</span><span class="dv">2</span>)</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Matrix by a vector with same number of columns'</span>)</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M <span class="op">*</span> v)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Matrix by matrix of the same size'</span>)</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M<span class="op">*</span>M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Element-wise multiplication</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Matrix by a scalar'</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M<span class="op">*</span><span class="dv">2</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Matrix by a vector with same number of columns'</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M <span class="op">*</span> v)</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Matrix by matrix of the same size'</span>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M<span class="op">*</span>M)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Matrix by a scalar
 [[ 20   4   2]
@@ -981,14 +995,15 @@ Matrix by matrix of the same size
  [ 625   36 3025]]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="72">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dot product (useful for linear algebra operations)</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Dot product operation'</span>)</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>np.dot(M,v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Dot product (useful for linear algebra operations)</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="co"># In this case the dot product is row-wise (sum of Matrix by a vector, see above)</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Dot product operation'</span>)</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>np.dot(M,v)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Dot product operation</code></pre>
 </div>
-<div class="cell-output cell-output-display" data-execution_count="72">
+<div class="cell-output cell-output-display" data-execution_count="21">
 <pre><code>array([ 4., 63.])</code></pre>
 </div>
 </div>
@@ -996,17 +1011,17 @@ Matrix by matrix of the same size
 <section id="reshape-arrays" class="level3">
 <h3 class="anchored" data-anchor-id="reshape-arrays">Reshape arrays</h3>
 <div class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape M array (original 2 rows 3 columns)</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape to 3 rows and 2 columns</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.reshape(<span class="dv">3</span>,<span class="dv">2</span>))</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape to 1 row and 0 columns (1D array)</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.reshape(<span class="dv">6</span>,<span class="dv">1</span>))</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.reshape(<span class="dv">6</span>,<span class="dv">1</span>).shape) <span class="co"># Check the shape</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Similar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape M array (original 2 rows 3 columns)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape to 3 rows and 2 columns</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.reshape(<span class="dv">3</span>,<span class="dv">2</span>))</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape to 1 row and 0 columns (1D array)</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.reshape(<span class="dv">6</span>,<span class="dv">1</span>))</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(M.reshape(<span class="dv">6</span>,<span class="dv">1</span>).shape) <span class="co"># Check the shape</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Similar</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[10  2  1]
  [25  6 55]]
@@ -1027,22 +1042,22 @@ Matrix by matrix of the same size
 <section id="numpy-boolean-operations" class="level2">
 <h2 class="anchored" data-anchor-id="numpy-boolean-operations">Numpy boolean operations</h2>
 <div class="cell" data-execution_count="74">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>expr1 <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]) <span class="op">==</span> <span class="dv">3</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expr1)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>expr2 <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]) <span class="op">==</span> <span class="dv">2</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>expr1 <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]) <span class="op">==</span> <span class="dv">3</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expr1)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>expr2 <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]) <span class="op">==</span> <span class="dv">2</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[False False  True False]
 [False  True False False]</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elements in both vectors need to match to be considered True</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expr1 <span class="op">&amp;</span> expr2) <span class="co"># print(expr1 and expr2)</span></span>
-<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It is sufficient with a single match in one of the vectors</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expr1 <span class="op">|</span> expr2) <span class="co"># print(expr1 or expr2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elements in both vectors need to match to be considered True</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expr1 <span class="op">&amp;</span> expr2) <span class="co"># print(expr1 and expr2)</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="co"># It is sufficient with a single match in one of the vectors</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(expr1 <span class="op">|</span> expr2) <span class="co"># print(expr1 or expr2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[False False False False]
 [False  True  True False]</code></pre>
@@ -1053,8 +1068,8 @@ Matrix by matrix of the same size
 <h2 class="anchored" data-anchor-id="flattening">Flattening</h2>
 <p>Sometimes we want to serialize our 2D or 3D matrix into a long one-dimensional vector. This operation is called “flattening” and Numpy has a specific method to carry this operation that is called <em>flattening</em> and array.</p>
 <div class="cell" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flatten two-dimensional array M</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>M.flatten()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Flatten two-dimensional array M</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>M.flatten()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
 <pre><code>array([10,  2,  1, 25,  6, 55])</code></pre>
 </div>
@@ -1064,77 +1079,77 @@ Matrix by matrix of the same size
 <h2 class="anchored" data-anchor-id="use-the-numpy-random-module-to-create-a-random-image">Use the Numpy random module to create a random image</h2>
 <p>To show some of the power of working with Numpy arrays we will create a random image. Images in the RGB (red-green-blue) color space are represented by three matrices that encode the color of each pixel. Colors are represented with an integer between 0 and 255. This is called an 8-bit integer, and there are only 2^8 = 256 possible integers. Because each image has three bands (one for red, one for green, and one for blue) there is a total of 17 million (256x256x256 or 256^3) possible colors for each pixel.</p>
 <div class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define image size (keep it small so that you can see each pixel)</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> <span class="dv">20</span></span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> <span class="dv">30</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility.</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Everyone will obtain the same random numbers</span></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>) </span>
-<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create image bands</span></span>
-<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a><span class="co"># uint8 means unsigned interger of 8-bits</span></span>
-<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">255</span>, [rows,cols], dtype<span class="op">=</span><span class="st">'uint8'</span>) </span>
-<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">255</span>, [rows,cols], dtype<span class="op">=</span><span class="st">'uint8'</span>)</span>
-<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">255</span>, [rows,cols], dtype<span class="op">=</span><span class="st">'uint8'</span>)</span>
-<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack image bands (axis=2 means along the third dimension, or on top of each other)</span></span>
-<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>RGB <span class="op">=</span> np.stack( (R,G,B), axis<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Image size:'</span>, RGB.shape) <span class="co"># Shape of the RGB variable</span></span>
-<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Display image using the matplotlib library (we imported this at the top)</span></span>
-<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
-<span id="cb38-21"><a href="#cb38-21" aria-hidden="true" tabindex="-1"></a>plt.imshow(RGB)</span>
-<span id="cb38-22"><a href="#cb38-22" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>) <span class="co"># Mute this line to see what the image looks like without it.</span></span>
-<span id="cb38-23"><a href="#cb38-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define image size (keep it small so that you can see each pixel)</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> <span class="dv">20</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> <span class="dv">30</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Set seed for reproducibility.</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Everyone will obtain the same random numbers</span></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>) </span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create image bands</span></span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="co"># uint8 means unsigned interger of 8-bits</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">255</span>, [rows,cols], dtype<span class="op">=</span><span class="st">'uint8'</span>) </span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">255</span>, [rows,cols], dtype<span class="op">=</span><span class="st">'uint8'</span>)</span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.random.randint(<span class="dv">0</span>, <span class="dv">255</span>, [rows,cols], dtype<span class="op">=</span><span class="st">'uint8'</span>)</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Stack image bands (axis=2 means along the third dimension, or on top of each other)</span></span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>RGB <span class="op">=</span> np.stack( (R,G,B), axis<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Image size:'</span>, RGB.shape) <span class="co"># Shape of the RGB variable</span></span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Display image using the matplotlib library (we imported this at the top)</span></span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">8</span>))</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>plt.imshow(RGB)</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>plt.axis(<span class="st">'off'</span>) <span class="co"># Mute this line to see what the image looks like without it.</span></span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Image size: (20, 30, 3)</code></pre>
 </div>
 <div class="cell-output cell-output-display">
-<p><img src="numpy_module_files/figure-html/cell-21-output-2.png" class="img-fluid"></p>
+<p><img src="numpy_module_files/figure-html/cell-22-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="numpy-handy-functions" class="level2">
 <h2 class="anchored" data-anchor-id="numpy-handy-functions">Numpy handy functions</h2>
 <div class="cell" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a range of integers</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co"># np.arange(start,stop,step)</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'range()'</span>)</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10</span>))</span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate linear range</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="co"># numpy.linspace(start, stop, num=50, endpoint=True)</span></span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'linspace()'</span>)</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>))</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Array of zeros</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'zeros()'</span>)</span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.zeros([<span class="dv">5</span>,<span class="dv">3</span>]))</span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Array of ones</span></span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ones()'</span>)</span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.ones([<span class="dv">4</span>,<span class="dv">3</span>]))</span>
-<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Array of NaN values</span></span>
-<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
-<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'full()'</span>)</span>
-<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.full([<span class="dv">4</span>,<span class="dv">3</span>], np.nan)) <span class="co"># This also worksprint(np.ones([4,3])*np.nan)</span></span>
-<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Meshgrid (first create 1D vectors, then create a 2D mesh)</span></span>
-<span id="cb40-28"><a href="#cb40-28" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb40-29"><a href="#cb40-29" aria-hidden="true" tabindex="-1"></a>lat <span class="op">=</span> np.linspace(<span class="dv">36</span>, <span class="dv">40</span>, N)</span>
-<span id="cb40-30"><a href="#cb40-30" aria-hidden="true" tabindex="-1"></a>lon <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">102</span>, <span class="op">-</span><span class="dv">98</span>, N)</span>
-<span id="cb40-31"><a href="#cb40-31" aria-hidden="true" tabindex="-1"></a>LAT,LON <span class="op">=</span> np.meshgrid(lat,lon)</span>
-<span id="cb40-32"><a href="#cb40-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
-<span id="cb40-33"><a href="#cb40-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Grid of latitudes'</span>)</span>
-<span id="cb40-34"><a href="#cb40-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(LAT)</span>
-<span id="cb40-35"><a href="#cb40-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
-<span id="cb40-36"><a href="#cb40-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Grid of longitudes'</span>)</span>
-<span id="cb40-37"><a href="#cb40-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(LON)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a range of integers</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="co"># np.arange(start,stop,step)</span></span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'range()'</span>)</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.arange(<span class="dv">0</span>,<span class="dv">100</span>,<span class="dv">10</span>))</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate linear range</span></span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a><span class="co"># numpy.linspace(start, stop, num=50, endpoint=True)</span></span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'linspace()'</span>)</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">5</span>))</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Array of zeros</span></span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'zeros()'</span>)</span>
+<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.zeros([<span class="dv">5</span>,<span class="dv">3</span>]))</span>
+<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Array of ones</span></span>
+<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'ones()'</span>)</span>
+<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.ones([<span class="dv">4</span>,<span class="dv">3</span>]))</span>
+<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Array of NaN values</span></span>
+<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'full()'</span>)</span>
+<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.full([<span class="dv">4</span>,<span class="dv">3</span>], np.nan)) <span class="co"># This also worksprint(np.ones([4,3])*np.nan)</span></span>
+<span id="cb42-26"><a href="#cb42-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-27"><a href="#cb42-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Meshgrid (first create 1D vectors, then create a 2D mesh)</span></span>
+<span id="cb42-28"><a href="#cb42-28" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb42-29"><a href="#cb42-29" aria-hidden="true" tabindex="-1"></a>lat <span class="op">=</span> np.linspace(<span class="dv">36</span>, <span class="dv">40</span>, N)</span>
+<span id="cb42-30"><a href="#cb42-30" aria-hidden="true" tabindex="-1"></a>lon <span class="op">=</span> np.linspace(<span class="op">-</span><span class="dv">102</span>, <span class="op">-</span><span class="dv">98</span>, N)</span>
+<span id="cb42-31"><a href="#cb42-31" aria-hidden="true" tabindex="-1"></a>LAT,LON <span class="op">=</span> np.meshgrid(lat,lon)</span>
+<span id="cb42-32"><a href="#cb42-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb42-33"><a href="#cb42-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Grid of latitudes'</span>)</span>
+<span id="cb42-34"><a href="#cb42-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(LAT)</span>
+<span id="cb42-35"><a href="#cb42-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">''</span>)</span>
+<span id="cb42-36"><a href="#cb42-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Grid of longitudes'</span>)</span>
+<span id="cb42-37"><a href="#cb42-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(LON)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>range()
 [ 0 10 20 30 40 50 60 70 80 90]
@@ -1181,50 +1196,50 @@ Grid of longitudes
 <h2 class="anchored" data-anchor-id="create-a-noisy-wave">Create a noisy wave</h2>
 <p>With Numpy we can easily implement models, create timeseries, add noise, and perform trigonometric operations. In this example we will create a synthetic timeseries of air temperature using a cosine wave. To make this more realistic we will also add some noise.</p>
 <div class="cell" data-execution_count="90">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for reproducibility</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>) </span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define wave inputs</span></span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>T_avg <span class="op">=</span> <span class="dv">15</span> <span class="co"># Annual average in Celsius</span></span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="dv">10</span> <span class="co"># Annual amplitude [Celsius]</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>doy <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">366</span>) <span class="co"># Vector of days of the year</span></span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate x and y axis</span></span>
-<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> doy<span class="op">/</span><span class="dv">365</span> <span class="co"># Convert doy into pi-radians </span></span>
-<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> T_avg <span class="op">-</span> A<span class="op">*</span>np.cos(x) <span class="co"># Sine wave</span></span>
-<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add random noise</span></span>
-<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>noise <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">3</span>, x.size)  <span class="co"># White noise having zero mean</span></span>
-<span id="cb42-15"><a href="#cb42-15" aria-hidden="true" tabindex="-1"></a>y_noisy <span class="op">=</span> y <span class="op">+</span> noise</span>
-<span id="cb42-16"><a href="#cb42-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb42-17"><a href="#cb42-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize wave using Matplotlib</span></span>
-<span id="cb42-18"><a href="#cb42-18" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>))</span>
-<span id="cb42-19"><a href="#cb42-19" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Noisy temperature timeseries'</span>)</span>
-<span id="cb42-20"><a href="#cb42-20" aria-hidden="true" tabindex="-1"></a>plt.plot(doy, y_noisy, <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">"Wave with noise"</span>)</span>
-<span id="cb42-21"><a href="#cb42-21" aria-hidden="true" tabindex="-1"></a>plt.plot(doy, y, <span class="st">'-r'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Wave without noise"</span>)</span>
-<span id="cb42-22"><a href="#cb42-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Day of the Year'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb42-23"><a href="#cb42-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Air Temperature (Celsius)'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb42-24"><a href="#cb42-24" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb42-25"><a href="#cb42-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set random seed for reproducibility</span></span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">1</span>) </span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define wave inputs</span></span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>T_avg <span class="op">=</span> <span class="dv">15</span> <span class="co"># Annual average in Celsius</span></span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="dv">10</span> <span class="co"># Annual amplitude [Celsius]</span></span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>doy <span class="op">=</span> np.arange(<span class="dv">1</span>,<span class="dv">366</span>) <span class="co"># Vector of days of the year</span></span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate x and y axis</span></span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> doy<span class="op">/</span><span class="dv">365</span> <span class="co"># Convert doy into pi-radians </span></span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> T_avg <span class="op">-</span> A<span class="op">*</span>np.cos(x) <span class="co"># Sine wave</span></span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add random noise</span></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>noise <span class="op">=</span> np.random.normal(<span class="dv">0</span>, <span class="dv">3</span>, x.size)  <span class="co"># White noise having zero mean</span></span>
+<span id="cb44-15"><a href="#cb44-15" aria-hidden="true" tabindex="-1"></a>y_noisy <span class="op">=</span> y <span class="op">+</span> noise</span>
+<span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize wave using Matplotlib</span></span>
+<span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>))</span>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Noisy temperature timeseries'</span>)</span>
+<span id="cb44-20"><a href="#cb44-20" aria-hidden="true" tabindex="-1"></a>plt.plot(doy, y_noisy, <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">"Wave with noise"</span>)</span>
+<span id="cb44-21"><a href="#cb44-21" aria-hidden="true" tabindex="-1"></a>plt.plot(doy, y, <span class="st">'-r'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">"Wave without noise"</span>)</span>
+<span id="cb44-22"><a href="#cb44-22" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Day of the Year'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb44-23"><a href="#cb44-23" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Air Temperature (Celsius)'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb44-24"><a href="#cb44-24" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb44-25"><a href="#cb44-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="numpy_module_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+<p><img src="numpy_module_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <section id="descriptive-stats" class="level3">
 <h3 class="anchored" data-anchor-id="descriptive-stats">Descriptive stats</h3>
 <p>To finish our tutorial, let’s inpsect Numpy methods to obtain some descriptive statistics for the wave we created earlier.</p>
 <div class="cell" data-execution_count="86">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive stats</span></span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean:'</span>, y.mean()) <span class="co"># Arithmetic average</span></span>
-<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Standard deviation:'</span>, y.std()) <span class="co"># Standard deviation</span></span>
-<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Variance:'</span>, y.var()) <span class="co"># Variance</span></span>
-<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Median:'</span>, np.median(y)) <span class="co"># Median</span></span>
-<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Minimum:'</span>, y.<span class="bu">min</span>()) <span class="co"># Minimum</span></span>
-<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Maximum:'</span>, y.<span class="bu">max</span>()) <span class="co"># Maximum</span></span>
-<span id="cb43-8"><a href="#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Index of minimum:'</span>, y.argmin()) <span class="co"># Position of minimum value</span></span>
-<span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Index of maximum:'</span>, y.argmax()) <span class="co"># Position of maximum value</span></span>
-<span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'50th percentile:'</span>, np.percentile(y, <span class="dv">50</span>)) <span class="co"># 50th percentile (should equal to the median)</span></span>
-<span id="cb43-11"><a href="#cb43-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'5th and 95th percentiles:'</span>, np.percentile(y, [<span class="dv">5</span>,<span class="dv">95</span>])) <span class="co"># 5th and 95th percentile</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descriptive stats</span></span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean:'</span>, y.mean()) <span class="co"># Arithmetic average</span></span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Standard deviation:'</span>, y.std()) <span class="co"># Standard deviation</span></span>
+<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Variance:'</span>, y.var()) <span class="co"># Variance</span></span>
+<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Median:'</span>, np.median(y)) <span class="co"># Median</span></span>
+<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Minimum:'</span>, y.<span class="bu">min</span>()) <span class="co"># Minimum</span></span>
+<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Maximum:'</span>, y.<span class="bu">max</span>()) <span class="co"># Maximum</span></span>
+<span id="cb45-8"><a href="#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Index of minimum:'</span>, y.argmin()) <span class="co"># Position of minimum value</span></span>
+<span id="cb45-9"><a href="#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Index of maximum:'</span>, y.argmax()) <span class="co"># Position of maximum value</span></span>
+<span id="cb45-10"><a href="#cb45-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'50th percentile:'</span>, np.percentile(y, <span class="dv">50</span>)) <span class="co"># 50th percentile (should equal to the median)</span></span>
+<span id="cb45-11"><a href="#cb45-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'5th and 95th percentiles:'</span>, np.percentile(y, [<span class="dv">5</span>,<span class="dv">95</span>])) <span class="co"># 5th and 95th percentile</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Mean: 15.0
 Standard deviation: 7.0710678118654755
