@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Andres Patrignani and Joaquin Peraza">
+<meta name="dcterms.date" content="2024-01-26">
+<meta name="keywords" content="gee, time series, vegetation index">
+
+<title>PyNotes in Agriscience - 69&nbsp; Time series at a point</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../gee/image_for_an_area.html" rel="next">
+<link href="../gee/value_at_a_point.html" rel="prev">
+<link href="../favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-N9033JNDWZ"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../gee/value_at_a_point.html">GOOGLE EARTH ENGINE</a></li><li class="breadcrumb-item"><a href="../gee/time_series_at_a_point.html"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Time series at a point</span></a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">PyNotes in Agriscience</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/soilwater/pynotes-agriscience" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../PyNotes-in-Agriscience.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Preface</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">GETTING STARTED</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/inspiration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Inspiration</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/reproducible_research.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Reproducible Research</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/coding_guidelines.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Coding Guidelines</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/installing_software.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Installing packages</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/terminal_commands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Useful Terminal Commands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/git_commands.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Useful Git commands</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/my_first_repo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">First Github repository</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/markdown_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Markdown basics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/latex_equations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">LaTeX equations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../markdown/alt_python_libraries.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Python libraries</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">BASIC CONCEPTS</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/basic_operations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Basic operations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/import_modules.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Import modules</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Data types</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/data_structures.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Data structures</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/dates_and_times.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Working with dates and times</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/indexing_and_slicing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Indexing and slicing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/if_statement.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">If statements</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/lambda_functions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Lambda functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/inputs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Inputs</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/for_loop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">For loop</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/list_comprehensions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">List comprehensions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/while_loop.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">While loop</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/directory_navigation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Directory navigation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/objects_and_classes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Objects and classes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/error_handling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Error handling</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/numpy_module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Numpy module</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/pandas_module.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Pandas module</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Plotting</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/widgets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">31</span>&nbsp; <span class="chapter-title">Widgets</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../basic_concepts/sql_database.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">32</span>&nbsp; <span class="chapter-title">SQLite Database</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">EXERCISES</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/meteogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Meteogram</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/group_least_variance.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Group with least variance</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/random_plots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Random plot generator</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/random_walk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Particle Random Walk</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/curve_number.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Runoff</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/mixing_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Mixing problems</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/mass_volume_relationships.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Mass-volume relationships</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/soil_textural_class.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Soil textural classes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/distribution_daily_precipitation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">41</span>&nbsp; <span class="chapter-title">Distribution daily precipitation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/high_resolution_rainfall_events.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">42</span>&nbsp; <span class="chapter-title">High-resolution rainfall events</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/first_and_last_frost.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">43</span>&nbsp; <span class="chapter-title">First and last frost</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/evapotranspiration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">44</span>&nbsp; <span class="chapter-title">Reference evapotranspiration</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/thermal_time.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Growing degree days</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/central_dogma.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Central dogma</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/error_metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Error metrics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/anscombe_quartet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">48</span>&nbsp; <span class="chapter-title">Anscombe’s quartet</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/neutron_probe_calibration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">49</span>&nbsp; <span class="chapter-title">Calibration neutron probe</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/proctor_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">50</span>&nbsp; <span class="chapter-title">Proctor test</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/optimal_nitrogen_rate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">51</span>&nbsp; <span class="chapter-title">Optimal nitrogen rate</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/maximum_return_to_nitrogen.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">52</span>&nbsp; <span class="chapter-title">Maximum return to nitrogen application</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/frontier_function.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Frontier production functions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/soil_water_storage.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">Profile water storage</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/plant_available_water.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">Plant Available Water</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/photoperiod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">56</span>&nbsp; <span class="chapter-title">Photoperiod</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/solar_radiation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Solar Radiation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/wheat_potential_yield.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Modeling wheat yield potential</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/soil_temperature_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">Soil Temperature Model</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/soil_water_retention_curve.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">60</span>&nbsp; <span class="chapter-title">Soil water retention curves</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/count_seeds.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">61</span>&nbsp; <span class="chapter-title">Counting seeds</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/canopy_cover.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">62</span>&nbsp; <span class="chapter-title">Canopy cover</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/soil_moisture_monitoring_stations.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">63</span>&nbsp; <span class="chapter-title">Soil moisture monitoring stations</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/field_random_samples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">64</span>&nbsp; <span class="chapter-title">Field random samples</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/yield_monitor_clean.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">65</span>&nbsp; <span class="chapter-title">Cleaning yield monitor data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/yield_monitor_zones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">66</span>&nbsp; <span class="chapter-title">Management zones yield monitor</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/largest_empty_circle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">67</span>&nbsp; <span class="chapter-title">Largest empty circle</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">GOOGLE EARTH ENGINE</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../gee/value_at_a_point.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">GEE Value at a point</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../gee/time_series_at_a_point.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Time series at a point</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../gee/image_for_an_area.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">70</span>&nbsp; <span class="chapter-title">Image for an area</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../gee/publication_quality_maps.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">71</span>&nbsp; <span class="chapter-title">Publication quality maps</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#example-1-tallgrass-prairie-vegetation-index" id="toc-example-1-tallgrass-prairie-vegetation-index" class="nav-link active" data-scroll-target="#example-1-tallgrass-prairie-vegetation-index">Example 1: Tallgrass prairie vegetation index</a></li>
+  <li><a href="#example-2-drought-index" id="toc-example-2-drought-index" class="nav-link" data-scroll-target="#example-2-drought-index">Example 2: Drought index</a></li>
+  <li><a href="#example-3-irrigated-vs-rainfed-corn-vegetation-index" id="toc-example-3-irrigated-vs-rainfed-corn-vegetation-index" class="nav-link" data-scroll-target="#example-3-irrigated-vs-rainfed-corn-vegetation-index">Example 3: Irrigated vs rainfed corn vegetation index</a></li>
+  <li><a href="#example-4-interactive-selection" id="toc-example-4-interactive-selection" class="nav-link" data-scroll-target="#example-4-interactive-selection">Example 4: Interactive selection</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/gee/time_series_at_a_point.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">69</span>&nbsp; <span class="chapter-title">Time series at a point</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Andres Patrignani and Joaquin Peraza </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 26, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="cell" data-execution_count="100">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import modules</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ee</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Modules required for example 4</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> folium</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> clipboard <span class="co"># !pip install clipboard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Trigger the authentication flow.</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>ee.Authenticate()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the library.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>ee.Initialize()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p>To authorize access needed by Earth Engine, open the following
+        URL in a web browser and follow the instructions:</p>
+        <p><a href="https://code.earthengine.google.com/client-auth?scopes=https%3A//www.googleapis.com/auth/earthengine%20https%3A//www.googleapis.com/auth/devstorage.full_control&amp;request_id=P-pm9JwvPI9JrrUCqyrx0HBONfe6VRBu3CxqCwsAnU4&amp;tc=fymgoqAXP1QMsiFk6G7bxyoTaOG8_HkZEO0NbJXmGq0&amp;cc=Te9Wk0pXH4HPPz7abojQQU0tsuT3YnZWyXyDt0DqHtU">https://code.earthengine.google.com/client-auth?scopes=https%3A//www.googleapis.com/auth/earthengine%20https%3A//www.googleapis.com/auth/devstorage.full_control&amp;request_id=P-pm9JwvPI9JrrUCqyrx0HBONfe6VRBu3CxqCwsAnU4&amp;tc=fymgoqAXP1QMsiFk6G7bxyoTaOG8_HkZEO0NbJXmGq0&amp;cc=Te9Wk0pXH4HPPz7abojQQU0tsuT3YnZWyXyDt0DqHtU</a></p>
+        <p>The authorization workflow will generate a code, which you should paste in the box below.</p>
+        
+</div>
+<div class="cell-output cell-output-stdin">
+<pre><code>Enter verification code:  4/1AfJohXnteboQCw1LwQ2Zkosx8yBKXZYYg2cIf0vtEmK42c5A1Z8ExuFoS-k</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Successfully saved authorization token.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function to create dataframe from GEE data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> array_to_df(arr):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function to convert list into dataframe"""</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame(arr[<span class="dv">1</span>:])</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    df.columns <span class="op">=</span> arr[<span class="dv">0</span>]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'time'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'time'</span>], unit<span class="op">=</span><span class="st">'ms'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="example-1-tallgrass-prairie-vegetation-index" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-tallgrass-prairie-vegetation-index">Example 1: Tallgrass prairie vegetation index</h2>
+<p>Retrive and plot the enhanced vegetation index (EVI) for a point under grassland vegetation at the Konza Prairie</p>
+<p><strong>Product</strong>: <a href="../MCD43A4_006_EVIhttps://developers.google.com/earth-engine/datasets/catalog/MODIS_MCD43A4_006_EVI?hl=en">MODIS</a></p>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get collection for Modis 16-day</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>MCD43A4 <span class="op">=</span> ee.ImageCollection(<span class="st">'MODIS/MCD43A4_006_EVI'</span>).filterDate(<span class="st">'2021-01-01'</span>,<span class="st">'2021-12-31'</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>EVI <span class="op">=</span> MCD43A4.select(<span class="st">'EVI'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this line to explore dataset details (output is long!)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>pprint(EVI.getInfo())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define point of interest</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>konza_point <span class="op">=</span> ee.Geometry.Point([<span class="op">-</span><span class="fl">96.556316</span>, <span class="fl">39.084535</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get data for region</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>konza_evi <span class="op">=</span> EVI.getRegion(konza_point, scale<span class="op">=</span><span class="dv">1</span>).getInfo()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this line to inspect retrieved data (output is long!)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>pprint(konza_evi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert array into dataframe</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df_konza <span class="op">=</span> array_to_df(konza_evi)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Save dataframe as a .CSV file</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># df.to_csv('modis_evi.csv', index=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure to visualize time series</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'EVI Konza 2021'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>plt.plot(df_konza[<span class="st">'time'</span>], df_konza[<span class="st">'EVI'</span>], linestyle<span class="op">=</span><span class="st">'-'</span>, </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>         linewidth<span class="op">=</span><span class="dv">1</span>, marker<span class="op">=</span><span class="st">'o'</span>, color<span class="op">=</span><span class="st">'green'</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Date'</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'EVI'</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.savefig('evi_figure.png', dpi=300)</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="time_series_at_a_point_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="example-2-drought-index" class="level2">
+<h2 class="anchored" data-anchor-id="example-2-drought-index">Example 2: Drought index</h2>
+<p>Drought can be represented by a variety of indices, including soil moisture, potential atmopsheric demand, days without measurable precipitation, and indices that combine one or more of these variables. The Evaporative Demand Drought Index (EDDI) is inteded to represent the potential for drought (rather than the actual occurrence of drought).</p>
+<p>In this exercise we will compare drought conditions for eastern and western Kansas during 2021 and 2022.</p>
+<p>Product: <a href="https://developers.google.com/earth-engine/datasets/catalog/GRIDMET_DROUGHT">GRIDMET DROUGHT</a></p>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define locations</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>eastern_ks <span class="op">=</span> ee.Geometry.Point([<span class="op">-</span><span class="fl">95.317201</span>, <span class="fl">38.588548</span>]) <span class="co"># Near Ottawa, KS</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>western_ks <span class="op">=</span> ee.Geometry.Point([<span class="op">-</span><span class="fl">101.721117</span>, <span class="fl">38.517258</span>]) <span class="co"># Near Tribune, KS</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load EDDI product</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>gridmet_drought <span class="op">=</span> ee.ImageCollection(<span class="st">"GRIDMET/DROUGHT"</span>).filterDate(<span class="st">'2021-01-01'</span>,<span class="st">'2022-12-31'</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>eddi <span class="op">=</span> gridmet_drought.select(<span class="st">'eddi14d'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get eddie for points</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>eastern_eddi <span class="op">=</span> eddi.getRegion(eastern_ks, scale<span class="op">=</span><span class="dv">1</span>).getInfo()</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>western_eddi <span class="op">=</span> eddi.getRegion(western_ks, scale<span class="op">=</span><span class="dv">1</span>).getInfo()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore output</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>eastern_eddi[<span class="dv">0</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>[['id', 'longitude', 'latitude', 'time', 'eddi14d'],
+ ['20210105',
+  -95.31720298383848,
+  38.588547875926515,
+  1609826400000,
+  -0.029999999329447746],
+ ['20210110',
+  -95.31720298383848,
+  38.588547875926515,
+  1610258400000,
+  -1.0099999904632568]]</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create dataframe for each point</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>df_eastern <span class="op">=</span> array_to_df(eastern_eddi)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>df_western <span class="op">=</span> array_to_df(western_eddi)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Display a few rows</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>df_eastern.head()</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Save data to a comma-separated value file</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co"># df.to_csv('eddi_14_day.csv', index=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="23">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">longitude</th>
+<th data-quarto-table-cell-role="th">latitude</th>
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">eddi14d</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>20210105</td>
+<td>-95.317203</td>
+<td>38.588548</td>
+<td>2021-01-05 06:00:00</td>
+<td>-0.03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>20210110</td>
+<td>-95.317203</td>
+<td>38.588548</td>
+<td>2021-01-10 06:00:00</td>
+<td>-1.01</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>20210115</td>
+<td>-95.317203</td>
+<td>38.588548</td>
+<td>2021-01-15 06:00:00</td>
+<td>-0.03</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>20210120</td>
+<td>-95.317203</td>
+<td>38.588548</td>
+<td>2021-01-20 06:00:00</td>
+<td>0.39</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>20210125</td>
+<td>-95.317203</td>
+<td>38.588548</td>
+<td>2021-01-25 06:00:00</td>
+<td>0.39</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="95">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure to compare EDDI for both points</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'EDDI Kansas 2021-2022'</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.plot(df_eastern[<span class="st">'time'</span>], df_eastern[<span class="st">'eddi14d'</span>], linestyle<span class="op">=</span><span class="st">'-'</span>, color<span class="op">=</span><span class="st">'navy'</span>, label<span class="op">=</span><span class="st">'Eastern KS'</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df_western[<span class="st">'time'</span>], df_western[<span class="st">'eddi14d'</span>], linestyle<span class="op">=</span><span class="st">'-'</span>, color<span class="op">=</span><span class="st">'tomato'</span>, label<span class="op">=</span><span class="st">'Western KS'</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'14-day EDDI'</span>, size<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="time_series_at_a_point_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="94">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute difference. If negative, that means that drought potential is greater in</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># western Kansas</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'EDDI Difference easter-western Kansas'</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df_eastern[<span class="st">'time'</span>], df_eastern[<span class="st">'eddi14d'</span>]<span class="op">-</span>df_western[<span class="st">'eddi14d'</span>], linestyle<span class="op">=</span><span class="st">'-'</span>, color<span class="op">=</span><span class="st">'navy'</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>plt.axhline(<span class="dv">0</span>, linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'14-day EDDI'</span>, size<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="time_series_at_a_point_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="example-3-irrigated-vs-rainfed-corn-vegetation-index" class="level2">
+<h2 class="anchored" data-anchor-id="example-3-irrigated-vs-rainfed-corn-vegetation-index">Example 3: Irrigated vs rainfed corn vegetation index</h2>
+<div class="cell" data-execution_count="83">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define points</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> {<span class="st">'latitude'</span>: [<span class="fl">38.7640</span>, <span class="fl">38.7628</span>, <span class="fl">38.7787</span>, <span class="fl">38.7642</span>, <span class="fl">38.7162</span>, <span class="fl">38.7783</span>],</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">'longitude'</span>:[<span class="op">-</span><span class="fl">101.8946</span>, <span class="op">-</span><span class="fl">101.8069</span>, <span class="op">-</span><span class="fl">101.6937</span>, <span class="op">-</span><span class="fl">101.9922</span>, <span class="op">-</span><span class="fl">101.8284</span>, <span class="op">-</span><span class="fl">101.9919</span>],</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">'irrigated'</span>:[<span class="va">True</span>, <span class="va">True</span>, <span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">False</span>]}</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="83">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">latitude</th>
+<th data-quarto-table-cell-role="th">longitude</th>
+<th data-quarto-table-cell-role="th">irrigated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>38.7640</td>
+<td>-101.8946</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>38.7628</td>
+<td>-101.8069</td>
+<td>True</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>38.7787</td>
+<td>-101.6937</td>
+<td>True</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>38.7642</td>
+<td>-101.9922</td>
+<td>False</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>38.7162</td>
+<td>-101.8284</td>
+<td>False</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="88">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get product</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>MOD13Q1 <span class="op">=</span> ee.ImageCollection(<span class="st">"MODIS/061/MOD13Q1"</span>).filterDate(ee.Date(<span class="st">"2022-04-01"</span>),ee.Date(<span class="st">"2022-11-15"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Since in this particular exercise we have multiple locations, one simple solution is to iterate over each point and request the time series of NDVI.</p>
+<div class="cell" data-execution_count="89">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over each point and retrieve NDVI</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>ndvi<span class="op">=</span>{}</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k, row <span class="kw">in</span> df.iterrows():</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>    point <span class="op">=</span> ee.Geometry.Point(row[<span class="st">'longitude'</span>], row[<span class="st">'latitude'</span>])</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> MOD13Q1.select(<span class="st">'NDVI'</span>).getRegion(point, <span class="fl">0.01</span>).getInfo()</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>    result_in_colums <span class="op">=</span> np.transpose(result)</span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>    ndvi[<span class="ss">f"field_</span><span class="sc">{</span>k<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss">"</span>] <span class="op">=</span> result_in_colums[<span class="dv">4</span>][<span class="dv">1</span>:]</span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>    dates <span class="op">=</span> result_in_colums[<span class="dv">0</span>][<span class="dv">1</span>:]</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="90">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Dataframe with the NDVI data for each field</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>df_ndvi <span class="op">=</span> pd.DataFrame(ndvi,dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add dates as index</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>df_ndvi.index <span class="op">=</span> pd.to_datetime(dates, <span class="bu">format</span><span class="op">=</span><span class="st">'%Y_%m_</span><span class="sc">%d</span><span class="st">'</span>)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply conversion factor</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>df_ndvi <span class="op">=</span> df_ndvi<span class="op">*</span><span class="fl">0.0001</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>df_ndvi.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="90">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">field_1</th>
+<th data-quarto-table-cell-role="th">field_2</th>
+<th data-quarto-table-cell-role="th">field_3</th>
+<th data-quarto-table-cell-role="th">field_4</th>
+<th data-quarto-table-cell-role="th">field_5</th>
+<th data-quarto-table-cell-role="th">field_6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022-04-07</td>
+<td>0.1933</td>
+<td>0.2024</td>
+<td>0.2222</td>
+<td>0.2934</td>
+<td>0.2032</td>
+<td>0.2007</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2022-04-23</td>
+<td>0.2118</td>
+<td>0.2178</td>
+<td>0.1972</td>
+<td>0.2785</td>
+<td>0.2104</td>
+<td>0.2107</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022-05-09</td>
+<td>0.1824</td>
+<td>0.2039</td>
+<td>0.2220</td>
+<td>0.2328</td>
+<td>0.1959</td>
+<td>0.1827</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2022-05-25</td>
+<td>0.2440</td>
+<td>0.2056</td>
+<td>0.2632</td>
+<td>0.2115</td>
+<td>0.1943</td>
+<td>0.1902</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2022-06-10</td>
+<td>0.3325</td>
+<td>0.2236</td>
+<td>0.2235</td>
+<td>0.2186</td>
+<td>0.2033</td>
+<td>0.2054</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="93">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>df_ndvi.plot(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'NDVI Irrigated vs Rainfed Corn in Kansas'</span>)</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Date'</span>)</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'NDVI'</span>)</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="time_series_at_a_point_files/figure-html/cell-23-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="example-4-interactive-selection" class="level2">
+<h2 class="anchored" data-anchor-id="example-4-interactive-selection">Example 4: Interactive selection</h2>
+<p>In this example we will leverage the interactive functionality of the Folium library and the computer’s clipboard to get geographic coordinates with a mouse click and then retrieve time series of a vegetation index using GEE.</p>
+<div class="cell" data-execution_count="96">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define function to create raster map</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Declare a function (blueprint)</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> create_raster(ee_object, vis_params, name):</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function that creates a folium raster layer"""</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    raster <span class="op">=</span> folium.raster_layers.TileLayer(ee_object.getMapId(vis_params)[<span class="st">'tile_fetcher'</span>].url_format,</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>                                       name<span class="op">=</span>name,</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>                                       overlay<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>                                       control<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>                                       attr<span class="op">=</span><span class="st">'Map Data &amp;copy; &lt;a href="https://earthengine.google.com/"&gt;Google Earth Engine&lt;/a&gt;'</span>)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> raster</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="97">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># US Counties dataset</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>US_counties <span class="op">=</span> ee.FeatureCollection(<span class="st">"TIGER/2018/Counties"</span>) </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select county of interest</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>state_FIP <span class="op">=</span> <span class="st">'20'</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>county_name <span class="op">=</span> <span class="st">'Thomas'</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>county <span class="op">=</span> US_counties.<span class="bu">filter</span>(ee.Filter.eq(<span class="st">'STATEFP'</span>,<span class="st">'20'</span>).And(ee.Filter.eq(<span class="st">'NAME'</span>,<span class="st">'Thomas'</span>)).And(ee.Filter.eq(<span class="st">'GEOID'</span>,<span class="st">'20193'</span>)))</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>county_meta <span class="op">=</span> county.getInfo()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="118">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Select cropland datalayer </span><span class="al">###</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> <span class="st">'2018-01-01'</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>end_date <span class="op">=</span> <span class="st">'2018-12-31'</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>CDL <span class="op">=</span> ee.ImageCollection(<span class="st">'USDA/NASS/CDL'</span>).<span class="bu">filter</span>(ee.Filter.date(start_date,end_date)).first()</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>cropland <span class="op">=</span> CDL.select(<span class="st">'cropland'</span>)</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Clip cropland layer to selected county</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>county_cropland <span class="op">=</span> cropland.clip(county)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a><span class="co">### Select vegetation index (vi) </span><span class="al">###</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>band <span class="op">=</span> <span class="st">'EVI'</span> <span class="co"># or 'NDVI'</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Define start and end of time series for vegetation index</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>start_date_vi <span class="op">=</span> <span class="st">'2017-10-15'</span></span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a>end_date_vi <span class="op">=</span> <span class="st">'2018-06-15'</span></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Request dataset and band</span></span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>MCD43A4 <span class="op">=</span> ee.ImageCollection(<span class="st">'MODIS/MCD43A4_006_EVI'</span>).filterDate(start_date_vi,end_date_vi)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>vi <span class="op">=</span> MCD43A4.select(<span class="st">'EVI'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="129">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get county boundaries</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>location_lat <span class="op">=</span> <span class="bu">float</span>(county_meta[<span class="st">'features'</span>][<span class="dv">0</span>][<span class="st">'properties'</span>][<span class="st">'INTPTLAT'</span>])</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>location_lon <span class="op">=</span> <span class="bu">float</span>(county_meta[<span class="st">'features'</span>][<span class="dv">0</span>][<span class="st">'properties'</span>][<span class="st">'INTPTLON'</span>])</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize county boundaries</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> folium.Map(location<span class="op">=</span>[location_lat, location_lon], zoom_start<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Add click event to paste coordinates into the clipboard</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>m.add_child(folium.ClickForLatLng(alert<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>m.add_child(folium.LatLngPopup())</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create raster using function defined earlier and add map</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>create_raster(county_cropland, {}, <span class="st">'cropland'</span>).add_to(m)</span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>folium.GeoJson(county.getInfo(),</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>               name<span class="op">=</span><span class="st">'County boundary'</span>,</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>        style_function<span class="op">=</span><span class="kw">lambda</span> feature: {</span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">'fillColor'</span>: <span class="st">'None'</span>,</span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">'color'</span>: <span class="st">'black'</span>,</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">'weight'</span>: <span class="dv">2</span>,</span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">'dashArray'</span>: <span class="st">'5, 5'</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>    }).add_to(m)</span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Add some controls</span></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>folium.LayerControl().add_to(m)</span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Display map</span></span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a>m</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="129">
+<div style="width:100%;"><div style="position:relative;width:100%;height:0;padding-bottom:60%;"><span style="color:#565656">Make this Notebook Trusted to load map: File -&gt; Trust Notebook</span><iframe srcdoc="<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv=&quot;content-type&quot; content=&quot;text/html; charset=UTF-8&quot; />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js&quot;></script>
+    <script src=&quot;https://code.jquery.com/jquery-1.12.4.min.js&quot;></script>
+    <script src=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js&quot;></script>
+    <script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js&quot;></script>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css&quot;/>
+    <link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css&quot;/>
+    
+            <meta name=&quot;viewport&quot; content=&quot;width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no&quot; />
+            <style>
+                #map_453ef06be545c39ee9238a05d0ef94d8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class=&quot;folium-map&quot; id=&quot;map_453ef06be545c39ee9238a05d0ef94d8&quot; ></div>
+        
+</body>
+<script>
+    
+    
+            var map_453ef06be545c39ee9238a05d0ef94d8 = L.map(
+                &quot;map_453ef06be545c39ee9238a05d0ef94d8&quot;,
+                {
+                    center: [39.3577126, -101.0833859],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 10,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a8540fc08e15805c689ac62fccfdff58 = L.tileLayer(
+                &quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;,
+                {&quot;attribution&quot;: &quot;Data by \u0026copy; \u003ca target=\&quot;_blank\&quot; href=\&quot;http://openstreetmap.org\&quot;\u003eOpenStreetMap\u003c/a\u003e, under \u003ca target=\&quot;_blank\&quot; href=\&quot;http://www.openstreetmap.org/copyright\&quot;\u003eODbL\u003c/a\u003e.&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_453ef06be545c39ee9238a05d0ef94d8);
+        
+    
+                function getLatLng(e){
+                    var lat = e.latlng.lat.toFixed(6),
+                        lng = e.latlng.lng.toFixed(6);
+                    var txt = lat + &quot;,&quot; + lng;
+                    navigator.clipboard.writeText(txt);
+                    
+                    };
+                map_453ef06be545c39ee9238a05d0ef94d8.on('click', getLatLng);
+            
+    
+                var lat_lng_popup_1e40973c33085245d3dba2f277565a82 = L.popup();
+                function latLngPop(e) {
+                    lat_lng_popup_1e40973c33085245d3dba2f277565a82
+                        .setLatLng(e.latlng)
+                        .setContent(&quot;Latitude: &quot; + e.latlng.lat.toFixed(4) +
+                                    &quot;<br>Longitude: &quot; + e.latlng.lng.toFixed(4))
+                        .openOn(map_453ef06be545c39ee9238a05d0ef94d8);
+                    }
+                map_453ef06be545c39ee9238a05d0ef94d8.on('click', latLngPop);
+            
+    
+            var tile_layer_1611ee0639af7212f94bac96904da78f = L.tileLayer(
+                &quot;https://earthengine.googleapis.com/v1alpha/projects/earthengine-legacy/maps/ad4c15c886f198ffe4bc88331447dee2-8191f02420103a30a061c33880f1cd55/tiles/{z}/{x}/{y}&quot;,
+                {&quot;attribution&quot;: &quot;Map Data \u0026copy; \u003ca href=\&quot;https://earthengine.google.com/\&quot;\u003eGoogle Earth Engine\u003c/a\u003e&quot;, &quot;detectRetina&quot;: false, &quot;maxNativeZoom&quot;: 18, &quot;maxZoom&quot;: 18, &quot;minZoom&quot;: 0, &quot;noWrap&quot;: false, &quot;opacity&quot;: 1, &quot;subdomains&quot;: &quot;abc&quot;, &quot;tms&quot;: false}
+            ).addTo(map_453ef06be545c39ee9238a05d0ef94d8);
+        
+    
+        function geo_json_3a3fe13fa60e163bd6cb98935943e55f_styler(feature) {
+            switch(feature.id) {
+                default:
+                    return {&quot;color&quot;: &quot;black&quot;, &quot;dashArray&quot;: &quot;5, 5&quot;, &quot;fillColor&quot;: &quot;None&quot;, &quot;weight&quot;: 2};
+            }
+        }
+
+        function geo_json_3a3fe13fa60e163bd6cb98935943e55f_onEachFeature(feature, layer) {
+            layer.on({
+            });
+        };
+        var geo_json_3a3fe13fa60e163bd6cb98935943e55f = L.geoJson(null, {
+                onEachFeature: geo_json_3a3fe13fa60e163bd6cb98935943e55f_onEachFeature,
+            
+                style: geo_json_3a3fe13fa60e163bd6cb98935943e55f_styler,
+        });
+
+        function geo_json_3a3fe13fa60e163bd6cb98935943e55f_add (data) {
+            geo_json_3a3fe13fa60e163bd6cb98935943e55f
+                .addData(data)
+                .addTo(map_453ef06be545c39ee9238a05d0ef94d8);
+        }
+            geo_json_3a3fe13fa60e163bd6cb98935943e55f_add({&quot;columns&quot;: {&quot;ALAND&quot;: &quot;Long&quot;, &quot;AWATER&quot;: &quot;Long&quot;, &quot;CBSAFP&quot;: &quot;String&quot;, &quot;CLASSFP&quot;: &quot;String&quot;, &quot;COUNTYFP&quot;: &quot;String&quot;, &quot;COUNTYNS&quot;: &quot;String&quot;, &quot;CSAFP&quot;: &quot;String&quot;, &quot;FUNCSTAT&quot;: &quot;String&quot;, &quot;GEOID&quot;: &quot;String&quot;, &quot;INTPTLAT&quot;: &quot;String&quot;, &quot;INTPTLON&quot;: &quot;String&quot;, &quot;LSAD&quot;: &quot;String&quot;, &quot;METDIVFP&quot;: &quot;String&quot;, &quot;MTFCC&quot;: &quot;String&quot;, &quot;NAME&quot;: &quot;String&quot;, &quot;NAMELSAD&quot;: &quot;String&quot;, &quot;STATEFP&quot;: &quot;String&quot;, &quot;system:index&quot;: &quot;String&quot;}, &quot;features&quot;: [{&quot;geometry&quot;: {&quot;coordinates&quot;: [[[-101.39175347448572, 39.13513089708018], [-101.39170852647936, 39.13513094061804], [-101.3871304304823, 39.13517579140876], [-101.38573910751596, 39.13517577283197], [-101.38546978231564, 39.13517582647025], [-101.38448237822307, 39.13513095418437], [-101.38219333886646, 39.13517579094111], [-101.37577498901972, 39.135220659167686], [-101.37501194968021, 39.13522070928166], [-101.37276780598332, 39.13522071103023], [-101.36697787520467, 39.1352655882766], [-101.35652006548895, 39.135265590337696], [-101.35535304616825, 39.135310477723216], [-101.35485940455159, 39.13531047933867], [-101.35481447306962, 39.13531042776109], [-101.35387195547425, 39.13531041381136], [-101.35270496701611, 39.13531042501288], [-101.35257034867367, 39.13531048547209], [-101.35216640816161, 39.13531043905811], [-101.35090966667593, 39.135310471790646], [-101.35014664348272, 39.13531042599791], [-101.34942846858254, 39.13531043687673], [-101.33632259573349, 39.135355360729825], [-101.33394377358496, 39.135355321269415], [-101.32397970125615, 39.13540021430967], [-101.3223189749801, 39.13540024323722], [-101.31796533602333, 39.13544507139079], [-101.31567625978354, 39.135445095004386], [-101.31311793246516, 39.13544509673146], [-101.31239976416363, 39.13544510018004], [-101.3123100259409, 39.13544510686819], [-101.31222028779897, 39.1354451134751], [-101.31055958427113, 39.135445119308876], [-101.31051467271074, 39.13544512606674], [-101.30903355444221, 39.13544508765251], [-101.30598147837453, 39.1354899691144], [-101.30288450117949, 39.13548999712526], [-101.30239077277655, 39.135490006743915], [-101.29956317352274, 39.13553485811751], [-101.29862057176305, 39.135534849015876], [-101.298575752111, 39.135534841910854], [-101.29853084595479, 39.13553484324858], [-101.29646622294435, 39.13549000877615], [-101.2941323039647, 39.13548996988117], [-101.29354881114539, 39.13549001249491], [-101.29125977695244, 39.13548999376552], [-101.29099044665092, 39.13548997311958], [-101.2891502299001, 39.135489950960185], [-101.2749670830574, 39.135400184454596], [-101.27335129068409, 39.13540018424831], [-101.26818973736847, 39.13535532901077], [-101.26608024784676, 39.135310453354435], [-101.2639707167015, 39.135310473532265], [-101.26235493044555, 39.13531046751609], [-101.26127775423929, 39.13526554201416], [-101.2594374827735, 39.13526557545854], [-101.2563854596277, 39.13526555561992], [-101.25620591143225, 39.135220707609975], [-101.2530191580891, 39.13522070384698], [-101.25001204393197, 39.13522068054061], [-101.24812692544694, 39.135175800944715], [-101.24543387484424, 39.13517581400429], [-101.24265113577022, 39.1351309278296], [-101.23915023104584, 39.135130900206825], [-101.23897071411443, 39.13513095448896], [-101.2387463184085, 39.13513090425288], [-101.23861168122937, 39.135130905236025], [-101.23650212994893, 39.1350860125323], [-101.23591863027083, 39.135041127197816], [-101.23569424149238, 39.13504114843306], [-101.23546985322335, 39.13504116916068], [-101.23318077610833, 39.13504111858004], [-101.23071216362081, 39.13499628346197], [-101.22626873013702, 39.134906539256384], [-101.22514664154531, 39.134906477650354], [-101.22415926946746, 39.13490649225917], [-101.22236386845368, 39.13486162620681], [-101.22182532368359, 39.134861626597115], [-101.22178045229019, 39.13486159312099], [-101.22173558091717, 39.134861638049095], [-101.2216008804633, 39.13486162425986], [-101.2214662666504, 39.1348616018905], [-101.22142139542022, 39.13486164667652], [-101.22020953409358, 39.134861627017365], [-101.21976065551307, 39.134861614523146], [-101.21742672730178, 39.13481673148419], [-101.21590074712209, 39.13481673243934], [-101.20696890690549, 39.13472695801144], [-101.20544291570515, 39.13472697142505], [-101.20441061806072, 39.134682069509374], [-101.20198689624704, 39.13468211131389], [-101.20117903104318, 39.13463722211575], [-101.20099949673799, 39.134637215877966], [-101.19615202137233, 39.13459231512064], [-101.19471582943825, 39.13454739988918], [-101.19332443044944, 39.13454745867432], [-101.19139441336657, 39.134502574223184], [-101.18924006463847, 39.13445765450274], [-101.18748955059982, 39.134412807646456], [-101.18677142881776, 39.134412768107126], [-101.18654706545136, 39.134412764684384], [-101.1682346578233, 39.13414352540707], [-101.16397074504489, 39.134098599304615], [-101.16181630653118, 39.13405369515431], [-101.15764218421782, 39.133963924656605], [-101.15472481068045, 39.13396391614798], [-101.1511789960023, 39.133919056643386], [-101.14965300727737, 39.133874210604304], [-101.14880021603219, 39.133874209095694], [-101.14790250813809, 39.13382927470544], [-101.14556855796872, 39.13382929134269], [-101.14525444307242, 39.13382931013388], [-101.14251652002747, 39.13378445049589], [-101.13946449089016, 39.13373952349893], [-101.13941957070811, 39.133739539440086], [-101.13924006295572, 39.13373950790709], [-101.13919514287673, 39.1337395237467], [-101.13897071556026, 39.13373950754588], [-101.13883612852507, 39.13373953798468], [-101.13717540194924, 39.133694640159796], [-101.13708565009118, 39.13369466161611], [-101.13704073100163, 39.13369467647644], [-101.13695097926717, 39.133694619370246], [-101.13681639501125, 39.133694647057446], [-101.13515570273289, 39.13369466178731], [-101.1309815077288, 39.13364976611145], [-101.12774992008931, 39.13360486377061], [-101.12501205529117, 39.13360489972317], [-101.1213765437443, 39.133515151515226], [-101.11814492843139, 39.13351515165265], [-101.11504797419947, 39.13347025668511], [-101.11244475702883, 39.133425336699595], [-101.10970688971743, 39.13342538326879], [-101.10907845970925, 39.13342539078994], [-101.10858475163134, 39.133425388572775], [-101.10598153427546, 39.133380471696356], [-101.1045003782419, 39.133380498081976], [-101.09830648499458, 39.13333558141792], [-101.09386308913854, 39.133290724731665], [-101.09103543005037, 39.13324581523819], [-101.09049682941091, 39.13324580362047], [-101.09036213654609, 39.13324578478996], [-101.08735499420781, 39.13324585312681], [-101.08448245669273, 39.133245795505445], [-101.08183429937061, 39.13324580087143], [-101.07806416887219, 39.13320093845806], [-101.07523645115769, 39.13320097189372], [-101.07209467748201, 39.13315601863], [-101.07187023196886, 39.133156023958016], [-101.06908749599482, 39.133200937071415], [-101.0659007760013, 39.13315603149345], [-101.06311803851385, 39.13315607562184], [-101.06307315352066, 39.13315605698042], [-101.06302826854825, 39.13315603831871], [-101.06248965049896, 39.13315604815865], [-101.06163684470312, 39.13315607737901], [-101.05602646718724, 39.133111140393886], [-101.05306414619125, 39.13311116192219], [-101.0522562169468, 39.133066265047184], [-101.04857578357543, 39.13306626030902], [-101.04687025167027, 39.13306632407317], [-101.04664586452438, 39.133066272366946], [-101.04520954019715, 39.13306631508908], [-101.04467093485421, 39.13306631491808], [-101.04117003000543, 39.133066325210486], [-101.03937470789374, 39.1330214198857], [-101.03798336479345, 39.13302138735731], [-101.03672665994164, 39.13302142714187], [-101.03439269953654, 39.13302143699777], [-101.03147530665319, 39.13306625325217], [-101.02415930153597, 39.13306625953862], [-101.01940171040823, 39.13302136287128], [-101.0162598494847, 39.13306630539419], [-101.01576609587286, 39.13306628325402], [-101.01248968232795, 39.133066271369955], [-101.00876434970534, 39.133066310870284], [-101.00512879084309, 39.133066308642455], [-101.0008200076758, 39.13306630790762], [-101.0007750653279, 39.13306626932695], [-101.00001208375181, 39.1330662964938], [-100.99956326880749, 39.13306631945211], [-100.99763329348156, 39.133066262866684], [-100.98349503589453, 39.13306625090975], [-100.98214856955731, 39.133066271480104], [-100.97896186966238, 39.133066312917904], [-100.96437477366413, 39.13302141319386], [-100.96356689710747, 39.13302136545478], [-100.96239989007859, 39.133021388993996], [-100.96033528641988, 39.133021439083734], [-100.94592775597289, 39.133021419282706], [-100.944940283477, 39.133066254445474], [-100.94390799161071, 39.1330662769506], [-100.942202415325, 39.13306629433554], [-100.94067635375563, 39.133111135912046], [-100.93892592159592, 39.13311118844532], [-100.93722034783217, 39.133111207171545], [-100.93668174282955, 39.13311115004125], [-100.93650226597143, 39.133111177230354], [-100.93511085761594, 39.13311118637815], [-100.93295641707049, 39.13315602677775], [-100.931295773301, 39.13315602143207], [-100.93111622034452, 39.133156047067935], [-100.92972489030318, 39.133200948297755], [-100.92644839274637, 39.133200898892895], [-100.92604439799364, 39.1332009385014], [-100.92483259636394, 39.13324584199006], [-100.92469796226352, 39.1332458504855], [-100.92460814883974, 39.13324586147752], [-100.92321682728875, 39.1332457912363], [-100.91352201085019, 39.13324579346256], [-100.91347710938001, 39.13324579392256], [-100.90741784538005, 39.13324585096314], [-100.90598161774578, 39.13324579715555], [-100.90503902431952, 39.13329067634093], [-100.90427602856175, 39.13329067047533], [-100.9032437448277, 39.13329070448332], [-100.89561360236685, 39.133290694000415], [-100.89404261696711, 39.13329070483373], [-100.89399772466489, 39.13329069650508], [-100.88645741055335, 39.133290693126725], [-100.8836297205107, 39.133290673715386], [-100.879724854845, 39.133290695960326], [-100.87792953540185, 39.13329070834782], [-100.87510192644733, 39.13333559225699], [-100.8718254098517, 39.13329067695229], [-100.87124194777954, 39.13329067223118], [-100.86944661618277, 39.13329070471572], [-100.86935685480022, 39.13329066584112], [-100.86922221288532, 39.133290685864466], [-100.86818987839884, 39.13329071060825], [-100.86760635250074, 39.133290692663394], [-100.86715755512603, 39.133335619451955], [-100.86661891493343, 39.13333561620759], [-100.86652915622163, 39.1333355747904], [-100.86648427689754, 39.133335554051435], [-100.86634963905242, 39.133335570200586], [-100.86599060573148, 39.13333556004926], [-100.8653622145447, 39.133335586504955], [-100.86504806357961, 39.13333559419758], [-100.86473382751414, 39.133335608991985], [-100.86464407058322, 39.13333556587403], [-100.86441967862694, 39.133335614700556], [-100.86401568830281, 39.13333558382552], [-100.863881053956, 39.13333559663431], [-100.86370154179045, 39.13333558726666], [-100.8635669078889, 39.13333559965038], [-100.86257942616734, 39.13333559643078], [-100.86253454870912, 39.13333557391008], [-100.86235503908829, 39.13333556211307], [-100.86208577529318, 39.13333558305442], [-100.8615471638569, 39.13333555235377], [-100.86141253300914, 39.13333556182243], [-100.8610085554753, 39.13333559722589], [-100.86069433277363, 39.13333559926301], [-100.8604699501485, 39.13333556069399], [-100.85997622410471, 39.133335623430064], [-100.85957225268118, 39.13333557451353], [-100.85939274865986, 39.133335557372156], [-100.85889902821727, 39.13333561476328], [-100.85845018584888, 39.13333561559911], [-100.85831555939212, 39.13333562087747], [-100.85827068394897, 39.133335596433476], [-100.85822580852704, 39.13333557196923], [-100.8581809331263, 39.133335547484755], [-100.85800134560247, 39.133335614410264], [-100.85768721898553, 39.13333559886312], [-100.8576422577067, 39.13333558222337], [-100.85759738258182, 39.13333555747567], [-100.85710367147595, 39.133335605958635], [-100.85683442257249, 39.1333356126896], [-100.85669971227532, 39.133335623868724], [-100.85660996293791, 39.13333557350286], [-100.85652021368537, 39.133335601545205], [-100.85508397879505, 39.1333355925349], [-100.85463515446591, 39.13333557616196], [-100.854276079305, 39.1333356103167], [-100.85423120577161, 39.13333558405074], [-100.85418624612988, 39.133335565849265], [-100.85396187888755, 39.13333559109375], [-100.85364767951046, 39.13333557087865], [-100.85275004656141, 39.133335601641164], [-100.8524807238814, 39.13333560467527], [-100.85189720838532, 39.13333558123805], [-100.85167284655573, 39.1333356013214], [-100.8515381435855, 39.133335605513054], [-100.85144839912965, 39.133335550491225], [-100.85140352693357, 39.13333560144002], [-100.85131378260508, 39.133335546296756], [-100.85068540242999, 39.13333556664152], [-100.85023659890737, 39.13333560891931], [-100.85010189797656, 39.133335611166764], [-100.84902472804087, 39.133335582180635], [-100.84839636303008, 39.13333558807079], [-100.84776800218262, 39.13333558999313], [-100.8460175534385, 39.13333558349502], [-100.84444661241565, 39.1333355906322], [-100.84157409940958, 39.13333555772272], [-100.84054180727675, 39.13333555545592], [-100.84009296565256, 39.133335560061774], [-100.8363227627324, 39.133335551843224], [-100.83542503547525, 39.13333560753653], [-100.83520062651861, 39.13333559855424], [-100.8343478601106, 39.13338049076782], [-100.83300134355235, 39.13338050140045], [-100.83205878474394, 39.13338049096103], [-100.83201392172745, 39.133380454680825], [-100.83044304068038, 39.133380492542116], [-100.82887209959527, 39.13338043517916], [-100.82815397362424, 39.13338048948341], [-100.82810911245843, 39.133380451442754], [-100.8280642513139, 39.133380491875826], [-100.82801930408486, 39.133380461857264], [-100.82680745906399, 39.13333560419739], [-100.82617915530275, 39.13333555637713], [-100.82442867498341, 39.13338050187249], [-100.8239349644522, 39.13338048049006], [-100.82276794425728, 39.13338044181182], [-100.82079315226842, 39.13333556637012], [-100.82038917566057, 39.133335610017795], [-100.81935685623576, 39.13333556919556], [-100.81899782868541, 39.13333556263608], [-100.81823474899828, 39.13338049724425], [-100.81738196329289, 39.13333561974898], [-100.81733710723604, 39.13333557684817], [-100.8172922512005, 39.133335612422954], [-100.81724730909023, 39.13333557753511], [-100.81715759712563, 39.13333557008771], [-100.81706779915035, 39.133335570612694], [-100.81697800126038, 39.13333557105668], [-100.81693314539523, 39.133335606469664], [-100.81688828955134, 39.13333556336655], [-100.81684334763317, 39.13333560679217], [-100.81679849183192, 39.133335563648586], [-100.81446455591244, 39.133335627080385], [-100.81397089740935, 39.13333555622854], [-100.81248967909922, 39.13338048867842], [-100.81186138438534, 39.13338043708929], [-100.81163694523391, 39.13338046155108], [-100.80898882734733, 39.133380502672225], [-100.80845017344285, 39.1333804523994], [-100.80773211649485, 39.13333562390492], [-100.80580205882266, 39.133380495288506], [-100.8050390857095, 39.133380507812774], [-100.80499423551302, 39.133380459353475], [-100.80485951288208, 39.13338048693583], [-100.80369255608095, 39.13338047620987], [-100.80144838271904, 39.13338051389475], [-100.80126890280421, 39.13338047850074], [-100.80122396831781, 39.13338043638231], [-100.79938382479043, 39.13338045356981], [-100.79727429335371, 39.13342537305302], [-100.79520965461671, 39.13338049774456], [-100.79404264501042, 39.133380468474655], [-100.79390802409084, 39.13338047320409], [-100.79381824822634, 39.13333555091292], [-100.79381824822634, 39.1333804527672], [-100.79354892114571, 39.13338046947052], [-100.79045201626452, 39.133380502585766], [-100.78542505595948, 39.13342535852421], [-100.78183441128402, 39.1333804468352], [-100.77891698419019, 39.133380459196786], [-100.77792961149525, 39.133380473763275], [-100.77671772098051, 39.13338044033116], [-100.77626892441155, 39.13338049534607], [-100.77617916535456, 39.13338045900471], [-100.77599956143902, 39.1333804726004], [-100.7758200439244, 39.13338047785382], [-100.77550584606875, 39.133380470651865], [-100.77532632949583, 39.133380475015194], [-100.77523657133777, 39.13333561268776], [-100.77519173531965, 39.133290725625], [-100.77519173531965, 39.13324582191827], [-100.75669977599625, 39.133290691532], [-100.74013789148147, 39.1334702049461], [-100.73986854606198, 39.1334702495443], [-100.73897087695912, 39.13342539407367], [-100.7388811535337, 39.133425324126655], [-100.73407862390266, 39.13342534231209], [-100.73138563670035, 39.133380502660344], [-100.72707677736065, 39.13342532761722], [-100.72285782427949, 39.1333804697652], [-100.72173566345701, 39.13338046521008], [-100.7216908529915, 39.13338045774919], [-100.72128687170192, 39.13338045347099], [-100.72133176798224, 39.146755664263964], [-100.72137666428408, 39.14783292397481], [-100.72133176798224, 39.150391230839325], [-100.72133176798224, 39.15092983308079], [-100.72137666428407, 39.15110933794331], [-100.72142156060744, 39.15119912837135], [-100.72146637094403, 39.15137864034736], [-100.72142156060744, 39.15155821857625], [-100.72137666428407, 39.15173772579663], [-100.72133176798224, 39.15200702389261], [-100.72133176798224, 39.15285980010552], [-100.72133176798224, 39.15366774891502], [-100.72133176798224, 39.15447560898254], [-100.72133176798224, 39.15541813867656], [-100.72133176798224, 39.15613626959339], [-100.72133176798224, 39.15716863726099], [-100.72133176798224, 39.15797653136954], [-100.72133176798224, 39.15802142279498], [-100.72133176798224, 39.15878441522062], [-100.72119707920595, 39.159053689676746], [-100.72110737280411, 39.159278140238975], [-100.72110737280411, 39.15950251408523], [-100.72110737280411, 39.15981674601169], [-100.72128687170192, 39.16053482412179], [-100.72133176798224, 39.16089393727736], [-100.72133176798224, 39.161791561646574], [-100.72137666428407, 39.16197111331282], [-100.72137666428407, 39.16228533286647], [-100.72137666428408, 39.16520269785179], [-100.72133176798224, 39.16645942793417], [-100.72133176798224, 39.166953166026545], [-100.72133176798224, 39.17534636244017], [-100.72133176798224, 39.175436120740436], [-100.72133176798224, 39.17579515267398], [-100.72137666428408, 39.17660304109369], [-100.72137666428407, 39.17678263245932], [-100.72133176798224, 39.176962149367775], [-100.72133176798224, 39.17723141704285], [-100.72142156060744, 39.18544509135762], [-100.72142156060744, 39.187195547528354], [-100.72142156060744, 39.18724041831707], [-100.72142156060744, 39.187330159799394], [-100.72142156060744, 39.18746485023027], [-100.72142156060744, 39.18764433243391], [-100.72142156060744, 39.18768928135042], [-100.72142156060744, 39.189215250738144], [-100.72146637094403, 39.19127991659465], [-100.7215561636984, 39.20573231412838], [-100.7215561636984, 39.20627091781972], [-100.7215561636984, 39.20721346327646], [-100.7215561636984, 39.20734811148423], [-100.7215561636984, 39.20743790293744], [-100.7215561636984, 39.215202696784175], [-100.7215561636984, 39.21560666807741], [-100.72151126731045, 39.22000518672426], [-100.72151126731045, 39.22005011271296], [-100.72151126731045, 39.22009496026503], [-100.72151126731045, 39.220678445978855], [-100.72151126731045, 39.22126192632135], [-100.72151126731045, 39.221845401292434], [-100.72151126731045, 39.222024943034015], [-100.72151126731045, 39.22220448426699], [-100.72146637094403, 39.229430723791225], [-100.72146637094403, 39.22952048398827], [-100.72146637094403, 39.229969283065756], [-100.72146637094403, 39.23005904249969], [-100.72146637094403, 39.2318992788421], [-100.72142156060744, 39.23387413399944], [-100.72142156060744, 39.2343678965056], [-100.72142156060744, 39.23459231848362], [-100.72142156060744, 39.23840737042566], [-100.72137666428408, 39.239125513950164], [-100.72133176798224, 39.24805730135465], [-100.72133176798224, 39.24828167484874], [-100.72133176798224, 39.25048093184195], [-100.72137666428407, 39.2513337847491], [-100.72128687170192, 39.26358689290551], [-100.72128687170192, 39.26744689227566], [-100.72128687170192, 39.269466624655536], [-100.72124197544316, 39.270454074076014], [-100.72124197544316, 39.27153127378197], [-100.72124197544316, 39.27359584216399], [-100.72124197544316, 39.27485261532672], [-100.72124197544316, 39.27489750241787], [-100.72124197544316, 39.274942389477125], [-100.72124197544316, 39.274987276504476], [-100.72124197544316, 39.27503216349994], [-100.72124197544316, 39.27512193739518], [-100.72124197544316, 39.27521163282627], [-100.72124197544316, 39.27525651966231], [-100.72124197544316, 39.275660499751396], [-100.72124197544316, 39.27651325978688], [-100.72124197544316, 39.27682746049485], [-100.72124197544316, 39.27808416936419], [-100.72119707920595, 39.28082209781238], [-100.72119707920594, 39.28086698066556], [-100.72119707920594, 39.28180951321313], [-100.72124197544316, 39.28387412284936], [-100.72115218299025, 39.29262637916412], [-100.72115218299025, 39.29406265947619], [-100.72115218299025, 39.2962170186435], [-100.72115218299025, 39.296755636095895], [-100.72115218299025, 39.298191900717484], [-100.72110737280411, 39.30025654561258], [-100.72110737280411, 39.30232119325518], [-100.72110737280411, 39.304385773306315], [-100.72110737280411, 39.306226040402585], [-100.72110737280411, 39.30694410818728], [-100.72110737280411, 39.30712364342984], [-100.72110737280411, 39.307168585883296], [-100.72106247663147, 39.30820086103513], [-100.72110737280411, 39.309951353927055], [-100.72110737280411, 39.310848982205655], [-100.72106247663147, 39.31197107554111], [-100.72110737280411, 39.3125096978299], [-100.72110737280411, 39.314035713791725], [-100.72110737280411, 39.314349884356446], [-100.72106247663147, 39.31574129938925], [-100.72106247663147, 39.317491756478915], [-100.72106247663147, 39.31951145423036], [-100.72106247663147, 39.31996031934733], [-100.72106247663147, 39.32117217656404], [-100.72106247663147, 39.32162095156867], [-100.72101758048036, 39.323147000131485], [-100.72106247663147, 39.32507703037713], [-100.72101758048036, 39.32741092216564], [-100.72101758048036, 39.3288023444652], [-100.72101758048036, 39.33145039984592], [-100.72101758048036, 39.33342527431919], [-100.7209726843508, 39.33580409273129], [-100.7209726843508, 39.33611831133058], [-100.72101758048036, 39.33755452071925], [-100.7209726843508, 39.33836248303627], [-100.72092778824276, 39.34931393989802], [-100.72092778824276, 39.3503013785949], [-100.7209726843508, 39.35057067073907], [-100.7209726843508, 39.350750238160515], [-100.7209726843508, 39.352231356416425], [-100.72092778824276, 39.353398330183616], [-100.72092778824276, 39.353757448396145], [-100.72092778824276, 39.353892097637235], [-100.72092778824276, 39.354430691717546], [-100.72092778824276, 39.35447552219051], [-100.72092778824276, 39.35469998702725], [-100.72092778824276, 39.3548794644344], [-100.72092778824276, 39.35496928118334], [-100.72092778824276, 39.355014189509674], [-100.72092778824276, 39.35505901956652], [-100.72092778824276, 39.35519366601971], [-100.72092778824276, 39.355283482319706], [-100.72092778824276, 39.35573224894834], [-100.72092778824276, 39.35577715672961], [-100.72092778824276, 39.35586697219586], [-100.72092778824276, 39.356046446271016], [-100.72092778824276, 39.35618109060909], [-100.72092778824276, 39.35636064202314], [-100.72092778824276, 39.35658510012829], [-100.72092778824276, 39.35703393569898], [-100.72092778824276, 39.357752050298515], [-100.72092778824276, 39.35784178470882], [-100.72092778824276, 39.35847015669305], [-100.72092778824276, 39.3598615182669], [-100.72092778824276, 39.36089385187778], [-100.72088289215627, 39.36502311715216], [-100.72088289215627, 39.36542706986524], [-100.72088289215627, 39.36776101146939], [-100.72088289215627, 39.369062605610516], [-100.72088289215627, 39.37022955881852], [-100.72083799609132, 39.37139659135146], [-100.72083799609132, 39.372294204281154], [-100.72083799609132, 39.37368557282209], [-100.72083799609132, 39.37485259665962], [-100.72079318605563, 39.37498721584803], [-100.72079318605563, 39.37512189784644], [-100.72079318605563, 39.379475521607894], [-100.72074829003373, 39.38068742974935], [-100.72074829003373, 39.3827969103156], [-100.72074829003373, 39.38320082701098], [-100.72070339403335, 39.3852206301317], [-100.72070339403335, 39.38746477044275], [-100.72070339403335, 39.387778965575635], [-100.7206584980545, 39.39406264080903], [-100.7206584980545, 39.39410752120734], [-100.72052381024726, 39.408111060499394], [-100.72052381024726, 39.40860478896387], [-100.72052381024726, 39.40900877414828], [-100.72052381024726, 39.41089382150726], [-100.72052381024726, 39.4125545547761], [-100.72047900036203, 39.41587590808637], [-100.72052381024726, 39.41596569693552], [-100.72047900036203, 39.41951141558188], [-100.72047900036202, 39.42090283197072], [-100.72047900036202, 39.421800518679355], [-100.72047900036202, 39.42305722718519], [-100.72052381024726, 39.42319186463552], [-100.72052381024726, 39.423820208016394], [-100.72047900036202, 39.42844320341648], [-100.72052381024726, 39.432123673431484], [-100.72047900036203, 39.43526544653313], [-100.72052381024726, 39.43782382888999], [-100.72061360209722, 39.451288839717705], [-100.72061360209722, 39.45133367911104], [-100.72061360209722, 39.45232115313426], [-100.72052381024726, 39.46686334434624], [-100.72047900036202, 39.47893692953122], [-100.72047900036202, 39.479295953563856], [-100.72052381024726, 39.47952041524246], [-100.72052381024726, 39.479789719957395], [-100.72052381024726, 39.479879435882886], [-100.72052381024726, 39.47992433283806], [-100.72047900036203, 39.481225965138364], [-100.72047900036202, 39.481405470825834], [-100.72047900036203, 39.48158505407628], [-100.72047900036202, 39.48230314767161], [-100.72038920864121, 39.48863171616688], [-100.72034431281313, 39.48961910295926], [-100.72029941700657, 39.49572325073966], [-100.72025452122156, 39.49594771260364], [-100.72025452122156, 39.49617206127842], [-100.72025452122156, 39.49751860472403], [-100.72020971146529, 39.499987140790104], [-100.72020971146529, 39.50025643534408], [-100.72016481572332, 39.50330855004025], [-100.72011992000287, 39.50757244247435], [-100.72011992000287, 39.50779682740004], [-100.720075024304, 39.5101308085209], [-100.720075024304, 39.51026543405495], [-100.720075024304, 39.51057963721241], [-100.720075024304, 39.51246474481888], [-100.72003012862665, 39.51331752828759], [-100.71998523297083, 39.5170428430282], [-100.71998523297083, 39.52045398124451], [-100.71994033733658, 39.52215951691615], [-100.71989552773074, 39.52494230322167], [-100.72003012862665, 39.53109130508872], [-100.71994033733658, 39.539484494246366], [-100.71994033733658, 39.54159400385981], [-100.71994033733658, 39.546082294696745], [-100.71994033733658, 39.54680042546343], [-100.71994033733658, 39.55092973075647], [-100.71994033733658, 39.55294947512488], [-100.71998523297084, 39.55407154790474], [-100.71998523297084, 39.554430607104116], [-100.71998523297084, 39.5563157118246], [-100.71998523297084, 39.56066935814706], [-100.71998523297083, 39.56084894690907], [-100.71998523297083, 39.561342637871334], [-100.71998523297083, 39.56313793678848], [-100.71998523297084, 39.56318285173643], [-100.71998523297084, 39.56385610419626], [-100.72003012862665, 39.565247459881306], [-100.72003012862665, 39.56533720870814], [-100.720075024304, 39.565471907847275], [-100.72011992000287, 39.56551678025362], [-100.72016481572332, 39.566145131492924], [-100.72020971146529, 39.56803022849997], [-100.72088289215627, 39.56803025698967], [-100.7216908529915, 39.568030225577296], [-100.72222944008419, 39.56803020631577], [-100.722723133307, 39.568030226412084], [-100.72393501499462, 39.56807511238856], [-100.72420431461029, 39.56807509701255], [-100.72447361500068, 39.56807515887679], [-100.72631375471984, 39.56807515556424], [-100.73098169959712, 39.568075155036965], [-100.7343478666657, 39.56803022632527], [-100.73609839358939, 39.56803021486296], [-100.73672669879392, 39.56803027023468], [-100.73739999821619, 39.56803026472908], [-100.7374448161979, 39.568030223826774], [-100.74018271077199, 39.568030206794525], [-100.7404071516489, 39.56803027562383], [-100.74054178202256, 39.568030210728026], [-100.74072131816345, 39.56803025119179], [-100.74085594898817, 39.56803026383788], [-100.74431202713018, 39.56803022063989], [-100.74511993193285, 39.5680302565524], [-100.7484412671643, 39.5680302427611], [-100.74915938823025, 39.56803027558901], [-100.74942867429233, 39.56803027781727], [-100.74956331761311, 39.56803027865754], [-100.74960822744102, 39.56803022424606], [-100.74983260483408, 39.56803027979038], [-100.75001215875547, 39.568030225488826], [-100.75041609180819, 39.56803022508844], [-100.75073029184047, 39.56803024695596], [-100.75171772304824, 39.56803025924991], [-100.75185236965237, 39.568030256986304], [-100.7518972805754, 39.56803020153979], [-100.75315402080615, 39.568030272319895], [-100.754410777858, 39.56803024922793], [-100.75710373781877, 39.5680302601822], [-100.7576423562845, 39.56803022081709], [-100.7581808917965, 39.56803026452281], [-100.75862977413094, 39.56803025036446], [-100.75943763006855, 39.568030263797354], [-100.75975186028492, 39.568030257116035], [-100.76199598674714, 39.56803024060681], [-100.76374642709992, 39.56803026569052], [-100.76630481501589, 39.568075124454595], [-100.76634973284793, 39.56807514043151], [-100.76643948252676, 39.56807510239558], [-100.77079317622845, 39.568030251410214], [-100.77254360824, 39.56807512181605], [-100.77559560448363, 39.56803022173417], [-100.7758200439244, 39.568030218540535], [-100.77806420958649, 39.5680302607919], [-100.78035326720276, 39.5680302700019], [-100.78187933652951, 39.56803024681813], [-100.78609836010664, 39.56803020670814], [-100.78771412033858, 39.56803020996713], [-100.79413242108855, 39.568030276495804], [-100.79664592774319, 39.5680302169981], [-100.7983963237272, 39.567985337272184], [-100.79992242696301, 39.56798537284238], [-100.8054879331871, 39.56794046938511], [-100.80728325834889, 39.56794050751215], [-100.8105148435649, 39.567940486779776], [-100.81199603091387, 39.56794043494184], [-100.81253461894701, 39.56794044189448], [-100.81325271240297, 39.56794044930943], [-100.81477879749572, 39.56789561223048], [-100.81536225648874, 39.56789560601799], [-100.8154071116084, 39.56789560788303], [-100.8158110669272, 39.56789559952623], [-100.81643947399772, 39.56794048284158], [-100.81747176156662, 39.56789562854337], [-100.81841434725116, 39.56789558687676], [-100.81845920381916, 39.56789558736229], [-100.82003014419037, 39.56785067869175], [-100.82155616650307, 39.567850734233176], [-100.82608934876087, 39.56785070124742], [-100.83066743836139, 39.56780580520562], [-100.83349510138179, 39.567805794108864], [-100.83748969171545, 39.56776095522363], [-100.84476078131355, 39.567716024559736], [-100.84956326841692, 39.56785073769875], [-100.86468894903808, 39.56803025432795], [-100.86643939759463, 39.5680751022504], [-100.87110730319449, 39.568119986478926], [-100.87115218470166, 39.568120041060716], [-100.8754161106411, 39.567895576478705], [-100.88241785444544, 39.56794044492989], [-100.88968893758316, 39.56794048271071], [-100.89363867317363, 39.567940481609014], [-100.90652022211964, 39.56794047142074], [-100.91109830966747, 39.567895587490284], [-100.92465305554109, 39.568075155270634], [-100.92573021934125, 39.56807515567684], [-100.9274806687211, 39.56807514779707], [-100.94287562465804, 39.567985325273725], [-100.94624191471355, 39.56798536266182], [-100.94951840001795, 39.5679404443343], [-100.96091877560953, 39.56803025988635], [-100.96105337440258, 39.56803024003411], [-100.96217544074509, 39.56807509913429], [-100.96347713346528, 39.568030228796964], [-100.96441961277984, 39.568075158714386], [-100.96554171846958, 39.568030203769816], [-100.96702290426175, 39.56807513430816], [-100.96760634786659, 39.56807510121428], [-100.97860275805928, 39.56807511640379], [-100.97963507816884, 39.56803023341629], [-100.98313599361104, 39.56803026415825], [-100.98407849324398, 39.56803021361694], [-100.9873549759993, 39.568030225573914], [-100.99731905292406, 39.56807511617806], [-100.99835140126528, 39.56807509688687], [-101.00001208375181, 39.568075097876225], [-101.00189716384676, 39.56807515884282], [-101.0026153034025, 39.568075094318424], [-101.00319879033935, 39.56807510188772], [-101.01038009218846, 39.5680751043529], [-101.01078409674037, 39.568075154320915], [-101.01711260061754, 39.568075153957786], [-101.02043394998732, 39.56803022817611], [-101.02052376674125, 39.56803021025387], [-101.02065836260954, 39.56803027351526], [-101.02622389339928, 39.56803024450441], [-101.02896182352927, 39.56807508915962], [-101.03017364403028, 39.568030244546094], [-101.03021851377936, 39.56803023530951], [-101.03228314877475, 39.56803027606337], [-101.03865664015126, 39.56803026037006], [-101.03870151383559, 39.56803024729096], [-101.03874638754074, 39.568030234191546], [-101.0387912612667, 39.5680302210718], [-101.03883613501345, 39.56803020793173], [-101.03888100878102, 39.56803027268903], [-101.0391054642269, 39.56803027623296], [-101.03915033811936, 39.56803026295056], [-101.0518971778034, 39.568075126354486], [-101.05230109693326, 39.5680751097144], [-101.05270510405468, 39.56807508314861], [-101.05387199586161, 39.56807511629365], [-101.05566732776737, 39.568075150138846], [-101.0567445773948, 39.568075104762556], [-101.06078404640424, 39.56807513401031], [-101.0618163821424, 39.568030264425154], [-101.06248965049896, 39.56803022035767], [-101.06307315352066, 39.568075098222415], [-101.06352191806917, 39.56807509787139], [-101.06450939728265, 39.56807510287151], [-101.06599054862428, 39.56807513915541], [-101.07204978833788, 39.56807515893443], [-101.0721395666469, 39.5680751024846], [-101.07662789726571, 39.56807512534449], [-101.0831808593192, 39.56812001550892], [-101.08654703858977, 39.56812004866566], [-101.09287565700222, 39.56812003339971], [-101.09296536820008, 39.56812004428033], [-101.0931897760725, 39.56807514449428], [-101.09498514402183, 39.56807515514848], [-101.09547886953666, 39.568075135464994], [-101.1005955260448, 39.5681200139859], [-101.10705873709966, 39.56812000324536], [-101.10966198321997, 39.568164903712336], [-101.10975170987687, 39.56812002582904], [-101.10984152297512, 39.568075139522506], [-101.10988634319645, 39.56807510250055], [-101.11356685316818, 39.56807508146882], [-101.11361167510151, 39.56807512066531], [-101.11406050010511, 39.56807514157885], [-101.1141054086278, 39.56807509431614], [-101.12420413294619, 39.568299575978095], [-101.12541601896986, 39.568209745587055], [-101.12546084634444, 39.56820977940343], [-101.12905150812637, 39.56820981212982], [-101.12927599904985, 39.56820978359529], [-101.12967989398386, 39.56820979604838], [-101.13111617033015, 39.56825465383167], [-101.1321484745998, 39.5682995760528], [-101.13223822192577, 39.56834442249098], [-101.13264221548077, 39.568344414389166], [-101.13277688037013, 39.56834441132212], [-101.13282171112174, 39.5683444417907], [-101.13291154544503, 39.56834440807185], [-101.13295637625839, 39.56834443847942], [-101.13475169879095, 39.56829955410801], [-101.13892588198945, 39.56829957742418], [-101.1422920850919, 39.568254662663264], [-101.14803719403491, 39.568209743400026], [-101.14808203177995, 39.56825463665548], [-101.14830647999156, 39.568254651188646], [-101.15077509869398, 39.568254655106095], [-101.15090970214666, 39.56825463575268], [-101.15162782074034, 39.56825468890374], [-101.15239087071309, 39.568254672192666], [-101.15459011558725, 39.56825464858324], [-101.15822565206626, 39.568254678110854], [-101.15934775526065, 39.56825465575096], [-101.16536216040248, 39.56825464281421], [-101.16787562345031, 39.568254667156985], [-101.16890788321753, 39.56825468809435], [-101.16895281692129, 39.56825461592598], [-101.17029928218172, 39.568254695375124], [-101.17146628553063, 39.56820976795925], [-101.18174455037587, 39.568254633795085], [-101.18232798868539, 39.56825462846631], [-101.18255242884504, 39.56829951782329], [-101.18282172314393, 39.568344414402205], [-101.18300122427867, 39.56838930316823], [-101.18318081216476, 39.568389317074406], [-101.18336031395535, 39.5683893390446], [-101.18345010818544, 39.56838926782003], [-101.18358475647247, 39.56838928186421], [-101.18394384828106, 39.56829950563206], [-101.18421314639232, 39.5682546661758], [-101.18430285497705, 39.56825468048726], [-101.18470680389596, 39.56825464081609], [-101.18502104515282, 39.568254663809135], [-101.18748955059982, 39.56825463121729], [-101.18901560921083, 39.56825464270253], [-101.19256140797474, 39.568254694672106], [-101.19404251364297, 39.568299507098395], [-101.1952543989574, 39.56825464080195], [-101.19817185300107, 39.5682995301659], [-101.19965295666375, 39.56825469299471], [-101.2023908313341, 39.56829955974585], [-101.20252550554477, 39.5682995480335], [-101.20261523082715, 39.5682546814868], [-101.20266017993961, 39.56825467190132], [-101.20391686169883, 39.568164929752335], [-101.2041862144774, 39.568209766218764], [-101.20436566814946, 39.56825462264791], [-101.20476961299181, 39.56829952925862], [-101.20521850977036, 39.56825461752972], [-101.20562245810963, 39.568254656631], [-101.20607127233048, 39.56829955525334], [-101.20629568020759, 39.56829953288568], [-101.2065200885958, 39.568344451717294], [-101.20660990396064, 39.568344437369156], [-101.20678936204745, 39.5683892890089], [-101.2069240422714, 39.56847907656639], [-101.20714845209068, 39.568568857285435], [-101.20728313280543, 39.568658643968995], [-101.21428488166019, 39.568434167307466], [-101.22128669539518, 39.56825465084863], [-101.22169062310725, 39.56820977036931], [-101.22667267823466, 39.56825462320795], [-101.22671755185178, 39.568254689001016], [-101.23318077610833, 39.56825464210945], [-101.23327052927594, 39.56825468988292], [-101.23336028252508, 39.56825465969089], [-101.23358475247231, 39.568254653305495], [-101.24054167126185, 39.56829956027246], [-101.24058655117713, 39.56829954188256], [-101.24076607104185, 39.568299546001995], [-101.2453441106356, 39.568299562980634], [-101.24682531697016, 39.56829956592547], [-101.24799227550035, 39.56829955219164], [-101.24897971269571, 39.56825467618739], [-101.24965297097657, 39.568254652347676], [-101.24996715974132, 39.56829950955621], [-101.25041600256355, 39.56829951560559], [-101.25315381487269, 39.56829957979952], [-101.25427596185611, 39.56829951599696], [-101.25634057254834, 39.56829954733537], [-101.25750755673315, 39.56829950762799], [-101.25867446817371, 39.568299540480645], [-101.25912335045622, 39.56825464839797], [-101.25925792904731, 39.56825465421302], [-101.26024539207616, 39.56825468962538], [-101.26168167232183, 39.56829953692858], [-101.26356678929217, 39.56829953755865], [-101.26401560723681, 39.568254632212046], [-101.2641502789647, 39.56825462290839], [-101.26531718211564, 39.56825466381096], [-101.26617003084773, 39.56825465094054], [-101.26818973736847, 39.568254646171496], [-101.26904252430288, 39.56829955247191], [-101.2698504253716, 39.56829954753652], [-101.27146624724557, 39.568299517858705], [-101.27245365884319, 39.568299526036554], [-101.27384504788401, 39.56825468654523], [-101.27608921741846, 39.56829953801304], [-101.28093663409454, 39.56825463913595], [-101.28102634402657, 39.56825465201794], [-101.28178935752393, 39.56825467268144], [-101.2823728678323, 39.56825467285454], [-101.28246266557176, 39.56825467595824], [-101.2827767852777, 39.568254664191215], [-101.28322560358991, 39.56825469401023], [-101.2886564831333, 39.56829955256371], [-101.29009282844275, 39.56825461846485], [-101.29040697226456, 39.56825466032397], [-101.29440155625367, 39.568299544729925], [-101.29489533154498, 39.56829955654294], [-101.29498505407498, 39.56829955674623], [-101.29502995863099, 39.56829951363793], [-101.29565827845589, 39.56829956491002], [-101.29601734485806, 39.56829954549136], [-101.29646622294435, 39.568299515140325], [-101.29781269630587, 39.56829950670458], [-101.30153804573311, 39.56829952163133], [-101.30180731806018, 39.56829957328667], [-101.30315386367654, 39.56829956995729], [-101.31123282742875, 39.56829954416963], [-101.31248958900366, 39.56829952305514], [-101.31419515135012, 39.56829954782411], [-101.31693299083672, 39.56829957254021], [-101.32029920766509, 39.56825465841507], [-101.325909619513, 39.56829956249238], [-101.32837826255832, 39.5682995347505], [-101.32842309561215, 39.56829956285187], [-101.32887194656192, 39.56829955805689], [-101.32954522676972, 39.5682995081079], [-101.33003891654288, 39.56829952558382], [-101.33345006451087, 39.56834439564018], [-101.33897067405125, 39.56834443939985], [-101.34579291709451, 39.56834444174169], [-101.34830637390266, 39.56834445436971], [-101.34835130246341, 39.56834438702692], [-101.34839614447672, 39.568344406058884], [-101.34844107307778, 39.568344416539134], [-101.34965294096958, 39.568344421917246], [-101.35221125188428, 39.568344440037855], [-101.35337823458741, 39.56834439095319], [-101.35665468914152, 39.56834443048297], [-101.3576870118327, 39.568344457391326], [-101.36154697482607, 39.568344413371925], [-101.36446438267646, 39.568344451509816], [-101.36801021765534, 39.56834442651948], [-101.37025434151094, 39.568344441570616], [-101.37231893131397, 39.56834439026177], [-101.37505689021589, 39.568344428385984], [-101.37546083639663, 39.56834438629267], [-101.37586478420323, 39.56834442040649], [-101.37590963852942, 39.568344426946574], [-101.37595449287565, 39.56834443346628], [-101.37604428821975, 39.56834443788957], [-101.37613408364419, 39.56834444223123], [-101.37617893809073, 39.56834444864901], [-101.37622379255731, 39.56834445504642], [-101.37626873363563, 39.56834445286826], [-101.3766277434346, 39.56834440818097], [-101.37783960582034, 39.56834441339026], [-101.38160985130781, 39.56834442957639], [-101.38555949956907, 39.568344405574265], [-101.3870407118262, 39.568389303224144], [-101.38906044019456, 39.56838932380485], [-101.38932977501821, 39.55496919016465], [-101.38950930310057, 39.54051676895731], [-101.38964388442034, 39.52606435341578], [-101.3897336920036, 39.51156703958107], [-101.3897336920036, 39.50802130431786], [-101.38968883150358, 39.49998714068269], [-101.3897336920036, 39.49944856476468], [-101.38982341306371, 39.49747370907899], [-101.38982341306371, 39.49742881254004], [-101.38982341306371, 39.49738391596878], [-101.38982341306371, 39.4973390973107], [-101.38986836022723, 39.49724930284577], [-101.38986836022723, 39.4972044061498], [-101.38986836022723, 39.497159509421486], [-101.38986836022723, 39.48270708506117], [-101.39004788927151, 39.46825469854231], [-101.39004788927151, 39.465202649551195], [-101.39009274993178, 39.461746631719684], [-101.39009274993178, 39.46165686524], [-101.39009274993178, 39.46161194295674], [-101.39009274993178, 39.46147733189375], [-101.39013761061207, 39.45384716754902], [-101.39013761061207, 39.45375738973155], [-101.39022741863644, 39.44689022979387], [-101.39022741863644, 39.43934986869816], [-101.39036208752151, 39.4367466243026], [-101.39036208752151, 39.42996926878901], [-101.39031714013723, 39.42476276048782], [-101.39031714013723, 39.424717889760316], [-101.39058647832816, 39.41026550275692], [-101.39081086963571, 39.39572328697027], [-101.39081086963571, 39.3956783954995], [-101.39085573063646, 39.38652222453857], [-101.39094553930238, 39.38158507149221], [-101.39094553930238, 39.381270837913576], [-101.39090067826156, 39.37498722256189], [-101.39090067826156, 39.37431393719689], [-101.39067620014943, 39.36672868297825], [-101.39063133922879, 39.364619159524004], [-101.39072114769425, 39.36215060813787], [-101.39072114769425, 39.36111824690336], [-101.39072114769425, 39.36066947381344], [-101.39072114769425, 39.36035529168645], [-101.39072114769425, 39.360085946832896], [-101.39072114769425, 39.36004110798944], [-101.39072114769425, 39.35977176178995], [-101.39072114769425, 39.35954733178132], [-101.39072114769425, 39.35936781844456], [-101.39072114769425, 39.359233144046904], [-101.39072114769425, 39.359098547478446], [-101.39072114769425, 39.35855992396846], [-101.39072114769425, 39.35838040781267], [-101.39072114769425, 39.358335489634335], [-101.39072114769425, 39.35806621424735], [-101.39072114769425, 39.35707878317609], [-101.39076600865496, 39.3559566765244], [-101.39076600865496, 39.355014133007536], [-101.39081086963571, 39.35209675044177], [-101.39090067826156, 39.34747372497506], [-101.39090067826156, 39.34724932930474], [-101.39094553930238, 39.34513982134996], [-101.39094553930238, 39.343928014776694], [-101.39094553930238, 39.343883086300536], [-101.39094553930238, 39.34370352834863], [-101.39099040036324, 39.33809316222029], [-101.39099040036324, 39.33768923620338], [-101.39099040036324, 39.33764430327871], [-101.39099040036324, 39.33486152523118], [-101.39099040036324, 39.33284184372726], [-101.3910352614441, 39.331226013099545], [-101.3910352614441, 39.330956700036445], [-101.39108020914946, 39.329071569885535], [-101.39108020914946, 39.32601954840248], [-101.3911250702704, 39.32323675076555], [-101.3911250702704, 39.32184537191346], [-101.3911250702704, 39.31865870862094], [-101.39116993141137, 39.31829962982692], [-101.39130460155903, 39.31807519667547], [-101.39125974035798, 39.317850749636065], [-101.39121487917693, 39.31726727031155], [-101.39121487917693, 39.317177531679434], [-101.39121487917693, 39.31614521554487], [-101.39121487917693, 39.31578617568966], [-101.39125974035798, 39.31515777857384], [-101.39125974035798, 39.31506803694804], [-101.39143927188708, 39.31466405604143], [-101.39130460155903, 39.313586838041836], [-101.39125974035798, 39.31318288607766], [-101.39121487917693, 39.31286875449134], [-101.39121487917693, 39.31246482329198], [-101.39121487917693, 39.312285254053016], [-101.39125974035798, 39.30963718009788], [-101.39125974035798, 39.308829273795325], [-101.39125974035798, 39.306360693954375], [-101.39125974035798, 39.30452047390263], [-101.39125974035798, 39.301154195137634], [-101.39125974035798, 39.29899980445846], [-101.39125974035798, 39.2984163321698], [-101.39125974035798, 39.297698205024865], [-101.39125974035798, 39.29581308239418], [-101.39125974035798, 39.294287067703344], [-101.39125974035798, 39.293299654375176], [-101.39125974035798, 39.293254768029705], [-101.39130460155903, 39.28984365303524], [-101.39125974035798, 39.28611829347979], [-101.39130460155903, 39.27978972080206], [-101.3913494627801, 39.26538222620092], [-101.3913494627801, 39.26529249205796], [-101.3913494627801, 39.26524758582179], [-101.3913494627801, 39.26197106569378], [-101.3913494627801, 39.26093878586932], [-101.3913494627801, 39.26066948590647], [-101.39139441062592, 39.26013090480003], [-101.39139441062592, 39.259367823433706], [-101.39139441062594, 39.259098595052244], [-101.39139441062592, 39.25721349484004], [-101.39139441062594, 39.25703392502409], [-101.39139441062592, 39.25694417904709], [-101.39139441062592, 39.2568544329428], [-101.39139441062592, 39.25680952072075], [-101.39139441062594, 39.25676460846684], [-101.39139441062592, 39.25640554402232], [-101.39139441062592, 39.25613622479052], [-101.39139441062592, 39.25600164299009], [-101.39139441062592, 39.25595673016275], [-101.3913494627801, 39.2481470237914], [-101.39139441062592, 39.24608241123917], [-101.39139441062592, 39.24365872764555], [-101.39139441062592, 39.24154917873832], [-101.39139441062592, 39.236387589922586], [-101.39139441062592, 39.23329070089336], [-101.39139441062592, 39.22889213198355], [-101.3914392718871, 39.221890287801564], [-101.39148413316825, 39.21601058439498], [-101.39148413316825, 39.21461919394137], [-101.39148413316825, 39.207437909535955], [-101.39152899446944, 39.19765333900967], [-101.39152899446944, 39.19760846315546], [-101.39157394239552, 39.19401777275129], [-101.39157394239552, 39.19298548278331], [-101.39157394239552, 39.18917040706018], [-101.39161880373679, 39.185714372378065], [-101.39161880373679, 39.18531041272492], [-101.39161880373679, 39.18508598958594], [-101.39161880373679, 39.184726989248546], [-101.39161880373679, 39.18445767891457], [-101.39161880373679, 39.18252766646422], [-101.39161880373679, 39.18082211273753], [-101.39157394239552, 39.178533072240405], [-101.39157394239552, 39.17444863797598], [-101.39161880373679, 39.171217060784734], [-101.39166366509806, 39.168613871788104], [-101.39161880373679, 39.16663898918395], [-101.39166366509808, 39.16493344150877], [-101.39166366509808, 39.16403577005112], [-101.39166366509806, 39.16336250814826], [-101.39166366509806, 39.16161208790253], [-101.39166366509806, 39.15999624852867], [-101.39166366509806, 39.15694422197385], [-101.39170852647936, 39.15380235549612], [-101.39170852647936, 39.151468414377234], [-101.39170852647936, 39.1497179807839], [-101.39170852647936, 39.14958333005342], [-101.39170852647936, 39.14738404674986], [-101.39175347448572, 39.14496039186785], [-101.39175347448572, 39.14370359917545], [-101.39170852647936, 39.142401989559765], [-101.39175347448572, 39.13894599811499], [-101.39175347448572, 39.13728529271535], [-101.39175347448572, 39.136208103998584], [-101.39175347448572, 39.13562462244355], [-101.39175347448572, 39.13513089708018]]], &quot;type&quot;: &quot;Polygon&quot;}, &quot;id&quot;: &quot;000000000000000000bc&quot;, &quot;properties&quot;: {&quot;ALAND&quot;: 2783425128, &quot;AWATER&quot;: 288241, &quot;CBSAFP&quot;: &quot;&quot;, &quot;CLASSFP&quot;: &quot;H1&quot;, &quot;COUNTYFP&quot;: &quot;193&quot;, &quot;COUNTYNS&quot;: &quot;00485057&quot;, &quot;CSAFP&quot;: &quot;&quot;, &quot;FUNCSTAT&quot;: &quot;A&quot;, &quot;GEOID&quot;: &quot;20193&quot;, &quot;INTPTLAT&quot;: &quot;+39.3577126&quot;, &quot;INTPTLON&quot;: &quot;-101.0833859&quot;, &quot;LSAD&quot;: &quot;06&quot;, &quot;METDIVFP&quot;: &quot;&quot;, &quot;MTFCC&quot;: &quot;G4020&quot;, &quot;NAME&quot;: &quot;Thomas&quot;, &quot;NAMELSAD&quot;: &quot;Thomas County&quot;, &quot;STATEFP&quot;: &quot;20&quot;}, &quot;type&quot;: &quot;Feature&quot;}], &quot;id&quot;: &quot;TIGER/2018/Counties&quot;, &quot;properties&quot;: {&quot;system:asset_size&quot;: 57687881}, &quot;type&quot;: &quot;FeatureCollection&quot;, &quot;version&quot;: 1566851338350559});
+
+        
+    
+            var layer_control_945a09348bcd1ba0f2e798e1bfec4653 = {
+                base_layers : {
+                    &quot;openstreetmap&quot; : tile_layer_a8540fc08e15805c689ac62fccfdff58,
+                },
+                overlays :  {
+                    &quot;cropland&quot; : tile_layer_1611ee0639af7212f94bac96904da78f,
+                    &quot;County boundary&quot; : geo_json_3a3fe13fa60e163bd6cb98935943e55f,
+                },
+            };
+            L.control.layers(
+                layer_control_945a09348bcd1ba0f2e798e1bfec4653.base_layers,
+                layer_control_945a09348bcd1ba0f2e798e1bfec4653.overlays,
+                {&quot;autoZIndex&quot;: true, &quot;collapsed&quot;: true, &quot;position&quot;: &quot;topright&quot;}
+            ).addTo(map_453ef06be545c39ee9238a05d0ef94d8);
+        
+</script>
+</html>" style="position:absolute;width:100%;height:100%;left:0;top:0;border:none !important;" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe></div></div>
+</div>
+</div>
+<div class="cell" data-execution_count="131">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>lat, lon <span class="op">=</span> <span class="bu">eval</span>(clipboard.paste())</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(lat, lon)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define selected coordinates as point geometry</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>field_point <span class="op">=</span> ee.Geometry.Point([lon, lat])</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>point_evi <span class="op">=</span> EVI.getRegion(field_point, scale<span class="op">=</span><span class="dv">1</span>).getInfo()</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>df_point <span class="op">=</span> array_to_df(point_evi)</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="st">'df'</span> <span class="kw">not</span> <span class="kw">in</span> <span class="bu">locals</span>():</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df_point</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.concat([df, df_point])</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>evi_mean <span class="op">=</span> df.groupby(by<span class="op">=</span><span class="st">'time'</span>, as_index<span class="op">=</span><span class="va">False</span>)[<span class="st">'EVI'</span>].median()</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>evi_mean[<span class="st">'smoothed'</span>] <span class="op">=</span> evi_mean[<span class="st">'EVI'</span>].rolling(window<span class="op">=</span><span class="dv">15</span>, min_periods<span class="op">=</span><span class="dv">1</span>, center<span class="op">=</span><span class="va">True</span>).mean()</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>plt.plot(evi_mean[<span class="st">'time'</span>], evi_mean[<span class="st">'smoothed'</span>], color<span class="op">=</span><span class="st">'tomato'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> lat <span class="kw">in</span> df[<span class="st">'latitude'</span>].unique():</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> df[<span class="st">'latitude'</span>] <span class="op">==</span> lat</span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    plt.plot(df.loc[idx,<span class="st">'time'</span>], df.loc[idx,<span class="st">'EVI'</span>], linestyle<span class="op">=</span><span class="st">'-'</span>, linewidth<span class="op">=</span><span class="dv">1</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>39.402244 -100.990448</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="time_series_at_a_point_files/figure-html/cell-28-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../gee/value_at_a_point.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">68</span>&nbsp; <span class="chapter-title">GEE Value at a point</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../gee/image_for_an_area.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">70</span>&nbsp; <span class="chapter-title">Image for an area</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+ Material available for free under the Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) license
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

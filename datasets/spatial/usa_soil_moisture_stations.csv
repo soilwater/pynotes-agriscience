@@ -1,0 +1,2112 @@
+﻿"Dataset that combines stations from the National Soil Moistuer Network, National Ecological Observatory Network, AmeriFlux Network, and the INternational Soil Moisture Network for the USA.",,,,
+station,network,latitude,longitude,source
+Attawapiskat River Bog,AmeriFlux,52.695,-83.9452,AMERIFLUX
+Attawapiskat River Fen,AmeriFlux,52.7008,-83.955,AMERIFLUX
+British Columbia - 1949 Douglas-fir stand,AmeriFlux,49.8673,-125.3336,AMERIFLUX
+British Columbia - Clearcut Douglas-fir stand (harvested winter 1999/2000),AmeriFlux,49.8705,-125.2909,AMERIFLUX
+British Columbia - Pole sapling Douglas-fir stand,AmeriFlux,49.5346,-124.9004,AMERIFLUX
+"Ontario - Mixed Deciduous, Borden Forest Site",AmeriFlux,44.3167,-79.9333,AMERIFLUX
+"Ontario - Groundhog River, Boreal Mixedwood Forest",AmeriFlux,48.2167,-82.1556,AMERIFLUX
+Alberta - Mixed Grass Prairie,AmeriFlux,49.7093,-112.9402,AMERIFLUX
+New Brunswick - 1967 Balsam Fir - Nashwaak Lake Site 01 (Mature balsam fir forest),AmeriFlux,46.4722,-67.1,AMERIFLUX
+"Saskatchewan - Western Boreal, Mature Aspen",AmeriFlux,53.6289,-106.1978,AMERIFLUX
+"Saskatchewan - Western Boreal, Mature Black Spruce",AmeriFlux,53.9872,-105.1178,AMERIFLUX
+"Saskatchewan - Western Boreal, Mature Jack Pine",AmeriFlux,53.9163,-104.692,AMERIFLUX
+Quebec - 1975 Harvested Black Spruce (HBS75),AmeriFlux,49.7598,-74.5711,AMERIFLUX
+"Quebec - Eastern Boreal, Black Spruce/Jack Pine Cutover",AmeriFlux,49.2671,-74.0365,AMERIFLUX
+"Quebec - Eastern Boreal, Mature Black Spruce",AmeriFlux,49.6925,-74.3421,AMERIFLUX
+"Saskatchewan - Western Boreal, Jack Pine forest harvested in 1994",AmeriFlux,53.908,-104.656,AMERIFLUX
+"Saskatchewan - Western Boreal, Jack Pine forest harvested in 2002",AmeriFlux,53.945,-104.649,AMERIFLUX
+"Saskatchewan - Western Boreal, Jack Pine forest harvested in 1975 (BOREAS Young Jack Pine)",AmeriFlux,53.8758,-104.6453,AMERIFLUX
+Ontario - Turkey Point 2002 Plantation White Pine,AmeriFlux,42.6609,-80.5595,AMERIFLUX
+Ontario - Turkey Point 1974 Plantation White Pine,AmeriFlux,42.7068,-80.3483,AMERIFLUX
+Ontario - Turkey Point 1939 Plantation White Pine,AmeriFlux,42.7102,-80.3574,AMERIFLUX
+Ontario - Turkey Point Mature Deciduous,AmeriFlux,42.6353,-80.5577,AMERIFLUX
+"Alberta - Western Peatland - LaBiche River,Black Spruce/Larch Fen",AmeriFlux,54.9538,-112.467,AMERIFLUX
+El Mogor,AmeriFlux,32.0298,-116.6045,AMERIFLUX
+La Paz,AmeriFlux,24.1292,-110.438,AMERIFLUX
+Amargosa Desert Research Site (ADRS),AmeriFlux,36.7653,-116.6933,AMERIFLUX
+ARM Southern Great Plains site- Lamont,AmeriFlux,36.6058,-97.4888,AMERIFLUX
+Audubon Research Ranch,AmeriFlux,31.5907,-110.5104,AMERIFLUX
+Bartlett Experimental Forest,AmeriFlux,44.0646,-71.2881,AMERIFLUX
+Bouldin Island Alfalfa,AmeriFlux,38.0992,-121.4993,AMERIFLUX
+Bouldin Island corn,AmeriFlux,38.1091,-121.5351,AMERIFLUX
+Brookings,AmeriFlux,44.3453,-96.8362,AMERIFLUX
+Bondville,AmeriFlux,40.0062,-88.2904,AMERIFLUX
+Brooks Field Site 10- Ames,AmeriFlux,41.9749,-93.6906,AMERIFLUX
+Brooks Field Site 11- Ames,AmeriFlux,41.9747,-93.6936,AMERIFLUX
+Canaan Valley,AmeriFlux,39.0633,-79.4208,AMERIFLUX
+Cedar Mesa,AmeriFlux,37.5241,-109.7471,AMERIFLUX
+CAF-LTAR Cook East,AmeriFlux,46.7815,-117.0821,AMERIFLUX
+CAF-LTAR Cook West,AmeriFlux,46.784,-117.0908,AMERIFLUX
+CAF-LTAR Boyd North,AmeriFlux,46.7551,-117.1261,AMERIFLUX
+CAF-LTAR Boyd South,AmeriFlux,46.7518,-117.1285,AMERIFLUX
+Concord Grazed Grassland,AmeriFlux,37.938,-121.9761,AMERIFLUX
+Chestnut Ridge,AmeriFlux,35.9311,-84.3324,AMERIFLUX
+Charleston Mesquite Woodland,AmeriFlux,31.6637,-110.1777,AMERIFLUX
+Chimney Park,AmeriFlux,41.068,-106.1187,AMERIFLUX
+Tri county school Pine Forest,AmeriFlux,44.1467,-89.5002,AMERIFLUX
+Central Sands Irrigated Agricultural Field,AmeriFlux,44.1095,-89.5377,AMERIFLUX
+Crossett Experimental Forest,AmeriFlux,33.0442,-91.9204,AMERIFLUX
+"Sierra Critical Zone, Sierra Transect, Ponderosa Pine Forest, Soaproot Saddle",AmeriFlux,37.0311,-119.2566,AMERIFLUX
+"Sierra Critical Zone, Sierra Transect, Sierran Mixed Conifer, P301",AmeriFlux,37.0674,-119.1951,AMERIFLUX
+"US Dairy Forage Research Center, Prairie du Sac",AmeriFlux,43.3448,-89.7117,AMERIFLUX
+Dairy Forage Research Center - Kernza,AmeriFlux,43.3453,-89.7154,AMERIFLUX
+Staten Rice 1,AmeriFlux,38.1235,-121.549,AMERIFLUX
+Everglades (long hydroperiod marsh),AmeriFlux,25.5519,-80.7826,AMERIFLUX
+Everglades (short hydroperiod marsh),AmeriFlux,25.4379,-80.5946,AMERIFLUX
+Fort Peck,AmeriFlux,48.3077,-105.1019,AMERIFLUX
+Freeman Ranch- Woodland,AmeriFlux,29.94,-97.99,AMERIFLUX
+GLEES,AmeriFlux,41.3665,-106.2399,AMERIFLUX
+Harvard Forest EMS Tower (HFR1),AmeriFlux,42.5378,-72.1715,AMERIFLUX
+Hobcaw Barony Mature Longleaf Pine,AmeriFlux,33.3242,-79.244,AMERIFLUX
+Hobcaw Barony Longleaf Pine Restoration,AmeriFlux,33.3482,-79.2322,AMERIFLUX
+Hubbard Brook Experimental Forest,AmeriFlux,43.9397,-71.7181,AMERIFLUX
+Hanford 100H grassland,AmeriFlux,46.6889,-119.4641,AMERIFLUX
+Howland Forest (main tower),AmeriFlux,45.2041,-68.7402,AMERIFLUX
+Humnoke Farm Rice Field – Field C,AmeriFlux,34.5888,-91.7517,AMERIFLUX
+Hill Slough Marsh,AmeriFlux,38.2368,-122.0212,AMERIFLUX
+Fermi National Accelerator Laboratory- Batavia (Agricultural site),AmeriFlux,41.8593,-88.2227,AMERIFLUX
+Fermi National Accelerator Laboratory- Batavia (Prairie site),AmeriFlux,41.8406,-88.241,AMERIFLUX
+Jornada Experimental Range Bajada Site,AmeriFlux,32.582,-106.635,AMERIFLUX
+Jornada Experimental Range Mixed Shrubland,AmeriFlux,32.5849,-106.6032,AMERIFLUX
+Kansas Field Station,AmeriFlux,39.0561,-95.1907,AMERIFLUX
+KBS Lux Arbor Reserve Corn,AmeriFlux,42.4847,-85.4422,AMERIFLUX
+KBS Lux Arbor Reserve Switchgrass,AmeriFlux,42.4768,-85.4468,AMERIFLUX
+KBS Lux Arbor Reserve Prairie,AmeriFlux,42.4735,-85.4473,AMERIFLUX
+Kansas Land Institute,AmeriFlux,38.7745,-97.5684,AMERIFLUX
+KBS Marshall Farms Corn,AmeriFlux,42.4376,-85.3287,AMERIFLUX
+KBS Marshall Farms Prairie,AmeriFlux,42.4441,-85.3098,AMERIFLUX
+KBS Marshall Farms Switchgrass,AmeriFlux,42.4464,-85.3105,AMERIFLUX
+KBS Marshall Farms Smooth Brome Grass (Ref),AmeriFlux,42.4423,-85.3301,AMERIFLUX
+Konza Prairie LTER (KNZ),AmeriFlux,39.0824,-96.5603,AMERIFLUX
+Metolius mature ponderosa pine,AmeriFlux,44.4523,-121.5574,AMERIFLUX
+Metolius Young Pine Burn,AmeriFlux,44.3233,-121.6078,AMERIFLUX
+Morgan Monroe State Forest,AmeriFlux,39.3232,-86.4131,AMERIFLUX
+LTAR CMRB Field 1 (CMRB ASP),AmeriFlux,39.2298,-92.1167,AMERIFLUX
+LTAR CMRB Tucker Prairie (CMRB TP),AmeriFlux,38.9488,-91.9945,AMERIFLUX
+LTAR CMRB Field 3 (CMRB BAU),AmeriFlux,39.2311,-92.1497,AMERIFLUX
+Missouri Ozark Site,AmeriFlux,38.7441,-92.2,AMERIFLUX
+Mt Bigelow,AmeriFlux,32.416,-110.7256,AMERIFLUX
+Jackson Agricultural Field,AmeriFlux,42.2143,-84.8539,AMERIFLUX
+NC_Loblolly Plantation,AmeriFlux,35.803,-76.6685,AMERIFLUX
+NC_AlligatorRiver,AmeriFlux,35.7879,-75.9038,AMERIFLUX
+Mead - irrigated continuous maize site,AmeriFlux,41.1651,-96.4766,AMERIFLUX
+Mead - irrigated maize-soybean rotation site,AmeriFlux,41.1649,-96.4701,AMERIFLUX
+Mead - rainfed maize-soybean rotation site,AmeriFlux,41.1797,-96.4397,AMERIFLUX
+Niwot Ridge Forest (LTER NWT1),AmeriFlux,40.0329,-105.5464,AMERIFLUX
+Niwot Ridge Alpine (T-Van West),AmeriFlux,40.052,-105.5864,AMERIFLUX
+Florida pine flatwoods,AmeriFlux,27.3836,-81.9509,AMERIFLUX
+"Florida, Paspalum notatum pasture",AmeriFlux,27.3944,-81.951,AMERIFLUX
+Park Falls/WLEF,AmeriFlux,45.9459,-90.2723,AMERIFLUX
+Arkansas Corn Farm,AmeriFlux,34.4159,-91.6733,AMERIFLUX
+Butte County Rice Farm,AmeriFlux,39.5782,-121.8579,AMERIFLUX
+Glenn County Organic Rice Farm,AmeriFlux,39.6805,-122.0026,AMERIFLUX
+Desha County Rice Farm,AmeriFlux,33.6216,-91.4306,AMERIFLUX
+RCEW Low Sagebrush,AmeriFlux,43.1439,-116.7356,AMERIFLUX
+RCEW Mountain Big Sagebrush,AmeriFlux,43.0645,-116.7486,AMERIFLUX
+Rosemount Prairie,AmeriFlux,44.6781,-93.0723,AMERIFLUX
+Rosemount I18_South,AmeriFlux,44.691,-93.0576,AMERIFLUX
+Rosemount I18_North,AmeriFlux,44.6946,-93.0578,AMERIFLUX
+RCEW Upper Sheep Prescibed Fire,AmeriFlux,43.1207,-116.7231,AMERIFLUX
+Reynolds Creek Wyoming big sagebrush,AmeriFlux,43.1675,-116.7132,AMERIFLUX
+Southern California Climate Gradient - Sonoran Desert,AmeriFlux,33.6518,-116.3721,AMERIFLUX
+Southern California Climate Gradient - Oak/Pine Forest,AmeriFlux,33.8079,-116.7717,AMERIFLUX
+Southern California Climate Gradient - Grassland,AmeriFlux,33.7365,-117.6946,AMERIFLUX
+Southern California Climate Gradient - Coastal Sage,AmeriFlux,33.7343,-117.6959,AMERIFLUX
+Southern California Climate Gradient - Pinyon/Juniper Woodland,AmeriFlux,33.6047,-116.4527,AMERIFLUX
+Nebraska SandHills Dry Valley,AmeriFlux,42.0693,-101.4072,AMERIFLUX
+Sioux Falls Portable,AmeriFlux,43.2408,-96.902,AMERIFLUX
+Silas Little- New Jersey,AmeriFlux,39.9138,-74.596,AMERIFLUX
+Sky Oaks- Old Stand,AmeriFlux,33.3738,-116.6228,AMERIFLUX
+Sky Oaks- Young Stand,AmeriFlux,33.3771,-116.6226,AMERIFLUX
+Sky Oaks- New Stand,AmeriFlux,33.3845,-116.6406,AMERIFLUX
+Santa Rita Grassland,AmeriFlux,31.7894,-110.8277,AMERIFLUX
+Santa Rita Mesquite,AmeriFlux,31.8214,-110.8661,AMERIFLUX
+Susquehanna Shale Hills Critical Zone Observatory,AmeriFlux,40.6658,-77.9041,AMERIFLUX
+St Jones Reserve,AmeriFlux,39.0882,-75.4372,AMERIFLUX
+Sylvania Wilderness Area,AmeriFlux,46.242,-89.3477,AMERIFLUX
+Tonzi Ranch,AmeriFlux,38.4309,-120.966,AMERIFLUX
+LTAR UCB (Upper Chesapeake Bay) EC1,AmeriFlux,40.7536,-78.0056,AMERIFLUX
+LTAR UCB (Upper Chesapeake Bay) EC2,AmeriFlux,40.7559,-77.9998,AMERIFLUX
+Univ. of Mich. Biological Station,AmeriFlux,45.5598,-84.7138,AMERIFLUX
+UMBS Disturbance,AmeriFlux,45.5625,-84.6975,AMERIFLUX
+Vaira Ranch- Ione,AmeriFlux,38.4133,-120.9508,AMERIFLUX
+Willow Creek,AmeriFlux,45.8059,-90.0799,AMERIFLUX
+Walnut Gulch Lucky Hills Shrub,AmeriFlux,31.7438,-110.0522,AMERIFLUX
+Walnut Gulch Kendall Grasslands,AmeriFlux,31.7365,-109.9419,AMERIFLUX
+Adamsville,Delaware EOS,38.833,-75.683,NSMN
+Atglen,Delaware EOS,39.917,-75.983,NSMN
+Bethany_Beach,Delaware EOS,38.55,-75.067,NSMN
+Blackbird,Delaware EOS,39.383,-75.633,NSMN
+Blackiston,Delaware EOS,39.233,-75.733,NSMN
+Bridgeville,Delaware EOS,38.717,-75.583,NSMN
+Chester_Springs,Delaware EOS,40.083,-75.617,NSMN
+Claymont,Delaware EOS,39.817,-75.45,NSMN
+Dagsboro,Delaware EOS,38.55,-75.233,NSMN
+Dover,Delaware EOS,39.15,-75.5,NSMN
+Ellendale,Delaware EOS,38.8,-75.433,NSMN
+Fair_Hill,Delaware EOS,39.717,-75.833,NSMN
+Georgetown,Delaware EOS,38.633,-75.45,NSMN
+Glasgow,Delaware EOS,39.6,-75.733,NSMN
+Glenmoore,Delaware EOS,40.067,-75.783,NSMN
+Greenville,Delaware EOS,39.8,-75.6,NSMN
+Gumboro,Delaware EOS,38.483,-75.367,NSMN
+Harbeson,Delaware EOS,38.683,-75.25,NSMN
+Harrington,Delaware EOS,38.917,-75.583,NSMN
+Hockessin,Delaware EOS,39.783,-75.7,NSMN
+Hockessin,Delaware EOS,39.783,-75.65,NSMN
+Jones_Crossroads,Delaware EOS,38.6,-75.433,NSMN
+Kennett_Square,Delaware EOS,39.817,-75.733,NSMN
+Kennett_Square,Delaware EOS,39.867,-75.683,NSMN
+Kitts_Hummock,Delaware EOS,39.083,-75.433,NSMN
+Laurel,Delaware EOS,38.533,-75.6,NSMN
+Long_Neck,Delaware EOS,38.617,-75.117,NSMN
+Marshallton,Delaware EOS,39.95,-75.717,NSMN
+Milford,Delaware EOS,38.883,-75.433,NSMN
+Newark,Delaware EOS,39.667,-75.75,NSMN
+Nottingham,Delaware EOS,39.75,-76.05,NSMN
+Sandtown,Delaware EOS,39.033,-75.733,NSMN
+Seaford,Delaware EOS,38.65,-75.7,NSMN
+Smyrna,Delaware EOS,39.283,-75.583,NSMN
+Stockley,Delaware EOS,38.633,-75.317,NSMN
+Townsend,Delaware EOS,39.383,-75.75,NSMN
+Warwick,Delaware EOS,40.167,-75.733,NSMN
+West_Chester,Delaware EOS,39.967,-75.583,NSMN
+West_Grove,Delaware EOS,39.867,-75.85,NSMN
+White_Clay_Creek,Delaware EOS,39.733,-75.733,NSMN
+Wilmington,Delaware EOS,39.733,-75.517,NSMN
+Woodside,Delaware EOS,39.067,-75.633,NSMN
+Alapaha_Range_Grazing_Unit_-_Blueberry_Farm,Georgia AEMN,31.34,-83.24,NSMN
+Albany_State_University,Georgia AEMN,31.53,-84.37,NSMN
+Alma_-_Bacon_County_Airport,Georgia AEMN,31.54,-82.51,NSMN
+Atlanta_Athletic_Club_Golf_Course,Georgia AEMN,34,-84.19,NSMN
+Attapulgus_Research_and_Education_Center,Georgia AEMN,30.76,-84.49,NSMN
+Bledsoe_Research_Farm,Georgia AEMN,33.18,-84.41,NSMN
+Booth_Berry_Farms,Georgia AEMN,31.02,-82.66,NSMN
+Boston_Tractor_Co._Inc.,Georgia AEMN,30.79,-83.67,NSMN
+Bowen_Research_Farm_at_the_Coastal_Plain_Experiment_Station,Georgia AEMN,31.48,-83.44,NSMN
+Bulloch_County_Board_of_Education_Maintenance_&_Transportation_Annex,Georgia AEMN,32.49,-81.81,NSMN
+Butler_Farm,Georgia AEMN,34.76,-85.38,NSMN
+Butler_Place,Georgia AEMN,32.55,-84.19,NSMN
+Callaway_Gardens,Georgia AEMN,32.84,-84.84,NSMN
+Catahoula_Farms,Georgia AEMN,32.02,-83.94,NSMN
+Center_for_Applied_Nursery_Research_McCorkle_Nurseries,Georgia AEMN,33.37,-82.4,NSMN
+Central_Georgia_Research_and_Education_Center,Georgia AEMN,33.4,-83.49,NSMN
+Cherokee_Town_and_Country_Club,Georgia AEMN,33.99,-84.36,NSMN
+Clyde_Kirkland_Farm,Georgia AEMN,31.49,-82.79,NSMN
+Coastal_Georgia_Botanical_Gardens,Georgia AEMN,32,-81.27,NSMN
+Coastal_Plain_Experiment_Station,Georgia AEMN,31.49,-83.53,NSMN
+Coffee_Farms,Georgia AEMN,31.92,-83.63,NSMN
+College_of_Coastal_Georgia,Georgia AEMN,31.19,-81.48,NSMN
+Colquitt_Electric_Membership_Corporation,Georgia AEMN,30.82,-83.32,NSMN
+County_Commission,Georgia AEMN,33.28,-82.97,NSMN
+Dempsey_Research_Farm,Georgia AEMN,33.25,-84.3,NSMN
+Donalsonville_Municipal_Airport,Georgia AEMN,31.02,-84.88,NSMN
+Etowah_River_Treatment_Facility,Georgia AEMN,34.29,-84.38,NSMN
+Fort_Valley_State_University,Georgia AEMN,32.53,-83.89,NSMN
+Gainesville_State_College,Georgia AEMN,34.24,-83.87,NSMN
+Georgia_Mountain_Research_and_Education_Center,Georgia AEMN,34.84,-83.93,NSMN
+Golf_Club_of_Georgia,Georgia AEMN,34.09,-84.22,NSMN
+Griffin_Campus,Georgia AEMN,33.26,-84.28,NSMN
+Griggs_Farm,Georgia AEMN,32.26,-83.66,NSMN
+Hardin_Farm,Georgia AEMN,31.83,-83.82,NSMN
+Hillcrest_Orchards,Georgia AEMN,34.62,-84.37,NSMN
+Hooks-Hanner_Environmental_Resource_Center_-_USDA-ARS_National_Peanut_Research_Labor,Georgia AEMN,31.73,-84.4,NSMN
+Horticulture_Research_Farm,Georgia AEMN,33.89,-83.42,NSMN
+Iron_Horse_Farm,Georgia AEMN,33.72,-83.31,NSMN
+J._Phil_Campbell_Sr._Natural_Resources_Conservation_Center,Georgia AEMN,33.87,-83.45,NSMN
+Jaemor_Farms,Georgia AEMN,34.42,-83.65,NSMN
+John_A._Flowers_Blueberry_Farm,Georgia AEMN,31.63,-82.05,NSMN
+Joseph_W._Jones_Ecological_Research_Center,Georgia AEMN,31.22,-84.48,NSMN
+Lake_Lanier,Georgia AEMN,34.35,-83.79,NSMN
+Laurens_County_Emergency_Management_Service_and_911_Center,Georgia AEMN,32.5,-82.92,NSMN
+Madison_County_Emergency_Medical_Services,Georgia AEMN,34.15,-83.24,NSMN
+Marine_Corps_Logistics_Base_Albany,Georgia AEMN,31.55,-84.05,NSMN
+Mercier_Orchards,Georgia AEMN,34.89,-84.34,NSMN
+Miles_Berry_Farm,Georgia AEMN,31.75,-82.44,NSMN
+Mixon_Farms,Georgia AEMN,31.21,-82.5,NSMN
+Multi-Crop_Irrigation_Research_Farm_-_USDA-ARS_National_Peanut_Research_Laboratory,Georgia AEMN,31.74,-84.61,NSMN
+Murphy_Farm,Georgia AEMN,32.19,-83.88,NSMN
+Newman_Farm,Georgia AEMN,31.79,-84.49,NSMN
+Northwest_Georgia_Research_and_Education_Center,Georgia AEMN,34.56,-84.82,NSMN
+Northwest_Georgia_Research_and_Education_Center,Georgia AEMN,34.34,-85.12,NSMN
+Ossabaw_Island,Georgia AEMN,31.84,-81.09,NSMN
+Paulding_County_High_School,Georgia AEMN,33.89,-84.84,NSMN
+Peavy_Farm,Georgia AEMN,32.11,-83.68,NSMN
+Plant_Sciences_Research_Farm,Georgia AEMN,33.87,-83.54,NSMN
+Plant_Wansley,Georgia AEMN,33.42,-85.06,NSMN
+Ponder_Farm,Georgia AEMN,31.51,-83.65,NSMN
+Richard_B._Russell_Dam_and_Lake,Georgia AEMN,34.02,-82.61,NSMN
+Satilla_Blueberry_Farm,Georgia AEMN,30.96,-81.77,NSMN
+Seldom_Rest_Farm,Georgia AEMN,30.96,-84.95,NSMN
+Seminole_State_Park,Georgia AEMN,30.81,-84.88,NSMN
+Southeast_Georgia_Research_and_Education_Center,Georgia AEMN,32.88,-82.22,NSMN
+Southwest_Georgia_Research_and_Education_Center,Georgia AEMN,32.05,-84.37,NSMN
+Stanley_Farms,Georgia AEMN,32.14,-82.35,NSMN
+Stripling_Irrigation_Research_Park,Georgia AEMN,31.28,-84.29,NSMN
+Sunbelt_Agricultural_Exposition,Georgia AEMN,31.15,-83.72,NSMN
+Sunny_View_Farms,Georgia AEMN,31.78,-85.06,NSMN
+T_Brim_Farm,Georgia AEMN,31.71,-84.37,NSMN
+Telfair_County_Jaycees_Fairground,Georgia AEMN,32.08,-82.9,NSMN
+The_Beach_at_Clayton_County_International_Park,Georgia AEMN,33.52,-84.31,NSMN
+The_Georgia_FFA-FCCLA_Center,Georgia AEMN,33.44,-83.84,NSMN
+The_Landings_on_Skidaway_Island,Georgia AEMN,31.95,-81.04,NSMN
+Three_Sisters_Vineyards,Georgia AEMN,34.61,-83.88,NSMN
+Thurmond_Dam_and_Lake,Georgia AEMN,33.66,-82.19,NSMN
+Tiger_Mountain_Orchards,Georgia AEMN,34.85,-83.43,NSMN
+Tony_Smith_Farms,Georgia AEMN,31.35,-84.63,NSMN
+Twiggs_County_Comprehensive_Middle_High_School,Georgia AEMN,32.68,-83.36,NSMN
+UGA_Costa_Rica_Campus,Georgia AEMN,10.28,-84.8,NSMN
+USDA-ARS._National_Peanut_Research_Lab,Georgia AEMN,31.76,-84.44,NSMN
+USDA-ARS_Southeastern_Fruit_&_Nut_Tree_Laboratory,Georgia AEMN,32.66,-83.74,NSMN
+Washington_County_Farm_Bureau_Ag_Center,Georgia AEMN,32.93,-82.8,NSMN
+Wight_Nurseries,Georgia AEMN,30.86,-84.23,NSMN
+ZBLU_Berry_Farms,Georgia AEMN,31.18,-82.01,NSMN
+Belleville,Illinois CN,38.518,-89.842,NSMN
+Big_Bend,Illinois CN,41.634,-90.039,NSMN
+Bondville,Illinois CN,40.053,-88.372,NSMN
+Brownstown,Illinois CN,38.949,-88.96,NSMN
+Carbondale,Illinois CN,37.7,-89.244,NSMN
+Champaign,Illinois CN,40.084,-88.24,NSMN
+DeKalb,Illinois CN,41.842,-88.851,NSMN
+Dixon_Springs,Illinois CN,37.437,-88.667,NSMN
+Fairfield,Illinois CN,38.382,-88.39,NSMN
+Freeport,Illinois CN,42.28,-89.673,NSMN
+Monmouth,Illinois CN,40.933,-90.724,NSMN
+Olney,Illinois CN,38.738,-88.103,NSMN
+Peoria,Illinois CN,40.709,-89.511,NSMN
+Perry,Illinois CN,39.806,-90.824,NSMN
+Rend_Lake,Illinois CN,38.136,-88.923,NSMN
+Snicarte,Illinois CN,40.106,-90.182,NSMN
+Springfield,Illinois CN,39.727,-89.611,NSMN
+St._Charles,Illinois CN,41.905,-88.361,NSMN
+Stelle,Illinois CN,40.95,-88.159,NSMN
+Orr_Center_(Perry),Illinois CN,39.8,-90.83,ISMN
+Perry,Illinois CN,39.806,-90.824,ISMN
+Monmouth,Illinois CN,40.92,-90.73,ISMN
+Snicarte,Illinois CN,40.106,-90.182,ISMN
+Oak_Run,Illinois CN,40.97,-90.15,ISMN
+Big_Bend,Illinois CN,41.634,-90.039,ISMN
+Topeka,Illinois CN,40.3,-89.9,ISMN
+Belleville,Illinois CN,38.52,-89.88,ISMN
+Freeport,Illinois CN,42.28,-89.67,ISMN
+Springfield,Illinois CN,39.52,-89.62,ISMN
+Peoria,Illinois CN,40.7,-89.52,ISMN
+Carbondale,Illinois CN,37.72,-89.23,ISMN
+Brownstown,Illinois CN,38.95,-88.95,ISMN
+Rend_Lake,Illinois CN,38.136,-88.923,ISMN
+Rend_Lake_(Ina),Illinois CN,38.13,-88.92,ISMN
+DeKalb,Illinois CN,41.842,-88.851,ISMN
+De_Kalb,Illinois CN,41.85,-88.85,ISMN
+Dixon_Springs-Bare,Illinois CN,37.45,-88.67,ISMN
+Dixon_Springs-Grass,Illinois CN,37.45,-88.67,ISMN
+Dixon_Springs,Illinois CN,37.437,-88.667,ISMN
+Fairfield,Illinois CN,38.38,-88.38,ISMN
+St._Charles,Illinois CN,41.905,-88.361,ISMN
+Champaign,Illinois CN,40.08,-88.23,ISMN
+Bondville,Illinois CN,40.05,-88.22,ISMN
+Stelle,Illinois CN,40.95,-88.17,ISMN
+Olney,Illinois CN,38.73,-88.1,ISMN
+Adel,Iowa EM,41.59,-94.13,NSMN
+Ames_ISU_AEA_AgFarm,Iowa EM,42.02,-93.77,NSMN
+Ames_ISU_Hort_Farm,Iowa EM,42.11,-93.58,NSMN
+Ames_ISU_Hort_Farm_(Vineyard),Iowa EM,42.11,-93.59,NSMN
+Bankston_-_Park_Farm_Winery_(Vineyard),Iowa EM,42.52,-90.91,NSMN
+Calumet,Iowa EM,42.93,-95.54,NSMN
+Castana,Iowa EM,42.06,-95.83,NSMN
+CEA_Site_near_Ocheyedan,Iowa EM,43.37,-95.64,NSMN
+Cedar_Rapids,Iowa EM,41.91,-91.62,NSMN
+Chariton,Iowa EM,40.97,-93.42,NSMN
+Crawfordsville,Iowa EM,41.19,-91.48,NSMN
+Doon,Iowa EM,43.3,-96.19,NSMN
+Glenwood_-_Blackwing_Vineyard,Iowa EM,41.04,-95.77,NSMN
+Greenfield,Iowa EM,41.28,-94.45,NSMN
+Inwood_-_Calico_Skies_Winery,Iowa EM,43.31,-96.5,NSMN
+Kanawha,Iowa EM,42.92,-93.79,NSMN
+Lewis,Iowa EM,41.31,-95.17,NSMN
+Muscatine,Iowa EM,41.36,-91.13,NSMN
+Nashua,Iowa EM,42.94,-92.57,NSMN
+Newell,Iowa EM,42.59,-95.01,NSMN
+Oskaloosa_Tassel_Ridge_(Vineyard),Iowa EM,41.32,-92.65,NSMN
+Wellman,Iowa EM,41.48,-91.87,NSMN
+West_Point,Iowa EM,40.76,-91.42,NSMN
+Inwood_-_Calico_Skies_Winery,Iowa EM,43.31,-96.5,ISMN
+Doon,Iowa EM,43.3,-96.19,ISMN
+Castana,Iowa EM,42.06,-95.83,ISMN
+Glenwood_-_Blackwing_Vineyard,Iowa EM,41.04,-95.77,ISMN
+CEA_Site_near_Ocheyedan,Iowa EM,43.37,-95.64,ISMN
+Calumet,Iowa EM,42.93,-95.54,ISMN
+Lewis,Iowa EM,41.31,-95.17,ISMN
+Newell,Iowa EM,42.59,-95.01,ISMN
+Greenfield,Iowa EM,41.28,-94.45,ISMN
+Adel,Iowa EM,41.59,-94.13,ISMN
+Kanawha,Iowa EM,42.92,-93.79,ISMN
+Ames_ISU_AEA_AgFarm,Iowa EM,42.02,-93.77,ISMN
+Ames_ISU_Hort_Farm_(Vineyard),Iowa EM,42.11,-93.59,ISMN
+Ames_ISU_Hort_Farm,Iowa EM,42.11,-93.58,ISMN
+Chariton,Iowa EM,40.97,-93.42,ISMN
+Oskaloosa_Tassel_Ridge_(Vineyard),Iowa EM,41.32,-92.65,ISMN
+Nashua,Iowa EM,42.94,-92.57,ISMN
+Wellman,Iowa EM,41.48,-91.87,ISMN
+Cedar_Rapids,Iowa EM,41.91,-91.62,ISMN
+Crawfordsville,Iowa EM,41.19,-91.48,ISMN
+West_Point,Iowa EM,40.76,-91.42,ISMN
+Muscatine,Iowa EM,41.36,-91.13,ISMN
+Bankston_-_Park_Farm_Winery_(Vineyard),Iowa EM,42.52,-90.91,ISMN
+Ashland_Bottoms,Kansas Mesonet,39.126,-96.637,NSMN
+Butler,Kansas Mesonet,37.804,-96.883,NSMN
+Cairo,Kansas Mesonet,37.65,-98.555,NSMN
+Cherokee,Kansas Mesonet,37.199,-94.981,NSMN
+Cheyenne,Kansas Mesonet,39.633,-101.816,NSMN
+Clay,Kansas Mesonet,39.418,-97.14,NSMN
+Colby,Kansas Mesonet,39.392,-101.069,NSMN
+Cullison,Kansas Mesonet,37.631,-98.905,NSMN
+Garden_City,Kansas Mesonet,37.993,-100.812,NSMN
+Grant,Kansas Mesonet,37.673,-101.372,NSMN
+Gray,Kansas Mesonet,37.792,-100.297,NSMN
+Great_Bend,Kansas Mesonet,38.364,-98.765,NSMN
+Greensburg,Kansas Mesonet,37.603,-99.293,NSMN
+Gypsum,Kansas Mesonet,38.725,-97.444,NSMN
+Hamilton,Kansas Mesonet,37.996,-101.865,NSMN
+Harper,Kansas Mesonet,37.065,-98.085,NSMN
+Harvey,Kansas Mesonet,38.141,-97.642,NSMN
+Haskell,Kansas Mesonet,37.659,-101.027,NSMN
+Hays,Kansas Mesonet,38.849,-99.345,NSMN
+Haysville,Kansas Mesonet,37.52,-97.312,NSMN
+Hiawatha,Kansas Mesonet,39.842,-95.482,NSMN
+Hill_City,Kansas Mesonet,39.372,-99.831,NSMN
+Hodgeman,Kansas Mesonet,38.101,-99.902,NSMN
+Hutchinson,Kansas Mesonet,37.931,-98.027,NSMN
+Hutchinson_10SW,Kansas Mesonet,37.931,-98.02,NSMN
+Jewell,Kansas Mesonet,39.683,-98.213,NSMN
+La_Crosse,Kansas Mesonet,38.541,-99.281,NSMN
+Lake_City,Kansas Mesonet,37.309,-98.794,NSMN
+Lakin,Kansas Mesonet,37.894,-101.233,NSMN
+Lane,Kansas Mesonet,38.599,-100.471,NSMN
+Leoti,Kansas Mesonet,38.483,-101.328,NSMN
+Lewis,Kansas Mesonet,37.936,-99.253,NSMN
+Lorraine,Kansas Mesonet,38.558,-98.352,NSMN
+Macksville,Kansas Mesonet,37.959,-98.969,NSMN
+Manhattan,Kansas Mesonet,39.209,-96.592,NSMN
+McPherson,Kansas Mesonet,38.364,-97.7,NSMN
+McPherson_1S,Kansas Mesonet,38.345,-97.663,NSMN
+Meade,Kansas Mesonet,37.135,-100.396,NSMN
+Miami,Kansas Mesonet,38.592,-94.848,NSMN
+Mitchell,Kansas Mesonet,39.437,-98.21,NSMN
+Mobile_Station,Kansas Mesonet,37.773,-100.953,NSMN
+Ness_City,Kansas Mesonet,38.386,-99.856,NSMN
+North_Reno,Kansas Mesonet,38.122,-98.009,NSMN
+Olathe,Kansas Mesonet,38.883,-94.991,NSMN
+Osage,Kansas Mesonet,38.697,-95.609,NSMN
+Osborne,Kansas Mesonet,39.454,-98.703,NSMN
+Ottawa_2SE,Kansas Mesonet,38.543,-95.249,NSMN
+Overbrook,Kansas Mesonet,38.717,-95.516,NSMN
+Parsons,Kansas Mesonet,37.369,-95.288,NSMN
+Radium,Kansas Mesonet,38.174,-98.893,NSMN
+Richfield,Kansas Mesonet,37.259,-101.792,NSMN
+Rock_Springs,Kansas Mesonet,38.867,-96.903,NSMN
+Rocky_Ford,Kansas Mesonet,39.232,-96.58,NSMN
+Rossville,Kansas Mesonet,39.116,-95.926,NSMN
+Rozel,Kansas Mesonet,38.196,-99.403,NSMN
+Satanta,Kansas Mesonet,37.305,-100.887,NSMN
+Scandia,Kansas Mesonet,39.829,-97.839,NSMN
+Sedan,Kansas Mesonet,37.165,-96.228,NSMN
+Sedgwick,Kansas Mesonet,37.89,-97.632,NSMN
+Sheridan,Kansas Mesonet,39.357,-100.61,NSMN
+Sherman,Kansas Mesonet,39.281,-101.819,NSMN
+Silver_Lake,Kansas Mesonet,39.078,-95.771,NSMN
+South_Reno,Kansas Mesonet,37.799,-98.005,NSMN
+Spearville,Kansas Mesonet,37.902,-99.87,NSMN
+St_John,Kansas Mesonet,37.957,-98.748,NSMN
+Stafford,Kansas Mesonet,37.962,-98.601,NSMN
+Stanton,Kansas Mesonet,37.614,-101.728,NSMN
+Sterling,Kansas Mesonet,38.21,-98.207,NSMN
+Stevens,Kansas Mesonet,37.352,-101.355,NSMN
+Tribune,Kansas Mesonet,38.466,-101.775,NSMN
+Tribune_6NE,Kansas Mesonet,38.53,-101.664,NSMN
+Viola,Kansas Mesonet,37.46,-97.625,NSMN
+Wallace,Kansas Mesonet,38.82,-101.853,NSMN
+Washington,Kansas Mesonet,39.782,-97.055,NSMN
+Woodson,Kansas Mesonet,37.861,-95.784,NSMN
+Columbia,Kentucky Mesonet,37.14,-85.29,NSMN
+Scottsville,Kentucky Mesonet,36.74,-86.22,NSMN
+Glasgow,Kentucky Mesonet,37.01,-86.11,NSMN
+Danville,Kentucky Mesonet,37.62,-84.82,NSMN
+Jackson,Kentucky Mesonet,37.54,-83.34,NSMN
+Morgantown,Kentucky Mesonet,37.18,-86.65,NSMN
+Princeton,Kentucky Mesonet,37.1,-87.86,NSMN
+Carrollton,Kentucky Mesonet,38.69,-85.14,NSMN
+Hopkinsville,Kentucky Mesonet,36.95,-87.52,NSMN
+Lexington,Kentucky Mesonet,37.97,-84.53,NSMN
+Frankfort,Kentucky Mesonet,38.12,-84.88,NSMN
+Hickman,Kentucky Mesonet,36.57,-89.16,NSMN
+Elizabethtown,Kentucky Mesonet,37.68,-85.98,NSMN
+Harlan,Kentucky Mesonet,36.92,-82.91,NSMN
+Hodgenville,Kentucky Mesonet,37.57,-85.7,NSMN
+Richmond,Kentucky Mesonet,37.72,-84.15,NSMN
+Benton,Kentucky Mesonet,36.92,-88.34,NSMN
+Calhoun,Kentucky Mesonet,37.59,-87.32,NSMN
+Shelbyville9NNE,Kentucky Mesonet,38.33,-85.17,NSMN
+Shelbyville10W,Kentucky Mesonet,38.16,-85.38,NSMN
+Franklin,Kentucky Mesonet,36.67,-86.61,NSMN
+Morganfield,Kentucky Mesonet,37.69,-87.84,NSMN
+Bowling_Green,Kentucky Mesonet,36.93,-86.47,NSMN
+Albany,Missouri Mesonet,40.24,-94.34,NSMN
+Columbia-Capen_Park,Missouri Mesonet,38.93,-92.32,NSMN
+Portageville,Missouri Mesonet,36.41,-89.7,NSMN
+Versailles,Missouri Mesonet,38.43,-92.85,NSMN
+Fort Keogh ARS N,Montana Mesonet,46.41,-105.95,NSMN
+Fort Keogh ARS SE,Montana Mesonet,46.35,-105.83,NSMN
+Fort Keogh ARS SW,Montana Mesonet,46.3,-105.98,NSMN
+Benton Lake W,Montana Mesonet,47.69,-111.47,NSMN
+Argenta BLM,Montana Mesonet,45.25,-112.88,NSMN
+Virginia City BLM,Montana Mesonet,45.27,-111.88,NSMN
+McCartney Mtn BLM,Montana Mesonet,45.55,-112.6,NSMN
+Kidd BLM,Montana Mesonet,44.81,-112.72,NSMN
+Battle Creek BLM,Montana Mesonet,45.07,-103.78,NSMN
+Belfry E BLM,Montana Mesonet,45.18,-108.9,NSMN
+Broadus BLM,Montana Mesonet,45.44,-105.36,NSMN
+Capitol BLM,Montana Mesonet,45.32,-104.14,NSMN
+Glendive BLM,Montana Mesonet,46.92,-104.75,NSMN
+Vandalia N BLM,Montana Mesonet,48.51,-106.91,NSMN
+Harding Cutoff BLM,Montana Mesonet,45.17,-103.73,NSMN
+Cherry Ridge BLM,Montana Mesonet,48.87,-109.05,NSMN
+Zortman E BLM,Montana Mesonet,47.89,-108.32,NSMN
+Plevna BLM,Montana Mesonet,46.44,-104.43,NSMN
+Pumpkin Ck BLM,Montana Mesonet,46.2,-105.7,NSMN
+Roundup NW BLM,Montana Mesonet,46.58,-108.74,NSMN
+Terry BLM,Montana Mesonet,46.84,-105.26,NSMN
+Warren E BLM,Montana Mesonet,45.04,-108.44,NSMN
+Churchill,Montana Mesonet,45.73,-111.37,NSMN
+Conrad ARC,Montana Mesonet,48.31,-111.93,NSMN
+Corvallis ARC,Montana Mesonet,46.33,-114.09,NSMN
+Crow Agency E,Montana Mesonet,45.59,-107.44,NSMN
+Clearwater SW,Montana Mesonet,46.96,-113.37,NSMN
+Fort Benton E,Montana Mesonet,47.79,-110.48,NSMN
+Havre ARC,Montana Mesonet,48.49,-109.8,NSMN
+Huntley ARC,Montana Mesonet,45.92,-108.23,NSMN
+Kalispell ARC,Montana Mesonet,48.19,-114.14,NSMN
+Lolo W MBMG,Montana Mesonet,46.75,-114.13,NSMN
+Loma S,Montana Mesonet,47.89,-110.53,NSMN
+Lubrecht Forest,Montana Mesonet,46.89,-113.44,NSMN
+Butte MBMG MT Tech,Montana Mesonet,46.01,-112.56,NSMN
+Chinook E MDA,Montana Mesonet,48.58,-109.16,NSMN
+Hogeland SE MDA,Montana Mesonet,48.77,-108.56,NSMN
+Mocassin ARC,Montana Mesonet,47.06,-109.95,NSMN
+Molt W,Montana Mesonet,45.82,-109.09,NSMN
+Hot Springs NE-L,Montana Mesonet,47.7,-114.51,NSMN
+Hot Springs NE-U,Montana Mesonet,47.72,-114.54,NSMN
+Rapleje N,Montana Mesonet,46.04,-109.24,NSMN
+Reed Point NE,Montana Mesonet,45.8,-109.43,NSMN
+Ingomar NE,Montana Mesonet,46.66,-107.22,NSMN
+Sidney ARC,Montana Mesonet,47.78,-104.25,NSMN
+Coffee Creek N,Montana Mesonet,47.39,-110.13,NSMN
+MacDonald Pass USFS,Montana Mesonet,46.56,-112.31,NSMN
+Whitefish N,Montana Mesonet,48.48,-114.44,NSMN
+Roundup NE,Montana Mesonet,46.58,-108.42,NSMN
+Absarokee W,Montana Mesonet,45.56,-109.61,NSMN
+Cooney Reservoir W,Montana Mesonet,45.47,-109.26,NSMN
+Broadview E,Montana Mesonet,46.13,-108.76,NSMN
+Reed Point S,Montana Mesonet,45.61,-109.56,NSMN
+Twin Bridges S MDA,Montana Mesonet,45.47,-112.36,NSMN
+Power S,Montana Mesonet,47.66,-111.71,NSMN
+Edgar E MDA,Montana Mesonet,45.46,-108.86,NSMN
+Choteau NE,Montana Mesonet,47.89,-112.09,NSMN
+Benchland NE,Montana Mesonet,47.09,-109.97,NSMN
+Toston SW MDA,Montana Mesonet,46.12,-111.53,NSMN
+Oilmont E MDA,Montana Mesonet,48.78,-111.6,NSMN
+Melville SE,Montana Mesonet,46,-109.84,NSMN
+Big Timber SE,Montana Mesonet,45.74,-109.83,NSMN
+Roy BLM,Montana Mesonet,47.49,-108.95,NSMN
+Ledger N MDA,Montana Mesonet,48.34,-111.82,NSMN
+Miles City S MDA,Montana Mesonet,46.22,-105.76,NSMN
+Hardin N MDA,Montana Mesonet,45.87,-107.6,NSMN
+Cascade E MDA,Montana Mesonet,47.28,-111.62,NSMN
+Charlo Heights MDA,Montana Mesonet,46.16,-114.17,NSMN
+Gildford N MDA,Montana Mesonet,48.7,-110.28,NSMN
+Malta W MDA,Montana Mesonet,48.35,-108,NSMN
+Dillon NE MDA,Montana Mesonet,45.25,-112.59,NSMN
+Manhattan S MDA,Montana Mesonet,45.79,-111.32,NSMN
+Glasgow MDA W,Montana Mesonet,48.23,-106.72,NSMN
+Scobey N MDA,Montana Mesonet,48.88,-105.44,NSMN
+Wood_River_5SE,Nebraska Mesonet,40.45,-98.32,NSMN
+Kearney_5E,Nebraska Mesonet,40.4,-98.59,NSMN
+Alda_3W,Nebraska Mesonet,40.53,-98.31,NSMN
+Shelton_2SW,Nebraska Mesonet,40.44,-98.46,NSMN
+Scottsbluff_6NW,Nebraska Mesonet,41.57,-103.42,NSMN
+Scottsbluff_2NW,Nebraska Mesonet,41.53,-103.41,NSMN
+Elgin_6W,Nebraska Mesonet,41.56,-98.12,NSMN
+Angora_13N,Nebraska Mesonet,42.02,-103.09,NSMN
+Sparks_5NE,Nebraska Mesonet,42.59,-100.12,NSMN
+Duncan_2W,Nebraska Mesonet,41.23,-97.31,NSMN
+Fordyce_4N,Nebraska Mesonet,42.45,-97.21,NSMN
+Grant_1E,Nebraska Mesonet,40.5,-101.42,NSMN
+Mullen_30N,Nebraska Mesonet,42.27,-100.54,NSMN
+Sidney_2NW,Nebraska Mesonet,41.13,-103.01,NSMN
+Dunning_6NW,Nebraska Mesonet,41.54,-100.1,NSMN
+Merna_2SW,Nebraska Mesonet,41.27,-99.47,NSMN
+West_Point_2W,Nebraska Mesonet,41.51,-96.45,NSMN
+Champion_5SE,Nebraska Mesonet,40.24,-101.43,NSMN
+York_2W,Nebraska Mesonet,40.52,-97.38,NSMN
+Axtell_5NE,Nebraska Mesonet,40.32,-99.03,NSMN
+Curtis_1N,Nebraska Mesonet,40.37,-100.3,NSMN
+Dickens_9N,Nebraska Mesonet,40.57,-100.59,NSMN
+Gothenburg_2NW,Nebraska Mesonet,40.57,-100.12,NSMN
+Plymouth_4E,Nebraska Mesonet,40.18,-96.56,NSMN
+Ragan_5W,Nebraska Mesonet,40.2,-99.22,NSMN
+Holdrege_5N,Nebraska Mesonet,40.3,-99.22,NSMN
+Smithfield_2E,Nebraska Mesonet,40.34,-99.41,NSMN
+Hayes_Center_3N,Nebraska Mesonet,40.33,-101.02,NSMN
+Naper_12SW,Nebraska Mesonet,42.5,-99.15,NSMN
+Emmet_3E,Nebraska Mesonet,42.28,-98.45,NSMN
+Whitman_5NE,Nebraska Mesonet,42.05,-101.27,NSMN
+Ord_2N,Nebraska Mesonet,41.37,-98.57,NSMN
+Firth_3N,Nebraska Mesonet,40.34,-96.37,NSMN
+Walton_5NW,Nebraska Mesonet,40.51,-96.36,NSMN
+Lincoln_1700_N_10th,Nebraska Mesonet,40.5,-96.42,NSMN
+Lincoln_5700_S_27th,Nebraska Mesonet,40.45,-96.41,NSMN
+Lincoln_1500_N_45th,Nebraska Mesonet,40.49,-96.39,NSMN
+Kearney_3E,Nebraska Mesonet,40.43,-99.01,NSMN
+Arthur_8S,Nebraska Mesonet,41.27,-101.43,NSMN
+Big_Springs_8NE,Nebraska Mesonet,41.09,-101.6,NSMN
+Brule_6SW,Nebraska Mesonet,41.01,-101.58,NSMN
+Keystone_3W_Beta,Nebraska Mesonet,41.12,-101.39,NSMN
+North_Platte_3SW_Beta,Nebraska Mesonet,41.09,-100.77,NSMN
+Central_City_3W,Nebraska Mesonet,41.06,-98.03,NSMN
+Guide_Rock_3E,Nebraska Mesonet,40.05,-98.17,NSMN
+Harvard_4SW,Nebraska Mesonet,40.34,-98.08,NSMN
+Cozad_8N,Nebraska Mesonet,40.58,-99.57,NSMN
+Lexington_4S,Nebraska Mesonet,40.43,-99.45,NSMN
+McCook_4NE,Nebraska Mesonet,40.14,-100.34,NSMN
+Ainsworth_2NE,Nebraska Mesonet,42.34,-99.5,NSMN
+Long_Pine_20S,Nebraska Mesonet,42.14,-99.4,NSMN
+Memphis_5N,Nebraska Mesonet,41.09,-96.25,NSMN
+Ithaca_3E,Nebraska Mesonet,41.09,-96.29,NSMN
+Alliance_6NW,Nebraska Mesonet,42.11,-102.55,NSMN
+Gordon_4SE,Nebraska Mesonet,42.45,-102.11,NSMN
+Harrison_4NW,Nebraska Mesonet,42.44,-103.55,NSMN
+Concord_2E,Nebraska Mesonet,42.24,-96.58,NSMN
+Oakland_4W,Nebraska Mesonet,41.5,-96.32,NSMN
+Wausa_2SW,Nebraska Mesonet,42.27,-97.33,NSMN
+Abby Road NEON,NEON,45.76244,-122.33032,NEON
+Bartlett Experimental Forest NEON,NEON,44.06389,-71.28737,NEON
+Blandy Experimental Farm NEON,NEON,39.0337,-78.04179,NEON
+Caribou-Poker Creeks Research Watershed NEON,NEON,65.15401,-147.50258,NEON
+Central Plains Experimental Range NEON,NEON,40.81554,-104.74559,NEON
+Chase Lake National Wildlife Refuge NEON,NEON,47.1282,-99.24133,NEON
+Dakota Coteau Field  NEON,NEON,47.16165,-99.10656,NEON
+Dead Lake NEON,NEON,32.54173,-87.80388,NEON
+Delta Junction NEON,NEON,63.88112,-145.75136,NEON
+Disney Wilderness Preserve NEON,NEON,28.12505,-81.43619,NEON
+Great Smoky Mountains National Park NEON,NEON,35.68896,-83.50195,NEON
+Guanica Forest NEON,NEON,17.96955,-66.8687,NEON
+Harvard Forest & Quabbin Watershed NEON,NEON,42.53691,-72.17265,NEON
+Healy NEON,NEON,63.8758,-149.21335,NEON
+Jornada Experimental Range NEON,NEON,32.59069,-106.84254,NEON
+KU Field Station NEON,NEON,39.04043,-95.19215,NEON
+Konza Prairie Agroecosystem NEON,NEON,39.11045,-96.61293,NEON
+Konza Prairie Biological Station NEON,NEON,39.10077,-96.56307,NEON
+Lajas Experimental Station NEON,NEON,18.02126,-67.07689,NEON
+Lenoir Landing NEON,NEON,31.85386,-88.16118,NEON
+Lower Teakettle NEON,NEON,37.00583,-119.00602,NEON
+Lyndon B. Johnson National Grassland NEON,NEON,33.40123,-97.57,NEON
+Marvin Klemme Range Research Station NEON,NEON,35.4106,-99.05878,NEON
+Moab NEON,NEON,38.24828,-109.38827,NEON
+Mountain Lake Biological Station NEON,NEON,37.37831,-80.52485,NEON
+Niwot Ridge NEON,NEON,40.05425,-105.58237,NEON
+North Sterling NEON,NEON,40.46189,-103.02929,NEON
+Northern Great Plains Research Laboratory NEON,NEON,46.76972,-100.91535,NEON
+Oak Ridge NEON,NEON,35.96413,-84.28259,NEON
+Onaqui NEON,NEON,40.1776,-112.45245,NEON
+Ordway-Swisher Biological Station NEON,NEON,29.68928,-81.99343,NEON
+Puu Makaala Natural Area Reserve NEON,NEON,19.55309,-155.31731,NEON
+Rocky Mountains NEON,NEON,40.2759,-105.54596,NEON
+San Joaquin Experimental Range NEON,NEON,37.10878,-119.73228,NEON
+Santa Rita Experimental Range NEON,NEON,31.91068,-110.83549,NEON
+Smithsonian Conservation Biology Institute NEON,NEON,38.89292,-78.13949,NEON
+Smithsonian Environmental Research Center NEON,NEON,38.89013,-76.56001,NEON
+Soaproot Saddle NEON,NEON,37.03337,-119.26219,NEON
+Steigerwaldt-Chequamegon NEON,NEON,45.50894,-89.58637,NEON
+Talladega National Forest NEON,NEON,32.95047,-87.39326,NEON
+The Jones Center At Ichauway NEON,NEON,31.19484,-84.46862,NEON
+Toolik Field Station NEON,NEON,68.66109,-149.37047,NEON
+Treehaven NEON,NEON,45.49369,-89.58571,NEON
+University of Notre Dame Environmental Research Center NEON,NEON,46.23391,-89.53725,NEON
+Utqiaƒ°vik NEON,NEON,71.28241,-156.61936,NEON
+Wind River Experimental Forest NEON,NEON,45.82049,-121.95191,NEON
+Yellowstone National Park NEON,NEON,44.95348,-110.53914,NEON
+New Brunswick,New Jersey WN,40.472807,-74.422569,NSMN
+Moorestown,New Jersey WN,39.983344,-74.895686,NSMN
+Pittstown,New Jersey WN,40.561216,-74.961024,NSMN
+Cream Ridge,New Jersey WN,40.118553,-74.525634,NSMN
+Charlotteburg,New Jersey WN,41.029856,-74.424842,NSMN
+Hammonton,New Jersey WN,39.635323,-74.758399,NSMN
+Hopewell Twp.,New Jersey WN,40.35234,-74.775028,NSMN
+Woodbine,New Jersey WN,39.218389,-74.794427,NSMN
+Upper Deerfield,New Jersey WN,39.524351,-75.200927,NSMN
+Addison,New York State Mesonet,42.04,-77.237,NSMN
+Andes,New York State Mesonet,42.182,-74.801,NSMN
+Ballston_Spa,New York State Mesonet,43.023,-73.875,NSMN
+Batavia,New York State Mesonet,43.02,-78.136,NSMN
+Beacon,New York State Mesonet,41.529,-73.945,NSMN
+Belden,New York State Mesonet,42.223,-75.669,NSMN
+Belleville,New York State Mesonet,43.79,-76.114,NSMN
+Belmont,New York State Mesonet,42.242,-78.04,NSMN
+Berkshire,New York State Mesonet,42.32,-76.203,NSMN
+Binghamton,New York State Mesonet,42.058,-75.951,NSMN
+Brant,New York State Mesonet,42.595,-79.022,NSMN
+Brewster,New York State Mesonet,41.44,-73.577,NSMN
+Brockport,New York State Mesonet,43.208,-77.966,NSMN
+Bronx,New York State Mesonet,40.872,-73.894,NSMN
+Brookfield,New York State Mesonet,42.796,-75.299,NSMN
+Brooklyn,New York State Mesonet,40.632,-73.954,NSMN
+Buffalo,New York State Mesonet,43,-78.767,NSMN
+Burdett,New York State Mesonet,42.41,-76.772,NSMN
+Burt,New York State Mesonet,43.317,-78.749,NSMN
+Camden,New York State Mesonet,43.34,-75.743,NSMN
+Cape_Vincent,New York State Mesonet,44.105,-76.327,NSMN
+Central_Square,New York State Mesonet,43.326,-76.104,NSMN
+Chazy,New York State Mesonet,44.896,-73.465,NSMN
+Chestertown,New York State Mesonet,43.654,-73.777,NSMN
+Cincinnatus,New York State Mesonet,42.522,-75.976,NSMN
+Claryville,New York State Mesonet,41.979,-74.517,NSMN
+Clifton_Springs,New York State Mesonet,43.015,-77.185,NSMN
+Clymer,New York State Mesonet,42.024,-79.624,NSMN
+Cobleskill,New York State Mesonet,42.676,-74.508,NSMN
+Cohocton,New York State Mesonet,42.512,-77.438,NSMN
+Cold_Brook,New York State Mesonet,43.261,-74.979,NSMN
+Copake,New York State Mesonet,42.137,-73.52,NSMN
+Copenhagen,New York State Mesonet,43.921,-75.608,NSMN
+Croghan,New York State Mesonet,43.975,-75.201,NSMN
+Delevan,New York State Mesonet,42.418,-78.423,NSMN
+Deposit,New York State Mesonet,42.069,-75.392,NSMN
+Dover_Plains,New York State Mesonet,41.774,-73.575,NSMN
+Duanesburg,New York State Mesonet,42.803,-74.174,NSMN
+East_Aurora,New York State Mesonet,42.713,-78.632,NSMN
+Edinburg,New York State Mesonet,43.228,-74.113,NSMN
+Edwards,New York State Mesonet,44.322,-75.244,NSMN
+Eldred,New York State Mesonet,41.54,-74.88,NSMN
+Ellenburg,New York State Mesonet,44.896,-73.845,NSMN
+Elmira,New York State Mesonet,42.113,-76.837,NSMN
+Essex,New York State Mesonet,44.314,-73.372,NSMN
+Fayetteville,New York State Mesonet,43.054,-75.99,NSMN
+Fredonia,New York State Mesonet,42.418,-79.367,NSMN
+Gabriels,New York State Mesonet,44.417,-74.179,NSMN
+Glenfield,New York State Mesonet,43.717,-75.409,NSMN
+Glens_Falls,New York State Mesonet,43.341,-73.602,NSMN
+Groton,New York State Mesonet,42.549,-76.375,NSMN
+Grove,New York State Mesonet,42.49,-77.949,NSMN
+Hammond,New York State Mesonet,44.513,-75.617,NSMN
+Harpersfield,New York State Mesonet,42.473,-74.698,NSMN
+Harrisburg,New York State Mesonet,43.804,-75.689,NSMN
+Hartsville,New York State Mesonet,42.211,-77.69,NSMN
+Herkimer,New York State Mesonet,43.037,-75.01,NSMN
+High_Falls,New York State Mesonet,41.799,-74.123,NSMN
+Indian_Lake,New York State Mesonet,43.791,-74.239,NSMN
+Johnstown,New York State Mesonet,42.984,-74.302,NSMN
+Jordan,New York State Mesonet,43.07,-76.47,NSMN
+Kinderhook,New York State Mesonet,42.41,-73.716,NSMN
+Laurens,New York State Mesonet,42.525,-75.137,NSMN
+Louisville,New York State Mesonet,44.872,-75.056,NSMN
+Malone,New York State Mesonet,44.853,-74.329,NSMN
+Manhattan,New York State Mesonet,40.768,-73.964,NSMN
+Medina,New York State Mesonet,43.227,-78.309,NSMN
+Medusa,New York State Mesonet,42.469,-74.166,NSMN
+Morrisville,New York State Mesonet,42.884,-75.642,NSMN
+Newcomb,New York State Mesonet,43.973,-74.223,NSMN
+North_Branch,New York State Mesonet,41.828,-74.997,NSMN
+North_Hudson,New York State Mesonet,44.013,-73.705,NSMN
+Old_Forge,New York State Mesonet,43.742,-74.978,NSMN
+Olean,New York State Mesonet,42.091,-78.407,NSMN
+Ontario,New York State Mesonet,43.259,-77.373,NSMN
+Oppenheim,New York State Mesonet,43.063,-74.665,NSMN
+Osceola,New York State Mesonet,43.499,-75.712,NSMN
+Oswego,New York State Mesonet,43.443,-76.553,NSMN
+Otisville,New York State Mesonet,41.482,-74.504,NSMN
+Owego,New York State Mesonet,42.026,-76.255,NSMN
+Penn_Yan,New York State Mesonet,42.656,-76.987,NSMN
+Philadelphia,New York State Mesonet,44.194,-75.716,NSMN
+Piseco,New York State Mesonet,43.465,-74.504,NSMN
+Potsdam,New York State Mesonet,44.657,-74.974,NSMN
+Queens,New York State Mesonet,40.734,-73.816,NSMN
+Randolph,New York State Mesonet,42.149,-78.901,NSMN
+Raquette_Lake,New York State Mesonet,43.823,-74.625,NSMN
+Red_Hook,New York State Mesonet,42.002,-73.884,NSMN
+Redfield,New York State Mesonet,43.622,-75.878,NSMN
+Roxbury,New York State Mesonet,42.33,-74.467,NSMN
+Rush,New York State Mesonet,43.001,-77.637,NSMN
+Saranac,New York State Mesonet,44.708,-73.671,NSMN
+Schaghticoke,New York State Mesonet,42.897,-73.614,NSMN
+Schodack,New York State Mesonet,42.506,-73.686,NSMN
+Schuylerville,New York State Mesonet,43.117,-73.578,NSMN
+Scipio_Center,New York State Mesonet,42.756,-76.534,NSMN
+Sherburne,New York State Mesonet,42.64,-75.483,NSMN
+Somers,New York State Mesonet,41.31,-73.767,NSMN
+South_Bristol,New York State Mesonet,42.752,-77.359,NSMN
+Southold,New York State Mesonet,41.04,-72.466,NSMN
+Sprakers,New York State Mesonet,42.87,-74.51,NSMN
+Springfield,New York State Mesonet,42.843,-74.89,NSMN
+Staten_Island,New York State Mesonet,40.604,-74.148,NSMN
+Stephentown,New York State Mesonet,42.526,-73.359,NSMN
+Stony_Brook,New York State Mesonet,40.919,-73.132,NSMN
+Suffern,New York State Mesonet,41.13,-74.09,NSMN
+Tannersville,New York State Mesonet,42.171,-74.113,NSMN
+Ticonderoga,New York State Mesonet,43.875,-73.419,NSMN
+Tully,New York State Mesonet,42.795,-76.116,NSMN
+Tupper_Lake,New York State Mesonet,44.221,-74.438,NSMN
+Tyrone,New York State Mesonet,42.406,-77.054,NSMN
+Voorheesville,New York State Mesonet,42.652,-73.976,NSMN
+Wallkill,New York State Mesonet,41.634,-74.154,NSMN
+Walton,New York State Mesonet,42.24,-75.179,NSMN
+Wantagh,New York State Mesonet,40.655,-73.506,NSMN
+Warsaw,New York State Mesonet,42.78,-78.209,NSMN
+Warwick,New York State Mesonet,41.24,-74.391,NSMN
+Waterloo,New York State Mesonet,42.88,-76.813,NSMN
+Wellesley_Island,New York State Mesonet,44.308,-76.009,NSMN
+Westmoreland,New York State Mesonet,43.106,-75.461,NSMN
+Whiteface_Mountain_Base,New York State Mesonet,44.393,-73.859,NSMN
+Whitehall,New York State Mesonet,43.485,-73.423,NSMN
+Wolcott,New York State Mesonet,43.229,-76.843,NSMN
+Woodbourne,New York State Mesonet,41.745,-74.588,NSMN
+Woodgate,New York State Mesonet,43.532,-75.159,NSMN
+York,New York State Mesonet,42.855,-77.848,NSMN
+Alta,NOAA HMT,39.2,-120.82,NSMN
+Arnold,NOAA HMT,38.24,-120.36,NSMN
+Black_Butte_Lake,NOAA HMT,39.81,-122.37,NSMN
+Boulder,NOAA HMT,39.99,-105.26,NSMN
+Bridgeville,NOAA HMT,40.47,-123.79,NSMN
+Camino,NOAA HMT,38.74,-120.66,NSMN
+Cazadero,NOAA HMT,38.61,-123.22,NSMN
+Clayton,NOAA HMT,37.9,-121.86,NSMN
+Colfax,NOAA HMT,39.09,-120.95,NSMN
+Gilroy,NOAA HMT,37.07,-121.48,NSMN
+Healdsburg,NOAA HMT,38.65,-122.87,NSMN
+Healdsburg_Northeast,NOAA HMT,38.65,-122.81,NSMN
+Healdsburg_South,NOAA HMT,38.59,-122.87,NSMN
+High_Vista,NOAA HMT,34.76,-117.8,NSMN
+Hodgdon_Meadow,NOAA HMT,37.8,-119.86,NSMN
+Hopland,NOAA HMT,39,-123.12,NSMN
+Independence,NOAA HMT,36.8,-118.2,NSMN
+Lake_Sonoma,NOAA HMT,38.72,-123.05,NSMN
+Leesville,NOAA HMT,39.18,-122.44,NSMN
+Leggett,NOAA HMT,39.88,-123.72,NSMN
+Lockwood,NOAA HMT,35.94,-121.11,NSMN
+Los_Gatos,NOAA HMT,37.26,-122.13,NSMN
+Middletown,NOAA HMT,38.75,-122.71,NSMN
+Montgomery_Creek,NOAA HMT,40.87,-121.89,NSMN
+Nevada_City,NOAA HMT,39.39,-120.98,NSMN
+O'Neals,NOAA HMT,37.2,-119.57,NSMN
+Orick,NOAA HMT,41.22,-124.05,NSMN
+Paynes_Creek,NOAA HMT,40.33,-121.92,NSMN
+Potter_Valley,NOAA HMT,39.34,-123.14,NSMN
+Potter_Valley_-_Central,NOAA HMT,39.32,-123.1,NSMN
+Potter_Valley_-_West,NOAA HMT,39.32,-123.18,NSMN
+Redwood_Valley_-_East,NOAA HMT,39.31,-123.19,NSMN
+Rio_Nido,NOAA HMT,38.51,-122.96,NSMN
+Santa_Margarita,NOAA HMT,35.38,-120.19,NSMN
+Santa_Rosa,NOAA HMT,38.52,-122.8,NSMN
+SantaLucia_(P171),NOAA HMT,36.49,-121.79,NSMN
+Soledad,NOAA HMT,36.46,-121.38,NSMN
+Spanish_Flat,NOAA HMT,38.54,-122.23,NSMN
+Springville,NOAA HMT,36.19,-118.8,NSMN
+Weaverville,NOAA HMT,40.68,-122.83,NSMN
+Willits,NOAA HMT,39.35,-123.32,NSMN
+Yucaipa Valley,NOAA HMT,34.0074,-117.0915,NSMN
+Pamlico_Aquaculture_Field_Lab,North Carolina ECONET,35.362,-76.716,NSMN
+Bald_Head_Island_Conservancy,North Carolina ECONET,33.846,-77.966,NSMN
+Boone_-_ASU_Stn,North Carolina ECONET,36.221,-81.63,NSMN
+Buckland_Elementary,North Carolina ECONET,36.47,-76.761,NSMN
+Burnsville_Tower,North Carolina ECONET,35.919,-82.26,NSMN
+Horticultural_Crops_Res_Stn,North Carolina ECONET,34.321,-77.916,NSMN
+DAQ_Clayton_Profiler,North Carolina ECONET,35.592,-78.459,NSMN
+Central_Crops_Research_Station,North Carolina ECONET,35.67,-78.493,NSMN
+Horticultural_Crops_Research_Stn,North Carolina ECONET,35.022,-78.282,NSMN
+North_Durham_Water_Reclamation_Facility,North Carolina ECONET,36.029,-78.859,NSMN
+Wayah_Bald_Mountain,North Carolina ECONET,35.173,-83.581,NSMN
+Frying_Pan_Mountain,North Carolina ECONET,35.394,-82.774,NSMN
+Cherry_Research_Station,North Carolina ECONET,35.379,-78.045,NSMN
+NC_A&T_SU_Research_Farm,North Carolina ECONET,36.067,-79.734,NSMN
+Hamlet_Tower,North Carolina ECONET,34.842,-79.738,NSMN
+Bearwallow_Mountain,North Carolina ECONET,35.461,-82.358,NSMN
+UNCG_-_Lindale_Farm_Stn,North Carolina ECONET,35.99,-79.97,NSMN
+Sandhills_Research_Station,North Carolina ECONET,35.188,-79.684,NSMN
+Cunningham_Research_Station,North Carolina ECONET,35.303,-77.573,NSMN
+Upper_Mountain_Research_Stn,North Carolina ECONET,36.402,-81.297,NSMN
+Peanut_Belt_Research_Station,North Carolina ECONET,36.132,-77.176,NSMN
+NC_Electric_Cooperative_Anson_Peaking_Plant,North Carolina ECONET,34.97,-79.918,NSMN
+Mtn_Horticultural_Crops_Res_Stn,North Carolina ECONET,35.427,-82.559,NSMN
+Mount_Mitchell_State_Park,North Carolina ECONET,35.759,-82.271,NSMN
+North_Stanly_Middle_School,North Carolina ECONET,35.41,-80.237,NSMN
+Oxford_Tobacco_Research_Stn,North Carolina ECONET,36.303,-78.617,NSMN
+Tidewater_Research_Station,North Carolina ECONET,35.849,-76.651,NSMN
+Lake_Wheeler_Rd_Field_Lab,North Carolina ECONET,35.728,-78.68,NSMN
+Reedy_Creek_Field_Laboratory,North Carolina ECONET,35.807,-78.744,NSMN
+Upper_Piedmont_Research_Stn,North Carolina ECONET,36.382,-79.7,NSMN
+Upper_Coastal_Plain_Res_Stn,North Carolina ECONET,35.893,-77.68,NSMN
+Piedmont_Research_Station,North Carolina ECONET,35.697,-80.622,NSMN
+Siler_City_Airport,North Carolina ECONET,35.704,-79.504,NSMN
+Spindale_Tower,North Carolina ECONET,35.335,-81.913,NSMN
+Spruce_Pine_Tower,North Carolina ECONET,35.901,-82.059,NSMN
+Taylorsville_Tower,North Carolina ECONET,35.914,-81.191,NSMN
+Williamsdale_Field_Lab,North Carolina ECONET,34.766,-78.101,NSMN
+Mountain_Research_Station,North Carolina ECONET,35.488,-82.968,NSMN
+Mt._Jefferson_Tower,North Carolina ECONET,36.403,-81.463,NSMN
+Border_Belt_Tobacco_Res_Stn,North Carolina ECONET,34.413,-78.792,NSMN
+Highway_Patrol_Comm_Station,North Carolina ECONET,35.839,-77.093,NSMN
+Sassafras_Mountain,North Carolina ECONET,35.065,-82.777,NSMN
+Wayah_Bald_Mountain,North Carolina ECONET,35.173,-83.581,ISMN
+Mountain_Research_Station,North Carolina ECONET,35.488,-82.968,ISMN
+Sassafras_Mountain,North Carolina ECONET,35.065,-82.777,ISMN
+Frying_Pan_Mountain,North Carolina ECONET,35.394,-82.774,ISMN
+Mtn_Horticultural_Crops_Res_Stn,North Carolina ECONET,35.427,-82.559,ISMN
+Bearwallow_Mountain,North Carolina ECONET,35.461,-82.358,ISMN
+Mount_Mitchell_State_Park,North Carolina ECONET,35.759,-82.271,ISMN
+Burnsville_Tower,North Carolina ECONET,35.919,-82.26,ISMN
+Spruce_Pine_Tower,North Carolina ECONET,35.901,-82.059,ISMN
+Spindale_Tower,North Carolina ECONET,35.335,-81.913,ISMN
+Boone_-_ASU_Stn,North Carolina ECONET,36.221,-81.63,ISMN
+Mt._Jefferson_Tower,North Carolina ECONET,36.403,-81.463,ISMN
+Upper_Mountain_Research_Stn,North Carolina ECONET,36.402,-81.297,ISMN
+Taylorsville_Tower,North Carolina ECONET,35.914,-81.191,ISMN
+Piedmont_Research_Station,North Carolina ECONET,35.697,-80.622,ISMN
+North_Stanly_Middle_School,North Carolina ECONET,35.41,-80.237,ISMN
+UNCG_-_Lindale_Farm_Stn,North Carolina ECONET,35.99,-79.97,ISMN
+NC_Electric_Cooperative_Anson_Peaking_Plant,North Carolina ECONET,34.97,-79.918,ISMN
+Hamlet_Tower,North Carolina ECONET,34.842,-79.738,ISMN
+NC_A&T_SU_Research_Farm,North Carolina ECONET,36.067,-79.734,ISMN
+Upper_Piedmont_Research_Stn,North Carolina ECONET,36.382,-79.7,ISMN
+Sandhills_Research_Station,North Carolina ECONET,35.188,-79.684,ISMN
+Siler_City_Airport,North Carolina ECONET,35.704,-79.504,ISMN
+North_Durham_Water_Reclamation_Facility,North Carolina ECONET,36.029,-78.859,ISMN
+Border_Belt_Tobacco_Res_Stn,North Carolina ECONET,34.413,-78.792,ISMN
+Reedy_Creek_Field_Laboratory,North Carolina ECONET,35.807,-78.744,ISMN
+Lake_Wheeler_Rd_Field_Lab,North Carolina ECONET,35.728,-78.68,ISMN
+Oxford_Tobacco_Research_Stn,North Carolina ECONET,36.303,-78.617,ISMN
+Central_Crops_Research_Station,North Carolina ECONET,35.67,-78.493,ISMN
+DAQ_Clayton_Profiler,North Carolina ECONET,35.592,-78.459,ISMN
+Horticultural_Crops_Research_Stn,North Carolina ECONET,35.022,-78.282,ISMN
+Williamsdale_Field_Lab,North Carolina ECONET,34.766,-78.101,ISMN
+Cherry_Research_Station,North Carolina ECONET,35.379,-78.045,ISMN
+Bald_Head_Island_Conservancy,North Carolina ECONET,33.846,-77.966,ISMN
+Horticultural_Crops_Res_Stn,North Carolina ECONET,34.321,-77.916,ISMN
+Upper_Coastal_Plain_Res_Stn,North Carolina ECONET,35.893,-77.68,ISMN
+Cunningham_Research_Station,North Carolina ECONET,35.303,-77.573,ISMN
+Peanut_Belt_Research_Station,North Carolina ECONET,36.132,-77.176,ISMN
+Highway_Patrol_Comm_Station,North Carolina ECONET,35.839,-77.093,ISMN
+Buckland_Elementary,North Carolina ECONET,36.47,-76.761,ISMN
+Pamlico_Aquaculture_Field_Lab,North Carolina ECONET,35.362,-76.716,ISMN
+Tidewater_Research_Station,North Carolina ECONET,35.849,-76.651,ISMN
+Bowman,North Dakota AWN,46.2,-103.47,NSMN
+Campbell,North Dakota AWN,46.06,-96.37,NSMN
+Carrington,North Dakota AWN,47.51,-99.13,NSMN
+Fargo,North Dakota AWN,46.9,-96.81,NSMN
+Fox,North Dakota AWN,48.88,-95.85,NSMN
+Grafton,North Dakota AWN,48.41,-97.19,NSMN
+Grand_Forks,North Dakota AWN,47.84,-97.07,NSMN
+Hillsboro,North Dakota AWN,47.35,-96.92,NSMN
+Langdon,North Dakota AWN,48.76,-98.34,NSMN
+Mavie,North Dakota AWN,48.12,-95.97,NSMN
+Mooreton,North Dakota AWN,46.22,-96.89,NSMN
+Pekin,North Dakota AWN,47.81,-98.31,NSMN
+Sabin,North Dakota AWN,46.79,-96.61,NSMN
+Waukon,North Dakota AWN,47.33,-96.13,NSMN
+Williston,North Dakota AWN,48.13,-103.74,NSMN
+ACME,Oklahoma Mesonet,34.81,-98.02,NSMN
+ADAX,Oklahoma Mesonet,34.8,-96.67,NSMN
+ALTU,Oklahoma Mesonet,34.59,-99.34,NSMN
+ALV2,Oklahoma Mesonet,36.71,-98.71,NSMN
+ALVA,Oklahoma Mesonet,36.78,-98.67,NSMN
+ANT2,Oklahoma Mesonet,34.25,-95.67,NSMN
+ANTL,Oklahoma Mesonet,34.22,-95.7,NSMN
+APAC,Oklahoma Mesonet,34.91,-98.29,NSMN
+ARD2,Oklahoma Mesonet,34.19,-97.09,NSMN
+ARDM,Oklahoma Mesonet,34.19,-97.09,NSMN
+ARNE,Oklahoma Mesonet,36.07,-99.9,NSMN
+BBOW,Oklahoma Mesonet,34.01,-94.61,NSMN
+BEAV,Oklahoma Mesonet,36.8,-100.53,NSMN
+BEEX,Oklahoma Mesonet,34.19,-96.64,NSMN
+BESS,Oklahoma Mesonet,35.4,-99.06,NSMN
+BIXB,Oklahoma Mesonet,35.96,-95.87,NSMN
+BLAC,Oklahoma Mesonet,36.75,-97.25,NSMN
+BOIS,Oklahoma Mesonet,36.69,-102.5,NSMN
+BOWL,Oklahoma Mesonet,35.17,-96.63,NSMN
+BREC,Oklahoma Mesonet,36.41,-97.69,NSMN
+BRIS,Oklahoma Mesonet,35.78,-96.35,NSMN
+BROK,Oklahoma Mesonet,34.04,-94.62,NSMN
+BUFF,Oklahoma Mesonet,36.83,-99.64,NSMN
+BURB,Oklahoma Mesonet,36.63,-96.81,NSMN
+BURN,Oklahoma Mesonet,33.89,-97.27,NSMN
+BUTL,Oklahoma Mesonet,35.59,-99.27,NSMN
+BYAR,Oklahoma Mesonet,34.85,-97,NSMN
+CALV,Oklahoma Mesonet,34.99,-96.33,NSMN
+CAMA,Oklahoma Mesonet,36.03,-99.35,NSMN
+CARL,Oklahoma Mesonet,36.15,-97.29,NSMN
+CATO,Oklahoma Mesonet,36.26,-95.76,NSMN
+CENT,Oklahoma Mesonet,34.61,-96.33,NSMN
+CHAN,Oklahoma Mesonet,35.65,-96.8,NSMN
+CHER,Oklahoma Mesonet,36.75,-98.36,NSMN
+CHEY,Oklahoma Mesonet,35.55,-99.73,NSMN
+CHIC,Oklahoma Mesonet,35.03,-97.91,NSMN
+CLAR,Oklahoma Mesonet,36.32,-95.64,NSMN
+CLAY,Oklahoma Mesonet,34.66,-95.33,NSMN
+CLOU,Oklahoma Mesonet,34.22,-95.25,NSMN
+CLRM,Oklahoma Mesonet,36.32,-95.65,NSMN
+COOK,Oklahoma Mesonet,35.68,-94.85,NSMN
+COPA,Oklahoma Mesonet,36.91,-95.89,NSMN
+DURA,Oklahoma Mesonet,33.92,-96.32,NSMN
+ELKC,Oklahoma Mesonet,35.33,-99.39,NSMN
+ELRE,Oklahoma Mesonet,35.55,-98.04,NSMN
+ERIC,Oklahoma Mesonet,35.2,-99.8,NSMN
+EUFA,Oklahoma Mesonet,35.3,-95.66,NSMN
+EVAX,Oklahoma Mesonet,36.92,-101.78,NSMN
+FAIR,Oklahoma Mesonet,36.26,-98.5,NSMN
+FITT,Oklahoma Mesonet,34.55,-96.72,NSMN
+FORA,Oklahoma Mesonet,36.84,-96.43,NSMN
+FREE,Oklahoma Mesonet,36.73,-99.14,NSMN
+FTCB,Oklahoma Mesonet,35.15,-98.47,NSMN
+GOOD,Oklahoma Mesonet,36.6,-101.6,NSMN
+GRA2,Oklahoma Mesonet,34.24,-98.74,NSMN
+GRAN,Oklahoma Mesonet,34.24,-98.74,NSMN
+GUTH,Oklahoma Mesonet,35.85,-97.48,NSMN
+HASK,Oklahoma Mesonet,35.75,-95.64,NSMN
+HECT,Oklahoma Mesonet,35.84,-96,NSMN
+HINT,Oklahoma Mesonet,35.48,-98.48,NSMN
+HOBA,Oklahoma Mesonet,34.99,-99.05,NSMN
+HOLD,Oklahoma Mesonet,35.07,-96.36,NSMN
+HOLL,Oklahoma Mesonet,34.69,-99.83,NSMN
+HOOK,Oklahoma Mesonet,36.86,-101.23,NSMN
+HUGO,Oklahoma Mesonet,34.03,-95.54,NSMN
+IDAB,Oklahoma Mesonet,33.83,-94.88,NSMN
+INOL,Oklahoma Mesonet,36.14,-95.45,NSMN
+JAYX,Oklahoma Mesonet,36.48,-94.78,NSMN
+KENT,Oklahoma Mesonet,36.83,-102.88,NSMN
+KETC,Oklahoma Mesonet,34.53,-97.76,NSMN
+KIN2,Oklahoma Mesonet,35.85,-97.95,NSMN
+KING,Oklahoma Mesonet,35.88,-97.91,NSMN
+LAHO,Oklahoma Mesonet,36.38,-98.11,NSMN
+LANE,Oklahoma Mesonet,34.31,-96,NSMN
+MADI,Oklahoma Mesonet,34.04,-96.94,NSMN
+MANG,Oklahoma Mesonet,34.84,-99.42,NSMN
+MARE,Oklahoma Mesonet,36.06,-97.21,NSMN
+MARS,Oklahoma Mesonet,36.12,-97.6,NSMN
+MAYR,Oklahoma Mesonet,36.99,-99.01,NSMN
+MCAL,Oklahoma Mesonet,34.88,-95.78,NSMN
+MEDF,Oklahoma Mesonet,36.79,-97.75,NSMN
+MEDI,Oklahoma Mesonet,34.73,-98.57,NSMN
+MIAM,Oklahoma Mesonet,36.89,-94.84,NSMN
+MINC,Oklahoma Mesonet,35.27,-97.96,NSMN
+MRSH,Oklahoma Mesonet,36.12,-97.61,NSMN
+MTHE,Oklahoma Mesonet,34.31,-94.82,NSMN
+NEWK,Oklahoma Mesonet,36.9,-96.91,NSMN
+NEWP,Oklahoma Mesonet,34.23,-97.2,NSMN
+NINN,Oklahoma Mesonet,34.97,-97.95,NSMN
+NORM,Oklahoma Mesonet,35.26,-97.48,NSMN
+NOWA,Oklahoma Mesonet,36.74,-95.61,NSMN
+NRMN,Oklahoma Mesonet,35.24,-97.46,NSMN
+OILT,Oklahoma Mesonet,36.03,-96.5,NSMN
+OKCE,Oklahoma Mesonet,35.47,-97.46,NSMN
+OKCN,Oklahoma Mesonet,35.56,-97.51,NSMN
+OKCW,Oklahoma Mesonet,35.47,-97.58,NSMN
+OKEM,Oklahoma Mesonet,35.43,-96.26,NSMN
+OKMU,Oklahoma Mesonet,35.58,-95.91,NSMN
+PAUL,Oklahoma Mesonet,34.72,-97.23,NSMN
+PAWN,Oklahoma Mesonet,36.36,-96.77,NSMN
+PERK,Oklahoma Mesonet,36,-97.05,NSMN
+PORT,Oklahoma Mesonet,35.83,-95.56,NSMN
+PRES,Oklahoma Mesonet,35.72,-95.99,NSMN
+PRYO,Oklahoma Mesonet,36.37,-95.27,NSMN
+PUTN,Oklahoma Mesonet,35.9,-98.96,NSMN
+REDR,Oklahoma Mesonet,36.36,-97.15,NSMN
+RETR,Oklahoma Mesonet,35.12,-99.36,NSMN
+RING,Oklahoma Mesonet,34.19,-97.59,NSMN
+SALL,Oklahoma Mesonet,35.44,-94.8,NSMN
+SEIL,Oklahoma Mesonet,36.19,-99.04,NSMN
+SHAW,Oklahoma Mesonet,35.36,-96.95,NSMN
+SKIA,Oklahoma Mesonet,36.42,-96.04,NSMN
+SLAP,Oklahoma Mesonet,36.6,-100.26,NSMN
+SPEN,Oklahoma Mesonet,35.54,-97.34,NSMN
+STIG,Oklahoma Mesonet,35.27,-95.18,NSMN
+STIL,Oklahoma Mesonet,36.12,-97.1,NSMN
+STUA,Oklahoma Mesonet,34.88,-96.07,NSMN
+SULP,Oklahoma Mesonet,34.57,-96.95,NSMN
+TAHL,Oklahoma Mesonet,35.97,-94.99,NSMN
+TALA,Oklahoma Mesonet,36.57,-95.75,NSMN
+TALI,Oklahoma Mesonet,34.71,-95.01,NSMN
+TIPT,Oklahoma Mesonet,34.44,-99.14,NSMN
+TISH,Oklahoma Mesonet,34.33,-96.68,NSMN
+TULL,Oklahoma Mesonet,35.84,-95.41,NSMN
+TULN,Oklahoma Mesonet,36.2,-95.94,NSMN
+VALL,Oklahoma Mesonet,33.94,-95.11,NSMN
+VANO,Oklahoma Mesonet,34.79,-96.84,NSMN
+VINI,Oklahoma Mesonet,36.78,-95.22,NSMN
+WAL2,Oklahoma Mesonet,34.4,-98.35,NSMN
+WALT,Oklahoma Mesonet,34.36,-98.32,NSMN
+WASH,Oklahoma Mesonet,34.98,-97.52,NSMN
+WATO,Oklahoma Mesonet,35.84,-98.53,NSMN
+WAUR,Oklahoma Mesonet,34.17,-97.99,NSMN
+WEAT,Oklahoma Mesonet,35.51,-98.78,NSMN
+WEBB,Oklahoma Mesonet,35.47,-95.13,NSMN
+WEBR,Oklahoma Mesonet,35.49,-95.12,NSMN
+WEST,Oklahoma Mesonet,36.01,-94.64,NSMN
+WILB,Oklahoma Mesonet,34.9,-95.35,NSMN
+WIST,Oklahoma Mesonet,34.98,-94.69,NSMN
+WOOD,Oklahoma Mesonet,36.42,-99.42,NSMN
+WYNO,Oklahoma Mesonet,36.52,-96.34,NSMN
+AAMU-JTG,SCAN,34.78,-86.55,NSMN
+Abrams,SCAN,37.13,-97.09,NSMN
+Adams_Ranch_#1,SCAN,34.25,-105.42,NSMN
+Alcalde,SCAN,36.09,-106.06,NSMN
+Alkali_Mesa,SCAN,37.67,-109.36,NSMN
+Allen_Farms,SCAN,35.07,-86.89,NSMN
+Ames,SCAN,42.02,-93.73,NSMN
+Aniak,SCAN,61.58,-159.58,NSMN
+Ash_Valley,SCAN,41.05,-120.69,NSMN
+Beasley_Lake,SCAN,33.38,-90.65,NSMN
+Beaumont,SCAN,30.07,-94.29,NSMN
+Blue_Creek,SCAN,41.94,-112.43,NSMN
+Bodie_Hills,SCAN,38.26,-119.13,NSMN
+Bosque_Seco,SCAN,17.97,-66.87,NSMN
+Bragg_Farm,SCAN,34.89,-86.6,NSMN
+Broad_Acres,SCAN,32.28,-86.05,NSMN
+Buckhorn,SCAN,40.88,-119.95,NSMN
+Buffalo_Jump,SCAN,41.34,-111.19,NSMN
+Bushland_#1,SCAN,35.17,-102.1,NSMN
+Cache_Junction,SCAN,41.82,-111.98,NSMN
+Canyon_Lake,SCAN,59.42,-161.16,NSMN
+Cave_Valley,SCAN,37.36,-113.12,NSMN
+Centralia_Lake,SCAN,39.7,-96.16,NSMN
+Charkiln,SCAN,36.37,-115.82,NSMN
+Checkers_Creek,SCAN,65.4,-164.71,NSMN
+Chicken_Ridge,SCAN,41.33,-111.3,NSMN
+Cinnamon_Bay,SCAN,18.35,-64.75,NSMN
+Circleville,SCAN,38.15,-112.25,NSMN
+CMRB_LTAR-MO,SCAN,39.23,-92.12,NSMN
+Cochora_Ranch,SCAN,35.12,-119.6,NSMN
+Combate,SCAN,17.98,-67.17,NSMN
+Conrad_Ag_Rc,SCAN,48.3,-111.92,NSMN
+Cook_Farm_Field_D,SCAN,46.78,-117.08,NSMN
+Corozal,SCAN,18.32,-66.36,NSMN
+CPER,SCAN,40.82,-104.71,NSMN
+Crescent_Lake_#1,SCAN,45.42,-93.95,NSMN
+Crossroads,SCAN,33.54,-103.24,NSMN
+Cullman-NAHRC,SCAN,34.19,-86.8,NSMN
+Death_Valley_Jct,SCAN,36.33,-116.35,NSMN
+Dee_River_Ranch,SCAN,33.11,-88.31,NSMN
+Deep_Springs,SCAN,37.37,-117.97,NSMN
+Desert_Center,SCAN,33.8,-115.31,NSMN
+Dexter,SCAN,36.78,-89.93,NSMN
+Doe_Ridge,SCAN,37.63,-118.83,NSMN
+Dugway,SCAN,40.17,-113.02,NSMN
+Eagle_Lake,SCAN,40.62,-120.72,NSMN
+Eastland,SCAN,37.78,-109.17,NSMN
+Eastview_Farm,SCAN,35.14,-86.19,NSMN
+Elsberry_PMC,SCAN,39.15,-90.78,NSMN
+Enterprise,SCAN,37.63,-113.64,NSMN
+Ephraim,SCAN,39.37,-111.58,NSMN
+Eros_Data_Center,SCAN,43.74,-96.61,NSMN
+Essex,SCAN,34.67,-115.17,NSMN
+Everglades_ARS,SCAN,25.5,-80.55,NSMN
+Ford_Dry_Lake,SCAN,33.65,-115.1,NSMN
+Fort_Assiniboine_#1,SCAN,48.48,-109.8,NSMN
+Fort_Reno_#1,SCAN,35.55,-98.02,NSMN
+Fortuna,SCAN,18.03,-66.53,NSMN
+French_Gulch,SCAN,40.79,-122.55,NSMN
+Geneva_#1,SCAN,42.88,-77.03,NSMN
+Glacial_Ridge,SCAN,47.72,-96.27,NSMN
+Goodwin_Ck_Pasture,SCAN,34.25,-89.87,NSMN
+Goodwin_Ck_Timber,SCAN,34.23,-89.9,NSMN
+Goshute,SCAN,39.99,-114,NSMN
+Grantsville,SCAN,40.59,-112.39,NSMN
+Green_River,SCAN,39.02,-110.16,NSMN
+Grouse_Creek,SCAN,41.78,-113.82,NSMN
+Guilarte_Forest,SCAN,18.15,-66.77,NSMN
+Hals_Canyon,SCAN,38.59,-113.75,NSMN
+Harms_Way,SCAN,38.31,-109.24,NSMN
+Hayford_Peak,SCAN,36.66,-115.2,NSMN
+Hodges,SCAN,34.45,-86.15,NSMN
+Holden,SCAN,39.19,-112.4,NSMN
+Hozatka_Lake,SCAN,65.2,-156.63,NSMN
+Hubbard_Brook,SCAN,43.93,-71.72,NSMN
+Innoko_Camp,SCAN,63.64,-158.03,NSMN
+Isabela,SCAN,18.47,-67.04,NSMN
+Isbell_Farms,SCAN,34.82,-87.99,NSMN
+Island_Dairy,SCAN,20,-155.29,NSMN
+Johnson_Farm,SCAN,40.37,-101.72,NSMN
+Jordan,SCAN,47.52,-107.13,NSMN
+Jordan_Valley_Cwma,SCAN,42.95,-117.01,NSMN
+Jornada_Exp_Range,SCAN,32.56,-106.7,NSMN
+Journagan_Ranch,SCAN,37,-92.26,NSMN
+Kainaliu,SCAN,19.53,-155.93,NSMN
+Kanaryagak_Camp,SCAN,61.36,-165.12,NSMN
+Kanuti_Lake,SCAN,66.18,-151.74,NSMN
+Kemole_Gulch,SCAN,19.91,-155.59,NSMN
+Kingsville,SCAN,27.55,-97.88,NSMN
+Knox_City,SCAN,33.45,-99.87,NSMN
+Koptis_Farms,SCAN,30.52,-87.7,NSMN
+Kukuihaele,SCAN,20.1,-155.51,NSMN
+Ku-Nesa,SCAN,39.05,-95.19,NSMN
+Kyle_Canyon,SCAN,36.27,-115.61,NSMN
+Lehman,SCAN,33.63,-102.75,NSMN
+Levelland,SCAN,33.55,-102.37,NSMN
+Lind_#1,SCAN,47,-118.57,NSMN
+Lindsay,SCAN,47.21,-105.19,NSMN
+Little_Red_Fox,SCAN,40.18,-110.3,NSMN
+Little_River,SCAN,31.5,-83.55,NSMN
+Livingston-UWA,SCAN,32.61,-88.2,NSMN
+Los_Lunas_PMC,SCAN,34.77,-106.76,NSMN
+Lovell_Summit,SCAN,36.17,-115.61,NSMN
+Lovelock_NNR,SCAN,40.03,-118.18,NSMN
+Lower_Mulchatna,SCAN,59.82,-156.99,NSMN
+Lye_Brook,SCAN,43.05,-73.03,NSMN
+Lynhart_Ranch,SCAN,42.02,-121.39,NSMN
+Mahantango_Ck,SCAN,40.67,-76.67,NSMN
+Mammoth_Cave,SCAN,37.19,-86.04,NSMN
+Mana_House,SCAN,19.96,-155.54,NSMN
+Mandan_#1,SCAN,46.77,-100.92,NSMN
+Manderfield,SCAN,38.37,-112.64,NSMN
+Marble_Creek,SCAN,37.78,-118.42,NSMN
+Maricao_Forest,SCAN,18.15,-67,NSMN
+Mascoma_River,SCAN,43.78,-72.03,NSMN
+Mason_#1,SCAN,40.32,-89.9,NSMN
+Mayaguez_TARS,SCAN,18.21,-67.14,NSMN
+Mayday,SCAN,32.86,-90.52,NSMN
+McAllister_Farm,SCAN,35.06,-86.59,NSMN
+Mccracken_Mesa,SCAN,37.45,-109.34,NSMN
+Milford,SCAN,38.34,-113.01,NSMN
+Moccasin,SCAN,47.06,-109.95,NSMN
+Molly_Caren_#1,SCAN,39.95,-83.45,NSMN
+Monocline_Ridge,SCAN,36.54,-120.55,NSMN
+Moose_Inc,SCAN,59.68,-151.37,NSMN
+Morgan,SCAN,41,-111.69,NSMN
+Morris_Farms,SCAN,32.41,-85.91,NSMN
+Mount_Mansfield,SCAN,44.53,-72.83,NSMN
+Mountain_Home,SCAN,40.37,-110.41,NSMN
+Mt_Vernon,SCAN,37.07,-93.88,NSMN
+N_Piedmont_Arec,SCAN,38.23,-78.12,NSMN
+Naknek_River,SCAN,58.67,-156.57,NSMN
+Nenana,SCAN,64.69,-148.91,NSMN
+Nephi,SCAN,39.65,-111.87,NSMN
+North_Issaquena,SCAN,33,-91.06,NSMN
+Nunn_#1,SCAN,40.87,-104.73,NSMN
+Onward,SCAN,32.75,-90.93,NSMN
+Orchard_Range_Site,SCAN,43.32,-116,NSMN
+Panguitch,SCAN,37.87,-112.43,NSMN
+Park_Valley,SCAN,41.77,-113.29,NSMN
+Pee_Dee,SCAN,34.3,-79.73,NSMN
+Perdido_Riv_Farms,SCAN,31.11,-87.55,NSMN
+Perthshire,SCAN,33.97,-90.9,NSMN
+Phillipsburg,SCAN,39.79,-99.33,NSMN
+Pine_Nut,SCAN,36.57,-115.2,NSMN
+Porter_Canyon,SCAN,39.47,-117.62,NSMN
+Powder_Mill,SCAN,39.02,-76.85,NSMN
+Powell_Gardens,SCAN,38.87,-94.03,NSMN
+Prairie_View_#1,SCAN,30.08,-95.98,NSMN
+Price,SCAN,39.53,-110.81,NSMN
+Princeton_#1,SCAN,37.1,-87.83,NSMN
+Pua_Akala,SCAN,19.79,-155.33,NSMN
+Reese_Center,SCAN,33.62,-102.04,NSMN
+Reynolds_Homestead,SCAN,36.63,-80.13,NSMN
+Riesel,SCAN,31.48,-96.88,NSMN
+River_Road_Farms,SCAN,31.02,-85.04,NSMN
+Rock_Springs_Pa,SCAN,40.72,-77.93,NSMN
+Rogers_Farm_#1,SCAN,40.85,-96.47,NSMN
+San_Angelo,SCAN,31.55,-100.51,NSMN
+Sand_Hollow,SCAN,37.11,-113.36,NSMN
+Sandy_Ridge,SCAN,33.66,-90.57,NSMN
+Schell-Osage,SCAN,37.99,-94.04,NSMN
+Schor_Garden,SCAN,59.68,-151.38,NSMN
+Scott,SCAN,33.62,-91.1,NSMN
+Sellers_Lake_#1,SCAN,29.1,-81.63,NSMN
+Selma,SCAN,32.4,-86.89,NSMN
+Sevilleta,SCAN,34.36,-106.69,NSMN
+Shadow_Mtns,SCAN,35.47,-115.72,NSMN
+Shagbark_Hills,SCAN,42.43,-95.77,NSMN
+Sheldon,SCAN,41.9,-119.44,NSMN
+Shenandoah,SCAN,37.92,-79.2,NSMN
+Sidney,SCAN,47.77,-104.25,NSMN
+Silver_City,SCAN,33.09,-90.51,NSMN
+Silver_Sword,SCAN,19.77,-155.42,NSMN
+Spickard,SCAN,40.25,-93.72,NSMN
+Split_Mountain,SCAN,40.39,-109.35,NSMN
+Spooky,SCAN,37.51,-111.26,NSMN
+Stanley_Farm,SCAN,34.43,-86.68,NSMN
+Starkville,SCAN,33.63,-88.77,NSMN
+Stephenville,SCAN,32.25,-98.2,NSMN
+Stubblefield,SCAN,34.97,-119.48,NSMN
+Sudduth_Farms,SCAN,34.18,-87.46,NSMN
+Sunleaf_Nursery,SCAN,41.8,-81.08,NSMN
+Table_Mountain,SCAN,45.8,-111.59,NSMN
+Tidewater_#1,SCAN,35.87,-76.65,NSMN
+Tidewater_Arec,SCAN,36.68,-76.77,NSMN
+Tnc_Fort_Bayou,SCAN,30.47,-88.74,NSMN
+Tok,SCAN,63.35,-142.98,NSMN
+Torrington_#1,SCAN,42.07,-104.13,NSMN
+Trough_Springs,SCAN,36.37,-115.78,NSMN
+Tule_Valley,SCAN,39.24,-113.46,NSMN
+Tunica,SCAN,34.68,-90.42,NSMN
+Tuskegee,SCAN,32.43,-85.75,NSMN
+Uapb_Campus-PB,SCAN,34.25,-92.03,NSMN
+Uapb_Dewitt,SCAN,34.28,-91.35,NSMN
+Uapb_Point_Remove,SCAN,35.21,-92.92,NSMN
+Uapb-Earle,SCAN,35.28,-90.45,NSMN
+Uapb-Lonoke_Farm,SCAN,34.85,-91.88,NSMN
+Uapb-Marianna,SCAN,34.78,-90.82,NSMN
+Unalakleet,SCAN,63.91,-160.75,NSMN
+Upper_Bethlehem,SCAN,17.72,-64.8,NSMN
+Uvalde,SCAN,29.36,-100.25,NSMN
+UW_Platteville,SCAN,42.71,-90.39,NSMN
+Vance,SCAN,34.07,-90.35,NSMN
+Vermillion,SCAN,37.19,-112.19,NSMN
+Vernon,SCAN,34.02,-99.25,NSMN
+Violett,SCAN,48.44,-111.18,NSMN
+Wabeno_#1,SCAN,45.47,-88.58,NSMN
+Waimea_Plain,SCAN,20.01,-155.6,NSMN
+Wakulla_#1,SCAN,30.3,-84.42,NSMN
+Walnut_Gulch_#1,SCAN,31.73,-110.05,NSMN
+Watkinsville_#1,SCAN,33.88,-83.43,NSMN
+Weary_Lake,SCAN,59.13,-159.09,NSMN
+Wedowee,SCAN,33.33,-85.52,NSMN
+Weslaco,SCAN,26.16,-97.96,NSMN
+West_Summit,SCAN,38.01,-109.13,NSMN
+Willow_Wells,SCAN,33.53,-103.63,NSMN
+Wtars,SCAN,34.9,-86.53,NSMN
+Youmans_Farm,SCAN,32.67,-81.2,NSMN
+Agua_Canyon,SNOTEL,37.52,-112.27,NSMN
+Anchor_River_Divide,SNOTEL,59.86,-151.32,NSMN
+Annie_Springs,SNOTEL,42.87,-122.17,NSMN
+Arapaho_Ridge,SNOTEL,40.35,-106.38,NSMN
+Atigun_Pass,SNOTEL,68.13,-149.48,NSMN
+Atlanta_Summit,SNOTEL,43.76,-115.24,NSMN
+Baker_Butte,SNOTEL,34.46,-111.41,NSMN
+Baker_Butte_Smt,SNOTEL,34.46,-111.38,NSMN
+Baldy,SNOTEL,33.98,-109.5,NSMN
+Banner_Summit,SNOTEL,44.3,-115.23,NSMN
+Bar_M,SNOTEL,34.86,-111.61,NSMN
+Bear_Creek,SNOTEL,41.83,-115.45,NSMN
+Bear_River_RS,SNOTEL,40.89,-110.83,NSMN
+Beaver_Dams,SNOTEL,39.14,-111.56,NSMN
+Beaver_Divide,SNOTEL,40.61,-111.1,NSMN
+Beaver_Pass,SNOTEL,48.88,-121.26,NSMN
+Ben_Lomond_Peak,SNOTEL,41.38,-111.94,NSMN
+Ben_Lomond_Trail,SNOTEL,41.38,-111.92,NSMN
+Berry_Creek,SNOTEL,39.32,-114.62,NSMN
+Berthoud_Summit,SNOTEL,39.8,-105.78,NSMN
+Bevans_Cabin,SNOTEL,40.46,-112.25,NSMN
+Big_Bend,SNOTEL,41.76,-115.69,NSMN
+Big_Creek_Sum,SNOTEL,39.29,-117.12,NSMN
+Big_Flat,SNOTEL,38.3,-112.36,NSMN
+Big_Goose,SNOTEL,44.58,-107.2,NSMN
+Big_Meadow,SNOTEL,39.46,-119.94,NSMN
+Big_Sandy_Opening,SNOTEL,42.65,-109.26,NSMN
+Billie_Creek_Divide,SNOTEL,42.41,-122.27,NSMN
+Bird_Creek,SNOTEL,39.46,-114.65,NSMN
+Black_Bear,SNOTEL,44.51,-111.13,NSMN
+Black_Flat-U.M._Ck,SNOTEL,38.68,-111.6,NSMN
+Black_Mesa,SNOTEL,37.79,-108.18,NSMN
+Black_Pine,SNOTEL,46.41,-113.43,NSMN
+Blackhall_Mtn,SNOTEL,41.06,-106.71,NSMN
+Blacks_Fork_Jct,SNOTEL,40.96,-110.58,NSMN
+Blacktail_Mtn,SNOTEL,47.98,-114.35,NSMN
+Blue_Lakes,SNOTEL,38.61,-119.92,NSMN
+Bobs_Hollow,SNOTEL,38.95,-112.15,NSMN
+Bogus_Basin,SNOTEL,43.76,-116.1,NSMN
+Bone_Springs_Div,SNOTEL,44.68,-107.58,NSMN
+Bostetter_R.S.,SNOTEL,42.16,-114.19,NSMN
+Bourne,SNOTEL,44.83,-118.19,NSMN
+Box_Creek,SNOTEL,38.51,-112.02,NSMN
+Brian_Head,SNOTEL,37.68,-112.86,NSMN
+Brighton,SNOTEL,40.6,-111.58,NSMN
+Bristlecone_Trail,SNOTEL,36.32,-115.7,NSMN
+Brown_Duck,SNOTEL,40.58,-110.59,NSMN
+Brown_Top,SNOTEL,48.93,-121.2,NSMN
+Brumley,SNOTEL,39.09,-106.54,NSMN
+Buck_Flat,SNOTEL,39.13,-111.44,NSMN
+Buck_Pasture,SNOTEL,40.84,-110.66,NSMN
+Buckboard_Flat,SNOTEL,37.87,-109.45,NSMN
+Buckinghorse,SNOTEL,47.71,-123.46,NSMN
+Buckskin_Joe,SNOTEL,39.3,-106.11,NSMN
+Buckskin_Lower,SNOTEL,41.75,-117.53,NSMN
+Bug_Lake,SNOTEL,41.69,-111.42,NSMN
+Burnside_Lake,SNOTEL,38.72,-119.89,NSMN
+Burnt_Mountain,SNOTEL,47.04,-121.94,NSMN
+Burro_Mountain,SNOTEL,39.88,-107.6,NSMN
+Burts_Miller_Ranch,SNOTEL,40.98,-110.85,NSMN
+Butte,SNOTEL,38.89,-106.95,NSMN
+Camp_Jackson,SNOTEL,37.81,-109.49,NSMN
+Carson_Pass,SNOTEL,38.69,-120,NSMN
+Cascade_#2,SNOTEL,37.66,-107.8,NSMN
+Cascade_Mountain,SNOTEL,40.28,-111.61,NSMN
+Castle_Creek,SNOTEL,43.67,-109.38,NSMN
+Castle_Valley,SNOTEL,37.66,-112.74,NSMN
+Cave_Mountain,SNOTEL,39.16,-114.61,NSMN
+Cayuse_Pass,SNOTEL,46.87,-121.53,NSMN
+Chalender,SNOTEL,35.26,-112.06,NSMN
+Chalk_Creek_#1,SNOTEL,40.85,-111.05,NSMN
+Chalk_Creek_#2,SNOTEL,40.89,-111.07,NSMN
+Chemult_Alternate,SNOTEL,43.23,-121.81,NSMN
+Chepeta,SNOTEL,40.77,-110.01,NSMN
+Chocolate_Gulch,SNOTEL,43.77,-114.42,NSMN
+Cinnabar_Park,SNOTEL,41.24,-106.23,NSMN
+Clackamas_Lake,SNOTEL,45.1,-121.75,NSMN
+Clayton_Springs,SNOTEL,37.97,-111.83,NSMN
+Clear_Creek_#1,SNOTEL,39.87,-111.28,NSMN
+Clear_Creek_#2,SNOTEL,39.89,-111.25,NSMN
+Clear_Lake,SNOTEL,45.19,-121.69,NSMN
+Clover_Meadow,SNOTEL,45.02,-111.85,NSMN
+Cochetopa_Pass,SNOTEL,38.16,-106.6,NSMN
+Coldfoot,SNOTEL,67.25,-150.18,NSMN
+Columbia_Basin,SNOTEL,41.67,-116.07,NSMN
+Copper_Mountain,SNOTEL,39.49,-106.17,NSMN
+Corduroy_Flat,SNOTEL,39,-115.42,NSMN
+Corral,SNOTEL,39.66,-110.38,NSMN
+Corral_Canyon,SNOTEL,40.28,-115.54,NSMN
+Crab_Creek,SNOTEL,44.44,-111.99,NSMN
+Crater_Meadows,SNOTEL,46.56,-115.29,NSMN
+Crow_Creek,SNOTEL,41.23,-105.38,NSMN
+Css_Lab,SNOTEL,39.33,-120.37,NSMN
+Culebra_#2,SNOTEL,37.21,-105.2,NSMN
+Currant_Creek,SNOTEL,40.36,-111.09,NSMN
+Daniels-Strawberry,SNOTEL,40.3,-111.26,NSMN
+Defiance_Mines,SNOTEL,39.09,-114.9,NSMN
+Diamond_Peak,SNOTEL,39.56,-115.84,NSMN
+Dills_Camp,SNOTEL,39.05,-111.47,NSMN
+Disaster_Peak,SNOTEL,41.97,-118.19,NSMN
+Divide,SNOTEL,44.79,-112.06,NSMN
+Dollarhide_Summit,SNOTEL,43.6,-114.67,NSMN
+Donkey_Reservoir,SNOTEL,38.21,-111.47,NSMN
+Dorsey_Basin,SNOTEL,40.89,-115.21,NSMN
+Draw_Creek,SNOTEL,41.66,-115.32,NSMN
+Dry_Bread_Pond,SNOTEL,41.41,-111.54,NSMN
+Dry_Creek,SNOTEL,40.86,-115.22,NSMN
+Dry_Fork,SNOTEL,40.57,-112.17,NSMN
+Dry_Lake,SNOTEL,40.53,-106.78,NSMN
+Eagle_Summit,SNOTEL,65.49,-145.41,NSMN
+East_Rim_Divide,SNOTEL,43.13,-110.2,NSMN
+East_Willow_Creek,SNOTEL,39.31,-109.53,NSMN
+Ebbetts_Pass,SNOTEL,38.55,-119.8,NSMN
+Echo_Peak,SNOTEL,38.85,-120.08,NSMN
+EF_Blacks_Fork_GS,SNOTEL,40.88,-110.54,NSMN
+Elk_Butte,SNOTEL,46.84,-116.12,NSMN
+Elk_Cabin,SNOTEL,35.7,-105.81,NSMN
+Elk_Peak,SNOTEL,46.48,-110.71,NSMN
+Exit_Glacier,SNOTEL,60.19,-149.62,NSMN
+Fallen_Leaf,SNOTEL,38.93,-120.05,NSMN
+Farmington,SNOTEL,40.97,-111.81,NSMN
+Farmington_Lower,SNOTEL,40.99,-111.82,NSMN
+Farnsworth_Lake,SNOTEL,38.77,-111.68,NSMN
+Fawn_Creek,SNOTEL,41.82,-116.1,NSMN
+Fish_Lake_Utah,SNOTEL,38.5,-111.77,NSMN
+Five_Points_Lake,SNOTEL,40.72,-110.47,NSMN
+Flattop_Mtn.,SNOTEL,48.8,-113.86,NSMN
+Forestdale_Creek,SNOTEL,38.68,-119.96,NSMN
+Fort_Valley,SNOTEL,35.27,-111.74,NSMN
+Franklin_Basin,SNOTEL,42.05,-111.6,NSMN
+Fredonyer_Peak,SNOTEL,40.69,-120.61,NSMN
+Fremont_Pass,SNOTEL,39.38,-106.2,NSMN
+Fry_Canyon,SNOTEL,41.57,-115.94,NSMN
+Galena_Summit,SNOTEL,43.87,-114.71,NSMN
+Gallegos_Peak,SNOTEL,36.19,-105.56,NSMN
+Garden_City_Summit,SNOTEL,41.92,-111.47,NSMN
+Gardner_Peak,SNOTEL,37.4,-113.46,NSMN
+Garita_Peak,SNOTEL,36.01,-106.55,NSMN
+GBRC_HQ,SNOTEL,39.32,-111.49,NSMN
+GBRC_Meadows,SNOTEL,39.3,-111.45,NSMN
+George_Creek,SNOTEL,41.92,-113.41,NSMN
+Giveout,SNOTEL,42.41,-111.17,NSMN
+Gobblers_Knob,SNOTEL,66.75,-150.67,NSMN
+Golconda,SNOTEL,40.88,-117.59,NSMN
+Gold_Axe_Camp,SNOTEL,48.95,-118.99,NSMN
+Gooseberry_RS,SNOTEL,38.8,-111.68,NSMN
+Gooseberry_RS_Up,SNOTEL,38.79,-111.69,NSMN
+Grand_Targhee,SNOTEL,43.78,-110.93,NSMN
+Granite_Creek,SNOTEL,43.34,-110.43,NSMN
+Granite_Crk,SNOTEL,63.94,-145.4,NSMN
+Granite_Peak,SNOTEL,41.67,-117.57,NSMN
+Green_Mountain,SNOTEL,40.38,-115.53,NSMN
+Grizzly_Peak,SNOTEL,39.65,-105.87,NSMN
+Grouse_Camp,SNOTEL,47.28,-120.49,NSMN
+Gunsight_Pass,SNOTEL,43.38,-109.88,NSMN
+Gutz_Peak,SNOTEL,37.5,-113.94,NSMN
+Hagans_Meadow,SNOTEL,38.85,-119.94,NSMN
+Happy_Jack,SNOTEL,34.75,-111.41,NSMN
+Hardscrabble,SNOTEL,40.87,-111.72,NSMN
+Harris_Flat,SNOTEL,37.49,-112.58,NSMN
+Harts_Pass,SNOTEL,48.72,-120.66,NSMN
+Hawley_Lake,SNOTEL,33.97,-109.77,NSMN
+Hayden_Fork,SNOTEL,40.8,-110.88,NSMN
+Heavenly_Valley,SNOTEL,38.92,-119.92,NSMN
+Hewinta,SNOTEL,40.95,-110.48,NSMN
+Hickerson_Park,SNOTEL,40.91,-109.96,NSMN
+High_Ridge,SNOTEL,45.7,-118.11,NSMN
+Hilts_Creek,SNOTEL,44.02,-113.47,NSMN
+Hobble_Creek,SNOTEL,40.19,-111.36,NSMN
+Hole-in-Mountain,SNOTEL,40.94,-115.1,NSMN
+Hole-in-Rock,SNOTEL,40.92,-110.19,NSMN
+Holland_Meadows,SNOTEL,43.67,-122.57,NSMN
+Hoosier_Pass,SNOTEL,39.36,-106.06,NSMN
+Hopewell,SNOTEL,36.72,-106.26,NSMN
+Horse_Meadow,SNOTEL,38.84,-119.89,NSMN
+Horse_Ridge,SNOTEL,41.31,-111.45,NSMN
+Huntington_Horse,SNOTEL,39.62,-111.31,NSMN
+Hyndman,SNOTEL,43.71,-114.16,NSMN
+Imnaviat_Creek,SNOTEL,68.62,-149.3,NSMN
+Independence_Camp,SNOTEL,39.45,-120.29,NSMN
+Independence_Creek,SNOTEL,39.49,-120.28,NSMN
+Independence_Lake,SNOTEL,39.43,-120.31,NSMN
+Indian_Canyon,SNOTEL,39.89,-110.75,NSMN
+Indian_Rock,SNOTEL,45.99,-120.81,NSMN
+Island_Park,SNOTEL,44.42,-111.39,NSMN
+Jack_Creek_Upper,SNOTEL,41.55,-116.01,NSMN
+Jacks_Peak,SNOTEL,41.51,-116.01,NSMN
+Jackson_Peak,SNOTEL,44.05,-115.44,NSMN
+Jackwhacker_Gulch,SNOTEL,39.57,-105.8,NSMN
+Jakes_Creek,SNOTEL,41.57,-115.03,NSMN
+Jones_Corral,SNOTEL,38.07,-112.17,NSMN
+Kalamazoo,SNOTEL,39.56,-114.63,NSMN
+Kelley_R.S.,SNOTEL,42.27,-110.81,NSMN
+Kelly_Station,SNOTEL,67.93,-162.28,NSMN
+Kenai_Moose_Pens,SNOTEL,60.73,-150.48,NSMN
+Kilfoil_Creek,SNOTEL,41.25,-111.41,NSMN
+Kimberly_Mine,SNOTEL,38.48,-112.39,NSMN
+Kings_Cabin,SNOTEL,40.72,-109.54,NSMN
+Klondike_Narrows,SNOTEL,41.97,-111.6,NSMN
+Kolob,SNOTEL,37.53,-113.05,NSMN
+Lakefork_#1,SNOTEL,40.6,-110.43,NSMN
+Lakefork_#3,SNOTEL,40.55,-110.35,NSMN
+Lakefork_Basin,SNOTEL,40.74,-110.62,NSMN
+Lakeview_Ridge,SNOTEL,44.59,-111.82,NSMN
+Lamance_Creek,SNOTEL,41.52,-117.63,NSMN
+Lamoille_#3,SNOTEL,40.64,-115.38,NSMN
+Laprele_Creek,SNOTEL,42.44,-105.86,NSMN
+Larsen_Creek,SNOTEL,42.58,-109.09,NSMN
+Lasal_Mountain,SNOTEL,38.48,-109.27,NSMN
+Lasal_Mountain-Lower,SNOTEL,38.48,-109.29,NSMN
+Laurel_Draw,SNOTEL,41.78,-116.03,NSMN
+Leavitt_Lake,SNOTEL,38.28,-119.61,NSMN
+Leavitt_Meadows,SNOTEL,38.3,-119.55,NSMN
+Lee_Canyon,SNOTEL,36.31,-115.68,NSMN
+Lewis_Lake_Divide,SNOTEL,44.21,-110.67,NSMN
+Lewis_Peak,SNOTEL,40.36,-116.86,NSMN
+Lick_Creek,SNOTEL,45.5,-110.97,NSMN
+Lightning_Ridge,SNOTEL,41.36,-111.49,NSMN
+Lily_Lake,SNOTEL,40.86,-110.8,NSMN
+Lily_Pond,SNOTEL,37.38,-106.55,NSMN
+Little_Bear,SNOTEL,41.41,-111.83,NSMN
+Little_Chena_Ridge,SNOTEL,65.12,-146.73,NSMN
+Little_Goose,SNOTEL,44.54,-107.18,NSMN
+Little_Grassy,SNOTEL,37.49,-113.85,NSMN
+Little_Snake_River,SNOTEL,41.07,-106.94,NSMN
+Little_Valley,SNOTEL,39.25,-119.88,NSMN
+Lizard_Head_Pass,SNOTEL,37.8,-107.92,NSMN
+Lobdell_Lake,SNOTEL,38.44,-119.37,NSMN
+Lone_Cone,SNOTEL,37.89,-108.2,NSMN
+Lonesome_Beaver,SNOTEL,38.07,-110.77,NSMN
+Long_Draw_Resv,SNOTEL,40.51,-105.77,NSMN
+Long_Flat,SNOTEL,37.51,-113.4,NSMN
+Long_Valley,SNOTEL,44.79,-116.09,NSMN
+Long_Valley_Jct,SNOTEL,37.49,-112.51,NSMN
+Lookout,SNOTEL,47.46,-115.71,NSMN
+Lookout_Peak,SNOTEL,40.84,-111.71,NSMN
+Lost_Creek_Resv,SNOTEL,41.22,-111.36,NSMN
+Lost_Dog,SNOTEL,40.82,-106.75,NSMN
+Lost_Horse,SNOTEL,46.36,-121.08,NSMN
+Louis_Meadow,SNOTEL,40.83,-111.76,NSMN
+Lynx_Pass,SNOTEL,40.08,-106.67,NSMN
+Madison_Butte,SNOTEL,45.11,-119.5,NSMN
+Magic_Mountain,SNOTEL,42.18,-114.29,NSMN
+Mammoth-Cottonwood,SNOTEL,39.68,-111.32,NSMN
+Many_Glacier,SNOTEL,48.8,-113.67,NSMN
+Marlette_Lake,SNOTEL,39.16,-119.9,NSMN
+Marten_Ridge,SNOTEL,48.76,-121.7,NSMN
+Mcneil_River_SGS,SNOTEL,59.08,-154.28,NSMN
+Med_Bow,SNOTEL,41.38,-106.35,NSMN
+Medano_Pass,SNOTEL,37.85,-105.44,NSMN
+Merchant_Valley,SNOTEL,38.3,-112.44,NSMN
+Merritt_Mountain,SNOTEL,41.89,-115.86,NSMN
+MF_Nooksack,SNOTEL,48.82,-121.93,NSMN
+Mica_Creek,SNOTEL,47.15,-116.27,NSMN
+Michigan_Creek,SNOTEL,39.44,-105.91,NSMN
+Midas,SNOTEL,41.27,-116.8,NSMN
+Middle_Fork_Camp,SNOTEL,39.8,-106.03,NSMN
+Midway_Valley,SNOTEL,37.57,-112.84,NSMN
+Mill-D_North,SNOTEL,40.66,-111.64,NSMN
+Miller_Woods,SNOTEL,45.25,-123.28,NSMN
+Mining_Fork,SNOTEL,40.49,-112.61,NSMN
+Monahan_Flat,SNOTEL,63.31,-147.65,NSMN
+Monitor_Pass,SNOTEL,38.67,-119.61,NSMN
+Monte_Cristo,SNOTEL,41.47,-111.5,NSMN
+Monument_Creek,SNOTEL,65.08,-145.87,NSMN
+Moore_Creek_Bridge,SNOTEL,59.59,-135.21,NSMN
+Mormon_Mountain,SNOTEL,34.94,-111.52,NSMN
+Mormon_Mtn_Summit,SNOTEL,34.97,-111.51,NSMN
+Mosby_Mtn.,SNOTEL,40.61,-109.89,NSMN
+Moscow_Mountain,SNOTEL,46.81,-116.85,NSMN
+Moses_Mtn,SNOTEL,48.36,-119.08,NSMN
+Mosquito_Ridge,SNOTEL,48.06,-116.23,NSMN
+Moss_Springs,SNOTEL,45.27,-117.69,NSMN
+Mount_Lockhart,SNOTEL,47.92,-112.82,NSMN
+Mt._Howard,SNOTEL,45.27,-117.17,NSMN
+Mt._Ryan,SNOTEL,65.25,-146.15,NSMN
+Mt_Baldy,SNOTEL,39.14,-111.51,NSMN
+Mt_Pennell,SNOTEL,37.98,-110.79,NSMN
+Mt_Rose_Ski_Area,SNOTEL,39.32,-119.89,NSMN
+Mud_Flat,SNOTEL,42.6,-116.56,NSMN
+Munson_Ridge,SNOTEL,64.85,-146.21,NSMN
+Myrtle_Creek,SNOTEL,48.72,-116.46,NSMN
+Navajo_Whiskey_Ck,SNOTEL,36.18,-108.95,NSMN
+Nevada_Ridge,SNOTEL,46.84,-112.51,NSMN
+Nuka_Glacier,SNOTEL,59.7,-150.71,NSMN
+Oak_Creek,SNOTEL,39.35,-112.33,NSMN
+ONeil_Creek,SNOTEL,41.86,-115.08,NSMN
+Palo,SNOTEL,36.41,-105.33,NSMN
+Panguitch_Lake_RS,SNOTEL,37.7,-112.65,NSMN
+Paradise,SNOTEL,46.78,-121.75,NSMN
+Park_Cone,SNOTEL,38.82,-106.59,NSMN
+Park_Creek_Ridge,SNOTEL,48.44,-120.92,NSMN
+Park_Reservoir,SNOTEL,39.05,-107.87,NSMN
+Parleys_Summit,SNOTEL,40.76,-111.63,NSMN
+Parrish_Creek,SNOTEL,40.93,-111.81,NSMN
+Payson_R.S.,SNOTEL,39.93,-111.63,NSMN
+Phantom_Valley,SNOTEL,40.4,-105.85,NSMN
+Pickle_Keg,SNOTEL,39.01,-111.58,NSMN
+Pierce_R.S.,SNOTEL,46.5,-115.8,NSMN
+Pine_Creek,SNOTEL,38.88,-112.25,NSMN
+Pocket_Creek,SNOTEL,42.71,-109.41,NSMN
+Poison_Flat,SNOTEL,38.51,-119.63,NSMN
+Pole_Canyon,SNOTEL,40.86,-115.12,NSMN
+Pole_Creek_R.S.,SNOTEL,41.87,-115.25,NSMN
+Porphyry_Creek,SNOTEL,38.49,-106.34,NSMN
+Port_Graham,SNOTEL,59.35,-151.85,NSMN
+Prudhoe_Bay,SNOTEL,70.27,-148.57,NSMN
+Quartz_Mountain,SNOTEL,42.32,-120.83,NSMN
+Quartz_Peak,SNOTEL,47.88,-117.09,NSMN
+Quemazon,SNOTEL,35.92,-106.39,NSMN
+Ragged_Mountain,SNOTEL,47.86,-117.04,NSMN
+Rainbow_Canyon,SNOTEL,36.25,-115.63,NSMN
+Rainy_Pass,SNOTEL,48.52,-120.74,NSMN
+Red_Pine_Ridge,SNOTEL,39.45,-111.27,NSMN
+Red_River_Pass_#2,SNOTEL,36.7,-105.34,NSMN
+Redden_Mine_Lwr,SNOTEL,40.68,-111.22,NSMN
+Rees_Flat,SNOTEL,39.5,-111.73,NSMN
+Reynolds_Creek,SNOTEL,43.29,-116.85,NSMN
+Rio_Santa_Barbara,SNOTEL,36.07,-105.63,NSMN
+Rock_Creek,SNOTEL,40.55,-110.69,NSMN
+Rock_Springs,SNOTEL,44.01,-118.84,NSMN
+Rocky_Basin-Settleme,SNOTEL,40.44,-112.22,NSMN
+Rocky_Point,SNOTEL,64.53,-163.42,NSMN
+Rough_And_Tumble,SNOTEL,39.03,-106.08,NSMN
+Rubicon_#2,SNOTEL,39,-120.13,NSMN
+Sage_Creek_Basin,SNOTEL,41.4,-107.26,NSMN
+Salmon_Meadows,SNOTEL,48.66,-119.84,NSMN
+Salt_Creek_Falls,SNOTEL,43.61,-122.12,NSMN
+Salt_River_Summit,SNOTEL,42.51,-110.91,NSMN
+Sandstone_RS,SNOTEL,41.11,-107.17,NSMN
+Santa_Fe,SNOTEL,35.77,-105.78,NSMN
+Santaquin_Meadows,SNOTEL,39.92,-111.72,NSMN
+Sasse_Ridge,SNOTEL,47.38,-121.06,NSMN
+Savage_Pass,SNOTEL,46.47,-114.63,NSMN
+Sawtooth,SNOTEL,40.14,-105.59,NSMN
+Schneider_Meadows,SNOTEL,45,-117.17,NSMN
+Schofield_Pass,SNOTEL,39.02,-107.05,NSMN
+Seeley_Creek,SNOTEL,39.31,-111.43,NSMN
+Senorita_Divide_#2,SNOTEL,36,-106.83,NSMN
+Sentinel_Butte,SNOTEL,48.86,-118.4,NSMN
+Seventysix_Creek,SNOTEL,41.74,-115.47,NSMN
+Shanghi_Summit,SNOTEL,46.57,-115.74,NSMN
+Sharkstooth,SNOTEL,37.5,-108.11,NSMN
+Sheep_Mtn.,SNOTEL,43.21,-111.69,NSMN
+Sherwin,SNOTEL,46.95,-116.34,NSMN
+Shuree,SNOTEL,36.79,-105.24,NSMN
+Sierra_Blanca,SNOTEL,33.4,-105.79,NSMN
+Silver_Creek,SNOTEL,42.96,-121.18,NSMN
+Silver_Creek_Nv,SNOTEL,39.23,-114.24,NSMN
+Silvies,SNOTEL,42.75,-118.69,NSMN
+Sleeping_Woman,SNOTEL,47.18,-114.33,NSMN
+Slumgullion,SNOTEL,37.99,-107.2,NSMN
+Smiley_Mountain,SNOTEL,43.73,-113.83,NSMN
+Smith__Morehouse,SNOTEL,40.79,-111.09,NSMN
+Snake_River_Station,SNOTEL,44.13,-110.67,NSMN
+Snow_Mountain,SNOTEL,43.95,-119.54,NSMN
+Snowbird,SNOTEL,40.56,-111.66,NSMN
+Snowstorm_Mtn,SNOTEL,41.34,-116.98,NSMN
+Soldier_Park,SNOTEL,44.35,-107.01,NSMN
+Somsen_Ranch,SNOTEL,42.95,-111.36,NSMN
+Sonora_Pass,SNOTEL,38.31,-119.6,NSMN
+Sourdough_Gulch,SNOTEL,46.24,-117.39,NSMN
+South_Brush_Creek,SNOTEL,41.33,-106.5,NSMN
+South_Mtn.,SNOTEL,42.76,-116.9,NSMN
+Spirit_Lk,SNOTEL,40.84,-110.01,NSMN
+Spratt_Creek,SNOTEL,38.67,-119.82,NSMN
+Spur_Park,SNOTEL,46.78,-110.62,NSMN
+Squaw_Springs,SNOTEL,38.5,-112.01,NSMN
+Squaw_Valley_G.C.,SNOTEL,39.19,-120.27,NSMN
+Stag_Mountain,SNOTEL,41.41,-115.45,NSMN
+State_Line,SNOTEL,41.99,-120.72,NSMN
+Steel_Creek_Park,SNOTEL,40.91,-110.5,NSMN
+Stickney_Mill,SNOTEL,43.86,-114.21,NSMN
+Strawberry_Divide,SNOTEL,40.16,-111.21,NSMN
+Sucker_Creek,SNOTEL,44.72,-107.4,NSMN
+Summit_Creek,SNOTEL,60.62,-149.53,NSMN
+Summit_Lk,SNOTEL,41.49,-119,NSMN
+Summit_Meadow,SNOTEL,38.4,-119.54,NSMN
+Summit_Ranch,SNOTEL,39.72,-106.16,NSMN
+Sunflower_Flat,SNOTEL,38.05,-111.34,NSMN
+Sunset,SNOTEL,47.56,-115.82,NSMN
+Susitna_Valley_High,SNOTEL,62.13,-150.04,NSMN
+Suu_Ranch,SNOTEL,37.6,-112.93,NSMN
+Swede_Peak,SNOTEL,43.63,-113.97,NSMN
+Tahoe_City_Cross,SNOTEL,39.17,-120.15,NSMN
+Takka_Wiiya,SNOTEL,39.74,-113.98,NSMN
+Taos_Powderhorn,SNOTEL,36.58,-105.46,NSMN
+Taylor_Butte,SNOTEL,42.69,-121.43,NSMN
+Taylor_Canyon,SNOTEL,41.23,-116.03,NSMN
+Temple_Fork,SNOTEL,41.79,-111.55,NSMN
+Tent_Mtn_Lower,SNOTEL,40.98,-115.17,NSMN
+Thaynes_Canyon,SNOTEL,40.62,-111.53,NSMN
+Thistle_Flat,SNOTEL,39.24,-111.52,NSMN
+Thumb_Divide,SNOTEL,44.37,-110.58,NSMN
+Timberline,SNOTEL,39.68,-110.43,NSMN
+Timpanogos_Divide,SNOTEL,40.43,-111.62,NSMN
+Tipton,SNOTEL,44.66,-118.43,NSMN
+Toe_Jam,SNOTEL,41.32,-116.34,NSMN
+Togwotee_Pass,SNOTEL,43.75,-110.06,NSMN
+Tokositna_Valley,SNOTEL,62.63,-150.78,NSMN
+Tony_Grove_Lake,SNOTEL,41.9,-111.63,NSMN
+Tony_Grove_RS,SNOTEL,41.89,-111.57,NSMN
+Touchet,SNOTEL,46.12,-117.85,NSMN
+Townsend_Creek,SNOTEL,42.7,-108.9,NSMN
+Tres_Ritos,SNOTEL,36.13,-105.53,NSMN
+Trial_Lake,SNOTEL,40.68,-110.95,NSMN
+Triple_Peak,SNOTEL,42.76,-110.59,NSMN
+Trough,SNOTEL,47.23,-120.29,NSMN
+Trout_Creek,SNOTEL,40.74,-109.67,NSMN
+Truckee_#2,SNOTEL,39.3,-120.18,NSMN
+Twelvemile_Creek,SNOTEL,46.14,-114.45,NSMN
+Twin_Lakes,SNOTEL,46.14,-114.51,NSMN
+Upper_Joes_Valley,SNOTEL,39.42,-111.25,NSMN
+Upper_Nome_Creek,SNOTEL,65.37,-146.59,NSMN
+Upper_Rio_Grande,SNOTEL,37.72,-107.26,NSMN
+Upper_San_Juan,SNOTEL,37.49,-106.84,NSMN
+Upper_Taylor,SNOTEL,38.99,-106.75,NSMN
+Upper_Tsaina_River,SNOTEL,61.19,-145.65,NSMN
+Usu_Doc_Daniel,SNOTEL,41.86,-111.51,NSMN
+Vacarro_Springs,SNOTEL,39.45,-115.98,NSMN
+Vacas_Locas,SNOTEL,36.03,-106.81,NSMN
+Van_Wyck,SNOTEL,44.38,-116.34,NSMN
+Vernon_Creek,SNOTEL,39.94,-112.41,NSMN
+Virginia_Lakes_Ridge,SNOTEL,38.07,-119.23,NSMN
+Ward_Creek_#3,SNOTEL,39.14,-120.22,NSMN
+Ward_Mountain,SNOTEL,39.13,-114.96,NSMN
+Waterhole,SNOTEL,47.94,-123.43,NSMN
+Webster_Flat,SNOTEL,37.58,-112.9,NSMN
+Wesner_Springs,SNOTEL,35.78,-105.54,NSMN
+West_Yellowstone,SNOTEL,44.66,-111.09,NSMN
+Wheeler_Peak,SNOTEL,39.01,-114.31,NSMN
+Whiskey_Ck,SNOTEL,37.21,-105.12,NSMN
+White_Horse_Lake,SNOTEL,35.14,-112.15,NSMN
+White_Mill,SNOTEL,45.05,-109.91,NSMN
+White_River_#1,SNOTEL,39.96,-110.99,NSMN
+White_River_Nv,SNOTEL,38.95,-115.38,NSMN
+Widtsoe_#3,SNOTEL,37.84,-111.88,NSMN
+Wild_Basin,SNOTEL,40.2,-105.6,NSMN
+Wildhorse_Divide,SNOTEL,42.76,-112.48,NSMN
+Wilson_Creek,SNOTEL,42.01,-115,NSMN
+Windy_Peak,SNOTEL,42.28,-105.58,NSMN
+Wolf_Creek_Summit,SNOTEL,37.48,-106.8,NSMN
+Wrigley_Creek,SNOTEL,39.13,-111.36,NSMN
+Yankee_Reservoir,SNOTEL,37.75,-112.77,NSMN
+Zirkel,SNOTEL,40.79,-106.6,NSMN
+ANTELOPE_RANGE,South Dakota Mesonet,45.52,-103.29,NSMN
+BALTIC,South Dakota Mesonet,43.73,-96.68,NSMN
+BERESFORD,South Dakota Mesonet,43.05,-96.9,NSMN
+BISON,South Dakota Mesonet,45.53,-102.47,NSMN
+BRITTON,South Dakota Mesonet,45.68,-97.75,NSMN
+BROOKINGS,South Dakota Mesonet,44.33,-96.77,NSMN
+COLTON,South Dakota Mesonet,43.77,-96.89,NSMN
+COTTONWOOD,South Dakota Mesonet,43.96,-101.85,NSMN
+FLANDREAU,South Dakota Mesonet,44.09,-96.58,NSMN
+GETTYSBURG,South Dakota Mesonet,44.99,-99.95,NSMN
+GROTON,South Dakota Mesonet,45.57,-98.03,NSMN
+HAMILL,South Dakota Mesonet,43.59,-99.71,NSMN
+LEMMON,South Dakota Mesonet,45.92,-102.11,NSMN
+MAHTO,South Dakota Mesonet,45.74,-100.66,NSMN
+NISLAND,South Dakota Mesonet,44.68,-103.56,NSMN
+OAK_LAKE,South Dakota Mesonet,44.51,-96.53,NSMN
+ORAL,South Dakota Mesonet,43.38,-103.28,NSMN
+PARKSTON,South Dakota Mesonet,43.38,-97.99,NSMN
+PIERRE,South Dakota Mesonet,44.29,-100.01,NSMN
+REDFIELD,South Dakota Mesonet,44.86,-98.53,NSMN
+SIOUXFALLS_LANDFILL,South Dakota Mesonet,43.5,-96.92,NSMN
+SIOUXFALLS_SOUTH,South Dakota Mesonet,43.5,-96.76,NSMN
+SOUTH_SHORE,South Dakota Mesonet,45.11,-97.1,NSMN
+VOLGA,South Dakota Mesonet,44.3,-96.92,NSMN
+WEBSTER,South Dakota Mesonet,45.29,-97.52,NSMN
+WHITE_LAKE,South Dakota Mesonet,43.73,-98.69,NSMN
+Blanco Weather Station,TexMesonet,30.08906,-98.41806,NSMN
+Altwein Rd,TexMesonet,30.14,-98.54,NSMN
+Headwaters Ranch,TexMesonet,30.09989,-98.70677,NSMN
+Holt Oaks Ranch,TexMesonet,30.01867,-98.4567,NSMN
+Arnosky Farms,TexMesonet,30.11059,-98.30463,NSMN
+Love Creek Preserve,TexMesonet,29.801903,-99.417736,NSMN
+HEBFF Camps,TexMesonet,29.858118,-99.680339,NSMN
+Epperson Farm,TexMesonet,30.231677,-100.96749,NSMN
+Wied Ranch,TexMesonet,29.4377,-96.442663,NSMN
+Wegenhoft,TexMesonet,29.658,-96.66039,NSMN
+Bernardo Fire Station,TexMesonet,29.762757,-96.39165,NSMN
+Spring Hill Water Supply,TexMesonet,29.53925,-97.957278,NSMN
+Grones Ranch,TexMesonet,29.512056,-97.850476,NSMN
+Garner State Park,TexMesonet,29.60214,-99.73007,NSMN
+Jones Ranch,TexMesonet,29.534138,-97.729211,NSMN
+Strey Ranch,TexMesonet,29.475113,-98.089391,NSMN
+Duke Ranch,TexMesonet,28.495129,-97.265053,NSMN
+BQ5 Ranch,TexMesonet,28.618075,-97.667508,NSMN
+RB Farms Inc,TexMesonet,28.11268,-97.58853,NSMN
+Baker Ranch,TexMesonet,29.65083,-97.83356,NSMN
+Spring Hill Water Supply Plant,TexMesonet,29.547216,-97.998802,NSMN
+Diamond Half Ranch,TexMesonet,29.413888,-97.887376,NSMN
+Escalera Ranch Headquarters,TexMesonet,30.627974,-102.953247,NSMN
+Escalera Flat Farm,TexMesonet,30.649569,-103.27449,NSMN
+Edwards Stations,TexMesonet,30.93586,-102.991516,NSMN
+Rancho Los Comitas,TexMesonet,26.7668,-98.619087,NSMN
+Los Machos Farm,TexMesonet,27.470024,-98.135803,NSMN
+Sutton County Central,TexMesonet,30.468273,-100.491531,NSMN
+Sutton County West,TexMesonet,30.470959,-100.958199,NSMN
+Upper Trinity Groundwater Conservation District,TexMesonet,32.970623,-97.716141,NSMN
+Filter Plant Nocona,TexMesonet,33.795177,-97.724739,NSMN
+Prairie Hill Nocona,TexMesonet,33.798332,-97.590919,NSMN
+City of Troy,TexMesonet,31.217001,-97.295471,NSMN
+City of Rogers,TexMesonet,30.921471,-97.225601,NSMN
+Doc Curb Pump Station,TexMesonet,30.99178,-97.54467,NSMN
+River Ridge Ranch,TexMesonet,30.96511,-97.78796,NSMN
+Pecan Grove Farms,TexMesonet,30.18795,-97.50312,NSMN
+Berkley Ranch,TexMesonet,33.46051,-97.57865,NSMN
+Winton Milliff Runnells,TexMesonet,31.82501,-99.95656,NSMN
+Paul Williams Runnells,TexMesonet,31.841605,-100.13615,NSMN
+Roy Blair Coke,TexMesonet,31.873293,-100.50182,NSMN
+LeDrew Arrott Coke,TexMesonet,31.791329,-100.320636,NSMN
+Horizon MUD,TexMesonet,31.681601,-106.194031,NSMN
+Kerr WMA,TexMesonet,30.092852,-99.50425,NSMN
+Paul Tybor Gillespie,TexMesonet,30.32551,-98.96768,NSMN
+Devils River Del Norte,TexMesonet,29.933233,-100.941399,NSMN
+Pecos County Line,TexMesonet,31.154404,-103.28112,NSMN
+Lobo Farms Culberson,TexMesonet,30.871683,-104.780746,NSMN
+Royal Farms Culberson,TexMesonet,31.177925,-104.736183,NSMN
+Sloan Ranch San Saba,TexMesonet,31.078791,-98.857132,NSMN
+Big Dog Ranch,TexMesonet,31.241687,-98.313938,NSMN
+Parks Ranch Goliad,TexMesonet,28.68297,-97.262756,NSMN
+LaRosa Ranch Refugio,TexMesonet,28.286205,-97.303444,NSMN
+Corsicana Pump Station,TexMesonet,31.957319,-96.687202,NSMN
+City of Alvarado,TexMesonet,32.398914,-97.208794,NSMN
+Mason Wildlife Management Area,TexMesonet,30.852058,-99.240013,NSMN
+Don Daniel Mason,TexMesonet,30.638138,-99.08358,NSMN
+Blum ISD Farm,TexMesonet,32.088886,-97.353294,NSMN
+Aquilla Water Supply District,TexMesonet,31.920912,-97.179176,NSMN
+Jim Embree Williamson,TexMesonet,30.527334,-97.598389,NSMN
+RBar Menard,TexMesonet,31.057472,-99.69162,NSMN
+TxDOT Southbound Rest Area Salado,TexMesonet,30.910655,-97.555029,NSMN
+Lake Murvaul Panola,TexMesonet,32.027462,-94.414085,NSMN
+City of Carthage,TexMesonet,32.131912,-94.347412,NSMN
+Baker Suave Lomas,TexMesonet,29.81735,-101.6141,NSMN
+Lake Striker Rusk,TexMesonet,31.933666,-94.974983,NSMN
+Texas AgriScience,TexMesonet,26.35177,-97.89729,NSMN
+Sutton County East,TexMesonet,30.467516,-100.180167,NSMN
+Phyllis Thomas Bandera,TexMesonet,29.674898,-99.365982,NSMN
+Ag._Res._Svc._Central_Plains_Exp._Range_(SGS_LTER_at_CSU),USCRN,40.8,-104.75,NSMN
+Agassiz_National_Wildlife_Refuge_(Maintenance_Shop_Site),USCRN,48.3,-95.87,NSMN
+Agate_Fossil_Beds_National_Monument_(Visitor_Center_Site),USCRN,42.42,-103.73,NSMN
+AK_Department_of_Natural_Resources_Haul_Road),USCRN,70.16,-148.46,NSMN
+AK_Department_of_Natural_Resources_Haul_Road),USCRN,70.16,-148.46,NSMN
+Anheuser_Busch_Coastal_Res._Ctr._Univ._of__VA_(Oyster),USCRN,37.29,-75.92,NSMN
+Aransas_National_Wildlife_Refuge_(Weather_Site),USCRN,28.3,-96.82,NSMN
+Archbold_Biological_Station,USCRN,27.15,-81.36,NSMN
+Arctic_Slope_Regional_Corporation_Ivotuk_Airstrip,USCRN,68.48,-155.75,NSMN
+Arctic_Slope_Regional_Corporation_Ivotuk_Airstrip,USCRN,68.48,-155.75,NSMN
+Aroostook_National__Wildlife_Ref._(Fire_Training_Area),USCRN,46.96,-67.88,NSMN
+ARS_NW__Watershed_Research_Cntr._(Reynolds_Creek_Site),USCRN,43.2,-116.75,NSMN
+Auburn_University_Black_Belt_Research_and_Extension_Center,USCRN,32.45,-87.24,NSMN
+Auburn_University_Gulf_Coast_Research_and_Extension_Center,USCRN,30.54,-87.87,NSMN
+Audubon_Center_of__the_North_Woods,USCRN,46.11,-92.99,NSMN
+Audubon_Society_(Spring_Creek_Prairie_Site),USCRN,40.69,-96.85,NSMN
+Babbitt_Ranches_(Meridian_Site),USCRN,35.75,-112.33,NSMN
+Balcones_National_Wildlife_Refuge_(Flying_X_Ranch),USCRN,30.62,-98.08,NSMN
+Bannack_State_Park_Old_Freight_Road_Site,USCRN,45.15,-113,NSMN
+Barrow_Obsv._NOAA_Earth_Systems_Res._Lab._Global_Mon._Div.,USCRN,71.32,-156.61,NSMN
+Bear_Lodge_Ranger_Dist_Black_Hills_NF_(Massengale_Flats_Site),USCRN,44.51,-104.43,NSMN
+Big_Bend_National_Park,USCRN,29.34,-103.2,NSMN
+Big_Cypress_National_Preserve_(Ochopee_Headquarters_Vista_Site),USCRN,25.89,-81.31,NSMN
+Black_Canyon_of_the_Gunnison_National_Park_(Vernal_Mesa),USCRN,38.54,-107.69,NSMN
+BLM_Appleton-Whittell_Research_Ranch,USCRN,31.59,-110.5,NSMN
+BLM_Paxson_Airport,USCRN,63.02,-145.5,NSMN
+BLM_Paxson_Airport,USCRN,63.02,-145.5,NSMN
+Brewton,USCRN,31.14,-87.05,NSMN
+Canaan_Valley_Resort_State_Park_(Cabins_Area),USCRN,39.01,-79.47,NSMN
+Capitol_Reef_National_Park_Goosenecks_Road_Site,USCRN,38.3,-111.29,NSMN
+Chilton_County_Airport,USCRN,32.85,-86.61,NSMN
+Clemson_University_(Edisto_Research_&_Edu._Ctr.),USCRN,33.35,-81.32,NSMN
+Cornell_University_(Harford_Teaching_&_Research_Center),USCRN,42.44,-76.24,NSMN
+Craig_Field_Airport,USCRN,32.33,-86.97,NSMN
+Craters_of_the_Moon_NM_&_Preserve_(Headquarters_Area),USCRN,43.46,-113.55,NSMN
+Cumberland_Island_National_Seashore_(Stafford_Field),USCRN,30.8,-81.45,NSMN
+Death_Valley_National_Park_(Stovepipe_Wells_Site),USCRN,36.6,-117.14,NSMN
+Des_Lacs_National_Wildlife_Refuge_(HB-4_Site),USCRN,48.96,-102.17,NSMN
+Dinosaur_National_Monument_(Hdq._Maintenance_Site),USCRN,40.24,-108.96,NSMN
+DOI_William_L._Finley_NWR_(East_end_of_Field_22),USCRN,44.41,-123.32,NSMN
+Duke_Forest_-_Duke_University,USCRN,35.97,-79.09,NSMN
+Environment_Canada_CARE_site,USCRN,44.23,-79.78,NSMN
+EROS_Data_Center,USCRN,43.73,-96.62,NSMN
+Feldun-Purdue_Agricultural_Center_(Pasture_17_Site),USCRN,38.88,-86.57,NSMN
+Fort_Peck_Indian_Res._(Give_Out_Morgan_Site),USCRN,48.48,-105.2,NSMN
+Fort_Peck_Indian_Res._(Poplar_River_Site),USCRN,48.3,-105.1,NSMN
+Fort_Pierre_National_Grassland_(Chester_West),USCRN,44.01,-100.35,NSMN
+FS_Tongass_National_Forest_(Yakutat),USCRN,59.5,-139.68,NSMN
+Ft._Chadbourne_Foundation_(Foundation_Entrance_Site),USCRN,32.04,-100.24,NSMN
+FWS_Nowitna_National_Wildlife_Refuge_(Lake_Site),USCRN,64.5,-154.12,NSMN
+FWS_Nowitna_National_Wildlife_Refuge_(Lake_Site),USCRN,64.5,-154.12,NSMN
+FWS_Selawik_National_Wildlife_Refuge_(Cabin_Site),USCRN,66.56,-159,NSMN
+FWS_Selawik_National_Wildlife_Refuge_(Cabin_Site),USCRN,66.56,-159,NSMN
+FWS_Tetlin_National_Wildlife_Refuge_(Seaton_Roadhouse_site),USCRN,62.73,-141.2,NSMN
+FWS_Tetlin_National_Wildlife_Refuge_(Seaton_Roadhouse_site),USCRN,62.73,-141.2,NSMN
+Glacier_National_Park_(St._Mary_Site),USCRN,48.74,-113.43,NSMN
+Golden_Spike_National_Historic_Site_(Visitor_Center_Site),USCRN,41.61,-112.54,NSMN
+Grand_Teton_National_Park,USCRN,43.66,-110.71,NSMN
+Great_Basin_National_Park_(Gravel_Pit_Site),USCRN,39.01,-114.2,NSMN
+Gudmundsen_Sandhills_Laboratory_(Site_1),USCRN,42.06,-101.44,NSMN
+Hale_County_Jail,USCRN,32.71,-87.62,NSMN
+Heflin_Lock,USCRN,32.83,-88.13,NSMN
+Highland_Home,USCRN,31.91,-86.31,NSMN
+Institute_of_Ecosystem_Studies_(Environmental_Monitoring_Station),USCRN,41.78,-73.74,NSMN
+John_Day_Fossil_Beds_Nat'l._Mon.(Sheep_Rock_Hdqs.),USCRN,44.55,-119.64,NSMN
+Jornada_USDA_ARS_Experimental_Range_(Jornada_Headquarters_Site),USCRN,32.61,-106.74,NSMN
+Kansas_State_University_(Konza_Prairie_Biological_Station),USCRN,39.1,-96.6,NSMN
+Kenai_National_Wildlife_Refuge_(Kenai_Moose_Research_Center),USCRN,60.72,-150.44,NSMN
+Kesterson_Reservoir_(US_Bureau_of_Reclamation),USCRN,37.23,-120.88,NSMN
+Lake_Clark_National_Park,USCRN,60.19,-154.31,NSMN
+Lawrence_County_Airport,USCRN,34.66,-87.34,NSMN
+LFST_Br._Exp._Stn.Univ.of_AR_Div.of_Agriculture(Field_#1),USCRN,35.82,-91.78,NSMN
+Lower_Rio_Grande_Valley_NWR_(La_Sal_Del_Rey),USCRN,26.52,-98.06,NSMN
+Mammoth_Cave_National_Park_(Job_Corps_Site),USCRN,37.25,-86.23,NSMN
+Mauna_Loa_Obsv._NOAA_Earth_Systems_Res._Lab.Global_Mon._Div.,USCRN,19.53,-155.57,NSMN
+Mesa_Verde_National_Park_(Far_View_Site),USCRN,37.25,-108.5,NSMN
+Michigan_State_University_(Upper_Peninsula_Experiment_Station),USCRN,46.33,-86.92,NSMN
+Mississippi_State_University_(Coastal_Plain_Exp._Station),USCRN,32.33,-89.07,NSMN
+Montana_Department__Fish_Wildlife_&_Parks_Judith_River_WMA,USCRN,46.88,-110.28,NSMN
+Mountain_Research_Station_INSTAAR_Univ._of_CO_(Hills_Mill),USCRN,40.03,-105.54,NSMN
+MSU_MAFES_North_MS_R&E_Center_(North_MS_Branch),USCRN,34.82,-89.43,NSMN
+Muleshoe_National_Wildlife_Refuge_(Headquarters_Site),USCRN,33.95,-102.77,NSMN
+Muscle_Shoals_TVA,USCRN,34.77,-87.63,NSMN
+NANA_Regional_Corp_Red_Dog_Mine,USCRN,68.02,-162.92,NSMN
+NASA_(National_Scientific_Balloon_Facility),USCRN,31.77,-95.72,NSMN
+NASA_Kennedy_Space_Center_SLF_Mid-Field_Site,USCRN,28.61,-80.69,NSMN
+National_Weather_Service_Gaylord,USCRN,44.9,-84.72,NSMN
+Nature_Conservancy_(Red_Canyon_Ranch),USCRN,42.67,-108.66,NSMN
+NC_Mtn._Horticultural_Crops_Res._Ctr._(Backlund_Site),USCRN,35.41,-82.55,NSMN
+Neal_Smith_NWR_(NOAA_Station_Site),USCRN,41.55,-93.28,NSMN
+Necedah_National_Wildlife_Refuge_(Rynearson_Dam_No._2),USCRN,44.06,-90.17,NSMN
+Nevada_Test_Site_(Desert_Rock_Meteorological_Lab),USCRN,36.62,-116.02,NSMN
+NOAA_/_NESDIS_(FCDAS),USCRN,64.97,-147.51,NSMN
+NOAA_National_Weather_Service_(Annette_Island),USCRN,55.04,-131.58,NSMN
+NOAA_National_Weather_Service_St_Paul,USCRN,57.15,-170.21,NSMN
+North_Alabama_Horticultural_Research_Center,USCRN,34.19,-86.79,NSMN
+North_Carolina__Arboretum_(Bierbaum_Site),USCRN,35.49,-82.61,NSMN
+North_Cascades_National_Park_(Marblemount),USCRN,48.54,-121.44,NSMN
+North_Dakota_State_University_Central_Grasslands_(Sec._14_Site),USCRN,46.77,-99.47,NSMN
+Northern_Great_Basin_Experimental_Range_(Rainout_Site),USCRN,43.47,-119.69,NSMN
+Northern_Illinois_Agronomy_Research_Center,USCRN,41.84,-88.85,NSMN
+NPS_Denali_National_Park_(Wonder_Lake_Campground_Site),USCRN,63.45,-150.87,NSMN
+NPS_Denali_National_Park_(Wonder_Lake_Campground_Site),USCRN,63.45,-150.87,NSMN
+NPS_Katmai_National_Park_(Contact_Creek),USCRN,58.2,-155.92,NSMN
+NPS_Katmai_National_Park_(Contact_Creek),USCRN,58.2,-155.92,NSMN
+NPS_Valles_Caldera_National_Preserve,USCRN,35.85,-106.52,NSMN
+OK__Panhandle_Research_&_Extn._Center_(Native_Grassland_Site),USCRN,36.59,-101.59,NSMN
+Oklahoma_Panhandle_State_Univ._School_of_Agriculture_(Permanent_Pasture),USCRN,36.56,-101.6,NSMN
+Oklahoma_State_Univ._(Ag.__Research_Farm_Site),USCRN,36.11,-97.09,NSMN
+Oklahoma_State_University_(Efaw_Farm_Site),USCRN,36.13,-97.1,NSMN
+Oliver_Lock_&_Dam,USCRN,33.21,-87.59,NSMN
+Olympic_National_Park_(Bishop_Field_Site),USCRN,47.51,-123.81,NSMN
+OSU_Ohio_Agricultural_Research_&_Development_Center_(Snyder_Farm_Site),USCRN,40.76,-81.91,NSMN
+Robert_W._Woodruff_Foundation_(Ichauway-Dubignon_Site),USCRN,31.19,-84.44,NSMN
+Robert_W._Woodruff_Foundation_(Ichauway-George_Site),USCRN,31.31,-84.47,NSMN
+Roshydromet_Observatory_at_Tiksi,USCRN,71.58,128.91,NSMN
+Russellville,USCRN,34.45,-87.71,NSMN
+San_Diego_State_Univ's_Santa_Margarita_Ecological_Reserve_(Old_Mine_Road),USCRN,33.43,-117.19,NSMN
+Sand_Mountain_Research_/_Extension__(Northwest_Pasture),USCRN,34.28,-85.96,NSMN
+Sandhills_State_Park,USCRN,31.62,-102.8,NSMN
+SCDNR_(Santee_Coastal_Reserve),USCRN,33.15,-79.36,NSMN
+Scottsboro,USCRN,34.69,-85.99,NSMN
+SDSU_Antelope_Research_Station_(Calving_Pasture_Site),USCRN,45.51,-103.3,NSMN
+Sevilleta_National_Wildlife_Refuge_(LTER_Site),USCRN,34.35,-106.88,NSMN
+Shawnee_Trail_Conservation_Area,USCRN,37.42,-94.58,NSMN
+Sheldon_National_Wildlife_Refuge_(Little_Sheldon_Site),USCRN,41.84,-119.63,NSMN
+Sonora_Desert_Museum,USCRN,32.23,-111.16,NSMN
+South_Slough_National_Estuarine_Research_Reserve_(Frederickson_Marsh_Site),USCRN,43.27,-124.31,NSMN
+Stroud_Water_Research_Center,USCRN,39.85,-75.78,NSMN
+Talladega_Municipal_Airport,USCRN,33.57,-86.05,NSMN
+The_Nature_Conservancy_(Samuel_H._Ordway_Prairie_Hdq._Site),USCRN,45.71,-99.12,NSMN
+The_Nature_Conservancy_Gustavus_Forelands_Preserve,USCRN,58.42,-135.69,NSMN
+The_Nature_Conservancy_Gustavus_Forelands_Preserve,USCRN,58.42,-135.69,NSMN
+The_Nature_Conservancy_Kansas_(Smoky_Valley_Ranch),USCRN,38.87,-100.96,NSMN
+Theodore_Roosevelt_National_Park_(Painted_Canyon_Site),USCRN,46.89,-103.37,NSMN
+Thomas_Jefferson_Foundation,USCRN,37.99,-78.46,NSMN
+Thomasville,USCRN,31.88,-87.73,NSMN
+Troy,USCRN,31.79,-86,NSMN
+U.S._Army_Yuma_Proving_Ground__(Redbluff_Pavement_Site),USCRN,32.83,-114.18,NSMN
+Univ._of_California_-_Santa_Barbara_(Coal_Oil_Point_Reserve),USCRN,34.41,-119.87,NSMN
+Univ._of_Illinois_(Bondville_Environ._&_Atmos._Resrch._Stn.),USCRN,40.05,-88.37,NSMN
+Univ._of_Tennessee_(Plateau_Research_and_Education_Center),USCRN,36.01,-85.13,NSMN
+University_of_California_-_Davis_(Bodega_Marine_Laboratory),USCRN,38.32,-123.07,NSMN
+University_of_GA_Phil_Campbell_Sr_Natural_Resource_Conservation_Center,USCRN,33.78,-83.38,NSMN
+University_of_Hawaii_Waiakea__Experiment_Station,USCRN,19.64,-155.08,NSMN
+University_of_Kentucky_(Woodford_County_Site),USCRN,38.09,-84.74,NSMN
+University_of_Louisiana_at_Lafayette_(Cade_Farm),USCRN,30.09,-91.87,NSMN
+University_of_Maine__(Rogers_Farm_Site),USCRN,44.92,-68.7,NSMN
+University_of_Missouri_(Forage_Systems_Research_Station),USCRN,39.86,-93.14,NSMN
+University_of_Nebraska_(Prairie_Pines_Site),USCRN,40.84,-96.56,NSMN
+University_of_New_Hampshire_(Kingman_Farm_Site),USCRN,43.17,-70.92,NSMN
+University_of_New_Hampshire_(Thompson_Farm_Site),USCRN,43.1,-70.94,NSMN
+University_of_Rhode_Island_(Peckham_Farm_Site),USCRN,41.47,-71.54,NSMN
+University_of_Rhode_Island_(Plains_Road_Site),USCRN,41.49,-71.54,NSMN
+Upper_Ouachita_National_Wildlife_Refuge,USCRN,32.88,-92.11,NSMN
+US_Fish_&_Wildlife_Service_Turnbull_NWR_(Headquarters_Site),USCRN,47.41,-117.52,NSMN
+USDA_Comanche_National_Grassland,USCRN,37.86,-103.82,NSMN
+USGS__Sitka_Magnetic_Observatory,USCRN,57.05,-135.32,NSMN
+USGS_Shumagin_Magnetic_Observatory,USCRN,55.34,-160.46,NSMN
+Valley_Head,USCRN,34.56,-85.61,NSMN
+Whiskeytown_National_Recreation_Area_(RAWS_Site),USCRN,40.65,-122.6,NSMN
+White_River_Trace_Conservation_Area_(Stand_4_Compartment_7),USCRN,37.63,-91.72,NSMN
+Yosemite_National_Park_(Crane_Flat_Lookout),USCRN,37.75,-119.82,NSMN
+Lind_Retired (Lind),Washington State AWN,47,-118.57,WSAWN
+Othello (WSU Othello),Washington State AWN,46.79,-119.04,WSAWN
+Roza NE,Washington State AWN,46.29,-119.65,WSAWN
+Plymouth (Station 2),Washington State AWN,45.97,-119.46,WSAWN
+Richland.N (WSU TC),Washington State AWN,46.33,-119.27,WSAWN
+Richland_Old (Richland),Washington State AWN,46.26,-119.26,WSAWN
+Badger.Cyn (Badger Canyon),Washington State AWN,46.18,-119.28,WSAWN
+Peshastin,Washington State AWN,47.56,-120.59,WSAWN
+Wenatch.S (Wenatchee Heights),Washington State AWN,47.37,-120.31,WSAWN
+Vancouver (WSU Vancouver RE),Washington State AWN,45.68,-122.65,WSAWN
+Dayton.NW (Dayton NW),Washington State AWN,46.39,-118.05,WSAWN
+Baker Flat,Washington State AWN,47.52,-120.29,WSAWN
+St.Andrews-Retired (St. Andrews),Washington State AWN,47.65,-119.42,WSAWN
+Brewster.S (Brewster),Washington State AWN,48.06,-119.86,WSAWN
+Crane,Washington State AWN,48.07,-119.8,WSAWN
+Baker Flat Historical,Washington State AWN,47.52,-120.29,WSAWN
+Big.Flat (PK_McClenny),Washington State AWN,46.36,-118.8,WSAWN
+Connell.N (Connell Bench),Washington State AWN,46.71,-118.91,WSAWN
+Basin.City (Basin City),Washington State AWN,46.65,-119.16,WSAWN
+Royal City,Washington State AWN,46.91,-119.62,WSAWN
+Wahluke (Wahluke Slope),Washington State AWN,46.77,-119.82,WSAWN
+Royal City North,Washington State AWN,46.96,-119.6,WSAWN
+Odell (WAI-Moe),Washington State AWN,45.64,-121.55,WSAWN
+PhinnyHill (Phinny Hill),Washington State AWN,45.9,-119.9,WSAWN
+Craigmont (Craigmont SE),Washington State AWN,46.22,-116.42,WSAWN
+Corvallis (Corvallis East),Washington State AWN,44.57,-123.24,WSAWN
+Woodburn (Woodburn South),Washington State AWN,45.12,-122.84,WSAWN
+St.Paul (St. Paul South),Washington State AWN,45.14,-122.95,WSAWN
+Silverton (Silverton North),Washington State AWN,45.04,-122.78,WSAWN
+Chief.Joe (Chief Joe),Washington State AWN,48.03,-119.64,WSAWN
+Loomis.Grd (Loomis Grade),Washington State AWN,48.78,-119.43,WSAWN
+Ellisforde,Washington State AWN,48.79,-119.4,WSAWN
+Brewster.N (Brewster Flat),Washington State AWN,48.13,-119.75,WSAWN
+Pogue Flat,Washington State AWN,48.42,-119.55,WSAWN
+Tonasket,Washington State AWN,48.69,-119.45,WSAWN
+Oroville,Washington State AWN,48.94,-119.42,WSAWN
+Tokeland,Washington State AWN,46.71,-123.97,WSAWN
+Moro,Washington State AWN,45.49,-120.71,WSAWN
+Fir.Island (Fir Island),Washington State AWN,48.36,-122.42,WSAWN
+Mt.Vernon (WSU Mt Vernon),Washington State AWN,48.44,-122.39,WSAWN
+Stanwood,Washington State AWN,48.23,-122.37,WSAWN
+Arlington,Washington State AWN,48.2,-122.23,WSAWN
+Olympia.E (East Olympia),Washington State AWN,46.95,-122.84,WSAWN
+Tumwa.SW (Tumwater SW),Washington State AWN,46.95,-122.96,WSAWN
+Pendleton,Washington State AWN,45.72,-118.63,WSAWN
+WallaWalla (Walla Walla),Washington State AWN,46.08,-118.27,WSAWN
+The Dalles SW,Washington State AWN,45.58,-121.22,WSAWN
+Ten Mile,Washington State AWN,48.87,-122.48,WSAWN
+Lynden,Washington State AWN,48.94,-122.51,WSAWN
+Pullman.S (Pullman),Washington State AWN,46.7,-117.15,WSAWN
+St.John (St. John),Washington State AWN,47.08,-117.59,WSAWN
+Pullman NE,Washington State AWN,46.78,-117.09,WSAWN
+Garfield.E (Garfield East),Washington State AWN,47,-117.06,WSAWN
+Pullman.C (Pullman Central),Washington State AWN,46.73,-117.14,WSAWN
+Byron,Washington State AWN,46.21,-119.88,WSAWN
+Mabton,Washington State AWN,46.18,-119.93,WSAWN
+Moxee.E (Moxee East),Washington State AWN,46.55,-120.3,WSAWN
+Snipes,Washington State AWN,46.3,-119.92,WSAWN
+Mabton.E (Mabton East),Washington State AWN,46.2,-119.93,WSAWN
+Gleed,Washington State AWN,46.7,-120.62,WSAWN
+Sunside.S (Port Of Sunnyside),Washington State AWN,46.28,-120.01,WSAWN
+Wapato,Washington State AWN,46.44,-120.53,WSAWN
+Buena,Washington State AWN,46.44,-120.29,WSAWN
+PAWS Naches,Washington State AWN,46.72,-120.67,WSAWN
+ABER,West Texas Mesonet,33.88,-101.76,NSMN
+AIKE,West Texas Mesonet,34.13,-101.57,NSMN
+AMAS,West Texas Mesonet,35.11,-101.8,NSMN
+AMHE,West Texas Mesonet,34.02,-102.4,NSMN
+AMNW,West Texas Mesonet,35.42,-101.93,NSMN
+ANTO,West Texas Mesonet,33.73,-102.19,NSMN
+ASPE,West Texas Mesonet,33.17,-100.2,NSMN
+BIGL,West Texas Mesonet,31.19,-101.47,NSMN
+BOOT,West Texas Mesonet,34.89,-102.99,NSMN
+BROW,West Texas Mesonet,33.15,-102.27,NSMN
+CAPR,West Texas Mesonet,34.41,-101.07,NSMN
+CHIL,West Texas Mesonet,34.46,-100.2,NSMN
+CLAR,West Texas Mesonet,34.92,-100.93,NSMN
+CLAU,West Texas Mesonet,34.98,-101.5,NSMN
+CLYD,West Texas Mesonet,32.41,-99.53,NSMN
+COYA,West Texas Mesonet,31.28,-103.07,NSMN
+CROW,West Texas Mesonet,33.98,-99.71,NSMN
+DENV,West Texas Mesonet,32.99,-102.94,NSMN
+DIMM,West Texas Mesonet,34.57,-102.29,NSMN
+DORA,West Texas Mesonet,33.92,-103.36,NSMN
+DOZI,West Texas Mesonet,35.08,-100.39,NSMN
+FLOY,West Texas Mesonet,34,-101.33,NSMN
+FLUV,West Texas Mesonet,32.9,-101.2,NSMN
+FRIO,West Texas Mesonet,34.65,-102.69,NSMN
+GDNT,West Texas Mesonet,35.03,-101.19,NSMN
+GOOD,West Texas Mesonet,34.34,-99.94,NSMN
+HART,West Texas Mesonet,34.42,-102.11,NSMN
+HERE,West Texas Mesonet,34.83,-102.42,NSMN
+JAYT,West Texas Mesonet,33.23,-100.57,NSMN
+JUNC,West Texas Mesonet,30.47,-99.78,NSMN
+LAMS,West Texas Mesonet,32.71,-101.94,NSMN
+LBBW2,West Texas Mesonet,33.6,-101.9,NSMN
+LEVE,West Texas Mesonet,33.53,-102.36,NSMN
+LOMA,West Texas Mesonet,32.1,-101.63,NSMN
+MALL,West Texas Mesonet,33.39,-102.61,NSMN
+MEMP,West Texas Mesonet,34.73,-100.53,NSMN
+MENA,West Texas Mesonet,30.93,-99.81,NSMN
+MERT,West Texas Mesonet,31.3,-100.81,NSMN
+MORT,West Texas Mesonet,33.73,-102.74,NSMN
+MULE,West Texas Mesonet,34.21,-102.74,NSMN
+NEWH,West Texas Mesonet,33.33,-101.91,NSMN
+NORT,West Texas Mesonet,34.27,-100.6,NSMN
+ODON2,West Texas Mesonet,32.98,-101.83,NSMN
+OLTO,West Texas Mesonet,34.09,-102.12,NSMN
+PADU,West Texas Mesonet,33.89,-100.4,NSMN
+PAMP,West Texas Mesonet,35.54,-100.93,NSMN
+PANH,West Texas Mesonet,35.33,-101.39,NSMN
+PITC,West Texas Mesonet,33.57,-100.48,NSMN
+PLAI,West Texas Mesonet,33.23,-102.84,NSMN
+RALL,West Texas Mesonet,33.67,-101.38,NSMN
+REES2,West Texas Mesonet,33.61,-102.05,NSMN
+ROAR,West Texas Mesonet,33.94,-100.85,NSMN
+SASU,West Texas Mesonet,31.54,-100.51,NSMN
+SEAG,West Texas Mesonet,32.94,-102.57,NSMN
+SEMI,West Texas Mesonet,32.74,-102.64,NSMN
+SEYM,West Texas Mesonet,33.63,-99.29,NSMN
+SILV,West Texas Mesonet,34.45,-101.19,NSMN
+SPUR,West Texas Mesonet,33.48,-100.88,NSMN
+STAM,West Texas Mesonet,32.91,-99.72,NSMN
+STER,West Texas Mesonet,31.83,-101.06,NSMN
+STLW,West Texas Mesonet,31.66,-101.6,NSMN
+TARZ,West Texas Mesonet,32.31,-102.01,NSMN
+TATU,West Texas Mesonet,33.24,-103.35,NSMN
+TULI,West Texas Mesonet,34.54,-101.74,NSMN
+UMBA,West Texas Mesonet,34.99,-102.08,NSMN
+VALL,West Texas Mesonet,34.38,-100.93,NSMN
+VIGO,West Texas Mesonet,34.65,-101.5,NSMN
+WALL2,West Texas Mesonet,31.38,-100.27,NSMN
+WEIN,West Texas Mesonet,33.34,-99.67,NSMN
+WELC,West Texas Mesonet,32.93,-102.13,NSMN
+WOLF,West Texas Mesonet,33.42,-102.05,NSMN

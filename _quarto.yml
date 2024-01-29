@@ -35,14 +35,16 @@ book:
         - basic_concepts/import_modules.ipynb
         - basic_concepts/data_types.ipynb
         - basic_concepts/data_structures.ipynb
-        - basic_concepts/dates_and_times.ipynb        
-        - basic_concepts/indexing_and_slicing.ipynb
+        - basic_concepts/dates_and_times.ipynb      
+        - basic_concepts/indexing_and_slicing.ipynb      
         - basic_concepts/if_statement.ipynb
         - basic_concepts/functions.ipynb
         - basic_concepts/lambda_functions.ipynb
         - basic_concepts/inputs.ipynb
         - basic_concepts/for_loop.ipynb
+        - basic_concepts/list_comprehensions.ipynb        
         - basic_concepts/while_loop.ipynb
+        - basic_concepts/directory_navigation.ipynb  
         - basic_concepts/objects_and_classes.ipynb
         - basic_concepts/error_handling.ipynb
         - basic_concepts/numpy_module.ipynb
@@ -84,11 +86,18 @@ book:
         - exercises/soil_water_retention_curve.ipynb
         - exercises/count_seeds.ipynb
         - exercises/canopy_cover.ipynb
+        - exercises/soil_moisture_monitoring_stations.ipynb
         - exercises/field_random_samples.ipynb
-        - exercises/denoise_yield_monitor.ipynb
-        - exercises/management_zones_yield_monitor.ipynb
+        - exercises/yield_monitor_clean.ipynb
+        - exercises/yield_monitor_zones.ipynb
+        - exercises/largest_empty_circle.ipynb
         
-        
+    - part: "GOOGLE EARTH ENGINE"
+      chapters:
+        - gee/value_at_a_point.ipynb
+        - gee/time_series_at_a_point.ipynb
+        - gee/image_for_an_area.ipynb
+        - gee/publication_quality_maps.ipynb
         
   page-footer:
     center: 
