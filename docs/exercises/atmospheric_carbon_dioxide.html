@@ -6,8 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Andres Patrignani">
+<meta name="dcterms.date" content="2024-01-15">
+<meta name="keywords" content="climate change, carbon dioxide, global warming, greenhouse gas emissions">
 
-<title>PyNotes in Agriscience - 58&nbsp; Solar Radiation</title>
+<title>PyNotes in Agriscience - 54&nbsp; Atmospheric carbon dioxide</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +67,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercises/wheat_potential_yield.html" rel="next">
-<link href="../exercises/photoperiod.html" rel="prev">
+<link href="../exercises/soil_water_storage.html" rel="next">
+<link href="../exercises/frontier_function.html" rel="prev">
 <link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -137,7 +140,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/meteogram.html">EXERCISES</a></li><li class="breadcrumb-item"><a href="../exercises/solar_radiation.html"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Solar Radiation</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/meteogram.html">EXERCISES</a></li><li class="breadcrumb-item"><a href="../exercises/atmospheric_carbon_dioxide.html"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">Atmospheric carbon dioxide</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -517,7 +520,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/atmospheric_carbon_dioxide.html" class="sidebar-item-text sidebar-link">
+  <a href="../exercises/atmospheric_carbon_dioxide.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">Atmospheric carbon dioxide</span></span></a>
   </div>
 </li>
@@ -541,7 +544,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/solar_radiation.html" class="sidebar-item-text sidebar-link active">
+  <a href="../exercises/solar_radiation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Solar Radiation</span></span></a>
   </div>
 </li>
@@ -652,27 +655,44 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#inspect-timeseries" id="toc-inspect-timeseries" class="nav-link active" data-scroll-target="#inspect-timeseries">Inspect timeseries</a></li>
-  <li><a href="#clear-sky-solar-irradiance-empirical-method" id="toc-clear-sky-solar-irradiance-empirical-method" class="nav-link" data-scroll-target="#clear-sky-solar-irradiance-empirical-method">Clear sky solar irradiance: empirical method</a></li>
-  <li><a href="#clear-sky-solar-irradiance-latitude-and-elevation-method" id="toc-clear-sky-solar-irradiance-latitude-and-elevation-method" class="nav-link" data-scroll-target="#clear-sky-solar-irradiance-latitude-and-elevation-method">Clear sky solar irradiance: latitude and elevation method</a></li>
-  <li><a href="#actual-solar-irradiance-from-air-temperature" id="toc-actual-solar-irradiance-from-air-temperature" class="nav-link" data-scroll-target="#actual-solar-irradiance-from-air-temperature">Actual solar irradiance from air temperature</a></li>
-  <li><a href="#clear-sky-solar-radiation-for-each-doy" id="toc-clear-sky-solar-radiation-for-each-doy" class="nav-link" data-scroll-target="#clear-sky-solar-radiation-for-each-doy">Clear sky solar radiation for each DOY</a></li>
+  <li><a href="#read-and-explore-data" id="toc-read-and-explore-data" class="nav-link active" data-scroll-target="#read-and-explore-data">Read and explore data</a></li>
+  <li><a href="#determine-trend-of-time-series" id="toc-determine-trend-of-time-series" class="nav-link" data-scroll-target="#determine-trend-of-time-series">Determine trend of time series</a>
+  <ul class="collapse">
+  <li><a href="#examine-residuals-of-exponential-fit" id="toc-examine-residuals-of-exponential-fit" class="nav-link" data-scroll-target="#examine-residuals-of-exponential-fit">Examine residuals of exponential fit</a></li>
+  </ul></li>
+  <li><a href="#determine-seasonality-of-time-series" id="toc-determine-seasonality-of-time-series" class="nav-link" data-scroll-target="#determine-seasonality-of-time-series">Determine seasonality of time series</a></li>
+  <li><a href="#combine-trend-and-seasonal-models" id="toc-combine-trend-and-seasonal-models" class="nav-link" data-scroll-target="#combine-trend-and-seasonal-models">Combine trend and seasonal models</a></li>
+  <li><a href="#generate-2050-forecast" id="toc-generate-2050-forecast" class="nav-link" data-scroll-target="#generate-2050-forecast">Generate 2050 forecast</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/solar_radiation.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/atmospheric_carbon_dioxide.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">58</span>&nbsp; <span class="chapter-title">Solar Radiation</span></h1>
+<h1 class="title"><span class="chapter-number">54</span>&nbsp; <span class="chapter-title">Atmospheric carbon dioxide</span></h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Andres Patrignani </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 15, 2024</p>
+    </div>
+  </div>
   
     
   </div>
@@ -680,12 +700,9 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 
 </header>
 
-<p>Solar radiation is the lifeblood of agriculture, driving the fundamental processes of photosynthesis and plant growth. Measuring solar irradiance is therefore essential for estiamting yield potential and modeling agricultural crops. The incident solar radiation on given location is highly influenced by the latitudinal position. In this exercise we examine a method to derive the estimated maximum solar irradiance for each day of the year from a time series of solar radiation observations. Before we start, there are a few terms that need to be defined:</p>
-<ul>
-<li><p><strong>Extraterrestrial solar irradiance</strong>: This is the solar radiation received outside the Earth’s atmosphere on a surface perpendicular to the sun’s rays. It represents the maximum potential solar energy that could be received by the planet without atmospheric interference.</p></li>
-<li><p><strong>Clear sky solar irradiance</strong>: This refers to the amount of solar radiation that reaches the Earth’s surface when the sky is clear, without clouds. It is the solar irradiance under ideal clear conditions, accounting for the scattering and absorption by the atmospheric components but excluding the impact of clouds.</p></li>
-<li><p><strong>Solar irradiance observed at the land surface</strong>: This is the actual solar radiation that reaches the ground, taking into account cloud cover, air pollution, and the angle of the sun. This measurement reflects the true solar energy available for crops at specific locations and times.</p></li>
-</ul>
+<p>The general purpose of this exercise is to forecast future atmopsheric carbon dioxide concentration by fitting a model to observations that have been collected by the U.S. National Oceanic and Atmospheric Administration (NOAA) since 1958 at the Mauna Loa Observatory in Hawaii.</p>
+<p>In simple terms, the Earth receives energy from the sun in the form of sunlight. Some of this energy is absorbed by the Earth’s surface, and some is reflected back into space. Carbon dioxide and other gases in the Earth’s atmosphere trap some of this ongoing radiation, preventing it from escaping into space and essentially acting like a blanket around the Earth.</p>
+<p>Source: https://www.esrl.noaa.gov/gmd/ccgg/trends/data.html</p>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import modules</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -693,11 +710,15 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load dataset</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../datasets/KS_Manhattan_6_SSW.csv"</span>, na_values<span class="op">=</span>[<span class="op">-</span><span class="dv">9999</span>])</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<section id="read-and-explore-data" class="level2">
+<h2 class="anchored" data-anchor-id="read-and-explore-data">Read and explore data</h2>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>col_names <span class="op">=</span> [<span class="st">'year'</span>,<span class="st">'month'</span>,<span class="st">'decimal_date'</span>,<span class="st">'monthly_avg_co2'</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">'de_seasonalized'</span>,<span class="st">'days'</span>,<span class="st">'std'</span>,<span class="st">'uncertainty'</span>]</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/co2_mm_mlo.txt'</span>, comment<span class="op">=</span><span class="st">'#'</span>, delimiter<span class="op">=</span><span class="st">'\s+'</span>, names<span class="op">=</span>col_names)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -705,348 +726,365 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">WBANNO</th>
-<th data-quarto-table-cell-role="th">LST_DATE</th>
-<th data-quarto-table-cell-role="th">CRX_VN</th>
-<th data-quarto-table-cell-role="th">LONGITUDE</th>
-<th data-quarto-table-cell-role="th">LATITUDE</th>
-<th data-quarto-table-cell-role="th">T_DAILY_MAX</th>
-<th data-quarto-table-cell-role="th">T_DAILY_MIN</th>
-<th data-quarto-table-cell-role="th">T_DAILY_MEAN</th>
-<th data-quarto-table-cell-role="th">T_DAILY_AVG</th>
-<th data-quarto-table-cell-role="th">P_DAILY_CALC</th>
-<th data-quarto-table-cell-role="th">...</th>
-<th data-quarto-table-cell-role="th">SOIL_MOISTURE_5_DAILY</th>
-<th data-quarto-table-cell-role="th">SOIL_MOISTURE_10_DAILY</th>
-<th data-quarto-table-cell-role="th">SOIL_MOISTURE_20_DAILY</th>
-<th data-quarto-table-cell-role="th">SOIL_MOISTURE_50_DAILY</th>
-<th data-quarto-table-cell-role="th">SOIL_MOISTURE_100_DAILY</th>
-<th data-quarto-table-cell-role="th">SOIL_TEMP_5_DAILY</th>
-<th data-quarto-table-cell-role="th">SOIL_TEMP_10_DAILY</th>
-<th data-quarto-table-cell-role="th">SOIL_TEMP_20_DAILY</th>
-<th data-quarto-table-cell-role="th">SOIL_TEMP_50_DAILY</th>
-<th data-quarto-table-cell-role="th">SOIL_TEMP_100_DAILY</th>
+<th data-quarto-table-cell-role="th">year</th>
+<th data-quarto-table-cell-role="th">month</th>
+<th data-quarto-table-cell-role="th">decimal_date</th>
+<th data-quarto-table-cell-role="th">monthly_avg_co2</th>
+<th data-quarto-table-cell-role="th">de_seasonalized</th>
+<th data-quarto-table-cell-role="th">days</th>
+<th data-quarto-table-cell-role="th">std</th>
+<th data-quarto-table-cell-role="th">uncertainty</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
-<td>53974</td>
-<td>20031001</td>
-<td>1.201</td>
-<td>-96.61</td>
-<td>39.1</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>...</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99</td>
-<td>-99</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
+<td>1958</td>
+<td>3</td>
+<td>1958.2027</td>
+<td>315.70</td>
+<td>314.43</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
-<td>53974</td>
-<td>20031002</td>
-<td>1.201</td>
-<td>-96.61</td>
-<td>39.1</td>
-<td>18.9</td>
-<td>2.5</td>
-<td>10.7</td>
-<td>11.7</td>
-<td>0.0</td>
-<td>...</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99</td>
-<td>-99</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
+<td>1958</td>
+<td>4</td>
+<td>1958.2877</td>
+<td>317.45</td>
+<td>315.16</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>53974</td>
-<td>20031003</td>
-<td>1.201</td>
-<td>-96.61</td>
-<td>39.1</td>
-<td>22.6</td>
-<td>8.1</td>
-<td>15.4</td>
-<td>14.8</td>
-<td>0.0</td>
-<td>...</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99</td>
-<td>-99</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
+<td>1958</td>
+<td>5</td>
+<td>1958.3699</td>
+<td>317.51</td>
+<td>314.71</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
-<td>53974</td>
-<td>20031004</td>
-<td>1.201</td>
-<td>-96.61</td>
-<td>39.1</td>
-<td>22.6</td>
-<td>3.8</td>
-<td>13.2</td>
-<td>14.0</td>
-<td>0.0</td>
-<td>...</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99</td>
-<td>-99</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
+<td>1958</td>
+<td>6</td>
+<td>1958.4548</td>
+<td>317.24</td>
+<td>315.14</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
-<td>53974</td>
-<td>20031005</td>
-<td>1.201</td>
-<td>-96.61</td>
-<td>39.1</td>
-<td>25.0</td>
-<td>10.6</td>
-<td>17.8</td>
-<td>17.3</td>
-<td>0.0</td>
-<td>...</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99.0</td>
-<td>-99</td>
-<td>-99</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
+<td>1958</td>
+<td>7</td>
+<td>1958.5370</td>
+<td>315.86</td>
+<td>315.18</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
 </tr>
 </tbody>
 </table>
 
-<p>5 rows × 28 columns</p>
 </div>
 </div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The delimiter <code>\s+</code> is used when the values in your CSV file are separated by spaces, and you might have more than one consecutive space as a separator. Note that <code>\s+</code> is different from <code>\t</code>, which is used tab-delimited files.</p>
+</div>
+</div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize observed data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'decimal_date'</span>], df[<span class="st">'monthly_avg_co2'</span>], <span class="st">'-k'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Mauna Loa, HI'</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="determine-trend-of-time-series" class="level2">
+<h2 class="anchored" data-anchor-id="determine-trend-of-time-series">Determine trend of time series</h2>
+<p>To capture the main trend of carbon dioxide concentration over time we will fit the following exponential model:</p>
+<p><span class="math display">y(t) = a + b \ exp \bigg(\frac{c \ t}{d}\bigg)</span></p>
+<p><span class="math inline">t</span> is time since March, 1958 (the start of the data set)<br> <span class="math inline">a</span>, <span class="math inline">b</span>, <span class="math inline">c</span>, and <span class="math inline">d</span> are unknown parameters.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define lambda function</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>exp_model <span class="op">=</span> <span class="kw">lambda</span> t,a,b,c,d: a <span class="op">+</span> b<span class="op">*</span>np.exp(c<span class="op">*</span>t<span class="op">/</span>d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establash x and y data for the curve fitting routine</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> df[<span class="st">"decimal_date"</span>][<span class="dv">0</span>]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>x_obs <span class="op">=</span> df[<span class="st">"decimal_date"</span>] <span class="op">-</span> start_date <span class="co"># Dates relative to first date</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>y_obs <span class="op">=</span> df[<span class="st">'monthly_avg_co2'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit exponential model</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>exp_par <span class="op">=</span> curve_fit(exp_model, x_obs, y_obs)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display parameters</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'a:'</span>, exp_par[<span class="dv">0</span>][<span class="dv">0</span>])</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'b:'</span>, exp_par[<span class="dv">0</span>][<span class="dv">1</span>])</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'c:'</span>, exp_par[<span class="dv">0</span>][<span class="dv">2</span>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'d:'</span>, exp_par[<span class="dv">0</span>][<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>a: 257.54663560420266
+b: 56.16625756367689
+c: 0.022434056294917962
+d: 1.3676982901989134</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict CO2 concentration using exponential model</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_pred_exp <span class="op">=</span> exp_model(x_obs, <span class="op">*</span>exp_par[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert date string to pandas datetime format</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"LST_DATE"</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">"LST_DATE"</span>], <span class="bu">format</span><span class="op">=</span><span class="st">"%Y%m</span><span class="sc">%d</span><span class="st">"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"LST_DATE"</span>].head() <span class="co"># Check our conversion.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>0   2003-10-01
-1   2003-10-02
-2   2003-10-03
-3   2003-10-04
-4   2003-10-05
-Name: LST_DATE, dtype: datetime64[ns]</code></pre>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define lambda function for the mean absolute error formula</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mae_fn <span class="op">=</span> <span class="kw">lambda</span> obs,pred: np.mean(np.<span class="bu">abs</span>(obs <span class="op">-</span> pred))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute MAE between observed and predicted carbon dioxide using the expoential model</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>mae_exp <span class="op">=</span> mae_fn(y_obs, y_pred_exp)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'MAE using the exponential model is:'</span>,np.<span class="bu">round</span>(mae_exp, <span class="dv">2</span>), <span class="st">'ppm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE using the exponential model is: 1.88 ppm</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add year, month, and day of the year to summarize data in future steps.</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"YEAR"</span>] <span class="op">=</span> df[<span class="st">"LST_DATE"</span>].dt.year</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"MONTH"</span>] <span class="op">=</span> df[<span class="st">"LST_DATE"</span>].dt.month</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"DOY"</span>] <span class="op">=</span> df[<span class="st">"LST_DATE"</span>].dt.dayofyear</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay obseved and predicted carbon dioxide</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'decimal_date'</span>], y_obs, <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'Observed'</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'decimal_date'</span>], y_pred_exp, <span class="st">'-r'</span>, label<span class="op">=</span><span class="st">'Predicted'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Mauna Loa, HI'</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
-<section id="inspect-timeseries" class="level2">
-<h2 class="anchored" data-anchor-id="inspect-timeseries">Inspect timeseries</h2>
+</div>
+<section id="examine-residuals-of-exponential-fit" class="level3">
+<h3 class="anchored" data-anchor-id="examine-residuals-of-exponential-fit">Examine residuals of exponential fit</h3>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute residuals</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>residuals_exp_fit <span class="op">=</span> y_obs <span class="op">-</span> y_pred_exp</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate scatter plot.</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We will also add a line plot to better see any temporal trends</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">'decimal_date'</span>],residuals_exp_fit, facecolor<span class="op">=</span><span class="st">'w'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'decimal_date'</span>],residuals_exp_fit, color<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Residuals'</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+</div>
+</div>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Observe trends in solar radiation data</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"LST_DATE"</span>], df[<span class="st">"SOLARAD_DAILY"</span>], linewidth<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Solar radiation (MJ/m$^2$/day)"</span> )</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="solar_radiation_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if residuals approach a zero mean</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean residuals (ppm):'</span>, np.mean(residuals_exp_fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Mean residuals (ppm): 4.226785864987784e-07</code></pre>
 </div>
 </div>
+<p>Residuals exhibit a mean close to zero and a sinusoidal pattern. This suggests that a model involving sine or cosine terms could be used to add to improve the exponential model predictions.</p>
 </section>
-<section id="clear-sky-solar-irradiance-empirical-method" class="level2">
-<h2 class="anchored" data-anchor-id="clear-sky-solar-irradiance-empirical-method">Clear sky solar irradiance: empirical method</h2>
-<p>To approximate the clear sky solar irradiance we will select the highest records from our observations. To do this we will use a moving/rolling percentile filter. Alternatively, we can use the <code>.max()</code> function instead of the <code>.quantile(0.99)</code> function.</p>
+</section>
+<section id="determine-seasonality-of-time-series" class="level2">
+<h2 class="anchored" data-anchor-id="determine-seasonality-of-time-series">Determine seasonality of time series</h2>
+<p>To determine the seasonality of the data we will use the de-trended residuals.</p>
+<p><span class="math display">y(t) = A \ sin(2 \pi [m + phi] )</span></p>
+<p><span class="math inline">t</span> is time since March, 1958 (the start of the data set)<br> <span class="math inline">A</span> is amplitude of the wave<br> <span class="math inline">m</span> is the fractional month (Jan is zero and Dec is 1)<br> <span class="math inline">phi</span> is the phase constant</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the sinusoidal model</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sin_model <span class="op">=</span> <span class="kw">lambda</span> t,A,phi: A<span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>((t<span class="op">-</span>np.floor(t)) <span class="op">+</span> phi))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit sinusoidal-exponential model</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>p0 <span class="op">=</span> [<span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">10</span>]</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>sin_par <span class="op">=</span> curve_fit(sin_model, x_obs, y_obs, p0)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Display parameters</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'A:'</span>, sin_par[<span class="dv">0</span>][<span class="dv">0</span>])</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'phi:'</span>, sin_par[<span class="dv">0</span>][<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>A: 3.893120229079958
+phi: -9.942041818816413</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate timeseries using sinusoidal-exponential model</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>y_pred_sin <span class="op">=</span> sin_model(x_obs, <span class="op">*</span>sin_par[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize residuals of the exponential fit and the fitted sinusoidal model</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">'decimal_date'</span>], residuals_exp_fit, facecolor<span class="op">=</span><span class="st">'w'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'decimal_date'</span>], y_pred_sin, <span class="st">'-k'</span>)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Close up view for a shorter time span of 50 months</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>zoom_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">50</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>))</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">'decimal_date'</span>].iloc[zoom_range],residuals_exp_fit[zoom_range],</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>            facecolor<span class="op">=</span><span class="st">'w'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'decimal_date'</span>].iloc[zoom_range], y_pred_sin[zoom_range], <span class="st">'-k'</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>Althought we can still some minor differences, overall the sinnusoidal model seems to capture the main trend of the residuals. We could compute the residuals of this fit to inspect if there still is a trend that we can exploit to include in our model. In this exercise we will stop here, since this is probably sufficient for most practical applications, but before we move on, let’s plot the residuals of the sinusoidal fit. You will see that slowly the residuals are looking more random.</p>
 <div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clear sky solar radiation from observations</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Rso_obs"</span>] <span class="op">=</span> df[<span class="st">"SOLARAD_DAILY"</span>].rolling(window<span class="op">=</span><span class="dv">15</span>, center<span class="op">=</span><span class="va">True</span>).quantile(<span class="fl">0.99</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Observe trends in solar radiation data</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"LST_DATE"</span>], df[<span class="st">"SOLARAD_DAILY"</span>], <span class="st">'-k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"LST_DATE"</span>], df[<span class="st">"Rso_obs"</span>], <span class="st">'-r'</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Solar radiation (MJ/m$^2$/day)"</span> )</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate residuals</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>residuals_sin_fit <span class="op">=</span> residuals_exp_fit <span class="op">-</span> y_pred_sin</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>))</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">'decimal_date'</span>],residuals_sin_fit, facecolor<span class="op">=</span><span class="st">'w'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Residuals'</span>)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="solar_radiation_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+<p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="clear-sky-solar-irradiance-latitude-and-elevation-method" class="level2">
-<h2 class="anchored" data-anchor-id="clear-sky-solar-irradiance-latitude-and-elevation-method">Clear sky solar irradiance: latitude and elevation method</h2>
-<p>Another alternative is to compute the clear sky solar irradiance based on the latitude and elevation of the location of interest. The first step consists of computing the extraterrestrial radiation for daily periods as defined in Eq. 21 of the FAO-56 manual, and in a subsequent step we compute the clear sky solar radiation.</p>
-<p><span class="math display">Ra = 24(60)/\pi \hspace{2mm}Gsc \hspace{2mm} dr(\omega\sin(\phi)\sin(\delta)+\cos(\phi)\cos(\delta)\sin(\omega))</span></p>
-<p><span class="math inline">Ra</span> = extraterrestrial radiation (MJ / m2 /day)</p>
-<p><span class="math inline">Gsc</span> = 0.0820 solar constant (MJ/m2/min)</p>
-<p><span class="math inline">dr = 1 + 0.033\cos(\frac{2\pi J}{365})</span> is the inverse relative distance Earth-Sun</p>
-<p><span class="math inline">J</span> = day of the year</p>
-<p><span class="math inline">\phi</span> = <span class="math inline">\pi/180 Lat</span> latitude in radians</p>
-<p><span class="math inline">\delta = 0.409\sin((2\pi J/365)-1.39)\hspace{5mm}</span> is the solar decimation (rad)</p>
-<p><span class="math inline">\omega = \pi/2-(\arccos(-\tan(\phi)\tan(\delta)) \hspace{5mm}</span> is the sunset hour angle (radians)</p>
+<section id="combine-trend-and-seasonal-models" class="level2">
+<h2 class="anchored" data-anchor-id="combine-trend-and-seasonal-models">Combine trend and seasonal models</h2>
+<p>Now that we have an exponential and a sinusoidal model, let’s combine them to have a full deterministic model that we can use to predict and forecast the atmospheric carbon dioxide concentration. The combined model is:</p>
+<p><span class="math display">y(t) = a + b \ exp \bigg(\frac{c \ t}{d}\bigg) + A \ sin(2 \pi [m + phi] )</span></p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the exponential-sinusoidal model</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>exp_sin_model <span class="op">=</span> <span class="kw">lambda</span> t,a,b,c,d,A,phi: a<span class="op">+</span>b<span class="op">*</span>np.exp(c<span class="op">*</span>t<span class="op">/</span>d) <span class="op">+</span> A<span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>((t<span class="op">-</span>np.floor(t))<span class="op">+</span>phi))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recall that the parameters for the exponential and sinnusoidal models are:</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(exp_par[<span class="dv">0</span>])</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sin_par[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[2.57546636e+02 5.61662576e+01 2.24340563e-02 1.36769829e+00]
+[ 3.89312023 -9.94204182]</code></pre>
+</div>
+</div>
 <div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>latitude <span class="op">=</span> <span class="fl">39.1949</span> <span class="co"># Latitude in decimal degrees (North)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>elevation <span class="op">=</span> <span class="dv">300</span> <span class="co"># elevation in meters above sea level</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>J <span class="op">=</span> df[<span class="st">"DOY"</span>] <span class="co"># Use J to match manual notation</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Extraterrestrial solar radiation</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>phi <span class="op">=</span> np.pi<span class="op">/</span><span class="dv">180</span> <span class="op">*</span> latitude <span class="co"># Eq. 22, FAO-56   </span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>dr <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fl">0.033</span> <span class="op">*</span> np.cos(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>J<span class="op">/</span><span class="dv">365</span>)  <span class="co"># Eq. 23, FAO-56 </span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>d <span class="op">=</span> <span class="fl">0.409</span><span class="op">*</span>np.sin((<span class="dv">2</span><span class="op">*</span>np.pi <span class="op">*</span> J<span class="op">/</span><span class="dv">365</span>) <span class="op">-</span> <span class="fl">1.39</span>)</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>omega <span class="op">=</span> (np.arccos(<span class="op">-</span>np.tan(phi)<span class="op">*</span>np.tan(d)))</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>Gsc <span class="op">=</span> <span class="fl">0.0820</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>Ra <span class="op">=</span> <span class="dv">24</span><span class="op">*</span>(<span class="dv">60</span>)<span class="op">/</span>np.pi <span class="op">*</span> Gsc <span class="op">*</span> dr <span class="op">*</span> (omega<span class="op">*</span>np.sin(phi)<span class="op">*</span>np.sin(d) <span class="op">+</span> np.cos(phi)<span class="op">*</span>np.cos(d)<span class="op">*</span>np.sin(omega))</span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2: Clear Sky Radiation: Rso (MJ/m2/day)                                        </span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Rso_lat"</span>] <span class="op">=</span>  (<span class="fl">0.75</span> <span class="op">+</span> (<span class="dv">2</span><span class="op">*</span><span class="dv">10</span><span class="op">**-</span><span class="dv">5</span>)<span class="op">*</span>elevation)<span class="op">*</span>Ra  <span class="co"># Eq. 37, FAO-56</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot clear sky using latitude and elevation</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"LST_DATE"</span>], df[<span class="st">"SOLARAD_DAILY"</span>], <span class="st">'-k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"LST_DATE"</span>], df[<span class="st">"Rso_lat"</span>], <span class="st">'-r'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Solar radiation (MJ/m$^2$/day)"</span> )</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># So the combined parameters for both models are</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>exp_sin_par <span class="op">=</span> np.concatenate((exp_par[<span class="dv">0</span>], sin_par[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict the time series using the full model</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y_pred_exp_sin <span class="op">=</span> exp_sin_model(x_obs, <span class="op">*</span>exp_sin_par)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure of combined models</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'decimal_date'</span>], y_obs, <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'Observed'</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'decimal_date'</span>], y_pred_exp_sin, color<span class="op">=</span><span class="st">'tomato'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">'Predicted'</span>)</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Mauna Loa, HI'</span>)</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="solar_radiation_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+<p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-</section>
-<section id="actual-solar-irradiance-from-air-temperature" class="level2">
-<h2 class="anchored" data-anchor-id="actual-solar-irradiance-from-air-temperature">Actual solar irradiance from air temperature</h2>
-<div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear sky from air temperature observations</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Rso_temp"</span>] <span class="op">=</span> np.minimum(<span class="fl">0.16</span><span class="op">*</span>Ra<span class="op">*</span>(df[<span class="st">"T_DAILY_MAX"</span>]<span class="op">-</span>df[<span class="st">"T_DAILY_MIN"</span>])<span class="op">**</span><span class="fl">0.5</span>, df[<span class="st">'Rso_lat'</span>]) <span class="co"># Eq. 50, FAO-56</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">4</span>))</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"LST_DATE"</span>], df[<span class="st">"SOLARAD_DAILY"</span>], <span class="st">'-k'</span>, alpha<span class="op">=</span><span class="fl">0.25</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"LST_DATE"</span>], df[<span class="st">"Rso_temp"</span>], <span class="st">'-r'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Solar radiation (MJ/m$^2$/day)"</span> )</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="solar_radiation_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="clear-sky-solar-radiation-for-each-doy" class="level2">
-<h2 class="anchored" data-anchor-id="clear-sky-solar-radiation-for-each-doy">Clear sky solar radiation for each DOY</h2>
 <div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize previous variables for each DOY</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Rso_doy <span class="op">=</span> df.groupby(<span class="st">"DOY"</span>)[[<span class="st">"SOLARAD_DAILY"</span>,<span class="st">"Rso_temp"</span>,<span class="st">"Rso_obs"</span>,<span class="st">"Rso_lat"</span>]].mean()</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>Rso_doy.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
-<div>
-
-
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">SOLARAD_DAILY</th>
-<th data-quarto-table-cell-role="th">Rso_temp</th>
-<th data-quarto-table-cell-role="th">Rso_obs</th>
-<th data-quarto-table-cell-role="th">Rso_lat</th>
-</tr>
-<tr class="odd">
-<th data-quarto-table-cell-role="th">DOY</th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">1</td>
-<td>7.840714</td>
-<td>7.915730</td>
-<td>10.522923</td>
-<td>10.834404</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2</td>
-<td>7.135000</td>
-<td>8.016919</td>
-<td>10.558046</td>
-<td>10.876334</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">3</td>
-<td>6.400769</td>
-<td>8.236705</td>
-<td>10.634077</td>
-<td>10.921631</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">4</td>
-<td>6.673077</td>
-<td>6.975503</td>
-<td>10.738108</td>
-<td>10.970287</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">5</td>
-<td>7.897692</td>
-<td>7.595476</td>
-<td>10.751031</td>
-<td>11.022290</td>
-</tr>
-</tbody>
-</table>
-
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute MAE of combined model</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mae_exp_sin <span class="op">=</span> mae_fn(y_obs, y_pred_exp_sin)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'MAE using the exponential-sinusoidal model is:'</span>,np.<span class="bu">round</span>(mae_exp_sin, <span class="dv">2</span>), <span class="st">'ppm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MAE using the exponential-sinusoidal model is: 1.48 ppm</code></pre>
 </div>
 </div>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute residuals</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>residuals_exp_sin <span class="op">=</span> y_obs <span class="op">-</span> y_pred_exp_sin</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot residuals</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(x_obs, residuals_exp_sin, s<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>Text(0, 0.5, 'Atmospheric carbon dioxide (ppm)')</code></pre>
 </div>
-<div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure comparing the three methods with the observed solar radaition data</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.plot(Rso_doy.index, Rso_doy[<span class="st">"SOLARAD_DAILY"</span>], <span class="st">'-k'</span>,label<span class="op">=</span><span class="st">"Mean observed solar radiation"</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>plt.plot(Rso_doy.index, Rso_doy[<span class="st">"Rso_temp"</span>], <span class="st">'-g'</span>, label<span class="op">=</span><span class="st">"Mean estimated solar radiation"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.plot(Rso_doy.index, Rso_doy[<span class="st">"Rso_obs"</span>], <span class="st">'--r'</span>, label<span class="op">=</span><span class="st">"Clear sky observed solar radiation"</span>)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.plot(Rso_doy.index, Rso_doy[<span class="st">"Rso_lat"</span>], <span class="st">':b'</span>, label<span class="op">=</span><span class="st">"Clear sky estimated solar radiation"</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Day of the year"</span>)</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Solar radiation (MJ/m$^2$/day)"</span>)</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="solar_radiation_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+<p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-24-output-2.png" class="img-fluid"></p>
 </div>
 </div>
+</section>
+<section id="generate-2050-forecast" class="level2">
+<h2 class="anchored" data-anchor-id="generate-2050-forecast">Generate 2050 forecast</h2>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forecast of concentration in 2050 (here we only need the relative year value in 2050)</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>co2_2050 <span class="op">=</span> exp_sin_model(<span class="dv">2050</span> <span class="op">-</span> df[<span class="st">'decimal_date'</span>][<span class="dv">0</span>], <span class="op">*</span>exp_sin_par)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Carbon dioxide concentration in 2050 is estimated to be:'</span>, np.<span class="bu">round</span>(co2_2050),<span class="st">'ppm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Carbon dioxide concentration in 2050 is estimated to be: 508.0 ppm</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>x_forecast <span class="op">=</span> np.arange(start_date, <span class="dv">2050</span>, <span class="fl">0.1</span>) <span class="op">-</span> start_date</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>y_forecast <span class="op">=</span> exp_sin_model(x_forecast, <span class="op">*</span>exp_sin_par)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Figure with projection</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'decimal_date'</span>], y_obs, <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'Observed'</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>plt.plot(start_date<span class="op">+</span>x_forecast, y_forecast, color<span class="op">=</span><span class="st">'tomato'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">'Predicted'</span>)</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Mauna Loa, HI'</span>)</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-26-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<p>The model combining an exponential term and a sinusoidsl term can better simulate the seasonal and long-term dynamics of atmospheric carbon dioxide. From the point of view of forecasting the concentration the differen between the exponential-only and the sinusoidal-exponential modelis minimal and probably does not justify the extra complexity of the model.</p>
+</section>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice</h2>
+<ol type="1">
+<li><p>Based on the mean absolute error, what was the gain that we obtained when comparing the exponential model alone against the combined exponential-sinusoidal model? Was it worth? In what situations would you use one or the other?</p></li>
+<li><p>Are there any evident trends in the residuals after fitting the sinusoidal model?</p></li>
+<li><p>Try to fit the exponential-sinusoidal model directly to the dataset. Do you get the same optimized parameter values as when you fit the individual models?</p></li>
+<li><p>Try the same exercise using the Bokeh plotting library, so that you can zoom in and inpsect the fit between the model and observations for specific periods.</p></li>
+<li><p>What are possible causes of discrepancy between observations of atmospheric carbon dioxide at the Mauna Loa observatory and our best exponential-sinusoidal model?</p></li>
+</ol>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Data source: https://www.esrl.noaa.gov/gmd/ccgg/trends/full.html</p>
+<p>NOAA Greenhouse Gas Marine Boundary Layer Reference: https://www.esrl.noaa.gov/gmd/ccgg/mbl/mbl.html</p>
+<p>Mathworks documentation: https://www.mathworks.com/company/newsletters/articles/atmospheric-carbon-dioxide-modeling-and-the-curve-fitting-toolbox.html</p>
 
 
 </section>
@@ -1287,13 +1325,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercises/photoperiod.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">57</span>&nbsp; <span class="chapter-title">Photoperiod</span></span>
+      <a href="../exercises/frontier_function.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">53</span>&nbsp; <span class="chapter-title">Frontier production functions</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercises/wheat_potential_yield.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">59</span>&nbsp; <span class="chapter-title">Modeling wheat yield potential</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../exercises/soil_water_storage.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">55</span>&nbsp; <span class="chapter-title">Profile water storage</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

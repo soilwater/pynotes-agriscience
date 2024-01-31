@@ -77,6 +77,7 @@ book:
         - exercises/optimal_nitrogen_rate.ipynb
         - exercises/maximum_return_to_nitrogen.ipynb
         - exercises/frontier_function.ipynb
+        - exercises/atmospheric_carbon_dioxide.ipynb
         - exercises/soil_water_storage.ipynb
         - exercises/plant_available_water.ipynb
         - exercises/photoperiod.ipynb
