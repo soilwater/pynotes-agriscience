@@ -71,13 +71,16 @@ book:
         - exercises/thermal_time.ipynb
         - exercises/central_dogma.ipynb
         - exercises/error_metrics.ipynb
+        - exercises/request_web_data.ipynb
         - exercises/anscombe_quartet.ipynb 
         - exercises/neutron_probe_calibration.ipynb 
+        - exercises/sorghum_yields.ipynb         
         - exercises/proctor_test.ipynb
         - exercises/optimal_nitrogen_rate.ipynb
         - exercises/maximum_return_to_nitrogen.ipynb
         - exercises/frontier_function.ipynb
         - exercises/atmospheric_carbon_dioxide.ipynb
+        - exercises/autoregressive_model.ipynb
         - exercises/soil_water_storage.ipynb
         - exercises/plant_available_water.ipynb
         - exercises/photoperiod.ipynb
