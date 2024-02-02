@@ -905,9 +905,9 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Smoothing the time series using a decadal moving average and then fitting a piecewise linear model using three breakpoints instead of two revealed the sharp yield increase in the late 1950s and early 1960s when sorghum hybrids were introduced into the market, and two additional segments showing the gradual increase in grain yield, but with decreasing slopes, signaling a potential yield stagnation of sorghum yields across Kansas.</p>
-<div class="cell" data-execution_count="628">
+<div class="cell" data-execution_count="629">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show stats</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>pw_fit.summary()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pw_fit.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
                     Breakpoint Regression Results                     
@@ -941,10 +941,40 @@ alpha4             0.0161134      0.00223        7.229      1.77e-10     0.01168
 ====================================================================================================
 
 
+
+
+                    Breakpoint Regression Results                     
+====================================================================================================
+No. Observations                       95
+No. Model Parameters                    8
+Degrees of Freedom                     87
+Res. Sum of Squares               1.41455
+Total Sum of Squares              201.084
+R Squared                        0.992965
+Adjusted R Squared               0.992311
+Converged:                           True
+====================================================================================================
+====================================================================================================
+                    Estimate      Std Err            t        P&gt;|t|       [0.025       0.975]
+----------------------------------------------------------------------------------------------------
+const               -52.9074         6.47      -8.1729       2.2e-12      -65.774      -40.041
+alpha1             0.0277171      0.00333       8.3128      1.14e-12      0.02109     0.034344
+beta1               0.133628       0.0168        7.956             -      0.10024      0.16701
+beta2              -0.108239       0.0168      -6.4443             -     -0.14162    -0.074855
+beta3             -0.0369933      0.00401      -9.2236             -    -0.044965    -0.029022
+breakpoint1          1954.44        0.746            -             -       1953.0       1955.9
+breakpoint2          1963.37        0.902            -             -       1961.6       1965.2
+breakpoint3          1989.95         1.81            -             -       1986.4       1993.5
+----------------------------------------------------------------------------------------------------
+These alphas(gradients of segments) are estimatedfrom betas(change in gradient)
+----------------------------------------------------------------------------------------------------
+alpha2              0.161346       0.0165       9.8013      1.03e-15      0.12863      0.19406
+alpha3             0.0531067      0.00333       15.927       1.6e-27     0.046479     0.059734
+alpha4             0.0161134      0.00223        7.229      1.77e-10     0.011683     0.020544
+====================================================================================================
+
+
 </code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="628">
-<pre><code>'\n                    Breakpoint Regression Results                     \n====================================================================================================\nNo. Observations                       95\nNo. Model Parameters                    8\nDegrees of Freedom                     87\nRes. Sum of Squares               1.41455\nTotal Sum of Squares              201.084\nR Squared                        0.992965\nAdjusted R Squared               0.992311\nConverged:                           True\n====================================================================================================\n====================================================================================================\n                    Estimate      Std Err            t        P&gt;|t|       [0.025       0.975]\n----------------------------------------------------------------------------------------------------\nconst               -52.9074         6.47      -8.1729       2.2e-12      -65.774      -40.041\nalpha1             0.0277171      0.00333       8.3128      1.14e-12      0.02109     0.034344\nbeta1               0.133628       0.0168        7.956             -      0.10024      0.16701\nbeta2              -0.108239       0.0168      -6.4443             -     -0.14162    -0.074855\nbeta3             -0.0369933      0.00401      -9.2236             -    -0.044965    -0.029022\nbreakpoint1          1954.44        0.746            -             -       1953.0       1955.9\nbreakpoint2          1963.37        0.902            -             -       1961.6       1965.2\nbreakpoint3          1989.95         1.81            -             -       1986.4       1993.5\n----------------------------------------------------------------------------------------------------\nThese alphas(gradients of segments) are estimatedfrom betas(change in gradient)\n----------------------------------------------------------------------------------------------------\nalpha2              0.161346       0.0165       9.8013      1.03e-15      0.12863      0.19406\nalpha3             0.0531067      0.00333       15.927       1.6e-27     0.046479     0.059734\nalpha4             0.0161134      0.00223        7.229      1.77e-10     0.011683     0.020544\n====================================================================================================\n\n\n'</code></pre>
 </div>
 </div>
 </section>
@@ -955,15 +985,15 @@ alpha4             0.0161134      0.00223        7.229      1.77e-10     0.01168
 <h3 class="anchored" data-anchor-id="de-trending-yield">De-trending yield</h3>
 <p>One way to visualize yield variation over time is to plot the detrended time series.</p>
 <div class="cell" data-execution_count="571">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract piecewise linear model from yield time series</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>yield_detrended <span class="op">=</span> df[<span class="st">'yield_mg_ha'</span>] <span class="op">-</span> pw_fit.yy</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'year'</span>], yield_detrended)</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Detrended yield (Mg/ha)'</span>)</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subtract piecewise linear model from yield time series</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>yield_detrended <span class="op">=</span> df[<span class="st">'yield_mg_ha'</span>] <span class="op">-</span> pw_fit.yy</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'year'</span>], yield_detrended)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Detrended yield (Mg/ha)'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="sorghum_yields_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
 </div>
@@ -973,15 +1003,15 @@ alpha4             0.0161134      0.00223        7.229      1.77e-10     0.01168
 <h3 class="anchored" data-anchor-id="moving-variance">Moving variance</h3>
 <p>Another option to visualize the variance of a time series is to compute the moving variance.</p>
 <div class="cell" data-execution_count="573">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Moving variance</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mov_var <span class="op">=</span> df[<span class="st">'yield_mg_ha'</span>].rolling(window<span class="op">=</span><span class="dv">10</span>,center<span class="op">=</span><span class="va">True</span>,min_periods<span class="op">=</span><span class="dv">1</span>).var()</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'year'</span>], mov_var, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Yield variance'</span>)</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Moving variance</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mov_var <span class="op">=</span> df[<span class="st">'yield_mg_ha'</span>].rolling(window<span class="op">=</span><span class="dv">10</span>,center<span class="op">=</span><span class="va">True</span>,min_periods<span class="op">=</span><span class="dv">1</span>).var()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'year'</span>], mov_var, color<span class="op">=</span><span class="st">'r'</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Yield variance'</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="sorghum_yields_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
