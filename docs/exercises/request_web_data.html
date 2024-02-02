@@ -709,12 +709,13 @@ Note
 <p>Note: Some web services (e.g.&nbsp;openweathermap or dark sky) require a token (a user-specific key similar to a password) that you need to add as a parameter or URL link in order to use the service. Some APIs are completely free, others have a limited amount of data or number of calls that you can for free, and others require a fee.</p>
 </div>
 </div>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import modules</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> io</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="example-1-kansas-mesonet" class="level2">
 <h2 class="anchored" data-anchor-id="example-1-kansas-mesonet">Example 1: Kansas Mesonet</h2>
@@ -834,15 +835,15 @@ Note
 </section>
 <section id="example-2-u.s.-geological-survey-streamflow-data" class="level2">
 <h2 class="anchored" data-anchor-id="example-2-u.s.-geological-survey-streamflow-data">Example 2: U.S. Geological Survey streamflow data</h2>
-<div class="cell" data-execution_count="48">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_usgs(station, start_date, end_date<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Function to retreive streamflow data from the U.S. Geological Survey.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Function to retreive 15-minute streamflow data from the U.S. Geological Survey.</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co">    station : string</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">        Name of the USGS streamflow gauge of interest</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">        8-digit number of the USGS streamflow gauge of interest</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">    start_date : string</span></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co">        Start UTC date in yyyy-mm-dd HH:MM:SS format</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co">    end_date : string (optional)</span></span>
@@ -853,7 +854,7 @@ Note
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">    df : Dataframe</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">        Table with streamflow data.</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">        Table with 15-minute streamflow data.</span></span>
 <span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">        'A' stands for active</span></span>
 <span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">        'P'  stands for "Provisional" data subject to revision.</span></span>
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a><span class="co">        'datetime' is reported in local time (including standard and daylight time)</span></span>
@@ -886,32 +887,35 @@ Note
 <span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>        df <span class="op">=</span> pd.read_csv(io.StringIO(s.decode(<span class="st">'utf-8'</span>)), sep<span class="op">=</span><span class="st">'</span><span class="ch">\t</span><span class="st">'</span>, comment<span class="op">=</span><span class="st">'#'</span>)</span>
 <span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>        df.drop([<span class="dv">0</span>], inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>        df.reset_index(inplace<span class="op">=</span><span class="va">True</span>, drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        df.rename(columns<span class="op">=</span>{<span class="st">"56608_00060"</span>: <span class="st">"discharge"</span>,</span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>        df.rename(columns<span class="op">=</span>{<span class="st">"56608_00060"</span>: <span class="st">"discharge_ft3_s"</span>,</span>
 <span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"56608_00060_cd"</span>: <span class="st">"status_discharge"</span>,</span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"56607_00065"</span>: <span class="st">"height"</span>,</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"56607_00065"</span>: <span class="st">"height_ft"</span>,</span>
 <span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"56607_00065_cd"</span>: <span class="st">"status_height"</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert dates to datetime format</span></span>
 <span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'datetime'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'datetime'</span>])</span>
 <span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert discharge and height to float type</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'discharge'</span>] <span class="op">=</span> df_usgs[<span class="st">'discharge'</span>].astype(<span class="bu">float</span>)</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'height'</span>] <span class="op">=</span> df_usgs[<span class="st">'height'</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'discharge_ft3_s'</span>] <span class="op">=</span> df[<span class="st">'discharge_ft3_s'</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        df[<span class="st">'height_ft'</span>] <span class="op">=</span> df[<span class="st">'height_ft'</span>].astype(<span class="bu">float</span>)</span>
 <span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> df</span>
 <span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
 <span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="bu">str</span>(s))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="49">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>station <span class="op">=</span> <span class="st">'06879650'</span> <span class="co"># Kings Creek watershed</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> <span class="st">'2023-05-01'</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>end_date <span class="op">=</span> <span class="st">'2023-09-01'</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>df_usgs <span class="op">=</span> get_usgs(station, start_date, end_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download data for the Kings Creek watershed within</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># the Konza Prairie Biological Station near Manhattan, KS</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>station <span class="op">=</span> <span class="st">'06879650'</span> <span class="co"># Kings Creek watershed</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> <span class="st">'2023-04-15'</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>end_date <span class="op">=</span> <span class="st">'2023-07-15'</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>df_usgs <span class="op">=</span> get_usgs(station, start_date, end_date)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="41">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df_usgs.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="41">
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display downloaded data</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df_usgs.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
 <div>
 
 
@@ -923,9 +927,9 @@ Note
 <th data-quarto-table-cell-role="th">site_no</th>
 <th data-quarto-table-cell-role="th">datetime</th>
 <th data-quarto-table-cell-role="th">tz_cd</th>
-<th data-quarto-table-cell-role="th">discharge</th>
+<th data-quarto-table-cell-role="th">discharge_ft3_s</th>
 <th data-quarto-table-cell-role="th">status_discharge</th>
-<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">height_ft</th>
 <th data-quarto-table-cell-role="th">status_height</th>
 </tr>
 </thead>
@@ -934,55 +938,55 @@ Note
 <td data-quarto-table-cell-role="th">0</td>
 <td>USGS</td>
 <td>06879650</td>
-<td>2023-04-30 18:00:00</td>
+<td>2023-04-14 18:00:00</td>
 <td>CDT</td>
-<td>0.00</td>
+<td>0.0</td>
 <td>A</td>
-<td>3.58</td>
+<td>2.5</td>
 <td>A</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>USGS</td>
 <td>06879650</td>
-<td>2023-04-30 18:15:00</td>
+<td>2023-04-14 18:15:00</td>
 <td>CDT</td>
-<td>0.00</td>
+<td>0.0</td>
 <td>A</td>
-<td>3.59</td>
+<td>2.5</td>
 <td>A</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>USGS</td>
 <td>06879650</td>
-<td>2023-04-30 18:30:00</td>
+<td>2023-04-14 18:30:00</td>
 <td>CDT</td>
-<td>0.00</td>
+<td>0.0</td>
 <td>A</td>
-<td>3.59</td>
+<td>2.5</td>
 <td>A</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>USGS</td>
 <td>06879650</td>
-<td>2023-04-30 18:45:00</td>
+<td>2023-04-14 18:45:00</td>
 <td>CDT</td>
-<td>0.00</td>
+<td>0.0</td>
 <td>A</td>
-<td>3.59</td>
+<td>2.5</td>
 <td>A</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>USGS</td>
 <td>06879650</td>
-<td>2023-04-30 19:00:00</td>
+<td>2023-04-14 19:00:00</td>
 <td>CDT</td>
-<td>0.00</td>
+<td>0.0</td>
 <td>A</td>
-<td>3.59</td>
+<td>2.5</td>
 <td>A</td>
 </tr>
 </tbody>
@@ -991,12 +995,12 @@ Note
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="52">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert discharge from ft^3/s to cubic m^3/s</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_usgs[<span class="st">'discharge_m_per_s'</span>] <span class="op">=</span> df_usgs[<span class="st">'discharge'</span>]<span class="op">*</span><span class="fl">0.0283168</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df_usgs[<span class="st">'discharge_m3_per_s'</span>] <span class="op">=</span> df_usgs[<span class="st">'discharge_ft3_s'</span>]<span class="op">*</span><span class="fl">0.0283168</span> </span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert height from ft to m</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df_usgs[<span class="st">'height_m_per_s'</span>] <span class="op">=</span> df_usgs[<span class="st">'height'</span>]<span class="op">/</span><span class="fl">0.3048</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df_usgs[<span class="st">'height_m'</span>] <span class="op">=</span> df_usgs[<span class="st">'height_ft'</span>]<span class="op">/</span><span class="fl">0.3048</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Standardize all timestamps to UTC</span></span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>idx_cdt <span class="op">=</span> df_usgs[<span class="st">'tz_cd'</span>] <span class="op">==</span> <span class="st">'CDT'</span></span>
@@ -1014,7 +1018,7 @@ Note
 <span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to drive</span></span>
 <span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#filename = f"{station}_streamflow.csv"</span></span>
 <span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#df.to_csv(filename, index=False)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="52">
+<div class="cell-output cell-output-display" data-execution_count="9">
 <div>
 
 
@@ -1026,12 +1030,12 @@ Note
 <th data-quarto-table-cell-role="th">site_no</th>
 <th data-quarto-table-cell-role="th">datetime</th>
 <th data-quarto-table-cell-role="th">tz_cd</th>
-<th data-quarto-table-cell-role="th">discharge</th>
+<th data-quarto-table-cell-role="th">discharge_ft3_s</th>
 <th data-quarto-table-cell-role="th">status_discharge</th>
-<th data-quarto-table-cell-role="th">height</th>
+<th data-quarto-table-cell-role="th">height_ft</th>
 <th data-quarto-table-cell-role="th">status_height</th>
-<th data-quarto-table-cell-role="th">discharge_m_per_s</th>
-<th data-quarto-table-cell-role="th">height_m_per_s</th>
+<th data-quarto-table-cell-role="th">discharge_m3_per_s</th>
+<th data-quarto-table-cell-role="th">height_m</th>
 </tr>
 </thead>
 <tbody>
@@ -1039,45 +1043,224 @@ Note
 <td data-quarto-table-cell-role="th">0</td>
 <td>USGS</td>
 <td>06879650</td>
-<td>2023-05-01 04:00:00</td>
+<td>2023-04-14 23:00:00</td>
 <td>UTC</td>
 <td>0.0</td>
 <td>A</td>
-<td>3.58</td>
+<td>2.5</td>
 <td>A</td>
 <td>0.0</td>
-<td>11.745407</td>
+<td>8.2021</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>USGS</td>
 <td>06879650</td>
-<td>2023-05-01 04:15:00</td>
+<td>2023-04-14 23:15:00</td>
 <td>UTC</td>
 <td>0.0</td>
 <td>A</td>
-<td>3.59</td>
+<td>2.5</td>
 <td>A</td>
 <td>0.0</td>
-<td>11.778215</td>
+<td>8.2021</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>USGS</td>
 <td>06879650</td>
-<td>2023-05-01 04:30:00</td>
+<td>2023-04-14 23:30:00</td>
 <td>UTC</td>
 <td>0.0</td>
 <td>A</td>
-<td>3.59</td>
+<td>2.5</td>
 <td>A</td>
 <td>0.0</td>
-<td>11.778215</td>
+<td>8.2021</td>
 </tr>
 </tbody>
 </table>
 
 </div>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set 'datetime' column as timeindex</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>df_usgs.set_index(<span class="st">'datetime'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>df_usgs.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">agency_cd</th>
+<th data-quarto-table-cell-role="th">site_no</th>
+<th data-quarto-table-cell-role="th">tz_cd</th>
+<th data-quarto-table-cell-role="th">discharge_ft3_s</th>
+<th data-quarto-table-cell-role="th">status_discharge</th>
+<th data-quarto-table-cell-role="th">height_ft</th>
+<th data-quarto-table-cell-role="th">status_height</th>
+<th data-quarto-table-cell-role="th">discharge_m3_per_s</th>
+<th data-quarto-table-cell-role="th">height_m</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">datetime</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-04-14 23:00:00</td>
+<td>USGS</td>
+<td>06879650</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>A</td>
+<td>2.5</td>
+<td>A</td>
+<td>0.0</td>
+<td>8.2021</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-04-14 23:15:00</td>
+<td>USGS</td>
+<td>06879650</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>A</td>
+<td>2.5</td>
+<td>A</td>
+<td>0.0</td>
+<td>8.2021</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-04-14 23:30:00</td>
+<td>USGS</td>
+<td>06879650</td>
+<td>UTC</td>
+<td>0.0</td>
+<td>A</td>
+<td>2.5</td>
+<td>A</td>
+<td>0.0</td>
+<td>8.2021</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aggregate data hourly</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>df_usgs_daily <span class="op">=</span> df_usgs.resample(<span class="st">'1D'</span>).agg({<span class="st">'agency_cd'</span>:np.unique,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'site_no'</span>:np.unique,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'tz_cd'</span>:np.unique,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'discharge_ft3_s'</span>:<span class="st">'mean'</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'status_discharge'</span>:np.unique,</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'height_ft'</span>:<span class="st">'mean'</span>,</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'status_height'</span>:np.unique,</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'discharge_m3_per_s'</span>:<span class="st">'mean'</span>,</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">'height_m'</span>:<span class="st">'mean'</span>})</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>df_usgs_daily.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">agency_cd</th>
+<th data-quarto-table-cell-role="th">site_no</th>
+<th data-quarto-table-cell-role="th">tz_cd</th>
+<th data-quarto-table-cell-role="th">discharge_ft3_s</th>
+<th data-quarto-table-cell-role="th">status_discharge</th>
+<th data-quarto-table-cell-role="th">height_ft</th>
+<th data-quarto-table-cell-role="th">status_height</th>
+<th data-quarto-table-cell-role="th">discharge_m3_per_s</th>
+<th data-quarto-table-cell-role="th">height_m</th>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">datetime</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-04-14</td>
+<td>[USGS]</td>
+<td>[06879650]</td>
+<td>[UTC]</td>
+<td>0.0</td>
+<td>[A]</td>
+<td>2.500000</td>
+<td>[A]</td>
+<td>0.0</td>
+<td>8.202100</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2023-04-15</td>
+<td>[USGS]</td>
+<td>[06879650]</td>
+<td>[UTC]</td>
+<td>0.0</td>
+<td>[A]</td>
+<td>2.496667</td>
+<td>[A]</td>
+<td>0.0</td>
+<td>8.191164</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2023-04-16</td>
+<td>[USGS]</td>
+<td>[06879650]</td>
+<td>[UTC]</td>
+<td>0.0</td>
+<td>[A]</td>
+<td>2.494792</td>
+<td>[A]</td>
+<td>0.0</td>
+<td>8.185012</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot figure to make sure that data downloaded correctly</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Streamflow Kings Creek Watershed'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>plt.plot(df_usgs[<span class="st">'discharge_m3_per_s'</span>], color<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df_usgs_daily[<span class="st">'discharge_m3_per_s'</span>], color<span class="op">=</span><span class="st">'tomato'</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>plt.yscale(<span class="st">'log'</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Discharge ($m^3 \ s^{-1})$'</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">15</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="request_web_data_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
@@ -1089,51 +1272,51 @@ Note
 <li>Daily data documentation: https://www1.ncdc.noaa.gov/pub/data/uscrn/products/daily01/README.txt</li>
 </ul>
 <div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_uscrn(station, year):</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Function to retreive daily data from the U.S. Climate Reference Network.</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">    station : string</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">        Station name</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">    year : integer</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">        Year for data request</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co">    df : Dataframe</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="co">        Table with daily data for an entire year for a given station</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f'https://www1.ncdc.noaa.gov/pub/data/uscrn/products/daily01/</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>station<span class="sc">}</span><span class="ss">'</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    daily_headers <span class="op">=</span> [<span class="st">'WBANNO'</span>,<span class="st">'LST_DATE'</span>,<span class="st">'CRX_VN'</span>,<span class="st">'LONGITUDE'</span>,<span class="st">'LATITUDE'</span>,</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'T_DAILY_MAX'</span>,<span class="st">'T_DAILY_MIN'</span>,<span class="st">'T_DAILY_MEAN'</span>,<span class="st">'T_DAILY_AVG'</span>,</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'P_DAILY_CALC'</span>,<span class="st">'SOLARAD_DAILY'</span>,<span class="st">'SUR_TEMP_DAILY_TYPE'</span>,</span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'SUR_TEMP_DAILY_MAX'</span>,<span class="st">'SUR_TEMP_DAILY_MIN'</span>,<span class="st">'SUR_TEMP_DAILY_AVG'</span>,</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'RH_DAILY_MAX'</span>,<span class="st">'RH_DAILY_MIN'</span>,<span class="st">'RH_DAILY_AVG'</span>,<span class="st">'SOIL_MOISTURE_5_DAILY'</span>,</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'SOIL_MOISTURE_10_DAILY'</span>,<span class="st">'SOIL_MOISTURE_20_DAILY'</span>,<span class="st">'SOIL_MOISTURE_50_DAILY'</span>,</span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'SOIL_MOISTURE_100_DAILY'</span>,<span class="st">'SOIL_TEMP_5_DAILY'</span>,<span class="st">'SOIL_TEMP_10_DAILY'</span>,</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'SOIL_TEMP_20_DAILY'</span>,<span class="st">'SOIL_TEMP_50_DAILY'</span>,<span class="st">'SOIL_TEMP_100_DAILY'</span>]       </span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read fixed width data</span></span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_fwf(url, names<span class="op">=</span>daily_headers)</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert date from string to datetime format</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'LST_DATE'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'LST_DATE'</span>],<span class="bu">format</span><span class="op">=</span><span class="st">'%Y%m</span><span class="sc">%d</span><span class="st">'</span>)</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace missing values (-99 and -9999)</span></span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.replace([<span class="op">-</span><span class="dv">99</span>,<span class="op">-</span><span class="dv">9999</span>,<span class="dv">999</span>], np.nan)</span>
-<span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_uscrn(station, year):</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Function to retreive daily data from the U.S. Climate Reference Network.</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">    Parameters</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">    ----------</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">    station : string</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">        Station name</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">    year : integer</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">        Year for data request</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="co">    -------</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co">    df : Dataframe</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co">        Table with daily data for an entire year for a given station</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> <span class="ss">f'https://www1.ncdc.noaa.gov/pub/data/uscrn/products/daily01/</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">/</span><span class="sc">{</span>station<span class="sc">}</span><span class="ss">'</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    daily_headers <span class="op">=</span> [<span class="st">'WBANNO'</span>,<span class="st">'LST_DATE'</span>,<span class="st">'CRX_VN'</span>,<span class="st">'LONGITUDE'</span>,<span class="st">'LATITUDE'</span>,</span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'T_DAILY_MAX'</span>,<span class="st">'T_DAILY_MIN'</span>,<span class="st">'T_DAILY_MEAN'</span>,<span class="st">'T_DAILY_AVG'</span>,</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'P_DAILY_CALC'</span>,<span class="st">'SOLARAD_DAILY'</span>,<span class="st">'SUR_TEMP_DAILY_TYPE'</span>,</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'SUR_TEMP_DAILY_MAX'</span>,<span class="st">'SUR_TEMP_DAILY_MIN'</span>,<span class="st">'SUR_TEMP_DAILY_AVG'</span>,</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'RH_DAILY_MAX'</span>,<span class="st">'RH_DAILY_MIN'</span>,<span class="st">'RH_DAILY_AVG'</span>,<span class="st">'SOIL_MOISTURE_5_DAILY'</span>,</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'SOIL_MOISTURE_10_DAILY'</span>,<span class="st">'SOIL_MOISTURE_20_DAILY'</span>,<span class="st">'SOIL_MOISTURE_50_DAILY'</span>,</span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'SOIL_MOISTURE_100_DAILY'</span>,<span class="st">'SOIL_TEMP_5_DAILY'</span>,<span class="st">'SOIL_TEMP_10_DAILY'</span>,</span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>                     <span class="st">'SOIL_TEMP_20_DAILY'</span>,<span class="st">'SOIL_TEMP_50_DAILY'</span>,<span class="st">'SOIL_TEMP_100_DAILY'</span>]       </span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Read fixed width data</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.read_fwf(url, names<span class="op">=</span>daily_headers)</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert date from string to datetime format</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    df[<span class="st">'LST_DATE'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'LST_DATE'</span>],<span class="bu">format</span><span class="op">=</span><span class="st">'%Y%m</span><span class="sc">%d</span><span class="st">'</span>)</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Replace missing values (-99 and -9999)</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> df.replace([<span class="op">-</span><span class="dv">99</span>,<span class="op">-</span><span class="dv">9999</span>,<span class="dv">999</span>], np.nan)</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URL link and header variables</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>year <span class="op">=</span> <span class="dv">2018</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>station <span class="op">=</span> <span class="st">'CRND0103-2018-KS_Manhattan_6_SSW.txt'</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>df_uscrn <span class="op">=</span> get_uscrn(year, station)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>df_uscrn.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># URL link and header variables</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>year <span class="op">=</span> <span class="dv">2018</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>station <span class="op">=</span> <span class="st">'CRND0103-2018-KS_Manhattan_6_SSW.txt'</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>df_uscrn <span class="op">=</span> get_uscrn(year, station)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>df_uscrn.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 

@@ -832,7 +832,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>            {<span class="st">'start'</span>:<span class="dv">1955</span>, <span class="st">'end'</span>:<span class="dv">1990</span>, <span class="st">'ytxt'</span>:<span class="fl">1.0</span>},</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            {<span class="st">'start'</span>:<span class="dv">1990</span>, <span class="st">'end'</span>:<span class="dv">2023</span>, <span class="st">'ytxt'</span>:<span class="fl">0.5</span>}]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="615">
+<div class="cell" data-execution_count="631">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit linear models and create figure</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
@@ -863,7 +863,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        sig <span class="op">=</span> <span class="st">''</span></span>
 <span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        </span>
 <span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Annotate the chart</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    txt <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>s[<span class="st">'start'</span>]<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>s[<span class="st">'end'</span>]<span class="sc">}</span><span class="ss"> y = </span><span class="sc">{</span>intercept<span class="sc">:.3f}</span><span class="ss"> + </span><span class="sc">{</span>slope<span class="sc">:.3f}</span><span class="ss">x</span><span class="sc">{</span>sig<span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    txt <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>s[<span class="st">'start'</span>]<span class="sc">}</span><span class="ss">-</span><span class="sc">{</span>s[<span class="st">'end'</span>]<span class="sc">}</span><span class="ss"> y = </span><span class="sc">{</span>intercept<span class="sc">:.1f}</span><span class="ss"> + </span><span class="sc">{</span>slope<span class="sc">:.3f}</span><span class="ss">x </span><span class="sc">{</span>sig<span class="sc">}</span><span class="ss">"</span></span>
 <span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    plt.text(<span class="dv">1970</span>, s[<span class="st">'ytxt'</span>], txt)</span>
 <span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="co">#plt.text(1928, 5.3, 'A', size=20)</span></span>
 <span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a></span>
@@ -874,6 +874,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <p><img src="sorghum_yields_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+<p>One of the main findings of this chart is that the slope of the linear segment from 1990 to 2023 has a non-significat slope, which means that the regression line is not statistically different from zero (this is the null hypothesis), strongly supporting the possibility of yield stagnation.</p>
 </section>
 <section id="optimize-breakpoints" class="level2">
 <h2 class="anchored" data-anchor-id="optimize-breakpoints">Optimize breakpoints</h2>
