@@ -78,6 +78,7 @@ book:
         - exercises/proctor_test.ipynb
         - exercises/optimal_nitrogen_rate.ipynb
         - exercises/maximum_return_to_nitrogen.ipynb
+        - exercises/air_temperature_model.ipynb
         - exercises/frontier_function.ipynb
         - exercises/atmospheric_carbon_dioxide.ipynb
         - exercises/autoregressive_model.ipynb
@@ -95,6 +96,11 @@ book:
         - exercises/yield_monitor_clean.ipynb
         - exercises/yield_monitor_zones.ipynb
         - exercises/largest_empty_circle.ipynb
+        
+    - part: "MACHINE LEARNING"
+      chapters:
+        - exercises/estimate_daily_vpd.ipynb
+
         
     - part: "GOOGLE EARTH ENGINE"
       chapters:
