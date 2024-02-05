@@ -629,8 +629,8 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/estimate_daily_vpd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">73</span>&nbsp; <span class="chapter-title">Estimate daily VPD</span></span></a>
+  <a href="../exercises/estimate_daily_vapor_pressure.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">73</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></span></a>
   </div>
 </li>
       </ul>
@@ -688,12 +688,8 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
   <li><a href="#quick-statistics" id="toc-quick-statistics" class="nav-link" data-scroll-target="#quick-statistics">Quick statistics</a></li>
   <li><a href="#indexing-and-slicing" id="toc-indexing-and-slicing" class="nav-link" data-scroll-target="#indexing-and-slicing">Indexing and slicing</a>
   <ul class="collapse">
-  <li><a href="#using-index-operator" id="toc-using-index-operator" class="nav-link" data-scroll-target="#using-index-operator">Using index operator <code>[]</code></a></li>
-  </ul></li>
   <li><a href="#select-rows" id="toc-select-rows" class="nav-link" data-scroll-target="#select-rows">Select rows</a></li>
   <li><a href="#select-columns" id="toc-select-columns" class="nav-link" data-scroll-target="#select-columns">Select columns</a></li>
-  <li><a href="#slicing-rows-and-columns" id="toc-slicing-rows-and-columns" class="nav-link" data-scroll-target="#slicing-rows-and-columns">Slicing rows and columns</a>
-  <ul class="collapse">
   <li><a href="#using-iloc-method" id="toc-using-iloc-method" class="nav-link" data-scroll-target="#using-iloc-method">Using <code>iloc</code> method</a></li>
   <li><a href="#using-loc-method" id="toc-using-loc-method" class="nav-link" data-scroll-target="#using-loc-method">Using <code>loc</code> method</a></li>
   </ul></li>
@@ -1546,13 +1542,9 @@ Name: precipitation, dtype: int64</code></pre>
 </section>
 <section id="indexing-and-slicing" class="level2">
 <h2 class="anchored" data-anchor-id="indexing-and-slicing">Indexing and slicing</h2>
-<section id="using-index-operator" class="level3">
-<h3 class="anchored" data-anchor-id="using-index-operator">Using index operator <code>[]</code></h3>
 <p>To start making computations with need to access the data insde the Pandas DataFrame. Indexing and slicing are useful operations to select portions of data by calling specific rows, columns, or a combination of both. The index operator <code>[]</code> is primarily intended to be used with column labels (e.g.&nbsp;<code>df[columnName]</code>), however, it can also handle row slices (e.g.&nbsp;<code>df[rows]</code>). A common notation useful to understand how the slicing works is as follows:</p>
-</section>
-</section>
-<section id="select-rows" class="level2">
-<h2 class="anchored" data-anchor-id="select-rows">Select rows</h2>
+<section id="select-rows" class="level3">
+<h3 class="anchored" data-anchor-id="select-rows">Select rows</h3>
 <div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First three rows</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>df[<span class="dv">0</span>:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1607,8 +1599,8 @@ Name: precipitation, dtype: int64</code></pre>
 </div>
 </div>
 </section>
-<section id="select-columns" class="level2">
-<h2 class="anchored" data-anchor-id="select-columns">Select columns</h2>
+<section id="select-columns" class="level3">
+<h3 class="anchored" data-anchor-id="select-columns">Select columns</h3>
 <p>We can call individual columns using the <code>dot</code> or <code>bracket</code> notation. Note that in option 2 there is no <code>.</code> between <code>df</code> and <code>['windSpeed']</code></p>
 <div class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'wind_speed'</span>] <span class="co"># Option 1</span></span>
@@ -1673,8 +1665,6 @@ Name: wind_speed, dtype: float64</code></pre>
 <p>A common mistake when slicing multiple columns is to forget grouping column names into a list, so the following command will not work:</p>
 <p><code>df['wind_speed','wind_direction']</code></p>
 </section>
-<section id="slicing-rows-and-columns" class="level2">
-<h2 class="anchored" data-anchor-id="slicing-rows-and-columns">Slicing rows and columns</h2>
 <section id="using-iloc-method" class="level3">
 <h3 class="anchored" data-anchor-id="using-iloc-method">Using <code>iloc</code> method</h3>
 <p><code>iloc</code>: Integer-location. <code>iloc</code> gets rows (or columns) at specific indexes. It only takes integers as input. <strong>Exclusive of its endpoint</strong></p>
