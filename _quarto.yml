@@ -99,7 +99,7 @@ book:
         
     - part: "MACHINE LEARNING"
       chapters:
-        - exercises/estimate_daily_vpd.ipynb
+        - exercises/estimate_daily_vapor_pressure.ipynb
 
         
     - part: "GOOGLE EARTH ENGINE"
