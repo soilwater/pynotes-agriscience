@@ -2129,8 +2129,8 @@ Name: precipitation, dtype: int64</code></pre>
 <section id="add-and-remove-columns" class="level2">
 <h2 class="anchored" data-anchor-id="add-and-remove-columns">Add and remove columns</h2>
 <p>The <code>insert()</code> and <code>drop()</code> methods allow us to add or remove columns to/from the DataFrame. The most common use of these functions is as follows:</p>
-<p><code>df.insert(indexOfNewColumn, nameOfNewColumn, dataArrayOfNewColumn)</code></p>
-<p><code>df.drop(nameOfColumnToBeRemoved)</code></p>
+<p><code>df.insert(index_of_new_column, name_of_new_column, data_of_new_column)</code></p>
+<p><code>df.drop(name_of_column_to_be_removed)</code></p>
 <div class="cell" data-execution_count="52">
 <div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add new column at a specific location</span></span>
 <span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>df.insert(<span class="dv">2</span>, <span class="st">'air_temperature'</span>, [<span class="fl">25.4</span>, <span class="dv">26</span>, <span class="fl">27.1</span>, <span class="fl">28.9</span>, <span class="fl">30.2</span>]) <span class="co"># Similar to: df['dates'] = dates</span></span>
