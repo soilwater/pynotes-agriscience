@@ -2340,56 +2340,56 @@
   {
     "objectID": "exercises/estimate_daily_vapor_pressure.html#define-helper-functions",
     "href": "exercises/estimate_daily_vapor_pressure.html#define-helper-functions",
-    "title": "73  Estimate daily VPD",
+    "title": "73  Estimate daily vapor pressure",
     "section": "Define helper functions",
     "text": "Define helper functions\n\n# Define helper functions for vapor pressure\nfn_e_sat = lambda T: 0.6108 * np.exp(17.27*T/(T+237.3)) # Saturation vapor pressure\nfn_e_act = lambda T,RH: fn_e_sat(T) * RH/100 # Actual vapor pressure"
   },
   {
     "objectID": "exercises/estimate_daily_vapor_pressure.html#read-and-inspect-dataset",
     "href": "exercises/estimate_daily_vapor_pressure.html#read-and-inspect-dataset",
-    "title": "73  Estimate daily VPD",
+    "title": "73  Estimate daily vapor pressure",
     "section": "Read and inspect dataset",
     "text": "Read and inspect dataset\n\n# Read 5-minute dataset\ndf = pd.read_csv('../datasets/garden_city_5min.csv', parse_dates=['TIMESTAMP'])\n\n# Drop unnnecessary columns\ndf = df.drop(['PRESSUREAVG','PRECIP','SRAVG','WSPD2MAVG'], axis='columns')\n\n# Rename columns with shorter names\ndf.rename(columns={'TEMP2MAVG':'tavg', 'RELHUM2MAVG':'rhavg'}, inplace=True)\n\n# Set datetime column as timeindex\ndf.set_index('TIMESTAMP', inplace=True)\n\n# Inspect a few rows\ndf.head(3)\n\n\n\n\n\n\n\n\ntavg\nrhavg\n\n\nTIMESTAMP\n\n\n\n\n\n\n2019-01-01 00:00:00\n-10.74\n80.01\n\n\n2019-01-01 00:05:00\n-10.68\n77.15\n\n\n2019-01-01 00:10:00\n-10.67\n78.70"
   },
   {
     "objectID": "exercises/estimate_daily_vapor_pressure.html#filter-dataset",
     "href": "exercises/estimate_daily_vapor_pressure.html#filter-dataset",
-    "title": "73  Estimate daily VPD",
+    "title": "73  Estimate daily vapor pressure",
     "section": "Filter dataset",
     "text": "Filter dataset\nThis step will help us remove a few outliers. A Savitzky-Golay filter using a short window and a third-order polynomial will retain much of the temporal changes, while also filtering out spurious data.\n\n# Apply filter to remove possible spurious observations in the 5-min data\ndf['tavg'] = savgol_filter(df['tavg'], 11, 3)\ndf['rhavg'] = savgol_filter(df['rhavg'], 11, 3)"
   },
   {
     "objectID": "exercises/estimate_daily_vapor_pressure.html#compute-variables-at-5-minute-intervals",
     "href": "exercises/estimate_daily_vapor_pressure.html#compute-variables-at-5-minute-intervals",
-    "title": "73  Estimate daily VPD",
+    "title": "73  Estimate daily vapor pressure",
     "section": "Compute variables at 5-minute intervals",
     "text": "Compute variables at 5-minute intervals\nThese data will serve as the basis for the daily benchmark values.\n\n# Compute saturation vapor pressure using 5-min observations\ndf['e_sat'] = fn_e_sat(df['tavg'])\n\n# Compute actual vapor pressure using 5-min observations\ndf['e_act'] = fn_e_act(df['tavg'], df['rhavg'])\n\n# Compute vapor pressure deficit using 5-min observations\ndf['vpd'] =  df['e_sat'] - df['e_act']"
   },
   {
     "objectID": "exercises/estimate_daily_vapor_pressure.html#resample-from-5-minute-to-hourly",
     "href": "exercises/estimate_daily_vapor_pressure.html#resample-from-5-minute-to-hourly",
-    "title": "73  Estimate daily VPD",
+    "title": "73  Estimate daily vapor pressure",
     "section": "Resample from 5-minute to hourly",
     "text": "Resample from 5-minute to hourly\n\n# Compute daily values\ndf_daily = df.resample('1D').agg(tmin=('tavg','min'),\n                                 tmax=('tavg','max'),\n                                 rhmin=('rhavg','min'),\n                                 rhmax=('rhavg','max'),\n                                 e_sat=('e_sat','mean'),\n                                 e_act=('e_act','mean'),\n                                 vpd=('vpd','mean'))\n\n\n# Compute daily average saturation vapor pressure using tmin and tmax\ne_sat_min = fn_e_sat(df_daily['tmin']) \ne_sat_max = fn_e_sat(df_daily['tmax']) \ndf_daily['e_sat_minmax'] = (e_sat_min + e_sat_max)/2\n\n# Compute actual vapor pressure using daily values tmin, tmax, rhmin, and rhmax\ndf_daily['e_act_minmax'] = (e_sat_min * df_daily['rhmax']/100 + \\\n                            e_sat_max * df_daily['rhmin']/100)/2\n\n# Compute daily average vapor pressure deficit\ndf_daily['vpd_minmax'] = df_daily['e_sat_minmax'] - df_daily['e_act_minmax']\n\n\n\n# Create figure\nplt.figure(figsize=(8,3))\nplt.plot(df_daily['vpd'], color='k', label='Mean VPD using 5-min data')\nplt.plot(df_daily['vpd_minmax'], color='tomato', alpha=0.5,\n         label='VPD from Tmin, Tmax, RHmin, and RHmax')\nplt.xlabel('Time')\nplt.ylabel('Predicted vpd (kPa)')\nplt.legend()\nplt.show()\n\n\n\n\n\nplt.figure(figsize=(10,3))\n\nplt.subplot(1,3,1)\nplt.scatter(df_daily['e_sat'], df_daily['e_sat_minmax'],\n           facecolor='w', edgecolor='k', alpha=0.5, label='Obs')\nplt.plot([0,6],[0,6], '-k', label='1:1 line')\nplt.xlim([0,6])\nplt.ylim([0,6])\nplt.xlabel('Benchmark e_sat (kPa)')\nplt.ylabel('Predicted e_sat (kPa)')\nplt.legend()\n\nplt.subplot(1,3,2)\nplt.title('Estimations using Tmin, Tmax, RHmin, and RHmax')\nplt.scatter(df_daily['e_act'], df_daily['e_act_minmax'],\n           facecolor='w', edgecolor='k', alpha=0.5,)\nplt.plot([0,5],[0,5], '-k')\nplt.xlim([0,5])\nplt.ylim([0,5])\nplt.xlabel('Benchmark e_act (kPa)')\nplt.ylabel('Predicted e_act (kPa)')\n\nplt.subplot(1,3,3)\nplt.scatter(df_daily['vpd'], df_daily['vpd_minmax'],\n           facecolor='w', edgecolor='k', alpha=0.5,)\nplt.plot([0,5],[0,5], '-k')\nplt.xlim([0,5])\nplt.ylim([0,5])\nplt.xlabel('Benchmark vpd (kPa)')\nplt.ylabel('Predicted vpd (kPa)')\n\nplt.subplots_adjust(wspace=0.3)\nplt.show()"
   },
   {
     "objectID": "exercises/estimate_daily_vapor_pressure.html#adjust-vpd-using-a-linear-model",
     "href": "exercises/estimate_daily_vapor_pressure.html#adjust-vpd-using-a-linear-model",
-    "title": "73  Estimate daily VPD",
+    "title": "73  Estimate daily vapor pressure",
     "section": "Adjust VPD using a linear model",
     "text": "Adjust VPD using a linear model\nOne of the simplest alternatives to correct the bias in VPD values is to use a linear model. Based on visual inspection, it seems that we only need to correct the slope.\n\n# Regression for saturation vapor pressure\nX = df_daily['vpd_minmax']\ny = df_daily['vpd']\nvpd_ols_model = sm.OLS(y, X).fit()\nvpd_ols_model.summary()\n\n\nOLS Regression Results\n\n\nDep. Variable:\nvpd\nR-squared (uncentered):\n0.986\n\n\nModel:\nOLS\nAdj. R-squared (uncentered):\n0.986\n\n\nMethod:\nLeast Squares\nF-statistic:\n1.059e+05\n\n\nDate:\nSun, 04 Feb 2024\nProb (F-statistic):\n0.00\n\n\nTime:\n00:47:19\nLog-Likelihood:\n838.72\n\n\nNo. Observations:\n1461\nAIC:\n-1675.\n\n\nDf Residuals:\n1460\nBIC:\n-1670.\n\n\nDf Model:\n1\n\n\n\n\nCovariance Type:\nnonrobust\n\n\n\n\n\n\n\n\n\ncoef\nstd err\nt\nP&gt;|t|\n[0.025\n0.975]\n\n\nvpd_minmax\n0.8313\n0.003\n325.400\n0.000\n0.826\n0.836\n\n\n\n\n\n\nOmnibus:\n164.099\nDurbin-Watson:\n1.283\n\n\nProb(Omnibus):\n0.000\nJarque-Bera (JB):\n1370.115\n\n\nSkew:\n0.112\nProb(JB):\n3.04e-298\n\n\nKurtosis:\n7.739\nCond. No.\n1.00\n\n\n\nNotes:[1] R² is computed without centering (uncentered) since the model does not contain a constant.[2] Standard Errors assume that the covariance matrix of the errors is correctly specified.\n\n\n\n# Compute corrected vpd\ndf_daily['vpd_adj'] = vpd_ols_model.predict(df_daily['vpd_minmax'])\n\n\nplt.figure(figsize=(3,3))\nplt.title('Adjusted VPD using OLS')\nplt.scatter(df_daily['vpd'],df_daily['vpd_adj'],\n            facecolor='w', edgecolor='k', alpha=0.5)\nplt.plot([0,5],[0,5], '-k')\nplt.xlim([0,5])\nplt.ylim([0,5])\nplt.xlabel('Benchmark vpd (kPa)')\nplt.ylabel('Predicted vpd (kPa)')\nplt.show()"
   },
   {
     "objectID": "exercises/estimate_daily_vapor_pressure.html#machine-learning",
     "href": "exercises/estimate_daily_vapor_pressure.html#machine-learning",
-    "title": "73  Estimate daily VPD",
+    "title": "73  Estimate daily vapor pressure",
     "section": "Machine learning",
     "text": "Machine learning\nIn this part we will explore the determination of e_sat, e_act, and vpd simultaneaously using a machine learning model. Note that vpd could be compute as the difference of the other two variablles, but to illustrate the power of machine learning models and match the benchmark data from 5-minute observations we will estimate all three variables.\n\n# Create dataset\nX = df_daily[['tmin','tmax','rhmin','rhmax']]\ny = df_daily[['e_sat','e_act','vpd']]\ny.head()\n\n\n\n\n\n\n\n\ne_sat\ne_act\nvpd\n\n\nTIMESTAMP\n\n\n\n\n\n\n\n2019-01-01\n0.257936\n0.166566\n0.091370\n\n\n2019-01-02\n0.367207\n0.241662\n0.125546\n\n\n2019-01-03\n0.432865\n0.314997\n0.117868\n\n\n2019-01-04\n0.665950\n0.477658\n0.188293\n\n\n2019-01-05\n0.806039\n0.579511\n0.226528\n\n\n\n\n\n\n\n\n# Split dataset\nX_train, X_test, y_train, y_test = train_test_split(X, y, random_state=1)\n\n\n# Normalize data\nscaler = StandardScaler()  \n\n# Scale training data\nscaler.fit(X_train)  \nX_train = scaler.transform(X_train)  \n\n# Apply same transformation to test data\nX_test = scaler.transform(X_test) \n\n\n# Create and fit multilayer perceptron (MLP)\nMLP = MLPRegressor(random_state=1, max_iter=500, hidden_layer_sizes=(100,), \n                   activation='relu', solver='adam')\n\n# Fit MLP to training data\nMLP_fitted = MLP.fit(X_train, y_train)\n\n\n# Run trained MLP model on the test set\npred_test = MLP_fitted.predict(X_test)\n\n\n# Compute the coefficient of determination\nMLP_fitted.score(X_test, y_test)\n\n0.9740855079562776\n\n\n\n# Create scatter plots comparing test set and MLP predictions\nplt.figure(figsize=(10,3))\n\nplt.subplot(1,3,1)\nplt.scatter(y_test['e_sat'], pred_test[:,0], \n            facecolor='w', edgecolor='k', alpha=0.5, label='Obs')\nplt.plot([0,6],[0,6], '-k', label='1:1 line')\nplt.xlim([0,6])\nplt.ylim([0,6])\nplt.xlabel('Benchmark e_sat (kPa)')\nplt.ylabel('Predicted e_sat (kPa)')\nplt.legend()\n\nplt.subplot(1,3,2)\nplt.title('Machine Learning Predictions')\nplt.scatter(y_test['e_act'], pred_test[:,1],\n            facecolor='w', edgecolor='k', alpha=0.5, )\nplt.plot([0,5],[0,5], '-k')\nplt.xlim([0,5])\nplt.ylim([0,5])\nplt.xlabel('Benchmark e_act (kPa)')\nplt.ylabel('Predicted e_act (kPa)')\n\nplt.subplot(1,3,3)\nplt.scatter(y_test['vpd'], pred_test[:,2],\n            facecolor='w', edgecolor='k', alpha=0.5, )\nplt.plot([0,5],[0,5], '-k')\nplt.xlim([0,5])\nplt.ylim([0,5])\nplt.xlabel('Benchmark vpd (kPa)')\nplt.ylabel('Predicted vpd (kPa)')\n\nplt.subplots_adjust(wspace=0.3)\nplt.show()"
   },
   {
     "objectID": "exercises/estimate_daily_vapor_pressure.html#practice",
     "href": "exercises/estimate_daily_vapor_pressure.html#practice",
-    "title": "73  Estimate daily VPD",
+    "title": "73  Estimate daily vapor pressure",
     "section": "Practice",
     "text": "Practice\n\nCompute the mean absolute error and the mean bias error for the different methods.\nLoad the 5-minute dataset for Ashland Bottoms, KS and compute e_sat, e_act, and vpd with the fitted linear model and the machine learning model. Does it work for another locations without any additional calibration?"
   }
