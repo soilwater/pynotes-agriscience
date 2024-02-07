@@ -1210,7 +1210,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <section id="scatter-plot" class="level3">
 <h3 class="anchored" data-anchor-id="scatter-plot">Scatter plot</h3>
 <p>Let’s inspect soil temperature data a 5 and 40 cm depth and see how similar or different these two variables are. A 1:1 to line will serve as the reference of perfect equality.</p>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatter plot</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">'soiltemp_5cm'</span>], df[<span class="st">'soiltemp_40cm'</span>],</span>
@@ -1226,8 +1226,13 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">5</span>, <span class="dv">35</span>])</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>plt.grid()</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>           </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Use the following lines to hide the axis tick marks and labels</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.xticks([])</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#plt.yticks([])</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>           </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="plotting_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
@@ -1266,7 +1271,7 @@ LaTeX italics
 <section id="histogram" class="level3">
 <h3 class="anchored" data-anchor-id="histogram">Histogram</h3>
 <p>One of the most common and useful charts to describe the distribution of a dataset is the histogram.</p>
-<div class="cell" data-execution_count="21">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogram</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>plt.hist(df[<span class="st">'vwc_5cm'</span>], bins<span class="op">=</span><span class="st">'scott'</span>, density<span class="op">=</span><span class="va">False</span>, </span>
@@ -1306,8 +1311,8 @@ LaTeX italics
 <section id="subplots" class="level3">
 <h3 class="anchored" data-anchor-id="subplots">Subplots</h3>
 <p>In fields like agronomy, environmental science, hydrology, and meteorology sometimes we want to show multiple variables in one figure, but in different charts. Other times we want to show the same variable, but in separate charts for different locations or sites. In Matplotlib we can achieve this using subplots.</p>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subplots</span></span>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subplots with all labels and axis tick marks</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define date format</span></span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>date_format <span class="op">=</span> mdates.ConciseDateFormatter(mdates.AutoDateLocator)</span>
@@ -1329,36 +1334,44 @@ LaTeX italics
 <span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">20</span>, <span class="dv">40</span>])</span>
 <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_formatter(date_format)</span>
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>plt.text( df[<span class="st">'datetime'</span>].iloc[<span class="dv">0</span>], <span class="dv">32</span>, <span class="st">'A'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Subplot 2 of 4</span></span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"datetime"</span>], df[<span class="st">"soiltemp_5cm"</span>])</span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Soil temperature 5 cm'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Temperature'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">20</span>, <span class="dv">40</span>])</span>
-<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_formatter(date_format)</span>
-<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>plt.text( df[<span class="st">'datetime'</span>].iloc[<span class="dv">0</span>], <span class="dv">32</span>, <span class="st">'B'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Subplot 3 of 4</span></span>
-<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
-<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"datetime"</span>], df[<span class="st">"soiltemp_20cm"</span>])</span>
-<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Soil temperature 20 cm'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Temperature'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">20</span>, <span class="dv">40</span>])</span>
-<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_formatter(date_format)</span>
-<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>plt.text( df[<span class="st">'datetime'</span>].iloc[<span class="dv">0</span>], <span class="dv">32</span>, <span class="st">'C'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Subplot 4 of 4</span></span>
-<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
-<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a>plt.text( df[<span class="st">'datetime'</span>].iloc[<span class="dv">0</span>], <span class="dv">32</span>, <span class="st">'D'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"datetime"</span>], df[<span class="st">"soiltemp_40cm"</span>])</span>
-<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Soil temperature 40 cm'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Temperature'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
-<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">20</span>, <span class="dv">40</span>])</span>
-<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_formatter(date_format)</span>
-<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>plt.text( df[<span class="st">'datetime'</span>].iloc[<span class="dv">0</span>], <span class="dv">32</span>, <span class="st">'D'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
-<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>plt.gca().tick_params(axis<span class="op">=</span><span class="st">'x'</span>, labelbottom<span class="op">=</span><span class="va">False</span>) <span class="co"># Hide tick labels on the x-axis</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Subplot 2 of 4</span></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>)</span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"datetime"</span>], df[<span class="st">"soiltemp_5cm"</span>])</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Soil temperature 5 cm'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Temperature'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">20</span>, <span class="dv">40</span>])</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_formatter(date_format)</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>plt.text( df[<span class="st">'datetime'</span>].iloc[<span class="dv">0</span>], <span class="dv">32</span>, <span class="st">'B'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>plt.gca().tick_params(axis<span class="op">=</span><span class="st">'x'</span>, labelbottom<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Subplot 3 of 4</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>)</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"datetime"</span>], df[<span class="st">"soiltemp_20cm"</span>])</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Soil temperature 20 cm'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Temperature'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">20</span>, <span class="dv">40</span>])</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_formatter(date_format)</span>
+<span id="cb12-42"><a href="#cb12-42" aria-hidden="true" tabindex="-1"></a>plt.text( df[<span class="st">'datetime'</span>].iloc[<span class="dv">0</span>], <span class="dv">32</span>, <span class="st">'C'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb12-43"><a href="#cb12-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-44"><a href="#cb12-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-45"><a href="#cb12-45" aria-hidden="true" tabindex="-1"></a><span class="co"># Subplot 4 of 4</span></span>
+<span id="cb12-46"><a href="#cb12-46" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">4</span>)</span>
+<span id="cb12-47"><a href="#cb12-47" aria-hidden="true" tabindex="-1"></a>plt.text( df[<span class="st">'datetime'</span>].iloc[<span class="dv">0</span>], <span class="dv">32</span>, <span class="st">'D'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb12-48"><a href="#cb12-48" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">"datetime"</span>], df[<span class="st">"soiltemp_40cm"</span>])</span>
+<span id="cb12-49"><a href="#cb12-49" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Soil temperature 40 cm'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb12-50"><a href="#cb12-50" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Temperature'</span>, size<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb12-51"><a href="#cb12-51" aria-hidden="true" tabindex="-1"></a>plt.ylim([<span class="op">-</span><span class="dv">20</span>, <span class="dv">40</span>])</span>
+<span id="cb12-52"><a href="#cb12-52" aria-hidden="true" tabindex="-1"></a>plt.gca().xaxis.set_major_formatter(date_format)</span>
+<span id="cb12-53"><a href="#cb12-53" aria-hidden="true" tabindex="-1"></a>plt.text( df[<span class="st">'datetime'</span>].iloc[<span class="dv">0</span>], <span class="dv">32</span>, <span class="st">'D'</span>, fontsize<span class="op">=</span><span class="dv">14</span>)</span>
+<span id="cb12-54"><a href="#cb12-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-55"><a href="#cb12-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjust height padding (hspace) and width padding (wspace)</span></span>
+<span id="cb12-56"><a href="#cb12-56" aria-hidden="true" tabindex="-1"></a><span class="co"># between subplots using fractions of the average axes height and width</span></span>
+<span id="cb12-57"><a href="#cb12-57" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.3</span>, wspace<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb12-58"><a href="#cb12-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-59"><a href="#cb12-59" aria-hidden="true" tabindex="-1"></a><span class="co"># Render figure</span></span>
+<span id="cb12-60"><a href="#cb12-60" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="plotting_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
 </div>
@@ -1413,6 +1426,7 @@ LaTeX italics
 <span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>ax4.plot(df[<span class="st">"datetime"</span>], df[<span class="st">"soiltemp_40cm"</span>])</span>
 <span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>plt.tick_params(axis=‘both’, which=‘both’, bottom=False, top=False, labelbottom=False)</p>
 </section>
 </section>
 <section id="fill-area-plots" class="level3">
