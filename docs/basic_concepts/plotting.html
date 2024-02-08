@@ -1193,7 +1193,7 @@ medium</code></pre>
 <section id="line-plot" class="level3">
 <h3 class="anchored" data-anchor-id="line-plot">Line plot</h3>
 <p>A common plot when working with meteorological data is to show maximum and minimum air temperature.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">4</span>)) <span class="co"># If you set dpi=300 the figure is much better quality</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1205,7 +1205,7 @@ medium</code></pre>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Kings Creek Watershed'</span>, weight<span class="op">=</span><span class="st">'bold'</span>)</span>
 <span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Air Temperature (Celsius)'</span>, fontsize<span class="op">=</span><span class="dv">10</span>)</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">10</span>, rotation<span class="op">=</span><span class="dv">20</span>)</span>
 <span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>plt.legend(fontsize<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
