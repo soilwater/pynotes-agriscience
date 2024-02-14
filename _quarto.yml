@@ -59,7 +59,6 @@ book:
         - exercises/meteogram.ipynb
         - exercises/group_least_variance.ipynb
         - exercises/random_plots.ipynb
-        - exercises/random_walk.ipynb
         - exercises/curve_number.ipynb        
         - exercises/mixing_model.ipynb
         - exercises/mass_volume_relationships.ipynb
@@ -96,6 +95,17 @@ book:
         - exercises/yield_monitor_clean.ipynb
         - exercises/yield_monitor_zones.ipynb
         - exercises/largest_empty_circle.ipynb
+       
+    - part: "NUMERICAL MODELS"
+      chapters:
+        - exercises/newton_law_cooling.ipynb
+        - exercises/predator_prey_model.ipynb
+        
+    - part: "STOCHASTIC MODELS"
+      chapters:
+        - exercises/random_walk.ipynb
+        - exercises/weed_population.ipynb
+        - exercises/rainfall_generator.ipynb
         
     - part: "MACHINE LEARNING"
       chapters:
