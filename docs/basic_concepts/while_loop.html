@@ -725,6 +725,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
   <ul>
   <li><a href="#syntax" id="toc-syntax" class="nav-link active" data-scroll-target="#syntax">Syntax</a></li>
   <li><a href="#example-1-a-trivial-loop" id="toc-example-1-a-trivial-loop" class="nav-link" data-scroll-target="#example-1-a-trivial-loop">Example 1: A trivial loop</a></li>
+  <li><a href="#example-1-irrigation-decision" id="toc-example-1-irrigation-decision" class="nav-link" data-scroll-target="#example-1-irrigation-decision">Example 1: Irrigation decision</a></li>
   <li><a href="#example-2-guess-the-soil-taxonomic-order" id="toc-example-2-guess-the-soil-taxonomic-order" class="nav-link" data-scroll-target="#example-2-guess-the-soil-taxonomic-order">Example 2: Guess the soil taxonomic order</a>
   <ul class="collapse">
   <li><a href="#explanation" id="toc-explanation" class="nav-link" data-scroll-target="#explanation">Explanation</a></li>
@@ -788,54 +789,106 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </div>
 </div>
 </section>
+<section id="example-1-irrigation-decision" class="level2">
+<h2 class="anchored" data-anchor-id="example-1-irrigation-decision">Example 1: Irrigation decision</h2>
+<p>In this example we simulate a simple irrigation system that adjusts water application based on the soil moisture level, ensuring that the crop receives adequate water. The system checks the soil moisture level every day and decides whether to irrigate based on the soil moisture level. We assume that evapotranspiration reduces the moisture level daily, and that irrigation increases the soil moisture.</p>
+<div class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>soil_moisture <span class="op">=</span> <span class="dv">90</span> <span class="co"># initial soil moisture (mm)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>moisture_threshold <span class="op">=</span> <span class="dv">70</span> <span class="co"># moisture  below which irrigation is needed (mm)</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>irrigation_amount <span class="op">=</span> <span class="dv">20</span> <span class="co"># irrigation amount (mm)</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>daily_et <span class="op">=</span> <span class="dv">5</span> <span class="co"># daily evapotranspiration (mm)</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate daily check over a 10-day period</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>day <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> day <span class="op">&lt;</span> <span class="dv">10</span>:</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Day </span><span class="sc">{</span>day <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss">: Soil moisture is </span><span class="sc">{</span>soil_moisture<span class="sc">}</span><span class="ss">%."</span>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Check if irrigation is needed</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> soil_moisture <span class="op">&lt;</span> moisture_threshold:</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Irrigating..."</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        soil_moisture <span class="op">+=</span> irrigation_amount</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Soil moisture after irrigation is </span><span class="sc">{</span>soil_moisture<span class="sc">}</span><span class="ss">%."</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"No irrigation needed today."</span>)</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Update soil moisture for next day</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    soil_moisture <span class="op">-=</span> daily_et</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    day <span class="op">+=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Day 1: Soil moisture is 90%.
+No irrigation needed today.
+Day 2: Soil moisture is 85%.
+No irrigation needed today.
+Day 3: Soil moisture is 80%.
+No irrigation needed today.
+Day 4: Soil moisture is 75%.
+No irrigation needed today.
+Day 5: Soil moisture is 70%.
+No irrigation needed today.
+Day 6: Soil moisture is 65%.
+Irrigating...
+Soil moisture after irrigation is 85%.
+Day 7: Soil moisture is 80%.
+No irrigation needed today.
+Day 8: Soil moisture is 75%.
+No irrigation needed today.
+Day 9: Soil moisture is 70%.
+No irrigation needed today.
+Day 10: Soil moisture is 65%.
+Irrigating...
+Soil moisture after irrigation is 85%.</code></pre>
+</div>
+</div>
+</section>
 <section id="example-2-guess-the-soil-taxonomic-order" class="level2">
 <h2 class="anchored" data-anchor-id="example-2-guess-the-soil-taxonomic-order">Example 2: Guess the soil taxonomic order</h2>
 <p>The soil taxonomic orders form the highest category in the soil classification system, each order representing distinct characteristics and soil formation processes. The twelve orders provide a framework for understanding soil properties and their implications for agriculture, environmental management, and land use. <a href="https://www.nrcs.usda.gov/resources/education-and-teaching-materials/the-twelve-orders-of-soil-taxonomy">This website</a> has great pictures of real soil profiles and additional useful information.</p>
 <p>It’s always fun to play games, but crafting your own is even better. This exercise was written so that you can change the information contained in the <code>database</code> dictionary with some other data that sparks your interest. For soil scientists, this is an excellent opportunity to review your knowledge about the soil taxonomy.</p>
 <div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Dictionary of soil orders with a hint</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>database <span class="op">=</span> {</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Alfisols"</span>: [<span class="st">"Fertile, with subsurface clay accumulation."</span>, <span class="st">"Starts with 'A'"</span>],</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Andisols"</span>: [<span class="st">"Formed from volcanic materials, high in organic matter."</span>, <span class="st">"Starts with 'A'"</span>],</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Aridisols"</span>: [<span class="st">"Dry soils, often found in deserts."</span>, <span class="st">"Starts with 'A'"</span>],</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Entisols"</span>: [<span class="st">"Young soils with minimal horizon development."</span>, <span class="st">"Starts with 'E'"</span>],</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gelisols"</span>: [<span class="st">"Contain permafrost, found in cold regions."</span>, <span class="st">"Starts with 'G'"</span>],</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Histosols"</span>: [<span class="st">"Organic, often water-saturated soils like peat."</span>, <span class="st">"Starts with 'H'"</span>],</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Inceptisols"</span>: [<span class="st">"Young, with weak horizon development."</span>, <span class="st">"Starts with 'I'"</span>],</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mollisols"</span>: [<span class="st">"Dark, rich in organic matter, found under grasslands."</span>, <span class="st">"Starts with 'M'"</span>],</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Oxisols"</span>: [<span class="st">"Highly weathered, tropical soils."</span>, <span class="st">"Starts with 'O'"</span>],</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Spodosols"</span>: [<span class="st">"Acidic, with organic and mineral layers."</span>, <span class="st">"Starts with 'S'"</span>],</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ultisols"</span>: [<span class="st">"Weathered, acidic soils with subsurface clay."</span>, <span class="st">"Starts with 'U'"</span>],</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Vertisols"</span>: [<span class="st">"Rich in clay, expand and contract with moisture."</span>, <span class="st">"Starts with 'V'"</span>]</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Select a random soil taxonomic order and its hints</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>selection, hints <span class="op">=</span> random.choice(<span class="bu">list</span>(database.items()))</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>hints_iter <span class="op">=</span> <span class="bu">iter</span>(hints)</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Guess the soil taxonomic order! Type 'hint' for a hint."</span>)</span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial hint</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First Hint:"</span>, <span class="bu">next</span>(hints_iter))</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="co"># While loop for guessing game</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>    guess <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Your guess: "</span>).strip().lower()</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> guess <span class="op">==</span> selection.lower():</span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Correct! It was </span><span class="sc">{</span>selection<span class="sc">}</span><span class="ss">."</span>)</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> guess <span class="op">==</span> <span class="st">"hint"</span>:</span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Hint:"</span>, <span class="bu">next</span>(hints_iter))</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">StopIteration</span>:</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"No more hints. Please make a guess."</span>)</span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Incorrect, try again or type 'hint' for another hint."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Dictionary of soil orders with a hint</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>database <span class="op">=</span> {</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Alfisols"</span>: [<span class="st">"Fertile, with subsurface clay accumulation."</span>, <span class="st">"Starts with 'A'"</span>],</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Andisols"</span>: [<span class="st">"Formed from volcanic materials, high in organic matter."</span>, <span class="st">"Starts with 'A'"</span>],</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Aridisols"</span>: [<span class="st">"Dry soils, often found in deserts."</span>, <span class="st">"Starts with 'A'"</span>],</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Entisols"</span>: [<span class="st">"Young soils with minimal horizon development."</span>, <span class="st">"Starts with 'E'"</span>],</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Gelisols"</span>: [<span class="st">"Contain permafrost, found in cold regions."</span>, <span class="st">"Starts with 'G'"</span>],</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Histosols"</span>: [<span class="st">"Organic, often water-saturated soils like peat."</span>, <span class="st">"Starts with 'H'"</span>],</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Inceptisols"</span>: [<span class="st">"Young, with weak horizon development."</span>, <span class="st">"Starts with 'I'"</span>],</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Mollisols"</span>: [<span class="st">"Dark, rich in organic matter, found under grasslands."</span>, <span class="st">"Starts with 'M'"</span>],</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Oxisols"</span>: [<span class="st">"Highly weathered, tropical soils."</span>, <span class="st">"Starts with 'O'"</span>],</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Spodosols"</span>: [<span class="st">"Acidic, with organic and mineral layers."</span>, <span class="st">"Starts with 'S'"</span>],</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Ultisols"</span>: [<span class="st">"Weathered, acidic soils with subsurface clay."</span>, <span class="st">"Starts with 'U'"</span>],</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Vertisols"</span>: [<span class="st">"Rich in clay, expand and contract with moisture."</span>, <span class="st">"Starts with 'V'"</span>]</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Select a random soil taxonomic order and its hints</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Each item is a list of tuples</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>selection, hints <span class="op">=</span> random.choice(<span class="bu">list</span>(database.items()))</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>hints_iter <span class="op">=</span> <span class="bu">iter</span>(hints)</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Guess the soil taxonomic order! Type 'hint' for a hint."</span>)</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial hint</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First Hint:"</span>, <span class="bu">next</span>(hints_iter))</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a><span class="co"># While loop for guessing game</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    guess <span class="op">=</span> <span class="bu">input</span>(<span class="st">"Your guess: "</span>).strip().lower()</span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> guess <span class="op">==</span> selection.lower():</span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Correct! It was </span><span class="sc">{</span>selection<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">break</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> guess <span class="op">==</span> <span class="st">"hint"</span>:</span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"Hint:"</span>, <span class="bu">next</span>(hints_iter))</span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">StopIteration</span>:</span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="st">"No more hints. Please make a guess."</span>)</span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Incorrect, try again or type 'hint' for another hint."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Guess the soil taxonomic order! Type 'hint' for a hint.
 First Hint: Highly weathered, tropical soils.</code></pre>
