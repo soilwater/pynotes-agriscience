@@ -100,6 +100,7 @@ book:
       chapters:
         - exercises/newton_law_cooling.ipynb
         - exercises/predator_prey_model.ipynb
+        - exercises/reaction_diffusion.ipynb
         
     - part: "STOCHASTIC MODELS"
       chapters:
