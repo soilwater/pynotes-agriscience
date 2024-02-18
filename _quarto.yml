@@ -54,48 +54,49 @@ book:
         - basic_concepts/sql_database.ipynb
 
              
-    - part: "EXERCISES"
+    - part: "GENERAL EXERCISES"
       chapters:
         - exercises/meteogram.ipynb
         - exercises/group_least_variance.ipynb
-        - exercises/random_plots.ipynb
-        - exercises/curve_number.ipynb        
+        - exercises/random_plots.ipynb       
         - exercises/mixing_model.ipynb
         - exercises/mass_volume_relationships.ipynb
         - exercises/soil_textural_class.ipynb
         - exercises/distribution_daily_precipitation.ipynb
         - exercises/high_resolution_rainfall_events.ipynb
         - exercises/first_and_last_frost.ipynb
-        - exercises/evapotranspiration.ipynb
-        - exercises/thermal_time.ipynb
         - exercises/central_dogma.ipynb
         - exercises/error_metrics.ipynb
         - exercises/request_web_data.ipynb
+        - exercises/soil_water_storage.ipynb
+        - exercises/plant_available_water.ipynb
+        - exercises/photoperiod.ipynb
+
+    - part: "MODELS"
+      chapters:
+        - exercises/curve_number.ipynb 
+        - exercises/air_temperature_model.ipynb
+        - exercises/soil_temperature_model.ipynb
+        - exercises/thermal_time.ipynb
+        - exercises/evapotranspiration.ipynb
+        - exercises/photoperiod.ipynb
+        - exercises/wheat_potential_yield.ipynb
+        - exercises/autoregressive_model.ipynb
+        
+    - part: "CURVE FITTING"
+      chapters:
         - exercises/anscombe_quartet.ipynb 
         - exercises/neutron_probe_calibration.ipynb 
         - exercises/sorghum_yields.ipynb         
         - exercises/proctor_test.ipynb
         - exercises/optimal_nitrogen_rate.ipynb
         - exercises/maximum_return_to_nitrogen.ipynb
-        - exercises/air_temperature_model.ipynb
+        - exercises/solar_radiation.ipynb
+        - exercises/soil_water_retention_curve.ipynb
         - exercises/frontier_function.ipynb
         - exercises/atmospheric_carbon_dioxide.ipynb
-        - exercises/autoregressive_model.ipynb
-        - exercises/soil_water_storage.ipynb
-        - exercises/plant_available_water.ipynb
-        - exercises/photoperiod.ipynb
-        - exercises/solar_radiation.ipynb
-        - exercises/wheat_potential_yield.ipynb
-        - exercises/soil_temperature_model.ipynb
-        - exercises/soil_water_retention_curve.ipynb
-        - exercises/count_seeds.ipynb
-        - exercises/canopy_cover.ipynb
-        - exercises/soil_moisture_monitoring_stations.ipynb
-        - exercises/field_random_samples.ipynb
-        - exercises/yield_monitor_clean.ipynb
-        - exercises/yield_monitor_zones.ipynb
-        - exercises/largest_empty_circle.ipynb
-       
+        - exercises/drydowns.ipynb
+        
     - part: "NUMERICAL MODELS"
       chapters:
         - exercises/newton_law_cooling.ipynb
@@ -108,9 +109,23 @@ book:
         - exercises/weed_population.ipynb
         - exercises/rainfall_generator.ipynb
         
+    - part: "IMAGE ANALYSIS"
+      chapters:
+        - exercises/count_seeds.ipynb
+        - exercises/canopy_cover.ipynb
+        
+    - part: "MAPPING AND SPATIAL ANALYSIS"
+      chapters:
+        - exercises/soil_moisture_monitoring_stations.ipynb
+        - exercises/field_random_samples.ipynb
+        - exercises/yield_monitor_clean.ipynb
+        - exercises/yield_monitor_zones.ipynb
+        - exercises/largest_empty_circle.ipynb
+        
     - part: "MACHINE LEARNING"
       chapters:
         - exercises/estimate_daily_vapor_pressure.ipynb
+
 
         
     - part: "GOOGLE EARTH ENGINE"
