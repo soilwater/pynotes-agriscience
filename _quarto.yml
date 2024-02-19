@@ -83,11 +83,12 @@ book:
         - exercises/wheat_potential_yield.ipynb
         - exercises/autoregressive_model.ipynb
         
-    - part: "CURVE FITTING"
+    - part: "REGRESSION AND CURVE FITTING"
       chapters:
         - exercises/anscombe_quartet.ipynb 
         - exercises/neutron_probe_calibration.ipynb 
-        - exercises/sorghum_yields.ipynb         
+        - exercises/sorghum_yields.ipynb
+        - exercises/multiple_linear_regression.ipynb
         - exercises/proctor_test.ipynb
         - exercises/optimal_nitrogen_rate.ipynb
         - exercises/maximum_return_to_nitrogen.ipynb
@@ -113,6 +114,7 @@ book:
       chapters:
         - exercises/count_seeds.ipynb
         - exercises/canopy_cover.ipynb
+        - exercises/lakes_kansas.ipynb
         
     - part: "MAPPING AND SPATIAL ANALYSIS"
       chapters:
@@ -121,19 +123,12 @@ book:
         - exercises/yield_monitor_clean.ipynb
         - exercises/yield_monitor_zones.ipynb
         - exercises/largest_empty_circle.ipynb
+        - exercises/weather_network_coverage.ipynb
         
     - part: "MACHINE LEARNING"
       chapters:
         - exercises/estimate_daily_vapor_pressure.ipynb
 
-
-        
-    - part: "GOOGLE EARTH ENGINE"
-      chapters:
-        - gee/value_at_a_point.ipynb
-        - gee/time_series_at_a_point.ipynb
-        - gee/image_for_an_area.ipynb
-        - gee/publication_quality_maps.ipynb
         
   page-footer:
     center: 
