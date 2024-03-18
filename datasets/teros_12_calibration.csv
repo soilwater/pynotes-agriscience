@@ -1,0 +1,21 @@
+﻿Lab calibration of the Teros 12 soil moisture sensor carried by Sofia Cominelli in 2023,,
+soil,vwc_obs,raw_voltage
+#,m^3/m^3,mV
+loam,0.0047,1888
+loam,0.1021,2019
+loam,0.2538,2324
+loam,0.3084,2535
+loam,0.4068,2730
+loam,0.4487,2833
+Sand,0,1928
+Sand,0.045791583,1980
+Sand,0.159519038,2201
+Sand,0.251202405,2564
+Sand,0.321042084,2651
+Sand,0.319639279,2679
+silty clay loam,0.0086,1889
+silty clay loam,0.1177,2029
+silty clay loam,0.1734,2172
+silty clay loam,0.254,2360
+silty clay loam,0.3876,2780
+silty clay loam,0.4633,2827
