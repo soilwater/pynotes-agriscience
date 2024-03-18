@@ -2448,5 +2448,12 @@
     "title": "83  Estimate daily vapor pressure",
     "section": "Practice",
     "text": "Practice\n\nCompute the mean absolute error and the mean bias error for the different methods.\nLoad the 5-minute dataset for Ashland Bottoms, KS and compute e_sat, e_act, and vpd with the fitted linear model and the machine learning model. Does it work for another locations without any additional calibration?"
+  },
+  {
+    "objectID": "exercises/calibration_teros_12.html",
+    "href": "exercises/calibration_teros_12.html",
+    "title": "57  Calibration soil moisture sensor",
+    "section": "",
+    "text": "# Import modules\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\nfrom sklearn.metrics import r2_score\nfrom scipy.optimize import curve_fit\n\n\n# Read dataset\ndf = pd.read_csv('../datasets/teros_12_calibration.csv', skiprows=[0,2])\ndf.head(3)\n\n\n\n\n\n\n\n\nsoil\nvwc_obs\nraw_voltage\n\n\n\n\n0\nloam\n0.0047\n1888\n\n\n1\nloam\n0.1021\n2019\n\n\n2\nloam\n0.2538\n2324\n\n\n\n\n\n\n\n\n# Define auxiliary functions\nmae_fn = lambda x,y: np.round(np.mean(np.abs(x-y)),3)\n\n\n# Create voltage range of values to make predictions\nx_pred = np.linspace(df['raw_voltage'].min(), df['raw_voltage'].max(), 100)\n\n# Teros 12: Fitted linear model\npar = np.polyfit(df['raw_voltage'], df['vwc_obs'], 1)\ny_pred = np.polyval(par, x_pred)\ndf['vwc_pred'] = np.polyval(par, df['raw_voltage'])\nprint(par)\n\n[ 4.32559249e-04 -7.94969978e-01]\n\n\n\n# MAE TEROS 12\nmae = mae_fn(df['vwc_obs'], df['vwc_pred'])\nprint('MAE Model',mae)\n\nMAE Model 0.027\n\n\n\n# R^2 TEROS 12\nr2 = r2_score(df['vwc_obs'], df['vwc_pred'])\nprint(\"R-squared model:\", np.round(r2, 2))\n\nR-squared model: 0.96\n\n\n\n# Create figure\nfontsize=12\n\nplt.figure(figsize=(5,4))\nplt.title('TEROS 12 - Calibration', size=14)\nplt.scatter(df['raw_voltage'], df['vwc_obs'], facecolor='w', edgecolor='k', s=50, label='Obs')\nplt.plot(x_pred, y_pred, color='black', label='Fitted')\nplt.xlabel('Voltage (mV)', size=fontsize)\nplt.ylabel('VWC Observed (cm³ cm⁻³)', size=fontsize)\nplt.yticks(size=fontsize)\nplt.xticks(size=fontsize)\nplt.text(1870, 0.45, 'B',size=18)\nplt.text(1870, 0.40,'N = 18', fontsize=14)\nplt.legend(fontsize=fontsize, loc = 'lower right')\nplt.show()"
   }
 ]

@@ -86,6 +86,7 @@ book:
     - part: "REGRESSION AND CURVE FITTING"
       chapters:
         - exercises/anscombe_quartet.ipynb 
+        - exercises/calibration_teros_12.ipynb 
         - exercises/neutron_probe_calibration.ipynb 
         - exercises/sorghum_yields.ipynb
         - exercises/multiple_linear_regression.ipynb
