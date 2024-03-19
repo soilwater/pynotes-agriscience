@@ -85,6 +85,7 @@ book:
         
     - part: "REGRESSION AND CURVE FITTING"
       chapters:
+        - exercises/basic_statistical_tests.ipynb 
         - exercises/anscombe_quartet.ipynb 
         - exercises/calibration_teros_12.ipynb 
         - exercises/neutron_probe_calibration.ipynb 
