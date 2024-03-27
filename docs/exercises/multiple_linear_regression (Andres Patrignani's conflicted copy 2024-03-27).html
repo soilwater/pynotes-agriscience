@@ -1020,7 +1020,7 @@ strong multicollinearity or other numerical problems.</code></pre>
 <pre><code>[14.03378102 -5.09215874  0.03671944]</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="20">
+<div class="cell" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create surface grid</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Xgrid is grid of stem diameter</span></span>
@@ -1033,19 +1033,19 @@ strong multicollinearity or other numerical problems.</code></pre>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>X_grid, Y_grid <span class="op">=</span> np.meshgrid(x_vec, y_vec)</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create intercept grid</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>intercept_grid <span class="op">=</span> np.ones(X_grid.shape)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>intercept <span class="op">=</span> np.ones(X_grid.shape)</span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Get parameter values</span></span>
 <span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>pars <span class="op">=</span> results_prunned.params</span>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Z is the elevation of this 2D grid</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>Z_grid <span class="op">=</span> intercept_grid<span class="op">*</span>pars[<span class="dv">0</span>] <span class="op">+</span> X_grid<span class="op">*</span>pars[<span class="dv">1</span>] <span class="op">+</span> X_grid<span class="op">*</span>Y_grid<span class="op">*</span>pars[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>Z_grid <span class="op">=</span> intercept<span class="op">*</span>pars[<span class="dv">0</span>] <span class="op">+</span> X_grid<span class="op">*</span>pars[<span class="dv">1</span>] <span class="op">+</span> X_grid<span class="op">*</span>Y_grid<span class="op">*</span>pars[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Alternatively you can use the <code>.predict()</code> method of the fitted object. This option would required flattening the arrays to make predictions:</p>
 <pre><code>X_pred = np.column_stack((intercept.flatten(), X_grid.flatten(), X_grid.flatten() * Y_grid.flatten()) )
 Z_grid = model_prunned.predict(params=results_prunned.params, exog=X_pred)
 Z_grid = np.reshape(Z_grid, X_grid.shape) # Reset shape to match </code></pre>
-<div class="cell" data-tags="[]" data-execution_count="21">
+<div class="cell" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot points with predicted model (which is a surface)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure and axes</span></span>
@@ -1069,11 +1069,11 @@ Z_grid = np.reshape(Z_grid, X_grid.shape) # Reset shape to match </code></pre>
 <p><img src="multiple_linear_regression_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="22">
+<div class="cell" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can now create a lambda function to help use convert other observations</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>corn_biomass_fn <span class="op">=</span> <span class="kw">lambda</span> stem,height: pars[<span class="dv">0</span>] <span class="op">+</span> stem<span class="op">*</span>pars[<span class="dv">1</span>] <span class="op">+</span> stem<span class="op">*</span>height<span class="op">*</span>pars[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="23">
+<div class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the lambda function using stem = 11 mm and height = 120 cm</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>biomass <span class="op">=</span> corn_biomass_fn(<span class="dv">11</span>, <span class="dv">120</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(biomass,<span class="dv">2</span>), <span class="st">'g'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
