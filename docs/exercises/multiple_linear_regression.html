@@ -831,18 +831,18 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 
 <p>Multiple linear regression analysis is a statistical technique used to model the relationship between two or more independent variables (<span class="math inline">x</span>) and a single dependent variable (<span class="math inline">y</span>). By fitting a linear equation to observed data, this method allows for the prediction of the dependent variable based on the values of the independent variables. It extends simple linear regression, which involves only one independent variable, to include multiple factors, providing a more comprehensive understanding of complex relationships within the data. The general formula is: <span class="math display"> y = \beta_0 \ + \beta_1 \ x_1 + ... + \beta_n \ x_n</span></p>
 <p>An agronomic example that involves the use of multiple linear regression are allometric measurements, such as estimating corn biomass based on plant height and stem diameter.</p>
-<div class="cell" data-tags="[]" data-execution_count="1">
+<div class="cell" data-tags="[]" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import modules</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="2">
+<div class="cell" data-tags="[]" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../datasets/corn_allometric_biomass.csv"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -880,13 +880,13 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-define variables for better plot semantics and shorter variable names</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>xdata <span class="op">=</span> df[<span class="st">'stem_diam_mm'</span>].values</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>ydata <span class="op">=</span> df[<span class="st">'height_cm'</span>].values</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>zdata <span class="op">=</span> df[<span class="st">'dry_biomass_g'</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell" data-tags="[]" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-define variables for better plot semantics and shorter variable names</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x_data <span class="op">=</span> df[<span class="st">'stem_diam_mm'</span>].values</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y_data <span class="op">=</span> df[<span class="st">'height_cm'</span>].values</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>z_data <span class="op">=</span> df[<span class="st">'dry_biomass_g'</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot raw data using 3D plots.</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Great tutorial: https://jakevdp.github.io/PythonDataScienceHandbook/04.12-three-dimensional-plotting.html</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -896,7 +896,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Define axess</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ax.scatter3D(xdata, ydata, zdata, c<span class="op">=</span><span class="st">'r'</span>)<span class="op">;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>ax.scatter3D(x_data, y_data, z_data, c<span class="op">=</span><span class="st">'r'</span>)<span class="op">;</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Stem diameter (mm)'</span>) </span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Plant height (cm)'</span>)</span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'Dry biomass (g)'</span>)</span>
@@ -911,34 +911,40 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <p><img src="multiple_linear_regression_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full model (you can also use xdata and ydata)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack((np.ones(df.shape[<span class="dv">0</span>]), <span class="co"># We can also use X = sm.add_constant(X)</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                     df[<span class="st">'height_cm'</span>],</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                     df[<span class="st">'stem_diam_mm'</span>],</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>                     df[<span class="st">'height_cm'</span>] <span class="op">*</span> df[<span class="st">'stem_diam_mm'</span>]))  <span class="co"># interaction term</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a few rows</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X[<span class="dv">0</span>:<span class="dv">3</span>,:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Full model</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create array of intercept values</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We can also use X = sm.add_constant(X)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>intercept <span class="op">=</span> np.ones(df.shape[<span class="dv">0</span>])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                    </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create matrix with inputs (rows represent obseravtions and columns the variables)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack((intercept, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>                     x_data,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>                     y_data,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>                     x_data <span class="op">*</span> y_data))  <span class="co"># interaction term</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Print a few rows</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X[<span class="dv">0</span>:<span class="dv">3</span>,:])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[[  1.    71.     5.7  404.7 ]
- [  1.    39.     4.4  171.6 ]
- [  1.    55.5    4.3  238.65]]</code></pre>
+<pre><code>[[  1.     5.7   71.   404.7 ]
+ [  1.     4.4   39.   171.6 ]
+ [  1.     4.3   55.5  238.65]]</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="6">
+<div class="cell" data-tags="[]" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run Ordinary Least Squares to fit the model</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(df[<span class="st">'dry_biomass_g'</span>], X)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> sm.OLS(z_data, X)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> model.fit()</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
 ==============================================================================
-Dep. Variable:          dry_biomass_g   R-squared:                       0.849
+Dep. Variable:                      y   R-squared:                       0.849
 Model:                            OLS   Adj. R-squared:                  0.836
 Method:                 Least Squares   F-statistic:                     63.71
 Date:                Wed, 27 Mar 2024   Prob (F-statistic):           4.87e-14
-Time:                        11:33:44   Log-Likelihood:                -129.26
+Time:                        14:12:19   Log-Likelihood:                -129.26
 No. Observations:                  38   AIC:                             266.5
 Df Residuals:                      34   BIC:                             273.1
 Df Model:                           3                                         
@@ -947,8 +953,8 @@ Covariance Type:            nonrobust
                  coef    std err          t      P&gt;|t|      [0.025      0.975]
 ------------------------------------------------------------------------------
 const         18.8097      6.022      3.124      0.004       6.572      31.048
-x1            -0.1830      0.119     -1.541      0.133      -0.424       0.058
-x2            -4.5537      1.222     -3.727      0.001      -7.037      -2.070
+x1            -4.5537      1.222     -3.727      0.001      -7.037      -2.070
+x2            -0.1830      0.119     -1.541      0.133      -0.424       0.058
 x3             0.0433      0.007      6.340      0.000       0.029       0.057
 ==============================================================================
 Omnibus:                        9.532   Durbin-Watson:                   2.076
@@ -965,24 +971,24 @@ strong multicollinearity or other numerical problems.</code></pre>
 </div>
 <p><code>height</code> (x1) does not seem to be statistically significant. This term has a p-value &gt; 0.05 and the range of the 95% confidence interval for its corresponding <span class="math inline">\beta</span> coefficient includes zero.</p>
 <p>The goal is to prune the full model by removing non-significant terms. After removing these terms, we need to fit the model again to update the new coefficients.</p>
-<div class="cell" data-tags="[]" data-execution_count="7">
+<div class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define prunned model</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X_prunned <span class="op">=</span> np.column_stack((np.ones(df.shape[<span class="dv">0</span>]), </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                     df[<span class="st">'stem_diam_mm'</span>], </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                     df[<span class="st">'height_cm'</span>] <span class="op">*</span> df[<span class="st">'stem_diam_mm'</span>]))</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X_prunned <span class="op">=</span> np.column_stack((intercept, </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>                     x_data, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                     x_data <span class="op">*</span> y_data))</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Re-fit the model</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>model_prunned <span class="op">=</span> sm.OLS(df[<span class="st">'dry_biomass_g'</span>], X_prunned)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>model_prunned <span class="op">=</span> sm.OLS(z_data, X_prunned)</span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>results_prunned <span class="op">=</span> model_prunned.fit()</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results_prunned.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                            OLS Regression Results                            
 ==============================================================================
-Dep. Variable:          dry_biomass_g   R-squared:                       0.838
+Dep. Variable:                      y   R-squared:                       0.838
 Model:                            OLS   Adj. R-squared:                  0.829
 Method:                 Least Squares   F-statistic:                     90.81
 Date:                Wed, 27 Mar 2024   Prob (F-statistic):           1.40e-14
-Time:                        11:33:46   Log-Likelihood:                -130.54
+Time:                        14:13:05   Log-Likelihood:                -130.54
 No. Observations:                  38   AIC:                             267.1
 Df Residuals:                      35   BIC:                             272.0
 Df Model:                           2                                         
@@ -1007,33 +1013,30 @@ strong multicollinearity or other numerical problems.</code></pre>
 </div>
 </div>
 <p>The prunned model has: - r-squared remains similar - one less parameter - higher F-Statistic 91 vs 63 - AIC remains similar (the lower the better)</p>
-<div class="cell" data-tags="[]" data-execution_count="8">
+<div class="cell" data-tags="[]" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Access parameter/coefficient values</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results_prunned.params)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>const    14.033781
-x1       -5.092159
-x2        0.036719
-dtype: float64</code></pre>
+<pre><code>[14.03378102 -5.09215874  0.03671944]</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="9">
+<div class="cell" data-tags="[]" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create surface grid</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Xgrid is grid of stem diameter</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(xdata.<span class="bu">min</span>(), xdata.<span class="bu">max</span>(), <span class="dv">21</span>)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>x_vec <span class="op">=</span> np.linspace(x_data.<span class="bu">min</span>(), x_data.<span class="bu">max</span>(), <span class="dv">21</span>)</span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ygrid is grid of plant height</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(ydata.<span class="bu">min</span>(), ydata.<span class="bu">max</span>(), <span class="dv">21</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>y_vec <span class="op">=</span> np.linspace(y_data.<span class="bu">min</span>(), y_data.<span class="bu">max</span>(), <span class="dv">21</span>)</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We generate a 2D grid</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>X_grid, Y_grid <span class="op">=</span> np.meshgrid(x, y)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>X_grid, Y_grid <span class="op">=</span> np.meshgrid(x_vec, y_vec)</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create intercept grid</span></span>
 <span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>intercept <span class="op">=</span> np.ones(X_grid.shape)</span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Get parameter values</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>pars <span class="op">=</span> results_prunned.params.values</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>pars <span class="op">=</span> results_prunned.params</span>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Z is the elevation of this 2D grid</span></span>
 <span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>Z_grid <span class="op">=</span> intercept<span class="op">*</span>pars[<span class="dv">0</span>] <span class="op">+</span> X_grid<span class="op">*</span>pars[<span class="dv">1</span>] <span class="op">+</span> X_grid<span class="op">*</span>Y_grid<span class="op">*</span>pars[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1042,33 +1045,35 @@ dtype: float64</code></pre>
 <pre><code>X_pred = np.column_stack((intercept.flatten(), X_grid.flatten(), X_grid.flatten() * Y_grid.flatten()) )
 Z_grid = model_prunned.predict(params=results_prunned.params, exog=X_pred)
 Z_grid = np.reshape(Z_grid, X_grid.shape) # Reset shape to match </code></pre>
-<div class="cell" data-tags="[]" data-execution_count="10">
+<div class="cell" data-tags="[]" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot points with predicted model (which is a surface)</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure and axes</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>))</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes(projection<span class="op">=</span><span class="st">'3d'</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>ax.scatter3D(xdata, ydata, zdata, c<span class="op">=</span><span class="st">'r'</span>, s<span class="op">=</span><span class="dv">80</span>)<span class="op">;</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>surf <span class="op">=</span> ax.plot_wireframe(X_grid, Y_grid, Z_grid, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#surf = ax.plot_surface(Xgrid, Ygrid, Zgrid, cmap=plt.cm.coolwarm,rstride=1, cstride=1)</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Stem diameter (mm)'</span>)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Plant height x stem diameter'</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'Dry biomass (g)'</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>ax.view_init(<span class="dv">20</span>, <span class="dv">130</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>ax.set_box_aspect(aspect<span class="op">=</span><span class="va">None</span>, zoom<span class="op">=</span><span class="fl">0.8</span>) <span class="co"># Zoom out to see zlabel</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>ax.set_zlim([<span class="dv">0</span>,<span class="dv">100</span>])</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>ax.scatter3D(x_data, y_data, z_data, c<span class="op">=</span><span class="st">'r'</span>, s<span class="op">=</span><span class="dv">80</span>)<span class="op">;</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>surf <span class="op">=</span> ax.plot_wireframe(X_grid, Y_grid, Z_grid, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#surf = ax.plot_surface(Xgrid, Ygrid, Zgrid, cmap='green', rstride=1, cstride=1)</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Stem diameter (mm)'</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Plant height x stem diameter'</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'Dry biomass (g)'</span>)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>ax.view_init(<span class="dv">20</span>, <span class="dv">130</span>)</span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax.set_box_aspect(aspect<span class="op">=</span><span class="va">None</span>, zoom<span class="op">=</span><span class="fl">0.8</span>) <span class="co"># Zoom out to see zlabel</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax.set_zlim([<span class="dv">0</span>,<span class="dv">100</span>])</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <p><img src="multiple_linear_regression_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="11">
+<div class="cell" data-tags="[]" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can now create a lambda function to help use convert other observations</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>corn_biomass_fn <span class="op">=</span> <span class="kw">lambda</span> stem,height: pars[<span class="dv">0</span>] <span class="op">+</span> stem<span class="op">*</span>pars[<span class="dv">1</span>] <span class="op">+</span> stem<span class="op">*</span>height<span class="op">*</span>pars[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="12">
+<div class="cell" data-tags="[]" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the lambda function using stem = 11 mm and height = 120 cm</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>biomass <span class="op">=</span> corn_biomass_fn(<span class="dv">11</span>, <span class="dv">120</span>)</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(biomass,<span class="dv">2</span>), <span class="st">'g'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
