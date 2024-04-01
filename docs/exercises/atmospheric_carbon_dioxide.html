@@ -888,8 +888,10 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">'de_seasonalized'</span>,<span class="st">'days'</span>,<span class="st">'std'</span>,<span class="st">'uncertainty'</span>]</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Load data</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/co2_mm_mlo.txt'</span>, comment<span class="op">=</span><span class="st">'#'</span>, delimiter<span class="op">=</span><span class="st">'\s+'</span>, names<span class="op">=</span>col_names)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/co2_mm_mlo.txt'</span>, names<span class="op">=</span>col_names,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                 comment<span class="op">=</span><span class="st">'#'</span>, delimiter<span class="op">=</span><span class="st">'\s+'</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
@@ -964,6 +966,61 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <td>-9.99</td>
 <td>-0.99</td>
 </tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>1958</td>
+<td>8</td>
+<td>1958.6219</td>
+<td>314.93</td>
+<td>316.18</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>1958</td>
+<td>9</td>
+<td>1958.7068</td>
+<td>313.20</td>
+<td>316.08</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>1958</td>
+<td>10</td>
+<td>1958.7890</td>
+<td>312.43</td>
+<td>315.41</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>1958</td>
+<td>11</td>
+<td>1958.8740</td>
+<td>313.33</td>
+<td>315.20</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>1958</td>
+<td>12</td>
+<td>1958.9562</td>
+<td>314.67</td>
+<td>315.43</td>
+<td>-1</td>
+<td>-9.99</td>
+<td>-0.99</td>
+</tr>
 </tbody>
 </table>
 
@@ -980,7 +1037,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The delimiter <code>\s+</code> is used when the values in your CSV file are separated by spaces, and you might have more than one consecutive space as a separator. Note that <code>\s+</code> is different from <code>\t</code>, which is used tab-delimited files.</p>
+<p>The <code>\s+</code> delimiter is used when values in the CSV file are separated by one or more consecutive spaces. Note that <code>\s+</code> is different from <code>\t</code>, which is used in tab-delimited files.</p>
 </div>
 </div>
 <div class="cell" data-execution_count="3">
@@ -1007,11 +1064,12 @@ Note
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Create shorter names for the dependent and independent variables</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> df_train[<span class="st">"decimal_date"</span>][<span class="dv">0</span>]</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>x_train <span class="op">=</span> df_train[<span class="st">"decimal_date"</span>] <span class="op">-</span> start_date <span class="co"># Dates relative to first date</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> df_train[<span class="st">'monthly_avg_co2'</span>]</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> df_test[<span class="st">"decimal_date"</span>] <span class="op">-</span> start_date <span class="co"># Dates relative to first date</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> df_test[<span class="st">'monthly_avg_co2'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>x_train <span class="op">=</span> df_train[<span class="st">"decimal_date"</span>] <span class="op">-</span> start_date <span class="co"># Dates relative to first date</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>y_train <span class="op">=</span> df_train[<span class="st">'monthly_avg_co2'</span>]</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>x_test <span class="op">=</span> df_test[<span class="st">"decimal_date"</span>] <span class="op">-</span> start_date <span class="co"># Dates relative to first date</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>y_test <span class="op">=</span> df_test[<span class="st">'monthly_avg_co2'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1023,7 +1081,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this exercise we are not “training” a model in the machine learning sense. The variables <code>x_train</code> and <code>y_train</code> are used for curve fitting and could have been called <code>x_fit</code> and <code>y_fit</code>.</p>
+<p>In this exercise we are not “training” a model in the sense of machine learning. The variables <code>x_train</code> and <code>y_train</code> are used to find the optimal model parameters using curve fitting and <code>x_test</code> and <code>y_test</code> are used to validate the model using some unseen data by the model.</p>
 </div>
 </div>
 </section>
@@ -1032,7 +1090,7 @@ Note
 <p>To capture the main trend of carbon dioxide concentration over time we will fit the following exponential model:</p>
 <p><span class="math display">y(t) = a + b \ exp \bigg(\frac{c \ t}{d}\bigg)</span></p>
 <p><span class="math inline">t</span> is time since March, 1958 (the start of the data set)<br> <span class="math inline">a</span>, <span class="math inline">b</span>, <span class="math inline">c</span>, and <span class="math inline">d</span> are unknown parameters.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define lambda function</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>exp_model <span class="op">=</span> <span class="kw">lambda</span> t,a,b,c,d: a <span class="op">+</span> b<span class="op">*</span>np.exp(c<span class="op">*</span>t<span class="op">/</span>d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1052,11 +1110,11 @@ c: 0.016585403165490224
 d: 1.0298254042563226</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="28">
+<div class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict CO2 concentration using exponential model</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y_train_exp <span class="op">=</span> exp_model(x_train, <span class="op">*</span>exp_par[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="53">
+<div class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define lambda function for the mean absolute error formula</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>mae_fn <span class="op">=</span> <span class="kw">lambda</span> obs,pred: np.mean(np.<span class="bu">abs</span>(obs <span class="op">-</span> pred))</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1067,7 +1125,7 @@ d: 1.0298254042563226</code></pre>
 <pre><code>MAE using the exponential model is: 1.87 ppm</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="55">
+<div class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Overlay obseved and predicted carbon dioxide</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df_train[<span class="st">'decimal_date'</span>], y_train, <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'Observed'</span>)</span>
@@ -1083,7 +1141,7 @@ d: 1.0298254042563226</code></pre>
 </div>
 <section id="examine-residuals-of-exponential-fit" class="level3">
 <h3 class="anchored" data-anchor-id="examine-residuals-of-exponential-fit">Examine residuals of exponential fit</h3>
-<div class="cell" data-execution_count="56">
+<div class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute residuals</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>residuals_exp_fit <span class="op">=</span> y_train <span class="op">-</span> y_train_exp</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1099,7 +1157,7 @@ d: 1.0298254042563226</code></pre>
 <p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="33">
+<div class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check if residuals approach a zero mean</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Mean residuals (ppm):'</span>, np.mean(residuals_exp_fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1112,9 +1170,9 @@ d: 1.0298254042563226</code></pre>
 <section id="determine-seasonality-of-time-series" class="level2">
 <h2 class="anchored" data-anchor-id="determine-seasonality-of-time-series">Determine seasonality of time series</h2>
 <p>To determine the seasonality of the data we will use the de-trended residuals.</p>
-<p><span class="math display">y(t) = A \ sin(2 \pi [m + phi] )</span></p>
-<p><span class="math inline">t</span> is time since March, 1958 (the start of the data set)<br> <span class="math inline">A</span> is amplitude of the wave<br> <span class="math inline">m</span> is the fractional month (Jan is zero and Dec is 1)<br> <span class="math inline">phi</span> is the phase constant</p>
-<div class="cell" data-execution_count="34">
+<p><span class="math display">y(t) = A \ sin[2 \pi (m + phi) ]</span></p>
+<p><span class="math inline">t</span> is time since March, 1958 (the start of the data set)<br> <span class="math inline">A</span> is amplitude of the wave<br> <span class="math inline">m</span> is the fractional month (Jan is zero and Dec is 1)<br> <span class="math inline">phi</span> is the phase constant (an offset to align the sine wave)</p>
+<div class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the sinusoidal model</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>sin_model <span class="op">=</span> <span class="kw">lambda</span> t,A,phi: A<span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>((t<span class="op">-</span>np.floor(t)) <span class="op">+</span> phi))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1130,11 +1188,11 @@ d: 1.0298254042563226</code></pre>
 phi: -9.921208441996372</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="35">
+<div class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate timeseries using sinusoidal-exponential model</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>y_train_sin <span class="op">=</span> sin_model(x_train, <span class="op">*</span>sin_par[<span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="57">
+<div class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize residuals of the exponential fit and the fitted sinusoidal model</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(df_train[<span class="st">'decimal_date'</span>], residuals_exp_fit, facecolor<span class="op">=</span><span class="st">'w'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
@@ -1145,13 +1203,13 @@ phi: -9.921208441996372</code></pre>
 <p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="37">
+<div class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Close up view for a shorter time span of 50 months</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>zoom_range <span class="op">=</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="dv">50</span>)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>))</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(x_train[zoom_range], residuals_exp_fit[zoom_range],</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>            facecolor<span class="op">=</span><span class="st">'w'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x_train[zoom_range], y_pred_sin[zoom_range], <span class="st">'-k'</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>plt.plot(x_train[zoom_range], y_train_sin[zoom_range], <span class="st">'-k'</span>)</span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
@@ -1159,7 +1217,7 @@ phi: -9.921208441996372</code></pre>
 </div>
 </div>
 <p>Althought we can still some minor differences, overall the sinnusoidal model seems to capture the main trend of the residuals. We could compute the residuals of this fit to inspect if there still is a trend that we can exploit to include in our model. In this exercise we will stop here, since this is probably sufficient for most practical applications, but before we move on, let’s plot the residuals of the sinusoidal fit. You will see that slowly the residuals are looking more random.</p>
-<div class="cell" data-execution_count="58">
+<div class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate residuals</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>residuals_sin_fit <span class="op">=</span> residuals_exp_fit <span class="op">-</span> y_train_sin</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1179,8 +1237,8 @@ phi: -9.921208441996372</code></pre>
 <p>Now that we have an exponential and a sinusoidal model, let’s combine them to have a full deterministic model that we can use to predict and forecast the atmospheric carbon dioxide concentration. The combined model is:</p>
 <p><span class="math display">y(t) = a + b \ exp \bigg(\frac{c \ t}{d}\bigg) + A \ sin(2 \pi [m + phi] )</span></p>
 <div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the exponential-sinusoidal model</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>exp_sin_model <span class="op">=</span> <span class="kw">lambda</span> t,a,b,c,d,A,phi: a<span class="op">+</span>b<span class="op">*</span>np.exp(c<span class="op">*</span>t<span class="op">/</span>d) <span class="op">+</span> A<span class="op">*</span>np.sin(<span class="dv">2</span><span class="op">*</span>np.pi<span class="op">*</span>((t<span class="op">-</span>np.floor(t))<span class="op">+</span>phi))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the exponential-sinusoidal model as the sum of both models</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>exp_sin_model <span class="op">=</span> <span class="kw">lambda</span> t,a,b,c,d,A,phi: exp_model(t,a,b,c,d) <span class="op">+</span> sin_model(t,A,phi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Recall that the parameters for the exponential and sinnusoidal models are:</span></span>
@@ -1195,11 +1253,11 @@ phi: -9.921208441996372</code></pre>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># So the combined parameters for both models are</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>exp_sin_par <span class="op">=</span> np.concatenate((exp_par[<span class="dv">0</span>], sin_par[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="45">
+<div class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict the time series using the full model</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>y_train_exp_sin <span class="op">=</span> exp_sin_model(x_train, <span class="op">*</span>exp_sin_par)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="59">
+<div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure of combined models</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df_train[<span class="st">'decimal_date'</span>], y_train, <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'Observed'</span>)</span>
@@ -1214,7 +1272,7 @@ phi: -9.921208441996372</code></pre>
 <p><img src="atmospheric_carbon_dioxide_files/figure-html/cell-22-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="52">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute MAE of combined model against the training set</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mae_train_exp_sin <span class="op">=</span> mae_fn(y_train, y_train_exp_sin)</span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'MAE using the exponential-sinusoidal model is:'</span>,np.<span class="bu">round</span>(mae_train_exp_sin, <span class="dv">2</span>), <span class="st">'ppm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1222,7 +1280,7 @@ phi: -9.921208441996372</code></pre>
 <pre><code>MAE using the exponential-sinusoidal model is: 1.05 ppm</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="60">
+<div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute residuals</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>residuals_exp_sin <span class="op">=</span> y_train <span class="op">-</span> y_train_exp_sin</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1231,7 +1289,7 @@ phi: -9.921208441996372</code></pre>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(df_train[<span class="st">'decimal_date'</span>], residuals_exp_sin, s<span class="op">=</span><span class="dv">10</span>)</span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time'</span>)</span>
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Atmospheric carbon dioxide (ppm)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="60">
+<div class="cell-output cell-output-display" data-execution_count="26">
 <pre><code>Text(0, 0.5, 'Atmospheric carbon dioxide (ppm)')</code></pre>
 </div>
 <div class="cell-output cell-output-display">
@@ -1241,7 +1299,7 @@ phi: -9.921208441996372</code></pre>
 </section>
 <section id="full-model-against-test-set" class="level2">
 <h2 class="anchored" data-anchor-id="full-model-against-test-set">Full model against test set</h2>
-<div class="cell" data-execution_count="51">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predict the time series using the full model</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>y_test_exp_sin <span class="op">=</span> exp_sin_model(x_test, <span class="op">*</span>exp_sin_par)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1252,7 +1310,7 @@ phi: -9.921208441996372</code></pre>
 <pre><code>MAE using the exponential-sinusoidal model is: 1.16 ppm</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="61">
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure of combined models</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">4</span>))</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>plt.plot(df_test[<span class="st">'decimal_date'</span>], y_test, <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'Observed'</span>)</span>
@@ -1269,7 +1327,7 @@ phi: -9.921208441996372</code></pre>
 </section>
 <section id="generate-2030-forecast" class="level2">
 <h2 class="anchored" data-anchor-id="generate-2030-forecast">Generate 2030 forecast</h2>
-<div class="cell" data-execution_count="62">
+<div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forecast of concentration in 2030 (here we only need the relative year value in 2030)</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>y_2030 <span class="op">=</span> exp_sin_model(<span class="dv">2030</span> <span class="op">-</span> start_date, <span class="op">*</span>exp_sin_par)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Carbon dioxide concentration in 2050 is estimated to be:'</span>, np.<span class="bu">round</span>(y_2030),<span class="st">'ppm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1277,7 +1335,7 @@ phi: -9.921208441996372</code></pre>
 <pre><code>Carbon dioxide concentration in 2050 is estimated to be: 437.0 ppm</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="66">
+<div class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>last_date <span class="op">=</span> df[<span class="st">'decimal_date'</span>].iloc[<span class="op">-</span><span class="dv">1</span>]</span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>x_forecast <span class="op">=</span> np.arange(last_date, <span class="dv">2030</span>, <span class="fl">0.1</span>) <span class="op">-</span> start_date</span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>y_forecast <span class="op">=</span> exp_sin_model(x_forecast, <span class="op">*</span>exp_sin_par)</span>
