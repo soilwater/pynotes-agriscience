@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2024-02-03">
 <meta name="keywords" content="vapor pressure deficit, vpd">
 
-<title>PyNotes in Agriscience - 85&nbsp; Estimate daily vapor pressure</title>
+<title>PyNotes in Agriscience - 89&nbsp; Estimate daily vapor pressure</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,7 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercises/weather_network_coverage.html" rel="prev">
+<link href="../exercises/simple_kriging.html" rel="prev">
 <link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -123,7 +123,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/estimate_daily_vapor_pressure.html">MACHINE LEARNING</a></li><li class="breadcrumb-item"><a href="../exercises/estimate_daily_vapor_pressure.html"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/estimate_daily_vapor_pressure.html">MACHINE LEARNING</a></li><li class="breadcrumb-item"><a href="../exercises/estimate_daily_vapor_pressure.html"><span class="chapter-number">89</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -753,6 +753,30 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">84</span>&nbsp; <span class="chapter-title">Weather network coverage</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/inverse_distance_weighting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Inverse distance weighting method</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/builtin_spatial_interpolators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">86</span>&nbsp; <span class="chapter-title">Built-in spatial interpolators</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/semivariogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">87</span>&nbsp; <span class="chapter-title">Semivariogram</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/simple_kriging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">88</span>&nbsp; <span class="chapter-title">Simple kriging</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -767,7 +791,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/estimate_daily_vapor_pressure.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></span></a>
+ <span class="menu-text"><span class="chapter-number">89</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></span></a>
   </div>
 </li>
       </ul>
@@ -798,7 +822,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></h1>
+<h1 class="title"><span class="chapter-number">89</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></h1>
 </div>
 
 
@@ -1532,8 +1556,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercises/weather_network_coverage.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">84</span>&nbsp; <span class="chapter-title">Weather network coverage</span></span>
+      <a href="../exercises/simple_kriging.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">88</span>&nbsp; <span class="chapter-title">Simple kriging</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

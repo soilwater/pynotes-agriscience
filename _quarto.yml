@@ -126,6 +126,11 @@ book:
         - exercises/yield_monitor_zones.ipynb
         - exercises/largest_empty_circle.ipynb
         - exercises/weather_network_coverage.ipynb
+        - exercises/inverse_distance_weighting.ipynb
+        - exercises/builtin_spatial_interpolators.ipynb
+        - exercises/semivariogram.ipynb
+        - exercises/simple_kriging.ipynb
+
         
     - part: "MACHINE LEARNING"
       chapters:

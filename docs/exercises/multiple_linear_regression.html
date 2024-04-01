@@ -770,6 +770,30 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">84</span>&nbsp; <span class="chapter-title">Weather network coverage</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/inverse_distance_weighting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Inverse distance weighting method</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/builtin_spatial_interpolators.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">86</span>&nbsp; <span class="chapter-title">Built-in spatial interpolators</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/semivariogram.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">87</span>&nbsp; <span class="chapter-title">Semivariogram</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/simple_kriging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">88</span>&nbsp; <span class="chapter-title">Simple kriging</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -784,7 +808,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/estimate_daily_vapor_pressure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></span></a>
+ <span class="menu-text"><span class="chapter-number">89</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></span></a>
   </div>
 </li>
       </ul>
@@ -838,11 +862,11 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.api <span class="im">as</span> sm</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="3">
+<div class="cell" data-tags="[]" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../datasets/corn_allometric_biomass.csv"</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">40</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
 <div>
 
 
@@ -873,6 +897,216 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <td>55.5</td>
 <td>4.3</td>
 <td>0.30</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>41.5</td>
+<td>3.7</td>
+<td>0.16</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>40.0</td>
+<td>3.6</td>
+<td>0.14</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>77.0</td>
+<td>6.7</td>
+<td>1.05</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>64.0</td>
+<td>5.6</td>
+<td>0.71</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>112.0</td>
+<td>9.5</td>
+<td>3.02</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>181.0</td>
+<td>17.1</td>
+<td>35.50</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">9</td>
+<td>170.0</td>
+<td>15.9</td>
+<td>28.30</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">10</td>
+<td>189.0</td>
+<td>16.4</td>
+<td>65.40</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">11</td>
+<td>171.0</td>
+<td>15.6</td>
+<td>28.10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">12</td>
+<td>184.0</td>
+<td>16.0</td>
+<td>37.90</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">13</td>
+<td>186.0</td>
+<td>16.9</td>
+<td>61.40</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">14</td>
+<td>171.0</td>
+<td>14.5</td>
+<td>24.70</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">15</td>
+<td>182.0</td>
+<td>17.2</td>
+<td>44.70</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16</td>
+<td>189.0</td>
+<td>18.9</td>
+<td>41.80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">17</td>
+<td>188.0</td>
+<td>16.3</td>
+<td>35.20</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18</td>
+<td>150.0</td>
+<td>14.5</td>
+<td>6.79</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">19</td>
+<td>166.0</td>
+<td>15.8</td>
+<td>34.10</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">20</td>
+<td>159.0</td>
+<td>18.2</td>
+<td>48.90</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">21</td>
+<td>159.0</td>
+<td>14.7</td>
+<td>9.60</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">22</td>
+<td>162.0</td>
+<td>15.3</td>
+<td>17.90</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">23</td>
+<td>156.0</td>
+<td>14.0</td>
+<td>13.70</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>165.0</td>
+<td>15.1</td>
+<td>26.92</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">25</td>
+<td>168.0</td>
+<td>15.3</td>
+<td>30.60</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">26</td>
+<td>157.0</td>
+<td>15.5</td>
+<td>24.80</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">27</td>
+<td>167.0</td>
+<td>13.1</td>
+<td>31.90</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">28</td>
+<td>117.0</td>
+<td>11.6</td>
+<td>4.60</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">29</td>
+<td>118.5</td>
+<td>13.0</td>
+<td>6.13</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">30</td>
+<td>119.5</td>
+<td>12.1</td>
+<td>6.27</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">31</td>
+<td>124.0</td>
+<td>13.5</td>
+<td>6.43</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">32</td>
+<td>117.0</td>
+<td>14.9</td>
+<td>6.22</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">33</td>
+<td>32.5</td>
+<td>4.5</td>
+<td>0.27</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">34</td>
+<td>24.0</td>
+<td>3.6</td>
+<td>0.15</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">35</td>
+<td>31.5</td>
+<td>3.7</td>
+<td>0.13</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">36</td>
+<td>27.5</td>
+<td>3.3</td>
+<td>0.13</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">37</td>
+<td>27.5</td>
+<td>3.4</td>
+<td>0.14</td>
 </tr>
 </tbody>
 </table>
@@ -944,7 +1178,7 @@ Dep. Variable:                      y   R-squared:                       0.849
 Model:                            OLS   Adj. R-squared:                  0.836
 Method:                 Least Squares   F-statistic:                     63.71
 Date:                Wed, 27 Mar 2024   Prob (F-statistic):           4.87e-14
-Time:                        14:12:19   Log-Likelihood:                -129.26
+Time:                        15:38:41   Log-Likelihood:                -129.26
 No. Observations:                  38   AIC:                             266.5
 Df Residuals:                      34   BIC:                             273.1
 Df Model:                           3                                         
@@ -988,7 +1222,7 @@ Dep. Variable:                      y   R-squared:                       0.838
 Model:                            OLS   Adj. R-squared:                  0.829
 Method:                 Least Squares   F-statistic:                     90.81
 Date:                Wed, 27 Mar 2024   Prob (F-statistic):           1.40e-14
-Time:                        14:13:05   Log-Likelihood:                -130.54
+Time:                        15:38:44   Log-Likelihood:                -130.54
 No. Observations:                  38   AIC:                             267.1
 Df Residuals:                      35   BIC:                             272.0
 Df Model:                           2                                         
@@ -1020,63 +1254,76 @@ strong multicollinearity or other numerical problems.</code></pre>
 <pre><code>[14.03378102 -5.09215874  0.03671944]</code></pre>
 </div>
 </div>
-<div class="cell" data-tags="[]" data-execution_count="20">
+<div class="cell" data-tags="[]" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create surface grid</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Xgrid is grid of stem diameter</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>x_vec <span class="op">=</span> np.linspace(x_data.<span class="bu">min</span>(), x_data.<span class="bu">max</span>(), <span class="dv">21</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define number of point intervals in the mesh</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">5</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Ygrid is grid of plant height</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>y_vec <span class="op">=</span> np.linspace(y_data.<span class="bu">min</span>(), y_data.<span class="bu">max</span>(), <span class="dv">21</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Xgrid is grid of stem diameter</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>x_vec <span class="op">=</span> np.linspace(x_data.<span class="bu">min</span>(), x_data.<span class="bu">max</span>(), N)</span>
 <span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># We generate a 2D grid</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>X_grid, Y_grid <span class="op">=</span> np.meshgrid(x_vec, y_vec)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Ygrid is grid of plant height</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>y_vec <span class="op">=</span> np.linspace(y_data.<span class="bu">min</span>(), y_data.<span class="bu">max</span>(), N)</span>
 <span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create intercept grid</span></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>intercept_grid <span class="op">=</span> np.ones(X_grid.shape)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co"># We generate a 2D grid</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>X_grid, Y_grid <span class="op">=</span> np.meshgrid(x_vec, y_vec)</span>
 <span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Get parameter values</span></span>
-<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>pars <span class="op">=</span> results_prunned.params</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create intercept grid</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>intercept_grid <span class="op">=</span> np.ones(X_grid.shape)</span>
 <span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Z is the elevation of this 2D grid</span></span>
-<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>Z_grid <span class="op">=</span> intercept_grid<span class="op">*</span>pars[<span class="dv">0</span>] <span class="op">+</span> X_grid<span class="op">*</span>pars[<span class="dv">1</span>] <span class="op">+</span> X_grid<span class="op">*</span>Y_grid<span class="op">*</span>pars[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Get parameter values</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>pars <span class="op">=</span> results_prunned.params</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Z is the elevation of this 2D grid</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>Z_grid <span class="op">=</span> intercept_grid<span class="op">*</span>pars[<span class="dv">0</span>] <span class="op">+</span> X_grid<span class="op">*</span>pars[<span class="dv">1</span>] <span class="op">+</span> X_grid<span class="op">*</span>Y_grid<span class="op">*</span>pars[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-tags="[]" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Y_grid</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>array([[ 24.  ,  24.  ,  24.  ,  24.  ,  24.  ],
+       [ 65.25,  65.25,  65.25,  65.25,  65.25],
+       [106.5 , 106.5 , 106.5 , 106.5 , 106.5 ],
+       [147.75, 147.75, 147.75, 147.75, 147.75],
+       [189.  , 189.  , 189.  , 189.  , 189.  ]])</code></pre>
+</div>
 </div>
 <p>Alternatively you can use the <code>.predict()</code> method of the fitted object. This option would required flattening the arrays to make predictions:</p>
 <pre><code>X_pred = np.column_stack((intercept.flatten(), X_grid.flatten(), X_grid.flatten() * Y_grid.flatten()) )
 Z_grid = model_prunned.predict(params=results_prunned.params, exog=X_pred)
 Z_grid = np.reshape(Z_grid, X_grid.shape) # Reset shape to match </code></pre>
-<div class="cell" data-tags="[]" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot points with predicted model (which is a surface)</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure and axes</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>))</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes(projection<span class="op">=</span><span class="st">'3d'</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>ax.scatter3D(x_data, y_data, z_data, c<span class="op">=</span><span class="st">'r'</span>, s<span class="op">=</span><span class="dv">80</span>)<span class="op">;</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>surf <span class="op">=</span> ax.plot_wireframe(X_grid, Y_grid, Z_grid, color<span class="op">=</span><span class="st">'black'</span>)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#surf = ax.plot_surface(Xgrid, Ygrid, Zgrid, cmap='green', rstride=1, cstride=1)</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Stem diameter (mm)'</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Plant height x stem diameter'</span>)</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'Dry biomass (g)'</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>ax.view_init(<span class="dv">20</span>, <span class="dv">130</span>)</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>ax.set_box_aspect(aspect<span class="op">=</span><span class="va">None</span>, zoom<span class="op">=</span><span class="fl">0.8</span>) <span class="co"># Zoom out to see zlabel</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>ax.set_zlim([<span class="dv">0</span>,<span class="dv">100</span>])</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-tags="[]" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot points with predicted model (which is a surface)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create figure and axes</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>))</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> plt.axes(projection<span class="op">=</span><span class="st">'3d'</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>ax.scatter3D(x_data, y_data, z_data, c<span class="op">=</span><span class="st">'r'</span>, s<span class="op">=</span><span class="dv">80</span>)<span class="op">;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>surf <span class="op">=</span> ax.plot_wireframe(X_grid, Y_grid, Z_grid, color<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#surf = ax.plot_surface(Xgrid, Ygrid, Zgrid, cmap='green', rstride=1, cstride=1)</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Stem diameter (mm)'</span>)</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Plant height x stem diameter'</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'Dry biomass (g)'</span>)</span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a>ax.view_init(<span class="dv">20</span>, <span class="dv">130</span>)</span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>fig.tight_layout()</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>ax.set_box_aspect(aspect<span class="op">=</span><span class="va">None</span>, zoom<span class="op">=</span><span class="fl">0.8</span>) <span class="co"># Zoom out to see zlabel</span></span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>ax.set_zlim([<span class="dv">0</span>,<span class="dv">100</span>])</span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>plt.show()</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="multiple_linear_regression_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+<p><img src="multiple_linear_regression_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 <div class="cell" data-tags="[]" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can now create a lambda function to help use convert other observations</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>corn_biomass_fn <span class="op">=</span> <span class="kw">lambda</span> stem,height: pars[<span class="dv">0</span>] <span class="op">+</span> stem<span class="op">*</span>pars[<span class="dv">1</span>] <span class="op">+</span> stem<span class="op">*</span>height<span class="op">*</span>pars[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># We can now create a lambda function to help use convert other observations</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>corn_biomass_fn <span class="op">=</span> <span class="kw">lambda</span> stem,height: pars[<span class="dv">0</span>] <span class="op">+</span> stem<span class="op">*</span>pars[<span class="dv">1</span>] <span class="op">+</span> stem<span class="op">*</span>height<span class="op">*</span>pars[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-tags="[]" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the lambda function using stem = 11 mm and height = 120 cm</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>biomass <span class="op">=</span> corn_biomass_fn(<span class="dv">11</span>, <span class="dv">120</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(biomass,<span class="dv">2</span>), <span class="st">'g'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test the lambda function using stem = 11 mm and height = 120 cm</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>biomass <span class="op">=</span> corn_biomass_fn(<span class="dv">11</span>, <span class="dv">120</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">round</span>(biomass,<span class="dv">2</span>), <span class="st">'g'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>6.49 g</code></pre>
 </div>
