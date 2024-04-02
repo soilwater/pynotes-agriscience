@@ -1327,12 +1327,12 @@ phi: -9.921208441996372</code></pre>
 </section>
 <section id="generate-2030-forecast" class="level2">
 <h2 class="anchored" data-anchor-id="generate-2030-forecast">Generate 2030 forecast</h2>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forecast of concentration in 2030 (here we only need the relative year value in 2030)</span></span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>y_2030 <span class="op">=</span> exp_sin_model(<span class="dv">2030</span> <span class="op">-</span> start_date, <span class="op">*</span>exp_sin_par)</span>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Forecast of concentration in July 2030 (relative date)</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>y_2030 <span class="op">=</span> exp_sin_model(<span class="fl">2030.5</span> <span class="op">-</span> start_date, <span class="op">*</span>exp_sin_par)</span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Carbon dioxide concentration in 2050 is estimated to be:'</span>, np.<span class="bu">round</span>(y_2030),<span class="st">'ppm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Carbon dioxide concentration in 2050 is estimated to be: 437.0 ppm</code></pre>
+<pre><code>Carbon dioxide concentration in 2050 is estimated to be: 443.0 ppm</code></pre>
 </div>
 </div>
 <div class="cell" data-execution_count="30">

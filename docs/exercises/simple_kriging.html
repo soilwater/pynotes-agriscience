@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.4.552">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -25,7 +25,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -60,7 +60,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -85,7 +85,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -94,6 +100,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -109,7 +116,7 @@ gtag('js', new Date());
 gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
@@ -121,12 +128,12 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/soil_moisture_monitoring_stations.html">MAPPING AND SPATIAL ANALYSIS</a></li><li class="breadcrumb-item"><a href="../exercises/simple_kriging.html"><span class="chapter-number">88</span>&nbsp; <span class="chapter-title">Simple kriging</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/soil_moisture_monitoring_stations.html">MAPPING AND SPATIAL ANALYSIS</a></li><li class="breadcrumb-item"><a href="../exercises/simple_kriging.html"><span class="chapter-number">88</span>&nbsp; <span class="chapter-title">Simple kriging</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
@@ -136,13 +143,13 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="../">PyNotes in Agriscience</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/soilwater/pynotes-agriscience" rel="" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
-    <a href="../PyNotes-in-Agriscience.pdf" rel="" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
+    <a href="https://github.com/soilwater/pynotes-agriscience" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="../PyNotes-in-Agriscience.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
       </div>
@@ -800,7 +807,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -819,12 +826,12 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
   <li><a href="#note-on-simple-versus-ordinary-kriging" id="toc-note-on-simple-versus-ordinary-kriging" class="nav-link" data-scroll-target="#note-on-simple-versus-ordinary-kriging">Note on simple versus ordinary kriging</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/simple_kriging.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/simple_kriging.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/soil_moisture_monitoring_stations.html">MAPPING AND SPATIAL ANALYSIS</a></li><li class="breadcrumb-item"><a href="../exercises/simple_kriging.html"><span class="chapter-number">88</span>&nbsp; <span class="chapter-title">Simple kriging</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">88</span>&nbsp; <span class="chapter-title">Simple kriging</span></h1>
 </div>
@@ -851,17 +858,25 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
   </div>
   
 
+<div>
+  <div class="keywords">
+    <div class="block-title">Keywords</div>
+    <p>interpolation, spatial interpolation, kriging</p>
+  </div>
+</div>
+
 </header>
+
 
 <p>Simple kriging assumes that the mean of the random variable is known and constant across the entire study area. This is a strong assumption, that may not be valid for complex spatial datasets. The predictions made by simple kriging are based on take into account the difference between observed values and the global mean, weighting these differences based on the spatial correlation using a semivariogram, to then predict values at unsampled locations.</p>
 <p>The main assumption of simple kriging is that the random variable (detrended or not) is stationary.</p>
-<div class="cell" data-execution_count="98">
+<div id="9e4fbc6f-7c4b-4085-8223-1494846648c8" class="cell" data-execution_count="323">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import modules</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.spatial.distance <span class="im">import</span> cdist</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="132">
+<div id="c60c8a4d-6dca-42f5-b933-a9aa01496e3d" class="cell" data-execution_count="324">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> spherical_model(h,n,s,r):</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function that implements a spehrical semivariogram model."""</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    </span>
@@ -871,7 +886,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    g <span class="op">=</span> np.maximum(g, <span class="dv">0</span>)</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="101">
+<div id="6e8c072e-39c6-4def-bb51-f130a81321a2" class="cell" data-execution_count="325">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>nugget <span class="op">=</span> <span class="dv">0</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>sill <span class="op">=</span> <span class="fl">0.78</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>range_ <span class="op">=</span> <span class="dv">4141</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -881,27 +896,27 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <p>Before we do any spatial interpolation, let’s learn about the inner workings of simple kriging. More advanced kriging methods stem from the same principles, albeits some minor modifications to capture local variability (ordinary kriging) or systematic trends (regression kriging)</p>
 <section id="define-observation-dataset" class="level4">
 <h4 class="anchored" data-anchor-id="define-observation-dataset">Define observation dataset</h4>
-<div class="cell" data-execution_count="133">
+<div id="ac424666-522f-40cc-98cd-ad322aecd4be" class="cell" data-execution_count="364">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example coordinates</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x_obs <span class="op">=</span> np.array([<span class="dv">880</span>, <span class="dv">2700</span>, <span class="dv">3700</span>, <span class="dv">2300</span>, <span class="dv">950</span>, <span class="dv">500</span>])</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>y_obs <span class="op">=</span> np.array([<span class="dv">3700</span>, <span class="dv">4300</span>, <span class="dv">5000</span>, <span class="dv">5650</span>, <span class="dv">5100</span>, <span class="dv">4950</span>])</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Example observations for x,y coordinates</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of porosity observations for x,y coordinates</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>z_obs <span class="op">=</span> np.array([<span class="fl">13.84</span>, <span class="fl">12.15</span>, <span class="fl">12.87</span>, <span class="fl">12.68</span>, <span class="fl">14.41</span>, <span class="fl">14.59</span>])</span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Global average (not the average</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> <span class="fl">14.70</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Population mean</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>mu <span class="op">=</span> np.mean(z_obs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="define-coordinates-of-prediction-points" class="level4">
 <h4 class="anchored" data-anchor-id="define-coordinates-of-prediction-points">Define coordinates of prediction points</h4>
 <p>This are the <em>x</em> and <em>y</em> coordinates of points with unknon variable value where we want to make predictions.</p>
-<div class="cell" data-execution_count="134">
+<div id="dc846e0f-de28-4e89-adf9-e3a381e7ad4e" class="cell" data-execution_count="336">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Point coordinates where we want to estimate the variable</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>x_pred <span class="op">=</span> np.array([<span class="dv">2000</span>]) <span class="co"># meters</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> np.array([<span class="dv">4700</span>]) <span class="co"># meters</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="135">
+<div id="ce972ebd-73a5-4e7e-8243-6af71e959611" class="cell" data-execution_count="337">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert vectors into pairwise arrays</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># so that we meet the requirements of spatial function libraries</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>obs_points <span class="op">=</span> np.vstack((x_obs, y_obs)).T</span>
@@ -920,11 +935,11 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </section>
 <section id="compute-lag-distances-between-all-observed-points" class="level3">
 <h3 class="anchored" data-anchor-id="compute-lag-distances-between-all-observed-points">Compute lag distances between all observed points</h3>
-<div class="cell" data-execution_count="136">
+<div id="558174b9-0775-4b01-82b4-5076adcfa98c" class="cell" data-execution_count="338">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute lag distance among all observed points</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>h_obs <span class="op">=</span> np.<span class="bu">round</span>(cdist(obs_points, obs_points))</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>h_obs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="136">
+<div class="cell-output cell-output-display" data-execution_count="338">
 <pre><code>array([[   0., 1916., 3105., 2412., 1402., 1306.],
        [1916.,    0., 1221., 1408., 1924., 2294.],
        [3105., 1221.,    0., 1544., 2752., 3200.],
@@ -933,15 +948,15 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
        [1306., 2294., 3200., 1931.,  474.,    0.]])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="137">
+<div id="3e3d4e02-4f01-4569-8e67-114ee3ce20cd" class="cell" data-execution_count="339">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">### Compute lag distances between all observed points and prediction points</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="138">
+<div id="e74bbfaa-4418-40fe-a4b6-47209fd7d9c0" class="cell" data-execution_count="340">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute lag distance among all observed points</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>h_pred <span class="op">=</span> np.<span class="bu">round</span>(cdist(obs_points, pred_points))</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> np.<span class="bu">round</span>(sill <span class="op">-</span> spherical_model(h_pred,n<span class="op">=</span>nugget,s<span class="op">=</span>sill,r<span class="op">=</span>range_),<span class="dv">2</span>)</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>k</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="138">
+<div class="cell-output cell-output-display" data-execution_count="340">
 <pre><code>array([[0.37],
        [0.56],
        [0.32],
@@ -953,11 +968,11 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </section>
 <section id="compute-covariance-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="compute-covariance-matrix">Compute covariance matrix</h3>
-<div class="cell" data-execution_count="108">
+<div id="00881f8d-3a5c-4ecf-b38c-d91ecd8b83c0" class="cell" data-execution_count="341">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Covariance matrix</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>K <span class="op">=</span> np.<span class="bu">round</span>(sill <span class="op">-</span> spherical_model(h_obs, n<span class="op">=</span>nugget, s<span class="op">=</span>sill, r<span class="op">=</span>range_), <span class="dv">2</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>K</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="108">
+<div class="cell-output cell-output-display" data-execution_count="341">
 <pre><code>array([[0.78, 0.28, 0.07, 0.18, 0.4 , 0.42],
        [0.28, 0.78, 0.45, 0.4 , 0.28, 0.2 ],
        [0.07, 0.45, 0.78, 0.36, 0.12, 0.06],
@@ -969,11 +984,11 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </section>
 <section id="compute-kriging-weights" class="level3">
 <h3 class="anchored" data-anchor-id="compute-kriging-weights">Compute kriging weights</h3>
-<div class="cell" data-execution_count="109">
+<div id="5f47c457-d5c7-4a1d-87fc-2a8c7a3922e5" class="cell" data-execution_count="342">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># kriging weights</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>lmd <span class="op">=</span> np.dot(np.linalg.inv(K),k)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>lmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="109">
+<div class="cell-output cell-output-display" data-execution_count="342">
 <pre><code>array([[ 0.12542978],
        [ 0.46726265],
        [-0.03056315],
@@ -985,53 +1000,54 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </section>
 <section id="compute-residuals" class="level3">
 <h3 class="anchored" data-anchor-id="compute-residuals">Compute residuals</h3>
-<div class="cell" data-execution_count="115">
+<div id="3138607e-c008-4872-9979-c4ea2f160aab" class="cell" data-execution_count="343">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residuals</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>res_obs <span class="op">=</span> z_obs <span class="op">-</span> mu</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>res_obs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="115">
-<pre><code>array([-0.86, -2.55, -1.83, -2.02, -0.29, -0.11])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="343">
+<pre><code>array([ 0.41666667, -1.27333333, -0.55333333, -0.74333333,  0.98666667,
+        1.16666667])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="116">
+<div id="dbfa0949-22e5-41d2-8eaa-e3dfa58b2c2f" class="cell" data-execution_count="344">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Residual at prediction point (deviation from the global or local mean)</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>res_pred <span class="op">=</span> np.dot(lmd.T, res_obs)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>res_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="116">
-<pre><code>array([-1.84898284])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="344">
+<pre><code>array([-0.48718296])</code></pre>
 </div>
 </div>
 </section>
 <section id="estimate-value-and-variance-at-prediction-point" class="level3">
 <h3 class="anchored" data-anchor-id="estimate-value-and-variance-at-prediction-point">Estimate value and variance at prediction point</h3>
-<div class="cell" data-execution_count="117">
+<div id="34b2f057-27ae-48c2-b146-aaa4c4e7a876" class="cell" data-execution_count="345">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean value at prediction point</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>z_pred <span class="op">=</span> mu <span class="op">+</span> res_pred</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>z_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="117">
-<pre><code>array([12.85101716])</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="345">
+<pre><code>array([12.93615037])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="118">
+<div id="106146a2-5673-4645-abc6-240c95513be2" class="cell" data-execution_count="346">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute variance at prediction (unsampled) location</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># We need to get the diagonal (which is the variance at each point)</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>v_pred <span class="op">=</span> sill <span class="op">-</span> np.dot(lmd.T,k)</span>
 <span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>v_pred[np.identity(v_pred.shape[<span class="dv">0</span>], dtype<span class="op">=</span><span class="bu">bool</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="118">
+<div class="cell-output cell-output-display" data-execution_count="346">
 <pre><code>array([0.23510707])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="119">
+<div id="18f8f240-bf3b-4bf9-96cc-f96b8a54b286" class="cell" data-execution_count="347">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard deviation</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>np.sqrt(v_pred)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="119">
+<div class="cell-output cell-output-display" data-execution_count="347">
 <pre><code>array([[0.48487841]])</code></pre>
 </div>
 </div>
 </section>
 <section id="create-function" class="level2">
 <h2 class="anchored" data-anchor-id="create-function">Create function</h2>
-<div class="cell" data-execution_count="120">
+<div id="342da6c2-b4e9-4b77-8b59-4c8eb42a5edd" class="cell" data-execution_count="348">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> simple_kriging(x_obs,y_obs,z_obs,x_pred,y_pred,semivariogram,par,mu<span class="op">=</span><span class="va">None</span>):</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
 <span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="co">    Function that interpolates values at known observation </span></span>
@@ -1087,34 +1103,35 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb27-53"><a href="#cb27-53" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb27-54"><a href="#cb27-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> z_pred, v_pred</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="140">
+<div id="32b8c290-a7db-4f36-8cd1-5bc9a7a9803f" class="cell" data-execution_count="349">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Call the function with same inpit data</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>simple_kriging(x_obs,y_obs,z_obs,x_pred,y_pred, spherical_model,[nugget,sill,range_], mu<span class="op">=</span>mu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="140">
-<pre><code>(array([12.84586165]), array([0.23315372]))</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="349">
+<pre><code>(array([12.94343464]), array([0.23315372]))</code></pre>
 </div>
 </div>
 </section>
 <section id="example-for-multiple-points-using-real-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="example-for-multiple-points-using-real-dataset">Example for multiple points using real dataset</h2>
-<div class="cell" data-execution_count="219">
+<div id="f260ba67-b409-4bdd-ab8f-670cc2173d5e" class="cell" data-execution_count="350">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import additional modules</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span>
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> curve_fit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="221">
+<div id="01df8858-c3c1-495c-9612-1246b4d5d2dc" class="cell" data-execution_count="351">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define coordiante reference systems</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>crs_utm <span class="op">=</span> <span class="dv">32614</span> <span class="co"># UTM Zone 14</span></span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>crs_wgs <span class="op">=</span> <span class="dv">4326</span> <span class="co"># WGS84</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="265">
+<div id="40432aa4-1837-4397-ae11-8db2331fce8c" class="cell" data-execution_count="352">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read dataset</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/spatial/soil_moisture_surveys/kona_15_jul_2019.csv'</span>)</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect a few rows</span></span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="265">
+<div class="cell-output cell-output-display" data-execution_count="352">
+<div>
 <div>
 
 
@@ -1184,32 +1201,33 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="266">
+</div>
+<div id="a7c3fd9a-3772-410e-8842-e122bbd6f356" class="cell" data-execution_count="353">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop lines with NaN in 'Moisture' column</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>df.dropna(subset<span class="op">=</span><span class="st">'Moisture'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>df.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="267">
+<div id="591a5093-da41-45ac-845d-ba365d5f3963" class="cell" data-execution_count="354">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert Dataframe to GeoDataframe</span></span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>gdf <span class="op">=</span> gpd.GeoDataFrame(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="268">
+<div id="77514259-ad56-4e3d-b1c2-a2cd285d525e" class="cell" data-execution_count="355">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add Point geometry from lat and long values</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>gdf[<span class="st">'points'</span>] <span class="op">=</span> gpd.points_from_xy(gdf[<span class="st">'Longitude'</span>], gdf[<span class="st">'Latitude'</span>])</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>gdf.set_geometry(<span class="st">'points'</span>, drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>, crs<span class="op">=</span>crs_wgs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="269">
+<div id="b3f70681-8a81-4388-b154-8b8b5001faf6" class="cell" data-execution_count="356">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert point coordinates to UTM, so that we can work in meters</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to compute distances within the field</span></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>gdf.to_crs(crs<span class="op">=</span>crs_utm, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="270">
+<div id="9e9fecc9-628f-43c9-9d04-d0dbbf3f3274" class="cell" data-execution_count="357">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get values of longitude (x) and latitude (y) in meters</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>x_obs <span class="op">=</span> gdf[<span class="st">'geometry'</span>].x.values</span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>y_obs <span class="op">=</span> gdf[<span class="st">'geometry'</span>].y.values</span>
 <span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>z_obs <span class="op">=</span> gdf[<span class="st">'Moisture'</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="275">
+<div id="c9020cbb-bd09-4538-8457-9487cff30285" class="cell" data-execution_count="358">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate grid</span></span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>x_vec <span class="op">=</span> np.linspace(x_obs.<span class="bu">min</span>(), x_obs.<span class="bu">max</span>(), num<span class="op">=</span><span class="dv">50</span>)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>y_vec <span class="op">=</span> np.linspace(y_obs.<span class="bu">min</span>(), y_obs.<span class="bu">max</span>(), num<span class="op">=</span><span class="dv">50</span>)</span>
@@ -1217,7 +1235,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create grid</span></span>
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>X_pred, Y_pred <span class="op">=</span> np.meshgrid(x_vec, y_vec)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="272">
+<div id="1b029369-d897-42ae-ba02-60b92133d43c" class="cell" data-execution_count="359">
 <div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Define simple linear model for removing the main trend in a dataset</span></span>
 <span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>detrend_model <span class="op">=</span> <span class="kw">lambda</span> data,b0,b1,b2: b0 <span class="op">+</span> b1<span class="op">*</span>data[<span class="dv">0</span>] <span class="op">+</span> b2<span class="op">*</span>data[<span class="dv">1</span>]</span>
@@ -1235,7 +1253,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <pre><code>[-4.67047351e+04  2.96492268e-02  5.95374753e-03]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="273">
+<div id="22bbc609-e58b-4505-bb3d-918bb6414ae0" class="cell" data-execution_count="360">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect data and fitted trend</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute moisture values for each grid point</span></span>
@@ -1254,10 +1272,14 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb41-16"><a href="#cb41-16" aria-hidden="true" tabindex="-1"></a>ax.set_zlabel(<span class="st">'Moisture (%)'</span>)</span>
 <span id="cb41-17"><a href="#cb41-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="simple_kriging_files/figure-html/cell-30-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="simple_kriging_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
 </div>
 </div>
-<div class="cell" data-execution_count="274">
+</div>
+<div id="d019e9b9-738b-4015-bdab-8eb33b8e5b90" class="cell" data-execution_count="361">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>nugget <span class="op">=</span> <span class="fl">2.23</span></span>
 <span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>sill <span class="op">=</span> <span class="fl">27.7</span></span>
 <span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>range_ <span class="op">=</span> <span class="fl">15.0</span></span>
@@ -1265,7 +1287,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Define semivariogram model</span></span>
 <span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>exp_semivar <span class="op">=</span> <span class="kw">lambda</span> h,n,s,r: n <span class="op">+</span> (s<span class="op">-</span>n) <span class="op">*</span> (<span class="dv">1</span><span class="op">-</span>np.exp(<span class="op">-</span>h<span class="op">/</span>r))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="301">
+<div id="04766e06-a7a5-479d-8ae3-ca662eba2062" class="cell" data-execution_count="362">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estiamte moisture values at each grid point</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>Z_res, V_pred <span class="op">=</span> simple_kriging(x_obs,y_obs,z_res,X_pred.flatten(),Y_pred.flatten(),</span>
 <span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a>               exp_semivar,[nugget,sill,range_])</span>
@@ -1277,7 +1299,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb43-9"><a href="#cb43-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add trend model back to the results</span></span>
 <span id="cb43-10"><a href="#cb43-10" aria-hidden="true" tabindex="-1"></a>Z_pred <span class="op">=</span> Z_res <span class="op">+</span> Z_trend</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="314">
+<div id="56806fde-1bb4-4844-a19b-76d3f8ce1436" class="cell" data-execution_count="363">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>))</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
@@ -1296,7 +1318,11 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="simple_kriging_files/figure-html/cell-33-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="simple_kriging_files/figure-html/cell-33-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 </section>
@@ -1390,10 +1416,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1403,8 +1446,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1416,7 +1468,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1460,6 +1635,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1485,6 +1661,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1546,12 +1748,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercises/semivariogram.html" class="pagination-link">
+      <a href="../exercises/semivariogram.html" class="pagination-link" aria-label="Semivariogram">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">87</span>&nbsp; <span class="chapter-title">Semivariogram</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercises/estimate_daily_vapor_pressure.html" class="pagination-link">
+      <a href="../exercises/estimate_daily_vapor_pressure.html" class="pagination-link" aria-label="Estimate daily vapor pressure">
         <span class="nav-page-text"><span class="chapter-number">89</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -1568,12 +1770,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
  Material available for free under the Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) license
   </li>  
 </ul>
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/simple_kriging.ipynb" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
+
 
 
 
