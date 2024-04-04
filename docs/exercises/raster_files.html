@@ -810,10 +810,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bands" id="toc-bands" class="nav-link active" data-scroll-target="#bands">Bands</a>
-  <ul class="collapse">
-  <li><a href="#modis-bands-7-2-1" id="toc-modis-bands-7-2-1" class="nav-link" data-scroll-target="#modis-bands-7-2-1">MODIS Bands 7-2-1</a></li>
-  </ul></li>
+  <li><a href="#modis-bands-7-2-1" id="toc-modis-bands-7-2-1" class="nav-link active" data-scroll-target="#modis-bands-7-2-1">MODIS Bands 7-2-1</a></li>
   <li><a href="#coordinate-systems" id="toc-coordinate-systems" class="nav-link" data-scroll-target="#coordinate-systems">Coordinate systems</a></li>
   <li><a href="#band-properties" id="toc-band-properties" class="nav-link" data-scroll-target="#band-properties">Band properties</a></li>
   <li><a href="#raster-bounding-box" id="toc-raster-bounding-box" class="nav-link" data-scroll-target="#raster-bounding-box">Raster bounding box</a></li>
@@ -858,9 +855,9 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 
 </header>
 
-<section id="bands" class="level2">
-<h2 class="anchored" data-anchor-id="bands">Bands</h2>
-<p>The Worldview Snapshots encode some of the most popular bands of the Terra and Aqua Moderate Resolution Imaging Spectroradiometer (MODIS) into the red, green, and blue bands of an image. Each combination of bands is designed to highlight specific atmospheric (e.g.&nbsp;clouds) and landscape (e.g.&nbsp;vegetation, water bodies) features.</p>
+<p>Raster files are a common data format used in remote sensing to represent spatial information as a grid of cells. Each cell contains a single value representing a certain attribute, such as elevation, temperature, or land cover type.</p>
+<p>Raster files are composed of one or more bands, where each band represents a different type of information or measurement. For example, in satellite imagery, different bands may capture data from different parts of the electromagnetic spectrum, such as different wavelengths of visible light or even infrared.</p>
+<p>To illustrate these concepts, we will use a raster image obtained from <a href="https://wvs.earthdata.nasa.gov/">NASA Worldview Snapshots</a> that encode some of the most popular bands of the Terra and Aqua Moderate Resolution Imaging Spectroradiometer (MODIS) satellite into the red, green, and blue bands. Each combination of bands is designed to highlight specific atmospheric (e.g.&nbsp;clouds) and landscape (e.g.&nbsp;vegetation, water bodies) features.</p>
 <section id="modis-bands-7-2-1" class="level3">
 <h3 class="anchored" data-anchor-id="modis-bands-7-2-1">MODIS Bands 7-2-1</h3>
 <p>Band 7 = 2155 nm Band 2 = 876 nm Band 1 = 670 nm</p>
@@ -876,24 +873,23 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <blockquote class="blockquote">
 <p>To install <strong>rasterio</strong> you can run one of these two commands in the terminal or command window: <code>pip install rasterio</code> or <code>conda install rasterio</code></p>
 </blockquote>
-<div class="cell" data-execution_count="25">
+<div class="cell" data-execution_count="171">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.plot <span class="im">import</span> show</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.mask <span class="im">import</span> mask</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="172">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load geo-referenced .TIF image</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>raster <span class="op">=</span> rasterio.<span class="bu">open</span>(<span class="st">'../datasets/spatial/snapshot-2022-02-14.tiff'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>raster <span class="op">=</span> rasterio.<span class="bu">open</span>(<span class="st">'../datasets/spatial/Terra-MODIS-7-2-1-2019-09-05.tiff'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
 </section>
 <section id="coordinate-systems" class="level2">
 <h2 class="anchored" data-anchor-id="coordinate-systems">Coordinate systems</h2>
 <p>A coordinate reference system (CRS) is a local, regional or global system used to locate geographical entities. Spatial reference systems can be referred including EPSG codes defined by the International Association of Oil and Gas Producers. The EPSG acronym stands for <em>European Petroleum Survey Group</em> and is an organization that maintains a geodetic parameter database with standard codes.</p>
 <p><a href="https://epsg.io/4326">EPSG:4326</a> is equal to WGS84 - World Geodetic System 1984</p>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="173">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the coordinate reference system</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raster.crs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -904,7 +900,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <section id="band-properties" class="level2">
 <h2 class="anchored" data-anchor-id="band-properties">Band properties</h2>
 <p>It is always useful to explore the number of bands in a raster, the data type, and dimensions of each band. The <code>nodata</code> and <code>nodatavals</code> indicate how the dataset encodes missing values or values outside a specific regions (e.g.&nbsp;pixels that fall on the ocean).</p>
-<div class="cell" data-execution_count="4">
+<div class="cell" data-execution_count="174">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print band attributes</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Data type:'</span>, raster.dtypes)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Band width (number columns):'</span>, raster.width)</span>
@@ -913,8 +909,8 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'No data placeholder:'</span>,raster.nodatavals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Data type: ('uint8', 'uint8', 'uint8')
-Band width (number columns): 2733
-Band height (number of rows): 1465
+Band width (number columns): 2877
+Band height (number of rows): 1602
 Band indexes: (1, 2, 3)
 No data placeholder: (None, None, None)</code></pre>
 </div>
@@ -923,36 +919,36 @@ No data placeholder: (None, None, None)</code></pre>
 <section id="raster-bounding-box" class="level2">
 <h2 class="anchored" data-anchor-id="raster-bounding-box">Raster bounding box</h2>
 <p>Another important attribute to have at hand is the bounding box. This information gives us a precise idea of the limits of the map and also shows whther we are working in geographic or projected coordinates.</p>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="175">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find map boundaries</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raster.bounds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>BoundingBox(left=-102.14937187828008, bottom=36.900982382252316, right=-94.47619487827995, top=40.12014738225228)</code></pre>
+<pre><code>BoundingBox(left=-102.30474587359757, bottom=36.73867052309612, right=-94.22721987359756, top=40.25910252309606)</code></pre>
 </div>
 </div>
 </section>
 <section id="raster-pixel-to-geographic-coordinates" class="level2">
 <h2 class="anchored" data-anchor-id="raster-pixel-to-geographic-coordinates">Raster pixel to geographic coordinates</h2>
 <p>An easy way to access the pixel coordiantes given the row and column of the raster. The <code>offset</code> allow us to specify the starting point. Selecting the <strong>Upper-Left</strong> corner makes things easy because that is also the beginning of the raster array in terms of rows and columns. So, if we request the geographic coordinates of <code>row=0</code> and <code>column=0</code> with <code>offset='ul'</code>, we should obtain the coordinates of the top-left corner of the boundaing box.</p>
-<div class="cell" data-execution_count="6">
+<div class="cell" data-execution_count="176">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get geographic coordinate for specific row and column.</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>raster.xy(row<span class="op">=</span><span class="dv">0</span>, col<span class="op">=</span><span class="dv">0</span>, offset<span class="op">=</span><span class="st">'ul'</span>) <span class="co"># center by default. ul, ur, ll, lr.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>(-102.14937187828008, 40.12014738225228)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="176">
+<pre><code>(-102.30474587359757, 40.25910252309606)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="7">
+<div class="cell" data-execution_count="177">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Another example</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>raster.xy(row<span class="op">=</span><span class="dv">60</span>, col<span class="op">=</span><span class="dv">1200</span>, offset<span class="op">=</span><span class="st">'ul'</span>) <span class="co"># center by default. ul, ur, ll, lr.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>(-98.78024915599683, 39.98830444709869)</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="177">
+<pre><code>(-98.93560051384783, 40.12725113732827)</code></pre>
 </div>
 </div>
 </section>
 <section id="explore-raster-bands" class="level2">
 <h2 class="anchored" data-anchor-id="explore-raster-bands">Explore raster bands</h2>
 <p>To specify a particular band we will pass a tuple as the first input argument of the rasterio show command <code>(raster, 1)</code>. The index must be one of the indexes in the raster. Hopefully now you see why accessing some of the basic raster attributes in the previous cells becomes handy now.</p>
-<div class="cell" data-execution_count="8">
+<div class="cell" data-execution_count="178">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display individual bands</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fig, (ax_red, ax_green, ax_blue) <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">21</span>,<span class="dv">7</span>))</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>show((raster, <span class="dv">1</span>), ax<span class="op">=</span>ax_red, cmap<span class="op">=</span><span class="st">'Reds'</span>, title<span class="op">=</span><span class="st">'Red channel'</span>)</span>
@@ -967,7 +963,7 @@ No data placeholder: (None, None, None)</code></pre>
 <section id="bands-combined-as-a-single-image" class="level2">
 <h2 class="anchored" data-anchor-id="bands-combined-as-a-single-image">Bands combined as a single image</h2>
 <p>When we combine all three bands in the red, green, and blue channels we can obtain a new composite image.</p>
-<div class="cell" data-execution_count="9">
+<div class="cell" data-execution_count="179">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>show(raster, title<span class="op">=</span><span class="st">'Terra MODIS 7-2-1 2019-09-05'</span>)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -980,7 +976,7 @@ No data placeholder: (None, None, None)</code></pre>
 <section id="retrive-bands-from-a-specific-point" class="level2">
 <h2 class="anchored" data-anchor-id="retrive-bands-from-a-specific-point">Retrive bands from a specific point</h2>
 <p>Imagine we are interested in knowing the information for the different bands at a specific point in the map. The <code>index()</code> method can help us retrieving this information by providing us with the row and column of a specific pair of geographic coordinates.</p>
-<div class="cell" data-execution_count="10">
+<div class="cell" data-execution_count="180">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add location to map</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mhk_lat <span class="op">=</span> <span class="fl">39.193608</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mhk_lon <span class="op">=</span> <span class="op">-</span><span class="fl">96.584593</span></span>
@@ -993,7 +989,7 @@ No data placeholder: (None, None, None)</code></pre>
 <p><img src="raster_files_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="11">
+<div class="cell" data-execution_count="181">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve RGB values for specified location</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>py,px <span class="op">=</span> raster.index(mhk_lon, mhk_lat)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Row ='</span>,py, <span class="st">'Col='</span>,px)</span>
@@ -1003,12 +999,12 @@ No data placeholder: (None, None, None)</code></pre>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'R='</span>,mhk_red, <span class="st">'G='</span>,mhk_green, <span class="st">'B='</span>,mhk_blue)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Row = 421 Col= 1982
-R= 136 G= 137 B= 104</code></pre>
+<pre><code>Row = 484 Col= 2037
+R= 86 G= 142 B= 58</code></pre>
 </div>
 </div>
 <p>All three RGB values can be obtained with a single statement: <code>raster.read()[:,py,px]</code></p>
-<div class="cell" data-execution_count="12">
+<div class="cell" data-execution_count="182">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a small area around selected point</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mhk_pixel <span class="op">=</span> raster.read(window<span class="op">=</span>rasterio.windows.Window(px,py,<span class="dv">3</span>,<span class="dv">3</span>))</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1018,16 +1014,16 @@ R= 136 G= 137 B= 104</code></pre>
 <p><img src="raster_files_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="183">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an NxN window</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> rasterio.windows.Window(px<span class="op">-</span>N<span class="op">//</span><span class="dv">2</span>, py<span class="op">-</span>N<span class="op">//</span><span class="dv">2</span>, N, N)</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(window)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Window(col_off=1932, row_off=371, width=100, height=100)</code></pre>
+<pre><code>Window(col_off=1987, row_off=434, width=100, height=100)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="14">
+<div class="cell" data-execution_count="184">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data in the window</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>clip <span class="op">=</span> raster.read(window<span class="op">=</span>window)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1041,7 +1037,7 @@ R= 136 G= 137 B= 104</code></pre>
 <section id="east-west-transect" class="level2">
 <h2 class="anchored" data-anchor-id="east-west-transect">East-West transect</h2>
 <p>The state of Kansas spans an accentuated longitudinal precipitation gradient. The West par tof the state receives nearly 400 mm per year, while the east portion of the state receives nearly 1200 mm per year. o We can visualize whether vegetationlso follows a similar patterns by plot one (or perhaps) rows.</p>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="185">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select a particular latitude</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>selected_lat <span class="op">=</span> <span class="fl">38.6</span></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>py,px <span class="op">=</span> raster.index(<span class="op">-</span><span class="dv">102</span>, selected_lat)</span>
@@ -1051,7 +1047,7 @@ R= 136 G= 137 B= 104</code></pre>
 <span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>lon_EW <span class="op">=</span> raster.xy(row<span class="op">=</span>row_values, col<span class="op">=</span>col_values, offset<span class="op">=</span><span class="st">'ul'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="186">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Excess green</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> np.float64(raster.read(<span class="dv">1</span>))</span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> np.float64(raster.read(<span class="dv">2</span>))</span>
@@ -1062,7 +1058,7 @@ R= 136 G= 137 B= 104</code></pre>
 <span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get Excess green for selected row</span></span>
 <span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>ExG_row <span class="op">=</span> ExG[selected_row,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="17">
+<div class="cell" data-execution_count="187">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show row in map</span></span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.axhline(selected_lat, color<span class="op">=</span><span class="st">'r'</span>)</span>
@@ -1072,12 +1068,12 @@ R= 136 G= 137 B= 104</code></pre>
 <p><img src="raster_files_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="18">
+<div class="cell" data-execution_count="188">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Smooth signal to eliminate small interferences in the landscape</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.signal <span class="im">import</span> medfilt</span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ExG_row <span class="op">=</span> medfilt(ExG_row, kernel_size<span class="op">=</span><span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="19">
+<div class="cell" data-execution_count="189">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot East-West transect across Kansas</span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">4</span>))</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.plot(lon_EW[<span class="dv">0</span>], ExG_row)</span>
@@ -1093,11 +1089,11 @@ R= 136 G= 137 B= 104</code></pre>
 <section id="use-geopandas-to-clip-area" class="level2">
 <h2 class="anchored" data-anchor-id="use-geopandas-to-clip-area">Use GeoPandas to clip area</h2>
 <p>In this case we will use a polygon to clip a portion of the raster map.</p>
-<div class="cell" data-execution_count="162">
+<div class="cell" data-execution_count="190">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import additional modules</span></span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="163">
+<div class="cell" data-execution_count="191">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read boundary of Riley county, KS</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>counties <span class="op">=</span> gpd.read_file(<span class="st">'../datasets/spatial/us_county_5m.geojson'</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1105,7 +1101,7 @@ R= 136 G= 137 B= 104</code></pre>
 <span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> counties[<span class="st">'NAME'</span>] <span class="op">==</span> <span class="st">'Geary'</span></span>
 <span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>county <span class="op">=</span> counties[idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="164">
+<div class="cell" data-execution_count="192">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clip the raster to the polygon extent</span></span>
 <span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>clipped_raster, clipped_transform <span class="op">=</span> mask(raster, county.geometry, crop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1114,10 +1110,10 @@ R= 136 G= 137 B= 104</code></pre>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that Rasterio places the number of bands in the first axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(3, 161, 165)</code></pre>
+<pre><code>(3, 161, 166)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="165">
+<div class="cell" data-execution_count="193">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show clipped raster image</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>show(clipped_raster)</span>
 <span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1125,7 +1121,7 @@ R= 136 G= 137 B= 104</code></pre>
 <p><img src="raster_files_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="166">
+<div class="cell" data-execution_count="194">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set background of pixels as white</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the clipped raster as a numpy array</span></span>
@@ -1135,15 +1131,15 @@ R= 136 G= 137 B= 104</code></pre>
 <span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>idx_mask <span class="op">=</span> np.<span class="bu">sum</span>(clipped_raster, axis<span class="op">=</span><span class="dv">2</span>)<span class="op">==</span><span class="dv">0</span></span>
 <span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>clipped_raster[idx_mask,:] <span class="op">=</span> <span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="167">
+<div class="cell" data-execution_count="195">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Restore order of dimensions </span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>clipped_raster <span class="op">=</span> clipped_raster.transpose(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clipped_raster.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>(3, 161, 165)</code></pre>
+<pre><code>(3, 161, 166)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="168">
+<div class="cell" data-execution_count="196">
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update metadata of clipped raster</span></span>
 <span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>new_metadata <span class="op">=</span> raster.meta.copy()</span>
 <span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>new_metadata.update({</span>
@@ -1159,11 +1155,11 @@ R= 136 G= 137 B= 104</code></pre>
 <span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    f.write(clipped_raster)</span>
 <span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="169">
+<div class="cell" data-execution_count="197">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read saved clipped raster</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>clipped_raster <span class="op">=</span> rasterio.<span class="bu">open</span>(clipped_raster_filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="170">
+<div class="cell" data-execution_count="198">
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show clipped raster</span></span>
 <span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
