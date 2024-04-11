@@ -991,6 +991,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <li>Band 2: Sentinel B04 (red, 665 nm)</li>
 <li>Band 3: Sentinel B08 (near infrared, 842 nm)</li>
 </ul>
+<p>The image was downloaded using Sentinel Hub: https://www.sentinel-hub.com/explore/eobrowser/</p>
 <div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load raster layer</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>raster <span class="op">=</span> xr.open_dataarray(<span class="st">'../datasets/spatial/2024-04-03_Sentinel-2_L2A_B03_B04_B08-16bit.tiff'</span>)</span>
