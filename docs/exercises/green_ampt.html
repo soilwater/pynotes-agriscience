@@ -8,9 +8,9 @@
 
 <meta name="author" content="Andres Patrignani">
 <meta name="dcterms.date" content="2024-04-03">
-<meta name="keywords" content="raster, rasterio, clip, vector, geopandas">
+<meta name="keywords" content="green-ampt, infiltration, rainfall, runoff">
 
-<title>PyNotes in Agriscience - 85&nbsp; Raster files</title>
+<title>PyNotes in Agriscience - 73&nbsp; Green-Ampt infiltration-excess runoff model</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,8 +67,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../exercises/inverse_distance_weighting.html" rel="next">
-<link href="../exercises/weather_network_coverage.html" rel="prev">
+<link href="../exercises/random_walk.html" rel="next">
+<link href="../exercises/reaction_diffusion.html" rel="prev">
 <link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -108,7 +108,26 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 </head>
 
@@ -121,7 +140,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/soil_moisture_monitoring_stations.html">MAPPING AND SPATIAL ANALYSIS</a></li><li class="breadcrumb-item"><a href="../exercises/raster_files.html"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Raster files</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/newton_law_cooling.html">NUMERICAL MODELS</a></li><li class="breadcrumb-item"><a href="../exercises/green_ampt.html"><span class="chapter-number">73</span>&nbsp; <span class="chapter-title">Green-Ampt infiltration-excess runoff model</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -646,6 +665,12 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
  <span class="menu-text"><span class="chapter-number">72</span>&nbsp; <span class="chapter-title">Reaction-Diffusion</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../exercises/green_ampt.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">73</span>&nbsp; <span class="chapter-title">Green-Ampt infiltration-excess runoff model</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -660,19 +685,19 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/random_walk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">73</span>&nbsp; <span class="chapter-title">Random walk</span></span></a>
+ <span class="menu-text"><span class="chapter-number">74</span>&nbsp; <span class="chapter-title">Random walk</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/weed_population.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">74</span>&nbsp; <span class="chapter-title">Weed population model</span></span></a>
+ <span class="menu-text"><span class="chapter-number">75</span>&nbsp; <span class="chapter-title">Weed population model</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/rainfall_generator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">75</span>&nbsp; <span class="chapter-title">Rainfall generator</span></span></a>
+ <span class="menu-text"><span class="chapter-number">76</span>&nbsp; <span class="chapter-title">Rainfall generator</span></span></a>
   </div>
 </li>
       </ul>
@@ -689,19 +714,19 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/count_seeds.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">76</span>&nbsp; <span class="chapter-title">Count seeds</span></span></a>
+ <span class="menu-text"><span class="chapter-number">77</span>&nbsp; <span class="chapter-title">Count seeds</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/canopy_cover.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">77</span>&nbsp; <span class="chapter-title">Canopy cover</span></span></a>
+ <span class="menu-text"><span class="chapter-number">78</span>&nbsp; <span class="chapter-title">Canopy cover</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/lakes_kansas.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">78</span>&nbsp; <span class="chapter-title">Find Kansas lakes</span></span></a>
+ <span class="menu-text"><span class="chapter-number">79</span>&nbsp; <span class="chapter-title">Find Kansas lakes</span></span></a>
   </div>
 </li>
       </ul>
@@ -718,67 +743,67 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/soil_moisture_monitoring_stations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">79</span>&nbsp; <span class="chapter-title">Soil moisture monitoring stations</span></span></a>
+ <span class="menu-text"><span class="chapter-number">80</span>&nbsp; <span class="chapter-title">Soil moisture monitoring stations</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/field_random_samples.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">80</span>&nbsp; <span class="chapter-title">Field random samples</span></span></a>
+ <span class="menu-text"><span class="chapter-number">81</span>&nbsp; <span class="chapter-title">Field random samples</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/yield_monitor_clean.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">81</span>&nbsp; <span class="chapter-title">Cleaning yield monitor data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">82</span>&nbsp; <span class="chapter-title">Cleaning yield monitor data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/yield_monitor_zones.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">82</span>&nbsp; <span class="chapter-title">Management zones yield monitor</span></span></a>
+ <span class="menu-text"><span class="chapter-number">83</span>&nbsp; <span class="chapter-title">Management zones yield monitor</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/largest_empty_circle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">83</span>&nbsp; <span class="chapter-title">Largest empty circle</span></span></a>
+ <span class="menu-text"><span class="chapter-number">84</span>&nbsp; <span class="chapter-title">Largest empty circle</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/weather_network_coverage.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">84</span>&nbsp; <span class="chapter-title">Weather network coverage</span></span></a>
+ <span class="menu-text"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Weather network coverage</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/raster_files.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Raster files</span></span></a>
+  <a href="../exercises/raster_and_vector.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">86</span>&nbsp; <span class="chapter-title">Raster and vector</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/inverse_distance_weighting.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">86</span>&nbsp; <span class="chapter-title">Inverse distance weighting method</span></span></a>
+ <span class="menu-text"><span class="chapter-number">87</span>&nbsp; <span class="chapter-title">Inverse distance weighting method</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/builtin_spatial_interpolators.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">87</span>&nbsp; <span class="chapter-title">Built-in spatial interpolators</span></span></a>
+ <span class="menu-text"><span class="chapter-number">88</span>&nbsp; <span class="chapter-title">Built-in spatial interpolators</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/semivariogram.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">88</span>&nbsp; <span class="chapter-title">Semivariogram</span></span></a>
+ <span class="menu-text"><span class="chapter-number">89</span>&nbsp; <span class="chapter-title">Semivariogram</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/simple_kriging.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">89</span>&nbsp; <span class="chapter-title">Simple kriging</span></span></a>
+ <span class="menu-text"><span class="chapter-number">90</span>&nbsp; <span class="chapter-title">Simple kriging</span></span></a>
   </div>
 </li>
       </ul>
@@ -795,7 +820,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/estimate_daily_vapor_pressure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">90</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></span></a>
+ <span class="menu-text"><span class="chapter-number">91</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></span></a>
   </div>
 </li>
       </ul>
@@ -810,25 +835,16 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#modis-bands-7-2-1" id="toc-modis-bands-7-2-1" class="nav-link active" data-scroll-target="#modis-bands-7-2-1">MODIS Bands 7-2-1</a></li>
-  <li><a href="#coordinate-systems" id="toc-coordinate-systems" class="nav-link" data-scroll-target="#coordinate-systems">Coordinate systems</a></li>
-  <li><a href="#band-properties" id="toc-band-properties" class="nav-link" data-scroll-target="#band-properties">Band properties</a></li>
-  <li><a href="#raster-bounding-box" id="toc-raster-bounding-box" class="nav-link" data-scroll-target="#raster-bounding-box">Raster bounding box</a></li>
-  <li><a href="#raster-pixel-to-geographic-coordinates" id="toc-raster-pixel-to-geographic-coordinates" class="nav-link" data-scroll-target="#raster-pixel-to-geographic-coordinates">Raster pixel to geographic coordinates</a></li>
-  <li><a href="#explore-raster-bands" id="toc-explore-raster-bands" class="nav-link" data-scroll-target="#explore-raster-bands">Explore raster bands</a></li>
-  <li><a href="#bands-combined-as-a-single-image" id="toc-bands-combined-as-a-single-image" class="nav-link" data-scroll-target="#bands-combined-as-a-single-image">Bands combined as a single image</a></li>
-  <li><a href="#retrive-bands-from-a-specific-point" id="toc-retrive-bands-from-a-specific-point" class="nav-link" data-scroll-target="#retrive-bands-from-a-specific-point">Retrive bands from a specific point</a></li>
-  <li><a href="#east-west-transect" id="toc-east-west-transect" class="nav-link" data-scroll-target="#east-west-transect">East-West transect</a></li>
-  <li><a href="#use-geopandas-to-clip-area" id="toc-use-geopandas-to-clip-area" class="nav-link" data-scroll-target="#use-geopandas-to-clip-area">Use GeoPandas to clip area</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link active" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/raster_files.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/green_ampt.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">85</span>&nbsp; <span class="chapter-title">Raster files</span></h1>
+<h1 class="title"><span class="chapter-number">73</span>&nbsp; <span class="chapter-title">Green-Ampt infiltration-excess runoff model</span></h1>
 </div>
 
 
@@ -855,324 +871,350 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 
 </header>
 
-<p>Raster files are a common data format used in remote sensing to represent spatial information as a grid of cells. Each cell contains a single value representing a certain attribute, such as elevation, temperature, or land cover type.</p>
-<p>Raster files are composed of one or more bands, where each band represents a different type of information or measurement. For example, in satellite imagery, different bands may capture data from different parts of the electromagnetic spectrum, such as different wavelengths of visible light or even infrared.</p>
-<p>To illustrate these concepts, we will use a raster image obtained from <a href="https://wvs.earthdata.nasa.gov/">NASA Worldview Snapshots</a> that encode some of the most popular bands of the Terra and Aqua Moderate Resolution Imaging Spectroradiometer (MODIS) satellite into the red, green, and blue bands. Each combination of bands is designed to highlight specific atmospheric (e.g.&nbsp;clouds) and landscape (e.g.&nbsp;vegetation, water bodies) features.</p>
-<section id="modis-bands-7-2-1" class="level3">
-<h3 class="anchored" data-anchor-id="modis-bands-7-2-1">MODIS Bands 7-2-1</h3>
-<p>Band 7 = 2155 nm Band 2 = 876 nm Band 1 = 670 nm</p>
-<ul>
-<li>Vegetation appears green. Vegetation is very reflective in Band 2 (reason why it was assigned to the green channel)</li>
-<li>Liquid water: Black or dark blue</li>
-<li>Desert/Naturally bare soil: Sandy pink</li>
-<li>Burn scar: Red to reddish-brown</li>
-<li>Snow and ice are very reflective in band 7</li>
-<li>Ice and snow appear as bright turquoise.</li>
-<li>Clouds appear white.</li>
-</ul>
-<blockquote class="blockquote">
-<p>To install <strong>rasterio</strong> you can run one of these two commands in the terminal or command window: <code>pip install rasterio</code> or <code>conda install rasterio</code></p>
-</blockquote>
-<div class="cell" data-execution_count="171">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.plot <span class="im">import</span> show</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.mask <span class="im">import</span> mask</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="172">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load geo-referenced .TIF image</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>raster <span class="op">=</span> rasterio.<span class="bu">open</span>(<span class="st">'../datasets/spatial/Terra-MODIS-7-2-1-2019-09-05.tiff'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<p>The Green-Ampt model is a widely used method for predicting infiltration rate into the soil. The model assumes that the soil is initially dry and that water redistributes into the soil in the form of piston flow. The infiltration rate decreases over time as a result of a weaker hydraulic gradient caused by the increasing length of the wetting front. The Green-Ampt model provides a simple yet effective way to estimate infiltration rate, the approximate time of ponding, and infiltration-excess runoff, making it a valuable tool for hydrologists and soil scientists. The code presented below is based on the following tutorial prepared for the National Weather Service COMET outreach program (Tarboton, 2003): https://hydrology.usu.edu/rrp/ch5resources/GA.htm</p>
+<p>The three key equations to solve the Green-Ampt model numerically the following:</p>
+<section id="infiltration-capacity" class="level4">
+<h4 class="anchored" data-anchor-id="infiltration-capacity">1) Infiltration capacity</h4>
+<p><span class="math display"> f_c = K_{sat} \Bigg(1 + \frac{P}{F} \Bigg)</span></p>
+<p><span class="math inline">f_c</span> is the infiltration capacity<br> $ K_{sat}$ is the saturated hydraulic connductivity<br> <span class="math inline">F</span> is the cumulative infiltration</p>
 </section>
-<section id="coordinate-systems" class="level2">
-<h2 class="anchored" data-anchor-id="coordinate-systems">Coordinate systems</h2>
-<p>A coordinate reference system (CRS) is a local, regional or global system used to locate geographical entities. Spatial reference systems can be referred including EPSG codes defined by the International Association of Oil and Gas Producers. The EPSG acronym stands for <em>European Petroleum Survey Group</em> and is an organization that maintains a geodetic parameter database with standard codes.</p>
-<p><a href="https://epsg.io/4326">EPSG:4326</a> is equal to WGS84 - World Geodetic System 1984</p>
-<div class="cell" data-execution_count="173">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the coordinate reference system</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raster.crs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="cumulative-infiltration-at-time-of-ponding" class="level4">
+<h4 class="anchored" data-anchor-id="cumulative-infiltration-at-time-of-ponding">2) Cumulative infiltration at time of ponding</h4>
+<p><span class="math display"> F_p = \frac{K_{sat}P}{w-K_{sat}} ~~~ , w&gt;K_{sat}</span></p>
+<p><span class="math inline">F_p</span> is the cumulative infiltration when ponding occurs<br> <span class="math inline">w</span> is the rainfall rate</p>
+</section>
+<section id="cumulative-infiltration-under-ponded-conditions" class="level4">
+<h4 class="anchored" data-anchor-id="cumulative-infiltration-under-ponded-conditions">3) Cumulative infiltration under ponded conditions</h4>
+<p><span class="math display"> 0 = t - t_p - \frac{F-F_p}{K_{sat}} + \frac{P}{K_{sat}} ln \Bigg(\frac{F_p+P}{F+P}  \Bigg)</span></p>
+<p>where <span class="math inline">P</span> is the moisture difference suction parameter. We solve this function implicitly for F</p>
+<p>In the code below, we are also using the following variables:</p>
+<p><span class="math inline">dt^{'}</span> is the partial time interval required for ponding to occur</p>
+<p><span class="math inline">t_p</span> is time during which ponding occurs</p>
+<p><span class="math inline">f_t</span> is infiltration during time step <span class="math inline">t</span></p>
+<p><span class="math inline">r_t</span> is runoff during time step <span class="math inline">t</span></p>
+<p>The model works on the premise that, if rainfall rate is lower than the infiltration capacity (<span class="math inline">f_c</span>), then all the rainfall infiltrates the soil. However, if the rainfall rate is greater than the infiltration capacity of the soil, then ponding occurs.</p>
+<p>Much of the coding needed to solve the Green-Ampt model deals with what happens within the time interval (<span class="math inline">dt</span>). In other words, even in the case where there is no ponding at the beginning of the time interval, it’s still possible for ponding to occur within the time interval. To resolve this, tentative values of infiltration capacity (<span class="math inline">f_c^{'}</span>) and cumulative infiltration (<span class="math inline">F^{'}</span>) are computed within the interval assuming that all the water infiltrates. If the rainfall rate is greater than (<span class="math inline">f_c^{'}</span>), then ponding occurs at some point during the time step. Note that if ponding does not occur during the entire interval, computations are simpler and we move onto the next step. Additional calculations using a solver are required when we find that ponding occurs at some point during the time interval.</p>
+<p>Something important to remember is that rainfall rate can increase or decrease over time, but the infiltration capacity of the soil decreases as more water infiltrates the soil.</p>
+<div class="cell" data-execution_count="151">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import modules</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.optimize <span class="im">import</span> fsolve</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="152">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data (same as in the tutorial)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 15-minute time intervals expressed in hours</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="fl">0.25</span>, <span class="fl">0.50</span>, <span class="fl">0.75</span>, <span class="fl">1.00</span>, <span class="fl">1.25</span>, <span class="fl">1.50</span>, <span class="fl">1.75</span>, <span class="fl">2.00</span>])</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Rainfall during time interval expressed in cm</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>rainfall <span class="op">=</span> np.array([<span class="fl">0.3</span>, <span class="fl">0.4</span>, <span class="fl">0.5</span>, <span class="fl">0.6</span>, <span class="fl">0.7</span>, <span class="fl">0.8</span>, <span class="fl">0.4</span>, <span class="fl">0.6</span>, <span class="fl">0.6</span>])</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute rainfall intensity in cm/hr</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>intensity <span class="op">=</span> rainfall<span class="op">/</span>dt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="153">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Time step at which rainfall is measred</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>dt <span class="op">=</span> <span class="dv">15</span><span class="op">/</span><span class="dv">60</span> <span class="co"># hours</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Saturated hydraulic conductivity (measured or from database)</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Ks <span class="op">=</span> <span class="fl">1.09</span> <span class="co"># cm/hour for sandy loam soil</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Soil saturation</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>theta_sat <span class="op">=</span> <span class="fl">0.453</span> <span class="co"># volumetric water at saturation</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Matric potential at the wetting front</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>Hf <span class="op">=</span> <span class="fl">11.01</span> </span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Air-entry suction</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>Ha <span class="op">=</span> <span class="fl">21.8</span> <span class="co"># cm</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameter to represent pore-size distribution</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="fl">4.9</span> </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial soil moisture content</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial volumetric water of the profile (remains constant below the wetting front)</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>theta_ini <span class="op">=</span> <span class="fl">0.259</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Matric potential at field capacity</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="co">#H_ini = 10 * 10.2 # Set first value in kPa (10.2 converts kPa to cm)</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co">#theta_ini = theta_sat*(H_ini/Ha)**(-1/b)</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Moisture difference suction parameter</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>P <span class="op">=</span> Hf <span class="op">*</span> (theta_sat <span class="op">-</span> theta_ini)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="155">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get number of elements</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> time.shape[<span class="dv">0</span>]</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Pre-allocate variables</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>F <span class="op">=</span> np.full(N, np.nan)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>fc <span class="op">=</span> np.full(N, np.nan)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>Fp <span class="op">=</span> np.full(N, np.nan)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>F_prime <span class="op">=</span> np.full(N, np.nan)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>fc_prime <span class="op">=</span> np.full(N, np.nan)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>dt_prime <span class="op">=</span> np.full(N, np.nan)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>ts <span class="op">=</span> np.full(N, np.nan)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>Ft_dt <span class="op">=</span> np.full(N, np.nan)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>ft <span class="op">=</span> np.full(N, np.nan)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> np.full(N, np.nan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="165">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over each time step</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> t <span class="kw">in</span> <span class="bu">range</span>(N):</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Initial cumulative infiltration and infiltration capacity at t=0</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> t <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        F[t] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        fc[t] <span class="op">=</span> np.inf <span class="co"># because we are dividing by F[t]=zero</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        F[t] <span class="op">=</span> Ft_dt[t<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        fc[t] <span class="op">=</span> Ks <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> P<span class="op">/</span>F[t])</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If no ponding occurs at the beginning of the time step</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> fc[t] <span class="op">&gt;</span> intensity[t]:</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>        F_prime[t] <span class="op">=</span> F[t] <span class="op">+</span> rainfall[t]</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        fc_prime[t] <span class="op">=</span> Ks<span class="op">*</span>(<span class="dv">1</span> <span class="op">+</span> P<span class="op">/</span>F_prime[t])</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Check for ponding conditions within the current time step (partial ponding)</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> fc_prime[t] <span class="op">&lt;</span> intensity[t]:</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            Fp[t] <span class="op">=</span> Ks <span class="op">*</span> P <span class="op">/</span> (intensity[t] <span class="op">-</span> Ks)</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>            dt_prime[t] <span class="op">=</span> (Fp[t] <span class="op">-</span> F[t])<span class="op">/</span>intensity[t]</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>            ts[t] <span class="op">=</span> time[t] <span class="op">+</span> dt_prime[t]</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>            gF <span class="op">=</span> <span class="kw">lambda</span> x: (time[t]<span class="op">+</span>dt <span class="op">-</span> ts[t]) <span class="op">-</span> (x <span class="op">-</span> Fp[t])<span class="op">/</span>Ks <span class="op">-</span> P<span class="op">/</span>Ks <span class="op">*</span> np.log((Fp[t]<span class="op">+</span>P)<span class="op">/</span>(x<span class="op">+</span>P))</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>            Ft_dt[t] <span class="op">=</span> fsolve(gF, x0<span class="op">=</span>Fp[t])</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>            Ft_dt[t] <span class="op">=</span> F_prime[t]</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If ponding occurs at the beginning of the time step</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        Fp[t] <span class="op">=</span> F[t]</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        dt_prime[t] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        ts[t] <span class="op">=</span> time[t]</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        gF <span class="op">=</span> <span class="kw">lambda</span> x: (time[t]<span class="op">+</span>dt <span class="op">-</span> ts[t]) <span class="op">-</span> (x <span class="op">-</span> Fp[t])<span class="op">/</span>Ks <span class="op">-</span> P<span class="op">/</span>Ks <span class="op">*</span> np.log((Fp[t]<span class="op">+</span>P)<span class="op">/</span>(x<span class="op">+</span>P))</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        Ft_dt[t] <span class="op">=</span> fsolve(gF, x0<span class="op">=</span>Fp[t])</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Compute infiltration and runoff during time step</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    ft[t] <span class="op">=</span> Ft_dt[t] <span class="op">-</span> F[t]</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    r[t] <span class="op">=</span> rainfall[t] <span class="op">-</span> ft[t]</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Create output table</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({<span class="st">"time"</span>:time, <span class="st">"rainfall"</span>:rainfall, <span class="st">"intensity"</span>:intensity, </span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"Ft"</span>:F, <span class="st">'fc'</span>:fc, <span class="st">"F'"</span>:F_prime, <span class="st">"fc'"</span>:fc_prime, <span class="st">'Fp'</span>:Fp,</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"dt'"</span>:dt_prime, <span class="st">"ts"</span>:ts, <span class="st">"Ft+dt"</span>:Ft_dt,</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>                   <span class="st">"ft"</span>:ft, <span class="st">"rt"</span>:r}).<span class="bu">round</span>(<span class="dv">5</span>)</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="165">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">time</th>
+<th data-quarto-table-cell-role="th">rainfall</th>
+<th data-quarto-table-cell-role="th">intensity</th>
+<th data-quarto-table-cell-role="th">Ft</th>
+<th data-quarto-table-cell-role="th">fc</th>
+<th data-quarto-table-cell-role="th">F'</th>
+<th data-quarto-table-cell-role="th">fc'</th>
+<th data-quarto-table-cell-role="th">Fp</th>
+<th data-quarto-table-cell-role="th">dt'</th>
+<th data-quarto-table-cell-role="th">ts</th>
+<th data-quarto-table-cell-role="th">Ft+dt</th>
+<th data-quarto-table-cell-role="th">ft</th>
+<th data-quarto-table-cell-role="th">rt</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>0.00</td>
+<td>0.3</td>
+<td>1.2</td>
+<td>0.00000</td>
+<td>inf</td>
+<td>0.3000</td>
+<td>8.85058</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.30000</td>
+<td>0.30000</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>0.25</td>
+<td>0.4</td>
+<td>1.6</td>
+<td>0.30000</td>
+<td>8.85058</td>
+<td>0.7000</td>
+<td>4.41596</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>0.70000</td>
+<td>0.40000</td>
+<td>0.00000</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>0.50</td>
+<td>0.5</td>
+<td>2.0</td>
+<td>0.70000</td>
+<td>4.41596</td>
+<td>1.2000</td>
+<td>3.03015</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.20000</td>
+<td>0.50000</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>0.75</td>
+<td>0.6</td>
+<td>2.4</td>
+<td>1.20000</td>
+<td>3.03015</td>
+<td>1.8000</td>
+<td>2.38343</td>
+<td>1.77723</td>
+<td>0.24051</td>
+<td>0.99051</td>
+<td>1.79992</td>
+<td>0.59992</td>
+<td>0.00008</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>1.00</td>
+<td>0.7</td>
+<td>2.8</td>
+<td>1.79992</td>
+<td>2.38349</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>1.79992</td>
+<td>0.00000</td>
+<td>1.00000</td>
+<td>2.35351</td>
+<td>0.55359</td>
+<td>0.14641</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>1.25</td>
+<td>0.8</td>
+<td>3.2</td>
+<td>2.35351</td>
+<td>2.07923</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2.35351</td>
+<td>0.00000</td>
+<td>1.25000</td>
+<td>2.85010</td>
+<td>0.49658</td>
+<td>0.30342</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>1.50</td>
+<td>0.4</td>
+<td>1.6</td>
+<td>2.85010</td>
+<td>1.90688</td>
+<td>3.2501</td>
+<td>1.80634</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3.25010</td>
+<td>0.40000</td>
+<td>0.00000</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>1.75</td>
+<td>0.6</td>
+<td>2.4</td>
+<td>3.25010</td>
+<td>1.80634</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3.25010</td>
+<td>0.00000</td>
+<td>1.75000</td>
+<td>3.69046</td>
+<td>0.44036</td>
+<td>0.15964</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>2.00</td>
+<td>0.6</td>
+<td>2.4</td>
+<td>3.69046</td>
+<td>1.72086</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3.69046</td>
+<td>0.00000</td>
+<td>2.00000</td>
+<td>4.11224</td>
+<td>0.42178</td>
+<td>0.17822</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="166">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a figure</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.step(time, intensity, where<span class="op">=</span><span class="st">'post'</span>, linestyle<span class="op">=</span><span class="st">'-.'</span>, label<span class="op">=</span><span class="st">'Rainfall intensity'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.step(time, r, where<span class="op">=</span><span class="st">'post'</span>, linestyle<span class="op">=</span><span class="st">'-'</span>, color<span class="op">=</span><span class="st">'green'</span>, label<span class="op">=</span><span class="st">'Runoff'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.plot(time, fc, linestyle<span class="op">=</span><span class="st">'--'</span>, color<span class="op">=</span><span class="st">'tomato'</span>, label<span class="op">=</span><span class="st">'Infiltration capacity'</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Time (hours)'</span>)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Rainfall or Runoff (cm/hour)'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper right'</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="green_ampt_files/figure-html/cell-7-output-1.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="169">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute and print totals</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>total_rainfall<span class="op">=</span> df[<span class="st">'rainfall'</span>].<span class="bu">sum</span>()</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>total_runoff <span class="op">=</span> df[<span class="st">'rt'</span>].<span class="bu">sum</span>()</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Total rainfall'</span>, <span class="bu">round</span>(total_rainfall,<span class="dv">1</span>), <span class="st">'cm'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Total runoff'</span>, <span class="bu">round</span>(total_runoff,<span class="dv">1</span>), <span class="st">'cm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>EPSG:4326</code></pre>
+<pre><code>Total rainfall 4.9 cm
+Total runoff 0.8 cm</code></pre>
 </div>
 </div>
 </section>
-<section id="band-properties" class="level2">
-<h2 class="anchored" data-anchor-id="band-properties">Band properties</h2>
-<p>It is always useful to explore the number of bands in a raster, the data type, and dimensions of each band. The <code>nodata</code> and <code>nodatavals</code> indicate how the dataset encodes missing values or values outside a specific regions (e.g.&nbsp;pixels that fall on the ocean).</p>
-<div class="cell" data-execution_count="174">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Print band attributes</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Data type:'</span>, raster.dtypes)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Band width (number columns):'</span>, raster.width)</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Band height (number of rows):'</span>, raster.height)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Band indexes:'</span>, raster.indexes)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'No data placeholder:'</span>,raster.nodatavals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Data type: ('uint8', 'uint8', 'uint8')
-Band width (number columns): 2877
-Band height (number of rows): 1602
-Band indexes: (1, 2, 3)
-No data placeholder: (None, None, None)</code></pre>
-</div>
-</div>
-</section>
-<section id="raster-bounding-box" class="level2">
-<h2 class="anchored" data-anchor-id="raster-bounding-box">Raster bounding box</h2>
-<p>Another important attribute to have at hand is the bounding box. This information gives us a precise idea of the limits of the map and also shows whther we are working in geographic or projected coordinates.</p>
-<div class="cell" data-execution_count="175">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find map boundaries</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(raster.bounds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>BoundingBox(left=-102.30474587359757, bottom=36.73867052309612, right=-94.22721987359756, top=40.25910252309606)</code></pre>
-</div>
-</div>
-</section>
-<section id="raster-pixel-to-geographic-coordinates" class="level2">
-<h2 class="anchored" data-anchor-id="raster-pixel-to-geographic-coordinates">Raster pixel to geographic coordinates</h2>
-<p>An easy way to access the pixel coordiantes given the row and column of the raster. The <code>offset</code> allow us to specify the starting point. Selecting the <strong>Upper-Left</strong> corner makes things easy because that is also the beginning of the raster array in terms of rows and columns. So, if we request the geographic coordinates of <code>row=0</code> and <code>column=0</code> with <code>offset='ul'</code>, we should obtain the coordinates of the top-left corner of the boundaing box.</p>
-<div class="cell" data-execution_count="176">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get geographic coordinate for specific row and column.</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>raster.xy(row<span class="op">=</span><span class="dv">0</span>, col<span class="op">=</span><span class="dv">0</span>, offset<span class="op">=</span><span class="st">'ul'</span>) <span class="co"># center by default. ul, ur, ll, lr.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="176">
-<pre><code>(-102.30474587359757, 40.25910252309606)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="177">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Another example</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>raster.xy(row<span class="op">=</span><span class="dv">60</span>, col<span class="op">=</span><span class="dv">1200</span>, offset<span class="op">=</span><span class="st">'ul'</span>) <span class="co"># center by default. ul, ur, ll, lr.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="177">
-<pre><code>(-98.93560051384783, 40.12725113732827)</code></pre>
-</div>
-</div>
-</section>
-<section id="explore-raster-bands" class="level2">
-<h2 class="anchored" data-anchor-id="explore-raster-bands">Explore raster bands</h2>
-<p>To specify a particular band we will pass a tuple as the first input argument of the rasterio show command <code>(raster, 1)</code>. The index must be one of the indexes in the raster. Hopefully now you see why accessing some of the basic raster attributes in the previous cells becomes handy now.</p>
-<div class="cell" data-execution_count="178">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display individual bands</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>fig, (ax_red, ax_green, ax_blue) <span class="op">=</span> plt.subplots(<span class="dv">1</span>,<span class="dv">3</span>, figsize<span class="op">=</span>(<span class="dv">21</span>,<span class="dv">7</span>))</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>show((raster, <span class="dv">1</span>), ax<span class="op">=</span>ax_red, cmap<span class="op">=</span><span class="st">'Reds'</span>, title<span class="op">=</span><span class="st">'Red channel'</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>show((raster, <span class="dv">2</span>), ax<span class="op">=</span>ax_green, cmap<span class="op">=</span><span class="st">'Greens'</span>, title<span class="op">=</span><span class="st">'Green channel'</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>show((raster, <span class="dv">3</span>), ax<span class="op">=</span>ax_blue, cmap<span class="op">=</span><span class="st">'Blues'</span>, title<span class="op">=</span><span class="st">'Blue channel'</span>)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="raster_files_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="bands-combined-as-a-single-image" class="level2">
-<h2 class="anchored" data-anchor-id="bands-combined-as-a-single-image">Bands combined as a single image</h2>
-<p>When we combine all three bands in the red, green, and blue channels we can obtain a new composite image.</p>
-<div class="cell" data-execution_count="179">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>show(raster, title<span class="op">=</span><span class="st">'Terra MODIS 7-2-1 2019-09-05'</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="raster_files_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<p>The image was taken on 5-September-2019, a time of the year where much of the warm-season grasses, pastures, and crops still remain verdant. Only few early planted warm-season crops were probably harvested by this date. Areas that appear yellow or brownish are likely to be places without vegetation (e.g.&nbsp;urban areas, barren land) or fields that had a winter crop, which by this time will consists of fallow land with bare soil or stubble.</p>
-</section>
-<section id="retrive-bands-from-a-specific-point" class="level2">
-<h2 class="anchored" data-anchor-id="retrive-bands-from-a-specific-point">Retrive bands from a specific point</h2>
-<p>Imagine we are interested in knowing the information for the different bands at a specific point in the map. The <code>index()</code> method can help us retrieving this information by providing us with the row and column of a specific pair of geographic coordinates.</p>
-<div class="cell" data-execution_count="180">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add location to map</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mhk_lat <span class="op">=</span> <span class="fl">39.193608</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>mhk_lon <span class="op">=</span> <span class="op">-</span><span class="fl">96.584593</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>plt.scatter(mhk_lon, mhk_lat, marker<span class="op">=</span><span class="st">'x'</span>, color<span class="op">=</span><span class="st">'r'</span>, s<span class="op">=</span><span class="dv">100</span>) <span class="co"># this line needs to precede the raster.</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>show(raster, title<span class="op">=</span><span class="st">'Terra MODIS 7-2-1 2019-09-05'</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="raster_files_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="181">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve RGB values for specified location</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>py,px <span class="op">=</span> raster.index(mhk_lon, mhk_lat)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Row ='</span>,py, <span class="st">'Col='</span>,px)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>mhk_red <span class="op">=</span> raster.read(<span class="dv">1</span>)[py,px]</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>mhk_green <span class="op">=</span> raster.read(<span class="dv">2</span>)[py,px]</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>mhk_blue <span class="op">=</span> raster.read(<span class="dv">3</span>)[py,px]</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'R='</span>,mhk_red, <span class="st">'G='</span>,mhk_green, <span class="st">'B='</span>,mhk_blue)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Row = 484 Col= 2037
-R= 86 G= 142 B= 58</code></pre>
-</div>
-</div>
-<p>All three RGB values can be obtained with a single statement: <code>raster.read()[:,py,px]</code></p>
-<div class="cell" data-execution_count="182">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get a small area around selected point</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>mhk_pixel <span class="op">=</span> raster.read(window<span class="op">=</span>rasterio.windows.Window(px,py,<span class="dv">3</span>,<span class="dv">3</span>))</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display window</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>show(mhk_pixel)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="raster_files_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="183">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an NxN window</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>window <span class="op">=</span> rasterio.windows.Window(px<span class="op">-</span>N<span class="op">//</span><span class="dv">2</span>, py<span class="op">-</span>N<span class="op">//</span><span class="dv">2</span>, N, N)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(window)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Window(col_off=1987, row_off=434, width=100, height=100)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="184">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read the data in the window</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>clip <span class="op">=</span> raster.read(window<span class="op">=</span>window)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display window</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>show(clip)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="raster_files_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="east-west-transect" class="level2">
-<h2 class="anchored" data-anchor-id="east-west-transect">East-West transect</h2>
-<p>The state of Kansas spans an accentuated longitudinal precipitation gradient. The West par tof the state receives nearly 400 mm per year, while the east portion of the state receives nearly 1200 mm per year. o We can visualize whether vegetationlso follows a similar patterns by plot one (or perhaps) rows.</p>
-<div class="cell" data-execution_count="185">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select a particular latitude</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>selected_lat <span class="op">=</span> <span class="fl">38.6</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>py,px <span class="op">=</span> raster.index(<span class="op">-</span><span class="dv">102</span>, selected_lat)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>selected_row <span class="op">=</span> py</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>row_values <span class="op">=</span> np.ones(raster.shape[<span class="dv">1</span>]) <span class="op">*</span> selected_row</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>col_values <span class="op">=</span> np.arange(raster.shape[<span class="dv">1</span>])</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>lon_EW <span class="op">=</span> raster.xy(row<span class="op">=</span>row_values, col<span class="op">=</span>col_values, offset<span class="op">=</span><span class="st">'ul'</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="186">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Excess green</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> np.float64(raster.read(<span class="dv">1</span>))</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>G <span class="op">=</span> np.float64(raster.read(<span class="dv">2</span>))</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> np.float64(raster.read(<span class="dv">3</span>))</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>ExG <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>G <span class="op">-</span> R <span class="op">-</span> B</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Get Excess green for selected row</span></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>ExG_row <span class="op">=</span> ExG[selected_row,:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="187">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show row in map</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">8</span>))</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>plt.axhline(selected_lat, color<span class="op">=</span><span class="st">'r'</span>)</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>show(raster, title<span class="op">=</span><span class="st">'Terra MODIS 7-2-1 2019-09-05'</span>)</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="raster_files_files/figure-html/cell-18-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="188">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Smooth signal to eliminate small interferences in the landscape</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.signal <span class="im">import</span> medfilt</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>ExG_row <span class="op">=</span> medfilt(ExG_row, kernel_size<span class="op">=</span><span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="189">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot East-West transect across Kansas</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">14</span>,<span class="dv">4</span>))</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>plt.plot(lon_EW[<span class="dv">0</span>], ExG_row)</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Longitude'</span>)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Excess green'</span>) <span class="co"># Indicator of greenness</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="raster_files_files/figure-html/cell-20-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<p>As expected, we can see a clear trend of increasing vegetation greenness from West to East.The signal is a bit noisy, meaning that there are some fields in western Kansas that are green (probably agricultural fields under irrigation, or rainfed fields that received good rainfall). Our transect also goes over rivers, small water bodies, and perhaps urban areas, casuing some ups and downs in the signal. The median filter should be able to remove some of this noise. You can try different kernel sizes to be more or less aggressive with the filter.</p>
-</section>
-<section id="use-geopandas-to-clip-area" class="level2">
-<h2 class="anchored" data-anchor-id="use-geopandas-to-clip-area">Use GeoPandas to clip area</h2>
-<p>In this case we will use a polygon to clip a portion of the raster map.</p>
-<div class="cell" data-execution_count="190">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import additional modules</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> geopandas <span class="im">as</span> gpd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="191">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read boundary of Riley county, KS</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>counties <span class="op">=</span> gpd.read_file(<span class="st">'../datasets/spatial/us_county_5m.geojson'</span>)</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Select Riley county</span></span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> counties[<span class="st">'NAME'</span>] <span class="op">==</span> <span class="st">'Geary'</span></span>
-<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>county <span class="op">=</span> counties[idx]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="192">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clip the raster to the polygon extent</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>clipped_raster, clipped_transform <span class="op">=</span> mask(raster, county.geometry, crop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect dimensions of clipped raster</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clipped_raster.shape)</span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Note that Rasterio places the number of bands in the first axis</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(3, 161, 166)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="193">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show clipped raster image</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>show(clipped_raster)</span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="raster_files_files/figure-html/cell-24-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="194">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set background of pixels as white</span></span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the clipped raster as a numpy array</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>clipped_raster <span class="op">=</span> clipped_raster.transpose(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">0</span>)</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace nodata values with 255 (white)</span></span>
-<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>idx_mask <span class="op">=</span> np.<span class="bu">sum</span>(clipped_raster, axis<span class="op">=</span><span class="dv">2</span>)<span class="op">==</span><span class="dv">0</span></span>
-<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>clipped_raster[idx_mask,:] <span class="op">=</span> <span class="dv">255</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="195">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Restore order of dimensions </span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>clipped_raster <span class="op">=</span> clipped_raster.transpose(<span class="dv">2</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clipped_raster.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(3, 161, 166)</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="196">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update metadata of clipped raster</span></span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>new_metadata <span class="op">=</span> raster.meta.copy()</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>new_metadata.update({</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'height'</span>: clipped_raster.shape[<span class="dv">1</span>],</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'width'</span>: clipped_raster.shape[<span class="dv">2</span>],</span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'transform'</span>: clipped_transform</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the clipped raster to a new file</span></span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>clipped_raster_filename <span class="op">=</span> <span class="st">'../datasets/spatial/county_ks_vegetation.tif'</span></span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(clipped_raster_filename, <span class="st">'w'</span>, <span class="op">**</span>new_metadata) <span class="im">as</span> f:</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>    f.write(clipped_raster)</span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="197">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read saved clipped raster</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>clipped_raster <span class="op">=</span> rasterio.<span class="bu">open</span>(clipped_raster_filename)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="198">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Show clipped raster</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>fig,ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>show(clipped_raster, ax<span class="op">=</span>ax)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>county.plot(ax<span class="op">=</span>ax, facecolor<span class="op">=</span><span class="st">'None'</span>, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Geary county'</span>)</span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Longitude'</span>)</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Latitude'</span>)</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="raster_files_files/figure-html/cell-29-output-1.png" class="img-fluid"></p>
-</div>
-</div>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<p>Tarboton, D. G. (2003). Rainfall-runoff processes. Utah State University, 1(2). https://hydrology.usu.edu/rrp/Workbook.htm</p>
 
 
 </section>
@@ -1413,13 +1455,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../exercises/weather_network_coverage.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">84</span>&nbsp; <span class="chapter-title">Weather network coverage</span></span>
+      <a href="../exercises/reaction_diffusion.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">72</span>&nbsp; <span class="chapter-title">Reaction-Diffusion</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../exercises/inverse_distance_weighting.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">86</span>&nbsp; <span class="chapter-title">Inverse distance weighting method</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../exercises/random_walk.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">74</span>&nbsp; <span class="chapter-title">Random walk</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
