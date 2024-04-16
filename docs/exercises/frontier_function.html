@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Andres Patrignani">
-<meta name="dcterms.date" content="2024-01-17">
+<meta name="dcterms.date" content="2024-04-16">
 <meta name="keywords" content="frontier, yield gap, attainable yield">
 
 <title>PyNotes in Agriscience - 67&nbsp; Frontier production functions</title>
@@ -835,10 +835,13 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#curve-interpretation" id="toc-curve-interpretation" class="nav-link active" data-scroll-target="#curve-interpretation">Curve interpretation</a></li>
+  <li><a href="#read-and-inspect-dataset" id="toc-read-and-inspect-dataset" class="nav-link active" data-scroll-target="#read-and-inspect-dataset">Read and inspect dataset</a></li>
+  <li><a href="#binning-process" id="toc-binning-process" class="nav-link" data-scroll-target="#binning-process">Binning process</a></li>
+  <li><a href="#curve-fitting" id="toc-curve-fitting" class="nav-link" data-scroll-target="#curve-fitting">Curve fitting</a></li>
+  <li><a href="#curve-interpretation" id="toc-curve-interpretation" class="nav-link" data-scroll-target="#curve-interpretation">Curve interpretation</a></li>
   <li><a href="#additional-summary-metrics" id="toc-additional-summary-metrics" class="nav-link" data-scroll-target="#additional-summary-metrics">Additional summary metrics</a></li>
-  <li><a href="#quantile-regression" id="toc-quantile-regression" class="nav-link" data-scroll-target="#quantile-regression">Quantile regression</a></li>
-  <li><a href="#observations" id="toc-observations" class="nav-link" data-scroll-target="#observations">Observations</a></li>
+  <li><a href="#compute-frontier-with-plateau" id="toc-compute-frontier-with-plateau" class="nav-link" data-scroll-target="#compute-frontier-with-plateau">Compute frontier with plateau</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/frontier_function.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
@@ -865,7 +868,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 17, 2024</p>
+      <p class="date">April 16, 2024</p>
     </div>
   </div>
   
@@ -888,10 +891,12 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>np.seterr(divide <span class="op">=</span> <span class="st">'ignore'</span>)<span class="op">;</span> <span class="co"># Suppress warning about diving by zero</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<section id="read-and-inspect-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="read-and-inspect-dataset">Read and inspect dataset</h2>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load yield and precipitation data</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">"../datasets/frontier_yield_rainfall.csv"</span>, header<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"../datasets/frontier_yield_rainfall.csv"</span>, header<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
@@ -948,10 +953,10 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Explore data</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(data[<span class="st">"rainfall"</span>], data[<span class="st">"grain_yield"</span>], edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">"rainfall"</span>], df[<span class="st">"grain_yield"</span>], edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Growing season precipitation (mm)'</span>)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Grain yield (kg/ha)'</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -959,291 +964,171 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <p><img src="frontier_function_files/figure-html/cell-4-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<p>Our next step is to partition the dataset into continuous and non-overlapping rainfall intervals that we will call bins, similar to histogram bins.</p>
-<p>To generate the bins we will search for the minimum and maximum values of the rainfall vector and then use this information to generate linearly spaced (it could also be log-spaced) rainfall values that we will use to partion the dataset at regular intervals. In other words, each bin will be defined by a lower and upper rainfall boundary.</p>
-<p>THen, the idea is to select the highest observed grain yield obtained within a specific bin. We will also need to identify the position of the highest yield observation for that specific bin because we also need to retrive the growing season rainfall at which the highest yield was achieved. The highest yield and its corresponding rainfall within a bin represent a pair of <code>x,y</code> coordinates that we can use to approximate the frontier function. Of course we will collect several of these pairs, as many as <code>N-1</code>, where <code>N</code> denotes the number of bins.</p>
-<p>As usual, we need to consider potentially missing values (represented as NaN) or perhaps rainfall bins that do not contain any yield data. The latter situation could arise from a dataset with insufficient yield observations in certain rainfall ranges or a as a result of dividing the dataset into a large number of bins, and therefore, so narrow that there might not be any historical yield record for that specific narrow bin.</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identify boundary points</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>max_rainfall <span class="op">=</span> np.<span class="bu">max</span>(data.rainfall)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>min_rainfall <span class="op">=</span> np.<span class="bu">min</span>(data.rainfall)</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">15</span> <span class="co"># Number of bins</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>rainfall_bins <span class="op">=</span> np.linspace(min_rainfall, max_rainfall, N)</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rainfall_bins)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="binning-process" class="level2">
+<h2 class="anchored" data-anchor-id="binning-process">Binning process</h2>
+<p>Our next step is to partition the dataset into continuous and non-overlapping rainfall intervals or histogram bins.</p>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get histogram bin edges</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>bin_edges <span class="op">=</span> np.histogram_bin_edges(df[<span class="st">'rainfall'</span>], bins<span class="op">=</span><span class="st">'fd'</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bin_edges)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[ 206.629       271.80721429  336.98542857  402.16364286  467.34185714
-  532.52007143  597.69828571  662.8765      728.05471429  793.23292857
-  858.41114286  923.58935714  988.76757143 1053.94578571 1119.124     ]</code></pre>
+<pre><code>[ 206.629       308.01733333  409.40566667  510.794       612.18233333
+  713.57066667  814.959       916.34733333 1017.73566667 1119.124     ]</code></pre>
 </div>
 </div>
-<p>Now that we have the intervals for our rainfall bins is time to test whether we can select rainfall events within the lower and upper bins limits. We will test this operation by hard coding a lower and upper limit. I will make the arbitrary choice of select <code>great or equal than</code> for the lower limit and <code>greater than</code> for the upper limit.</p>
-<blockquote class="blockquote">
-<p>Note how we are braking down the problem and testing individual components of a larger operation. I highly encourage you to build your code line by line. Test the code using a simple example to ensure that it works as expected. Then, proceed with another line.</p>
-</blockquote>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's test the boolean for selecting rainfall values above the bin lower limit</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this cell to see the list of True and False entries (it is long)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>data.rainfall <span class="op">&gt;=</span> rainfall_bins[<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>0     True
-1     True
-2     True
-3     True
-4     True
-      ... 
-68    True
-69    True
-70    True
-71    True
-72    True
-Name: rainfall, Length: 73, dtype: bool</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's test the boolean for selecting rainfall values below the bin upper limit</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Run this cell to see the list of True and False entries (it is long)</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>data.rainfall <span class="op">&lt;</span> rainfall_bins[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>0     False
-1     False
-2     False
-3     False
-4     False
-      ...  
-68    False
-69    False
-70    False
-71    False
-72    False
-Name: rainfall, Length: 73, dtype: bool</code></pre>
-</div>
-</div>
-<p>What we really need to do is to put these two statements together. Only values that are <code>True</code> in both statements will result to be also <code>True</code>in the final statement.</p>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's test these two boolean statements together for n = 1</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>(data.rainfall <span class="op">&gt;=</span> rainfall_bins[n]) <span class="op">&amp;</span> (data.rainfall <span class="op">&lt;</span> rainfall_bins[n<span class="op">+</span><span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>0     False
-1     False
-2     False
-3     False
-4     False
-      ...  
-68    False
-69    False
-70    False
-71    False
-72     True
-Name: rainfall, Length: 73, dtype: bool</code></pre>
-</div>
-</div>
-<p>We have the bins and we know how to select years (because rainfall and yield are provided for different years) within different rainfall intervals.</p>
-<p>The next step consists of iterating over each bin, get the highest yield for the bin, get the matching growing season rainfall, store these value, and proceed with the next bin until we exhaust all the bins (i.e.&nbsp;we reach the maximum rainfall value)</p>
-<p>As mentioned earlier, it will be wise to account for bins with no yield, just in case we divided the rainfall vector in way too many intervals. I will simple check if all the boolean values are <code>False</code>. Our code may still crash due to other issues that aren’t within our radar.</p>
-<blockquote class="blockquote">
-<p>What can I do to anticipate errors or roadblocks in my code? First I suggest exploring your data. Open and inspect the file to check for missing values, mixed strings and numbers, etc. In addition, I highly recommend sketching the method by drawing a chart. You will need to instruct the computer to follow the same steps. So drawing and sketching are excellent exercises to breakdown problems into smaller steps.</p>
-</blockquote>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each rainfall interval</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Initiate the empty array to collect values</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>frontier_yield_obs <span class="op">=</span> np.array([])</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>frontier_rainfall_obs <span class="op">=</span> np.array([])</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co"># The loop below will go to N-1, so that when we reach the end of the loop</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># and we call N+1 we retrieve the last element. Otherwise, if we iterate until N</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># when we call the N+1 element it will return an error since there is no such element.</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(rainfall_bins)<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> (data.rainfall <span class="op">&gt;=</span> rainfall_bins[n]) <span class="op">&amp;</span> (data.rainfall <span class="op">&lt;</span> rainfall_bins[n<span class="op">+</span><span class="dv">1</span>])</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">all</span>(idx <span class="op">==</span> <span class="va">False</span>):</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>        rainfall_bin <span class="op">=</span> data.loc[idx, <span class="st">'rainfall'</span>]</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        yield_bin <span class="op">=</span> data.loc[idx, <span class="st">'grain_yield'</span>]</span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>        max_yield_bin <span class="op">=</span> np.amax(yield_bin)</span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>        idx_max_yield_bin <span class="op">=</span> np.argmax(yield_bin.values)</span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>        corresponding_rainfall_bin <span class="op">=</span> rainfall_bin.iloc[idx_max_yield_bin]</span>
-<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        frontier_rainfall_obs <span class="op">=</span> np.append(frontier_rainfall_obs, corresponding_rainfall_bin)</span>
-<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>        frontier_yield_obs <span class="op">=</span> np.append(frontier_yield_obs, max_yield_bin)</span>
-<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Display outputs. For simplicity I rounded the outputs at the time of printing.</span></span>
-<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">round</span>(frontier_rainfall_obs))</span>
-<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(np.<span class="bu">round</span>(frontier_yield_obs))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The next step consists of iterating over each bin and get a specified yield percentile for the values in each bin and compute the average growing season rainfall for each bin.</p>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initiate arrays filled with NaNs</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>yield_bin <span class="op">=</span> np.full(<span class="bu">len</span>(bin_edges), np.nan)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>rainfall_bin <span class="op">=</span> np.full(<span class="bu">len</span>(bin_edges), np.nan)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over each rainfall bin</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(bin_edges)<span class="op">-</span><span class="dv">1</span>):</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> (df[<span class="st">'rainfall'</span>] <span class="op">&gt;=</span> bin_edges[k]) <span class="op">&amp;</span> (df[<span class="st">'rainfall'</span>] <span class="op">&lt;</span> bin_edges[k<span class="op">+</span><span class="dv">1</span>])</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># If not rainfall observation is within current bin, then skip</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">all</span>(idx <span class="op">==</span> <span class="va">False</span>):</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        yield_bin[k] <span class="op">=</span> df.loc[idx, <span class="st">'grain_yield'</span>].quantile(<span class="fl">0.99</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        rainfall_bin[k] <span class="op">=</span> df.loc[idx, <span class="st">'rainfall'</span>].mean()</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Display outputs. For simplicity I rounded the outputs at the time of printing.</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rainfall_bin)</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(yield_bin)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[ 261.  336.  354.  422.  509.  553.  621.  697.  739.  803. 1020.]
-[1815. 2104. 2272. 1915. 2890. 2621. 2722. 2339. 2688. 1781. 2084.]</code></pre>
+<pre><code>[ 266.2301      363.7915      471.59007692  564.86611765  653.68054545
+  760.57125              nan           nan 1020.064                nan]
+[1851.37435097 2246.5035833  2809.38967096 2632.4922162  2708.5742522
+ 2661.1910059            nan           nan 2083.518656             nan]</code></pre>
 </div>
 </div>
-<p>Done! We have the highest yield and the corresponding rainfall for each selected yield. Note how the variable names, despite being a bit verbose, actually help to read and follow the logic of the code.</p>
-<p>The last step to create the frontier production function consists of defining the model of the frontier and optimizing model parameters based the pairwise rainfall-yield data that we just collected for the rainfall bins.</p>
-<p>There are multiple Python packages that can be used to optimize functions. We will use the standard curve_fit function based on non-linear least squares from the SciPy module.</p>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Cobb-Douglas model</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cobb_douglas <span class="op">=</span> <span class="kw">lambda</span> x, a, b, c: a <span class="op">+</span> b <span class="op">*</span> np.log(x) <span class="op">+</span> c <span class="op">*</span> np.log(x)<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial guess for the parameters of the Cobb-Douglas model</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>par0 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>]</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Cobb-Douglas model</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>par <span class="op">=</span> curve_fit(cobb_douglas, frontier_rainfall_obs, frontier_yield_obs, par0)</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Optimized parameters:'</span>, np.<span class="bu">round</span>(par[<span class="dv">0</span>]))</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create range of x values using a step increase (default). This will give us enough detail</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># to have an accurate curve for most practical purposes.</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>frontier_rainfall_line <span class="op">=</span> np.arange(<span class="dv">0</span>,max_rainfall)</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>frontier_yield_line <span class="op">=</span> cobb_douglas(frontier_rainfall_line, <span class="op">*</span>par[<span class="dv">0</span>])</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The frontier was built using a total of:'</span>, <span class="bu">len</span>(frontier_rainfall_line), <span class="st">'points'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove bins with NaNs</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>idx_nan <span class="op">=</span> np.isnan(rainfall_bin)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>rainfall_bin <span class="op">=</span> rainfall_bin[<span class="op">~</span>idx_nan]</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>yield_bin <span class="op">=</span> yield_bin[<span class="op">~</span>idx_nan]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="curve-fitting" class="level2">
+<h2 class="anchored" data-anchor-id="curve-fitting">Curve fitting</h2>
+<p>In the last step we need to create the frontier production function using the pairwise rainfall-yield data that we just collected for the rainfall bins.</p>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define Cobb-Douglas model</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cobb_douglas <span class="op">=</span> <span class="kw">lambda</span> x, a, b, c: a <span class="op">+</span> b <span class="op">*</span> np.log(x) <span class="op">+</span> c <span class="op">*</span> np.log(x)<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Define initial guess for the parameters of the Cobb-Douglas model</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>par0 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>]</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit Cobb-Douglas model</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>par <span class="op">=</span> curve_fit(cobb_douglas, rainfall_bin, yield_bin, par0)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Optimized parameters:'</span>, np.<span class="bu">round</span>(par[<span class="dv">0</span>]))</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create range of x values using a step increase (default). This will give us enough detail</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co"># to have an accurate curve for most practical purposes.</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>frontier_rainfall <span class="op">=</span> np.arange(<span class="dv">0</span>, df[<span class="st">'rainfall'</span>].<span class="bu">max</span>())</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>frontier_yield <span class="op">=</span> cobb_douglas(frontier_rainfall, <span class="op">*</span>par[<span class="dv">0</span>])</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'The frontier was built using a total of:'</span>, <span class="bu">len</span>(frontier_rainfall), <span class="st">'points'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Optimized parameters: [-55245.  18306.  -1450.]
+<pre><code>Optimized parameters: [-64574.  21257.  -1679.]
 The frontier was built using a total of: 1120 points</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="42">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data and frontier</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(frontier_rainfall_obs, frontier_yield_obs, s<span class="op">=</span><span class="dv">200</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, facecolor<span class="op">=</span><span class="st">'w'</span>, color<span class="op">=</span><span class="st">'r'</span>, linewidths<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(data[<span class="st">"rainfall"</span>], data[<span class="st">"grain_yield"</span>], edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>plt.plot(frontier_rainfall_line, frontier_yield_line, <span class="st">'-k'</span>)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Growing season precipitation (mm)'</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Grain yield (kg/ha)'</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">3200</span>)</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data and frontier</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">5</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">"rainfall"</span>], df[<span class="st">"grain_yield"</span>],</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>            edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">'Obs'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>plt.plot(frontier_rainfall, frontier_yield,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'Frontier Cobb-Douglas'</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Growing season precipitation (mm)'</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Grain yield (kg/ha)'</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">3200</span>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="frontier_function_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
+<p><img src="frontier_function_files/figure-html/cell-9-output-1.png" class="img-fluid"></p>
 </div>
 </div>
+</section>
 <section id="curve-interpretation" class="level2">
 <h2 class="anchored" data-anchor-id="curve-interpretation">Curve interpretation</h2>
 <ul>
-<li><p>The part of the frontier intercepting the <code>y axis</code> is negative. We restricted the plot to plausible yield values, which are certainly greater than zero.</p></li>
-<li><p>The part of the frontier that intercepts the <code>x axis</code> represents the amount of growing season water supply that genertes zero yield. This can be viewed as an inefficiency of the system and represents the minimum water losses (due to runoff, evaporation, drainage, canopy interception, etc.).</p></li>
-<li><p>The highest point of the curve gives us an idea of the growing season rainfall required to achieve the highest yeilds. Note that during many years yields in the central range can be much lower than the highest yield. To a great extent this associated to other factors, such as the distribution of the rainfall during the growing season or the occurrence of other factors like heat stress, hail damage, or yield losses due to diseases and pests.</p></li>
-<li><p>The last, and decaying, portion of the curve could be due to two main reasons: 1) There is insuficient yield data for years with high growing season rainfall. The chances of receiving two or three times as much rainfall than the median rainfall in a single growing season are probably not very high. 2) Excess of water can be detrimental to the production of grain yield. This actually makes sense and can be related to flooding events, plant lodging, increased disease pressure, weaker root anchoring, and even larger number of cloudy days that reduce the amount of solar radiation for photosynthesis. We don’t know the answer from this dataset.</p></li>
+<li><p>Part of the frontier function is negative. We limited the <code>y</code> axis in the plot to positive yield values.</p></li>
+<li><p>The part of the frontier yield function that intercepts the <code>x</code> axis represents the amount of growing season water supply that generates zero yield. This can be viewed as an inefficiency of the system and represents the minimum water losses due to runoff, evaporation, drainage, canopy interception, etc.</p></li>
+<li><p>The highest point of the curve indicates the growing season rainfall required to achieve maximum yield. Values below the curve represent non-optimal yield for that growing season rainfall, which can be associated to other factors such as the distribution of the rainfall during the growing season, heat stress, hail damage, or yield losses due to diseases and pests.</p></li>
+<li><p>The decaying portion of the curve at high growing season rainfall may be due to: 1) there is insuficient yield data for years with high growing season rainfall or 2) excess water is detrimental to grain yields (e.g., plant lodging, increased disease pressure, weaker root anchoring, and even larger number of cloudy days that reduce the amount of solar radiation for photosynthesis).</p></li>
 </ul>
-<p>To complete the analysis we will compute few extra metrics that might be useful to summarize the dataset. I assume most of you are familiar with the concept of median (i.e.&nbsp;50th percentile), which is auseful metric of central tendency robust to outliers and skewed distributions. Perhaps, the most challenging step is the one regarding the searching of the function roots. We can use the Newton-Raphson method (also known as the secant method) for finding function roots (i.e.&nbsp;at what value(s) of x the function f(x) intersects the x-axis). Based on a visual inspection of the graph, we will pass an initial guess for the serach of 200 mm. If you want to learn more about this function you can read the official <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.newton.html">SciPy documentation</a>.</p>
-<p>We can also estimate the ideal rainfall by finding the point at which the frontier does not show any additional increase in yield with increasing rainfall. We can find this optimum point by finding the point at which the first derivative of the frontier function is zero.</p>
 </section>
 <section id="additional-summary-metrics" class="level2">
 <h2 class="anchored" data-anchor-id="additional-summary-metrics">Additional summary metrics</h2>
-<div class="cell" data-execution_count="43">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Median rainfall</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>median_rainfall <span class="op">=</span> np.median(data.rainfall)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(median_rainfall, <span class="st">'mm'</span>)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Median grain yield</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>median_yield <span class="op">=</span> np.median(data.grain_yield)</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(median_yield, <span class="st">'kg/ha'</span>)</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate minimum_losses using the Newton-Raphson method</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>minimum_losses <span class="op">=</span> newton(cobb_douglas, <span class="dv">200</span>, args<span class="op">=</span>par[<span class="dv">0</span>])</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Minimum losses: '</span>, <span class="bu">round</span>(minimum_losses), <span class="st">'mm'</span>)</span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimal rainfall (system input) and grain yield (system output)</span></span>
-<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="co"># We will approaximate the first derivative using the set of points (i.e. numerical approx.)</span></span>
-<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Calcualte derivative, Step 2: Calculate absolute value, Step 3: find minimum value</span></span>
-<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>first_diff_approax <span class="op">=</span> np.diff(frontier_yield_line)</span>
-<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>idx_zero_diff <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(first_diff_approax))</span>
-<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>optimal_rainfall <span class="op">=</span> frontier_rainfall_line[idx_zero_diff]</span>
-<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>optimal_yield <span class="op">=</span> frontier_yield_line[idx_zero_diff]</span>
-<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Optimal rainfall:'</span>, <span class="bu">round</span>(optimal_rainfall), <span class="st">'mm'</span>)</span>
-<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Optimal yield:'</span>, <span class="bu">round</span>(optimal_yield), <span class="st">'kg/ha'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Median rainfall</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>median_rainfall <span class="op">=</span> df[<span class="st">'rainfall'</span>].median()</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(median_rainfall, <span class="st">'mm'</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Median grain yield</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>median_yield <span class="op">=</span> df[<span class="st">'grain_yield'</span>].median()</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(median_yield, <span class="st">'kg/ha'</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate minimum_losses using the Newton-Raphson method</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>minimum_losses <span class="op">=</span> newton(cobb_douglas, <span class="dv">200</span>, args<span class="op">=</span>par[<span class="dv">0</span>])</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Minimum losses: '</span>, <span class="bu">round</span>(minimum_losses), <span class="st">'mm'</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Find rainfall for highest grain yield</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>max_yield <span class="op">=</span> np.amax(frontier_yield)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>idx_max_yield <span class="op">=</span> np.argmax(frontier_yield)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>optimal_rainfall <span class="op">=</span> frontier_rainfall[idx_max_yield]</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Optimal rainfall:'</span>, <span class="bu">round</span>(optimal_rainfall), <span class="st">'mm'</span>)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Optimal yield:'</span>, <span class="bu">round</span>(max_yield), <span class="st">'kg/ha'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>508.254 mm
 1680.25698 kg/ha
-Minimum losses:  147.0 mm
-Optimal rainfall: 550.0 mm
-Optimal yield: 2525.0 kg/ha</code></pre>
+Minimum losses:  157 mm
+Optimal rainfall: 562 mm
+Optimal yield: 2727 kg/ha</code></pre>
 </div>
 </div>
 </section>
-<section id="quantile-regression" class="level2">
-<h2 class="anchored" data-anchor-id="quantile-regression">Quantile regression</h2>
-<p>In the previous line of reasoning we have focused on selecting the highest yield within a given rainfall interval. This approach makes direct use of both rainfall and yield observations to build the frontier production function.</p>
-<p>An alternative approach is to calculate some statistical variables for each interval. A commonly used technique is that of selecting percentiles or quantiles. You probably heard the term “Quantile regression analysis”. I’m sure that <code>Python</code> and <code>R</code> packages have some advanced features, but here I want show the concept behind the technique, which is similar to the approach described earlier.</p>
-<p>For each bin we will simply calculate the yield 95th percentile and the average rainfall. The pairwise points will not necessarily match observations and will likely be smoother since we are filtering out some of the noise.</p>
-<div class="cell" data-execution_count="52">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Quantile regression</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>max_rainfall <span class="op">=</span> np.<span class="bu">max</span>(data.rainfall)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>min_rainfall <span class="op">=</span> np.<span class="bu">min</span>(data.rainfall)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">10</span> <span class="co"># Number of bins</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>rainfall_bins <span class="op">=</span> np.linspace(min_rainfall, max_rainfall, N)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>frontier_yield_obs <span class="op">=</span> np.array([])</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>frontier_rainfall_obs <span class="op">=</span> np.array([])</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">0</span>,<span class="bu">len</span>(rainfall_bins)<span class="op">-</span><span class="dv">1</span>):</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> (data.rainfall <span class="op">&gt;=</span> rainfall_bins[n]) <span class="op">&amp;</span> (data.rainfall <span class="op">&lt;</span> rainfall_bins[n<span class="op">+</span><span class="dv">1</span>])</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> np.<span class="bu">all</span>(idx <span class="op">==</span> <span class="va">False</span>):</span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">continue</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>        rainfall_bin <span class="op">=</span> data.loc[idx, <span class="st">'rainfall'</span>]</span>
-<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>        yield_bin <span class="op">=</span> data.loc[idx, <span class="st">'grain_yield'</span>]        </span>
-<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>        frontier_rainfall_obs <span class="op">=</span> np.append(frontier_rainfall_obs, np.mean(rainfall_bin))</span>
-<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>        frontier_yield_obs <span class="op">=</span> np.append(frontier_yield_obs, np.percentile(yield_bin, <span class="dv">95</span>))</span>
-<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>par0 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>]</span>
-<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a>par <span class="op">=</span> curve_fit(cobb_douglas, frontier_rainfall_obs, frontier_yield_obs, par0)</span>
-<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>frontier_rainfall_line <span class="op">=</span> np.arange(<span class="dv">0</span>,max_rainfall)</span>
-<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a>frontier_yield_line <span class="op">=</span> cobb_douglas(frontier_rainfall_line, <span class="op">*</span>par[<span class="dv">0</span>])</span>
-<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the data and frontier</span></span>
-<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">8</span>,<span class="dv">6</span>))</span>
-<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>plt.scatter(frontier_rainfall_obs, frontier_yield_obs, </span>
-<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a>            s<span class="op">=</span><span class="dv">200</span>, alpha<span class="op">=</span><span class="fl">0.25</span>, facecolor<span class="op">=</span><span class="st">'b'</span>, edgecolors<span class="op">=</span><span class="st">'k'</span>, linewidths<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a>plt.scatter(data[<span class="st">"rainfall"</span>], data[<span class="st">"grain_yield"</span>], edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>)</span>
-<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>plt.plot(frontier_rainfall_line, frontier_yield_line, <span class="st">'-k'</span>)</span>
-<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Growing season precipitation (mm)'</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Grain yield (kg/ha)'</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">3200</span>)</span>
-<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="compute-frontier-with-plateau" class="level2">
+<h2 class="anchored" data-anchor-id="compute-frontier-with-plateau">Compute frontier with plateau</h2>
+<p>Some researchers prefer to fit a frontier with a plateau. While this is typically done using a two-segment piecewise linear model, we can easily adapt the model fitted earlier to achieve the same.</p>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set maximum</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>idx_rainfall <span class="op">=</span> frontier_rainfall <span class="op">&gt;</span> optimal_rainfall</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>frontier_plateau <span class="op">=</span> frontier_yield.copy()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>frontier_plateau[idx_rainfall] <span class="op">=</span> np.maximum(frontier_plateau[idx_rainfall], max_yield)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the new frontier</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">5</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.scatter(df[<span class="st">"rainfall"</span>], df[<span class="st">"grain_yield"</span>], </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>            edgecolor<span class="op">=</span><span class="st">'k'</span>, alpha<span class="op">=</span><span class="fl">0.75</span>, label<span class="op">=</span><span class="st">'Obs'</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plt.plot(frontier_rainfall, frontier_plateau, </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>         <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'Frontier with plateau'</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Growing season precipitation (mm)'</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Grain yield (kg/ha)'</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>plt.xticks(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>plt.yticks(fontsize<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">3200</span>)</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'lower right'</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="frontier_function_files/figure-html/cell-13-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estimate minimum_losses using the Newton-Raphson method</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>minimum_losses <span class="op">=</span> newton(cobb_douglas, <span class="dv">200</span>, args<span class="op">=</span>par[<span class="dv">0</span>])</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Minimum losses: '</span>, <span class="bu">round</span>(minimum_losses), <span class="st">'mm'</span>)</span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Optimal rainfall (system input) and grain yield (system output)</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># We will approaximate the first derivative using the set of points (i.e. numerical approx.)</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1: Calcualte derivative, Step 2: Calculate absolute value, Step 3: find minimum value</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>first_diff_approax <span class="op">=</span> np.diff(frontier_yield_line)</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>idx_zero_diff <span class="op">=</span> np.argmin(np.<span class="bu">abs</span>(first_diff_approax))</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>optimal_rainfall <span class="op">=</span> frontier_rainfall_line[idx_zero_diff]</span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>optimal_yield <span class="op">=</span> frontier_yield_line[idx_zero_diff]</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Optimal rainfall:'</span>, <span class="bu">round</span>(optimal_rainfall), <span class="st">'mm'</span>)</span>
-<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Optimal yield:'</span>, <span class="bu">round</span>(optimal_yield), <span class="st">'kg/ha'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Minimum losses:  147.0 mm
-Optimal rainfall: 580.0 mm
-Optimal yield: 2592.0 kg/ha</code></pre>
+<p><img src="frontier_function_files/figure-html/cell-12-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
-<section id="observations" class="level2">
-<h2 class="anchored" data-anchor-id="observations">Observations</h2>
-<p>Depending on the method we obtained somewhat different values of minimum losses, optimal rainfall, and optimal yield. So here are some questions for you to think:</p>
+<section id="practice" class="level2">
+<h2 class="anchored" data-anchor-id="practice">Practice</h2>
 <ul>
-<li><p>As a researcher how do we determine the right method to analyze our data? Particularly when methods result in slightly different answers.</p></li>
-<li><p>Run the code again using a different number of bins. How different are the values for minimum losses and optimum rainfall amounts?</p></li>
-<li><p>Should we consider an asymptotic model or a model like the Cobb-Douglas that may exhibit a decreasing trend at high growing season rainfall amounts?</p></li>
+<li>Run the code again using a different method to create bins and a different percentile for yield in each bin. How different are the values for minimum losses and optimum rainfall amounts?</li>
 </ul>
 </section>
 <section id="references" class="level2">
