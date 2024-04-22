@@ -137,6 +137,7 @@ book:
         
     - part: "MACHINE LEARNING"
       chapters:
+        - exercises/clustering_kansas_environments.ipynb
         - exercises/estimate_daily_vapor_pressure.ipynb
 
         
