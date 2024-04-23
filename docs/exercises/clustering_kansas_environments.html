@@ -869,7 +869,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <li><p><strong>Sand content at 5 cm depth</strong>: Soil fertility and water holding capacity are major drivers of crop growth and yield. Agricultural crops are often planted in rich, fertile soils. Generally speaking, sandy soils have low fertility and low water holding capacity. So, in this exercise we will use the percetnage of sand content in the top 5 cm as a proxy variable to represent different soil types. Source: SoilGrids, International Soil Reference and Information Centre.</p></li>
 </ul>
 <p>Thermal units and annual precipitation are coarse regulators of potentially viable regions for agricultural crops, while sand content is a fine regulator.</p>
-<div class="cell" data-execution_count="76">
+<div class="cell" data-execution_count="54">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import modules</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> xarray <span class="im">as</span> xr</span>
@@ -923,22 +923,28 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <pre><code>array([54.24156397])</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot sand content around Garden City, KS</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sand.sel(x<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">101.5</span>, <span class="op">-</span><span class="fl">100.5</span>), y<span class="op">=</span><span class="bu">slice</span>(<span class="fl">38.5</span>,<span class="fl">37.0</span>)).plot(cmap<span class="op">=</span><span class="st">'OrRd'</span>, robust<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>sand.sel(x<span class="op">=</span><span class="bu">slice</span>(<span class="op">-</span><span class="fl">101.5</span>, <span class="op">-</span><span class="fl">100.5</span>), y<span class="op">=</span><span class="bu">slice</span>(<span class="fl">38.5</span>,<span class="fl">37.0</span>)).plot(cmap<span class="op">=</span><span class="st">'OrRd'</span>, robust<span class="op">=</span><span class="va">True</span>)<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Area around Garden City, KS'</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Longitude'</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Latitude'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>Text(0, 0.5, 'Latitude')</code></pre>
+</div>
 <div class="cell-output cell-output-display">
-<p><img src="clustering_kansas_environments_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
+<p><img src="clustering_kansas_environments_files/figure-html/cell-6-output-2.png" class="img-fluid"></p>
 </div>
 </div>
 <section id="preparing-data-for-clustering" class="level2">
 <h2 class="anchored" data-anchor-id="preparing-data-for-clustering">Preparing data for clustering</h2>
 <p>The clustering routine in Scikit-learn cannot handle missing values (i.e., NaN). Because our maps contain NaN values to indicate pixels outside of the state boundary or pixels over water bodies (like lakes and ponds), we need to assign a placeholder to these pixels before clustering. Rather that assigning zero, we will assign a negative value that is very different from other values in our dataset. When we are done with the clustering process, we will revert the mask using the NaN values.</p>
 <p>Clustering also requires normalizing the input data. The K-means appraoch treats all values equally when computing distances between data points. If one variable has a larger scale than others, it will dominate the clustering process. Normalizing the data ensures that all dimensions contribute equally to the clustering.</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure all the layers have the same dimension.</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gdd.shape)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(precip.shape)</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sand.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure all the layers have the same dimension.</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(gdd.shape)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(precip.shape)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sand.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(1, 362, 897)
 (1, 362, 897)
@@ -946,28 +952,31 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </div>
 </div>
 <p>Sometimes raster layers have different dimensions (different spatial resolution). In that case, we need to first resample to upscale or downscale the raster dimensions, so that all layers have the same shape. The code below shows how to do this for an arbitrary shape:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Reproject the DataArray to the new resolution</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.enums <span class="im">import</span> Resampling</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>reprojected_sand <span class="op">=</span> sand.rio.reproject(sand.rio.crs, </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                                     shape<span class="op">=</span>(<span class="dv">500</span>, <span class="dv">1200</span>),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                                    resampling<span class="op">=</span>Resampling.cubic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2D arrays into 1D arrays</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>X_gdd <span class="op">=</span> gdd.data.flatten()</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>X_precip <span class="op">=</span> precip.data.flatten()</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>X_sand <span class="op">=</span> sand.data.flatten()</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Find grid cells with NaN values in any layer</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>idx_nan <span class="op">=</span> np.isnan(X_gdd) <span class="op">|</span> np.isnan(X_precip) <span class="op">|</span> np.isnan(X_sand)</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace the NaN values with -999.0</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>X_gdd[idx_nan] <span class="op">=</span> <span class="op">-</span><span class="fl">9.0</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>X_precip[idx_nan] <span class="op">=</span> <span class="op">-</span><span class="fl">9.0</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>X_sand[idx_nan] <span class="op">=</span> <span class="op">-</span><span class="fl">9.0</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Create aray of inputs ((n_samples by n_features))</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack( (X_gdd, X_precip, X_sand) )</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>Reproject the DataArray to the new resolution</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> rasterio.enums <span class="im">import</span> Resampling</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>reprojected_sand <span class="op">=</span> sand.rio.reproject(sand.rio.crs, </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                                     shape<span class="op">=</span>(<span class="dv">500</span>, <span class="dv">1200</span>),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                                    resampling<span class="op">=</span>Resampling.cubic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert 2D arrays into 1D arrays</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>X_gdd <span class="op">=</span> gdd.data.flatten()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>X_precip <span class="op">=</span> precip.data.flatten()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>X_sand <span class="op">=</span> sand.data.flatten()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Find grid cells with NaN values in any layer</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Pixels with NaN values in at least one feature will be set to NaN</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>idx_nan <span class="op">=</span> np.isnan(X_gdd) <span class="op">|</span> np.isnan(X_precip) <span class="op">|</span> np.isnan(X_sand)</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace the NaN values with -999.0</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>X_gdd[idx_nan] <span class="op">=</span> <span class="op">-</span><span class="fl">1.0</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>X_precip[idx_nan] <span class="op">=</span> <span class="op">-</span><span class="fl">1.0</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>X_sand[idx_nan] <span class="op">=</span> <span class="op">-</span><span class="fl">1.0</span></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create aray of inputs ((n_samples by n_features))</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack( (X_gdd, X_precip, X_sand) )</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect shape of resulting input array</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(X.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(324714, 3)</code></pre>
 </div>
@@ -976,107 +985,120 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <section id="normalization" class="level2">
 <h2 class="anchored" data-anchor-id="normalization">Normalization</h2>
 <p>We will use the <code>normalize</code> function from Scikit Learn that implements an L2 normalization, which is also known as Euclidean normalization. This normalization technique consists of dividing a vector (our feature) by its Euclidean norm. The Euclidean norm of a vector is the square root of the sum of the squares of its elements.</p>
-<div class="cell" data-execution_count="39">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize (0=normalize each feature, 1=normalize each sample)</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>X_normalized <span class="op">=</span> normalize(X, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively you can compute your own normalizing metric (like the z-score)</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#X_normalized = (X - X.mean(axis=0))/X.std(axis=0)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize (0=normalize each feature, 1=normalize each sample)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>X_normalized <span class="op">=</span> normalize(X, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Alternatively you can compute your own normalizing metric (like the z-score)</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co">#X_normalized = (X - X.mean(axis=0))/X.std(axis=0)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="73">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cluster the data</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">5</span> <span class="op">+</span> <span class="dv">1</span> <span class="co"># Add an extra cluster for the mask pixels</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>clusters <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">1</span>, n_init<span class="op">=</span><span class="st">'auto'</span>).fit(X_normalized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find best number of clusters</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cluster_range <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">2</span>,<span class="dv">10</span>))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>score <span class="op">=</span> []</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k <span class="kw">in</span> cluster_range:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    clusters <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">1</span>, n_init<span class="op">=</span><span class="st">'auto'</span>).fit(X_normalized)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    rand_samples <span class="op">=</span> np.random.randint(X_normalized.shape[<span class="dv">0</span>], size<span class="op">=</span>(<span class="dv">5_000</span>))</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    score.append(silhouette_score(X_normalized[rand_samples,:], </span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>                                  clusters.labels_[rand_samples]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute silhouette score</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>rand_samples <span class="op">=</span> np.random.randint(X_normalized.shape[<span class="dv">0</span>], size<span class="op">=</span>(<span class="dv">1000</span>))</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>silhouette_score(X_normalized[rand_samples,:], clusters.labels_[rand_samples])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="77">
-<pre><code>0.43453363005716245</code></pre>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Silhouette_score</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">4</span>))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>plt.plot(cluster_range, score, <span class="st">'o-'</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Cluster number'</span>)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Silhouette score'</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="clustering_kansas_environments_files/figure-html/cell-11-output-1.png" class="img-fluid"></p>
 </div>
+</div>
+<p>It seems that the best number of clusters is 4. However, remember that we have one cluster for the mask (all the values set to -1). So the correct number of clusters defining the agro zones is 3.</p>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cluster the data</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> <span class="dv">3</span> <span class="op">+</span> <span class="dv">1</span> <span class="co"># Add an extra cluster for the mask pixels</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>clusters <span class="op">=</span> KMeans(n_clusters<span class="op">=</span>k, random_state<span class="op">=</span><span class="dv">1</span>, n_init<span class="op">=</span><span class="st">'auto'</span>).fit(X_normalized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>From the Scikit-Learn documentation: “The best value is 1 and the worst value is -1. Values near 0 indicate overlapping clusters.”</p>
-<div class="cell" data-execution_count="71">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check type of a single value of the resulting cluster labels</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(clusters.labels_[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check type of a single value of the resulting cluster labels</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">type</span>(clusters.labels_[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>&lt;class 'numpy.int32'&gt;</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="54">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to float so that we can bring back the NaN values</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to mask the resulting image</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>cluster_labels <span class="op">=</span> clusters.labels_.astype(np.float64)</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Restore mask</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>cluster_labels[idx_nan] <span class="op">=</span> np.nan</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cluster_labels.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="58">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to float so that we can bring back the NaN values</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to mask the resulting image</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>cluster_labels <span class="op">=</span> clusters.labels_.astype(np.float64)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Restore mask</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>cluster_labels[idx_nan] <span class="op">=</span> np.nan</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cluster_labels.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(324714,)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="55">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape cluster labels so that they match the shape of the original maps.</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>cluster_labels <span class="op">=</span> np.reshape(cluster_labels, gdd.data.shape)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cluster_labels.shape) <span class="co"># Check that we changed the shape of the array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Reshape cluster labels so that they match the shape of the original maps.</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>cluster_labels <span class="op">=</span> np.reshape(cluster_labels, sand.data.shape)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(cluster_labels.shape) <span class="co"># Check that we changed the shape of the array</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(1, 362, 897)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="56">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add extra dimension</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#cluster_labels = np.expand_dims(cluster_labels, axis=0) </span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>regions <span class="op">=</span> xr.DataArray(cluster_labels, coords<span class="op">=</span>sand.coords, dims<span class="op">=</span>sand.dims)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="60">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add extra dimension</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#cluster_labels = np.expand_dims(cluster_labels, axis=0) </span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>agro_regions <span class="op">=</span> xr.DataArray(cluster_labels, coords<span class="op">=</span>sand.coords, dims<span class="op">=</span>sand.dims)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="57">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot map (use the x and y coordinates from another layer since the cluster labels don't have coordinates)</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>))</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>regions.plot(cmap<span class="op">=</span><span class="st">'Set3'</span>, add_colorbar<span class="op">=</span><span class="va">False</span>)</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="61">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot map (use the x and y coordinates from another layer since the cluster labels don't have coordinates)</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">6</span>,<span class="dv">3</span>))</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>agro_regions.plot(cmap<span class="op">=</span><span class="st">'Set3'</span>, add_colorbar<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<p><img src="clustering_kansas_environments_files/figure-html/cell-16-output-1.png" class="img-fluid"></p>
+<p><img src="clustering_kansas_environments_files/figure-html/cell-17-output-1.png" class="img-fluid"></p>
 </div>
 </div>
 </section>
 <section id="create-summary-of-properties-for-each-regions" class="level2">
 <h2 class="anchored" data-anchor-id="create-summary-of-properties-for-each-regions">Create summary of properties for each regions</h2>
 <p>Now that we have divided the state in regions of more homogeneous conditions, let’s generate a summary table with the median values of each property for each zone.</p>
-<div class="cell" data-execution_count="58">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find a way to get unique labels in the map</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> np.unique(cluster_labels[<span class="op">~</span>np.isnan(cluster_labels)])</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(labels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="62">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find a way to get unique labels in the map</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> np.unique(cluster_labels[<span class="op">~</span>np.isnan(cluster_labels)])</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(labels)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[0. 1. 2. 4. 5.]</code></pre>
+<pre><code>[0. 1. 3.]</code></pre>
 </div>
 </div>
 <p>A missing label is likely due to the placeholder for NaN values. This label was removed when we brought the NaN values back to the image.</p>
-<div class="cell" data-execution_count="59">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over each label and print the median values for each layer</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label <span class="kw">in</span> labels:</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create boolean array for current cluster label</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> cluster_labels <span class="op">==</span> label</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create separate strings to keep lines shorter</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>    txt_gdd <span class="op">=</span> <span class="ss">f"GDD:</span><span class="sc">{</span><span class="bu">round</span>(np.median(gdd.data[idx]))<span class="sc">}</span><span class="ss"> C per year"</span></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>    txt_precip <span class="op">=</span> <span class="ss">f"PRECIPITATION:</span><span class="sc">{</span><span class="bu">round</span>(np.median(precip.data[idx]))<span class="sc">}</span><span class="ss"> mm"</span></span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>    txt_sand <span class="op">=</span> <span class="ss">f"SAND:</span><span class="sc">{</span><span class="bu">round</span>(np.median(sand.data[idx]))<span class="sc">}</span><span class="ss"> %"</span></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print all the strings together</span></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Cluster </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss"> =&gt;  </span><span class="sc">{</span>txt_gdd<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>txt_precip<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>txt_sand<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="65">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Iterate over each label and print the median values for each layer</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> label <span class="kw">in</span> labels:</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create boolean array for current cluster label</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    idx <span class="op">=</span> cluster_labels <span class="op">==</span> label</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Create separate strings to keep lines shorter</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    txt_gdd <span class="op">=</span> <span class="ss">f"GDD:</span><span class="sc">{</span><span class="bu">round</span>(np.median(gdd.data[idx]))<span class="sc">}</span><span class="ss"> °C-day per year"</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    txt_precip <span class="op">=</span> <span class="ss">f"PRECIP:</span><span class="sc">{</span><span class="bu">round</span>(np.median(precip.data[idx]))<span class="sc">}</span><span class="ss"> mm"</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    txt_sand <span class="op">=</span> <span class="ss">f"SAND:</span><span class="sc">{</span><span class="bu">round</span>(np.median(sand.data[idx]))<span class="sc">}</span><span class="ss"> %"</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Print all the strings together</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Cluster </span><span class="sc">{</span>label<span class="sc">}</span><span class="ss"> =&gt;  </span><span class="sc">{</span>txt_gdd<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>txt_precip<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span>txt_sand<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Cluster 0.0 =&gt;  GDD:4686 C per year, PRECIPITATION:951 mm, SAND:15 %
-Cluster 1.0 =&gt;  GDD:4878 C per year, PRECIPITATION:679 mm, SAND:50 %
-Cluster 2.0 =&gt;  GDD:4312 C per year, PRECIPITATION:574 mm, SAND:23 %
-Cluster 4.0 =&gt;  GDD:4470 C per year, PRECIPITATION:498 mm, SAND:35 %
-Cluster 5.0 =&gt;  GDD:5001 C per year, PRECIPITATION:853 mm, SAND:29 %</code></pre>
+<pre><code>Cluster 0.0 =&gt;  GDD:4705 °C-day per year, PRECIP:944 mm, SAND:16 %
+Cluster 1.0 =&gt;  GDD:4358 °C-day per year, PRECIP:560 mm, SAND:27 %
+Cluster 3.0 =&gt;  GDD:4830 °C-day per year, PRECIP:656 mm, SAND:46 %</code></pre>
 </div>
 </div>
 </section>
 <section id="practice" class="level2">
 <h2 class="anchored" data-anchor-id="practice">Practice</h2>
 <ul>
+<li><p>Combine the inputs array <code>X</code> with the cluster labels and create a Pandas Dataframe to easily compute descriptive statistics using the <code>groupby()</code> method.</p></li>
 <li><p>Partition the state of Kansas using a different number of regions. What type of regions can be detected by using a higher number of clusters? What happens if you only divide the state into 3 regions?</p></li>
 <li><p>Which of the three variables would dominated the clustering process if the input variables are not normalized?</p></li>
 <li><p>Can you run a similar analysis for your own state?</p></li>
