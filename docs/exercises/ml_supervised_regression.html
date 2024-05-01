@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2024-04-29">
 <meta name="keywords" content="logistic regression, stochastic gradient descent, random forest, machine learning, image analysis">
 
-<title>PyNotes in Agriscience - 94&nbsp; Machine learning supervised regression</title>
+<title>PyNotes in Agriscience - 93&nbsp; Machine learning supervised regression</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -111,6 +111,22 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
 
 </head>
 
@@ -123,7 +139,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/clustering_kansas_environments.html">MACHINE LEARNING</a></li><li class="breadcrumb-item"><a href="../exercises/ml_supervised_regression.html"><span class="chapter-number">94</span>&nbsp; <span class="chapter-title">Machine learning supervised regression</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../exercises/clustering_kansas_environments.html">MACHINE LEARNING</a></li><li class="breadcrumb-item"><a href="../exercises/ml_supervised_regression.html"><span class="chapter-number">93</span>&nbsp; <span class="chapter-title">Machine learning supervised regression</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -808,20 +824,14 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../exercises/ml_vapor_pressure.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">92</span>&nbsp; <span class="chapter-title">Estimate daily vapor pressure</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../exercises/ml_supervised_classification.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">93</span>&nbsp; <span class="chapter-title">Machine learning supervised classification</span></span></a>
+ <span class="menu-text"><span class="chapter-number">92</span>&nbsp; <span class="chapter-title">Machine learning supervised classification</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../exercises/ml_supervised_regression.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">94</span>&nbsp; <span class="chapter-title">Machine learning supervised regression</span></span></a>
+ <span class="menu-text"><span class="chapter-number">93</span>&nbsp; <span class="chapter-title">Machine learning supervised regression</span></span></a>
   </div>
 </li>
       </ul>
@@ -836,7 +846,13 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#practice" id="toc-practice" class="nav-link active" data-scroll-target="#practice">Practice</a></li>
+  <li><a href="#define-functions-to-compute-reference-et" id="toc-define-functions-to-compute-reference-et" class="nav-link active" data-scroll-target="#define-functions-to-compute-reference-et">Define functions to compute reference ET</a></li>
+  <li><a href="#load-inspect-and-merge-datasets" id="toc-load-inspect-and-merge-datasets" class="nav-link" data-scroll-target="#load-inspect-and-merge-datasets">Load, inspect, and merge datasets</a></li>
+  <li><a href="#compute-extraterrestrial-solar-radiation" id="toc-compute-extraterrestrial-solar-radiation" class="nav-link" data-scroll-target="#compute-extraterrestrial-solar-radiation">Compute extraterrestrial solar radiation</a></li>
+  <li><a href="#prepare-input-and-output-variables" id="toc-prepare-input-and-output-variables" class="nav-link" data-scroll-target="#prepare-input-and-output-variables">Prepare input and output variables</a></li>
+  <li><a href="#split-and-normalize-data" id="toc-split-and-normalize-data" class="nav-link" data-scroll-target="#split-and-normalize-data">Split and normalize data</a></li>
+  <li><a href="#fit-multilayer-perceptron-regressor" id="toc-fit-multilayer-perceptron-regressor" class="nav-link" data-scroll-target="#fit-multilayer-perceptron-regressor">Fit multilayer perceptron regressor</a></li>
+  <li><a href="#practice" id="toc-practice" class="nav-link" data-scroll-target="#practice">Practice</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.dev/soilwater/pynotes-agriscience/blob/main/exercises/ml_supervised_regression.ipynb" class="toc-action">Edit this page</a></p></div></div></nav>
     </div>
@@ -845,7 +861,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">94</span>&nbsp; <span class="chapter-title">Machine learning supervised regression</span></h1>
+<h1 class="title"><span class="chapter-number">93</span>&nbsp; <span class="chapter-title">Machine learning supervised regression</span></h1>
 </div>
 
 
@@ -872,10 +888,12 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 
 </header>
 
-<p>Computing reference evapotranspiration (ETₒ) is essential in hydrology and agriculture for estimating the soil water balance. Reference evapotranspiration represents the evapotrasnpiration of a well-watered reference vegetation cover and is typically calculated using meteorological data.</p>
-<p>The Hargreaves model was developed to estimate ETₒ in regions where detailed meteorological data, such as solar radiation and wind speed, are not available. The Hargreaves model relies on easily obtainable variables like air temperature and extraterrestrial solar radiation to provide a quick and practical estimation of ETₒ.</p>
+<p>Reference evapotranspiration (ETₒ) is an essential variable in hydrology and agriculture for estimating the soil water balance. Reference evapotranspiration represents the evapotrasnpiration of a well-watered reference vegetation cover and is typically calculated using meteorological data.</p>
+<p>The Hargreaves model was developed to estimate ETₒ in regions where detailed meteorological data, such as solar radiation and wind speed, are not available. The Hargreaves model relies on easily obtainable variables like air temperature and extraterrestrial solar radiation (<span class="math inline">R_a</span>) to provide a quick and practical estimation of ETₒ. The Hargreaves model is given by:</p>
+<p><span class="math display"> ET_o = 0.0023 ~ R_a (T_{avg} + 17.8) ~ \sqrt{T_{max} - T_{min}} ~ 0.406</span></p>
+<p>where <span class="math inline">T_{avg}</span> is mean air temperature during the period of consideration, <span class="math inline">T_{min}</span> is minimum air temperature, <span class="math inline">T_{max}</span> is maximum air temperature, and the factor 0.406 is the mm of water that can be evaporated per MJoule per <span class="math inline">m^2</span> based on a latent heat of vaporization of 2.465 MJ per kg of water.</p>
 <p>In this tutorial we will try to come up with a machine learning model that approximates the ETₒ estimated with the Penman-Monteith model using the same input variables as in the Hargreaves model. The hypothesis is that the machine learning model will be able to learn intricate relatiosnhips between these two variables and result in better daily estimations of ETₒ compared to the Hargreaves model.</p>
-<div class="cell" data-execution_count="1">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import modules</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -885,15 +903,43 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read training dataset</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df_1 <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/Johnson_Kansas.csv'</span>, parse_dates<span class="op">=</span>[<span class="st">'timestamp'</span>])</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df_2 <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/Greeley_Kansas.csv'</span>, parse_dates<span class="op">=</span>[<span class="st">'timestamp'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<section id="define-functions-to-compute-reference-et" class="level2">
+<h2 class="anchored" data-anchor-id="define-functions-to-compute-reference-et">Define functions to compute reference ET</h2>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect dataframe</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_1.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add extraterrestrial radiation</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Source: Allen, R. G., Pereira, L. S., Raes, D., &amp; Smith, M. (1998). </span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># FAO Irrigation and drainage paper No. 56. </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Rome: Food and Agriculture Organization of the United Nations, 56(97), e156.</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_Ra(doy, latitude):</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function that computes extraterrestrial solar radiation"""</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    dr <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fl">0.033</span> <span class="op">*</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> doy<span class="op">/</span><span class="dv">365</span>) <span class="co"># Inverse relative distance Earth-Sun</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    phi <span class="op">=</span> np.pi <span class="op">/</span> <span class="dv">180</span> <span class="op">*</span> latitude <span class="co"># Latitude in radians</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="fl">0.409</span> <span class="op">*</span> np.sin((<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> doy<span class="op">/</span><span class="dv">365</span>) <span class="op">-</span> <span class="fl">1.39</span>) <span class="co"># Solar delcination</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    omega <span class="op">=</span> np.arccos(<span class="op">-</span>np.tan(phi) <span class="op">*</span> np.tan(d)) <span class="co"># Sunset hour angle</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    Gsc <span class="op">=</span> <span class="fl">0.0820</span> <span class="co"># Solar constant</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    Ra <span class="op">=</span> <span class="dv">24</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">/</span> np.pi <span class="op">*</span> Gsc <span class="op">*</span> dr <span class="op">*</span> (omega <span class="op">*</span> np.sin(phi) <span class="op">*</span> np.sin(d) <span class="op">+</span> np.cos(phi) <span class="op">*</span> np.cos(d) <span class="op">*</span> np.sin(omega))</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Ra</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute ETo using the Hargreaves model</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hargreaves(Ra,T_min,T_max):</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Potential evapotranspiration model proposed by Hargreaves in 1982"""</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    T_avg <span class="op">=</span> (T_min <span class="op">+</span> T_max)<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    ETo <span class="op">=</span> <span class="fl">0.0023</span> <span class="op">*</span> Ra <span class="op">*</span> (T_avg <span class="op">+</span> <span class="fl">17.8</span>) <span class="op">*</span> (T_max <span class="op">-</span> T_min)<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> <span class="fl">0.4057</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ETo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="load-inspect-and-merge-datasets" class="level2">
+<h2 class="anchored" data-anchor-id="load-inspect-and-merge-datasets">Load, inspect, and merge datasets</h2>
+<div class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read training dataset</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df_1 <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/Johnson_Kansas.csv'</span>, parse_dates<span class="op">=</span>[<span class="st">'timestamp'</span>])</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>df_2 <span class="op">=</span> pd.read_csv(<span class="st">'../datasets/Greeley_Kansas.csv'</span>, parse_dates<span class="op">=</span>[<span class="st">'timestamp'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect dataframe</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df_1.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -1004,63 +1050,54 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect data</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df_1[<span class="st">'timestamp'</span>], df_1[<span class="st">'eto'</span>])</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Johnson county'</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Refence ET (mm/day)'</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>plt.plot(df_2[<span class="st">'timestamp'</span>], df_2[<span class="st">'eto'</span>], label<span class="op">=</span><span class="st">'Greeley county'</span>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Greeley county'</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Refence ET (mm/day)'</span>)</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.3</span>)</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<p><img src="ml_supervised_regression_files/figure-html/cell-5-output-1.png" class="img-fluid"></p>
-</div>
-</div>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add extraterrestrial radiation</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> compute_Ra(doy, latitude):</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Function that computes extraterrestrial solar radiation"""</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    dr <span class="op">=</span> <span class="dv">1</span> <span class="op">+</span> <span class="fl">0.033</span> <span class="op">*</span> np.cos(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> doy<span class="op">/</span><span class="dv">365</span>) <span class="co"># Inverse relative distance Earth-Sun</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    phi <span class="op">=</span> np.pi <span class="op">/</span> <span class="dv">180</span> <span class="op">*</span> latitude <span class="co"># Latitude in radians</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> <span class="fl">0.409</span> <span class="op">*</span> np.sin((<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> doy<span class="op">/</span><span class="dv">365</span>) <span class="op">-</span> <span class="fl">1.39</span>) <span class="co"># Solar delcination</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    omega <span class="op">=</span> np.arccos(<span class="op">-</span>np.tan(phi) <span class="op">*</span> np.tan(d)) <span class="co"># Sunset hour angle</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    Gsc <span class="op">=</span> <span class="fl">0.0820</span> <span class="co"># Solar constant</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    Ra <span class="op">=</span> <span class="dv">24</span> <span class="op">*</span> <span class="dv">60</span> <span class="op">/</span> np.pi <span class="op">*</span> Gsc <span class="op">*</span> dr <span class="op">*</span> (omega <span class="op">*</span> np.sin(phi) <span class="op">*</span> np.sin(d) <span class="op">+</span> np.cos(phi) <span class="op">*</span> np.cos(d) <span class="op">*</span> np.sin(omega))</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> Ra</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute ETo using the Hargreaves model</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> hargreaves(Ra,T_min,T_max):</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Potential evapotranspiration model proposed by Hargreaves in 1982"""</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    T_avg <span class="op">=</span> (T_min <span class="op">+</span> T_max)<span class="op">/</span><span class="dv">2</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    ETo <span class="op">=</span> <span class="fl">0.0023</span> <span class="op">*</span> Ra <span class="op">*</span> (T_avg <span class="op">+</span> <span class="fl">17.8</span>) <span class="op">*</span> (T_max <span class="op">-</span> T_min)<span class="op">**</span><span class="fl">0.5</span> <span class="op">*</span> <span class="fl">0.4057</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ETo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 <div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge dataframes</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([df_1, df_2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect data</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>,<span class="dv">6</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>plt.plot(df_1[<span class="st">'timestamp'</span>], df_1[<span class="st">'eto'</span>])</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Johnson county'</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Refence ET (mm/day)'</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>plt.plot(df_2[<span class="st">'timestamp'</span>], df_2[<span class="st">'eto'</span>], label<span class="op">=</span><span class="st">'Greeley county'</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Greeley county'</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Refence ET (mm/day)'</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(hspace<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="ml_supervised_regression_files/figure-html/cell-6-output-1.png" class="img-fluid"></p>
 </div>
-<div class="cell" data-execution_count="7">
+</div>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge dataframes</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.concat([df_1, df_2]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="compute-extraterrestrial-solar-radiation" class="level2">
+<h2 class="anchored" data-anchor-id="compute-extraterrestrial-solar-radiation">Compute extraterrestrial solar radiation</h2>
+<div class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add extraterrestrial solar radiation and ETo from Hargreaves model</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Ra'</span>] <span class="op">=</span> compute_Ra(df[<span class="st">'doy'</span>], df[<span class="st">'latitude'</span>])</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'eto_harg'</span>] <span class="op">=</span> hargreaves(df[<span class="st">'Ra'</span>], df[<span class="st">'tmmn'</span>], df[<span class="st">'tmmx'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df[[<span class="st">'Ra'</span>,<span class="st">'tmmn'</span>,<span class="st">'tmmx'</span>]].values</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'eto'</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="prepare-input-and-output-variables" class="level2">
+<h2 class="anchored" data-anchor-id="prepare-input-and-output-variables">Prepare input and output variables</h2>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare inputs and outputs</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> df[[<span class="st">'Ra'</span>,<span class="st">'tmmn'</span>,<span class="st">'tmmx'</span>]].values</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> df[<span class="st">'eto'</span>].values</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="9">
+</section>
+<section id="split-and-normalize-data" class="level2">
+<h2 class="anchored" data-anchor-id="split-and-normalize-data">Split and normalize data</h2>
+<div class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Split dataset</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test, idx_train, idx_test <span class="op">=</span> train_test_split(X, y, df.index.values, random_state<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="13">
+<div class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Normalize data</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>scaler <span class="op">=</span> StandardScaler()  </span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1071,26 +1108,33 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply same transformation to test data</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>X_test <span class="op">=</span> scaler.transform(X_test) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="14">
+</section>
+<section id="fit-multilayer-perceptron-regressor" class="level2">
+<h2 class="anchored" data-anchor-id="fit-multilayer-perceptron-regressor">Fit multilayer perceptron regressor</h2>
+<p>A multilayer perceptron regressor is a type of artificial neural network used for regression tasks, where the model learns to predict a continuous target variable. It consists of multiple layers of nodes (neurons), each connected to the nodes in the adjacent layers. The first layer is the input layer, the last layer is the output layer, and any layers in between are called hidden layers.</p>
+<p>The Rectified Linear Unit (ReLU) activation function is commonly used in the hidden layers of a multilayer perceptron regressor. It replaces all negative values in the output with zero, while passing positive values unchanged (i.e., it retains the positive part of its argument only). This activation function helps the model learn complex patterns in the data and prevents the vanishing gradient problem typical of sigmoid and hyperbolic tangent activation functions, where gradients become too small for the model to learn effectively.</p>
+<p>The Adam optimizer is a popular optimization algorithm used to update the weights of the neural network during training. It allows the MLP to use adaptive learning rates for each parameter, which rsults in faster convergence compared to the more traditional stochastic gradient descent.</p>
+<div class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create and fit multilayer perceptron (MLP)</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>MLP <span class="op">=</span> MLPRegressor(random_state<span class="op">=</span><span class="dv">1</span>, max_iter<span class="op">=</span><span class="dv">500</span>, hidden_layer_sizes<span class="op">=</span>(<span class="dv">100</span>,), </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                   activation<span class="op">=</span><span class="st">'relu'</span>, solver<span class="op">=</span><span class="st">'adam'</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit MLP to training data</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>MLP_fitted <span class="op">=</span> MLP.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>MLP <span class="op">=</span> MLPRegressor(random_state<span class="op">=</span><span class="dv">1</span>, max_iter<span class="op">=</span><span class="dv">500</span>, </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>                   hidden_layer_sizes<span class="op">=</span>(<span class="dv">10</span>), </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>                   activation<span class="op">=</span><span class="st">'relu'</span>, solver<span class="op">=</span><span class="st">'adam'</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit MLP to training data</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>MLP_fitted <span class="op">=</span> MLP.fit(X_train, y_train)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="15">
+<div class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run trained MLP model on the test set</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>pred_test <span class="op">=</span> MLP_fitted.predict(X_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell" data-execution_count="16">
+<div class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the coefficient of determination</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>MLP_fitted.score(X_test, y_test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>0.9185612099286974</code></pre>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>0.9158784956141761</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="27">
+<div class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create scatter plots comparing test set and MLP predictions</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>,<span class="dv">4</span>))</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1119,7 +1163,7 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <p><img src="ml_supervised_regression_files/figure-html/cell-15-output-1.png" class="img-fluid"></p>
 </div>
 </div>
-<div class="cell" data-execution_count="32">
+<div class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>compute_mae <span class="op">=</span> <span class="kw">lambda</span> x,y: <span class="bu">round</span>(np.nanmean(np.<span class="bu">abs</span>(x<span class="op">-</span>y)),<span class="dv">2</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>mae_mlp <span class="op">=</span> compute_mae(y_test, pred_test)</span>
@@ -1128,10 +1172,12 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'MAE MLP model:'</span>,mae_mlp, <span class="st">'mm/day'</span>)</span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'MAE Hargreaves model:'</span>, mae_hargreaves, <span class="st">'mm/day'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>MAE MLP model: 0.47 mm/day
+<pre><code>MAE MLP model: 0.48 mm/day
 MAE Hargreaves model: 0.91 mm/day</code></pre>
 </div>
 </div>
+<p>In this tutorial we learned that using a simple multilyaer perceptron regressor can be used to develop a reliable model of daily reference evapotrasnpiration using readily available data like latitude, day of the year, and air temperature. We also observed that this approach resulted more accurate than some simple and empirical models.</p>
+</section>
 <section id="practice" class="level2">
 <h2 class="anchored" data-anchor-id="practice">Practice</h2>
 <ul>
@@ -1378,7 +1424,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../exercises/ml_supervised_classification.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">93</span>&nbsp; <span class="chapter-title">Machine learning supervised classification</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">92</span>&nbsp; <span class="chapter-title">Machine learning supervised classification</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
