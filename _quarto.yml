@@ -7,7 +7,7 @@ book:
   cover-image: cover_v1.png
   repo-url: https://github.com/soilwater/pynotes-agriscience
   repo-actions: [edit]
-  downloads: [pdf]
+  #downloads: [pdf]
   title: "PyNotes in Agriscience"
   author: Andres Patrignani
   date-format: "long"
@@ -159,7 +159,7 @@ format:
     highlight-style: dracula
     toc: true
     
-pdf: default
+  #pdf: default
 
 
 
