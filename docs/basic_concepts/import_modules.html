@@ -928,7 +928,7 @@ Import modules convention
 </div>
 </div>
 <p><strong>Option 2</strong><br> Syntax: <code>import &lt;module&gt; as &lt;alias&gt;</code> <br> Example: <code>import numpy as np</code><br> Use-case: This is used to import the entire module under a shorter, often more convenient alias. It’s particularly useful for frequently used modules or those with longer names. The alias acts as a shorthand, making the code more concise and easier to write. For instance, you can use <code>np.array()</code> instead of <code>numpy.array()</code>.</p>
-<div id="cell-8" class="cell" data-execution_count="16">
+<div id="cell-8" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an Numpy array of sand content for different soils</span></span>
@@ -936,22 +936,22 @@ Import modules convention
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sand_content)</span>
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create regular list and then convert to Numpy array</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>bulk_density <span class="op">=</span> [<span class="fl">1.1</span>, <span class="fl">1.15</span>, <span class="fl">1.21</span>, <span class="fl">1.4</span>, <span class="fl">1.55</span>]</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>bulk_density <span class="op">=</span> np.array(bulk_density)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(bulk_density)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>porosity <span class="op">=</span> [<span class="dv">55</span>, <span class="dv">47</span>, <span class="dv">45</span>, <span class="dv">40</span>, <span class="dv">35</span>]</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>porosity <span class="op">=</span> np.array(porosity)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(porosity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[ 5 20 35 60 80]
-[1.1  1.15 1.21 1.4  1.55]</code></pre>
+[55 47 45 40 35]</code></pre>
 </div>
 </div>
 <p><strong>Option 3</strong><br> Syntax: <code>import &lt;module&gt;.&lt;submodule&gt; as &lt;alias&gt;</code><br> Example: <code>import matplotlib.pyplot as plt</code> Use-case: This approach is used when you only need a specific part or submodule of a larger module. It’s efficient as it only loads the required submodule into memory. The alias is used for ease of reference, as in <code>plt.plot()</code> instead of using <code>matplotlib.pyplot.plot()</code>, which will be much more verbose and will result in cluttered lines of code.</p>
-<div id="cell-10" class="cell" data-execution_count="19">
+<div id="cell-10" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">4</span>,<span class="dv">4</span>))</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(sand_content, bulk_density, facecolor<span class="op">=</span><span class="st">'white'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>plt.scatter(sand_content, porosity, facecolor<span class="op">=</span><span class="st">'white'</span>, edgecolor<span class="op">=</span><span class="st">'black'</span>)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'Sand content (%)'</span>)</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Soil porosity (%)'</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Porosity (%)'</span>)</span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
