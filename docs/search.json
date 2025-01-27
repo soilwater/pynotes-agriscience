@@ -118,7 +118,7 @@
     "href": "markdown/reproducible_research.html#references-and-recommended-reading",
     "title": "3  Reproducible Research",
     "section": "References and recommended reading",
-    "text": "References and recommended reading\nGuo, P., 2013. Helping scientists, engineers to work up to 100 times faster. Link\nShen, H., 2014. Interactive notebooks: Sharing the code. Nature, 515(7525), pp.151-152. Link\nSandve, G.K., Nekrutenko, A., Taylor, J. and Hovig, E., 2013. Ten simple rules for reproducible computational research. PLoS computational biology, 9(10). Link\nSkaggs, T.H., Young, M.H. and Vrugt, J.A., 2015. Reproducible research in vadose zone sciences. Vadose Zone Journal, 14(10). Link",
+    "text": "References and recommended reading\nGuo, P., 2013. Helping scientists, engineers to work up to 100 times faster. Link\nShen, H., 2014. Interactive notebooks: Sharing the code. Nature, 515(7525), pp.151-152. Link\nSandve, G.K., Nekrutenko, A., Taylor, J. and Hovig, E., 2013. Ten simple rules for reproducible computational research. PLoS computational biology, 9(10). Link\nSkaggs, T.H., Young, M.H. and Vrugt, J.A., 2015. Reproducible research in vadose zone sciences. Vadose Zone Journal, 14(10). Link\nStodden, V., Leisch, F., & Peng, R. D. (Eds.). (2014). Implementing reproducible research (Vol. 546). Boca Raton, FL: Crc Press.",
     "crumbs": [
       "GETTING STARTED",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Reproducible Research</span>"

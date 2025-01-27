@@ -46,6 +46,7 @@ Sandve, G.K., Nekrutenko, A., Taylor, J. and Hovig, E., 2013. Ten simple rules f
 
 Skaggs, T.H., Young, M.H. and Vrugt, J.A., 2015. Reproducible research in vadose zone sciences. Vadose Zone Journal, 14(10). [Link](https://doi.org/10.2136/vzj2015.06.0088)
 
+Stodden, V., Leisch, F., & Peng, R. D. (Eds.). (2014). Implementing reproducible research (Vol. 546). Boca Raton, FL: Crc Press.
 
 ## Reproducible research questions
 
