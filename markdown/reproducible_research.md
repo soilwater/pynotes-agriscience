@@ -2,6 +2,8 @@
 
 The core principle of reproducible research is to supplement published studies not only with datasets from field or lab observations, model outputs, or instrument readings, but also with the code used in data analysis. This ensures that others can validate and replicate the findings of the study.
 
+>Reproducible research is the idea that code and data from scientific publications are available so that others can analyze the data, reproduce key findings from the original paper, and use the code and data in developing future research (Stodden at al., 2014; Skagss et al., 2015)
+
 One of the primary benefits of utilizing a high-level programming language is its capacity to handle data in a cross-platform format, like `.txt` or `.csv`. This allows for seamless integration of various tasks, including data wrangling, numerical and statistical analyses, geospatial analyses, and the creation of publication-quality visuals within a single coding environment. Essentially, the aim is to centralize all stages of data analysis on one platform. By using code to document our thought processes and methodologies, we can reduce or even eliminate the reliance on multiple specialized software programs, thereby enhancing the transparency of our research.
 
 ::: {.callout-note}
