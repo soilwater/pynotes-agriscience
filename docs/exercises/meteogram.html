@@ -901,12 +901,12 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="32919264-939e-4407-beb0-19fd6cd73912" class="cell" data-execution_count="8">
+<div id="32919264-939e-4407-beb0-19fd6cd73912" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data and display the first 5 rows</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> <span class="st">'../datasets/kings_creek_2022_2023_daily.csv'</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(filename, parse_dates<span class="op">=</span>[<span class="st">'datetime'</span>])</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -933,118 +933,124 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <th data-quarto-table-cell-role="th">soiltemp_20cm</th>
 <th data-quarto-table-cell-role="th">soiltemp_40cm</th>
 <th data-quarto-table-cell-role="th">battv</th>
+<th data-quarto-table-cell-role="th">discharge</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>2022-01-01</td>
-<td>96.837917</td>
+<td>96.838</td>
 <td>-14.8</td>
 <td>-4.4</td>
 <td>-9.60</td>
-<td>78.475475</td>
-<td>98.012496</td>
+<td>78.475</td>
+<td>98.012</td>
+<td>0.25</td>
+<td>2.098</td>
+<td>5.483</td>
+<td>0.969</td>
+<td>0.028</td>
+<td>0.257</td>
+<td>0.307</td>
+<td>0.359</td>
+<td>2.996</td>
+<td>5.392</td>
+<td>7.425</td>
+<td>8714.833</td>
 <td>0.0</td>
-<td>2.09808</td>
-<td>5.483333</td>
-<td>0.968820</td>
-<td>0.027500</td>
-<td>0.256750</td>
-<td>0.307000</td>
-<td>0.359000</td>
-<td>2.995833</td>
-<td>5.391667</td>
-<td>7.425000</td>
-<td>8714.833333</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>2022-01-02</td>
-<td>97.994583</td>
+<td>97.995</td>
 <td>-20.4</td>
 <td>-7.2</td>
 <td>-13.80</td>
-<td>50.543218</td>
-<td>84.935503</td>
+<td>50.543</td>
+<td>84.936</td>
+<td>0.25</td>
+<td>9.756</td>
+<td>2.216</td>
+<td>2.023</td>
+<td>0.072</td>
+<td>0.256</td>
+<td>0.307</td>
+<td>0.358</td>
+<td>2.562</td>
+<td>4.250</td>
+<td>6.692</td>
+<td>8890.042</td>
 <td>0.0</td>
-<td>9.75636</td>
-<td>2.216250</td>
-<td>2.023276</td>
-<td>0.072500</td>
-<td>0.256000</td>
-<td>0.307000</td>
-<td>0.358292</td>
-<td>2.562500</td>
-<td>4.250000</td>
-<td>6.691667</td>
-<td>8890.041667</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>2022-01-03</td>
-<td>97.843750</td>
+<td>97.844</td>
 <td>-9.4</td>
 <td>8.8</td>
 <td>-0.30</td>
-<td>40.622240</td>
-<td>82.662479</td>
+<td>40.622</td>
+<td>82.662</td>
+<td>0.50</td>
+<td>9.681</td>
+<td>2.749</td>
+<td>5.667</td>
+<td>0.262</td>
+<td>0.255</td>
+<td>0.307</td>
+<td>0.358</td>
+<td>2.454</td>
+<td>3.917</td>
+<td>6.208</td>
+<td>8924.833</td>
 <td>0.0</td>
-<td>9.68076</td>
-<td>2.749167</td>
-<td>5.667358</td>
-<td>0.261667</td>
-<td>0.255167</td>
-<td>0.307000</td>
-<td>0.358000</td>
-<td>2.454167</td>
-<td>3.916667</td>
-<td>6.208333</td>
-<td>8924.833333</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>2022-01-04</td>
-<td>96.418750</td>
+<td>96.419</td>
 <td>0.1</td>
 <td>8.6</td>
 <td>4.35</td>
-<td>48.326316</td>
-<td>69.401604</td>
+<td>48.326</td>
+<td>69.402</td>
+<td>0.25</td>
+<td>8.379</td>
+<td>5.806</td>
+<td>2.627</td>
+<td>0.363</td>
+<td>0.289</td>
+<td>0.319</td>
+<td>0.357</td>
+<td>2.496</td>
+<td>3.754</td>
+<td>5.842</td>
+<td>8838.292</td>
 <td>0.0</td>
-<td>8.37900</td>
-<td>5.805833</td>
-<td>2.627163</td>
-<td>0.363333</td>
-<td>0.288958</td>
-<td>0.319417</td>
-<td>0.357125</td>
-<td>2.495833</td>
-<td>3.754167</td>
-<td>5.841667</td>
-<td>8838.291667</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>2022-01-05</td>
-<td>97.462500</td>
+<td>97.462</td>
 <td>-11.1</td>
 <td>-2.2</td>
 <td>-6.65</td>
-<td>50.341455</td>
-<td>76.828233</td>
+<td>50.341</td>
+<td>76.828</td>
+<td>0.00</td>
+<td>5.717</td>
+<td>4.207</td>
+<td>1.251</td>
+<td>0.126</td>
+<td>0.313</td>
+<td>0.337</td>
+<td>0.357</td>
+<td>1.688</td>
+<td>3.429</td>
+<td>5.567</td>
+<td>8848.083</td>
 <td>0.0</td>
-<td>5.71716</td>
-<td>4.206667</td>
-<td>1.250533</td>
-<td>0.126250</td>
-<td>0.312833</td>
-<td>0.337000</td>
-<td>0.357333</td>
-<td>1.687500</td>
-<td>3.429167</td>
-<td>5.566667</td>
-<td>8848.083333</td>
 </tr>
 </tbody>
 </table>
@@ -1052,14 +1058,14 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div id="3316a5c4-b4ce-4c72-9afe-e903164150af" class="cell" data-execution_count="9">
+<div id="3316a5c4-b4ce-4c72-9afe-e903164150af" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select data for January</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>start_date <span class="op">=</span> pd.to_datetime(<span class="st">'2022-01-01'</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>end_date <span class="op">=</span> pd.to_datetime(<span class="st">'2023-01-01'</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>idx <span class="op">=</span> (df[<span class="st">'datetime'</span>] <span class="op">&gt;=</span> start_date) <span class="op">&amp;</span> (df[<span class="st">'datetime'</span>] <span class="op">&lt;</span> end_date)</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[idx].copy().reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -1086,118 +1092,124 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 <th data-quarto-table-cell-role="th">soiltemp_20cm</th>
 <th data-quarto-table-cell-role="th">soiltemp_40cm</th>
 <th data-quarto-table-cell-role="th">battv</th>
+<th data-quarto-table-cell-role="th">discharge</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">0</td>
 <td>2022-01-01</td>
-<td>96.837917</td>
+<td>96.838</td>
 <td>-14.8</td>
 <td>-4.4</td>
 <td>-9.60</td>
-<td>78.475475</td>
-<td>98.012496</td>
+<td>78.475</td>
+<td>98.012</td>
+<td>0.25</td>
+<td>2.098</td>
+<td>5.483</td>
+<td>0.969</td>
+<td>0.028</td>
+<td>0.257</td>
+<td>0.307</td>
+<td>0.359</td>
+<td>2.996</td>
+<td>5.392</td>
+<td>7.425</td>
+<td>8714.833</td>
 <td>0.0</td>
-<td>2.09808</td>
-<td>5.483333</td>
-<td>0.968820</td>
-<td>0.027500</td>
-<td>0.256750</td>
-<td>0.307000</td>
-<td>0.359000</td>
-<td>2.995833</td>
-<td>5.391667</td>
-<td>7.425000</td>
-<td>8714.833333</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>2022-01-02</td>
-<td>97.994583</td>
+<td>97.995</td>
 <td>-20.4</td>
 <td>-7.2</td>
 <td>-13.80</td>
-<td>50.543218</td>
-<td>84.935503</td>
+<td>50.543</td>
+<td>84.936</td>
+<td>0.25</td>
+<td>9.756</td>
+<td>2.216</td>
+<td>2.023</td>
+<td>0.072</td>
+<td>0.256</td>
+<td>0.307</td>
+<td>0.358</td>
+<td>2.562</td>
+<td>4.250</td>
+<td>6.692</td>
+<td>8890.042</td>
 <td>0.0</td>
-<td>9.75636</td>
-<td>2.216250</td>
-<td>2.023276</td>
-<td>0.072500</td>
-<td>0.256000</td>
-<td>0.307000</td>
-<td>0.358292</td>
-<td>2.562500</td>
-<td>4.250000</td>
-<td>6.691667</td>
-<td>8890.041667</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>2022-01-03</td>
-<td>97.843750</td>
+<td>97.844</td>
 <td>-9.4</td>
 <td>8.8</td>
 <td>-0.30</td>
-<td>40.622240</td>
-<td>82.662479</td>
+<td>40.622</td>
+<td>82.662</td>
+<td>0.50</td>
+<td>9.681</td>
+<td>2.749</td>
+<td>5.667</td>
+<td>0.262</td>
+<td>0.255</td>
+<td>0.307</td>
+<td>0.358</td>
+<td>2.454</td>
+<td>3.917</td>
+<td>6.208</td>
+<td>8924.833</td>
 <td>0.0</td>
-<td>9.68076</td>
-<td>2.749167</td>
-<td>5.667358</td>
-<td>0.261667</td>
-<td>0.255167</td>
-<td>0.307000</td>
-<td>0.358000</td>
-<td>2.454167</td>
-<td>3.916667</td>
-<td>6.208333</td>
-<td>8924.833333</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>2022-01-04</td>
-<td>96.418750</td>
+<td>96.419</td>
 <td>0.1</td>
 <td>8.6</td>
 <td>4.35</td>
-<td>48.326316</td>
-<td>69.401604</td>
+<td>48.326</td>
+<td>69.402</td>
+<td>0.25</td>
+<td>8.379</td>
+<td>5.806</td>
+<td>2.627</td>
+<td>0.363</td>
+<td>0.289</td>
+<td>0.319</td>
+<td>0.357</td>
+<td>2.496</td>
+<td>3.754</td>
+<td>5.842</td>
+<td>8838.292</td>
 <td>0.0</td>
-<td>8.37900</td>
-<td>5.805833</td>
-<td>2.627163</td>
-<td>0.363333</td>
-<td>0.288958</td>
-<td>0.319417</td>
-<td>0.357125</td>
-<td>2.495833</td>
-<td>3.754167</td>
-<td>5.841667</td>
-<td>8838.291667</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>2022-01-05</td>
-<td>97.462500</td>
+<td>97.462</td>
 <td>-11.1</td>
 <td>-2.2</td>
 <td>-6.65</td>
-<td>50.341455</td>
-<td>76.828233</td>
+<td>50.341</td>
+<td>76.828</td>
+<td>0.00</td>
+<td>5.717</td>
+<td>4.207</td>
+<td>1.251</td>
+<td>0.126</td>
+<td>0.313</td>
+<td>0.337</td>
+<td>0.357</td>
+<td>1.688</td>
+<td>3.429</td>
+<td>5.567</td>
+<td>8848.083</td>
 <td>0.0</td>
-<td>5.71716</td>
-<td>4.206667</td>
-<td>1.250533</td>
-<td>0.126250</td>
-<td>0.312833</td>
-<td>0.337000</td>
-<td>0.357333</td>
-<td>1.687500</td>
-<td>3.429167</td>
-<td>5.566667</td>
-<td>8848.083333</td>
 </tr>
 </tbody>
 </table>
@@ -1205,10 +1217,10 @@ gtag('config', 'G-N9033JNDWZ', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<div id="c529717b-fe94-47b1-bd9e-f15f3384fc17" class="cell" data-execution_count="11">
+<div id="c529717b-fe94-47b1-bd9e-f15f3384fc17" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display number of missing values for each column. </span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>datetime          0
 pressure          0
 tmin              0
@@ -1228,18 +1240,19 @@ soiltemp_5cm      0
 soiltemp_20cm     0
 soiltemp_40cm     0
 battv             0
+discharge         0
 dtype: int64</code></pre>
 </div>
 </div>
-<div id="79bca4b3-eee6-464c-8a63-07bf5960114e" class="cell" data-tags="[]" data-execution_count="12">
+<div id="79bca4b3-eee6-464c-8a63-07bf5960114e" class="cell" data-tags="[]" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace missing values</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'wspd'</span>] <span class="op">=</span> df[<span class="st">'wspd'</span>].interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'vpd'</span>] <span class="op">=</span> df[<span class="st">'vpd'</span>].interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="768ee615-635a-4894-8fb6-e21f2cdbeaf1" class="cell" data-tags="[]" data-execution_count="13">
+<div id="768ee615-635a-4894-8fb6-e21f2cdbeaf1" class="cell" data-tags="[]" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the new number of missing values for each column. </span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>df.isna().<span class="bu">sum</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell-output cell-output-display" data-execution_count="11">
 <pre><code>datetime          0
 pressure          0
 tmin              0
@@ -1259,29 +1272,30 @@ soiltemp_5cm      0
 soiltemp_20cm     0
 soiltemp_40cm     0
 battv             0
+discharge         0
 dtype: int64</code></pre>
 </div>
 </div>
 <section id="estimate-some-useful-metrics" class="level2">
 <h2 class="anchored" data-anchor-id="estimate-some-useful-metrics">Estimate some useful metrics</h2>
 <p>To characterize what happened during the entire year, let’s compute the annual rainfall, maximum wind speed, and maximum and minimum air temperature.</p>
-<div id="5bc10937-e338-481c-83bc-7cc7187d0784" class="cell" data-execution_count="14">
+<div id="5bc10937-e338-481c-83bc-7cc7187d0784" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find and print total precipitation</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>P_total <span class="op">=</span> df[<span class="st">'prcp'</span>].<span class="bu">sum</span>().<span class="bu">round</span>(<span class="dv">2</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Total precipitation in 2023 was </span><span class="sc">{</span>P_total<span class="sc">}</span><span class="ss"> mm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Total precipitation in 2022 was </span><span class="sc">{</span>P_total<span class="sc">}</span><span class="ss"> mm'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Total precipitation in 2023 was 523.28 mm</code></pre>
+<pre><code>Total precipitation in 2022 was 841.08 mm</code></pre>
 </div>
 </div>
-<div id="4a873529-a290-4f75-ac91-78d10e3411c4" class="cell" data-execution_count="16">
+<div id="4a873529-a290-4f75-ac91-78d10e3411c4" class="cell" data-execution_count="33">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the total number of days with measurable precipitation</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>P_hours <span class="op">=</span> (df[<span class="st">'prcp'</span>] <span class="op">&gt;</span> <span class="dv">0</span>).<span class="bu">sum</span>()</span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'There were </span><span class="sc">{</span>P_hours<span class="sc">}</span><span class="ss"> days with precipitation'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>There were 108 days with precipitation</code></pre>
+<pre><code>There were 94 days with precipitation</code></pre>
 </div>
 </div>
-<div id="1f8c88eb-bd05-4fbf-8d41-fdc204cc7fac" class="cell" data-execution_count="17">
+<div id="1f8c88eb-bd05-4fbf-8d41-fdc204cc7fac" class="cell" data-execution_count="35">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find median air temperature. Print value.</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Tmedian <span class="op">=</span> df[<span class="st">'tavg'</span>].median()</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Median air temperature was </span><span class="sc">{</span>Tmedian<span class="sc">}</span><span class="ss"> Celsius'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1289,7 +1303,7 @@ dtype: int64</code></pre>
 <pre><code>Median air temperature was 13.65 Celsius</code></pre>
 </div>
 </div>
-<div id="ff2af108-b6ef-45a3-97d3-57977fa075b9" class="cell" data-execution_count="23">
+<div id="ff2af108-b6ef-45a3-97d3-57977fa075b9" class="cell" data-execution_count="37">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find value and time of minimum air temperature. Print value and timestamp.</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fmt <span class="op">=</span> <span class="st">'%A, %B </span><span class="sc">%d</span><span class="st">, %Y'</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>Tmin_idx <span class="op">=</span> df[<span class="st">'tmin'</span>].argmin()</span>
@@ -1300,7 +1314,7 @@ dtype: int64</code></pre>
 <pre><code>The lowest air temperature was -22.4 on Thursday, December 22, 2022</code></pre>
 </div>
 </div>
-<div id="0e634be4-3494-4397-978e-6316837c7647" class="cell" data-execution_count="24">
+<div id="0e634be4-3494-4397-978e-6316837c7647" class="cell" data-execution_count="39">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find value and time of maximum air temperature. Print value and timestamp.</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>Tmax_idx <span class="op">=</span> df[<span class="st">'tmax'</span>].argmax()</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>Tmax_value <span class="op">=</span> df.loc[Tmax_idx, <span class="st">'tmax'</span>]</span>
@@ -1310,7 +1324,7 @@ dtype: int64</code></pre>
 <pre><code>The highest air temperature was 37.4 on Saturday, July 23, 2022</code></pre>
 </div>
 </div>
-<div id="b24920b9-4532-491f-b82f-5f3dc2fc0afa" class="cell" data-execution_count="27">
+<div id="b24920b9-4532-491f-b82f-5f3dc2fc0afa" class="cell" data-execution_count="41">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Find max wind gust and time of occurrence. Print value and timestamp.</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>Wmax_idx <span class="op">=</span> df[<span class="st">'wspd'</span>].argmax()</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>Wmax_value <span class="op">=</span> df.loc[Wmax_idx, <span class="st">'wspd'</span>]</span>
@@ -1323,7 +1337,7 @@ dtype: int64</code></pre>
 </section>
 <section id="meteogram" class="level2">
 <h2 class="anchored" data-anchor-id="meteogram">Meteogram</h2>
-<div id="bac94378-abc0-4f38-b5bf-f8ee0d7998a7" class="cell" data-execution_count="29">
+<div id="bac94378-abc0-4f38-b5bf-f8ee0d7998a7" class="cell" data-execution_count="47">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create meteogram plot</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define style</span></span>
@@ -1349,7 +1363,7 @@ dtype: int64</code></pre>
 <span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'datetime'</span>], df[<span class="st">'rmax'</span>], color<span class="op">=</span><span class="st">'tomato'</span>)</span>
 <span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Relative Humidity (%)'</span>, size<span class="op">=</span>font)</span>
 <span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>plt.yticks(size<span class="op">=</span>font)</span>
-<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">100</span>)</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>,<span class="dv">110</span>)</span>
 <span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Atmospheric pressure</span></span>
 <span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
@@ -1366,14 +1380,14 @@ dtype: int64</code></pre>
 <span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a><span class="co"># Wind speed</span></span>
 <span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">5</span>)</span>
 <span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'datetime'</span>], df[<span class="st">'wspd'</span>], <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'Wind speed'</span>)</span>
-<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Wind Speed ($m \ s^{-1}$)'</span>, size<span class="op">=</span>font)</span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'Wind Speed ($m \ s^{-1}$)'</span>, size<span class="op">=</span>font)</span>
 <span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
 <span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>plt.yticks(size<span class="op">=</span>font)</span>
 <span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Solar radiation</span></span>
 <span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a>plt.subplot(<span class="dv">9</span>,<span class="dv">1</span>,<span class="dv">6</span>)</span>
 <span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'datetime'</span>], df[<span class="st">'srad'</span>])</span>
-<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Solar radiation ($W \ m^{-2}$)'</span>, size<span class="op">=</span>font)</span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'Solar radiation ($W \ m^{-2}$)'</span>, size<span class="op">=</span>font)</span>
 <span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a>plt.yticks(size<span class="op">=</span>font)</span>
 <span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Precipitation</span></span>
@@ -1400,7 +1414,7 @@ dtype: int64</code></pre>
 <span id="cb21-74"><a href="#cb21-74" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'datetime'</span>], df[<span class="st">'vwc_5cm'</span>], <span class="st">'-k'</span>, label<span class="op">=</span><span class="st">'5 cm'</span>)</span>
 <span id="cb21-75"><a href="#cb21-75" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'datetime'</span>], df[<span class="st">'vwc_20cm'</span>], <span class="st">'-g'</span>, label<span class="op">=</span><span class="st">'20 cm'</span>)</span>
 <span id="cb21-76"><a href="#cb21-76" aria-hidden="true" tabindex="-1"></a>plt.plot(df[<span class="st">'datetime'</span>], df[<span class="st">'vwc_40cm'</span>], <span class="st">'--r'</span>, label<span class="op">=</span><span class="st">'40 cm'</span>)</span>
-<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'Soil Moisture ($m^3 \ m^{-3}$)'</span>, size<span class="op">=</span>font)</span>
+<span id="cb21-77"><a href="#cb21-77" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="vs">r'Soil Moisture ($m^3 \ m^{-3}$)'</span>, size<span class="op">=</span>font)</span>
 <span id="cb21-78"><a href="#cb21-78" aria-hidden="true" tabindex="-1"></a>plt.yticks(size<span class="op">=</span>font)</span>
 <span id="cb21-79"><a href="#cb21-79" aria-hidden="true" tabindex="-1"></a>plt.ylim(<span class="dv">0</span>, <span class="fl">0.5</span>)</span>
 <span id="cb21-80"><a href="#cb21-80" aria-hidden="true" tabindex="-1"></a>plt.grid(which<span class="op">=</span><span class="st">'minor'</span>)</span>
