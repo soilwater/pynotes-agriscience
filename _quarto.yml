@@ -29,121 +29,124 @@ book:
         - markdown/latex_equations.md
         - markdown/alt_python_libraries.md
     
-    - part: "BASIC CONCEPTS"
+    - part: "PYTHON FUNDAMENTALS"
       chapters:
         - basic_concepts/basic_operations.ipynb
         - basic_concepts/import_modules.ipynb
         - basic_concepts/data_types.ipynb
         - basic_concepts/data_structures.ipynb
-        - basic_concepts/dates_and_times.ipynb      
-        - basic_concepts/indexing_and_slicing.ipynb      
+        - basic_concepts/indexing_and_slicing.ipynb
         - basic_concepts/if_statement.ipynb
+        - basic_concepts/for_loop.ipynb
+        - basic_concepts/while_loop.ipynb
+        - basic_concepts/list_comprehensions.ipynb
         - basic_concepts/functions.ipynb
         - basic_concepts/lambda_functions.ipynb
-        - basic_concepts/inputs.ipynb
-        - basic_concepts/for_loop.ipynb
-        - basic_concepts/list_comprehensions.ipynb        
-        - basic_concepts/while_loop.ipynb
-        - basic_concepts/directory_navigation.ipynb  
-        - basic_concepts/objects_and_classes.ipynb
         - basic_concepts/error_handling.ipynb
+        - basic_concepts/dates_and_times.ipynb
+        - basic_concepts/directory_navigation.ipynb
         - basic_concepts/numpy_module.ipynb
         - basic_concepts/pandas_module.ipynb
         - basic_concepts/plotting.ipynb
-        - basic_concepts/widgets.ipynb
-        - basic_concepts/sql_database.ipynb
+        - basic_concepts/inputs.ipynb
         - basic_concepts/pickle.ipynb
+        - basic_concepts/objects_and_classes.ipynb
+        - basic_concepts/sql_database.ipynb
+        - basic_concepts/widgets.ipynb
 
-             
-    - part: "GENERAL EXERCISES"
+    # Exercises are listed in a single part, roughly in order of difficulty.
+    # The comments below are only for maintenance and do not appear on the website.
+    - part: "EXERCISES"
       chapters:
-        - exercises/meteogram.ipynb
-        - exercises/group_least_variance.ipynb
-        - exercises/random_plots.ipynb       
-        - exercises/mixing_model.ipynb
+        # Applying the basics (arithmetic, loops, conditionals, functions)
         - exercises/mass_volume_relationships.ipynb
+        - exercises/group_least_variance.ipynb
+        - exercises/random_plots.ipynb
+        - exercises/central_dogma.ipynb
         - exercises/soil_textural_class.ipynb
+        - exercises/mixing_model.ipynb
+        - exercises/random_walk.ipynb
+        - exercises/weed_population.ipynb
+
+        # Working with real datasets (Pandas and Matplotlib)
+        - exercises/meteogram.ipynb
+        - exercises/atmospheric_water_deficit.ipynb
+        - exercises/first_and_last_frost.ipynb
         - exercises/distribution_daily_precipitation.ipynb
         - exercises/high_resolution_rainfall_events.ipynb
-        - exercises/first_and_last_frost.ipynb
-        - exercises/central_dogma.ipynb
-        - exercises/error_metrics.ipynb
-        - exercises/request_web_data.ipynb
         - exercises/soil_water_storage.ipynb
-        - exercises/atmospheric_water_deficit.ipynb
-        - exercises/photoperiod.ipynb
+        - exercises/request_web_data.ipynb
 
-    - part: "MODELS"
-      chapters:
-        - exercises/curve_number.ipynb 
-        - exercises/air_temperature_model.ipynb
-        - exercises/soil_temperature_model.ipynb
-        - exercises/thermal_time.ipynb
-        - exercises/evapotranspiration.ipynb
-        - exercises/photoperiod.ipynb
-        - exercises/wheat_potential_yield.ipynb
-        - exercises/autoregressive_model.ipynb
-        
-    - part: "REGRESSION AND CURVE FITTING"
-      chapters:
-        - exercises/basic_statistical_tests.ipynb 
-        - exercises/anscombe_quartet.ipynb 
-        - exercises/calibration_teros_12.ipynb 
-        - exercises/neutron_probe_calibration.ipynb 
-        - exercises/sorghum_yields.ipynb
-        - exercises/multiple_linear_regression.ipynb
+        # Statistics, regression, and curve fitting
+        - exercises/anscombe_quartet.ipynb
+        - exercises/error_metrics.ipynb
+        - exercises/basic_statistical_tests.ipynb
+        - exercises/calibration_teros_12.ipynb
+        - exercises/neutron_probe_calibration.ipynb
+        - exercises/cdf_matching.ipynb
         - exercises/proctor_test.ipynb
         - exercises/optimal_nitrogen_rate.ipynb
         - exercises/maximum_return_to_nitrogen.ipynb
-        - exercises/solar_radiation.ipynb
+        - exercises/multiple_linear_regression.ipynb
+        - exercises/sorghum_yields.ipynb
         - exercises/soil_water_retention_curve.ipynb
+        - exercises/crop_growth_logistic.ipynb
         - exercises/frontier_function.ipynb
         - exercises/atmospheric_carbon_dioxide.ipynb
         - exercises/drydowns.ipynb
-        
-    - part: "NUMERICAL MODELS"
-      chapters:
+        - exercises/autoregressive_model.ipynb
+
+        # Environmental and crop models
+        - exercises/photoperiod.ipynb
+        - exercises/thermal_time.ipynb
+        - exercises/curve_number.ipynb
+        - exercises/air_temperature_model.ipynb
+        - exercises/soil_temperature_model.ipynb
+        - exercises/solar_radiation.ipynb
+        - exercises/evapotranspiration.ipynb
+        - exercises/pedotransfer_saxton_rawls.ipynb
+        - exercises/plant_available_water.ipynb
+        - exercises/wheat_potential_yield.ipynb
+        - exercises/antecedent_precipitation_index.ipynb
+        - exercises/soil_water_balance.ipynb
+        - exercises/root_depth.ipynb
+        - exercises/rainfall_generator.ipynb
+
+        # Numerical methods (differential equations)
         - exercises/newton_law_cooling.ipynb
         - exercises/predator_prey_model.ipynb
-        - exercises/reaction_diffusion.ipynb
         - exercises/green_ampt.ipynb
+        - exercises/reaction_diffusion.ipynb
 
-        
-    - part: "STOCHASTIC MODELS"
-      chapters:
-        - exercises/random_walk.ipynb
-        - exercises/weed_population.ipynb
-        - exercises/rainfall_generator.ipynb
-        
-    - part: "IMAGE ANALYSIS"
-      chapters:
-        - exercises/count_seeds.ipynb
+        # Image analysis
         - exercises/canopy_cover.ipynb
-        - exercises/lakes_kansas.ipynb
-        
-    - part: "MAPPING AND SPATIAL ANALYSIS"
-      chapters:
-        - exercises/soil_moisture_monitoring_stations.ipynb
+        - exercises/count_seeds.ipynb
+        - exercises/soil_cracks.ipynb
+
+        # Spatial analysis (requires geopandas, rasterio, and related packages)
         - exercises/field_random_samples.ipynb
+        - exercises/soil_moisture_monitoring_stations.ipynb
+        - exercises/weather_network_coverage.ipynb
+        - exercises/largest_empty_circle.ipynb
+        - exercises/raster_files.ipynb
+        - exercises/raster_and_vector.ipynb
+        - exercises/lakes_kansas.ipynb
         - exercises/yield_monitor_clean.ipynb
         - exercises/yield_monitor_zones.ipynb
-        - exercises/largest_empty_circle.ipynb
-        - exercises/weather_network_coverage.ipynb
-        - exercises/raster_and_vector.ipynb
         - exercises/inverse_distance_weighting.ipynb
         - exercises/builtin_spatial_interpolators.ipynb
         - exercises/semivariogram.ipynb
         - exercises/simple_kriging.ipynb
 
-        
-    - part: "MACHINE LEARNING"
-      chapters:
-        - exercises/clustering_kansas_environments.ipynb
+        # Machine learning
         - exercises/clustering_time_series.ipynb
+        - exercises/clustering_kansas_environments.ipynb
         - exercises/ml_supervised_classification.ipynb
         - exercises/ml_supervised_regression.ipynb
 
-        
+        # Not listed yet (need polishing): calibration_soil_moisture_sensor,
+        # exponential_filter, leaky_bucket, ml_vapor_pressure
+
   page-footer:
     center: 
       - text: "Material available for free under the Creative Commons Attribution-NonCommercial-ShareAlike (CC BY-NC-SA) license"

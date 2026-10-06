@@ -3,3 +3,5 @@
 .quarto
 /.quarto/
 lectures
+
+**/*.quarto_ipynb
