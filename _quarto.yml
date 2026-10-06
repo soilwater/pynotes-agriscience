@@ -154,6 +154,7 @@ book:
 format:
   html:
     theme: cosmo
+    css: styles.css
     number-sections: true
     number-depth: 1
     code-overflow: scroll

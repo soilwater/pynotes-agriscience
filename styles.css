@@ -1,0 +1,10 @@
+/* Inline code (e.g., `math.sqrt()` in the text) uses a light background.
+   Code blocks keep the dark theme defined by highlight-style in _quarto.yml. */
+p code:not(.sourceCode),
+li code:not(.sourceCode),
+td code:not(.sourceCode) {
+  background-color: #f2f2f2;
+  color: #7d12ba; /* Same purple used by the cosmo theme for inline code */
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+}
